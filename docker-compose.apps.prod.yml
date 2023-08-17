@@ -1,0 +1,51 @@
+version: '3.1'
+services:
+
+    leetwars_core:
+        image: tatihutii/leetwars_core:latest
+        container_name: 'leetwars_core'
+        restart: on-failure
+        networks:
+            - back
+        ports:
+            - "5050:5050"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Production
+        env_file:
+            - /etc/environment
+        volumes:
+           - ./resources:/app/Resources
+
+    leetwars_notifier:
+        image: tatihutii/leetwars_notifier:latest
+        container_name: 'leetwars_notifier'
+        restart: on-failure
+        networks:
+            - back
+        ports:
+            - "5070:5070"
+        environment:
+            ASPNETCORE_ENVIRONMENT: 'Production'
+        env_file:
+            - /etc/environment
+
+    leetwars_frontend:
+        depends_on:
+            - leetwars_core
+            - leetwars_notifier
+        image: tatihutii/leetwars_frontend:latest
+        container_name: 'leetwars_frontend'
+        restart: on-failure
+        networks:
+            - back
+            - front
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
+networks:
+    back:
+        driver: bridge
+    front:
+        driver: bridge
