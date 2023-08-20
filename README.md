@@ -36,7 +36,8 @@ _Tip: If you want to connect to the specific service outside of docker, then use
 
 ```mermaid
 erDiagram
-    Users {
+    %%Main
+    Users{
         id bigint
         countryId int FK
         timezoneId int FK
@@ -47,13 +48,17 @@ erDiagram
         lastName nvarchar
         userName nvarchar
         email nvarchar
-        imagePath nvarchar
+        imagePath nvarchar 
         totalScore bigint
         registeredAt datetime
-        oAuthToken nvarchar
+        oathToken nvarchar
         isSubscribed boolean
-        isBanned boolean
+        isBanned boolean    
     }
+    Users ||--o{ Challenges : authors_of
+    Users ||--o{ UserSolutions : authors_of
+    Users |{--|{ UsersPrefferedLanguages : users
+    Users |{--|{ UsersLanguagesLevels : users
 
     Challenges {
         id bigint PK
@@ -63,6 +68,8 @@ erDiagram
         levelId int FK
         createdAt datetime
     }
+    Challenges ||--o{ ChallengeVersions : challenge_versions
+    Challenges |{--|{ ChallengeTags : challenge
 
     ChallengeVersions{
         id bigint PK
@@ -73,7 +80,140 @@ erDiagram
         statusId int FK
         createdAt datetime
     }
+    ChallengeVersions |{--|{ ChallengeVersionLanguageVersions : challenge_version
+    ChallengeVersions ||--o{ UserSolutions : challenge_version_solutions
+    ChallengeVersions ||--o{ Tests : tests
 
+    UserSolutions{
+        id int PK
+        userId bigint FK
+        challengeVersionId bigint FK
+        code string
+        output string
+        isCorrect bool
+        submittedAt nullable_datetime
+        createdAt datetime
+    }
+
+
+    Tests{
+        id int PK
+        challengeVersionId bigint FK
+        code string
+        isPublic bool
+        createdAt datetime
+    }
+
+
+    Subscriptions{
+        id bigint PK
+        userId bigint FK
+        paymentSubscriptionId nvarchar
+        typeId int
+        cost decimal
+        startDate datetime
+        endDate datetime
+        subscribedDate datetime
+        unsubscribedDate nullable_datetime
+        isActive boolean
+    }
+    Subscriptions }o--|| Users : users_subscription
+
+    %%Secondary
+    SubscriptionTypes{
+        id int PK
+        name nvarchar
+        description nvarchar
+        cost decimal
+        billingPeriod int
+    }
+    SubscriptionTypes ||--o{ Subscriptions : subscription_type
+
+    Tags{
+        id int PK
+        name nvarchar
+    }
+    Tags |{--|{ ChallengeTags : tag
+
+    ChallengeStatuses{
+        id int PK
+        name nvarchar
+    }
+    ChallengeStatuses ||--o{ ChallengeVersions : version_status
+
+    Countries{
+        id int PK
+        name nvarchar
+    }
+    Countries ||--o{ Users : country
+
+    Timezones{
+        id int PK
+        name nvarchar
+    }
+    Timezones ||--o{ Users : timezone
+
+    Sexes{
+        id int PK
+        name nvarchar
+    }
+    Sexes ||--o{ Users : sex
+
+    LanguageLevels{
+        id int PK
+        name nvarchar
+    }
+    LanguageLevels ||--o{ UsersLanguagesLevels : level
+
+    UserStatuses{
+        id int PK
+        name nvarchar
+    }
+    UserStatuses ||--o{ Users : status
+
+    Languages {
+        id int PK
+        name string
+    }
+    Languages ||--o{ ChallengeVersions : version_language
+    Languages|{--|{ UsersPrefferedLanguages : languages
+    Languages|{--|{ UsersLanguagesLevels : languages
+
+    LanguageVersions {
+        id int PK
+        version nvarchar
+    }
+    LanguageVersions |{--|{ ChallengeVersionLanguageVersions : language_version
+
+    ChallengeLevels{
+        id int PK
+        name string
+        reward int
+    }
+    ChallengeLevels ||--o{ Challenges : levels
+
+    %%Junction
+    ChallengeTags{
+        challengeId bigint PK
+        tagId int PK
+    }
+
+
+    UsersLanguagesLevels{
+        userId bigint PK
+        languageId int PK
+        languageLevelId int FK
+    }
+
+    UsersPrefferedLanguages{
+        userId bigint PK
+        languageId int PK
+    }
+
+    ChallengeVersionLanguageVersions{
+        challengeVersionId bigint PK
+        languageVersionId bigint PK
+    }
 ```
 
 ## Code quality
