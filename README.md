@@ -107,7 +107,7 @@ erDiagram
         id bigint PK
         userId bigint FK
         paymentSubscriptionId nvarchar
-        typeId int
+        typeId int FK
         cost decimal
         startDate datetime
         endDate datetime
