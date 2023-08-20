@@ -27,6 +27,8 @@ builder.WebHost.UseUrls("http://*:5050");
 
 var app = builder.Build();
 
+app.UseLeetWarsCoreContext();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
