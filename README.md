@@ -24,11 +24,11 @@ Frontend:
 
 By default, apps run on the following ports:
 
-| Application                 | Port |
-| --------------------------- | ---- |
-| LeetWars.**Core**           | 5050 |
-| LeetWars.**Notifier**       | 5070 |
-| RabbitMQ                    | 5672 |
+| Application           | Port |
+| --------------------- | ---- |
+| LeetWars.**Core**     | 5050 |
+| LeetWars.**Notifier** | 5070 |
+| RabbitMQ              | 5672 |
 
 _Tip: If you want to connect to the specific service outside of docker, then use "localhost" as a service name, but if both services are inside docker, use service_name from a "docker-compose" file instead._
 
@@ -38,7 +38,7 @@ _Tip: If you want to connect to the specific service outside of docker, then use
 erDiagram
     %%Main
     Users{
-        id bigint
+        id bigint PK
         countryId int FK
         timezoneId int FK
         sexId int FK
@@ -48,17 +48,17 @@ erDiagram
         lastName nvarchar
         userName nvarchar
         email nvarchar
-        imagePath nvarchar 
+        imagePath nvarchar
         totalScore bigint
         registeredAt datetime
         oathToken nvarchar
         isSubscribed boolean
-        isBanned boolean    
+        isBanned boolean
     }
     Users ||--o{ Challenges : authors_of
     Users ||--o{ UserSolutions : authors_of
-    Users |{--|{ UsersPrefferedLanguages : users
-    Users |{--|{ UsersLanguagesLevels : users
+    Users ||--o{ UsersPreferredLanguages : users
+    Users ||--o{ UsersLanguagesLevels : users
 
     Challenges {
         id bigint PK
@@ -69,7 +69,7 @@ erDiagram
         createdAt datetime
     }
     Challenges ||--o{ ChallengeVersions : challenge_versions
-    Challenges |{--|{ ChallengeTags : challenge
+    Challenges ||--o{ ChallengeTags : challenge
 
     ChallengeVersions{
         id bigint PK
@@ -80,7 +80,7 @@ erDiagram
         statusId int FK
         createdAt datetime
     }
-    ChallengeVersions |{--|{ ChallengeVersionLanguageVersions : challenge_version
+    ChallengeVersions ||--o{ ChallengeVersionLanguageVersions : challenge_version
     ChallengeVersions ||--o{ UserSolutions : challenge_version_solutions
     ChallengeVersions ||--o{ Tests : tests
 
@@ -95,7 +95,6 @@ erDiagram
         createdAt datetime
     }
 
-
     Tests{
         id int PK
         challengeVersionId bigint FK
@@ -103,7 +102,6 @@ erDiagram
         isPublic bool
         createdAt datetime
     }
-
 
     Subscriptions{
         id bigint PK
@@ -133,7 +131,7 @@ erDiagram
         id int PK
         name nvarchar
     }
-    Tags |{--|{ ChallengeTags : tag
+    Tags ||--o{ ChallengeTags : tag
 
     ChallengeStatuses{
         id int PK
@@ -176,14 +174,14 @@ erDiagram
         name string
     }
     Languages ||--o{ ChallengeVersions : version_language
-    Languages|{--|{ UsersPrefferedLanguages : languages
-    Languages|{--|{ UsersLanguagesLevels : languages
+    Languages ||--o{ UsersPreferredLanguages : languages
+    Languages ||--o{ UsersLanguagesLevels : languages
 
     LanguageVersions {
         id int PK
         version nvarchar
     }
-    LanguageVersions |{--|{ ChallengeVersionLanguageVersions : language_version
+    LanguageVersions ||--o{ ChallengeVersionLanguageVersions : language_version
 
     ChallengeLevels{
         id int PK
@@ -198,14 +196,13 @@ erDiagram
         tagId int PK
     }
 
-
     UsersLanguagesLevels{
         userId bigint PK
         languageId int PK
         languageLevelId int FK
     }
 
-    UsersPrefferedLanguages{
+    UsersPreferredLanguages{
         userId bigint PK
         languageId int PK
     }
@@ -260,4 +257,3 @@ This is a list of the required environment variables:
 #### MSSQL Server
 
 **SA_PASSWORD** - MSSQL Server "SA" user password
-
