@@ -1,10 +1,10 @@
 name: Code Analysis Frontend
 on:
   push:
-    branches: [main, development]
+    branches: [main, dev ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [main, development]
+    branches: [main, dev ]
 jobs:
   analyze_frontend:
     runs-on: ubuntu-latest
