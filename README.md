@@ -38,7 +38,7 @@ _Tip: If you want to connect to the specific service outside of docker, then use
 erDiagram
     %%Main
     Users{
-        id bigint
+        id bigint PK
         countryId int FK
         timezoneId int FK
         sexId int FK
@@ -109,7 +109,7 @@ erDiagram
         id bigint PK
         userId bigint FK
         paymentSubscriptionId nvarchar
-        typeId int
+        typeId int FK
         cost decimal
         startDate datetime
         endDate datetime
