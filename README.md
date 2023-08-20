@@ -39,10 +39,10 @@ erDiagram
     %%Main
     Users{
         id bigint PK
-        countryId int FK
-        timezoneId int FK
-        sexId int FK
-        statusId int FK
+        country int 
+        timezone int 
+        sex int 
+        status int 
         birthDate datetime
         firstName nvarchar
         lastName nvarchar
@@ -77,7 +77,7 @@ erDiagram
         challengeId bigint FK
         initialSolution string
         completeSolution string
-        statusId int FK
+        status int
         createdAt datetime
     }
     ChallengeVersions ||--o{ ChallengeVersionLanguageVersions : challenge_version
@@ -133,42 +133,6 @@ erDiagram
     }
     Tags ||--o{ ChallengeTags : tag
 
-    ChallengeStatuses{
-        id int PK
-        name nvarchar
-    }
-    ChallengeStatuses ||--o{ ChallengeVersions : version_status
-
-    Countries{
-        id int PK
-        name nvarchar
-    }
-    Countries ||--o{ Users : country
-
-    Timezones{
-        id int PK
-        name nvarchar
-    }
-    Timezones ||--o{ Users : timezone
-
-    Sexes{
-        id int PK
-        name nvarchar
-    }
-    Sexes ||--o{ Users : sex
-
-    LanguageLevels{
-        id int PK
-        name nvarchar
-    }
-    LanguageLevels ||--o{ UsersLanguagesLevels : level
-
-    UserStatuses{
-        id int PK
-        name nvarchar
-    }
-    UserStatuses ||--o{ Users : status
-
     Languages {
         id int PK
         name string
@@ -176,9 +140,11 @@ erDiagram
     Languages ||--o{ ChallengeVersions : version_language
     Languages ||--o{ UsersPreferredLanguages : languages
     Languages ||--o{ UsersLanguagesLevels : languages
+    Languages ||--o{ LanguageVersions : language
 
     LanguageVersions {
         id int PK
+        languageId int FK
         version nvarchar
     }
     LanguageVersions ||--o{ ChallengeVersionLanguageVersions : language_version
@@ -199,7 +165,7 @@ erDiagram
     UsersLanguagesLevels{
         userId bigint PK
         languageId int PK
-        languageLevelId int FK
+        languageLevel int
     }
 
     UsersPreferredLanguages{
