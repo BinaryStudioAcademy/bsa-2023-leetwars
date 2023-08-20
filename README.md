@@ -36,22 +36,43 @@ _Tip: If you want to connect to the specific service outside of docker, then use
 
 ```mermaid
 erDiagram
-  Users {
-    bigint Id PK
-    int country
-    int language
-    int timezone
-    nvarchar firstName
-    nvarchar lastName
-    int age
-    nvarchar email
-    nvarchar imagePath
-    int sex
-    int languageLevel
-    int status
-    boolean isSubscribed
-    boolean isBanned
-  }
+    Users {
+        id bigint
+        countryId int FK
+        timezoneId int FK
+        sexId int FK
+        statusId int FK
+        birthDate datetime
+        firstName nvarchar
+        lastName nvarchar
+        userName nvarchar
+        email nvarchar
+        imagePath nvarchar
+        totalScore bigint
+        registeredAt datetime
+        oAuthToken nvarchar
+        isSubscribed boolean
+        isBanned boolean
+    }
+
+    Challenges {
+        id bigint PK
+        authorId bigint FK
+        title nvarchar
+        instructions nvarchar
+        levelId int FK
+        createdAt datetime
+    }
+
+    ChallengeVersions{
+        id bigint PK
+        languageId int FK
+        challengeId bigint FK
+        initialSolution string
+        completeSolution string
+        statusId int FK
+        createdAt datetime
+    }
 
 ```
 
