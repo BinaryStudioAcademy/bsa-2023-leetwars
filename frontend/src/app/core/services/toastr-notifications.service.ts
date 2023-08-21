@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
     providedIn: 'root',
 })
 export class ToastrNotificationsService {
-    // eslint-disable-next-line no-empty-function
     constructor(private toastr: ToastrService) {}
 
     showSuccess(message: string) {
