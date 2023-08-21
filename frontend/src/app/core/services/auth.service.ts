@@ -13,6 +13,8 @@ export class AuthService {
 
     private user: FakeUser | undefined;
 
+    private userNameInLS = 'userInfo';
+
     constructor(private httpClient: HttpClient) {
         // do nothing
     }
@@ -25,7 +27,7 @@ export class AuthService {
     public login(email: string, password: string) {
         return this.handleAuthResponse(
             this.httpClient.post<FakeUser>(
-                `${environment.coreUrl}/signup`,
+                `${environment.coreUrl}/signin`,
                 { email, password },
                 { observe: 'response' },
             ),
@@ -50,7 +52,7 @@ export class AuthService {
     }
 
     private getUserInfo(): FakeUser | undefined {
-        const userInfo = localStorage.getItem('userInfo');
+        const userInfo = localStorage.getItem(this.userNameInLS);
 
         if (userInfo) {
             return JSON.parse(userInfo);
@@ -60,7 +62,7 @@ export class AuthService {
     }
 
     private removeUserInfo() {
-        localStorage.removeItem('userInfo');
+        localStorage.removeItem(this.userNameInLS);
     }
 
     private handleAuthResponse(authObservable: Observable<HttpResponse<FakeUser>>): Observable<FakeUser> {
@@ -68,7 +70,7 @@ export class AuthService {
             map((resp) => {
                 const user = resp.body as FakeUser;
 
-                localStorage.setItem('userInfo', JSON.stringify(user));
+                localStorage.setItem(this.userNameInLS, JSON.stringify(user));
                 this.userSubject.next(user);
                 this.user = user;
 
