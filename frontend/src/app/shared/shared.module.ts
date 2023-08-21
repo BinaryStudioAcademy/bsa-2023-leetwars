@@ -14,13 +14,8 @@ import { GeneralModalComponent } from './components/general-modal/general-modal.
 
 
 @NgModule({
-<<<<<<< HEAD
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule],
-    declarations: [LoadingSpinnerComponent, NotFoundComponent, ConfirmationModalComponent, GeneralModalComponent],
-=======
     imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule],
-    declarations: [LoadingSpinnerComponent, NotFoundComponent],
->>>>>>> dev
+    declarations: [LoadingSpinnerComponent, NotFoundComponent, ConfirmationModalComponent, GeneralModalComponent],
     exports: [
         CommonModule,
         RouterModule,
