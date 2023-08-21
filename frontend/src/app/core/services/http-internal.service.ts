@@ -9,7 +9,6 @@ export class HttpInternalService {
 
     public headers = new HttpHeaders();
 
-    // eslint-disable-next-line no-empty-function
     constructor(private http: HttpClient) {}
 
     private getHeaders(): HttpHeaders {
