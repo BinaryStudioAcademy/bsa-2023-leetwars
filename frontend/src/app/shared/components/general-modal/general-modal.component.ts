@@ -10,6 +10,8 @@ import { ModalButton } from '@shared/models/modal-button';
 export class GeneralModalComponent<T> {
     constructor(public activeModal: NgbActiveModal) {}
 
+    @Input() titleText: string;
+
     @Input() componentToDisplay: Type<ComponentRef<T>>;
 
     @Input() buttons: ModalButton[] = [];
