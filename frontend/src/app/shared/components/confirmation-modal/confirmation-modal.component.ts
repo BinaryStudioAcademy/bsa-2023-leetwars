@@ -8,8 +8,9 @@ import { ModalButton } from '@shared/models/modal-button';
 })
 export class ConfirmationModalComponent {
     constructor(public activeModal: NgbActiveModal) {}
-    
+
     @Input() titleText: string;
+
     @Input() bodyText: string;
 
     @Input() buttons: ModalButton[] = [];

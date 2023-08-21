@@ -12,6 +12,5 @@ export class GeneralModalComponent<T> {
 
     @Input() componentToDisplay: Type<ComponentRef<T>>;
 
-    
     @Input() buttons: ModalButton[] = [];
 }
