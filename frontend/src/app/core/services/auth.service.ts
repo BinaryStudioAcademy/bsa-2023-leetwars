@@ -1,8 +1,9 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '@env/environment';
 import { FakeUser } from '@shared/models/fake-user';
 import { BehaviorSubject, map, Observable } from 'rxjs';
+
+import { HttpInternalService } from './http-internal.service';
 
 @Injectable({
     providedIn: 'root',
@@ -15,9 +16,7 @@ export class AuthService {
 
     private userNameInLS = 'userInfo';
 
-    constructor(private httpClient: HttpClient) {
-        // do nothing
-    }
+    constructor(private httpClient: HttpClient, private httpService: HttpInternalService) {}
 
     public isAuthorized() {
         return this.user !== undefined && this.getUserInfo() !== undefined;
@@ -25,23 +24,13 @@ export class AuthService {
 
     // TODO: change parameters to DTO
     public login(email: string, password: string) {
-        return this.handleAuthResponse(
-            this.httpClient.post<FakeUser>(
-                `${environment.coreUrl}/signin`,
-                { email, password },
-                { observe: 'response' },
-            ),
-        );
+        return this.handleAuthResponse(this.httpService.postRequest<FakeUser>('/signin', { email, password }));
     }
 
     // TODO: change parameters to DTO
     public register(username: string, email: string, password: string) {
         return this.handleAuthResponse(
-            this.httpClient.post<FakeUser>(
-                `${environment.coreUrl}/signup`,
-                { username, email, password },
-                { observe: 'response' },
-            ),
+            this.httpService.postRequest<FakeUser>('/signup', { username, email, password }),
         );
     }
 
@@ -65,10 +54,10 @@ export class AuthService {
         localStorage.removeItem(this.userNameInLS);
     }
 
-    private handleAuthResponse(authObservable: Observable<HttpResponse<FakeUser>>): Observable<FakeUser> {
+    private handleAuthResponse(authObservable: Observable<FakeUser>): Observable<FakeUser> {
         return authObservable.pipe(
             map((resp) => {
-                const user = resp.body as FakeUser;
+                const user = resp;
 
                 localStorage.setItem(this.userNameInLS, JSON.stringify(user));
                 this.userSubject.next(user);
