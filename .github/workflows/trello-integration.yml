@@ -2,8 +2,6 @@ name: Trello integration
 on:
     pull_request:
         types: [opened, edited, closed, reopened, ready_for_review, converted_to_draft]
-    issue_comment:
-        types: [created, edited]
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -19,5 +17,5 @@ jobs:
                   trello-board-id: 64ddd594b16c42efa55097f5
                   trello-list-id-pr-draft: 64ddd61eb7ae8e13837fcbdf
                   trello-list-id-pr-open: 64ddd622c7fc979c24de4dcf
-                  trello-list-id-pr-closed: 64ddd61eb7ae8e13837fcbdf
+                  trello-list-id-pr-closed: 64ddd62aa8005b23520b9747
                   trello-conflicting-labels: 'feature;bug;chore' # When a card has one of these labels then branch category label is not assigned
