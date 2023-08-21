@@ -1,0 +1,23 @@
+name: Trello integration
+on:
+    pull_request:
+        types: [opened, edited, closed, reopened, ready_for_review, converted_to_draft]
+    issue_comment:
+        types: [created, edited]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: rematocorp/trello-integration-action@v6
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  github-require-keyword-prefix: false
+                  github-require-trello-card: false
+                  trello-api-key: ${{ secrets.TRELLO_API_KEY }}
+                  trello-auth-token: ${{ secrets.TRELLO_AUTH_TOKEN }}
+                  trello-organization-name: leetwars
+                  trello-board-id: 64ddd594b16c42efa55097f5
+                  trello-list-id-pr-draft: 64ddd61eb7ae8e13837fcbdf
+                  trello-list-id-pr-open: 64ddd622c7fc979c24de4dcf
+                  trello-list-id-pr-closed: 64ddd61eb7ae8e13837fcbdf
+                  trello-conflicting-labels: 'feature;bug;chore' # When a card has one of these labels then branch category label is not assigned
