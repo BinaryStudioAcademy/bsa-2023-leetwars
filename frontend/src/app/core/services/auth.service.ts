@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FakeUser } from '@shared/models/fake-user';
 import { BehaviorSubject, map, Observable } from 'rxjs';
@@ -16,7 +15,7 @@ export class AuthService {
 
     private userNameInLS = 'userInfo';
 
-    constructor(private httpClient: HttpClient, private httpService: HttpInternalService) {}
+    constructor(private httpService: HttpInternalService) {}
 
     public isAuthorized() {
         return this.user !== undefined && this.getUserInfo() !== undefined;
