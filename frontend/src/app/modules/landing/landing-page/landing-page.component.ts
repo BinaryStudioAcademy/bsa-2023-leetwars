@@ -7,6 +7,5 @@ import { SpinnerService } from '@core/services/spinner.service';
     styleUrls: ['./landing-page.component.sass'],
 })
 export class LandingPageComponent {
-    // eslint-disable-next-line no-empty-function
     constructor(private spinnerService: SpinnerService) {}
 }
