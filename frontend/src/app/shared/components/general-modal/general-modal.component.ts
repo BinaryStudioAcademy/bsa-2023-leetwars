@@ -1,19 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ComponentRef, Input, OnInit, Type } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalButton } from '@shared/models/modal-button';
 
 @Component({
     selector: 'app-general-modal',
     templateUrl: './general-modal.component.html',
     styleUrls: ['./general-modal.component.sass'],
 })
-export class GeneralModalComponent implements OnInit {
-    @Input() isButtonVisible: boolean;
+export class GeneralModalComponent<T> {
     constructor(public activeModal: NgbActiveModal) {}
 
-    @Input() buttons: any[] = [];
-    @Input() buttonClickHandler: (text: string) => void;
+    @Input() componentToDisplay: Type<ComponentRef<T>>;
 
-    @Output() newItemEvent = new EventEmitter<NgbActiveModal>();
-
-    ngOnInit() {}
+    
+    @Input() buttons: ModalButton[] = [];
 }

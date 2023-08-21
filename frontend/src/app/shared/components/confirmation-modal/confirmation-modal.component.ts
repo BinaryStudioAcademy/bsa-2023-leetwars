@@ -1,17 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalButton } from '@shared/models/modal-button';
 
 @Component({
     selector: 'confirmation-modal',
     templateUrl: './confirmation-modal.component.html',
 })
-export class ConfirmationModalComponent implements OnInit {
+export class ConfirmationModalComponent {
     constructor(public activeModal: NgbActiveModal) {}
+    
+    @Input() titleText: string;
+    @Input() bodyText: string;
 
-    @Input() buttons: any[] = [];
-    @Input() buttonClickHandler: (text: string) => void;
-
-    @Output() newItemEvent = new EventEmitter<NgbActiveModal>();
-
-    ngOnInit() {}
+    @Input() buttons: ModalButton[] = [];
 }
