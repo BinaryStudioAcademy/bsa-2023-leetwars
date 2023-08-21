@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Input, OnInit, Type } from '@angular/core';
+import { Component, ComponentRef, Input, Type } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalButton } from '@shared/models/modal-button';
 
