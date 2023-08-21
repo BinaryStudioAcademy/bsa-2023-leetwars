@@ -18,7 +18,7 @@ export class AuthService {
     constructor(private httpService: HttpInternalService) {}
 
     public isAuthorized() {
-        return this.user !== undefined && this.getUserInfo() !== undefined;
+        return this.user && this.getUserInfo();
     }
 
     // TODO: change parameters to DTO
