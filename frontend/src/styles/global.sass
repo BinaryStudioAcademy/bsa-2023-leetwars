@@ -1,1 +1,22 @@
 @import "node_modules/bootstrap/scss/bootstrap"
+
+snack-bar-container
+    position: fixed
+    right: 20px
+    bottom: 0px
+    background: #1D1E21
+    width: 300px
+    padding: 10px
+    border-radius: 4px
+    &.error-snack-bar
+        border: 2px solid #F05A5A
+    &.info-snack-bar
+        border: 2px solid #705FF5
+    &.warring-snack-bar
+        border: 2px solid #F5A75F
+    &.success-snack-bar
+        border: 2px solid #61AD00
+    & span
+        color: white
+    & button
+        background: #2C2D31
