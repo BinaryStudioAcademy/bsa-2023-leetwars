@@ -64,7 +64,7 @@ erDiagram
         id bigint PK
         authorId bigint FK
         title nvarchar
-        instructions nvarchar
+        instructions string
         levelId int FK
         createdAt datetime
     }
@@ -85,7 +85,7 @@ erDiagram
     ChallengeVersions ||--o{ Tests : tests
 
     UserSolutions{
-        id int PK
+        id bigint PK
         userId bigint FK
         challengeVersionId bigint FK
         code string
@@ -96,7 +96,7 @@ erDiagram
     }
 
     Tests{
-        id int PK
+        id bigint PK
         challengeVersionId bigint FK
         code string
         isPublic bool
@@ -135,7 +135,7 @@ erDiagram
 
     Languages {
         id int PK
-        name string
+        name nvarchar
     }
     Languages ||--o{ ChallengeVersions : version_language
     Languages ||--o{ UsersPreferredLanguages : languages
@@ -151,7 +151,7 @@ erDiagram
 
     ChallengeLevels{
         id int PK
-        name string
+        name nvarchar
         reward int
     }
     ChallengeLevels ||--o{ Challenges : levels
