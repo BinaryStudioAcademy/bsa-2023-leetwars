@@ -90,7 +90,6 @@ erDiagram
         challengeVersionId bigint FK
         code string
         output string
-        isCorrect bool
         submittedAt nullable_datetime
         createdAt datetime
     }
