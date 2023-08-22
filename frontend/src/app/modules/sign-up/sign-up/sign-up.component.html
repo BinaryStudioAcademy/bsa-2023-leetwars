@@ -20,9 +20,10 @@
                 <label for="password" class="form-label">Password:</label>
                 <div class="password-input-container">
                     <input type="password" id="password" name="password" class="form-input form-input-password" required
-                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
-                    <button class="hide-password">
-                        <fa-icon [icon]="faEyeSlash"></fa-icon>
+                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                        type="{{ showPassword ? 'text' : 'password' }}">
+                    <button class="hide-password" (click)="togglePasswordVisibility()">
+                        <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
                     </button>
                 </div>
             </div>
