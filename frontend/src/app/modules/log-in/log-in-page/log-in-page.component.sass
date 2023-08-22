@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat')
+@import "../../../../styles/color-variables"
 @import url('https://fonts.googleapis.com/css?family=Open Sans')
-@import "../../../../styles"
-    
+@import url('https://fonts.googleapis.com/css?family=Montserrat')
+
 *
     box-sizing: border-box
 
@@ -16,7 +16,7 @@
 
 .logo-part
     grid-column: 1
-    background-color: $main-background
+    background-color: $rich-black
 
     display: flex
     flex-direction: column
@@ -27,8 +27,14 @@
     height: 100%
     width: 100%
 
+.circle 
+    width: 118px
+    height: 118px
+    background-color: #61AD00
+    border-radius: 50%
+
 .logo
-    color: $main-font-color
+    color: $white
     font-family: Montserrat
     font-size: 59.942px
     font-style: normal
@@ -42,7 +48,7 @@
 
 .log-in-part
     grid-column: 2
-    background-color: $element-background
+    background-color: $dark-grey
 
     display: flex
     flex-direction: row
@@ -68,14 +74,14 @@
     width: 100%
 
 .sign-in-label
-    color: $main-font-color
+    color: $white
     font-family: Open Sans
     font-weight: 700
     text-align: start
     margin-bottom: 25px
 
 .third-party
-    color: $main-font-color
+    color: $white
     text-align: center
     font-family: Montserrat
     font-size: 16px
@@ -83,17 +89,17 @@
     font-weight: 600
     line-height: normal
 
-    background-color: $element-background
+    background-color: $dark-grey
 
     border-radius: 7px
-    border: 1px solid #FFFFFF
+    border: 1px solid $white
 
     margin-bottom: 15px
     padding-top: 13px
     padding-bottom: 13px
 
 .or-label
-    color: $main-font-color
+    color: $white
     text-align: center
     font-style: normal
     font-weight: 500
@@ -112,7 +118,7 @@
 
 
 .form-label
-    color: $main-font-color
+    color: $white
     font-family: Open Sans
     font-size: 12px
     font-style: normal
@@ -125,7 +131,7 @@
     justify-content: space-between
 
 .forget-password-link
-    color: $link-color
+    color: $cornflower
     font-family: Montserrat
     font-size: 12px
     font-style: normal
@@ -133,17 +139,17 @@
     line-height: normal
 
 .form-input
-    color: $main-font-color
+    color: $white
     font-family: Open Sans
     font-size: 14px
     font-style: normal
     font-weight: 400
     line-height: normal
 
-    background-color: $element-background
+    background-color: $dark-grey
 
     border-radius: 7px
-    border: 1px solid #FFFFFF
+    border: 1px solid $white
 
     margin-bottom: 15px
     padding-top: 13px
@@ -153,7 +159,7 @@
 
 .password-cont
     border-radius: 7px
-    border: 1px solid #FFFFFF
+    border: 1px solid $white
     margin-bottom: 15px
 
 .password-cont
@@ -175,9 +181,9 @@
 
 .submit-sign-in
     border-radius: 7px
-    background-color: #61AD00
+    background-color: $green
 
-    color: $main-font-color
+    color: $white
     text-align: center
     font-family: Montserrat
     font-size: 16px
@@ -192,12 +198,12 @@
     cursor: pointer
 
 .submit-sign-in:disabled
-    background-color: #325602
+    background-color: $dark-green
 
 .no-account 
     margin-bottom: 50px
     align-self: flex-end
-    color: $main-font-color
+    color: $white
     font-family: Open Sans
     font-size: 14px
     font-style: normal
@@ -206,7 +212,7 @@
     text-align: center
 
 .sign-up-link
-    color: $link-color
+    color: $cornflower
     font-family: Open Sans
     font-size: 14px
     font-style: normal
