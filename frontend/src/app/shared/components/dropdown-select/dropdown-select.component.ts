@@ -19,11 +19,9 @@ export class DropdownSelectComponent {
     selectedItems: string[] = [];
 
     toggleItem(item: string) {
-        if (this.selectedItems.includes(item)) {
-            this.selectedItems = this.selectedItems.filter((i) => i !== item);
-        } else {
-            this.selectedItems.push(item);
-        }
+        this.selectedItems = this.selectedItems.includes(item)
+            ? this.selectedItems.filter((i) => i !== item)
+            : [...this.selectedItems, item];
 
         this.SelectedItemsChanged.emit(this.selectedItems);
     }
