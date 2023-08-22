@@ -25,8 +25,12 @@
                     <div class="form-label">Password</div>
                     <a href="someUrl" class="forget-password-link">Forget password?</a>
                 </div>
-                <input matInput  class="form-input" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" formControlName="password"/>
-                <button class="submit-sign-in" [disabled]="logInForm.invalid">Sign In</button>
+                <p class="password-cont">
+                    <input class="form-input password-input" type="{{ showPassword ? 'text' : 'password' }}" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" formControlName="password"/>
+                    <fa-icon [icon]="eyeIcon" style="color: #91919380" (click)="toggleShow()"></fa-icon>
+                </p>
+                <div *ngIf="isDataIncorrect" class="notification">Incorrect email or password</div>
+                <button class="submit-sign-in" [disabled]="logInForm.invalid" (click)="signIn()">Sign In</button>
             </form>
         </div>
         <div class="no-account">
