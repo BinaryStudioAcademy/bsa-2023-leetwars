@@ -1,0 +1,44 @@
+@import 'src/styles/color-variables'
+
+.dropdown
+  width: 350px
+
+  &-toggle::after
+    display: none !important
+
+  &-menu
+    background-color: $light-grey
+    overflow: auto
+
+  &-item
+    color: $grey
+    font-family: Open Sans
+    font-weight: 600
+
+    &:hover
+      background-color: $semi-transparent-light-gray
+
+    &:focus
+      background-color: transparent
+
+label
+  font-family: Open Sans
+  font-weight: 600
+  color: $white
+  padding-bottom: 3px
+
+.btn
+  border: $light-lavender-gray 2px solid
+  border-radius: 7px
+  height: 45px
+  gap: 5px
+  color: $grey
+  align-items: center
+  background-color: $dark-grey
+  font-family: Open Sans
+  font-weight: 600
+  padding: 13px 20px
+
+  fa-icon
+    margin-left: auto
+    color: $light-lavender-gray
