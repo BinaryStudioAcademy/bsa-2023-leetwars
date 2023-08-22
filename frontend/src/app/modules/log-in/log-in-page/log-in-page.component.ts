@@ -3,42 +3,41 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-log-in-page',
-  templateUrl: './log-in-page.component.html',
-  styleUrls: ['./log-in-page.component.sass']
+    selector: 'app-log-in-page',
+    templateUrl: './log-in-page.component.html',
+    styleUrls: ['./log-in-page.component.sass'],
 })
 export class LogInPageComponent implements OnInit {
-  logInForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
-  });
+    logInForm = new FormGroup({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', Validators.required),
+    });
 
-  showPassword: boolean = false;
-  eyeIcon = faEyeSlash;
-  hide = true;
-  isDataIncorrect: boolean = false;
+    showPassword: boolean = false;
 
-  constructor() { }
+    eyeIcon = faEyeSlash;
 
-  ngOnInit(): void {
-  }
+    isDataIncorrect: boolean;
 
-  toggleShow() {
-    this.showPassword = !this.showPassword;
-    this.eyeIcon = this.showPassword ? faEye : faEyeSlash;
-  }
-
-  signIn() {
-    const email: string = this.logInForm.controls['email'].value!
-    const password: string = this.logInForm.controls['password'].value!
-
-    if(email != "abcd@gmail.com" || password != "1111")
-    {
-      this.isDataIncorrect = true;
-      return
+    ngOnInit(): void {
+        this.isDataIncorrect = false;
     }
 
-    this.isDataIncorrect = false;
+    toggleShow() {
+        this.showPassword = !this.showPassword;
+        this.eyeIcon = this.showPassword ? faEye : faEyeSlash;
+    }
 
-  }
+    signIn() {
+        const email: string = this.logInForm.controls.email.value!;
+        const password: string = this.logInForm.controls.password.value!;
+
+        if (email !== 'abcd@gmail.com' || password !== '1111') {
+            this.isDataIncorrect = true;
+
+            return;
+        }
+
+        this.isDataIncorrect = false;
+    }
 }
