@@ -1,0 +1,226 @@
+@import 'color-variables'
+
+*
+    box-sizing: border-box
+
+.log-in-body
+    position: absolute
+    height: 100vh
+    margin: 0px
+    padding: 0px
+
+    display: grid
+    grid-template-columns: 70vw calc(100vw - 70vw)
+
+.logo-part
+    grid-column: 1
+    background-color: $dark-grey
+
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    margin: 0px
+    height: 100%
+    width: 100%
+
+.circle 
+    width: 118px
+    height: 118px
+    background-color: #61AD00
+    border-radius: 50%
+
+.logo
+    color: $white
+    font-family: Montserrat
+    font-size: 59.942px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+    margin-top: 25px
+
+.round
+    width: 9.5
+
+
+.log-in-part
+    grid-column: 2
+    background-color: $medium-grey
+
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+
+    margin: 0px
+    height: 100%
+    width: 100%
+
+.log-in-part
+  > *
+    width: calc(100% - 40%)
+
+.form-container
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+.form-container
+  > *
+    width: 100%
+
+.sign-in-label
+    color: $white
+    font-family: Open Sans
+    font-weight: 700
+    text-align: start
+    margin-bottom: 25px
+
+.third-party
+    color: $white
+    text-align: center
+    font-family: Montserrat
+    font-size: 16px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+
+    background-color: transparent
+
+    border-radius: 7px
+    border: 1px solid $white
+
+    margin-bottom: 15px
+    padding-top: 13px
+    padding-bottom: 13px
+
+.or-label
+    color: $white
+    text-align: center
+    font-style: normal
+    font-weight: 500
+    line-height: normal
+    margin-top: 25px
+    margin-bottom: 15px
+
+.logInForm
+    display: flex
+    flex-direction: column
+
+
+.logInForm
+    > *
+    width: 100%
+
+
+.form-label
+    color: $white
+    font-family: Open Sans
+    font-size: 12px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+
+.label-and-forget-password
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+.forget-password-link
+    color: $cornflower
+    font-family: Montserrat
+    font-size: 12px
+    font-style: normal
+    font-weight: 400
+    line-height: normal
+
+.form-input
+    color: $white
+    font-family: Open Sans
+    font-size: 14px
+    font-style: normal
+    font-weight: 400
+    line-height: normal
+
+    background-color: transparent
+
+    border-radius: 7px
+    border: 1px solid $white
+
+    margin-bottom: 15px
+    padding-top: 13px
+    padding-bottom: 13px
+    padding-left: 6%
+    padding-right: 6% 
+
+.password-cont
+    border-radius: 7px
+    border: 1px solid $white
+    margin-bottom: 15px
+
+.password-cont
+    > input
+        width:90%
+        margin-bottom: 0px
+
+.password-cont
+    >input:focus 
+        outline: none
+
+.password-cont
+    > .fa-icon
+        width:calc(100% - 90%)
+    fa-icon
+        color: $transparent-grey
+    fa-icon:hover
+        color: $grey
+
+.password-input
+    border: 0px
+
+.submit-sign-in
+    border-radius: 7px
+    background-color: $green
+
+    color: $white
+    text-align: center
+    font-family: Montserrat
+    font-size: 16px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+
+    padding-top: 13px
+    padding-bottom: 13px 
+    margin-top: 18px
+
+    cursor: pointer
+
+.submit-sign-in:disabled
+    background-color: $dark-green
+
+.no-account 
+    margin-bottom: 50px
+    align-self: flex-end
+    color: $white
+    font-family: Open Sans
+    font-size: 14px
+    font-style: normal
+    font-weight: 300
+    line-height: normal
+    text-align: center
+
+.sign-up-link
+    color: $cornflower
+    font-family: Open Sans
+    font-size: 14px
+    font-style: normal
+    font-weight: 300
+    line-height: normal
+
+.notification
+    color: red
+    font-size: 12px
+    margin-top: 5px
