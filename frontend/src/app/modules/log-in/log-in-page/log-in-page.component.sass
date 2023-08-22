@@ -1,6 +1,5 @@
-@import "../../../../styles/color-variables"
-@import url('https://fonts.googleapis.com/css?family=Open+Sans')
-@import url('https://fonts.googleapis.com/css?family=Montserrat')
+@import "color-variables"
+@import "fonts"
 
 *
     box-sizing: border-box
@@ -168,8 +167,13 @@
         margin-bottom: 0px
 
 .password-cont
-    >input:focus 
+    > input:focus 
         outline: none
+
+.password-cont
+    > fa-icon
+        color: $grey
+
 
 .password-cont
     > .fa-icon

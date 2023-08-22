@@ -25,7 +25,7 @@
                 </div>
                 <div class="password-cont">
                     <input class="form-input password-input" type="{{ showPassword ? 'text' : 'password' }}" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" formControlName="password"/>
-                    <fa-icon [icon]="eyeIcon" style="color: #91919380" (click)="toggleShow()"></fa-icon>
+                    <fa-icon [icon]="eyeIcon" (click)="toggleShow()"></fa-icon>
                 </div>
                 <div *ngIf="isDataIncorrect" class="notification">Incorrect email or password</div>
                 <button class="submit-sign-in" [disabled]="logInForm.invalid" (click)="signIn()">Sign In</button>
