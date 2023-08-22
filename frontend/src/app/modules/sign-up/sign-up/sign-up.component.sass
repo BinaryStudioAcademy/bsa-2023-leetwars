@@ -1,3 +1,6 @@
+$mobile: 480px
+$extra-large: 1440px
+
 .register-page-wrp 
     background-color: var(--color-extra-dark)
     display: grid
@@ -8,6 +11,8 @@
     font-family: 'Open Sans', sans-serif
     overflow-y: auto
     padding-bottom: 1.5vw
+    @media screen and (min-width: $extra-large) 
+        padding-bottom: 3vw
 
 .logo-container 
     align-self: center
@@ -35,16 +40,20 @@
     max-width: 1078px
     border-radius: 15px
     background-color: #222327
+    @media screen and (max-width: $mobile) 
+        width: 90%
 
 .register-page-form
     display: flex
     flex-direction: column
     justify-content: center
-    gap: 1.5vw
+    gap: 1.4vw
     padding: 3.2vw 3.2vw 4.4vw
-    max-width: 400px
+    max-width: 32vw
     margin: 0 auto
     color: white
+    @media screen and (max-width: $mobile) 
+        gap: 2vw
 
 .link-profile-button 
     font-size: 14px
@@ -100,11 +109,11 @@
         outline: none
 
 .hide-password 
-    display: inline-flex
-    svg
-        fill: #91919380
-    svg:hover
-        fill: var(--color-gray)
+    line-height: normal
+    fa-icon
+        color: #91919380
+    fa-icon:hover
+        color: var(--color-gray)
 
 .privacy-policy-text
     font-weight: 300
@@ -117,6 +126,8 @@
         font-weight: 600
         &:hover
             text-decoration: underline
+    @media screen and (max-width: $mobile) 
+        margin: 5px 0
 
 .form-button
     background-color: var(--color-success)
