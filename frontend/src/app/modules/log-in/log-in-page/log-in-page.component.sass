@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat')
+@import url('https://fonts.googleapis.com/css?family=Open Sans')
+@import "../../../../styles"
+    
+* 
+    box-sizing: border-box
+
+.log-in-body
+    position: absolute
+    height: 100vh
+    margin: 0px
+    padding: 0px
+
+    display: grid
+    grid-template-columns: 70vw calc(100vw - 70vw)
+
+.logo-part
+    grid-column: 1
+    background-color: $main-background
+
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    margin: 0px
+    height: 100%
+    width: 100%
+
+.logo
+    color: $main-font-color
+    font-family: Montserrat
+    font-size: 59.942px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+    margin-top: 25px
+
+.round
+    width: 9.5
+
+
+.log-in-part
+    grid-column: 2
+    background-color: $element-background
+
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+
+    margin: 0px
+    height: 100%
+    width: 100%
+
+.log-in-part
+  > *
+    width: calc(100% - 40%)
+
+.form-container
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+.form-container
+  > *
+    width: 100%
+
+.sign-in-label
+    color: $main-font-color
+    font-family: Open Sans
+    font-weight: 700
+    text-align: start
+    margin-bottom: 25px
+
+.third-party
+    color: $main-font-color
+    text-align: center
+    font-family: Montserrat
+    font-size: 16px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+
+    background-color: $element-background
+
+    border-radius: 7px
+    border: 1px solid #FFFFFF
+
+    margin-bottom: 15px
+    padding-top: 13px
+    padding-bottom: 13px
+
+.or-label
+    color: $main-font-color
+    text-align: center
+    font-style: normal
+    font-weight: 500
+    line-height: normal
+    margin-top: 25px
+    margin-bottom: 15px
+
+.logInForm
+    display: flex
+    flex-direction: column
+
+
+.logInForm
+    > *
+    width: 100%
+
+
+.form-label
+    color: $main-font-color
+    font-family: Open Sans
+    font-size: 12px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+
+.label-and-forget-password
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+.forget-password-link
+    color: $link-color
+    font-family: Montserrat
+    font-size: 12px
+    font-style: normal
+    font-weight: 400
+    line-height: normal
+
+.form-input
+    color: $main-font-color
+    font-family: Open Sans
+    font-size: 14px
+    font-style: normal
+    font-weight: 400
+    line-height: normal
+
+    background-color: $element-background
+
+    border-radius: 7px
+    border: 1px solid #FFFFFF
+
+    margin-bottom: 15px
+    padding-top: 13px
+    padding-bottom: 13px
+    padding-left: 6%
+    padding-right: 6% 
+
+.submit-sign-in
+    border-radius: 7px
+    background-color: #61AD00
+
+    color: $main-font-color
+    text-align: center
+    font-family: Montserrat
+    font-size: 16px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+
+    padding-top: 13px
+    padding-bottom: 13px 
+    margin-top: 18px
+
+    cursor: pointer
+
+.submit-sign-in:disabled
+    background-color: #325602
+
+.no-account 
+    margin-bottom: 50px
+    align-self: flex-end
+    color: $main-font-color
+    font-family: Open Sans
+    font-size: 14px
+    font-style: normal
+    font-weight: 300
+    line-height: normal
+    text-align: center
+
+.sign-up-link
+    color: $link-color
+    font-family: Open Sans
+    font-size: 14px
+    font-style: normal
+    font-weight: 300
+    line-height: normal
