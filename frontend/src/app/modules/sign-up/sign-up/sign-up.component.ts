@@ -8,13 +8,14 @@ import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 })
 export class SignUpComponent implements OnInit {
     faEyeSlash = faEyeSlash;
+
     faEye = faEye;
 
     public showPassword = false;
 
-    constructor() {}
-
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        //add logic later
+    }
 
     public togglePasswordVisibility() {
         this.showPassword = !this.showPassword;
