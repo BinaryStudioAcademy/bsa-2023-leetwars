@@ -6,6 +6,8 @@ using LeetWars.Core.WebAPI.Validators;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -39,6 +41,28 @@ namespace LeetWars.Core.WebAPI.Extentions
                 options.UseSqlServer(
                     connectionsString,
                     opt => opt.MigrationsAssembly(typeof(LeetWarsCoreContext).Assembly.GetName().Name)));
+        }
+
+        public static void AddFirebaseAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            var firebaseSettings = configuration.GetSection("Firebase");
+            var tokenIssuerBaseUrl = firebaseSettings["TokenIssuerBaseUrl"] ?? "";
+            var appName = firebaseSettings["AppName"] ?? "";
+            var tokenIssuerUrl = $"{tokenIssuerBaseUrl}/{appName}";
+            
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = tokenIssuerUrl;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = tokenIssuerUrl,
+                        ValidateAudience = true,
+                        ValidAudience = appName,
+                        ValidateLifetime = true
+                    };
+                });
         }
     }
 }
