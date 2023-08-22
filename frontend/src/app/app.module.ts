@@ -9,9 +9,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CustomInputComponent } from './custom-input/custom-input.component';
+
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, CustomInputComponent],
     providers: [],
     bootstrap: [AppComponent],
     imports: [
@@ -22,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
         SharedModule,
         AngularFireModule.initializeApp(environment.firebaseConfig, 'leetwars'),
         AngularFireAuthModule,
+        
     ],
 })
 export class AppModule {}
