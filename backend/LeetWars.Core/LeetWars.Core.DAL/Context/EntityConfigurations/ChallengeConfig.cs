@@ -1,7 +1,7 @@
 ﻿using LeetWars.Core.DAL.Entities;
+using LeetWars.Core.DAL.Entities.HelperEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.ComponentModel.DataAnnotations;
 
 namespace LeetWars.Core.DAL.Context
 {
@@ -10,7 +10,7 @@ namespace LeetWars.Core.DAL.Context
         public void Configure(EntityTypeBuilder<Challenge> builder)
         {
             builder.Property(e => e.Title)
-                .HasMaxLength(50);
+                .HasMaxLength(EntitySettings.MaxGeneralNameLength);
             //Connections
             builder.HasMany(e => e.Tags)
                 .WithMany(e => e.Challenges);

@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.DAL.Entities;
+using LeetWars.Core.DAL.Entities.HelperEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +11,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
         public void Configure(EntityTypeBuilder<LanguageVersion> builder)
         {
             builder.Property(e => e.Version)
-                .HasMaxLength(15);
+                .HasMaxLength(EntitySettings.MaxShortNameLength);
         }
     }
 }

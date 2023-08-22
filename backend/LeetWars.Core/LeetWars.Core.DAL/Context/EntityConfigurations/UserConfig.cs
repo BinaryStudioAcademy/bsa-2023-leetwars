@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.DAL.Entities;
+using LeetWars.Core.DAL.Entities.HelperEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
@@ -10,16 +11,18 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.Property(e => e.FirstName)
-                .HasMaxLength(50);
+                .HasMaxLength(EntitySettings.MaxGeneralNameLength);
             builder.Property(e => e.LastName)
-                .HasMaxLength(50);
+                .HasMaxLength(EntitySettings.MaxGeneralNameLength);
             builder.Property(e => e.UserName)
-                .HasMaxLength(15);
+                .HasMaxLength(EntitySettings.MaxUserNameLength);
             builder.Property(e => e.Email)
-                .HasMaxLength(254);
+                .HasMaxLength(EntitySettings.MaxEmailLength);
             builder.Property(e => e.ImagePath)
-                .HasMaxLength(260);
+                .HasMaxLength(EntitySettings.MaxPathLength);
             //Connections
+            builder.HasIndex(e => e.UserName)
+                .IsUnique();
             builder.HasMany(e => e.PreferredLanguages)
                 .WithMany(l => l.Users)
                 .UsingEntity("PreferredLanguages");

@@ -25,7 +25,6 @@ namespace LeetWars.Core.DAL.Entities
         public List<UserSolution> Solutions { get; } = new();
         public List<Challenge> Challenges { get; } = new();
 
-
         public User(string firstName, string lastName, string userName, string email, string imagePath, string oAuthToken)
         {
             FirstName = firstName;
