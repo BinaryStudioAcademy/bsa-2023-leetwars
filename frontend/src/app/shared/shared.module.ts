@@ -7,12 +7,14 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule],
-    declarations: [LoadingSpinnerComponent, NotFoundComponent],
+    declarations: [LoadingSpinnerComponent, NotFoundComponent, ConfirmationModalComponent, GeneralModalComponent],
     exports: [
         CommonModule,
         RouterModule,
@@ -22,6 +24,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         FontAwesomeModule,
         LoadingSpinnerComponent,
         NotFoundComponent,
+        ConfirmationModalComponent,
+        GeneralModalComponent,
     ],
 })
 export class SharedModule {
