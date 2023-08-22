@@ -43,18 +43,23 @@ namespace LeetWars.Core.WebAPI.Extentions
                     opt => opt.MigrationsAssembly(typeof(LeetWarsCoreContext).Assembly.GetName().Name)));
         }
 
-        public static void AddFirebaseAuthentication(this IServiceCollection services)
+        public static void AddFirebaseAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
+            var firebaseSettings = configuration.GetSection("Firebase");
+            var tokenIssuerBaseUrl = firebaseSettings["TokenIssuerBaseUrl"] ?? "";
+            var appName = firebaseSettings["AppName"] ?? "";
+            var tokenIssuerUrl = $"{tokenIssuerBaseUrl}/{appName}";
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.Authority = "https://securetoken.google.com/leetwars";
+                    options.Authority = tokenIssuerUrl;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidIssuer = "https://securetoken.google.com/leetwars",
+                        ValidIssuer = tokenIssuerUrl,
                         ValidateAudience = true,
-                        ValidAudience = "leetwars",
+                        ValidAudience = appName,
                         ValidateLifetime = true
                     };
                 });
