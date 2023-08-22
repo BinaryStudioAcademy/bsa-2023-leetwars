@@ -1,11 +1,16 @@
+$black: #000
+$white: #fff
+$dark-grey: #121415
+$light-grey: #1D1E21
+
 .not-found-container
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  height: 100vh
-  background-color: #000
-  color: #fff
+   display: flex
+   flex-direction: column
+   align-items: center
+   justify-content: center
+   height: 100vh
+   background-color: $black
+   color: $white
 
 .error-message
   font-size: 4rem
@@ -21,8 +26,8 @@
   display: inline-block
   padding: 10px 20px
   font-size: 1.2rem
-  background-color: #1D1E21
-  color: #fff
+  background-color: $dark-grey
+  color: $white
   border: none
   border-radius: 5px
   margin-top: 20px
@@ -30,7 +35,7 @@
   transition: background-color 0.3s ease
 
 .btn:hover
-  background-color: #777777
+  background-color: $light-grey
 
 .animated-eyes
   display: block
@@ -41,7 +46,7 @@
 .animated-eyes .eye
   position: relative
   display: inline-block
-  background: #fff
+  background: $white
   width: 75px
   height: 80px
   border-radius: 50% 50% 50% 50% / 45px 45px 45% 45%
@@ -52,7 +57,7 @@
 .animated-eyes .eye::after
   content: ''
   position: absolute
-  border-bottom: 2px solid #fff
+  border-bottom: 2px solid $white
   width: 70px
   height: 50px
   left: 0
@@ -77,7 +82,7 @@
 
 .animated-eyes .eye .pupil
   position: absolute
-  background-color: #000
+  background-color: $black
   width: 20px
   height: 20px
   border-radius: 50%
