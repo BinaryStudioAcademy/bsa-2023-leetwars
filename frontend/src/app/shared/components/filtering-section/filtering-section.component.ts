@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
     styleUrls: ['./filtering-section.component.sass'],
 })
 export class FilteringSectionComponent {
-    public challengesList = [];
+    //TODO: Replace with real implementation
+    public challengesList = ['nothing', 'to', 'be'];
+
+    //TODO: Replace with real implementation
+    public languagesList = ['HTML', 'C#', 'Java'];
+
+    public statusesList = ['Approved & Beta', 'Approved', 'Beta'];
+
+    public progressesList = ['All', 'Not completed', 'completed', 'Not trained on'];
+
+    //TODO: Replace with real implementation
+    public tagsList = ['Algorithms', 'Strings', 'Data Types', 'Formatting', 'Logic'];
 }

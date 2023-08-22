@@ -7,9 +7,6 @@ import { BroadcastHubService } from '@core/hubs/broadcast-hub.service';
     styleUrls: ['./main-page.component.sass'],
 })
 export class MainComponent implements OnInit, OnDestroy {
-    //TODO: Replace with real implementation
-    public challengesList = ['nothing', 'to', 'be'];
-
     constructor(private broadcastHub: BroadcastHubService) {}
 
     async ngOnInit() {

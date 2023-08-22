@@ -1,10 +1,22 @@
-<div class="flex flex-column">
-    <div class="filters">
+<div class="d-flex">
+    <div class="filters d-flex flex-column">
         <div class="search-filter">
             <input type="text" placeholder="Search" />
             <fa-icon [icon]="'search'"></fa-icon>
         </div>
-        <!-- dropdown-selects -->
+        <app-dropdown-select
+            [isMultiSelection]="true"
+            [title]="'By language'"
+            [items]="languagesList"></app-dropdown-select>
+        <app-dropdown-select
+            [isMultiSelection]="false"
+            [title]="'By status'"
+            [items]="statusesList"></app-dropdown-select>
+        <app-dropdown-select
+            [isMultiSelection]="true"
+            [title]="'By progress'"
+            [items]="progressesList"></app-dropdown-select>
+        <app-dropdown-select [isMultiSelection]="true" [title]="'By tags'" [items]="tagsList"></app-dropdown-select>
     </div>
     <div class="challenges">
         <div *ngFor="let challenge of challengesList">
