@@ -37,7 +37,7 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@ngx-env/builder:browser",
                     "options": {
                         "outputPath": "dist/leetwars",
                         "index": "src/index.html",
@@ -84,7 +84,7 @@
                     "defaultConfiguration": "production"
                 },
                 "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "builder": "@ngx-env/builder:dev-server",
                     "configurations": {
                         "production": {
                             "browserTarget": "leetwars:build:production"
@@ -96,13 +96,13 @@
                     "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "builder": "@ngx-env/builder:extract-i18n",
                     "options": {
                         "browserTarget": "leetwars:build"
                     }
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@ngx-env/builder:karma",
                     "options": {
                         "main": "src/test.ts",
                         "polyfills": "src/polyfills.ts",
