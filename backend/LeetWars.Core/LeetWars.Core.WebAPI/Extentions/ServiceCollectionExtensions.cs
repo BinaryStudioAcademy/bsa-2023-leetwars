@@ -6,6 +6,8 @@ using LeetWars.Core.WebAPI.Validators;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -39,6 +41,23 @@ namespace LeetWars.Core.WebAPI.Extentions
                 options.UseSqlServer(
                     connectionsString,
                     opt => opt.MigrationsAssembly(typeof(LeetWarsCoreContext).Assembly.GetName().Name)));
+        }
+
+        public static void AddFirebaseAuthentication(this IServiceCollection services)
+        {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = "https://securetoken.google.com/leetwars";
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = "https://securetoken.google.com/leetwars",
+                        ValidateAudience = true,
+                        ValidAudience = "leetwars",
+                        ValidateLifetime = true
+                    };
+                });
         }
     }
 }
