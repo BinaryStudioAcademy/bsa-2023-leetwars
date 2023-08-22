@@ -48,7 +48,10 @@
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": ["src/styles/index.sass"],
                         "scripts": [],
-                        "allowedCommonJsDependencies": ["moment-timezone"]
+                        "allowedCommonJsDependencies": ["moment-timezone"],
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["src/styles"]
+                          }
                     },
                     "configurations": {
                         "production": {
