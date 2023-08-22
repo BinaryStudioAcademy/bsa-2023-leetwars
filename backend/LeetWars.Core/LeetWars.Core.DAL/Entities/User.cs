@@ -19,6 +19,11 @@ namespace LeetWars.Core.DAL.Entities
         public string OAuthToken { get; set; }
         public bool IsSubscribed { get; set; }
         public bool IsBanned { get; set; }
+        public List<Subscription> Subscriptions { get; } = new();
+        public List<Language> PreferredLanguages { get; } = new();
+        public List<UserLanguageLevel> LanguagesWithLevels { get; } = new();
+        public List<UserSolution> Solutions { get; } = new();
+        public List<Challenge> Challenges { get; } = new();
 
         public User(string firstName, string lastName, string userName, string email, string imagePath, string oAuthToken)
         {

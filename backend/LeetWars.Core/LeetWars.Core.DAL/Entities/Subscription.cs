@@ -11,6 +11,7 @@
         public DateTime SubscribedDate { get; set; }
         public DateTime? UnsubscribedDate { get; set; }
         public bool IsActive { get; set; }
+        public SubscriptionType? SubscriptionType { get; set; }
 
         public Subscription(string paymentSubscriptionId)
         {
