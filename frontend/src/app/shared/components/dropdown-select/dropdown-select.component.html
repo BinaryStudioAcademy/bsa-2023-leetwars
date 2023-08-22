@@ -1,0 +1,47 @@
+<div ngbDropdown class="dropdown d-inline-flex" [autoClose]="isMultiSelection ? 'outside' : true">
+    <div class="button-wrapper d-flex flex-column d-flex flex-grow-1">
+        <label class="title">{{ title }}</label>
+        <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
+            <span class="float-start">{{ selectedItem ? selectedItem : 'Select' }}</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M8.825 0.442383L5 3.87738L1.175 0.442383L0 1.49988L5 5.99988L10 1.49988L8.825 0.442383Z"
+                    fill="#BBBBBB" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="w-100 dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+        <ng-container *ngIf="!isMultiSelection; else multiSelect">
+            <a ngbDropdownItem (click)="selectItem(item)" *ngFor="let item of items">
+                <svg
+                    [ngStyle]="{ visibility: selectedItem === item ? 'visible' : 'hidden' }"
+                    width="12"
+                    height="9"
+                    viewBox="0 0 26 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 9.5L9.85714 17L24 2" stroke="#7E8082" stroke-width="3" stroke-linecap="round" />
+                </svg>
+                {{ item }}
+            </a>
+        </ng-container>
+
+        <ng-template #multiSelect>
+            <a ngbDropdownItem (click)="toggleItem(item)" *ngFor="let item of items">
+                <svg
+                    [ngStyle]="{ visibility: selectedItems.includes(item) ? 'visible' : 'hidden' }"
+                    width="12"
+                    height="9"
+                    viewBox="0 0 26 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 9.5L9.85714 17L24 2" stroke="#7E8082" stroke-width="3" stroke-linecap="round" />
+                </svg>
+                {{ item }}
+            </a>
+        </ng-template>
+    </div>
+</div>
