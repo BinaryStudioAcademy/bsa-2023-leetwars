@@ -1,16 +1,10 @@
 <form>
-    <div class="input-form">
-      <div class="input-form-container">
-        <label for="{{Identifier}}" class="input-form-label">{{InputLabel}}</label>
-        <input
-          type="{{InputType}}" 
-          id="{{Identifier}}" 
-          name="{{Identifier}}" 
-          class="input-formText" 
-          [ngModel]="InputValue"
-          (ngModelChange)="onInputChange($event)"
-          required
-          placeholder={{InputPlaceholder}}>
+  <div class="input-form">
+    <div [style.height]="Height" [style.width]="Width" class="input-form-container">
+      <label for="{{Identifier}}" class="input-form-label">{{InputLabel}}</label>
+      <input type="{{InputType}}" id="{{Identifier}}" name="{{Identifier}}" [style.height]="FormTextHeight"
+        [style.width]="Width" class="input-formText" [ngModel]="InputValue" (ngModelChange)="onInputChange($event)"
+        required placeholder={{InputPlaceholder}}>
     </div>
-    </div>
-  </form>
+  </div>
+</form>
