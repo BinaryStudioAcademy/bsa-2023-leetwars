@@ -11,8 +11,9 @@ namespace LeetWars.Core.Common.DTO.Challenge
     {
         public string? Title { get; set; }
         public int? ChallengeStatus { get; set; }
-        public int? LevelId { get; set; }
         public int? LanguageId { get; set; }
         public ICollection<int>? TagsIds { get; set; }
+
+        //TODO: ByProgress
     }
 }

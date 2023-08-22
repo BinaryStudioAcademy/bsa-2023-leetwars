@@ -19,8 +19,8 @@ namespace LeetWars.Core.Common.DTO.Challenge
 
         public ICollection<LanguageDto> Languages { get; set; }
 
-        public ChallengeLevelDto Level { get; set; }
-
         public int ChallengeStatus { get; set; }
+
+        //TODO: ByProgress
     }
 }
