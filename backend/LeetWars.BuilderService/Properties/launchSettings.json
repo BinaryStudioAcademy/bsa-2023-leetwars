@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "LeetWars.BuilderService": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
