@@ -1,4 +1,10 @@
 Main Page works!
 <div class="main-content-wrp">
-    <router-outlet></router-outlet>
+    <!-- Main header -->
+    <!-- Suggested challenge component -->
+    <app-filtering-section></app-filtering-section>
+    <div *ngFor="let challenge of challengesList">
+        <app-challenge [challenge]="challenge"></app-challenge>
+    </div>
+    <!-- <router-outlet></router-outlet> -->
 </div>
