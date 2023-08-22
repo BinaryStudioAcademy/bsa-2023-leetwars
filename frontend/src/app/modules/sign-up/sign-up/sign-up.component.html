@@ -23,7 +23,7 @@
                         placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                         type="{{ showPassword ? 'text' : 'password' }}">
                     <button class="hide-password" (click)="togglePasswordVisibility()">
-                        <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+                        <fa-icon [icon]="showPassword ? ['far', 'eye'] : ['far', 'eye-slash']"></fa-icon>
                     </button>
                 </div>
             </div>

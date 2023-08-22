@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
     selector: 'app-sign-up',
@@ -7,10 +6,6 @@ import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent implements OnInit {
-    faEyeSlash = faEyeSlash;
-
-    faEye = faEye;
-
     public showPassword: boolean;
 
     ngOnInit(): void {
