@@ -18,8 +18,6 @@ jobs:
           dotnet-version: 6.0.x
       - name: Restore .NET dependencies
         run: dotnet restore backend/LeetWars.All.sln
-      - name: Build services
-        run: dotnet build backend/LeetWars.BuilderService/LeetWars.BuilderService.csproj
       - name: Build .NET
         run: dotnet build backend/LeetWars.All.sln --no-restore
 
