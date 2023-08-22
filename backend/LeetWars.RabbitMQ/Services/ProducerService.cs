@@ -2,6 +2,7 @@ using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;
 
+namespace LeetWars.RabbitMQ;
 public class ProducerService : IProducerService
 {
     private readonly IConnection _connection;

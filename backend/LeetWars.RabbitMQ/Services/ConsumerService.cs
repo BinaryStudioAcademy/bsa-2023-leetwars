@@ -1,6 +1,7 @@
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
+namespace LeetWars.RabbitMQ;
 public class ConsumerService : IConsumerService
 {
     private readonly IConnection _connection;

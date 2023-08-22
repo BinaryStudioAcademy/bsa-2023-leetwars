@@ -1,3 +1,4 @@
+namespace LeetWars.RabbitMQ;
 public class ProducerSettings
 {
     public string? ExchangeName { get; set; }
