@@ -1,0 +1,33 @@
+<div class="description">
+    <div class="title-row">
+        <p class="level">{{ challengeLevel }} rank</p>
+        <p class="title">{{ challengeTitle }}</p>
+    </div>
+    <div class="info-row">
+        <div class="stars">
+            <fa-icon [icon]="'star'"></fa-icon>
+            <p class="stars-amount">{{ challengeStars }}</p>
+        </div>
+        <div class="feedbacks">
+            <fa-icon [icon]="'chart-simple'"></fa-icon>
+            <p class="percent">{{ challengePositiveFeedbacksPercent }} positive feedback</p>
+        </div>
+        <div class="createdBy">
+            <fa-icon [icon]="'user'"></fa-icon>
+            <p class="author">
+                created <span>{{ challengeAuthorName }}</span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="languages">
+    <div *ngFor="let language of challengeLanguages" class="language-block">
+        <!-- icon -->
+        <p class="language-name">{{ language }}</p>
+    </div>
+</div>
+<div class="tags">
+    <div *ngFor="let tag of challengeTags" class="tag-block">
+        <p class="tag-name">{{ tag }}</p>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="flex flex-column">
+    <div class="filters">
+        <div class="search-filter">
+            <input type="text" placeholder="Search" />
+            <fa-icon [icon]="'search'"></fa-icon>
+        </div>
+    </div>
+    <div class="challenges">
+        <div *ngFor="let challenge of challengesList">
+            <app-challenge [challenge]="challenge"></app-challenge>
+        </div>
+    </div>
+</div>
