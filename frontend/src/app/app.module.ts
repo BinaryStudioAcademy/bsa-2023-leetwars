@@ -6,13 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '@env/environment';
 import { ToastrModule } from 'ngx-toastr';
 
-import { CustomInputComponent } from './custom-input/custom-input.component';
+
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-    declarations: [AppComponent, CustomInputComponent],
+    declarations: [AppComponent],
     providers: [],
     bootstrap: [AppComponent],
     imports: [
