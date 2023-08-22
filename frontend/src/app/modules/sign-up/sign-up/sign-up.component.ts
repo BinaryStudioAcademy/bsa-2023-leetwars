@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faEyeSlash } from '@fortawesome/free-regular-svg-icons';
-import { faEye } from '@fortawesome/free-regular-svg-icons';
+import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
     selector: 'app-sign-up',
