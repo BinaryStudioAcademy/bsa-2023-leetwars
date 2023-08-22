@@ -9,11 +9,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { CustomInputComponent } from './components/custom-input/custom-input.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule],
@@ -23,7 +23,7 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
-        CustomInputComponent
+        CustomInputComponent,
 
     ],
     exports: [
@@ -38,7 +38,7 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
-        CustomInputComponent
+        CustomInputComponent,
     ],
 })
 export class SharedModule {

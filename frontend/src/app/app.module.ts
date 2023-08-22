@@ -6,11 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '@env/environment';
 import { ToastrModule } from 'ngx-toastr';
 
+import { CustomInputComponent } from './custom-input/custom-input.component';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CustomInputComponent } from './custom-input/custom-input.component';
-
 
 @NgModule({
     declarations: [AppComponent, CustomInputComponent],
@@ -24,7 +23,6 @@ import { CustomInputComponent } from './custom-input/custom-input.component';
         SharedModule,
         AngularFireModule.initializeApp(environment.firebaseConfig, 'leetwars'),
         AngularFireAuthModule,
-        
     ],
 })
 export class AppModule {}

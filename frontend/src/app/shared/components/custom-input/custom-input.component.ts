@@ -6,16 +6,22 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     styleUrls: ['./custom-input.component.sass'],
 })
 export class CustomInputComponent {
-    constructor() {}
-
     @Input() InputType: string = 'text';
+
     @Input() Identifier: string = 'text';
+
     @Input() Height: string = '64px';
+
     @Input() Width: string = '327px';
+
     @Input() FormTextHeight: string = '45px';
+
     @Input() InputValue?: string;
+
     @Input() InputLabel?: string;
+
     @Input() InputPlaceholder?: string;
+
     @Output() InputValueChange = new EventEmitter<string>();
 
     onInputChange(model: string) {
