@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 
 const routes: Routes = [
     {
@@ -14,7 +15,7 @@ const routes: Routes = [
         path: 'register',
         loadChildren: () => import('./modules/sign-up/sign-up.module').then((m) => m.SingUpModule),
     },
-    { path: '**', redirectTo: '', pathMatch: 'full' },
+    { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

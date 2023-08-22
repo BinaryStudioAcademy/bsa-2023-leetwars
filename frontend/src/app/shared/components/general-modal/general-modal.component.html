@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{titleText}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<ng-container *ngComponentOutlet="componentToDisplay"></ng-container>
+<div class="modal-footer">
+    <div class="row">
+        <div class="col" *ngFor="let but of buttons">
+            <ng-container>
+                <button type="button" class="btn btn-outline-dark m-1" (click)="but.handler()">{{but.text}}</button>
+            </ng-container>
+        </div>
+    </div>
+</div>
