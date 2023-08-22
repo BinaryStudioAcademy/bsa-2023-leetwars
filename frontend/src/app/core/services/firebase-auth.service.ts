@@ -41,14 +41,6 @@ export class FirebaseAuthService {
             );
     }
 
-    private signInWithProvider(provider: firebase.auth.AuthProvider) {
-        return from(this.afAuth.signInWithPopup(provider))
-            .pipe(
-                first(),
-                catchError(error => throwError(error.message)),
-            );
-    }
-
     signInWithGoogle() {
         return this.signInWithProvider(new GoogleAuthProvider());
     }
@@ -89,5 +81,13 @@ export class FirebaseAuthService {
 
     signOut(): Observable<void> {
         return from(this.afAuth.signOut()).pipe(first());
+    }
+
+    private signInWithProvider(provider: firebase.auth.AuthProvider) {
+        return from(this.afAuth.signInWithPopup(provider))
+            .pipe(
+                first(),
+                catchError(error => throwError(error.message)),
+            );
     }
 }

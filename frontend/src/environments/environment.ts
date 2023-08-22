@@ -2,13 +2,13 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { secrets } from '@env/secrets';
+import { firebaseSettings } from '@env/firebase-settings';
 
 export const environment = {
     production: false,
     coreUrl: 'http://localhost:5050',
     notifierUrl: 'http://localhost:5070',
-    ...secrets,
+    ...firebaseSettings,
 };
 
 /*

@@ -1,8 +1,8 @@
-import { secrets } from '@env/secrets';
+import { firebaseSettings } from '@env/firebase-settings';
 
 export const environment = {
     production: true,
     coreUrl: '/api',
     notifierUrl: '/notifier',
-    ...secrets,
+    ...firebaseSettings,
 };

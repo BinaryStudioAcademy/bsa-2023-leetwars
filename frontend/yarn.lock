@@ -1475,6 +1475,23 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
+"@dotenv-run/core@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@dotenv-run/core/-/core-1.0.0.tgz#9a313cd0be5529dd4adb77580733303109fbff58"
+  integrity sha512-fP2yUcGn8CXWy585+GfOmKBLB/eUJZ1Y2/4SpBz0P8w//MjVuw7LHphhLHbIztVgn+VBZpXewZS0tBHfb1mLOA==
+  dependencies:
+    chalk "^4.1.0"
+    dotenv "^16.1.4"
+    dotenv-expand "^10.0.0"
+
+"@dotenv-run/webpack@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@dotenv-run/webpack/-/webpack-1.0.1.tgz#f4323d380cef27aede6df13a363250c582bd3c73"
+  integrity sha512-e+3tSOVK/47I4tZ3sGXKlcuMo/QaJ79kiDGnbsjsQVaq8uH50CYEDCWvFDcmo3cgXfDmFb7L7VBtqcyJ4sKAYA==
+  dependencies:
+    "@dotenv-run/core" "^1.0.0"
+    chalk "^4.1.0"
+
 "@eslint/eslintrc@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.3.0.tgz#29f92c30bb3e771e4a2048c95fa6855392dfac4f"
@@ -2065,6 +2082,13 @@
   version "14.1.1"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-14.1.1.tgz#a44846f337dd5077649b0b6e561707925db580a0"
   integrity sha512-pj8sN6jBIi2otTHE/CNQyy09Pmn8tGsZyFrSiNO147yjLnrOSJTeFuXfE2pYgrmcYgj0ybnK1zstt4bAKaL7/Q==
+
+"@ngx-env/builder@16.1.3":
+  version "16.1.3"
+  resolved "https://registry.yarnpkg.com/@ngx-env/builder/-/builder-16.1.3.tgz#8eaf68e2ed7861e6f8ec23141b65993faff3d57d"
+  integrity sha512-Us17dnTqhC/RzHmcK9i0iJd9KpyZopsSzZwPuRDBhLxhn8Qs1jxRbDEMsEtuZOLbwfzJo1TUQsOZBF6TPT/SsA==
+  dependencies:
+    "@dotenv-run/webpack" "^1.0.1"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -3871,6 +3895,16 @@ domutils@^2.8.0:
     dom-serializer "^1.0.1"
     domelementtype "^2.2.0"
     domhandler "^4.2.0"
+
+dotenv-expand@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-10.0.0.tgz#12605d00fb0af6d0a592e6558585784032e4ef37"
+  integrity sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==
+
+dotenv@^16.1.4:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
+  integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
 
 dotenv@~10.0.0:
   version "10.0.0"
