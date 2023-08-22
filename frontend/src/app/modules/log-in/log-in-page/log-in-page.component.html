@@ -1,6 +1,8 @@
 <div class="log-in-body">
     <div class="logo-part">
-        <div class="circle"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="118" height="118" viewBox="0 0 118 118" fill="none">
+            <circle cx="59" cy="59" r="59" fill="#61AD00"/>
+        </svg>
         <div class="logo">
             LOGO
         </div>
@@ -23,10 +25,10 @@
                     <div class="form-label">Password</div>
                     <a href="someUrl" class="forget-password-link">Forget password?</a>
                 </div>
-                <div class="password-cont">
+                <p class="password-cont">
                     <input class="form-input password-input" type="{{ showPassword ? 'text' : 'password' }}" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" formControlName="password"/>
                     <fa-icon [icon]="eyeIcon" style="color: #91919380" (click)="toggleShow()"></fa-icon>
-                </div>
+                </p>
                 <div *ngIf="isDataIncorrect" class="notification">Incorrect email or password</div>
                 <button class="submit-sign-in" [disabled]="logInForm.invalid" (click)="signIn()">Sign In</button>
             </form>

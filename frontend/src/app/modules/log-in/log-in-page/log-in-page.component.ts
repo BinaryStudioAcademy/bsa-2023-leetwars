@@ -29,6 +29,15 @@ export class LogInPageComponent implements OnInit {
     }
 
     signIn() {
+        const email: string = this.logInForm.controls.email.value!;
+        const password: string = this.logInForm.controls.password.value!;
+
+        if (email !== 'abcd@gmail.com' || password !== '1111') {
+            this.isDataIncorrect = true;
+
+            return;
+        }
+
         this.isDataIncorrect = false;
     }
 }
