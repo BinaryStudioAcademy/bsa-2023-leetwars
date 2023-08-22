@@ -7,7 +7,6 @@
         public string Code { get; set; }
         public string Output { get; set; }
         public DateTime? SubmittedAt { get; set; }
-        public User? User { get; set; }
 
         public UserSolution(string code, string output)
         {

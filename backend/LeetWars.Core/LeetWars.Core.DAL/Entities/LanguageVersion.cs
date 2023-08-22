@@ -4,7 +4,6 @@
     {
         public int LanguageId { get; set; }
         public string Version { get; set; }
-        public List<ChallengeVersion> ChallengeVersions { get; } = new();
 
         public LanguageVersion(string version)
         {
