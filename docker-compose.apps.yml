@@ -34,8 +34,15 @@ services:
     leetwars_builder:
         build:
             context: ./backend
-            dockerfile: ./LeetWars.BuilderService/Dockerfile
+            dockerfile: ./Builder/Dockerfile
+            args:
+                - PROJECT_PORT=5090
         container_name: 'leetwars_builder'
+        restart: on-failure
+        ports:
+            - "5090:5090"
+        networks:
+            - back
         environment:
             ASPNETCORE_ENVIRONMENT: 'Development'
 

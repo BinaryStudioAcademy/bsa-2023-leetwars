@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Core.Common", "Lee
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Core.BLL", "LeetWars.Core\LeetWars.Core.BLL\LeetWars.Core.BLL.csproj", "{0BF81DD6-4BFA-4047-AD37-3C9CAE8E1040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetWars.BuilderService", "LeetWars.BuilderService\LeetWars.BuilderService.csproj", "{9AE4CE33-426E-4E7E-BDA2-127ACB62B6DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "Builder\Builder.csproj", "{ADD10D57-9D05-41DC-BD56-3F1AABA4BC82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{0BF81DD6-4BFA-4047-AD37-3C9CAE8E1040}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BF81DD6-4BFA-4047-AD37-3C9CAE8E1040}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BF81DD6-4BFA-4047-AD37-3C9CAE8E1040}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9AE4CE33-426E-4E7E-BDA2-127ACB62B6DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9AE4CE33-426E-4E7E-BDA2-127ACB62B6DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9AE4CE33-426E-4E7E-BDA2-127ACB62B6DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9AE4CE33-426E-4E7E-BDA2-127ACB62B6DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADD10D57-9D05-41DC-BD56-3F1AABA4BC82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD10D57-9D05-41DC-BD56-3F1AABA4BC82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD10D57-9D05-41DC-BD56-3F1AABA4BC82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD10D57-9D05-41DC-BD56-3F1AABA4BC82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
