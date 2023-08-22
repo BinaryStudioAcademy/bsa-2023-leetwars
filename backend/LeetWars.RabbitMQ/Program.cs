@@ -15,15 +15,4 @@ builder.Services.AddHostedService<ListenerService>();
 
 var app = builder.Build();
 
-app.MapPost("/sendmessage/{message}", (string message) =>
-{
-    using var scope = app.Services.CreateScope();
-    var _rabbitMqService = scope.ServiceProvider.GetRequiredService<IRabbitMqService>();
-    _rabbitMqService.SendMessage(message);
-
-    return Results.Ok(message);
-
-});
-app.MapGet("/", () => "Hello World!");
-
 app.Run();
