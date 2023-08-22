@@ -1,13 +1,13 @@
 {
   "profiles": {
-    "Builder": {
+    "LeetWars.Builder": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7106;http://localhost:5166"
+      "applicationUrl": "https://localhost:7029;http://localhost:5084"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -31,8 +31,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:5639",
-      "sslPort": 44372
+      "applicationUrl": "http://localhost:54430",
+      "sslPort": 44377
     }
   }
 }
