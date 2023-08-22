@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
     selector: 'app-sign-up',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent implements OnInit {
+    faEyeSlash = faEyeSlash;
+
     constructor() {}
 
     ngOnInit(): void {}
