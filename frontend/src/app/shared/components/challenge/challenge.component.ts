@@ -19,7 +19,11 @@ export class ChallengeComponent {
 
     public challengeAuthorName = 'Emerson Saris';
 
-    public challengeLanguages = ['HTML, CSS, JS', 'Ruby', 'JS'];
+    public challengeLanguages = [
+        { imgUrl: '/assets/images/html.png', value: 'HTML, CSS, JS' },
+        { imgUrl: '/assets/images/ruby.png', value: 'Ruby' },
+        { imgUrl: '/assets/images/js.png', value: 'JS' },
+    ];
 
     public challengeTags = ['Algorithms', 'Strings', 'Data Types', 'Formatting', 'Logic'];
 }

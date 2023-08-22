@@ -1,33 +1,38 @@
-<div class="description">
-    <div class="title-row">
-        <p class="level">{{ challengeLevel }} rank</p>
-        <p class="title">{{ challengeTitle }}</p>
+<div class="main-info d-flex flex-column">
+    <div class="description d-flex flex-column">
+        <div class="title-row d-flex">
+            <span class="level">{{ challengeLevel }} rank</span>
+            <span class="title">{{ challengeTitle }}</span>
+        </div>
+        <div class="info-row d-flex">
+            <div class="d-flex align-items-center">
+                <fa-icon [icon]="['far', 'star']" size="2xs"></fa-icon>
+                <span class="icon icon-border">{{ challengeStars }}</span>
+            </div>
+            <div class="d-flex align-items-center ml-6px">
+                <!-- pro version required for regular chart-simple -->
+                <fa-icon [icon]="'chart-simple'" size="2xs"></fa-icon>
+                <span class="icon icon-border">{{ challengePositiveFeedbacksPercent }}% positive feedback</span>
+            </div>
+            <div class="d-flex align-items-center ml-6px">
+                <fa-icon [icon]="['far', 'user']" size="2xs"></fa-icon>
+                <span class="icon">
+                    <!-- TODO: Add author link -->
+                    created <a class="author" href="#">{{ challengeAuthorName }}</a>
+                </span>
+            </div>
+        </div>
     </div>
-    <div class="info-row">
-        <div class="stars">
-            <fa-icon [icon]="'star'"></fa-icon>
-            <p class="stars-amount">{{ challengeStars }}</p>
-        </div>
-        <div class="feedbacks">
-            <fa-icon [icon]="'chart-simple'"></fa-icon>
-            <p class="percent">{{ challengePositiveFeedbacksPercent }} positive feedback</p>
-        </div>
-        <div class="createdBy">
-            <fa-icon [icon]="'user'"></fa-icon>
-            <p class="author">
-                created <span>{{ challengeAuthorName }}</span>
-            </p>
+    <div class="languages d-flex">
+        <div *ngFor="let language of challengeLanguages" class="language-block d-flex align-items-center">
+            <img [src]="language.imgUrl" class="language-logo" alt="language logo" />
+            <span class="language-name">{{ language.value }}</span>
         </div>
     </div>
 </div>
-<div class="languages">
-    <div *ngFor="let language of challengeLanguages" class="language-block">
-        <!-- icon -->
-        <p class="language-name">{{ language }}</p>
-    </div>
-</div>
-<div class="tags">
+
+<div class="tags d-flex">
     <div *ngFor="let tag of challengeTags" class="tag-block">
-        <p class="tag-name">{{ tag }}</p>
+        <span>{{ tag }}</span>
     </div>
 </div>
