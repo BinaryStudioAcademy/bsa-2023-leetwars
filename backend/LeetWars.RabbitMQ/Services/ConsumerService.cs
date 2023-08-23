@@ -2,7 +2,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
 namespace LeetWars.RabbitMQ;
-public class ConsumerService : IConsumerService, IDisposable
+public class ConsumerService : IConsumerService
 {
     private readonly IConnection _connection;
     private readonly IModel _channel;
@@ -84,7 +84,7 @@ public class ConsumerService : IConsumerService, IDisposable
         }
     }
 
-   
+
 
     public void Dispose()
     {
