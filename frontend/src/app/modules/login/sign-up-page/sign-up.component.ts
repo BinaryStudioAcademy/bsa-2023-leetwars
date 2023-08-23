@@ -5,10 +5,4 @@ import { Component } from '@angular/core';
     templateUrl: './sign-up.component.html',
     styleUrls: ['./sign-up.component.sass'],
 })
-export class SignUpComponent {
-    public showPassword = false;
-
-    public togglePasswordVisibility() {
-        this.showPassword = !this.showPassword;
-    }
-}
+export class SignUpComponent {}

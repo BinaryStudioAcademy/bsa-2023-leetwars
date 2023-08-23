@@ -6,27 +6,24 @@
     <div class="register-page-container">
         <form #registrationForm="ngForm" class="register-page-form">
             <button class="link-profile-button">+ Link Your GitHub Account</button>
-
-            <div class="form-input-container">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" id="email" name="email" class="form-input" required placeholder="Enter your Email">
-            </div>
-            <div class="form-input-container">
-                <label for="username" class="form-label">Username:</label>
-                <input type="text" id="username" name="username" class="form-input" required
-                    placeholder="Enter your username">
-            </div>
-            <div class="form-input-container">
-                <label for="password" class="form-label">Password:</label>
-                <div class="password-input-container">
-                    <input type="password" id="password" name="password" class="form-input form-input-password" required
-                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-                        type="{{ showPassword ? 'text' : 'password' }}">
-                    <button class="hide-password" (click)="togglePasswordVisibility()">
-                        <fa-icon [icon]="showPassword ? ['far', 'eye'] : ['far', 'eye-slash']"></fa-icon>
-                    </button>
-                </div>
-            </div>
+            <app-custom-input
+                [InputType]="'email'"
+                [Identifier]="'email'"
+                [Width]="'100%'"
+                [InputLabel]="'Email:'"
+                [InputPlaceholder]="'Enter your Email'"></app-custom-input>
+            <app-custom-input
+                [Identifier]="'username'"
+                [Width]="'100%'"
+                [InputLabel]="'Username:'"
+                [InputPlaceholder]="'Enter your username'"></app-custom-input>
+            <app-custom-input
+                [InputType]="'password'"
+                [Identifier]="'password'"
+                [Width]="'100%'"
+                [InputLabel]="'Password:'"
+                [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'">
+            </app-custom-input>
 
             <p class="privacy-policy-text">
                 By creating an account, you agree to our

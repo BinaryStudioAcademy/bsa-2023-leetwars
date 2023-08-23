@@ -24,8 +24,15 @@ export class CustomInputComponent {
 
     @Output() InputValueChange = new EventEmitter<string>();
 
-    onInputChange(model: string) {
+    public showPassword = false;
+
+    public onInputChange(model: string) {
         this.InputValue = model;
         this.InputValueChange.emit(model);
+    }
+
+    public togglePasswordVisibility() {
+        this.InputType = this.InputType === 'password' ? 'text' : 'password';
+        this.showPassword = !this.showPassword;
     }
 }
