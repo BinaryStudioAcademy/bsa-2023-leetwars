@@ -1,50 +1,66 @@
 version: '3.1'
 services:
-  leetwars_core:
-    build:
-      context: ./backend
-      dockerfile: ./LeetWars.Core/Dockerfile
-      args:
-        - PROJECT_PORT=5050
-    container_name: 'leetwars_core'
-    restart: on-failure
-    ports:
-        - "5050:5050"
-    networks:
-        - back
-    environment:
-        ASPNETCORE_ENVIRONMENT: 'Development'
-        ConnectionStrings__LeetWarsCoreDBConnection: 'Server=sql_server;Database=LeetWarsCoreDB;User ID=SA;Password=MySecretPassword!'
+    leetwars_core:
+        build:
+            context: ./backend
+            dockerfile: ./LeetWars.Core/Dockerfile
+            args:
+                - PROJECT_PORT=5050
+        container_name: 'leetwars_core'
+        restart: on-failure
+        ports:
+            - "5050:5050"
+        networks:
+            - back
+        environment:
+            ASPNETCORE_ENVIRONMENT: 'Development'
+            ConnectionStrings__LeetWarsCoreDBConnection: 'Server=sql_server;Database=LeetWarsCoreDB;User ID=SA;Password=MySecretPassword!'
 
-  leetwars_notifier:
-      build:
-        context: ./backend
-        dockerfile: ./LeetWars.Notifier/Dockerfile
-        args:
-          - PROJECT_PORT=5070
-      container_name: 'leetwars_notifier'
-      restart: on-failure
-      ports:
-          - "5070:5070"
-      networks:
-          - back
-      environment:
-          ASPNETCORE_ENVIRONMENT: 'Development'
+    leetwars_notifier:
+        build:
+            context: ./backend
+            dockerfile: ./LeetWars.Notifier/Dockerfile
+            args:
+                - PROJECT_PORT=5070
+        container_name: 'leetwars_notifier'
+        restart: on-failure
+        ports:
+            - "5070:5070"
+        networks:
+            - back
+        environment:
+            ASPNETCORE_ENVIRONMENT: 'Development'
 
-  leetwars_client:
-    depends_on:
-        - leetwars_core
-        - leetwars_notifier
-    build:
-        context: ./frontend
-        dockerfile: Dockerfile.dev
-    container_name: 'leetwars_frontend'
-    restart: on-failure
-    ports:
-        - "4200:80"
-    networks:
-        - back
-        - front
+    leetwars_builder:
+        build:
+            context: ./backend
+            dockerfile: /LeetWars.Builder/Dockerfile
+            args:
+                - PROJECT_PORT=5090
+        container_name: 'leetwars_builder'
+        restart: on-failure
+        ports:
+            - "5090:5090"
+        networks:
+            - back
+        environment:
+            ASPNETCORE_ENVIRONMENT: 'Development'
+
+    leetwars_client:
+        depends_on:
+            - leetwars_core
+            - leetwars_notifier
+            - leetwars_builder
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile.dev
+        container_name: 'leetwars_frontend'
+        restart: on-failure
+        ports:
+            - "4200:80"
+        networks:
+            - back
+            - front
 
 networks:
     back:
