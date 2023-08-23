@@ -24,11 +24,12 @@ Frontend:
 
 By default, apps run on the following ports:
 
-| Application                 | Port |
-| --------------------------- | ---- |
-| LeetWars.**Core**           | 5050 |
-| LeetWars.**Notifier**       | 5070 |
-| RabbitMQ                    | 5672 |
+| Application           | Port |
+| --------------------- | ---- |
+| LeetWars.**Core**     | 5050 |
+| LeetWars.**Notifier** | 5070 |
+| LeetWars.**Builder**  | 5090 |
+| RabbitMQ              | 5672 |
 
 _Tip: If you want to connect to the specific service outside of docker, then use "localhost" as a service name, but if both services are inside docker, use service_name from a "docker-compose" file instead._
 
@@ -36,23 +37,146 @@ _Tip: If you want to connect to the specific service outside of docker, then use
 
 ```mermaid
 erDiagram
-  Users {
-    bigint Id PK
-    int country
-    int language
-    int timezone
-    nvarchar firstName
-    nvarchar lastName
-    int age
-    nvarchar email
-    nvarchar imagePath
-    int sex
-    int languageLevel
-    int status
-    boolean isSubscribed
-    boolean isBanned
-  }
+    %%Main
+    Users{
+        id bigint PK
+        country int
+        timezone int
+        sex int
+        status int
+        birthDate datetime
+        firstName nvarchar
+        lastName nvarchar
+        userName nvarchar
+        email nvarchar
+        imagePath nvarchar
+        totalScore bigint
+        registeredAt datetime
+        oathToken nvarchar
+        isSubscribed boolean
+        isBanned boolean
+    }
+    Users ||--o{ Challenges : authors_of
+    Users ||--o{ UserSolutions : authors_of
+    Users ||--o{ UsersPreferredLanguages : users
+    Users ||--o{ UsersLanguagesLevels : users
 
+    Challenges {
+        id bigint PK
+        authorId bigint FK
+        title nvarchar
+        instructions string
+        levelId int FK
+        createdAt datetime
+    }
+    Challenges ||--o{ ChallengeVersions : challenge_versions
+    Challenges ||--o{ ChallengeTags : challenge
+
+    ChallengeVersions{
+        id bigint PK
+        languageId int FK
+        challengeId bigint FK
+        initialSolution string
+        completeSolution string
+        status int
+        createdAt datetime
+    }
+    ChallengeVersions ||--o{ ChallengeVersionLanguageVersions : challenge_version
+    ChallengeVersions ||--o{ UserSolutions : challenge_version_solutions
+    ChallengeVersions ||--o{ Tests : tests
+
+    UserSolutions{
+        id bigint PK
+        userId bigint FK
+        challengeVersionId bigint FK
+        code string
+        output string
+        submittedAt nullable_datetime
+        createdAt datetime
+    }
+
+    Tests{
+        id bigint PK
+        challengeVersionId bigint FK
+        code string
+        isPublic bool
+        createdAt datetime
+    }
+
+    Subscriptions{
+        id bigint PK
+        userId bigint FK
+        paymentSubscriptionId nvarchar
+        typeId int FK
+        cost decimal
+        startDate datetime
+        endDate datetime
+        subscribedDate datetime
+        unsubscribedDate nullable_datetime
+        isActive boolean
+    }
+    Subscriptions }o--|| Users : users_subscription
+
+    %%Secondary
+    SubscriptionTypes{
+        id int PK
+        name nvarchar
+        description nvarchar
+        cost decimal
+        billingPeriod int
+    }
+    SubscriptionTypes ||--o{ Subscriptions : subscription_type
+
+    Tags{
+        id int PK
+        name nvarchar
+    }
+    Tags ||--o{ ChallengeTags : tag
+
+    Languages {
+        id int PK
+        name nvarchar
+    }
+    Languages ||--o{ ChallengeVersions : version_language
+    Languages ||--o{ UsersPreferredLanguages : languages
+    Languages ||--o{ UsersLanguagesLevels : languages
+    Languages ||--o{ LanguageVersions : language
+
+    LanguageVersions {
+        id int PK
+        languageId int FK
+        version nvarchar
+    }
+    LanguageVersions ||--o{ ChallengeVersionLanguageVersions : language_version
+
+    ChallengeLevels{
+        id int PK
+        name nvarchar
+        reward int
+    }
+    ChallengeLevels ||--o{ Challenges : levels
+
+    %%Junction
+    ChallengeTags{
+        challengeId bigint PK
+        tagId int PK
+    }
+
+    UsersLanguagesLevels{
+        userId bigint PK
+        languageId int PK
+        languageLevel int
+    }
+
+    UsersPreferredLanguages{
+        userId bigint PK
+        languageId int PK
+    }
+
+    ChallengeVersionLanguageVersions{
+        challengeVersionId bigint PK
+        languageVersionId bigint PK
+    }
 ```
 
 ## Code quality
@@ -99,4 +223,3 @@ This is a list of the required environment variables:
 #### MSSQL Server
 
 **SA_PASSWORD** - MSSQL Server "SA" user password
-

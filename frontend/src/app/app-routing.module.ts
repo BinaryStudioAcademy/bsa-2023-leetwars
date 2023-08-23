@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 
 const routes: Routes = [
     {
@@ -10,7 +11,11 @@ const routes: Routes = [
         path: 'main',
         loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
     },
-    { path: '**', redirectTo: '', pathMatch: 'full' },
+    {
+        path: 'login',
+        loadChildren: () => import('./modules/log-in/log-in.module').then((m) => m.LogInModule),
+    },
+    { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

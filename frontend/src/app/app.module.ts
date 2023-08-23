@@ -1,15 +1,29 @@
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { BrowserModule } from '@angular/platform-browser';
-import { SharedModule } from '@shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '@env/environment';
+import { ToastrModule } from 'ngx-toastr';
 
+import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [BrowserModule, SharedModule, AppRoutingModule, MonacoEditorModule.forRoot()],
     providers: [],
     bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        SharedModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, 'leetwars'),
+        AngularFireAuthModule,
+        MonacoEditorModule.forRoot(),
+    ],
 })
 export class AppModule {}
