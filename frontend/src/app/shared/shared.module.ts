@@ -16,6 +16,7 @@ import { DropdownSelectComponent } from './components/dropdown-select/dropdown-s
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, MonacoEditorModule],
@@ -25,6 +26,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
+        SuggestedChallengeComponent,
         CustomInputComponent,
         CodeEditorComponent,
     ],
@@ -41,6 +43,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
+        SuggestedChallengeComponent,
         CustomInputComponent,
     ],
 })

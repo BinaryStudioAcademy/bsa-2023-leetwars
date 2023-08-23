@@ -1,0 +1,40 @@
+<div class="suggested-body">
+    <div class="filters">
+        <h5>Suggested Challenge</h5>
+        <div class="dropdowns-container">
+            <app-dropdown-select [items]="languages" ></app-dropdown-select>
+            <app-dropdown-select [items]="score"></app-dropdown-select>
+        </div>
+        <div class="button-group">
+            <button class="suggested-button skip">
+                Skip
+            </button>
+            <button class="suggested-button train">
+                Train
+            </button>
+        </div>
+    </div>
+    <div class="description">
+        <div class="difficulty-and-title">
+            <div class="difficulty-tag">
+                {{ difficulty }}
+            </div>
+            <div class="task-title">
+                {{ title }}
+            </div>
+        </div>
+        <div class="description-text">
+            {{ description }}
+        </div>
+        <ul class="constraints">
+            <li *ngFor="let constraint of constraints" class="constraints-item">
+                {{ constraint }}
+            </li>
+        </ul>
+        <ul class="tags" (wheel)="onMouseWheel($event)">
+            <li *ngFor="let tag of tags" class="tag-item">
+                {{ tag }}
+            </li>
+        </ul>
+    </div>
+</div>
