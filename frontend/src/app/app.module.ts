@@ -4,8 +4,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '@env/environment';
-import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { ToastrModule } from 'ngx-toastr';
 
 import { SharedModule } from './shared/shared.module';
