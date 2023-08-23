@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="languages d-flex">
+    <div class="languages d-flex flex-wrap gap-2">
         <div *ngFor="let language of challengeLanguages" class="language-block d-flex align-items-center">
             <img [src]="language.imgUrl" class="language-logo" alt="language logo" />
             <span class="language-name">{{ language.value }}</span>
