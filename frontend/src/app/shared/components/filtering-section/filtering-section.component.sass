@@ -1,9 +1,15 @@
 @import 'src/styles/color-variables'
 
+:host
+  display: flex
+  justify-content: center
+
 .filters
   border: 1px solid $grey
   border-radius: 14px
   margin-right: 20px
+  max-width: 374px
+  height: 480px
 
 .m-0-12px
   margin: 20px 12px 0
@@ -14,6 +20,7 @@
 .search-container
   position: relative
   margin-top: 28px
+  width: 350px
 
 .search-filter
   font-family: Open Sans
@@ -31,3 +38,34 @@
     right: 14px
     color: $white
     cursor: pointer
+
+@media (max-width: 992px)
+  .filters
+    max-width: 224px
+
+  .search-container
+    width: 200px
+
+@media (max-width: 768px)
+  .filtering-section
+    flex-direction: column
+    align-items: center
+
+  .filters
+    margin-right: 0
+    margin-bottom: 16px
+    max-width: 440px
+
+  .search-container
+    width: 416px
+
+@media (max-width: 576px)
+  .filters
+    max-width: 274px
+
+  .search-container
+    width: 250px
+
+
+
+

@@ -6,7 +6,7 @@
     background-color: $dark-charcoal
     color: $white
     font-family: 'Montserrat', sans-serif
-    max-width: 500px
+    max-width: 440px
 
 .icon
     font-size: 12px
@@ -75,3 +75,16 @@
     padding: 4px 9px
     span
         white-space: nowrap
+
+@media (max-width: 576px)
+    .info-row, .title-row
+        white-space: normal
+        flex-direction: column
+        align-items: center
+        text-align: center
+
+    .icon-border
+        border-right: none
+
+    .level
+        margin-bottom: 8px

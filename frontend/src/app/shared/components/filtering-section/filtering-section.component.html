@@ -1,5 +1,5 @@
-<div class="d-flex">
-    <div class="filters d-flex flex-column h-100">
+<div class="filtering-section d-flex">
+    <div class="filters d-flex flex-column">
         <div class="search-container m-0-12px">
             <input type="text" placeholder="Select" class="form-control search-filter" id="search" />
             <fa-icon [icon]="'search'" size="lg" class="search-filter-icon"></fa-icon>
@@ -25,9 +25,9 @@
             [items]="tagsList"
             class="m-0-12px mb-28px"></app-dropdown-select>
     </div>
-    <div class="d-grid gap-2">
+    <div class="d-grid justify-content-center gap-2">
         <div *ngFor="let challenge of challengesList">
-            <app-challenge [challenge]="challenge"></app-challenge>
+            <app-challenge class="challenge-block" [challenge]="challenge"></app-challenge>
         </div>
     </div>
 </div>
