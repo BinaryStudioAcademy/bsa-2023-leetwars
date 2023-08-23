@@ -15,17 +15,18 @@
                 Sign in with Google
             </button>
             <H5 class="or-label">or</H5>
-        
+
             <form class="logInForm" [formGroup]="logInForm">
                 <label class="form-label">Email</label>
-                <input class="form-input" placeholder="Enter your name" formControlName="email"/>
+                <input class="form-input" placeholder="Enter your name" formControlName="email" />
                 <div class="label-and-forget-password">
                     <div class="form-label">Password</div>
                     <a href="someUrl" class="forget-password-link">Forget password?</a>
                 </div>
                 <div class="password-cont">
-                    <input class="form-input password-input" type="{{ showPassword ? 'text' : 'password' }}" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" formControlName="password"/>
-                    <fa-icon [icon]="eyeIcon" (click)="toggleShow()"></fa-icon>
+                    <input class="form-input password-input" type="{{ showPassword ? 'text' : 'password' }}"
+                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" formControlName="password" />
+                    <fa-icon [icon]="showPassword ? ['far', 'eye'] : ['far', 'eye-slash']"></fa-icon>
                 </div>
                 <div *ngIf="isDataIncorrect" class="notification">Incorrect email or password</div>
                 <button class="submit-sign-in" [disabled]="logInForm.invalid" (click)="signIn()">Sign In</button>
@@ -33,7 +34,7 @@
         </div>
         <div class="no-account">
             No account?
-            <a href="someUrl" class="sign-up-link">Sign up</a>
+            <a class="sign-up-link" routerLink="/auth/register">Sign up</a>
         </div>
     </div>
 </div>
