@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-log-in-page',
@@ -15,8 +14,6 @@ export class LogInPageComponent implements OnInit {
 
     showPassword: boolean = false;
 
-    eyeIcon = faEyeSlash;
-
     isDataIncorrect: boolean;
 
     ngOnInit(): void {
@@ -25,7 +22,6 @@ export class LogInPageComponent implements OnInit {
 
     toggleShow() {
         this.showPassword = !this.showPassword;
-        this.eyeIcon = this.showPassword ? faEye : faEyeSlash;
     }
 
     signIn() {
