@@ -57,7 +57,7 @@ namespace LeetWars.Core.DAL.Context
                 .UseSeed(SeedDefaults.ChallengeSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
-                .RuleFor(e => e.LevelId, f => f.PickRandom(SeedDefaults.ChallengeLevels).Id)
+                .RuleFor(e => e.LevelId, f => f.PickRandom(SeedDefaults.ChallengeLevels.AsEnumerable()).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
                 {
                     var author = users.ToList().Find(a => a.Id == e.CreatedBy);
@@ -74,7 +74,7 @@ namespace LeetWars.Core.DAL.Context
                 .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text()))
                 .UseSeed(SeedDefaults.ChallengeVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages).Id)
+                .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
                 .RuleFor(e => e.ChallengeId, f => f.PickRandom(challenges).Id)
                 .RuleFor(e => e.Status, f => f.PickRandom<ChallengeStatus>())
                 .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
@@ -94,7 +94,7 @@ namespace LeetWars.Core.DAL.Context
                 .CustomInstantiator( f => new LanguageVersion(f.System.Version().ToString().LimitLength(EntitySettings.MaxShortNameLength)))
                 .UseSeed(SeedDefaults.LanguageVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages).Id)
+                .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
                 .Generate(count);
         }
 

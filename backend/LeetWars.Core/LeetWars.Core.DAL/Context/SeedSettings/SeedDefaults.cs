@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.DAL.Entities;
+using System.Collections.Immutable;
 
 namespace LeetWars.Core.DAL.Context.SeedSettings
 {
@@ -20,7 +21,7 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
 
         public static readonly int LanguageVersionSeed = 8901;
 
-        public static readonly ICollection<Tag> Tags = new List<Tag>()
+        public static readonly ImmutableArray<Tag> Tags = ImmutableArray.CreateRange(new Tag[]
         {
             new Tag("Arrays"){ Id = 1 },
             new Tag("Algorithms"){ Id = 2 },
@@ -31,23 +32,23 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
             new Tag("Filtering"){ Id = 7 },
             new Tag("Fundamentals"){ Id = 8 },
             new Tag("Heaps"){ Id = 9 },
-        };
+        });
 
-        public static readonly ICollection<ChallengeLevel> ChallengeLevels = new List<ChallengeLevel>()
+        public static readonly ImmutableArray<ChallengeLevel> ChallengeLevels = ImmutableArray.CreateRange(new ChallengeLevel[]
         {
             new ChallengeLevel("Easy"){ Id = 1, Reward = 10 },
             new ChallengeLevel("Medium"){ Id = 2, Reward = 20 },
             new ChallengeLevel("Difficult"){ Id = 3, Reward = 30 },
             new ChallengeLevel("Extreme"){ Id = 4, Reward = 40 }
-        };
+        });
 
-        public static readonly ICollection<Language> Languages = new List<Language>()
+        public static readonly ImmutableArray<Language> Languages = ImmutableArray.CreateRange(new Language[]
         {
             new Language("C#"){Id = 1},
             new Language("Typescript"){Id = 2},
             new Language("Python"){Id = 3},
             new Language("Javascript"){Id = 4}
-        };
+        });
 
     }
 }
