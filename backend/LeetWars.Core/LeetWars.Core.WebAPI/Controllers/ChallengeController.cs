@@ -16,7 +16,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ChallengePreviewDto>> GetAllAsync([FromBody] ChallengesFilltersDto filters)
+        public async Task<ActionResult<ChallengePreviewDto>> GetAllAsync([FromQuery] ChallengesFilltersDto filters)
         {
             var challenges = await _challengeService.GetChallengesAsync(filters);
             return Ok(challenges);

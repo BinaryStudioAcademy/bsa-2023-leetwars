@@ -12,7 +12,7 @@ namespace LeetWars.Core.DAL.Context
             var optionsBuilder = new DbContextOptionsBuilder<LeetWarsCoreContext>();
 
             //For local migration manipulation set SqlServer Connection string for machine's Sql Server instance
-            optionsBuilder.UseSqlServer("Server=(localDB)\\mssqllocaldb;Database=LeetWarsCoreDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-RIEKRKP\\SQLEXPRESS;Database=LeetWarsCoreDB;Trusted_Connection=True;");
 
             return new LeetWarsCoreContext(optionsBuilder.Options);
         }
