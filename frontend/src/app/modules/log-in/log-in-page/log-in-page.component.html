@@ -1,0 +1,39 @@
+<div class="log-in-body">
+    <div class="logo-part">
+        <div class="circle"></div>
+        <div class="logo">
+            LOGO
+        </div>
+    </div>
+    <div class="log-in-part">
+        <div class="form-container">
+            <H4 class="sign-in-label">Sign in</H4>
+            <button class="third-party github">
+                Sign in with GitHub
+            </button>
+            <button class="third-party google">
+                Sign in with Google
+            </button>
+            <H5 class="or-label">or</H5>
+        
+            <form class="logInForm" [formGroup]="logInForm">
+                <label class="form-label">Email</label>
+                <input class="form-input" placeholder="Enter your name" formControlName="email"/>
+                <div class="label-and-forget-password">
+                    <div class="form-label">Password</div>
+                    <a href="someUrl" class="forget-password-link">Forget password?</a>
+                </div>
+                <div class="password-cont">
+                    <input class="form-input password-input" type="{{ showPassword ? 'text' : 'password' }}" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" formControlName="password"/>
+                    <fa-icon [icon]="eyeIcon" (click)="toggleShow()"></fa-icon>
+                </div>
+                <div *ngIf="isDataIncorrect" class="notification">Incorrect email or password</div>
+                <button class="submit-sign-in" [disabled]="logInForm.invalid" (click)="signIn()">Sign In</button>
+            </form>
+        </div>
+        <div class="no-account">
+            No account?
+            <a href="someUrl" class="sign-up-link">Sign up</a>
+        </div>
+    </div>
+</div>
