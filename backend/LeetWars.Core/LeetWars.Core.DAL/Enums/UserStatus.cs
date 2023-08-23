@@ -2,8 +2,9 @@
 {
     public enum UserStatus
     {
-        Unset,
-        Offline,
-        Online
+        Active,
+        Inactive,
+        Retired,
+        Banned
     }
 }

@@ -11,12 +11,15 @@ namespace LeetWars.Core.DAL.Context
         {
             builder.Property(e => e.Title)
                 .HasMaxLength(EntitySettings.MaxGeneralNameLength);
+
             //Connections
             builder.HasMany(e => e.Tags)
                 .WithMany(e => e.Challenges);
+
             builder.HasOne(e => e.Level)
                 .WithMany()
                 .HasForeignKey(e => e.LevelId);
+
             builder.HasMany(e => e.Versions)
                 .WithOne()
                 .HasForeignKey(e => e.ChallengeId);

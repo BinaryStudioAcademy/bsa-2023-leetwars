@@ -16,12 +16,15 @@ namespace LeetWars.Core.WebAPI.Extentions
             services
                 .AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+<<<<<<< HEAD
 
             services.AddTransient<ISampleService, SampleService>();
             services.AddTransient<IChallengeService, ChallengeService>();
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddTransient<IStatusService, StatusService>();
+=======
+>>>>>>> feature/11-implement-entities
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

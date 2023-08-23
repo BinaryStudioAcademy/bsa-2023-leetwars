@@ -11,6 +11,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
         {
             //Connections
             builder.HasKey(e => new {e.UserId, e.LanguageId });
+
             builder.HasOne(e => e.Language)
                 .WithMany()
                 .HasForeignKey(e => e.LanguageId);

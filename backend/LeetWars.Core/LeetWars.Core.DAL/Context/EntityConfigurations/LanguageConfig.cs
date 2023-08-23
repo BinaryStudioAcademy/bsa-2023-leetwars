@@ -11,6 +11,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
         {
             builder.Property(e => e.Name)
                 .HasMaxLength(EntitySettings.MaxShortNameLength);
+
             //Connections
             builder.HasMany(e => e.LanguageVersions)
                 .WithOne()

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LeetWars.Core.DAL.Extensions
+﻿namespace LeetWars.Core.DAL.Extensions
 {
     public static class LimitLengthExtension
     {
@@ -17,6 +11,5 @@ namespace LeetWars.Core.DAL.Extensions
 
             return source.Substring(0, maxLength);
         }
-
     }
 }
