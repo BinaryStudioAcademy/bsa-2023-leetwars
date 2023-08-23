@@ -5,6 +5,7 @@
         public long ChallengeVersionId { get; set; }
         public string Code { get; set; }
         public bool IsPublic { get; set; }
+        public User? Author { get; set; }
 
         public Test(string code)
         {

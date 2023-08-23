@@ -43,12 +43,16 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
 
             builder.HasMany(e => e.Challenges)
                 .WithOne(e => e.Author)
-                .HasForeignKey(e => e.AuthorId);
+                .HasForeignKey(e => e.CreatedBy);
 
             builder.HasMany(e => e.Solutions)
                 .WithOne(e => e.User)
-                .HasForeignKey(e => e.UserId)
+                .HasForeignKey(e => e.CreatedBy)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(e => e.ChallengeVersions)
+                .WithOne(e => e.Author)
+                .HasForeignKey(e => e.CreatedBy);
         }
     }
 }

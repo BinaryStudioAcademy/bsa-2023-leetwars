@@ -24,6 +24,7 @@ namespace LeetWars.Core.DAL.Entities
         public List<UserLanguageLevel> LanguagesWithLevels { get; } = new();
         public List<UserSolution> Solutions { get; } = new();
         public List<Challenge> Challenges { get; } = new();
+        public List<ChallengeVersion> ChallengeVersions { get; } = new();
 
         public User(string firstName, string lastName, string userName, string email, string imagePath, string oAuthToken)
         {

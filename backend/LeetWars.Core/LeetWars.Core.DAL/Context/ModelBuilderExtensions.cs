@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using LeetWars.Core.DAL.Context.EntityConfigurations;
+using LeetWars.Core.DAL.Context.SeedSettings;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
@@ -10,72 +11,17 @@ namespace LeetWars.Core.DAL.Context
 {
     public static class ModelBuilderExtensions
     {
-        private static readonly int _userSeed = 1234;
-
-        private static readonly int _userSolutionSeed = 2345;
-
-        private static readonly int _challengeSeed = 3456;
-
-        private static readonly int _challengeVersionSeed = 4567;
-
-        private static readonly int _subscriptionSeed = 5678;
-
-        private static readonly int _subscriptionTypeSeed = 6789;
-
-        private static readonly int _testSeed = 7890;
-
-        private static readonly int _languageVersionSeed = 8901;
-
-        private static readonly ICollection<Tag> _tags = new List<Tag>()
-        {
-            new Tag("Arrays"){ Id = 1 },
-            new Tag("Algorithms"){ Id = 2 },
-            new Tag("Backend"){ Id = 3 },
-            new Tag("Async"){ Id = 4 },
-            new Tag("AI"){ Id = 5 },
-            new Tag("Concurrency"){ Id = 6 },
-            new Tag("Filtering"){ Id = 7 },
-            new Tag("Fundamentals"){ Id = 8 },
-            new Tag("Heaps"){ Id = 9 },
-        };
-
-        private static readonly ICollection<ChallengeLevel> _challengeLevels = new List<ChallengeLevel>()
-        {
-            new ChallengeLevel("Easy"){ Id = 1, Reward = 10 },
-            new ChallengeLevel("Medium"){ Id = 2, Reward = 20 },
-            new ChallengeLevel("Difficult"){ Id = 3, Reward = 30 },
-            new ChallengeLevel("Extreme"){ Id = 4, Reward = 40 }
-        };
-
-        private static readonly ICollection<Language> _languages = new List<Language>()
-        {
-            new Language("C#"){Id = 1},
-            new Language("Typescript"){Id = 2},
-            new Language("Python"){Id = 3},
-            new Language("Javascript"){Id = 4}
-        };
 
         public static void Configure(this ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityConfig<long>).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityConfig<int>).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ChallengeConfig).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ChallengeLevelConfig).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ChallengeVersionConfig).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(LanguageConfig).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(LanguageVersionConfig).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(SubscriptionConfig).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(SubscriptionTypeConfig).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TagConfig).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserConfig).Assembly);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserLanguageLevelConfig).Assembly);
         }
 
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Tag>().HasData(_tags);
-            modelBuilder.Entity<ChallengeLevel>().HasData(_challengeLevels);
-            modelBuilder.Entity<Language>().HasData(_languages);
+            modelBuilder.Entity<Tag>().HasData(SeedDefaults.Tags);
+            modelBuilder.Entity<ChallengeLevel>().HasData(SeedDefaults.ChallengeLevels);
+            modelBuilder.Entity<Language>().HasData(SeedDefaults.Languages);
 
             var userEntities = GenerateUsers();
             modelBuilder.Entity<User>().HasData(userEntities);
@@ -92,10 +38,10 @@ namespace LeetWars.Core.DAL.Context
             var subscriptionEntities = GenerateSubscriptions(subscriptionTypeEntities, userEntities);
             modelBuilder.Entity<Subscription>().HasData(subscriptionEntities);
 
-            var challengeVersionEntities = GenerateChallengeVersions(challengeEntities);
+            var challengeVersionEntities = GenerateChallengeVersions(userEntities, challengeEntities);
             modelBuilder.Entity<ChallengeVersion>().HasData(challengeVersionEntities);
 
-            var testEntities = GenerateTests(challengeVersionEntities);
+            var testEntities = GenerateTests(userEntities, challengeVersionEntities);
             modelBuilder.Entity<Test>().HasData(testEntities);
 
             var userSolutionEntities = GenerateUserSolutions(userEntities, challengeVersionEntities);
@@ -108,29 +54,30 @@ namespace LeetWars.Core.DAL.Context
 
             return new Faker<Challenge>()
                 .CustomInstantiator(f => new Challenge(f.Hacker.Phrase().LimitLength(EntitySettings.MaxGeneralNameLength), f.Lorem.Text()))
-                .UseSeed(_challengeSeed)
+                .UseSeed(SeedDefaults.ChallengeSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e => e.AuthorId, f => f.PickRandom(users).Id)
-                .RuleFor(e => e.LevelId, f => f.PickRandom(_challengeLevels).Id)
+                .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
+                .RuleFor(e => e.LevelId, f => f.PickRandom(SeedDefaults.ChallengeLevels.AsEnumerable()).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
                 {
-                    var author = users.ToList().Find(a => a.Id == e.AuthorId);
+                    var author = users.ToList().Find(a => a.Id == e.CreatedBy);
                     return f.Date.Between(author?.RegisteredAt ?? DateTime.Now, DateTime.Now);
                 })
                 .Generate(count);
         }
 
-        private static ICollection<ChallengeVersion> GenerateChallengeVersions(ICollection<Challenge> challenges, int count = 200)
+        private static ICollection<ChallengeVersion> GenerateChallengeVersions(ICollection<User> users, ICollection<Challenge> challenges, int count = 200)
         {
             Faker.GlobalUniqueIndex = 0;
 
             return new Faker<ChallengeVersion>()
                 .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text()))
-                .UseSeed(_challengeVersionSeed)
+                .UseSeed(SeedDefaults.ChallengeVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e => e.LanguageId, f => f.PickRandom(_languages).Id)
+                .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
                 .RuleFor(e => e.ChallengeId, f => f.PickRandom(challenges).Id)
                 .RuleFor(e => e.Status, f => f.PickRandom<ChallengeStatus>())
+                .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
                 {
                     var challenge = challenges.ToList().Find(a => a.Id == e.ChallengeId);
@@ -145,9 +92,9 @@ namespace LeetWars.Core.DAL.Context
 
             return new Faker<LanguageVersion>()
                 .CustomInstantiator( f => new LanguageVersion(f.System.Version().ToString().LimitLength(EntitySettings.MaxShortNameLength)))
-                .UseSeed(_languageVersionSeed)
+                .UseSeed(SeedDefaults.LanguageVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e => e.LanguageId, f => f.PickRandom(_languages).Id)
+                .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
                 .Generate(count);
         }
 
@@ -157,7 +104,7 @@ namespace LeetWars.Core.DAL.Context
 
             return new Faker<SubscriptionType>()
                 .CustomInstantiator(f => new SubscriptionType(string.Join(" ", f.Random.Words(3)).LimitLength(EntitySettings.MaxShortNameLength), f.Lorem.Sentence().LimitLength(EntitySettings.MaxDescriptionLength)))
-                .UseSeed(_subscriptionTypeSeed)
+                .UseSeed(SeedDefaults.SubscriptionTypeSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.Cost, f => Math.Round(f.Random.Decimal(0m, 200m), EntitySettings.DecimalPartLength))
                 .RuleFor(e => e.BillingPeriod, f => f.PickRandom<BillingPeriod>())
@@ -170,7 +117,7 @@ namespace LeetWars.Core.DAL.Context
 
             return new Faker<Subscription>()
                 .CustomInstantiator(f => new Subscription(f.Random.AlphaNumeric(16)))
-                .UseSeed(_subscriptionSeed)
+                .UseSeed(SeedDefaults.SubscriptionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.UserId, f => f.PickRandom(users).Id)
                 .RuleFor(e => e.TypeId, f => f.PickRandom(subscriptionTypes).Id)
@@ -200,16 +147,17 @@ namespace LeetWars.Core.DAL.Context
                 .Generate(count);
         }
 
-        private static ICollection<Test> GenerateTests(ICollection<ChallengeVersion> challengeVersions, int count = 200)
+        private static ICollection<Test> GenerateTests(ICollection<User> users, ICollection<ChallengeVersion> challengeVersions, int count = 200)
         {
             Faker.GlobalUniqueIndex = 0;
 
             return new Faker<Test>()
                 .CustomInstantiator(f => new Test(f.Lorem.Text()))
-                .UseSeed(_testSeed)
+                .UseSeed(SeedDefaults.TestSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.ChallengeVersionId, f => f.PickRandom(challengeVersions).Id)
                 .RuleFor(e => e.IsPublic, f => f.Random.Bool(0.7f))
+                .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
                 {
                     var challengeVersion = challengeVersions.ToList().Find(a => a.Id == e.ChallengeVersionId);
@@ -224,9 +172,9 @@ namespace LeetWars.Core.DAL.Context
 
             return new Faker<UserSolution>()
                 .CustomInstantiator(f => new UserSolution(f.Lorem.Text(), f.Lorem.Text()))
-                .UseSeed(_userSolutionSeed)
+                .UseSeed(SeedDefaults.UserSolutionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e => e.UserId, f => f.PickRandom(users).Id)
+                .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
                 .RuleFor(e => e.ChallengeVersionId, f => f.PickRandom(challengeVersions).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
                 {
@@ -249,21 +197,21 @@ namespace LeetWars.Core.DAL.Context
             return new Faker<User>()
                 .CustomInstantiator(f => new User(f.Name.FirstName().LimitLength(EntitySettings.MaxGeneralNameLength), 
                         f.Name.LastName().LimitLength(EntitySettings.MaxGeneralNameLength), 
-                        f.Internet.UserName().LimitLength(EntitySettings.MaxUserNameLength - 3) + (uniqueIntForUserId++), 
+                        f.Internet.UserName().LimitLength(EntitySettings.MaxUserNameLength - 3) + (uniqueIntForUserId++),
                         f.Internet.Email().LimitLength(EntitySettings.MaxEmailLength), 
-                        "/" + f.Random.String2(30) + ".jpg", 
+                        f.Random.String2(30) + ".jpg", 
                         f.Random.AlphaNumeric(32)))
-                .UseSeed(_userSeed)
+                .UseSeed(SeedDefaults.UserSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.Country, f => f.PickRandom<Country>())
                 .RuleFor(e => e.Sex, f => f.PickRandom<Sex>())
                 .RuleFor(e => e.Status, f => f.PickRandom<UserStatus>())
                 .RuleFor(e => e.Timezone, f => f.Random.Int(-12, 12))
-                .RuleFor(e => e.BirthDate, f => f.Date.Between(new DateTime(1980, 1, 1), new DateTime(2000, 12, 31)))
+                .RuleFor(e => e.BirthDate, f => f.Date.Between(new DateTime(1980, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(2000, 12, 31, 0, 0, 0, DateTimeKind.Utc)))
                 .RuleFor(e => e.TotalScore, f => f.Random.Long(0, 100000))
                 .RuleFor(e => e.IsBanned, f => f.Random.Bool(0.05f))
                 .RuleFor(e => e.IsSubscribed, f => f.Random.Bool(0.8f))
-                .RuleFor(p => p.RegisteredAt, f => f.Date.Between(new DateTime(2016, 1, 1), DateTime.Now))
+                .RuleFor(p => p.RegisteredAt, f => f.Date.Between(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc), DateTime.Now))
                 .Generate(count);
         }
 
