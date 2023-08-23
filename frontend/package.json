@@ -25,6 +25,8 @@
         "@microsoft/signalr": "^6.0.7",
         "bootstrap": "5.3.1",
         "eslint-plugin-prettier": "^4.2.1",
+        "monaco-editor": "0.33.0",
+        "ngx-monaco-editor-v2": "14.x.x",
         "rxjs": "^7.5.6",
         "tslib": "^2.4.0",
         "zone.js": "^0.11.7"
