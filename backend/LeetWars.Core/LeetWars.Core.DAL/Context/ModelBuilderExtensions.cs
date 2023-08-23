@@ -251,7 +251,7 @@ namespace LeetWars.Core.DAL.Context
                         f.Name.LastName().LimitLength(EntitySettings.MaxGeneralNameLength), 
                         f.Internet.UserName().LimitLength(EntitySettings.MaxUserNameLength - 3) + (uniqueIntForUserId++), 
                         f.Internet.Email().LimitLength(EntitySettings.MaxEmailLength), 
-                        f.System.DirectoryPath().LimitLength(EntitySettings.MaxPathLength), 
+                        "/" + f.Random.String2(30) + ".jpg", 
                         f.Random.AlphaNumeric(32)))
                 .UseSeed(_userSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
