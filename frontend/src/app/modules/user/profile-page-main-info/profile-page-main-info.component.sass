@@ -1,51 +1,170 @@
+@import 'color-variables'
+@import 'screen-sizes-variables'
+
+.page-wrp // remove
+    overflow-y: auto
+    display: flex
+
 .profile-main-info-wrapper 
-    
+    font-family: 'Inter', sans-serif
+    background-color: $light-grey
+    color: $white
+    box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.08), 0px 4px 8px 0px rgba(0, 0, 0, 0.08), 0px 2px 4px 0px rgba(0, 0, 0, 0.08)
+    border-radius: 8px
+    width: 300px
+    min-width: 300px
+    // height: 100%
+    padding: 21px 16px 28px 16px
+    margin: 10px //remove
+    display: flex
+    flex-direction: column
+
 .profile-main-info-header 
+    padding: 0 0 16px 0 !important
+
+.user-info-container
+    display: flex
+    gap: 16px
 
 .user-avatar-container 
+    width: 80px
+    height: 80px
 
-.user-avatar 
+.user-avatar
+    height: inherit
+    border-radius: 8px
 
 .user-info 
+    display: flex
+    flex-direction: column
+    justify-content: space-between
 
 .username 
+    font-weight: 600
+    line-height: 160%
+    font-size: 15px
 
 .user-rank 
+    font-size: 14px
+    line-height: 171%
+    font-weight: 500
+    span
+        margin-right: 7px
+        font-weight: 400
+        color: rgba(239, 241, 246, 0.75)
 
 .edit-profile-btn 
-
-// ======================
-
-.profile-main-info-content 
-
-.community-stats-container 
-
-.content-section-name 
+    background-color: $green
+    width: 100%
+    padding: 7px 0px
+    border-radius: 8px
+    text-align: center
+    font-size: 13px
+    font-weight: 500
+    line-height: 161.5%
+    &:hover
+        background-color: $dark-olive-green
 
 .community-stats-list 
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+.community-stats-list-item-container
+    display: flex
+    gap: 8px
 
 .community-stats-list-item 
-
-.views 
+    display: flex
+    flex-direction: column
+    gap: 4px
 
 .list-item-main-text 
+    color: rgba(239, 241, 246, 0.75)
+    font-size: 12px
+    line-height: 175%
+    span
+        font-size: 14px
+        color: $white
+        margin-left: 9px
 
 .last-week-stats 
+    font-size: 10px
+    line-height: 160%
+    color: rgba(239, 242, 246, 0.60)
+    span
+        color: rgba(235, 235, 245, 0.30)
+        font-size: 12px
+        margin-left: 8px
 
-.solution 
+.views fa-icon
+    color: #0A84FF
+    
+.solution fa-icon
+    color: #64D2FF
 
-.discuss 
+.discuss fa-icon
+    color: #00B8A3
 
-.reputation 
+.reputation fa-icon
+    color: #FFA116
 
-// ====================
+.skills-container
+    border: none !important
 
-.languages-container 
+.skills-list
+    display: flex
+    flex-direction: column
+    gap: 16px
+    
+.skills-list-item-container 
+    display: flex
+    flex-direction: column
+    gap: 12px
+
+.skills-list-item-text 
+    font-weight: 500
+    line-height: 16px
+    font-size: 11px
+    margin-left: 10px
+    position: relative
+
+.skills-list-item-text::before 
+    content: ''
+    display: inline-block
+    width: 4px
+    height: 4px
+    border-radius: 50%
+    position: absolute
+    left: -10px
+    top: 50%
+    transform: translateY(-50%)
+
+.skills-list-item-text.advanced::before 
+    background-color: #EF4743
+
+.skills-list-item-text.intermediate::before 
+    background-color: #FFC01E
+
+.skills-list-item-text.fundamental::before 
+    background-color: #2CBB5D
+
+// =====shared=====
 
 .not-enough-data 
+    font-size: 11px
+    line-height: 145.455%
+    color: rgba(235, 235, 245, 0.30)
+    text-align: center
+    
+.content-section-name 
+    font-size: 15px
+    font-weight: 500
+    line-height: 160%
 
-.skills-container 
-
-.skills-list 
-
-.skills-list-item 
+.info-container
+    padding: 16px 0
+    border-bottom: 1px solid rgba(247, 250, 255, 0.12)
+    display: flex
+    flex-direction: column
+    gap: 16px
