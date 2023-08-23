@@ -25,11 +25,10 @@ namespace LeetWars.Core.Common.DTO.User
         public string OAuthToken { get; set; } = string.Empty;
         public bool IsSubscribed { get; set; }
         public bool IsBanned { get; set; }
-        public List<SubscriptionDto> Subscriptions { get; set; } = new();
-        public List<LanguageDto> PreferredLanguages { get; set; } = new();
-        public List<UserLanguageLevelDto> LanguagesWithLevels { get; set; } = new();
-        public List<UserSolutionDto> Solutions { get; set; } = new();
-        public List<ChallengeDto> Challenges { get; set; } = new();
+        public ICollection<SubscriptionDto>? Subscriptions { get; set; }
+        public ICollection<LanguageDto>? PreferredLanguages { get; set; }
+        public ICollection<UserLanguageLevelDto>? LanguagesWithLevels { get; set; }
+        public ICollection<UserSolutionDto>? Solutions { get; set; }
+        public ICollection<ChallengeDto>? Challenges { get; set; }
     }
-
 }

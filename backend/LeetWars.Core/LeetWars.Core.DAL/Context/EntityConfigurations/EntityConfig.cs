@@ -10,7 +10,6 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
         {
             builder.Property(e => e.Id)
              .ValueGeneratedOnAdd();
-
         }
     }
 }

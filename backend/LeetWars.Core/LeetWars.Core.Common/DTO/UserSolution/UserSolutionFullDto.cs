@@ -11,6 +11,5 @@ namespace LeetWars.Core.Common.DTO.UserSolution
         public string Output { get; set; } = string.Empty;
         public DateTime? SubmittedAt { get; set; }
         public UserDto? User { get; set; }
-
     }
 }

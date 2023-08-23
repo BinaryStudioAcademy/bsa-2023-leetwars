@@ -8,6 +8,5 @@ namespace LeetWars.Core.Common.DTO.Challenge
         public string Title { get; set; } = string.Empty;
         public string Instructions { get; set; } = string.Empty;
         public int LevelId { get; set; }
-
     }
 }

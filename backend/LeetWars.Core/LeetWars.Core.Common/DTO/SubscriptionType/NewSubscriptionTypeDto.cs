@@ -8,6 +8,5 @@ namespace LeetWars.Core.Common.DTO.SubscriptionType
         public string Description { get; set; } = string.Empty;
         public decimal Cost { get; set; }
         public BillingPeriod BillingPeriod { get; set; }
-
     }
 }

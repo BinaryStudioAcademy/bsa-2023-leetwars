@@ -25,6 +25,7 @@ namespace LeetWars.Core.DAL.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Configure();
+
             modelBuilder.Seed();
         }
     }

@@ -9,6 +9,5 @@ namespace LeetWars.Core.Common.DTO.ChallengeVersion
         public string InitialSolution { get; set; } = string.Empty;
         public string CompleteSolution { get; set; } = string.Empty;
         public ChallengeStatus Status { get; set; }
-
     }
 }

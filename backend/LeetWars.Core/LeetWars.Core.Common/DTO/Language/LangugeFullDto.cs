@@ -6,6 +6,6 @@ namespace LeetWars.Core.Common.DTO.Language
     public class LangugeFullDto : Entity<int>
     {
         public string Name { get; set; } = string.Empty;
-        public List<LanguageVersionDto> LanguageVersions { get; set; } = new();
+        public ICollection<LanguageVersionDto>? LanguageVersions { get; set; }
     }
 }
