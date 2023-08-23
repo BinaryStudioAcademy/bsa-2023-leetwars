@@ -7,6 +7,7 @@ public class ProducerService : IProducerService
 {
     private readonly IConnection _connection;
     private readonly ProducerSettings _producerSettings;
+    private bool disposedValue;
 
     public ProducerService(IConnection connection, ProducerSettings producerSettings)
     {
@@ -54,8 +55,21 @@ public class ProducerService : IProducerService
             body);
     }
 
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposedValue)
+        {
+            if (disposing)
+            {
+                _connection.Dispose();
+            }
+
+            disposedValue = true;
+        }
+    }
     public void Dispose()
     {
-        _connection.Dispose();
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
     }
 }

@@ -2,11 +2,12 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
 namespace LeetWars.RabbitMQ;
-public class ConsumerService : IConsumerService
+public class ConsumerService : IConsumerService, IDisposable
 {
     private readonly IConnection _connection;
     private readonly IModel _channel;
     private readonly ConsumerSettings _settings;
+    private bool disposedValue;
 
     public ConsumerService(IConnection connection, ConsumerSettings settings)
     {
@@ -59,12 +60,7 @@ public class ConsumerService : IConsumerService
         }
     }
 
-    public void Dispose()
-    {
-        _connection.Dispose();
-        _channel.Dispose();
-    }
-
+    
     private void SetupChannel()
     {
         _channel.ExchangeDeclare(_settings.ExchangeName, _settings.ExchangeType);
@@ -72,5 +68,27 @@ public class ConsumerService : IConsumerService
         _channel.QueueDeclare(_settings.QueueName, true, false, false);
 
         _channel.QueueBind(_settings.QueueName, _settings.ExchangeName, _settings.RoutingKey);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposedValue)
+        {
+            if (disposing)
+            {
+                _channel.Dispose();
+                _connection.Dispose();
+            }
+
+            disposedValue = true;
+        }
+    }
+
+   
+
+    public void Dispose()
+    {
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
     }
 }
