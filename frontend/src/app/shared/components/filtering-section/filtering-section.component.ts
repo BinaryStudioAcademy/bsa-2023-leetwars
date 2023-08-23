@@ -14,7 +14,7 @@ export class FilteringSectionComponent {
 
     public statusesList = ['Approved & Beta', 'Approved', 'Beta'];
 
-    public progressesList = ['All', 'Not completed', 'completed', 'Not trained on'];
+    public progressesList = ['All', 'Not completed', 'Completed', 'Not trained on'];
 
     //TODO: Replace with real implementation
     public tagsList = ['Algorithms', 'Strings', 'Data Types', 'Formatting', 'Logic'];
