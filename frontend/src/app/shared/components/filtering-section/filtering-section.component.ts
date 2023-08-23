@@ -10,12 +10,12 @@ export class FilteringSectionComponent {
     public challengesList = ['nothing', 'to', 'be'];
 
     //TODO: Replace with real implementation
-    public languagesList = ['HTML', 'C#', 'Java'];
+    public languagesList = ['All', 'HTML', 'C#', 'Java'];
 
     public statusesList = ['Approved & Beta', 'Approved', 'Beta'];
 
     public progressesList = ['All', 'Not completed', 'Completed', 'Not trained on'];
 
     //TODO: Replace with real implementation
-    public tagsList = ['Algorithms', 'Strings', 'Data Types', 'Formatting', 'Logic'];
+    public tagsList = ['All', 'Algorithms', 'Strings', 'Data Types', 'Formatting', 'Logic'];
 }
