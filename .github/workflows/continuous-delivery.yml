@@ -57,7 +57,7 @@ jobs:
           build-args: PROJECT_PORT=5070
           push: true
 
-    build_builder_service:
+  build_builder_service:
       runs-on: ubuntu-latest
       steps:
         -
