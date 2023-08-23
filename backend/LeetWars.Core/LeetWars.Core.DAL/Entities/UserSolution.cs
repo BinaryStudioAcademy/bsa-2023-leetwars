@@ -2,7 +2,6 @@
 {
     public class UserSolution : AuditEntity<long>
     {
-        public long UserId { get; set; }
         public long ChallengeVersionId { get; set; }
         public string Code { get; set; }
         public string Output { get; set; }
