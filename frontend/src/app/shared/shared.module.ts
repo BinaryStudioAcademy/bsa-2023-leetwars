@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
 import { FilteringSectionComponent } from './components/filtering-section/filtering-section.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
@@ -24,6 +25,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
+        CustomInputComponent,
         ChallengeComponent,
         FilteringSectionComponent,
     ],
@@ -39,6 +41,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
+        CustomInputComponent,
         ChallengeComponent,
         FilteringSectionComponent,
     ],
