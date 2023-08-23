@@ -12,8 +12,8 @@ const routes: Routes = [
         loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
     },
     {
-        path: 'login',
-        loadChildren: () => import('./modules/log-in/log-in.module').then((m) => m.LogInModule),
+        path: 'auth',
+        loadChildren: () => import('./modules/login/log-in.module').then((m) => m.LogInModule),
     },
     { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];

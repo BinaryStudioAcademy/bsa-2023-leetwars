@@ -1,21 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 
 import { LogInPageComponent } from './log-in-page/log-in-page.component';
+import { SignUpComponent } from './sign-up-page/sign-up.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: LogInPageComponent,
-        children: [
-            {
-                path: '**',
-                component: NotFoundComponent,
-                pathMatch: 'full',
-            },
-        ],
-    },
+    { path: 'login', component: LogInPageComponent },
+    { path: 'register', component: SignUpComponent },
 ];
 
 @NgModule({

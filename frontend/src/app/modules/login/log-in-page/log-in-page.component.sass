@@ -1,5 +1,4 @@
-@import "color-variables"
-@import "fonts"
+@import 'color-variables'
 
 *
     box-sizing: border-box
@@ -15,7 +14,7 @@
 
 .logo-part
     grid-column: 1
-    background-color: $rich-black
+    background-color: $dark-grey
 
     display: flex
     flex-direction: column
@@ -29,7 +28,7 @@
 .circle 
     width: 118px
     height: 118px
-    background-color: #61AD00
+    background-color: $green
     border-radius: 50%
 
 .logo
@@ -88,7 +87,7 @@
     font-weight: 600
     line-height: normal
 
-    background-color: $medium-grey
+    background-color: transparent
 
     border-radius: 7px
     border: 1px solid $white
@@ -145,7 +144,7 @@
     font-weight: 400
     line-height: normal
 
-    background-color: $medium-grey
+    background-color: transparent
 
     border-radius: 7px
     border: 1px solid $white
@@ -167,18 +166,16 @@
         margin-bottom: 0px
 
 .password-cont
-    > input:focus 
+    >input:focus 
         outline: none
-
-.password-cont
-    > fa-icon
-        color: $grey
-
 
 .password-cont
     > .fa-icon
         width:calc(100% - 90%)
-
+    fa-icon
+        color: $transparent-grey
+    fa-icon:hover
+        color: $grey
 
 .password-input
     border: 0px
