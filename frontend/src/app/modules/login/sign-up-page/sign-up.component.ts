@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-sign-up',
     templateUrl: './sign-up.component.html',
     styleUrls: ['./sign-up.component.sass'],
 })
-export class SignUpComponent implements OnInit {
-    public registrationForm: FormGroup;
+export class SignUpComponent {
+    //TODO: Add real validation and don't forget to add it in html file
+    registrationForm = new FormGroup({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        username: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required]),
+    });
 
-    constructor(private fb: FormBuilder) {}
-
-    public ngOnInit() {
-        //TODO: Add validations to fields
-        this.registrationForm = this.fb.group({
-            email: ['', [Validators.required, Validators.email]],
-            username: ['', [Validators.required]],
-            password: ['', [Validators.required]],
-        });
+    // TODO: Add logic for signUp
+    public signUp() {
+        // do nothing
     }
 }

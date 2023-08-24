@@ -11,7 +11,7 @@
                 [Identifier]="'email'"
                 [Width]="'100%'"
                 [InputLabel]="'Email:'"
-                [InputPlaceholder]="'Enter your Email'"
+                [InputPlaceholder]="'Enter your email'"
                 (InputValueChange)="registrationForm.controls['email'].setValue($event)">
             </app-custom-input>
             <app-custom-input
@@ -35,7 +35,9 @@
                 <a>Privacy Policy</a>
             </p>
 
-            <button type="submit" class="form-button" [disabled]="!registrationForm.valid">Enlist</button>
+            <button type="submit" class="form-button" [disabled]="!registrationForm.valid" (click)="signUp()">
+                Enlist
+            </button>
         </form>
     </div>
 </div>

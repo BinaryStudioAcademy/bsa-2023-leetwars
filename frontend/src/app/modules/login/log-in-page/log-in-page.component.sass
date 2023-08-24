@@ -1,8 +1,5 @@
 @import 'color-variables'
 
-*
-    box-sizing: border-box
-
 .log-in-body
     position: absolute
     height: 100vh
@@ -10,7 +7,7 @@
     padding: 0px
 
     display: grid
-    grid-template-columns: 70vw calc(100vw - 70vw)
+    grid-template-columns: 70vw 30vw
 
 .logo-part
     grid-column: 1
@@ -25,7 +22,7 @@
     height: 100%
     width: 100%
 
-.circle 
+.circle
     width: 118px
     height: 118px
     background-color: $green
@@ -39,10 +36,6 @@
     font-weight: 600
     line-height: normal
     margin-top: 25px
-
-.round
-    width: 9.5
-
 
 .log-in-part
     grid-column: 2
@@ -60,7 +53,7 @@
 
 .log-in-part
   > *
-    width: calc(100% - 40%)
+    width: 60%
 
 .form-container
     flex-direction: column
@@ -109,77 +102,19 @@
 .logInForm
     display: flex
     flex-direction: column
+    gap: 1.4vw
 
-
-.logInForm
-    > *
-    width: 100%
-
-
-.form-label
-    color: $white
-    font-family: Open Sans
-    font-size: 12px
-    font-style: normal
-    font-weight: 600
-    line-height: normal
-
-.label-and-forget-password
+.forget-password
     display: flex
     flex-direction: row
     justify-content: space-between
-
-.forget-password-link
-    color: $cornflower
-    font-family: Montserrat
-    font-size: 12px
-    font-style: normal
-    font-weight: 400
-    line-height: normal
-
-.form-input
-    color: $white
-    font-family: Open Sans
-    font-size: 14px
-    font-style: normal
-    font-weight: 400
-    line-height: normal
-
-    background-color: transparent
-
-    border-radius: 7px
-    border: 1px solid $white
-
-    margin-bottom: 15px
-    padding-top: 13px
-    padding-bottom: 13px
-    padding-left: 6%
-    padding-right: 6% 
-
-.password-cont
-    border-radius: 7px
-    border: 1px solid $white
-    margin-bottom: 15px
-
-.password-cont
-    > input
-        width:90%
-        margin-bottom: 0px
-
-.password-cont
-    >input:focus 
-        outline: none
-
-.password-cont
-    > .fa-icon
-        width:calc(100% - 90%)
-    fa-icon
-        color: $transparent-grey
-    fa-icon:hover
-        color: $grey
-
-.password-input
-    border: 0px
+    &-link
+        color: $cornflower
+        font-family: Montserrat
+        font-size: 12px
+        font-style: normal
+        font-weight: 400
+        line-height: normal
 
 .submit-sign-in
     border-radius: 7px
@@ -194,7 +129,7 @@
     line-height: normal
 
     padding-top: 13px
-    padding-bottom: 13px 
+    padding-bottom: 13px
     margin-top: 18px
 
     cursor: pointer
@@ -202,7 +137,7 @@
 .submit-sign-in:disabled
     background-color: $dark-green
 
-.no-account 
+.no-account
     margin-bottom: 50px
     align-self: flex-end
     color: $white
@@ -220,8 +155,3 @@
     font-style: normal
     font-weight: 300
     line-height: normal
-
-.notification
-    color: red
-    font-size: 12px
-    margin-top: 5px
