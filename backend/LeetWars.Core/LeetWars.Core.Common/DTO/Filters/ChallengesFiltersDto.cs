@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetWars.Core.Common.DTO.Fillters
+namespace LeetWars.Core.Common.DTO.Filters
 {
-    public class ChallengesFilltersDto
+    public class ChallengesFiltersDto
     {
         public string? Title { get; set; }
         public ChallengeStatus? ChallengeStatus { get; set; }

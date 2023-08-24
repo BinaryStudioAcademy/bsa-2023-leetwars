@@ -2,7 +2,7 @@
 using LeetWars.Core.BLL.Services;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.Fillters;
+using LeetWars.Core.Common.DTO.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
@@ -17,7 +17,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ChallengePreviewDto>> GetAllAsync([FromQuery] ChallengesFilltersDto filters)
+        public async Task<ActionResult<ChallengePreviewDto>> GetAllAsync([FromQuery] ChallengesFiltersDto filters)
         {
             var challenges = await _challengeService.GetChallengesAsync(filters);
             return Ok(challenges);
