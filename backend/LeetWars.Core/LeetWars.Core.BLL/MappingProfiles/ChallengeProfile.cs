@@ -15,9 +15,11 @@ namespace LeetWars.Core.BLL.MappingProfiles
         public ChallengeProfile()
         {
             CreateMap<Challenge, ChallengePreviewDto>()
-           .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.UserName))
-           .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags))
-           .ForMember(dest => dest.Languages, opt => opt.MapFrom(src => src.Versions.Select(version => version.Language)));
+            .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => $"{src.Author.FirstName + " " + src.Author.LastName}"))
+            .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags))
+             .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+            .ForMember(dest => dest.Languages, opt => opt.MapFrom(src => src.Versions.Select(version => version.Language)))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => (int)src.Versions.FirstOrDefault().Status));
         }
     }
 }
