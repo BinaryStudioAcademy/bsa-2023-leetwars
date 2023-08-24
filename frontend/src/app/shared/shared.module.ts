@@ -8,9 +8,11 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { ChallengeComponent } from './components/challenge/challenge.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
+import { FilteringSectionComponent } from './components/filtering-section/filtering-section.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -26,6 +28,8 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         DropdownSelectComponent,
         SuggestedChallengeComponent,
         CustomInputComponent,
+        ChallengeComponent,
+        FilteringSectionComponent,
     ],
     exports: [
         CommonModule,
@@ -41,6 +45,8 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         DropdownSelectComponent,
         SuggestedChallengeComponent,
         CustomInputComponent,
+        ChallengeComponent,
+        FilteringSectionComponent,
     ],
 })
 export class SharedModule {

@@ -13,10 +13,9 @@ WORKDIR "/src/LeetWars.Builder"
 RUN dotnet build "LeetWars.Builder.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "LeetWars.Builder.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "LeetWars.Builder.csproj" -c Release -o /app/publish
 
 FROM base AS final
-USER nonroot
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENV ASPNETCORE_URLS http://*:5090

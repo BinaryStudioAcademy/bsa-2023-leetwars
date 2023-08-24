@@ -1,5 +1,8 @@
 @import 'src/styles/color-variables'
 
+button
+    all: revert
+
 .dropdown
   width: 350px
 
@@ -46,3 +49,15 @@ label
   fa-icon
     margin-left: auto
     color: $light-lavender-gray
+
+@media (max-width: 992px)
+  .dropdown
+    width: 200px
+
+@media (max-width: 768px)
+  .dropdown
+    width: 416px
+
+@media (max-width: 576px)
+  .dropdown
+    width: 250px
