@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-profile-page-main-info',
-  templateUrl: './profile-page-main-info.component.html',
-  styleUrls: ['./profile-page-main-info.component.sass']
+    selector: 'app-profile-page-main-info',
+    templateUrl: './profile-page-main-info.component.html',
+    styleUrls: ['./profile-page-main-info.component.sass'],
 })
-export class ProfilePageMainInfoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class ProfilePageMainInfoComponent {}
