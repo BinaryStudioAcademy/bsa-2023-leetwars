@@ -1,5 +1,4 @@
-﻿using LeetWars.Core.Common.DTO.CallengeLevel;
-using LeetWars.Core.Common.DTO.Language;
+﻿using LeetWars.Core.Common.DTO.Language;
 using LeetWars.Core.Common.DTO.Tag;
 using System;
 using System.Collections.Generic;
@@ -11,16 +10,14 @@ namespace LeetWars.Core.Common.DTO.Challenge
 {
     public class ChallengePreviewDto
     {
-        public string AuthorName { get; set; }
+        public string AuthorName { get; set; } = string.Empty;
 
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
-        public ICollection<TagDto> Tags { get; set; }
+        public ICollection<TagDto>? Tags { get; set; }
 
-        public ICollection<LanguageDto> Languages { get; set; }
+        public ICollection<LanguageDto>? Languages { get; set; }
 
         public int Status { get; set; }
-
-        //TODO: ByProgress
     }
 }

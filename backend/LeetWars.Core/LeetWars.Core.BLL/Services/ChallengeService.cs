@@ -21,7 +21,7 @@ namespace LeetWars.Core.BLL.Services
     {
         public ChallengeService(LeetWarsCoreContext context, IMapper mapper) : base(context, mapper) { }
 
-        public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFilltersDto filters)
+        public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFilltersDto fillters)
         {
             var challenges = _context.Challenges
                     .Include(challenge => challenge.Tags)
@@ -32,38 +32,38 @@ namespace LeetWars.Core.BLL.Services
                         .ThenInclude(version => version.Solutions)
                     .AsQueryable();
 
-            if (!string.IsNullOrEmpty(filters.Title))
+            if (!string.IsNullOrEmpty(fillters.Title))
             {
-                challenges = challenges.Where(p => p.Title.ToLower().Contains(filters.Title.ToLower()));
+                challenges = challenges.Where(p => p.Title.ToLower().Contains(fillters.Title.ToLower()));
             }
 
-            if (filters.ChallengeStatus.HasValue)
+            if (fillters.ChallengeStatus.HasValue)
             {
                 challenges = challenges.Where(challenge =>
-                    challenge.Versions.FirstOrDefault().Status == filters.ChallengeStatus);
+                    challenge.Versions.First().Status == fillters.ChallengeStatus);
             }
 
-            if (filters.LanguageId.HasValue)
+            if (fillters.LanguageId.HasValue)
             {
                 challenges = challenges.Where(challenge =>
-                    challenge.Versions.Any(version => version.LanguageId == filters.LanguageId));
+                    challenge.Versions.Any(version => version.LanguageId == fillters.LanguageId));
             }
 
-            if (filters.TagsIds != null)
+            if (fillters.TagsIds != null)
             {
                 challenges = challenges.Where(challenge =>
-                    challenge.Tags.Any(tag => filters.TagsIds.Contains(tag.Id)));
+                    challenge.Tags.Any(tag => fillters.TagsIds.Contains(tag.Id)));
             }
 
-            if (filters.Progress.HasValue)
+            if (fillters.Progress.HasValue)
             {
-                challenges = filters.Progress switch
+                challenges = fillters.Progress switch
                 {
                     ChallengesProgress.NotStarted => challenges.Where(challenge => challenge.Versions.All(version =>
-                        version.Solutions.All(solution => solution.CreatedAt == null))),
+                        version.Solutions.Count == 0)),
 
                     ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version =>
-                        version.Solutions.Any(solution => solution.CreatedAt != null))),
+                        version.Solutions.Count > 0)),
 
                     ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.All(version =>
                         version.Solutions.All(solution => solution.SubmittedAt != null))),
