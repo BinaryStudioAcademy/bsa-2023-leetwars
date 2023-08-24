@@ -8,7 +8,7 @@
             [style.height]="FormTextHeight"
             [style.width]="Width"
             class="input-formText"
-            [ngModel]="InputValue"
+            [(ngModel)]="InputValue"
             (ngModelChange)="onInputChange($event)"
             required
             placeholder="{{ InputPlaceholder }}" />
