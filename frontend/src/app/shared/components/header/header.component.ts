@@ -5,9 +5,6 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.sass'],
 })
-export class HeaderComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit(): void {}
+export class HeaderComponent {
     showMenu: boolean = false;
 }
