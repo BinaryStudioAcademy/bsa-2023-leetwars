@@ -1,29 +1,18 @@
 @import 'color-variables'
-@import 'screen-sizes-variables'
-
-.page-wrp // remove
-    overflow-y: auto
-    display: flex
 
 .profile-main-info-wrapper 
     font-family: 'Inter', sans-serif
-    background-color: $light-grey
+    background-color: $deep-dark-grey
     color: $white
-    box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.08), 0px 4px 8px 0px rgba(0, 0, 0, 0.08), 0px 2px 4px 0px rgba(0, 0, 0, 0.08)
+    box-shadow: 0px 6px 12px 0px $ultra-transparent-black, 0px 4px 8px 0px $ultra-transparent-black, 0px 2px 4px 0px $ultra-transparent-black
     border-radius: 8px
     width: 300px
-    min-width: 300px
-    // height: 100%
     padding: 21px 16px 28px 16px
-    margin: 10px //remove
-    display: flex
-    flex-direction: column
 
 .profile-main-info-header 
     padding: 0 0 16px 0 !important
 
 .user-info-container
-    display: flex
     gap: 16px
 
 .user-avatar-container 
@@ -35,8 +24,6 @@
     border-radius: 8px
 
 .user-info 
-    display: flex
-    flex-direction: column
     justify-content: space-between
 
 .username 
@@ -51,7 +38,7 @@
     span
         margin-right: 7px
         font-weight: 400
-        color: rgba(239, 241, 246, 0.75)
+        color: $transparent-light-grey
 
 .edit-profile-btn 
     background-color: $green
@@ -66,21 +53,16 @@
         background-color: $dark-olive-green
 
 .community-stats-list 
-    display: flex
-    flex-direction: column
     gap: 16px
 
 .community-stats-list-item-container
-    display: flex
     gap: 8px
 
 .community-stats-list-item 
-    display: flex
-    flex-direction: column
     gap: 4px
 
 .list-item-main-text 
-    color: rgba(239, 241, 246, 0.75)
+    color: $transparent-light-grey
     font-size: 12px
     line-height: 175%
     span
@@ -91,35 +73,31 @@
 .last-week-stats 
     font-size: 10px
     line-height: 160%
-    color: rgba(239, 242, 246, 0.60)
+    color: $light-blue-grey
     span
-        color: rgba(235, 235, 245, 0.30)
+        color: $delicate-lavender
         font-size: 12px
         margin-left: 8px
 
 .views fa-icon
-    color: #0A84FF
+    color: $vivid-blue
     
 .solution fa-icon
-    color: #64D2FF
+    color: $sky-blue
 
 .discuss fa-icon
-    color: #00B8A3
+    color: $vibrant-teal
 
 .reputation fa-icon
-    color: #FFA116
+    color: $warm-orange
 
 .skills-container
     border: none !important
 
 .skills-list
-    display: flex
-    flex-direction: column
     gap: 16px
     
 .skills-list-item-container 
-    display: flex
-    flex-direction: column
     gap: 12px
 
 .skills-list-item-text 
@@ -141,20 +119,20 @@
     transform: translateY(-50%)
 
 .skills-list-item-text.advanced::before 
-    background-color: #EF4743
+    background-color: $vibrant-red
 
 .skills-list-item-text.intermediate::before 
-    background-color: #FFC01E
+    background-color: $brigth-yellow
 
 .skills-list-item-text.fundamental::before 
-    background-color: #2CBB5D
+    background-color: $fresh-green
 
 // =====shared=====
 
 .not-enough-data 
     font-size: 11px
     line-height: 145.455%
-    color: rgba(235, 235, 245, 0.30)
+    color: $delicate-lavender
     text-align: center
     
 .content-section-name 
@@ -164,7 +142,7 @@
 
 .info-container
     padding: 16px 0
-    border-bottom: 1px solid rgba(247, 250, 255, 0.12)
+    border-bottom: 1px solid $gentle-transparent-blue
     display: flex
     flex-direction: column
     gap: 16px
