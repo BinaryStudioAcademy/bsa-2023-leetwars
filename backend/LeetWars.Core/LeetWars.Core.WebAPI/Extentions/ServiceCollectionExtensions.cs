@@ -18,8 +18,6 @@ namespace LeetWars.Core.WebAPI.Extentions
             services
                 .AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-
-            services.AddTransient<ISampleService, SampleService>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

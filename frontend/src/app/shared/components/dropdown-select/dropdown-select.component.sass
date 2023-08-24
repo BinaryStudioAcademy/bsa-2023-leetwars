@@ -1,5 +1,8 @@
 @import 'src/styles/color-variables'
 
+button
+    all: revert
+
 .dropdown
   width: 350px
 
@@ -37,8 +40,24 @@ label
   background-color: $dark-grey
   font-family: Open Sans
   font-weight: 600
-  padding: 13px 20px
+  padding-left: 14px
+  padding-right: 14px
+  padding-top: 0px
+  padding-bottom: 0px 
+  // padding: 13px 20px
 
   fa-icon
     margin-left: auto
     color: $light-lavender-gray
+
+@media (max-width: 992px)
+  .dropdown
+    width: 200px
+
+@media (max-width: 768px)
+  .dropdown
+    width: 416px
+
+@media (max-width: 576px)
+  .dropdown
+    width: 250px
