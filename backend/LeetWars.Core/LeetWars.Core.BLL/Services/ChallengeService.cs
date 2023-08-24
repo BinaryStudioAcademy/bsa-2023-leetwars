@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.Fillters;
 using LeetWars.Core.Common.DTO.Language;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,57 +23,57 @@ namespace LeetWars.Core.BLL.Services
 
         public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFilltersDto filters)
         {
-            var challenges = await _context.Challenges
-                .Include(challenge => challenge.Tags)
-                .Include(challenge => challenge.Author)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Language)
-                .ToListAsync();
+            var challenges = _context.Challenges
+                    .Include(challenge => challenge.Tags)
+                    .Include(challenge => challenge.Author)
+                    .Include(challenge => challenge.Versions)
+                        .ThenInclude(version => version.Language)
+                     .Include(challenge => challenge.Versions)
+                        .ThenInclude(version => version.Solutions)
+                    .AsQueryable();
 
             if (!string.IsNullOrEmpty(filters.Title))
             {
-                challenges = challenges.Where(challenge =>
-                    challenge.Title.Contains(filters.Title, StringComparison.OrdinalIgnoreCase))
-                    .ToList();
+                challenges = challenges.Where(p => p.Title.ToLower().Contains(filters.Title.ToLower()));
             }
 
             if (filters.ChallengeStatus.HasValue)
             {
                 challenges = challenges.Where(challenge =>
-                    challenge.Versions.Any(version => version.Status == (ChallengeStatus)filters.ChallengeStatus.Value))
-                    .ToList();
+                    challenge.Versions.FirstOrDefault().Status == filters.ChallengeStatus);
             }
 
             if (filters.LanguageId.HasValue)
             {
                 challenges = challenges.Where(challenge =>
-                    challenge.Versions.Any(version => version.LanguageId == filters.LanguageId))
-                    .ToList();
+                    challenge.Versions.Any(version => version.LanguageId == filters.LanguageId));
             }
 
-            if (filters.TagsIds.Any())
+            if (filters.TagsIds != null)
             {
                 challenges = challenges.Where(challenge =>
-                    challenge.Tags.Any(tag => filters.TagsIds.Contains(tag.Id))).ToList();
+                    challenge.Tags.Any(tag => filters.TagsIds.Contains(tag.Id)));
             }
 
-            var challengeDtoList = challenges.Select(challenge => new ChallengePreviewDto
+            if (filters.Progress.HasValue)
             {
-                AuthorName = challenge.Author.UserName,
-                Title = challenge.Title,
-                Tags = challenge.Tags.Select(tag => new Common.DTO.Tag.TagDto
+                challenges = filters.Progress switch
                 {
-                    Id = tag.Id,
-                    Name = tag.Name,
-                }).ToList(),
-                Languages = challenge.Versions.Select(version => new LanguageDto
-                {
-                    Id = version.Language.Id,
-                    Name = version.Language.Name
-                }).ToList()
-            }).ToList();
+                    ChallengesProgress.NotStarted => challenges.Where(challenge => challenge.Versions.All(version =>
+                        version.Solutions.All(solution => solution.CreatedAt == null))),
 
-            return challengeDtoList;
+                    ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version =>
+                        version.Solutions.Any(solution => solution.CreatedAt != null))),
+
+                    ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.All(version =>
+                        version.Solutions.All(solution => solution.SubmittedAt != null))),
+
+                    _ => challenges
+                };
+            }
+
+            var filteredChallenges = await challenges.ToListAsync();
+            return _mapper.Map<List<ChallengePreviewDto>>(filteredChallenges);
         }
     }
 }

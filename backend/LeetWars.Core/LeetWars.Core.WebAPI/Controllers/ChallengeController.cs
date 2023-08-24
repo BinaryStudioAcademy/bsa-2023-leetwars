@@ -2,6 +2,7 @@
 using LeetWars.Core.BLL.Services;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.Fillters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
+using LeetWars.Core.Common.DTO.Language;
 using LeetWars.Core.Common.DTO.Tag;
 using LeetWars.Core.DAL.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,9 @@ namespace LeetWars.Core.BLL.Services
 
         public async Task<ICollection<TagDto>> GetAllTagsAsync()
         {
-            throw new NotImplementedException();
+            var tags = await _context.Tags.ToListAsync();
+
+            return _mapper.Map<ICollection<TagDto>>(tags);
         }
     }
 }
