@@ -13,6 +13,7 @@ import { DropdownSelectComponent } from './components/dropdown-select/dropdown-s
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule],
@@ -22,6 +23,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
+        HeaderComponent,
     ],
     exports: [
         CommonModule,
@@ -35,6 +37,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
+        HeaderComponent,
     ],
 })
 export class SharedModule {
