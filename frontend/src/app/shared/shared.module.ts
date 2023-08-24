@@ -14,10 +14,10 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
 import { FilteringSectionComponent } from './components/filtering-section/filtering-section.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
+import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
-import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule],
