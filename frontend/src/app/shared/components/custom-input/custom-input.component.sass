@@ -1,24 +1,25 @@
 @import 'src/styles/color-variables'
-  
-.input-form 
-  background-color: $black
-  padding: 3.2vw 3.2vw 4.4vw
+
+.input-form
   flex-direction: column
   max-width: 600px
   margin: 0 auto
   flex-direction: column
   color: $white
+  position: relative
 
-.input-form-container 
+.input-form-container
   flex-direction: column
   margin: auto
 
-.input-form-label 
+.input-form-label
   font-size: 14px
   font-weight: 400
   margin: 0 auto
 
-.input-formText 
+.input-formText
+  font-family: Open Sans
+  font-weight: 600
   font-size: 14px
   padding: 12px 15px
   border: 1px solid $white
@@ -26,7 +27,15 @@
   outline: none
   border-radius: 7px
   background: transparent
-  &:focus 
+  &:focus
     outline: 2px solid $white
-  
 
+.hide-password
+    position: absolute
+    right: 16px
+    top: 36px
+    line-height: normal
+    fa-icon
+        color: $transparent-grey
+    fa-icon:hover
+        color: $grey

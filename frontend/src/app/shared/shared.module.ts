@@ -7,24 +7,27 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
+import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
 import { FilteringSectionComponent } from './components/filtering-section/filtering-section.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
+import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-import { ProgressbarModule }
-    from 'ngx-bootstrap/progressbar';
+import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, NgxChartsModule, ProgressbarModule.forRoot()],
+
+    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, MonacoEditorModule, NgxChartsModule, ProgressbarModule],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
@@ -33,14 +36,13 @@ import { ProgressbarModule }
         DropdownSelectComponent,
         SuggestedChallengeComponent,
         CustomInputComponent,
+        CodeEditorComponent,
         ChallengeComponent,
         FilteringSectionComponent,
         PieChartComponent,
-        ProgressBarComponent
-        
-        
-        
-        
+        ProgressBarComponent,
+        HeaderComponent,
+
     ],
     exports: [
         CommonModule,
@@ -51,6 +53,7 @@ import { ProgressbarModule }
         FontAwesomeModule,
         LoadingSpinnerComponent,
         NotFoundComponent,
+        CodeEditorComponent,
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
@@ -59,8 +62,9 @@ import { ProgressbarModule }
         ChallengeComponent,
         FilteringSectionComponent,
         PieChartComponent,
-        ProgressBarComponent
-        
+        ProgressBarComponent,
+        HeaderComponent,
+
     ],
     
 })

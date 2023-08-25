@@ -1,7 +1,7 @@
 @import 'color-variables'
 @import 'screen-sizes-variables'
 
-.register-page-wrp 
+.register-page-wrp
     background-color: $dark-grey
     display: grid
     grid-template-rows: 1fr 3fr
@@ -11,23 +11,23 @@
     font-family: 'Open Sans', sans-serif
     overflow-y: auto
     padding-bottom: 1.5vw
-    @media screen and (min-width: $extra-large) 
+    @media screen and (min-width: $extra-large)
         padding-bottom: 3vw
 
-.logo-container 
+.logo-container
     align-self: center
     display: flex
     align-items: center
     gap: 15px
     padding: 10px 0
 
-.logo-icon 
+.logo-icon
     border-radius: 50%
     width: 82px
     height: 82px
     background-color: $green
 
-.logo-text 
+.logo-text
     color: $white
     text-transform: uppercase
     font-family: 'Montserrat', sans-serif
@@ -35,12 +35,12 @@
     font-weight: 600
     line-height: normal
 
-.register-page-container 
+.register-page-container
     align-self: start
     width: 75%
     max-width: 1078px
     border-radius: 15px
-    background-color: $medium-grey
+    background-color: $charcoal-grey
     @media screen and (max-width: $mobile) 
         width: 90%
 
@@ -54,11 +54,11 @@
     min-width: 327px
     margin: 0 auto
     color: $white
-    @media screen and (max-width: $mobile) 
+    @media screen and (max-width: $mobile)
         gap: 2vw
         min-width: 100%
 
-.link-profile-button 
+.link-profile-button
     font-size: 14px
     font-weight: 600
     line-height: 130%
@@ -72,52 +72,6 @@
         background-color: $cornflower
         color: $dark-grey
 
-.form-input-container 
-    display: flex
-    flex-direction: column
-    gap: 3px
-
-.form-label 
-    font-size: 12px
-    margin: 0
-    font-weight: 600
-
-.form-input
-    width: 100%
-    padding: 12px 20px
-    background: transparent
-    color: $white
-    font-size: 14px
-    border: 1px solid white
-    border-radius: 7px
-    outline: none
-    &:focus
-        outline: 1px solid white  
-
-.password-input-container
-    padding: 12px 20px 12px 0
-    border: 1px solid white
-    border-radius: 7px
-    display: flex
-    align-items: center
-    gap: 10px
-    &:focus-within
-        outline: 1px solid white
-
-.form-input-password
-    border: none
-    outline: none
-    padding: 0 0 0 20px 
-    &:focus
-        outline: none
-
-.hide-password 
-    line-height: normal
-    fa-icon
-        color: $transparent-grey
-    fa-icon:hover
-        color: $grey
-
 .privacy-policy-text
     font-weight: 300
     line-height: normal
@@ -129,7 +83,7 @@
         font-weight: 600
         &:hover
             text-decoration: underline
-    @media screen and (max-width: $mobile) 
+    @media screen and (max-width: $mobile)
         margin: 5px 0
 
 .form-button
@@ -144,3 +98,6 @@
     text-align: center
     &:hover
       background-color: $dark-olive-green
+
+.form-button:disabled
+    background-color: $dark-green
