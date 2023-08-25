@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { UserSolution } from '@shared/models/user-solution/user-solution';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 import * as moment from 'moment';
+import { Moment } from 'moment';
 
 interface DayChartData {
     date: Date,
@@ -29,6 +30,8 @@ export class SubmissionsChartComponent implements OnInit, OnChanges {
     totalActiveDays = 0;
 
     maxStreak = 0;
+
+    currentStreak = 0;
 
     chartSize: [number, number] = [700, 110];
 
@@ -59,7 +62,9 @@ export class SubmissionsChartComponent implements OnInit, OnChanges {
     }
 
     private getSubmissionsCount(date: Date) {
-        return this.solutions.reduce((result, solution) => {
+        return this.solutions.reduce((previousValue, solution) => {
+            let result = previousValue;
+
             if (solution.submittedAt && moment(solution.submittedAt).startOf('day').isSame(date)) {
                 result++;
             }
@@ -68,68 +73,94 @@ export class SubmissionsChartComponent implements OnInit, OnChanges {
         }, 0);
     }
 
-    private updateChartData() {
+    private getWeekChartData(month: Moment, week: Moment, weekId: number): WeekChartData {
+        const seriesData: DayChartData[] = [];
+        const weekdaysId = [6, 5, 4, 3, 2, 1, 0];
+
+        weekdaysId.forEach(dayId => {
+            seriesData.push(this.getDayChartData(month, week, dayId));
+        });
+
+        //weekId stands for unique chart series, one of month week give and show month title, but other only id (not showed)
+        return {
+            name: `;${weekId}`,
+            series: seriesData,
+        };
+    }
+
+    private getDayChartData(month: Moment, week: Moment, dayId: number): DayChartData {
+        const weekDate = week.clone().add(dayId, 'day');
+        const date = weekDate.toDate();
+        const name = weekDate.format('ddd');
+        let value = -1; //not set
+
+        if (weekDate.clone().startOf('month').isSame(month)) {
+            value = this.getSubmissionsCount(date);
+            this.totalSubmissions += value;
+            if (value > 0) {
+                this.currentStreak++;
+                this.totalActiveDays++;
+                this.maxStreak = Math.max(this.maxStreak, this.currentStreak);
+            } else {
+                this.currentStreak = 0;
+            }
+        }
+
+        return { date, name, value };
+    }
+
+    // one week can be present in two months
+    monthIncludeSomeDayOfWeek(month: Moment, week: Moment) {
+        return month.isSame(week, 'month') || month.isSame(week.clone().endOf('week'), 'month');
+    }
+
+    private clearChartData() {
         this.chartData = [];
         this.totalSubmissions = 0;
         this.totalActiveDays = 0;
         this.maxStreak = 0;
-        let currentStreak = 0;
+        this.currentStreak = 0;
+    }
 
-        const firstDay = moment().subtract(1, 'year').add(1, 'day').startOf('day')
+    private updateChartData() {
+        this.clearChartData();
+
+        const firstDayOfPeriod = moment().subtract(1, 'year').add(1, 'day').startOf('day')
             .toDate();
-        let seriesMonth = moment(firstDay).startOf('month');
-        const seriesWeek = moment(firstDay).startOf('week');
-        const lastWeek = moment().startOf('week');
-        let monthChartData: WeekChartData[] = [];
-        let columnId = 0;
+        const lastWeekOfPeriod = moment().startOf('week');
 
-        while (seriesWeek <= lastWeek) {
-            columnId++;
-            const seriesData: DayChartData[] = [];
+        let currentMonth = moment(firstDayOfPeriod).startOf('month');
+        const currentWeek = moment(firstDayOfPeriod).startOf('week');
 
-            for (let i = 6; i >= 0; i--) {
-                const weekDate = seriesWeek.clone().add(i, 'day');
-                const date = weekDate.toDate();
-                const name = weekDate.format('ddd');
-                let value = -1; //not set
+        let currentMonthData: WeekChartData[] = [];
+        let weekId = 0;
 
-                if (weekDate.clone().startOf('month').isSame(seriesMonth)) {
-                    value = this.getSubmissionsCount(date);
-                    this.totalSubmissions += value;
-                    if (value > 0) {
-                        currentStreak++;
-                        this.totalActiveDays++;
-                        this.maxStreak = Math.max(this.maxStreak, currentStreak);
-                    } else {
-                        currentStreak = 0;
-                    }
-                }
+        while (currentWeek <= lastWeekOfPeriod) {
+            weekId++;
 
-                seriesData.push({ date, name, value });
-            }
-
-            const weekChartData: WeekChartData = {
-                name: `;${columnId}`,
-                series: seriesData,
-            };
+            const weekChartData = this.getWeekChartData(currentMonth, currentWeek, weekId);
 
             this.chartData.push(weekChartData);
-            if (seriesMonth.isSame(seriesWeek, 'month')
-                || seriesMonth.isSame(seriesWeek.clone().endOf('week'), 'month')) {
-                monthChartData.push(weekChartData);
+
+            // collect month weeks for center title position
+            if (this.monthIncludeSomeDayOfWeek(currentMonth, currentWeek)) {
+                currentMonthData.push(weekChartData);
             }
 
-            const nextWeekMonth = seriesWeek.clone().add(1, 'week').startOf('month');
+            const monthNextWeek = currentWeek.clone().add(1, 'week').startOf('month');
 
-            if (seriesMonth.isSame(nextWeekMonth)) {
-                seriesWeek.add(1, 'week');
+            if (currentMonth.isSame(monthNextWeek)) {
+                currentWeek.add(1, 'week');
             } else {
-                this.setMonthTitle(monthChartData, seriesMonth.format('MMM'));
-                seriesMonth = nextWeekMonth.clone();
-                monthChartData = [];
+                // new month starts next week
+                // align the name of the month by the number of weeks
+                this.setMonthTitle(currentMonthData, currentMonth.format('MMM'));
+                currentMonth = monthNextWeek.clone();
+                currentMonthData = [];
             }
         }
-        this.setMonthTitle(monthChartData, seriesMonth.format('MMM'));
+        // align the name of the month by the number of weeks
+        this.setMonthTitle(currentMonthData, currentMonth.format('MMM'));
     }
 
     private setMonthTitle(weeks: WeekChartData[], title: string) {

@@ -42,7 +42,7 @@ ngx-charts-heat-map {
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: rgba(255, 255, 255, 0.25);
+        background-color: $scrollbar-color;
         border-radius: 4px;
     }
 }
