@@ -40,7 +40,7 @@ namespace LeetWars.Core.BLL.Services
             if (filters.ChallengeStatus.HasValue)
             {
                 challenges = challenges.Where(challenge => challenge.Versions.Any() &&
-                    challenge.Versions.All(version => version.Status == filters.ChallengeStatus));
+                    challenge.Versions.Any(version => version.Status == filters.ChallengeStatus));
             }
 
             if (filters.LanguageId.HasValue)
