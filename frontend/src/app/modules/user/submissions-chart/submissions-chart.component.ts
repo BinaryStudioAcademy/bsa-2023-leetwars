@@ -73,40 +73,49 @@ export class SubmissionsChartComponent implements OnInit, OnChanges {
         }, 0);
     }
 
-    private getWeekChartData(month: Moment, week: Moment, weekId: number): WeekChartData {
-        const seriesData: DayChartData[] = [];
-        const weekdaysId = [6, 5, 4, 3, 2, 1, 0];
+    private getWeekChartData(month: Moment, week: Moment, weekNumber: number): WeekChartData {
+        const weekdays = {
+            sunday: 0,
+            monday: 1,
+            tuesday: 2,
+            wednesday: 3,
+            thursday: 4,
+            friday: 5,
+            saturday: 6,
+        };
 
-        weekdaysId.forEach(dayId => {
-            seriesData.push(this.getDayChartData(month, week, dayId));
-        });
+        const seriesData = Object.values(weekdays).reverse().map(dayNumber => this.getDayChartData(month, week, dayNumber));
 
-        //weekId stands for unique chart series, one of month week give and show month title, but other only id (not showed)
         return {
-            name: `;${weekId}`,
+            name: `;${weekNumber}`,
             series: seriesData,
         };
     }
 
-    private getDayChartData(month: Moment, week: Moment, dayId: number): DayChartData {
-        const weekDate = week.clone().add(dayId, 'day');
+    private getDayChartData(month: Moment, week: Moment, dayNumber: number): DayChartData {
+        const weekDate = week.clone().add(dayNumber, 'day');
         const date = weekDate.toDate();
         const name = weekDate.format('ddd');
-        let value = -1; //not set
+        let submissionsCount = -1; //not set
 
         if (weekDate.clone().startOf('month').isSame(month)) {
-            value = this.getSubmissionsCount(date);
-            this.totalSubmissions += value;
-            if (value > 0) {
-                this.currentStreak++;
-                this.totalActiveDays++;
-                this.maxStreak = Math.max(this.maxStreak, this.currentStreak);
-            } else {
-                this.currentStreak = 0;
-            }
+            submissionsCount = this.getSubmissionsCount(date);
+            this.nextSubmissionsCount(submissionsCount);
         }
 
-        return { date, name, value };
+        return { date, name, value: submissionsCount };
+    }
+
+    private nextSubmissionsCount(daySubmissionsCount: number) {
+        this.totalSubmissions += daySubmissionsCount;
+
+        if (daySubmissionsCount > 0) {
+            this.currentStreak++;
+            this.totalActiveDays++;
+            this.maxStreak = Math.max(this.maxStreak, this.currentStreak);
+        } else {
+            this.currentStreak = 0;
+        }
     }
 
     // one week can be present in two months
@@ -133,12 +142,12 @@ export class SubmissionsChartComponent implements OnInit, OnChanges {
         const currentWeek = moment(firstDayOfPeriod).startOf('week');
 
         let currentMonthData: WeekChartData[] = [];
-        let weekId = 0;
+        let weekNumber = 0;
 
         while (currentWeek <= lastWeekOfPeriod) {
-            weekId++;
+            weekNumber++;
 
-            const weekChartData = this.getWeekChartData(currentMonth, currentWeek, weekId);
+            const weekChartData = this.getWeekChartData(currentMonth, currentWeek, weekNumber);
 
             this.chartData.push(weekChartData);
 
