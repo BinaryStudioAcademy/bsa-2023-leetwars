@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -24,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
         SharedModule,
         AngularFireModule.initializeApp(environment.firebaseConfig, 'leetwars'),
         AngularFireAuthModule,
+        HttpClientModule,
     ],
 })
 export class AppModule {}
