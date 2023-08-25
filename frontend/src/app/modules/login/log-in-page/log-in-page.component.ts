@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
     selector: 'app-log-in-page',
@@ -16,6 +18,8 @@ export class LogInPageComponent implements OnInit {
 
     isDataIncorrect: boolean;
 
+    constructor(private authService: AuthService, private router: Router) {}
+
     ngOnInit(): void {
         this.isDataIncorrect = false;
     }
@@ -25,6 +29,8 @@ export class LogInPageComponent implements OnInit {
     }
 
     signIn() {
-        this.isDataIncorrect = false;
+        this.authService.login(this.logInForm.value.email!, this.logInForm.value.password!).subscribe(() => {
+            this.router.navigateByUrl('');
+        });
     }
 }
