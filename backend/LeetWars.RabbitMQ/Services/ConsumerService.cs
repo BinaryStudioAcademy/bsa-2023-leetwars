@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -9,10 +10,10 @@ public class ConsumerService : IConsumerService
     private readonly ConsumerSettings _settings;
     private bool disposedValue;
 
-    public ConsumerService(IConnection connection, ConsumerSettings settings)
+    public ConsumerService(IConnection connection, IOptions<ConsumerSettings> settings)
     {
         _connection = connection;
-        _settings = settings;
+        _settings = settings.Value;
         _channel = _connection.CreateModel();
     }
 
@@ -76,8 +77,8 @@ public class ConsumerService : IConsumerService
         {
             if (disposing)
             {
-                _channel.Dispose();
-                _connection.Dispose();
+                //_channel.Dispose();
+                //_connection.Dispose();
             }
 
             disposedValue = true;

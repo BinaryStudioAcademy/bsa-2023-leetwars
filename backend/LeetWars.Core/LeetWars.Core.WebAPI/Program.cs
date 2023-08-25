@@ -1,6 +1,8 @@
+using LeetWars.Core.BLL.Services;
 using LeetWars.Core.WebAPI.Extentions;
 using LeetWars.Core.WebAPI.Middlewares;
-using LeetWars.Core.WebAPI.Services;
+using LeetWars.RabbitMQ;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +27,17 @@ builder.Services.AddFirebaseAuthentication(builder.Configuration);
 builder.Services.AddCors();
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
-builder.Services.AddHostedService<RabbitMQProducerBackgroundService>();
+
+builder.Services.AddSingleton(con => new ConnectionFactory()
+{
+    Uri = new Uri(builder.Configuration["RabbitURI"])
+}
+.CreateConnection());
+builder.Services.Configure<ConsumerSettings>(builder.Configuration.GetSection("ConsumerSettings"))
+    .AddScoped<IConsumerService, ConsumerService>();
+
+builder.Services.AddHostedService<ConsumeMessages>();
+
 builder.WebHost.UseUrls("http://*:5050");
 
 var app = builder.Build();

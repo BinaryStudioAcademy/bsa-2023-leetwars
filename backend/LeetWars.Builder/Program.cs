@@ -1,10 +1,22 @@
 using LeetWars.Builder.Services;
+using LeetWars.Builder.Services.Abstract;
+using LeetWars.RabbitMQ;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddHostedService<RabbitMQConsumerBackgroundService>();
+builder.Services.AddSingleton(con => new ConnectionFactory()
+{
+    Uri = new Uri(builder.Configuration["RabbitURI"])
+}
+.CreateConnection());
+builder.Services.Configure<ProducerSettings>(builder.Configuration.GetSection("ProducerSettings"))
+    .AddScoped<IProducerService, ProducerService>();
+
+builder.Services.AddScoped<IProduceMessages, ProduceMessages>();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+//TODO: Replace with real implementation
+app.MapGet("/", (IProduceMessages produceMessages) => produceMessages.Send("Hello, world!"));
 
 app.Run();
