@@ -4,14 +4,12 @@
 .suggested-body
     display: grid
     grid-template-columns: 40% calc(100% - 40% - 2px)
-    width: 960px
     height: 283px
     gap: 2px
-
     border-radius: 15px
     border: 2px solid $green
     background-color: $dark-grey
-
+    margin-bottom: 0.5rem
     box-sizing: border-box
 
 .suggested-body
@@ -25,6 +23,7 @@
     border: none
     border-top-right-radius: 0px
     border-bottom-right-radius: 0px
+    padding-right: 5%
 
 .filters
     >h5, .dropdowns-container
@@ -32,24 +31,21 @@
 
 h5
     color: $white
-    font-family: Open Sans
-    font-style: normal
-    font-weight: 600
-    line-height: normal
     margin-top: 24px
 
 .dropdowns-container
     display: flex
     flex-direction: column
     justify-content: flex-start
+.dropdown
+    width: 95%!important
     
 .app-dropdown-select
     margin-bottom: 10px
     width: 100%
-
+  
 .button-group
     display: flex
-    width: 100%
     flex-direction: row
     margin-top:20px
     justify-content: center
@@ -69,6 +65,7 @@ h5
     border-radius: 9px
     background-color: $green
     border: none
+    margin-right: 10%
 
 .skip
     margin: right 4px
@@ -85,8 +82,9 @@ h5
 
 
 .description
+    display: flexbox
     > *
-        margin-left: 23px
+        margin: 1rem 1rem 
 
 .difficulty-and-title
     width:calc(100% - 45px - 23px)
@@ -123,7 +121,6 @@ h5
 
 .task-title
     color: $white
-    font-family: Open Sans
     font-size: 16px
     font-style: normal
     font-weight: 600
@@ -134,14 +131,11 @@ h5
 
 .description-text
     height: 57px
-    width: 378px
     color: $white
-    font-family: Open Sans
-    font-size: 14px
-    font-style: normal
-    font-weight: 300
-    line-height: normal
     margin-bottom: 10px
+    text-overflow: ellipsis
+    overflow: auto
+    
 
 .constraints
     margin-bottom: 20px
@@ -158,11 +152,6 @@ h5
 
 .constraints-item
     color: $white
-    font-family: Open Sans
-    font-size: 14px
-    font-style: normal
-    font-weight: 300
-    line-height: normal
     text-overflow: ellipsis
     overflow: hidden
     white-space: nowrap
