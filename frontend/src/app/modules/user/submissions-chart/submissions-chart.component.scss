@@ -1,0 +1,71 @@
+$component-width: 655px;
+
+:host {
+    display: block;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.component-container {
+    max-width: $component-width;
+}
+
+ngx-charts-heat-map {
+    display: block;
+    width: $component-width;
+    overflow: hidden;
+}
+
+::ng-deep .ngx-charts {
+    margin-left: -20px;
+    margin-top: -10px;
+
+    text {
+        fill: #fff;
+    }
+}
+
+.chart-header {
+    flex-wrap: wrap;
+    flex: 0 0 auto;
+    margin-bottom: 16px;
+}
+
+.scrollable {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 4px;
+    }
+}
+
+.primary-indicator-data {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+}
+
+.primary-indicator {
+    font-size: 14px;
+    line-height: 100%;
+    font-weight: 400;
+}
+
+.common-indicator-data {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.common-indicator {
+    font-size: 10px;
+    line-height: 16px;
+    font-weight: 400;
+}

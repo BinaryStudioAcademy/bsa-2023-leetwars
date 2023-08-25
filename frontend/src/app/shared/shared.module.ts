@@ -7,6 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
@@ -19,7 +20,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule],
+    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, NgxChartsModule],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
@@ -38,6 +39,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ReactiveFormsModule,
         RouterModule,
         FontAwesomeModule,
+        NgxChartsModule,
         LoadingSpinnerComponent,
         NotFoundComponent,
         ConfirmationModalComponent,
