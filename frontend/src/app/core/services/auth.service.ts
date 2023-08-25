@@ -98,8 +98,7 @@ export class AuthService {
 
                     throw new Error('User is not authorized');
                 }),
-            )
-            .pipe(first());
+            );
     }
 
     public sendVerificationMail(): Observable<void> {
