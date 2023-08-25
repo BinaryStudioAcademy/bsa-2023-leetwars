@@ -30,8 +30,4 @@ export class SignUpComponent {
                 this.router.navigateByUrl('');
             });
     }
-
-    public onSignInWithGitHub() {
-        console.log(this.signUpForm);
-    }
 }
