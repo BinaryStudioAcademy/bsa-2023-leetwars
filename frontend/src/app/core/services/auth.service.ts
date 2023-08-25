@@ -14,7 +14,7 @@ import { UserService } from './user.service';
 })
 // TODO: change FakeUser with real entity
 export class AuthService {
-    private userSubject: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(this.getUserInfo());
+    private userSubject: BehaviorSubject<User | undefined>;
 
     private user: User | undefined;
 
@@ -28,6 +28,7 @@ export class AuthService {
         private userService: UserService,
         private ngZone: NgZone,
     ) {
+        this.userSubject = new BehaviorSubject<User | undefined>(this.getUserInfo());
         afAuth.authState.subscribe(async (user) => {
             if (user) {
                 localStorage.setItem(this.tokenKeyName, await user.getIdToken());
@@ -102,18 +103,16 @@ export class AuthService {
     }
 
     public sendVerificationMail(): Observable<void> {
-        return from(this.afAuth.currentUser)
-            .pipe(
-                first(),
-                switchMap((user) => {
-                    if (user) {
-                        return user.sendEmailVerification();
-                    }
+        return from(this.afAuth.currentUser).pipe(
+            first(),
+            switchMap((user) => {
+                if (user) {
+                    return user.sendEmailVerification();
+                }
 
-                    throw new Error('User is not authorized');
-                }),
-            )
-            .pipe(first());
+                throw new Error('User is not authorized');
+            }),
+        );
     }
 
     // TODO: Implemented only firebase part
@@ -129,18 +128,14 @@ export class AuthService {
     }
 
     private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string = '') {
-        return auth.pipe(
-            switchMap((resp) =>
-                this.userService.createUser({
-                    uid: resp.user?.uid,
-                    userName: userName ?? resp.user?.displayName!,
-                    email: resp.user?.email ?? '',
-                    image: resp.user?.photoURL ?? undefined,
-                    timezone: new Date().getTimezoneOffset() / 60,
-                }),
-            ),
-            tap((user) => this.setUserInfo(user)),
-        );
+        return auth.pipe(switchMap((resp) =>
+            this.userService.createUser({
+                uid: resp.user?.uid,
+                userName: userName ?? resp.user?.displayName!,
+                email: resp.user?.email ?? '',
+                image: resp.user?.photoURL ?? undefined,
+                timezone: new Date().getTimezoneOffset() / 60,
+            })), tap((user) => this.setUserInfo(user)));
     }
 
     private getUserInfo(): User | undefined {
