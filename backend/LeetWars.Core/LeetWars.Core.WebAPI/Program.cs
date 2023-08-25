@@ -34,7 +34,7 @@ builder.Services.AddSingleton(con => new ConnectionFactory()
 }
 .CreateConnection());
 builder.Services.Configure<ConsumerSettings>(builder.Configuration.GetSection("ConsumerSettings"))
-    .AddScoped<IConsumerService, ConsumerService>();
+    .AddTransient<IConsumerService, ConsumerService>();
 
 builder.Services.AddHostedService<ConsumeMessages>();
 

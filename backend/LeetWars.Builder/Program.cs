@@ -10,7 +10,7 @@ builder.Services.AddSingleton(con => new ConnectionFactory()
 }
 .CreateConnection());
 builder.Services.Configure<ProducerSettings>(builder.Configuration.GetSection("ProducerSettings"))
-    .AddScoped<IProducerService, ProducerService>();
+    .AddTransient<IProducerService, ProducerService>();
 
 builder.Services.AddScoped<IProduceMessages, ProduceMessages>();
 
