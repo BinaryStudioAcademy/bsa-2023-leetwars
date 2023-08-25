@@ -100,13 +100,13 @@ export class SubmissionsChartComponent implements OnInit, OnChanges {
 
         if (weekDate.clone().startOf('month').isSame(month)) {
             submissionsCount = this.getSubmissionsCount(date);
-            this.nextSubmissionsCount(submissionsCount);
+            this.updateTotalData(submissionsCount);
         }
 
         return { date, name, value: submissionsCount };
     }
 
-    private nextSubmissionsCount(daySubmissionsCount: number) {
+    private updateTotalData(daySubmissionsCount: number) {
         this.totalSubmissions += daySubmissionsCount;
 
         if (daySubmissionsCount > 0) {
