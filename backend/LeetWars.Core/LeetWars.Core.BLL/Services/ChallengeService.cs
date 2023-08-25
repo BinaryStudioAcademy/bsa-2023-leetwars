@@ -39,8 +39,8 @@ namespace LeetWars.Core.BLL.Services
 
             if (filters.ChallengeStatus.HasValue)
             {
-                challenges = challenges.Where(challenge =>
-                    challenge.Versions.First().Status == filters.ChallengeStatus);
+                challenges = challenges.Where(challenge => challenge.Versions.Any() &&
+                    challenge.Versions.All(version => version.Status == filters.ChallengeStatus));
             }
 
             if (filters.LanguageId.HasValue)
@@ -60,10 +60,10 @@ namespace LeetWars.Core.BLL.Services
                 challenges = filters.Progress switch
                 {
                     ChallengesProgress.NotStarted => challenges.Where(challenge => challenge.Versions.All(version =>
-                        version.Solutions.Count == 0)),
+                        !version.Solutions.Any())),
 
                     ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version =>
-                        version.Solutions.Count > 0)),
+                       version.Solutions.Any())),
 
                     ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.All(version =>
                         version.Solutions.All(solution => solution.SubmittedAt != null))),
