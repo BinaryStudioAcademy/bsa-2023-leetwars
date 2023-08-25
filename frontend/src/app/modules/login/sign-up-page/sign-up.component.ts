@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 
@@ -9,23 +9,22 @@ import { AuthService } from '@core/services/auth.service';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent {
-    public showPassword = false;
-
-    signUpForm = new FormGroup({
-        email: new FormControl(''),
-        username: new FormControl(''),
-        password: new FormControl(''),
+    //TODO: Add real validation and don't forget to add it in html file
+    registrationForm = new FormGroup({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        username: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required]),
     });
 
     constructor(private authService: AuthService, private router: Router) {}
 
-    public togglePasswordVisibility() {
-        this.showPassword = !this.showPassword;
-    }
-
-    public onSignUp() {
+    public signUp() {
         this.authService
-            .register(this.signUpForm.value.username!, this.signUpForm.value.email!, this.signUpForm.value.password!)
+            .register(
+                this.registrationForm.value.username!,
+                this.registrationForm.value.email!,
+                this.registrationForm.value.password!,
+            )
             .subscribe(() => {
                 this.router.navigateByUrl('');
             });

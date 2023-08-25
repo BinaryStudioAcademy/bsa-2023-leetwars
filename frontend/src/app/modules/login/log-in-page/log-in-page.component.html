@@ -10,23 +10,27 @@
             <button class="third-party google">Sign in with Google</button>
             <H5 class="or-label">or</H5>
 
-            <form class="logInForm" [formGroup]="logInForm" (ngSubmit)="signIn()">
-                <label class="form-label">Email</label>
-                <input class="form-input" placeholder="Enter your name" type="email" formControlName="email" />
-                <div class="label-and-forget-password">
-                    <div class="form-label">Password</div>
+            <form class="logInForm" [formGroup]="logInForm">
+                <app-custom-input
+                    [InputType]="'email'"
+                    [Identifier]="'email'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Email'"
+                    [InputPlaceholder]="'Enter your email'"
+                    (InputValueChange)="logInForm.controls['email'].setValue($event)">
+                </app-custom-input>
+                <app-custom-input
+                    [InputType]="'password'"
+                    [Identifier]="'password'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Password:'"
+                    [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+                    (InputValueChange)="logInForm.controls['password'].setValue($event)">
+                </app-custom-input>
+                <div class="forget-password">
                     <a href="someUrl" class="forget-password-link">Forget password?</a>
                 </div>
-                <div class="password-cont">
-                    <input
-                        class="form-input password-input"
-                        type="{{ showPassword ? 'text' : 'password' }}"
-                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;"
-                        formControlName="password" />
-                    <fa-icon [icon]="showPassword ? ['far', 'eye'] : ['far', 'eye-slash']"></fa-icon>
-                </div>
-                <div *ngIf="isDataIncorrect" class="notification">Incorrect email or password</div>
-                <button class="submit-sign-in" [disabled]="logInForm.invalid" type="submit">Sign In</button>
+                <button class="submit-sign-in" [disabled]="!logInForm.valid" (click)="signIn()">Sign In</button>
             </form>
         </div>
         <div class="no-account">
