@@ -1,4 +1,8 @@
+using LeetWars.Builder.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHostedService<RabbitMQConsumerBackgroundService>();
+
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");

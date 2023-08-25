@@ -1,5 +1,6 @@
 using LeetWars.Core.WebAPI.Extentions;
 using LeetWars.Core.WebAPI.Middlewares;
+using LeetWars.Core.WebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddFirebaseAuthentication(builder.Configuration);
 builder.Services.AddCors();
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.Services.AddHostedService<RabbitMQProducerBackgroundService>();
 builder.WebHost.UseUrls("http://*:5050");
 
 var app = builder.Build();
