@@ -1,0 +1,37 @@
+<p>progress bar works</p>
+<div class="column">
+    <div class="col-sm-4">
+        <div class="mb-2">
+            <progressbar [max]="max" [value]="value" 
+                [type]="type"  >
+                
+                {{value}}
+            </progressbar>
+        </div>
+    </div>
+  
+    <br />
+  
+    <div class="col-sm-4">
+        <div class="mb-2">
+            <progressbar [max]="max" [value]="value" 
+                [type]="type" >
+                
+            </progressbar>
+        </div>
+    </div>
+  
+    <br />
+  
+    <div class="col-sm-4">
+        <div class="mb-2">
+            <progressbar 
+            [max]="max"
+            [value]="value" 
+            [type]="type" 
+            >
+                
+            </progressbar>
+        </div>
+    </div>
+</div>

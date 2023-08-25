@@ -1,0 +1,50 @@
+.pie-title
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  padding-bottom: 1em
+
+  .chart-container
+    position: relative
+    display: inline-block
+    
+    
+
+  .center-text
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-size: 24px
+    font-weight: 500
+    width: 36px
+    height: 52px
+    color: white
+
+  p
+    margin: 0
+    padding: auto
+
+::ng-deep
+  ngx-charts-pie-chart
+    .arc
+        width: 10px
+
+::ng-deep
+  .ngx-charts
+    .path
+      stroke-width: 2px
+
+::ng-deep .ngx-charts .gridline-path 
+    stroke: var(--gray-default-rgba) !important
+
+
+::ng-deep ngx-charts-pie-chart .g 
+  width: 10px
+
+      

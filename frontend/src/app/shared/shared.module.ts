@@ -17,9 +17,14 @@ import { GeneralModalComponent } from './components/general-modal/general-modal.
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ProgressbarModule }
+    from 'ngx-bootstrap/progressbar';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule],
+    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, NgxChartsModule, ProgressbarModule.forRoot()],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
@@ -30,6 +35,12 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         CustomInputComponent,
         ChallengeComponent,
         FilteringSectionComponent,
+        PieChartComponent,
+        ProgressBarComponent
+        
+        
+        
+        
     ],
     exports: [
         CommonModule,
@@ -47,7 +58,11 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         CustomInputComponent,
         ChallengeComponent,
         FilteringSectionComponent,
+        PieChartComponent,
+        ProgressBarComponent
+        
     ],
+    
 })
 export class SharedModule {
     constructor(library: FaIconLibrary) {
