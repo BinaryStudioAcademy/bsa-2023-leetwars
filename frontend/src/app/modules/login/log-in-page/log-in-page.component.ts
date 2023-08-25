@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,25 +6,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     templateUrl: './log-in-page.component.html',
     styleUrls: ['./log-in-page.component.sass'],
 })
-export class LogInPageComponent implements OnInit {
+export class LogInPageComponent {
+    //TODO: Add real validation and don't forget to add it in html file
     logInForm = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', Validators.required),
     });
 
-    showPassword: boolean = false;
-
-    isDataIncorrect: boolean;
-
-    ngOnInit(): void {
-        this.isDataIncorrect = false;
-    }
-
-    toggleShow() {
-        this.showPassword = !this.showPassword;
-    }
-
+    //TODO: Add logic for signIn
     signIn() {
-        this.isDataIncorrect = false;
+        // do nothing
     }
 }
