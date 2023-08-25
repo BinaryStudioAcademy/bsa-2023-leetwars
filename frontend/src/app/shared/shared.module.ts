@@ -7,8 +7,10 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
+import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
@@ -20,7 +22,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule],
+    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, MonacoEditorModule],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
@@ -29,6 +31,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         DropdownSelectComponent,
         SuggestedChallengeComponent,
         CustomInputComponent,
+        CodeEditorComponent,
         ChallengeComponent,
         FilteringSectionComponent,
         HeaderComponent,
@@ -42,6 +45,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         FontAwesomeModule,
         LoadingSpinnerComponent,
         NotFoundComponent,
+        CodeEditorComponent,
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
