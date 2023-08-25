@@ -1,8 +1,9 @@
+@import 'color-variables';
 $component-width: 655px;
 
 :host {
     display: block;
-    color: white;
+    color: $white;
     padding: 16px;
     border-radius: 8px;
 }
@@ -22,7 +23,7 @@ ngx-charts-heat-map {
     margin-top: -10px;
 
     text {
-        fill: #fff;
+        fill: $white;
     }
 }
 
