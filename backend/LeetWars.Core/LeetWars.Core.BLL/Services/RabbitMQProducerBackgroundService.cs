@@ -1,4 +1,6 @@
 ﻿using LeetWars.RabbitMQ;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
 
 namespace LeetWars.Core.WebAPI.Services
