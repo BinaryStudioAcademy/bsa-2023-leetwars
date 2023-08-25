@@ -137,10 +137,7 @@ export class AuthService {
                     email: resp.user?.email ?? '',
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
-                }),
-            ),
-            tap((user) => this.setUserInfo(user)),
-        );
+                })), tap((user) => this.setUserInfo(user)));
     }
 
     private getUserInfo(): User | undefined {
