@@ -1,7 +1,11 @@
 <div class="filtering-section d-flex">
     <div class="filters d-flex flex-column">
         <div class="search-container m-0-12px">
-            <input type="text" placeholder="Select" class="form-control search-filter" id="search" />
+            <app-custom-input
+                [Identifier]="'search'"
+                [Width]="'100%'"
+                [Height]="'100%'"
+                [InputPlaceholder]="'Search'"></app-custom-input>
             <fa-icon [icon]="'search'" size="lg" class="search-filter-icon"></fa-icon>
         </div>
         <app-dropdown-select
