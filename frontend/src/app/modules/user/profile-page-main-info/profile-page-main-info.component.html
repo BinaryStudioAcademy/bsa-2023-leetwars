@@ -6,8 +6,8 @@
                 <img src="assets/images/default-profile-img.jpg" alt="User avatar" class="user-avatar">
             </div>
             <div class="user-info d-flex flex-column">
-                <p class="username">TatiHutii</p>
-                <p class="user-rank"><span>Rank</span>~5,000,000</p>
+                <p class="username">{{username}}</p>
+                <p class="user-rank"><span>Rank</span>{{userRank}}</p>
             </div>
         </div>
         <button class="edit-profile-btn">Edit Profile</button>
@@ -21,30 +21,30 @@
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="views community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'eye'"></fa-icon>
-                        <p class="list-item-main-text">Views<span>0</span></p>
+                        <p class="list-item-main-text">Views<span>{{communityViews}}</span></p>
                     </div>
-                    <p class="last-week-stats">Last week<span>0</span></p>
+                    <p class="last-week-stats">Last week<span>{{communityLastWeekViews}}</span></p>
                 </li>
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="solution community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'square-check'"></fa-icon>
-                        <p class="list-item-main-text">Solution<span>0</span></p>
+                        <p class="list-item-main-text">Solution<span>{{communitySolution}}</span></p>
                     </div>
-                    <p class="last-week-stats">Last week<span>0</span></p>
+                    <p class="last-week-stats">Last week<span>{{communityLastWeekSolution}}</span></p>
                 </li>
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="discuss community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'comments'"></fa-icon>
-                        <p class="list-item-main-text">Discuss<span>0</span></p>
+                        <p class="list-item-main-text">Discuss<span>{{communityDiscuss}}</span></p>
                     </div>
-                    <p class="last-week-stats">Last week<span>0</span></p>
+                    <p class="last-week-stats">Last week<span>{{communityLastWeekDiscuss}}</span></p>
                 </li>
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="reputation community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'star'"></fa-icon>
-                        <p class="list-item-main-text">Reputation<span>0</span></p>
+                        <p class="list-item-main-text">Reputation<span>{{communityReputation}}</span></p>
                     </div>
-                    <p class="last-week-stats">Last week<span>0</span></p>
+                    <p class="last-week-stats">Last week<span>{{communityLastWeekReputation}}</span></p>
                 </li>
             </ul>
         </div>
