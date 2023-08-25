@@ -8,7 +8,7 @@ import { AuthService } from '@core/services/auth.service';
     templateUrl: './log-in-page.component.html',
     styleUrls: ['./log-in-page.component.sass'],
 })
-export class LogInPageComponent {
+export class LogInPageComponent implements OnInit {
     //TODO: Add real validation and don't forget to add it in html file
     logInForm = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
