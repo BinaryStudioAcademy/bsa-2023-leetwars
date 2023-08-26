@@ -1,10 +1,13 @@
 <p>landing-page works!</p>
 <app-suggested-challenge></app-suggested-challenge>
-<app-pie-chart 
-[CurrentNumber] = "20" 
-[TotalNumber]= "30" 
-[activeColor]="'#FFA116'"></app-pie-chart>
-
-<app-progress-bar></app-progress-bar>
-<app-solved-problem></app-solved-problem>
-<!-- <app-progress-bar max="100" value="27" type="success" [striped]="true" [animate]="true"></app-progress-bar> -->
+<app-solved-problem 
+[easyLabel]="'Easy'"
+[mediumLabel]="'Medium'"
+[hardLabel]="'Hard'"
+[easyTasksCompleted]="100"
+[mediumTasksCompleted]="250"
+[hardTasksCompleted]="550"
+[easyTasks]="300"
+[mediumTasks]="500"
+[hardTasks]="700"
+></app-solved-problem>

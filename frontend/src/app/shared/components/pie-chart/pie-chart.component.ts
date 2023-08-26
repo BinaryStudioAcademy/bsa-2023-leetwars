@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 
+import { PieChartData } from './data';
+
 @Component({
     selector: 'app-pie-chart',
     templateUrl: './pie-chart.component.html',
@@ -8,13 +10,16 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
 })
 export class PieChartComponent implements OnInit {
     @Input() CurrentNumber: number;
+
     @Input() TotalNumber: number;
+
     @Input() activeColor: string;
 
-    single: any[] = [];
+    single: PieChartData[] = [];
+
     colorScheme!: Color;
 
-    view: [number, number] = [140, 140]; //height & width
+    view: [number, number] = [140, 140];
 
     constructor() {
         Object.assign(this, { this: this.single });

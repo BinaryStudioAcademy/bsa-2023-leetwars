@@ -1,13 +1,9 @@
+<div class="progress-info">
+    <div class="level">{{level}}</div>
+    <div class="number"><span>{{solved}}</span><span>/{{total}}</span></div>
+    <p>{{data}}</p>
+</div>
 
-    <div class="progress-info">
-        <div class="level">{{level}}</div>
-        <div class="number"><span>{{solved}}</span><span>/{{total}}</span></div>
-        <p>{{data}}</p>
-        <!-- <p>{{level}}</p>
-        <p>{{solved}} /{{total}}</p>
-        <p>{{data}}</p> -->
-    </div>
-    <div class="progress-bar">
-        <progressbar [max]="total" [value]="solved"></progressbar>
-    </div>
-
+<div class="progress-bar">
+    <progressbar [max]="total" [value]="solved"></progressbar>
+</div>

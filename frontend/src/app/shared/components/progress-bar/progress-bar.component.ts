@@ -6,12 +6,11 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./progress-bar.component.sass'],
 })
 export class ProgressBarComponent {
-    @Input() total: number = 1000;
+    @Input() total: number;
 
-    @Input() solved: number = 500;
+    @Input() solved: number;
 
-    @Input() data: string = 'no data';
+    @Input() data: string;
 
-    @Input() level: string = 'easy';
-    
+    @Input() level: string;
 }

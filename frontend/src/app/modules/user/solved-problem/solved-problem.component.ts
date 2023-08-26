@@ -1,29 +1,35 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-solved-problem',
     templateUrl: './solved-problem.component.html',
     styleUrls: ['./solved-problem.component.sass'],
 })
-export class SolvedProblemComponent {
-    constructor() {}
+export class SolvedProblemComponent implements OnInit {
+    @Input() easyLabel: string;
 
-    @Input() color: string;
+    @Input() mediumLabel: string;
 
-    @Input() easyTasksCompleted: number = 100;
+    @Input() hardLabel: string;
 
-    @Input() mediumTasksCompleted: number = 250;
+    @Input() easyTasksCompleted: number;
 
-    @Input() hardTasksCompleted: number = 550;
+    @Input() mediumTasksCompleted: number;
 
-    @Input() easyTasks: number = 300;
+    @Input() hardTasksCompleted: number;
 
-    @Input() mediumTasks: number = 500;
+    @Input() easyTasks: number;
 
-    @Input() hardTasks: number = 700;
+    @Input() mediumTasks: number;
 
-    @Input() totalTasks: number = this.easyTasks + this.mediumTasks + this.hardTasks;
+    @Input() hardTasks: number;
 
-    @Input() totalTasksCompleted: number =
-        this.easyTasksCompleted + this.mediumTasksCompleted + this.hardTasksCompleted;
+    totalTasks: number;
+
+    totalTasksCompleted: number;
+
+    ngOnInit() {
+        this.totalTasks = this.easyTasks + this.mediumTasks + this.hardTasks;
+        this.totalTasksCompleted = this.easyTasksCompleted + this.mediumTasksCompleted + this.hardTasksCompleted;
+    }
 }

@@ -7,6 +7,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
@@ -19,15 +21,24 @@ import { GeneralModalComponent } from './components/general-modal/general-modal.
 import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
+import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 
 @NgModule({
 
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, MonacoEditorModule, NgxChartsModule, ProgressbarModule],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        FontAwesomeModule,
+        NgbModule,
+        MonacoEditorModule,
+        NgxChartsModule,
+        ProgressbarModule,
+    ],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
@@ -42,7 +53,6 @@ import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
         PieChartComponent,
         ProgressBarComponent,
         HeaderComponent,
-
     ],
     exports: [
         CommonModule,
@@ -66,7 +76,7 @@ import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
         HeaderComponent,
 
     ],
-    
+
 })
 export class SharedModule {
     constructor(library: FaIconLibrary) {
