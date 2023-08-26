@@ -7,11 +7,10 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
   styleUrls: ['./pie-chart.component.sass']
 })
 export class PieChartComponent implements OnInit {
-  solved: number = 0; //our text in the middle of the pie
-  @Input() CurrentNumber: number = 0;
-  @Input() TotalNumber: number = 0;
-  @Input() PieTitle: string = 'Pie Chart';
-  @Input() activeColor: string = '#000';
+  solved: number = 0; 
+  @Input() CurrentNumber: number;
+  @Input() TotalNumber: number;
+  @Input() activeColor: string;
  
   
 
@@ -19,7 +18,7 @@ export class PieChartComponent implements OnInit {
   colorScheme!: Color;
   
 
-  view: [number, number] = [184, 184]; //height & width
+  view: [number, number] = [140, 140]; //height & width
 
   constructor(
   ) {

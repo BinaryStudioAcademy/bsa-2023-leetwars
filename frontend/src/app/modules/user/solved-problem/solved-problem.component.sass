@@ -1,0 +1,112 @@
+.main-container
+  height: 186px
+  width: 410px
+  background-color: black
+  padding-top: 16px
+  padding-left: 13px
+  border-radius: 8px
+  font-family: Arial, Helvetica, sans-serif
+
+.main-container p
+  width: 89px
+  height: 16px
+  font-size: 11px
+  margin: 0
+
+/* Statistics section styles */
+
+.statistics
+  height: 140px
+  width: 346px
+  margin-left: 18px
+  display: flex
+  background-color: black
+
+.circle
+  width: 100px
+  height: 100px
+  margin-top: 32px
+  position: relative
+  align-items: center
+
+  .circle-icon
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+  .circle-icon i
+    font-size: 92px
+
+.circle-icon i
+  border-radius: 50%
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: 92px
+  width: 100px
+  height: 100px
+  color: black
+  border: 5px solid #FFA116
+
+.circle-text
+  width: 36px
+  height: 52px
+  position: absolute
+  color: white
+  top: 24px
+  left: 32.1px
+  display: flex
+  flex-direction: column
+
+  p:first-child
+    font-family: Inter
+    font-size: 24px
+    width: 16px
+    height: 36px
+    font-weight: 500
+    text-align: center
+    margin: 0 auto
+
+  p:last-child
+    font-family: Open Sans
+    font-size: 11px
+    width: 36px
+    height: 16px
+    font-weight: 400
+    text-align: center
+
+.levels
+  display: flex
+  flex-direction: column
+  width: 214px
+  margin-left: 32px
+
+.level-card
+  width: 214px
+  height: 36px
+  
+  &:not(:first-child)
+    height: 52px
+    padding-top: 16px
+
+
+::ng-deep .level-card:nth-child(1) .progress-bar
+    background-color: #2CBB5D40
+    width: 100%
+
+::ng-deep .level-card:nth-child(2) .progress-bar
+    background-color: #FFC01E40
+    width: 100%    
+
+::ng-deep .level-card:nth-child(3) .progress-bar
+    background-color: #EF474340
+    width: 100%    
+
+::ng-deep .progress 
+    background-color: transparent
+  

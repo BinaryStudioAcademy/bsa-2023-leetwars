@@ -13,4 +13,5 @@ export class ProgressBarComponent {
     @Input() data: string = 'no data';
 
     @Input() level: string = 'easy';
+    
 }

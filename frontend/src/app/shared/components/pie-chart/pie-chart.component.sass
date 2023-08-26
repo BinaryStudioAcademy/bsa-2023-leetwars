@@ -3,13 +3,23 @@
   flex-direction: column
   align-items: center
   justify-content: center
-  padding-bottom: 1em
+  
 
   .chart-container
     position: relative
     display: inline-block
     
     
+    
+  .circle-text
+  width: 36px
+  height: 52px
+  position: absolute
+  color: white
+  top: 24px
+  left: 32.1px
+  display: flex
+  flex-direction: column
 
   .center-text
     display: flex
@@ -27,8 +37,11 @@
     color: white
 
   p
+    height: 16px
+    width: 36px
     margin: 0
     padding: auto
+    font-size: 11px
 
 ::ng-deep
   ngx-charts-pie-chart

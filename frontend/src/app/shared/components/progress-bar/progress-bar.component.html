@@ -1,10 +1,13 @@
-<div class="level-card level-easy">
+
     <div class="progress-info">
-        <p>{{level}}</p>
-        <p>{{solved}} /{{total}}</p>
+        <div class="level">{{level}}</div>
+        <div class="number"><span>{{solved}}</span><span>/{{total}}</span></div>
         <p>{{data}}</p>
+        <!-- <p>{{level}}</p>
+        <p>{{solved}} /{{total}}</p>
+        <p>{{data}}</p> -->
     </div>
     <div class="progress-bar">
-        <progressbar [value]="solved"></progressbar>
+        <progressbar [max]="total" [value]="solved"></progressbar>
     </div>
-</div>
+

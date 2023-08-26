@@ -1,0 +1,41 @@
+<div class="main-container">
+    <p>Solved Problems</p>
+    <div class="statistics">
+        <div class="circle">
+            <app-pie-chart [CurrentNumber]="solved" [TotalNumber]="totalTasks" [activeColor]="'#FFA116'">
+            </app-pie-chart>
+            <!-- <div class="circle-icon">
+                <i class="fas fa-circle"></i>
+            </div>
+            <div class="circle-text">
+                <p>0</p>
+                <p>Solved</p>
+            </div> -->
+
+        </div>
+
+        <div class="levels">
+            <div class="level-card">
+
+                <app-progress-bar [total]="easyTasks" [solved]="easyTasksCompleted" [data]="'some data'"
+                    [level]="'Easy'">
+                </app-progress-bar>
+
+            </div>
+            <div class="level-card">
+
+                <app-progress-bar [total]="mediumTasks" [solved]="mediumTasksCompleted" [data]="'some data'"
+                    [level]="'Medium'">
+                </app-progress-bar>
+
+            </div>
+            <div class="level-card">
+
+                <app-progress-bar [total]="hardTasks" [solved]="hardTasksCompleted" [data]="'some data'"
+                    [level]="'Hard'">
+                </app-progress-bar>
+
+            </div>
+        </div>
+
+    </div>
