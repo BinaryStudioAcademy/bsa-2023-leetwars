@@ -76,8 +76,8 @@ public class ConsumerService : IConsumerService
         {
             if (disposing)
             {
-                _channel.Dispose();
-                _connection.Dispose();
+                //_channel.Dispose();
+                //_connection.Dispose();
             }
 
             disposedValue = true;
