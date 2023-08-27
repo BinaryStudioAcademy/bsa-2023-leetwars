@@ -1,0 +1,54 @@
+@import 'src/styles/color-variables'
+@import 'src/styles/fonts'
+    
+.header  
+  display: flex
+  justify-content: space-between  
+  align-items: center  
+  background-color: $deep-dark-grey
+  color: white  
+  padding: 0.5rem
+  margin-bottom: 0.5rem
+  border-radius: 8px  
+ 
+.logo img  
+  width: 50px
+  cursor: pointer
+ 
+.user-menu
+    display: flex  
+
+.notification
+  margin-right: 2rem
+  cursor: pointer  
+
+.user
+  position: relative
+  align-items: center  
+  cursor: pointer
+  padding-right: 1rem  
+ 
+.user-logo  
+  width: 40px
+  height: 40px  
+  border-radius: 50%  
+  margin-right: 0.5rem  
+
+.username  
+  font-weight: bold
+  width: 100%
+
+.menu-wraper
+  position: relative
+
+.menu 
+    z-index: 99
+    position: absolute
+    right: 0.2rem
+    top: 40px
+    padding: .8rem
+    background-color: $white
+    border-radius: 8px
+    display: grid
+    justify-content: flex-start
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
