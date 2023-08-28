@@ -6,26 +6,24 @@ namespace LeetWars.Notifier.WebAPI.Services
 {
     public class MessageConsumerService : BackgroundService
     {
-        private readonly IServiceScopeFactory _serviceScopeFactory;
+        private readonly IConsumerService _consumerService;
 
-        public MessageConsumerService(IServiceScopeFactory serviceScopeFactory)
+        public MessageConsumerService(IConsumerService consumerService)
         {
-            _serviceScopeFactory = serviceScopeFactory;
+            _consumerService = consumerService; 
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            using var scope = _serviceScopeFactory.CreateScope();
-            var consumerService = scope.ServiceProvider.GetRequiredService<IConsumerService>();
             var handler = new EventHandler<BasicDeliverEventArgs>((model, args) =>
             {
                 var body = args.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
                 Console.WriteLine(message); //impement some logic here using signalR
-                consumerService.SetAcknowledge(args.DeliveryTag, true);
+                _consumerService.SetAcknowledge(args.DeliveryTag, true);
             });
 
-            consumerService.Listen(handler);
+            _consumerService.Listen(handler);
             return Task.CompletedTask;
         }
     }

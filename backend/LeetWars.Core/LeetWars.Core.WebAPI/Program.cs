@@ -12,9 +12,9 @@ builder.Configuration
     .Build();
 
 builder.Services.AddControllers();
-builder.Services.AddLeetWarsCoreContext(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
-
+builder.Services.AddLeetWarsCoreContext(builder.Configuration);
+builder.Services.AddRabbitMqServices(builder.Configuration);
 builder.Services.RegisterCustomServices(builder.Configuration);
 builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();

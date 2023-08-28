@@ -13,14 +13,12 @@ builder.Configuration
 
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
-builder.Services.RegisterCustomServices(builder.Configuration);
+builder.Services.AddRabbitMqServices(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
-
-builder.Services.AddHostedService<MessageConsumerService>();
 builder.WebHost.UseUrls("http://*:5070");
 
 var app = builder.Build();
