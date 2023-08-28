@@ -4,7 +4,7 @@
     {
         public int LanguageId { get; set; }
         public string Version { get; set; }
-        public List<ChallengeVersion> ChallengeVersions { get; } = new();
+        public ICollection<ChallengeVersion> ChallengeVersions { get; } = new List<ChallengeVersion>();
 
         public LanguageVersion(string version)
         {
