@@ -7,7 +7,10 @@ using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -22,6 +25,7 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddTransient<IChallengeService, ChallengeService>();
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
+           services.AddScoped<IUserService, UserService>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)
