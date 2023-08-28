@@ -15,6 +15,7 @@ services:
         environment:
             ASPNETCORE_ENVIRONMENT: 'Development'
             ConnectionStrings__LeetWarsCoreDBConnection: 'Server=sql_server;Database=LeetWarsCoreDB;User ID=SA;Password=MySecretPassword!'
+            DOCKER_ENV: 'true'
 
     leetwars_notifier:
         build:
@@ -30,6 +31,7 @@ services:
             - back
         environment:
             ASPNETCORE_ENVIRONMENT: 'Development'
+            DOCKER_ENV: 'true'
 
     leetwars_builder:
         build:

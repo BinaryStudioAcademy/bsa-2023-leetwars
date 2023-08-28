@@ -22,16 +22,25 @@ namespace LeetWars.Core.WebAPI.Extentions
                 .AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
+            services.AddScoped<IMessageSenderService, MessageSenderService>();
+        }
+
+        public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
+        {
             services.Configure<ProducerSettings>(configuration.GetSection("RabbitMQProducer"));
             services.AddSingleton(sp =>
             {
-                var rabbitUri = new Uri(configuration["RabbitURI"]);
+                var rabbitHostName = "localhost";
+                if (Environment.GetEnvironmentVariable("DOCKER_ENV") == "true")
+                {
+                    rabbitHostName = "rabbitmq";
+                }
+                var rabbitUri = new Uri($"amqp://guest:guest@{rabbitHostName}:5672");
                 var factory = new ConnectionFactory { Uri = rabbitUri };
                 return factory.CreateConnection();
             });
             services.AddSingleton(sp => sp.GetRequiredService<IOptions<ProducerSettings>>().Value);
-            services.AddTransient<IProducerService, ProducerService>();
-            services.AddTransient<MessageSenderService>();
+            services.AddSingleton<IProducerService, ProducerService>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)
