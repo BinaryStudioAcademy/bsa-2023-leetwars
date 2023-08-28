@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { getChartData } from '@modules/user/submissions-chart/submissions-chart.utils';
 import { MonthChartData } from '@shared/models/submission-chart/month-chart-data';
 import { UserSolution } from '@shared/models/user-solution/user-solution';
-import * as moment from 'moment/moment';
 
 @Component({
     selector: 'app-submissions-chart',
