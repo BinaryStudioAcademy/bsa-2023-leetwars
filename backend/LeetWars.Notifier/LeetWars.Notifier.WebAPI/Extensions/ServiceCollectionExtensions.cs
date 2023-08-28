@@ -6,10 +6,6 @@ namespace LeetWars.RabbitMQ.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void RegisterCustomServices(this IServiceCollection services)
-        {
-        }
-
         public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
