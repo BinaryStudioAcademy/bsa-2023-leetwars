@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["LeetWars.Emailer/LeetWars.Emailer.csproj", "LeetWars.Emailer/"]
 RUN dotnet restore "LeetWars.Emailer/LeetWars.Emailer.csproj"
-COPY . .
+COPY ./LeetWars.Emailer ./LeetWars.Emailer
 WORKDIR "/src/LeetWars.Emailer"
 RUN dotnet build "LeetWars.Emailer.csproj" -c Release -o /app/build
 
