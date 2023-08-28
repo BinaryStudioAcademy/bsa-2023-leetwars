@@ -61,7 +61,8 @@ namespace LeetWars.Core.BLL.Services
                 {
                     ChallengesProgress.NotStarted => challenges.Where(challenge => !challenge.Versions.Any(version => version.Solutions.Any())),
                     ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version => version.Solutions.Any())),
-                    ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.All(version => version.Solutions.All(solution => solution.SubmittedAt.HasValue))),
+                    ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.All(version => 
+                        version.Solutions.All(solution => solution.SubmittedAt.HasValue && solution.SubmittedAt.Value != DateTime.MinValue))),
                     _ => challenges
                 };
             }
