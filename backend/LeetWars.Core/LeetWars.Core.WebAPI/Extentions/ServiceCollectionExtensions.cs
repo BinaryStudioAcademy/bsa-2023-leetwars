@@ -29,7 +29,6 @@ namespace LeetWars.Core.WebAPI.Extentions
                 HostName = configuration["Rabbit:HostName"],
                 UserName = configuration["Rabbit:UserName"],
                 Password = configuration["Rabbit:Password"],
-                VirtualHost = "/"
             }
                 .CreateConnection());
 

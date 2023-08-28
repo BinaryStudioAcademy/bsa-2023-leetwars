@@ -14,7 +14,6 @@ namespace LeetWars.Builder.Extensions
                 HostName = configuration["Rabbit:HostName"],
                 UserName = configuration["Rabbit:UserName"],
                 Password = configuration["Rabbit:Password"],
-                VirtualHost = "/"
             }
             .CreateConnection());
 
