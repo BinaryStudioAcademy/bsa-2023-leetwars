@@ -9,9 +9,9 @@ import { PieChartData } from './data';
     styleUrls: ['./pie-chart.component.sass'],
 })
 export class PieChartComponent implements OnInit {
-    @Input() CurrentNumber: number;
+    @Input() currentNumber: number;
 
-    @Input() TotalNumber: number;
+    @Input() totalNumber: number;
 
     @Input() activeColor: string;
 
@@ -21,19 +21,15 @@ export class PieChartComponent implements OnInit {
 
     view: [number, number] = [140, 140];
 
-    constructor() {
-        Object.assign(this, { this: this.single });
-    }
-
     ngOnInit(): void {
         this.single = [
             {
                 name: 'Solved',
-                value: this.CurrentNumber,
+                value: this.currentNumber,
             },
             {
                 name: 'Rest',
-                value: this.TotalNumber - this.CurrentNumber,
+                value: this.totalNumber - this.currentNumber,
             },
         ];
 
