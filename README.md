@@ -28,6 +28,7 @@ By default, apps run on the following ports:
 | --------------------- | ---- |
 | LeetWars.**Core**     | 5050 |
 | LeetWars.**Notifier** | 5070 |
+| LeetWars.**Emailer**  | 5080 |
 | LeetWars.**Builder**  | 5090 |
 | RabbitMQ              | 5672 |
 
