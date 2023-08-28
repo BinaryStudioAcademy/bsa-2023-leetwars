@@ -52,7 +52,7 @@ namespace LeetWars.Core.WebAPI.Extentions
         {
             services.AddSingleton(con => new ConnectionFactory()
             {
-                Uri = new Uri(configuration["RabbitMQUri"])
+                Uri = new Uri(configuration["RabbitUri"])
             }
                 .CreateConnection());
 
