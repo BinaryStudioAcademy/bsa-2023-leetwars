@@ -1,72 +1,79 @@
 @import 'color-variables';
-$component-width: 655px;
+@import 'scrollable';
 
 :host {
-    display: block;
-    color: $white;
-    padding: 16px;
-    border-radius: 8px;
-}
-
-.component-container {
-    max-width: $component-width;
-}
-
-ngx-charts-heat-map {
-    display: block;
-    width: $component-width;
-    overflow: hidden;
-}
-
-::ng-deep .ngx-charts {
-    margin-left: -20px;
-    margin-top: -10px;
-
-    text {
-        fill: $white;
-    }
+  display: block;
+  color: $white;
+  padding: 16px;
+  border-radius: 8px;
 }
 
 .chart-header {
-    flex-wrap: wrap;
-    flex: 0 0 auto;
-    margin-bottom: 16px;
+  max-width: 800px;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+  margin-bottom: 16px;
 }
 
-.scrollable {
-    overflow: auto;
+.chart-months {
+  display: flex;
+  gap: 7.5px;
+}
 
-    &::-webkit-scrollbar {
-        width: 4px;
-        height: 4px;
-    }
+.chart-month-days {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 9px);
+  grid-auto-columns: 9px;
+  gap: 2.7px;
+}
 
-    &::-webkit-scrollbar-thumb {
-        background-color: $scrollbar-color;
-        border-radius: 4px;
-    }
+.chart-month-title{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  font-size: 14px;
+  color: $transparent-light-grey;
+}
+
+.chart-day {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+
+  &.fill {
+    background: $green;
+  }
+
+  &.blank {
+    background: $grey;
+  }
 }
 
 .primary-indicator-data {
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  color: $white;
 }
 
 .primary-indicator {
-    font-size: 14px;
-    line-height: 100%;
-    font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  font-weight: 400;
+  color: $transparent-light-grey;
 }
 
 .common-indicator-data {
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: $white;
 }
 
 .common-indicator {
-    font-size: 10px;
-    line-height: 16px;
-    font-weight: 400;
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 400;
+  color: $transparent-light-grey;
 }

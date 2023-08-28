@@ -19,24 +19,16 @@
         </div>
     </div>
     <div class="chart-container scrollable">
-        <ngx-charts-heat-map
-            [min]="-1"
-            [max]="3"
-            [view]="chartSize"
-            [scheme]="chartColorScheme"
-            [results]="chartData"
-            [legend]="false"
-            [xAxis]="true"
-            [yAxis]="false"
-            [showXAxisLabel]="false"
-            [showYAxisLabel]="false"
-            [xAxisTickFormatting]="xAxisTickFormatting"
-            [rotateXAxisTicks]="false"
-            innerPadding="20%"
-            [tooltipDisabled]="true"
-            [maxXAxisTickLength]="16"
-            [maxYAxisTickLength]="0"
-        >
-        </ngx-charts-heat-map>
+        <div class="chart-months">
+            <div class="chart-month" *ngFor="let month of chartData">
+                <div class="chart-month-days">
+                    <div class="chart-day" *ngFor="let spacer of month.spacers"></div>
+                    <div class="chart-day" *ngFor="let day of month.days"
+                         [class.fill]="day.fill" [class.blank]="!day.fill"
+                    ></div>
+                </div>
+                <div class="chart-month-title" *ngIf="month.showTitle">{{month.title}}</div>
+            </div>
+        </div>
     </div>
 </div>
