@@ -203,6 +203,7 @@ namespace LeetWars.Core.DAL.Context
                         f.Random.AlphaNumeric(32)))
                 .UseSeed(SeedDefaults.UserSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
+                .RuleFor(e=>e.Uid, f=> f.Random.AlphaNumeric(28))
                 .RuleFor(e => e.Country, f => f.PickRandom<Country>())
                 .RuleFor(e => e.Sex, f => f.PickRandom<Sex>())
                 .RuleFor(e => e.Status, f => f.PickRandom<UserStatus>())
