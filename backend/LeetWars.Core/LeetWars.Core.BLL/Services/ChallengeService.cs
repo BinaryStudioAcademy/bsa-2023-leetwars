@@ -59,18 +59,13 @@ namespace LeetWars.Core.BLL.Services
             {
                 challenges = filters.Progress switch
                 {
-                    ChallengesProgress.NotStarted => challenges.Where(challenge => challenge.Versions.All(version =>
-                        !version.Solutions.Any())),
-
-                    ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version =>
-                       version.Solutions.Any())),
-
-                    ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.All(version =>
-                        version.Solutions.All(solution => solution.SubmittedAt != null))),
-
+                    ChallengesProgress.NotStarted => challenges.Where(challenge => !challenge.Versions.Any(version => version.Solutions.Any())),
+                    ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version => version.Solutions.Any())),
+                    ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.All(version => version.Solutions.All(solution => solution.SubmittedAt.HasValue))),
                     _ => challenges
                 };
             }
+
 
             var filteredChallenges = await challenges.ToListAsync();
             return _mapper.Map<List<ChallengePreviewDto>>(filteredChallenges);
