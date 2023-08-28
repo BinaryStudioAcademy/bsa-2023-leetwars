@@ -1,10 +1,4 @@
-﻿using LeetWars.Core.Common.DTO.Tag;
-using LeetWars.Core.DAL.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LeetWars.Core.DAL.Enums;
 
 namespace LeetWars.Core.Common.DTO.Filters
 {
