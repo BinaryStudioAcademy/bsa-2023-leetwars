@@ -11,17 +11,17 @@
             <H5 class="or-label">or</H5>
 
             <form class="logInForm" [formGroup]="logInForm">
-                <app-custom-input
-                    [InputType]="'email'"
-                    [Identifier]="'email'"
-                    [Width]="'100%'"
+                <app-custom-input 
+                    [InputType]="'email'" 
+                    [Identifier]="'email'" 
+                    [Width]="'100%'" 
                     [InputLabel]="'Email'"
                     [InputPlaceholder]="'Enter your email'"
                     (InputValueChange)="logInForm.controls['email'].setValue($event)">
                 </app-custom-input>
-                <app-custom-input
-                    [InputType]="'password'"
-                    [Identifier]="'password'"
+                <app-custom-input 
+                    [InputType]="'password'" 
+                    [Identifier]="'password'" 
                     [Width]="'100%'"
                     [InputLabel]="'Password:'"
                     [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"

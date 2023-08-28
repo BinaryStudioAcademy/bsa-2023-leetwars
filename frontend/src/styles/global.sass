@@ -1,8 +1,8 @@
 @import "bootstrap-variables"
 @import "node_modules/bootstrap/scss/bootstrap"
 @import "~ngx-toastr/toastr.css"
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@300;400;600;700&display=swap')
-@import 'src/styles/color-variables'
+@import 'color-variables'
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600&family=Open+Sans:wght@300;400;600;700&display=swap')
 
 html, body, :root
     height: 100%
@@ -16,6 +16,13 @@ button
 
 a
     cursor: pointer
+
+ul li
+    list-style: none
+
+ul, p
+    padding: 0
+    margin: 0
 
 .invalid-feedback
     margin-top: 5px
