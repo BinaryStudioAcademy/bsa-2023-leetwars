@@ -10,7 +10,7 @@ namespace LeetWars.Core.DAL.Entities
         public string CompleteSolution { get; set; }
         public ChallengeStatus Status { get; set; }
         public List<LanguageVersion> LanguageVersions { get; } = new();
-        public List<UserSolution> Solutions { get; } = new();
+        public ICollection<UserSolution> Solutions { get; }
         public List<Test> Tests { get; } = new();
         public Language? Language { get; set; }
         public User? Author { get; set; }

@@ -8,7 +8,7 @@
         public ChallengeLevel? Level { get; set; }
         public User? Author { get; set; }
         public List<Tag> Tags { get; } = new();
-        public List<ChallengeVersion> Versions { get; } = new();
+        public ICollection<ChallengeVersion> Versions { get; } 
 
         public Challenge(string title, string instructions)
         {
