@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./solved-problem.component.sass'],
 })
 export class SolvedProblemComponent implements OnInit {
+    @Input() pieChartActiveColor: string = '#FFA116';
+
     @Input() easyLabel: string;
 
     @Input() mediumLabel: string;

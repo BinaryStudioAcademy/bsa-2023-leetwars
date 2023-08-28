@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 
+import { ColorScheme } from './color-scheme';
 import { PieChartData } from './data';
 
 @Component({
@@ -37,7 +38,7 @@ export class PieChartComponent implements OnInit {
             name: 'myScheme',
             selectable: true,
             group: ScaleType.Ordinal,
-            domain: [this.activeColor, '#F0F0F0'],
+            domain: ColorScheme.myScheme,
         };
     }
 }
