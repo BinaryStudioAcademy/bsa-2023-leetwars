@@ -1,10 +1,4 @@
-﻿using LeetWars.Core.Common.DTO;
-using LeetWars.Core.Common.DTO.Tag;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LeetWars.Core.Common.DTO.Tag;
 
 namespace LeetWars.Core.BLL.Interfaces
 {

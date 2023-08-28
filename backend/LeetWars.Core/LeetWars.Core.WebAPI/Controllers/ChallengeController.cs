@@ -1,6 +1,4 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
-using LeetWars.Core.BLL.Services;
-using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
 using Microsoft.AspNetCore.Mvc;

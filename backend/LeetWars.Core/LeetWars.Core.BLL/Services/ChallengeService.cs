@@ -2,18 +2,9 @@
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
-using LeetWars.Core.Common.DTO.Language;
 using LeetWars.Core.DAL.Context;
-using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -39,7 +30,7 @@ namespace LeetWars.Core.BLL.Services
 
             if (filters.ChallengeStatus.HasValue)
             {
-                challenges = challenges.Where(challenge => challenge.Versions.Any() &&
+                challenges = challenges.Where(challenge => 
                     challenge.Versions.Any(version => version.Status == filters.ChallengeStatus));
             }
 

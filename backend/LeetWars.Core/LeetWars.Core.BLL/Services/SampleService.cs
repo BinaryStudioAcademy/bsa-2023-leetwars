@@ -1,9 +1,5 @@
 ﻿using AutoMapper;
-using LeetWars.Core.BLL.Interfaces;
-using LeetWars.Core.Common.DTO;
 using LeetWars.Core.DAL.Context;
-using LeetWars.Core.DAL.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.BLL.Services
 {
