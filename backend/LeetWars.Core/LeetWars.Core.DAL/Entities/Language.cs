@@ -3,8 +3,8 @@
     public class Language : Entity<int>
     {
         public string Name { get; set; }
-        public List<User> Users { get; } = new();
-        public List<LanguageVersion> LanguageVersions { get; } = new();
+        public ICollection<User> Users { get; } = new List<User>();
+        public ICollection<LanguageVersion> LanguageVersions { get; } = new List<LanguageVersion>();
 
         public Language(string name)
         {

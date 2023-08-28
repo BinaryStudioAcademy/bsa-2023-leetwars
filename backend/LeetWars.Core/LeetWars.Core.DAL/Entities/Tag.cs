@@ -3,7 +3,7 @@
     public class Tag : Entity<int>
     {
         public string Name { get; set; }
-        public List<Challenge> Challenges { get; } = new();
+        public ICollection<Challenge> Challenges { get; } = new List<Challenge>();
 
 
         public Tag(string name)
