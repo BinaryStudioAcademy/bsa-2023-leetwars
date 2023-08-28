@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
     <ProjectReference Include="..\LeetWars.Core.Common\LeetWars.Core.Common.csproj" />
     <ProjectReference Include="..\LeetWars.Core.DAL\LeetWars.Core.DAL.csproj" />
   </ItemGroup>
