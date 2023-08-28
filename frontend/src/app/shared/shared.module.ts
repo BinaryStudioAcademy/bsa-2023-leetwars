@@ -14,6 +14,7 @@ import { CodeEditorComponent } from './components/code-editor/code-editor.compon
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
+import { EditorQuestionComponent } from './components/editor-question/editor-question.component';
 import { FilteringSectionComponent } from './components/filtering-section/filtering-section.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -35,6 +36,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ChallengeComponent,
         FilteringSectionComponent,
         HeaderComponent,
+        EditorQuestionComponent,
     ],
     exports: [
         CommonModule,
@@ -54,6 +56,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ChallengeComponent,
         FilteringSectionComponent,
         HeaderComponent,
+        EditorQuestionComponent,
     ],
 })
 export class SharedModule {
