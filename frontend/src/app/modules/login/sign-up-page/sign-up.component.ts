@@ -7,15 +7,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent {
-    //TODO: Add real validation and don't forget to add it in html file
     registrationForm = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
-        username: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required]),
+        username: new FormControl('', [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(50),
+            Validators.pattern('^[A-Za-z\\s-]+$'),
+        ]),
+        password: new FormControl('', [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(32),
+            Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,32}$'),
+        ]),
     });
 
-    // TODO: Add logic for signUp
     public signUp() {
-        // do nothing
+        //
     }
 }
