@@ -1,8 +1,5 @@
-using LeetWars.Core.BLL.Services;
 using LeetWars.Core.WebAPI.Extentions;
 using LeetWars.Core.WebAPI.Middlewares;
-using LeetWars.RabbitMQ;
-using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,15 +25,7 @@ builder.Services.AddCors();
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
-builder.Services.AddSingleton(con => new ConnectionFactory()
-{
-    Uri = new Uri(builder.Configuration["RabbitURI"])
-}
-.CreateConnection());
-builder.Services.Configure<ConsumerSettings>(builder.Configuration.GetSection("ConsumerSettings"))
-    .AddTransient<IConsumerService, ConsumerService>();
-
-builder.Services.AddHostedService<ConsumeMessages>();
+builder.Services.RegisterConsumeMessagesServices(builder.Configuration);
 
 builder.WebHost.UseUrls("http://*:5050");
 

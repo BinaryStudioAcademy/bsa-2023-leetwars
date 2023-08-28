@@ -62,7 +62,7 @@ public class ProducerService : IProducerService
         {
             if (disposing)
             {
-                //_connection.Dispose();
+                _connection.Dispose();
             }
 
             disposedValue = true;

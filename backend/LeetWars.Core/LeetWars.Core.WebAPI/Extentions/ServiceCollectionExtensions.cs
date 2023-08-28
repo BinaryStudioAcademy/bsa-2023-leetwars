@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using LeetWars.RabbitMQ;
+using RabbitMQ.Client;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -18,6 +20,23 @@ namespace LeetWars.Core.WebAPI.Extentions
             services
                 .AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+        }
+
+        public static void RegisterConsumeMessagesServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton(con => new ConnectionFactory()
+            {
+                HostName = configuration["Rabbit:HostName"],
+                UserName = configuration["Rabbit:UserName"],
+                Password = configuration["Rabbit:Password"],
+                VirtualHost = "/"
+            }
+                .CreateConnection());
+
+            services.Configure<ConsumerSettings>(configuration.GetSection("ConsumerSettings"))
+                .AddSingleton<IConsumerService, ConsumerService>();
+
+            services.AddHostedService<ConsumeMessages>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

@@ -26,7 +26,6 @@ namespace LeetWars.Core.BLL.Services
                 var body = args.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body).Replace('"', '\0');
 
-                //TODO: do something with message
                 Console.WriteLine(message);
 
                 consumerService.SetAcknowledge(args.DeliveryTag, true);
