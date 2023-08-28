@@ -15,11 +15,15 @@ public class UserService : BaseService, IUserService
     public async Task<UserDto> CreateUserAsync(NewUserDto userDto)
     {
         if (userDto is null)
+        {
             throw new ArgumentNullException(nameof(userDto));
+        }
 
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == userDto.Uid);
         if (user != null)
+        {
             return _mapper.Map<UserDto>(user);
+        }
         
         var newUser = _mapper.Map<NewUserDto, User>(userDto);
         var createdUser = _context.Users.Add(newUser).Entity;
