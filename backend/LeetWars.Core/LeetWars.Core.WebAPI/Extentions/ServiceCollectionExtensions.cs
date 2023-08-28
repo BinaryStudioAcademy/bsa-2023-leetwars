@@ -26,9 +26,7 @@ namespace LeetWars.Core.WebAPI.Extentions
         {
             services.AddSingleton(con => new ConnectionFactory()
             {
-                HostName = configuration["Rabbit:HostName"],
-                UserName = configuration["Rabbit:UserName"],
-                Password = configuration["Rabbit:Password"],
+                Uri = new Uri(configuration["RabbitMQUri"])
             }
                 .CreateConnection());
 
