@@ -1,27 +1,34 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FakeUser } from '@shared/models/fake-user';
+import { User } from '@shared/models/user';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
 import { BehaviorSubject, first, from, Observable, switchMap, tap, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { HttpInternalService } from './http-internal.service';
+import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root',
 })
 // TODO: change FakeUser with real entity
 export class AuthService {
-    private userSubject: BehaviorSubject<FakeUser | undefined>;
+    private userSubject: BehaviorSubject<User | undefined>;
 
-    private user: FakeUser | undefined;
+    private user: User | undefined;
 
     private userKeyName = 'userInfo';
 
     private tokenKeyName = 'userToken';
 
-    constructor(private httpService: HttpInternalService, private afAuth: AngularFireAuth, private ngZone: NgZone) {
+    constructor(
+        private httpService: HttpInternalService,
+        private afAuth: AngularFireAuth,
+        private userService: UserService,
+        private ngZone: NgZone,
+    ) {
+        this.userSubject = new BehaviorSubject<User | undefined>(this.getUserInfo());
         afAuth.authState.subscribe(async (user) => {
             if (user) {
                 localStorage.setItem(this.tokenKeyName, await user.getIdToken());
@@ -37,25 +44,23 @@ export class AuthService {
 
     // TODO: change parameters to DTO
     public register(username: string, email: string, password: string) {
-        return from(this.afAuth.createUserWithEmailAndPassword(email, password)).pipe(
-            first(),
-            tap(() => this.sendVerificationMail()),
-            catchError(error => throwError(error.message)),
-            switchMap(() =>
-                this.httpService.postRequest<FakeUser>('/signup', { username, email, password })
-                    .pipe(first(), tap(user => this.setUserInfo(user)))),
-
+        return this.createUser(
+            from(this.afAuth.createUserWithEmailAndPassword(email, password)).pipe(
+                first(),
+                tap(() => this.sendVerificationMail()),
+                catchError((error) => throwError(error.message)),
+            ),
+            username,
         );
     }
 
     // TODO: change parameters to DTO
     public login(email: string, password: string) {
-        return from(this.afAuth.signInWithEmailAndPassword(email, password)).pipe(
-            first(),
-            catchError(error => throwError(error.message)),
-            switchMap(() =>
-                this.httpService.postRequest<FakeUser>('/signin', { email, password })
-                    .pipe(first(), tap(user => this.setUserInfo(user)))),
+        return this.createUser(
+            from(this.afAuth.signInWithEmailAndPassword(email, password)).pipe(
+                first(),
+                catchError((error) => throwError(error.message)),
+            ),
         );
     }
 
@@ -83,16 +88,17 @@ export class AuthService {
 
     // TODO: Implemented only firebase part
     public changePassword(password: string): Observable<void> {
-        return from(this.afAuth.currentUser).pipe(
-            first(),
-            switchMap((user) => {
-                if (user) {
-                    return user.updatePassword(password);
-                }
+        return from(this.afAuth.currentUser)
+            .pipe(
+                first(),
+                switchMap((user) => {
+                    if (user) {
+                        return user.updatePassword(password);
+                    }
 
-                throw new Error('User is not authorized');
-            }),
-        ).pipe(first());
+                    throw new Error('User is not authorized');
+                }),
+            );
     }
 
     public sendVerificationMail(): Observable<void> {
@@ -105,7 +111,7 @@ export class AuthService {
 
                 throw new Error('User is not authorized');
             }),
-        ).pipe(first());
+        );
     }
 
     // TODO: Implemented only firebase part
@@ -114,14 +120,24 @@ export class AuthService {
     }
 
     private signInWithProvider(provider: firebase.auth.AuthProvider) {
-        return from(this.afAuth.signInWithPopup(provider))
-            .pipe(
-                first(),
-                catchError(error => throwError(error.message)),
-            );
+        return from(this.afAuth.signInWithPopup(provider)).pipe(
+            first(),
+            catchError((error) => throwError(error.message)),
+        );
     }
 
-    private getUserInfo(): FakeUser | undefined {
+    private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string = '') {
+        return auth.pipe(switchMap((resp) =>
+            this.userService.createUser({
+                uid: resp.user?.uid,
+                userName: userName ?? resp.user?.displayName!,
+                email: resp.user?.email ?? '',
+                image: resp.user?.photoURL ?? undefined,
+                timezone: new Date().getTimezoneOffset() / 60,
+            })), tap((user) => this.setUserInfo(user)));
+    }
+
+    private getUserInfo(): User | undefined {
         const userInfo = localStorage.getItem(this.userKeyName);
 
         if (userInfo) {
@@ -131,7 +147,7 @@ export class AuthService {
         return undefined;
     }
 
-    private setUserInfo(user: FakeUser) {
+    private setUserInfo(user: User) {
         localStorage.setItem(this.userKeyName, JSON.stringify(user));
         this.userSubject.next(user);
         this.user = user;
