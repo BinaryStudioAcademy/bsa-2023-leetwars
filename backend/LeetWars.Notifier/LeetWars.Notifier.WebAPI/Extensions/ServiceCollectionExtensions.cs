@@ -1,4 +1,5 @@
 ﻿using LeetWars.Notifier.WebAPI.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 
@@ -11,12 +12,7 @@ namespace LeetWars.RabbitMQ.Extensions
             services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
             services.AddSingleton(sp =>
             {
-                var rabbitHostName = "localhost";
-                if (Environment.GetEnvironmentVariable("DOCKER_ENV") == "true")
-                {
-                    rabbitHostName = "rabbitmq";
-                }
-                var rabbitUri = new Uri($"amqp://guest:guest@{rabbitHostName}:5672");
+                var rabbitUri = new Uri(configuration["Rabbit"]);
                 var factory = new ConnectionFactory { Uri = rabbitUri };
                 return factory.CreateConnection();
             });

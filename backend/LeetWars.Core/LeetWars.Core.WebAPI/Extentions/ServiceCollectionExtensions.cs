@@ -38,12 +38,7 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.Configure<ProducerSettings>(configuration.GetSection("RabbitMQProducer"));
             services.AddSingleton(sp =>
             {
-                var rabbitHostName = "localhost";
-                if (Environment.GetEnvironmentVariable("DOCKER_ENV") == "true")
-                {
-                    rabbitHostName = "rabbitmq";
-                }
-                var rabbitUri = new Uri($"amqp://guest:guest@{rabbitHostName}:5672");
+                var rabbitUri = new Uri(configuration["RabbitURI"]);
                 var factory = new ConnectionFactory { Uri = rabbitUri };
                 return factory.CreateConnection();
             });
