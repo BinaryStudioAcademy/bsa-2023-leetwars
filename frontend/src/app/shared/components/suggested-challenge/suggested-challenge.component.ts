@@ -26,7 +26,7 @@ export class SuggestedChallengeComponent {
         'Rank up',
         'Practice and Repeat',
         'Beta',
-        'Random'
+        'Random',
     ];
 
     @Input() description: string = 'Write a function that takes in a string of one or more words,'
