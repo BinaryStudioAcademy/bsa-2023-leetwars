@@ -36,6 +36,7 @@
         "@swimlane/ngx-charts": "^20.4.1",
         "bootstrap": "5.2.0",
         "eslint-plugin-prettier": "^4.2.1",
+        "moment": "^2.29.4",
         "monaco-editor": "0.33.0",
         "ngx-monaco-editor-v2": "14.x.x",
         "ngx-toastr": "15.2.2",
