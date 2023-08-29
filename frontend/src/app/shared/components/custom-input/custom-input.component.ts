@@ -14,6 +14,8 @@ export class CustomInputComponent {
 
     @Input() Width: string = '327px';
 
+    @Input() Margin: string = '0 auto';
+
     @Input() FormTextHeight: string = '45px';
 
     @Input() InputValue?: string;

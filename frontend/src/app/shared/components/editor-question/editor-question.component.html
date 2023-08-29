@@ -6,7 +6,7 @@
     </div>
 
     <div class="categories-list d-flex flex-column gap-2">
-        <p class="category-header">Category *</p>
+        <p class="question-header">Category *</p>
         <div class="d-flex gap-2">
             <div class="category category-active d-flex flex-column align-items-center justify-content-center gap-2">
                 <img
@@ -32,5 +32,14 @@
                 <span class="category-text">Puzzles</span>
             </div>
         </div>
+    </div>
+    <div class="tabs-list d-flex flex-column gap-2">
+        <p class="question-header">Name *</p>
+        <app-custom-input
+            [Identifier]="'kata-name'"
+            [Height]="'36px'"
+            [Width]="'100%'"
+            [Margin]="'0'"
+            [InputPlaceholder]="'Give your kata a name'"></app-custom-input>
     </div>
 </div>
