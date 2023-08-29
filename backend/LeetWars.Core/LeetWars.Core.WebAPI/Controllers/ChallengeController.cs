@@ -9,10 +9,9 @@ namespace LeetWars.Core.WebAPI.Controllers
     [Route("[controller]")]
     public class ChallengeController : ControllerBase
     {
-        public ChallengeController(IChallengeService challengeService, IMessageSenderService messageSender)
+        public ChallengeController(IChallengeService challengeService)
         {
             _challengeService = challengeService;
-            _messageSender = messageSender;
         }
 
         [HttpGet]
@@ -22,14 +21,6 @@ namespace LeetWars.Core.WebAPI.Controllers
             return Ok(challenges);
         }
 
-        [HttpGet("sendMessage")]
-        public IActionResult Get()
-        {
-            _messageSender.SendMessageToRabbitMQ("Hello, world!");
-            return Ok();
-        }
-
         private readonly IChallengeService _challengeService;
-        private readonly IMessageSenderService _messageSender;
     }
 }
