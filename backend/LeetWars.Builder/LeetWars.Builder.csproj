@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="RunnerDefaults\CSharp\CSharpRunner\Program.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="RunnerDefaults\CSharp\CSharpRunner\CSharpRunner.csproj" />
   </ItemGroup>
 

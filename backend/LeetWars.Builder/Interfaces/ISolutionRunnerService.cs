@@ -1,7 +1,7 @@
 ﻿namespace LeetWars.Builder.Interfaces
 {
-    public interface ISolutionRunnerService : IDisposable
+    public interface ISolutionRunnerService
     {
-        Task RunCodeInContainerAsync(string imagename, string containername);
+        Task RunCodeInContainerAsync(string imageName, string containerName);
     }
 }

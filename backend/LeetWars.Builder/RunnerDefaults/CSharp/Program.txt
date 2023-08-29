@@ -1,8 +1,8 @@
-﻿using System;
+﻿﻿using System;
 
-namespace LeetWars.Builder.RunnerDefaults.CSharp.CSharpRunner
+namespace CSharpRunner
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
