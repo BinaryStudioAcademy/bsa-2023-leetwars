@@ -10,6 +10,7 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
+//Test
 app.MapGet("/docker", () => new SolutionRunnerService().RunCodeAsync(DefaultRunnerImageNames.CSharpImage, "test-container"));
 
 app.Run();
