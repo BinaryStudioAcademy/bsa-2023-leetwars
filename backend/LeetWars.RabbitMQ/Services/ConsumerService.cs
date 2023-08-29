@@ -10,10 +10,10 @@ public class ConsumerService : IConsumerService
     private readonly ConsumerSettings _settings;
     private bool disposedValue;
 
-    public ConsumerService(IConnection connection, IOptions<ConsumerSettings> settings)
+    public ConsumerService(IConnection connection, ConsumerSettings settings)
     {
         _connection = connection;
-        _settings = settings.Value;
+        _settings = settings;
         _channel = _connection.CreateModel();
     }
 

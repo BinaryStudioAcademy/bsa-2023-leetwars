@@ -1,4 +1,5 @@
 ﻿using LeetWars.RabbitMQ;
+using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 
 namespace LeetWars.Builder.Extensions
@@ -15,6 +16,8 @@ namespace LeetWars.Builder.Extensions
 
             services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"))
                 .AddSingleton<IConsumerService, ConsumerService>();
+
+            services.AddSingleton(sp => sp.GetRequiredService<IOptions<ConsumerSettings>>().Value);
         }
 
     }
