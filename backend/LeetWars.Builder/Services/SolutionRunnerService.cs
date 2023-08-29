@@ -20,9 +20,9 @@ namespace LeetWars.Builder.Services
 
             await _client.Containers.StartContainerAsync(container.ID, null);
 
-            //await _client.Containers.WaitContainerAsync(container.ID);
+            await _client.Containers.WaitContainerAsync(container.ID);
 
-            //await _client.Containers.RemoveContainerAsync(container.ID, new ContainerRemoveParameters());
+            await _client.Containers.RemoveContainerAsync(container.ID, new ContainerRemoveParameters());
         }
         public void Dispose()
         {
