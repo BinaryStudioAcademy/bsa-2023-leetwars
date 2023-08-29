@@ -7,6 +7,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
+import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
@@ -23,7 +25,18 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, MonacoEditorModule],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        FontAwesomeModule,
+        NgbModule,
+        MonacoEditorModule,
+        MarkdownModule.forRoot(),
+        AngularMarkdownEditorModule.forRoot({ iconlibrary: 'fa' }),
+    ],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,

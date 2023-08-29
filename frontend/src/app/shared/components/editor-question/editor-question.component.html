@@ -56,6 +56,12 @@
         </div>
     </div>
     <div class="mt-12px">
-        <!-- Markdown editor -->
+        <angular-markdown-editor
+            [textareaId]="'editor1'"
+            [rows]="12"
+            [name]="'markdownText'"
+            [(ngModel)]="markdownText"
+            [options]="editorOptions">
+        </angular-markdown-editor>
     </div>
 </div>
