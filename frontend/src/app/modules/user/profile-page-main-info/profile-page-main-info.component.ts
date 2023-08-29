@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '@core/services/user.service';
 
 @Component({
     selector: 'app-profile-page-main-info',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./profile-page-main-info.component.sass'],
 })
 export class ProfilePageMainInfoComponent {
+    constructor(private userService: UserService) {}
     //replace it with real user interface
     public username = 'TatiHutii';
 

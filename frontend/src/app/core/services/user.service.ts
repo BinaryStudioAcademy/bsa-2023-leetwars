@@ -1,5 +1,7 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NewUser } from '@shared/models/new-user';
+import { UserFull } from '@shared/models/profile/user-full';
 import { User } from '@shared/models/user';
 import { Observable } from 'rxjs';
 
@@ -13,5 +15,11 @@ export class UserService {
 
     public createUser(newUser: NewUser): Observable<User> {
         return this.httpService.postRequest<User>('/users', newUser);
+    }
+
+    public getFullUser(id: number): Observable<UserFull> {
+        const queryParams = new HttpParams().append('id', id);
+
+        return this.httpService.getRequest<UserFull>('/users', queryParams);
     }
 }
