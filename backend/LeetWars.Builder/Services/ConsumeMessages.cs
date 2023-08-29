@@ -6,19 +6,15 @@ namespace LeetWars.Builder.Services
 {
     public class ConsumeMessages : BackgroundService
     {
-        private readonly IServiceProvider _services;
+        private readonly IConsumerService _consumerService;
 
-        public ConsumeMessages(IServiceProvider services)
+        public ConsumeMessages(IConsumerService consumerService)
         {
-            _services = services;
+            _consumerService = consumerService;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            using var scope = _services.CreateScope();
-
-            var consumerService = scope.ServiceProvider.GetRequiredService<IConsumerService>();
-
             var handler = new EventHandler<BasicDeliverEventArgs>((model, args) =>
             {
                 var body = args.Body.ToArray();
@@ -26,10 +22,10 @@ namespace LeetWars.Builder.Services
 
                 Console.WriteLine(message);
 
-                consumerService.SetAcknowledge(args.DeliveryTag, true);
+                _consumerService.SetAcknowledge(args.DeliveryTag, true);
             });
 
-            consumerService.Listen(handler);
+            _consumerService.Listen(handler);
             return Task.CompletedTask;
         }
     }
