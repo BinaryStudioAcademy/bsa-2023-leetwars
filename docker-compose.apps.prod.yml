@@ -46,11 +46,25 @@ services:
         env_file:
             - /etc/environment
 
+    leetwars_emailer:
+        image: tatihutii/leetwars_emailer:latest
+        container_name: 'leetwars_emailer'
+        restart: on-failure
+        networks:
+            - back
+        ports:
+            - "5080:5080"
+        environment:
+            ASPNETCORE_ENVIRONMENT: 'Production'
+        env_file:
+            - /etc/environment
+
     leetwars_frontend:
         depends_on:
             - leetwars_core
             - leetwars_notifier
             - leetwars_builder
+            - leetwars_emailer
         image: tatihutii/leetwars_frontend:latest
         container_name: 'leetwars_frontend'
         restart: on-failure
