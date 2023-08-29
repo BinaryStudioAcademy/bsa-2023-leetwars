@@ -6,22 +6,26 @@
   justify-content: space-between  
   align-items: center  
   background-color: $deep-dark-grey
-  color: white  
-  padding: 0.5rem
-  margin-bottom: 0.5rem
-  border-radius: 8px  
+  color: white
+  padding: 0.3rem
+  border-radius: 8px
  
 .logo img  
-  width: 50px
+  width: 70px
   cursor: pointer
+  padding-left: 20px
  
 .user-menu
     display: flex  
 
 .notification
   margin-right: 2rem
-  cursor: pointer  
+  cursor: pointer
+  color:$transparent-grey
 
+:host ::ng-deep .change-color 
+  background-color: $cornflower
+  
 .user
   position: relative
   align-items: center  
@@ -32,10 +36,11 @@
   width: 40px
   height: 40px  
   border-radius: 50%  
-  margin-right: 0.5rem  
+  margin-right: 0.5rem
 
-.username  
-  font-weight: bold
+.username
+  font-family: open
+  color: $transparent-grey
   width: 100%
 
 .menu-wraper
