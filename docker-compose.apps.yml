@@ -46,11 +46,27 @@ services:
         environment:
             ASPNETCORE_ENVIRONMENT: 'Development'
 
+    leetwars_emailer:
+        build:
+            context: ./backend
+            dockerfile: /LeetWars.Emailer/Dockerfile
+            args:
+                - PROJECT_PORT=5080
+        container_name: 'leetwars_emailer'
+        restart: on-failure
+        ports:
+            - "5080:5080"
+        networks:
+            - back
+        environment:
+            ASPNETCORE_ENVIRONMENT: 'Development'
+
     leetwars_client:
         depends_on:
             - leetwars_core
             - leetwars_notifier
             - leetwars_builder
+            - leetwars_emailer
         build:
             context: ./frontend
             dockerfile: Dockerfile.dev

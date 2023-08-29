@@ -19,10 +19,20 @@ import { GeneralModalComponent } from './components/general-modal/general-modal.
 import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { StepsOfProgressComponent } from './components/steps-of-progress/steps-of-progress.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, MonacoEditorModule],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        FontAwesomeModule,
+        NgbModule,
+        MonacoEditorModule,
+    ],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
@@ -35,6 +45,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ChallengeComponent,
         FilteringSectionComponent,
         HeaderComponent,
+        StepsOfProgressComponent,
     ],
     exports: [
         CommonModule,
@@ -54,6 +65,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ChallengeComponent,
         FilteringSectionComponent,
         HeaderComponent,
+        StepsOfProgressComponent,
     ],
 })
 export class SharedModule {

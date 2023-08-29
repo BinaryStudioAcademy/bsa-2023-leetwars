@@ -1,0 +1,47 @@
+@import 'color-variables'
+@import "screen-sizes-variables"
+
+.progress-bar-wrapper 
+    justify-content: space-between
+    margin: 20px
+    height: 60px
+    font-family: 'Inter', sans-serif
+    @media screen and (max-width: $tablet) 
+        height: 55px
+
+.progress-bar
+    position: relative
+    width: 100%
+    height: 31px
+
+.progress-bar-line 
+    position: absolute
+    top: 27%
+    height: 4px
+    width: 100%
+    border-radius: 5px
+    background-color: $dim-grey
+    
+.progress-bar-fill
+    background-color: $green 
+    border-radius: 5px
+
+.step-indicators
+    justify-content: space-around
+    position: absolute
+    left: 0
+    right: 0
+
+.step-indicator
+    width: 31px
+    height: 31px
+    background-color: $dark-grey
+    border: 4px solid $green
+    border-radius: 50%
+
+.step-name
+    color: $green
+    font-size: 13px
+    font-weight: 500
+    line-height: 21px
+    text-align: center
