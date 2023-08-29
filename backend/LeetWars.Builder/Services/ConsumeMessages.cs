@@ -1,10 +1,8 @@
 ﻿using LeetWars.RabbitMQ;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client.Events;
 using System.Text;
 
-namespace LeetWars.Core.BLL.Services
+namespace LeetWars.Builder.Services
 {
     public class ConsumeMessages : BackgroundService
     {

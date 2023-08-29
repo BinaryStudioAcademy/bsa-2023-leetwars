@@ -25,8 +25,6 @@ builder.Services.AddCors();
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
-builder.Services.RegisterConsumeMessagesServices(builder.Configuration);
-
 builder.WebHost.UseUrls("http://*:5050");
 
 var app = builder.Build();

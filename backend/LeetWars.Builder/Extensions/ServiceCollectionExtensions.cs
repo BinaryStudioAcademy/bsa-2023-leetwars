@@ -1,6 +1,4 @@
-﻿using LeetWars.Builder.Services.Abstract;
-using LeetWars.Builder.Services;
-using LeetWars.RabbitMQ;
+﻿using LeetWars.RabbitMQ;
 using RabbitMQ.Client;
 
 namespace LeetWars.Builder.Extensions
@@ -11,14 +9,12 @@ namespace LeetWars.Builder.Extensions
         {
             services.AddSingleton(con => new ConnectionFactory()
             {
-                Uri = new Uri(configuration["RabbitMQUri"])
+                Uri = new Uri(configuration["RabbitUri"])
             }
             .CreateConnection());
 
-            services.Configure<ProducerSettings>(configuration.GetSection("ProducerSettings"))
-                .AddSingleton<IProducerService, ProducerService>();
-
-            services.AddScoped<IProduceMessages, ProduceMessages>();
+            services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"))
+                .AddSingleton<IConsumerService, ConsumerService>();
         }
 
     }

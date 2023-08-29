@@ -45,20 +45,6 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddSingleton<IProducerService, ProducerService>();
         }
 
-        public static void RegisterConsumeMessagesServices(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddSingleton(con => new ConnectionFactory()
-            {
-                Uri = new Uri(configuration["RabbitUri"])
-            }
-                .CreateConnection());
-
-            services.Configure<ConsumerSettings>(configuration.GetSection("ConsumerSettings"))
-                .AddSingleton<IConsumerService, ConsumerService>();
-
-            services.AddHostedService<ConsumeMessages>();
-        }
-
         public static void AddAutoMapper(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetAssembly(typeof(SampleProfile)));
