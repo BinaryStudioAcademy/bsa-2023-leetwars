@@ -32,8 +32,13 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(createdUser);
     }
 
-    public Task<UserFullDto> GetUserAsync(int id)
+    public async Task<UserFullDto> GetUserAsync(int id)
     {
-        var user = _context.Users.FirstOrDefault(u => u.Id == id);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        if(user is null)
+        {
+            throw new ArgumentNullException(id.ToString(),"Not found");
+        }
+        return _mapper.Map<User,UserFullDto>(user);
     }
 }

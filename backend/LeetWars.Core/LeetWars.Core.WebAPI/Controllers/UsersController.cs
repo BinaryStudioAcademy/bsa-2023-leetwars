@@ -24,4 +24,12 @@ public class UsersController :ControllerBase
         var createdUser = await _userService.CreateUserAsync(user);
         return Ok(createdUser);
     }
+
+    [HttpGet]
+    [AllowAnonymous]
+    public async Task<ActionResult<UserFullDto>> GetUser (int id)
+    {
+        var user  = await _userService.GetUserAsync(id);
+        return Ok(user);
+    }
 }
