@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ColorConstants } from '@shared/constants/color-constants';
 
 @Component({
     selector: 'app-solved-problem',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./solved-problem.component.sass'],
 })
 export class SolvedProblemComponent implements OnInit {
-    @Input() pieChartActiveColor: string = '#FFA116';
+    @Input() pieChartActiveColor: string = ColorConstants.pieChartActiveColor;
 
     @Input() easyLabel: string;
 
