@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
+import { UserService } from '@core/services/user.service';
 
 @Component({
     selector: 'app-sign-up',
@@ -9,6 +10,8 @@ import { AuthService } from '@core/services/auth.service';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent {
+    isExistingEmail = false;
+
     registrationForm = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
         username: new FormControl('', [
@@ -25,17 +28,26 @@ export class SignUpComponent {
         ]),
     });
 
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(private authService: AuthService, private router: Router, private userService: UserService) {}
 
     public signUp() {
-        this.authService
-            .register(
-                this.registrationForm.value.username!,
-                this.registrationForm.value.email!,
-                this.registrationForm.value.password!,
-            )
-            .subscribe(() => {
-                this.router.navigateByUrl('');
+        this.userService.checkEmail(this.registrationForm.value.email!)
+            .subscribe(result => {
+                if (result) {
+                    this.isExistingEmail = true;
+                } else {
+                    this.isExistingEmail = false;
+                    this.authService
+                        .register(
+                            this.registrationForm.value.username!,
+                            this.registrationForm.value.email!,
+                            this.registrationForm.value.password!,
+                        )
+                        .subscribe(() => {
+                            this.router.navigateByUrl('');
+                        });
+                }
+                this.registrationForm.markAsUntouched();
             });
     }
 }

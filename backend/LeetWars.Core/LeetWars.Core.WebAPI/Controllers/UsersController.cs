@@ -8,20 +8,30 @@ namespace LeetWars.Core.WebAPI.Controllers;
 [Authorize]
 [ApiController]
 [Route("users")]
-public class UsersController :ControllerBase
+public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
-    
+
     public UsersController(IUserService userService)
     {
         _userService = userService;
     }
-    
+
     [HttpPost]
     [AllowAnonymous]
     public async Task<ActionResult<UserDto>> CreateUser([FromBody] NewUserDto user)
     {
         var createdUser = await _userService.CreateUserAsync(user);
         return Ok(createdUser);
+    }
+
+    [HttpGet("is-existing-email")]
+    [AllowAnonymous]
+    public async Task<ActionResult<bool>> CheckEmail([FromQuery] string email)
+    {
+        {
+            var createdUser = await _userService.CheckIsExistingEmail(email);
+            return Ok(createdUser);
+        }
     }
 }

@@ -20,6 +20,9 @@
                     <div *ngIf="registrationForm.get('email')?.hasError('required')">Please enter your email</div>
                     <div *ngIf="registrationForm.get('email')?.hasError('email')">Email format is incorrect. An example of the correct format: example@example.com</div>
                 </div>
+                <div *ngIf="isExistingEmail && registrationForm.controls['email'].untouched " class="invalid-feedback d-block">
+                    A user with this e-mail is already registered, please enter another one.
+                </div>
             </div>
             <div class="mb-2">
                 <app-custom-input

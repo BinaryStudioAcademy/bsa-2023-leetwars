@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
+import { UserService } from '@core/services/user.service';
 
 @Component({
     selector: 'app-log-in-page',
@@ -15,11 +16,13 @@ export class LogInPageComponent implements OnInit {
         password: new FormControl('', Validators.required),
     });
 
+    isExistingEmail = true;
+
     showPassword: boolean = false;
 
     isDataIncorrect: boolean;
 
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(private authService: AuthService, private router: Router, private userService: UserService) {}
 
     ngOnInit(): void {
         this.isDataIncorrect = false;
@@ -30,8 +33,20 @@ export class LogInPageComponent implements OnInit {
     }
 
     signIn() {
-        this.authService.login(this.logInForm.value.email!, this.logInForm.value.password!).subscribe(() => {
-            this.router.navigateByUrl('');
-        });
+        this.userService.checkEmail(this.logInForm.value.email!)
+            .subscribe(result => {
+                if (result) {
+                    this.authService.login(
+                        this.logInForm.value.email!,
+                        this.logInForm.value.password!,
+                    )
+                        .subscribe(() => {
+                            this.router.navigateByUrl('');
+                        });
+                } else {
+                    this.isExistingEmail = false;
+                }
+                this.logInForm.markAsUntouched();
+            });
     }
 }
