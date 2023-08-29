@@ -9,7 +9,7 @@ namespace LeetWars.Core.WebAPI.Controllers
     [Route("[controller]")]
     public class ChallengeController : ControllerBase
     {
-        public ChallengeController(IChallengeService challengeService)
+        public ChallengeController(IChallengeService challengeService) 
         {
             _challengeService = challengeService;
         }

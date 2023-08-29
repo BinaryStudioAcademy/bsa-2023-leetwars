@@ -24,7 +24,6 @@ builder.Services.AddFirebaseAuthentication(builder.Configuration);
 builder.Services.AddCors();
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
-
 builder.WebHost.UseUrls("http://*:5050");
 
 var app = builder.Build();
