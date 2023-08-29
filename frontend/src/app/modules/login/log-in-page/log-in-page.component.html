@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="log-in-body">
     <div class="logo-part">
         <div class="circle"></div>
@@ -11,20 +12,12 @@
             <H5 class="or-label">or</H5>
 
             <form class="logInForm" [formGroup]="logInForm">
-                <app-custom-input 
-                    [InputType]="'email'" 
-                    [Identifier]="'email'" 
-                    [Width]="'100%'" 
-                    [InputLabel]="'Email'"
+                <app-custom-input [InputType]="'email'" [Identifier]="'email'" [Width]="'100%'" [InputLabel]="'Email'"
                     [InputPlaceholder]="'Enter your email'"
                     (InputValueChange)="logInForm.controls['email'].setValue($event)">
                 </app-custom-input>
-                <app-custom-input 
-                    [InputType]="'password'" 
-                    [Identifier]="'password'" 
-                    [Width]="'100%'"
-                    [InputLabel]="'Password:'"
-                    [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+                <app-custom-input [InputType]="'password'" [Identifier]="'password'" [Width]="'100%'"
+                    [InputLabel]="'Password:'" [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
                     (InputValueChange)="logInForm.controls['password'].setValue($event)">
                 </app-custom-input>
                 <div class="forget-password">
