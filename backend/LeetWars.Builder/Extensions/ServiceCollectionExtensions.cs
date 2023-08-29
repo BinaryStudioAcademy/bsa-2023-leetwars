@@ -12,7 +12,7 @@ namespace LeetWars.Builder.Extensions
 
             services.AddSingleton(con => new ConnectionFactory()
             {
-                Uri = new Uri(configuration["RabbitUri"])
+                Uri = new Uri(configuration["Rabbit"])
             }
             .CreateConnection());
                 
