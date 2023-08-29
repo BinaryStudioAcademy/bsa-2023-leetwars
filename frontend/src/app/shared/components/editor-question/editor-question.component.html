@@ -33,13 +33,29 @@
             </div>
         </div>
     </div>
-    <div class="tabs-list d-flex flex-column gap-2">
+    <div class="input-wrapper mt-12px d-flex flex-column gap-2">
         <p class="question-header">Name *</p>
         <app-custom-input
             [Identifier]="'kata-name'"
-            [Height]="'36px'"
+            [Height]="'48px'"
             [Width]="'100%'"
             [Margin]="'0'"
             [InputPlaceholder]="'Give your kata a name'"></app-custom-input>
+    </div>
+    <div class="tabs-list mt-12px d-flex gap-2">
+        <div class="tab">
+            <span>Description</span>
+        </div>
+        <div class="tab d-flex gap-1">
+            <fa-icon [icon]="'eye'"></fa-icon>
+            <span>Preview</span>
+        </div>
+        <div class="tab d-flex gap-1">
+            <fa-icon [icon]="'circle-question'"></fa-icon>
+            <span>Help</span>
+        </div>
+    </div>
+    <div class="mt-12px">
+        <app-code-editor [language]="'question'"></app-code-editor>
     </div>
 </div>
