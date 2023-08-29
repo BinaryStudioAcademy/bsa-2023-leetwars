@@ -12,10 +12,10 @@ builder.Configuration
     .Build();
 
 builder.Services.AddControllers();
-builder.Services.AddLeetWarsCoreContext(builder.Configuration);
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.RegisterCustomServices();
+builder.Services.AddLeetWarsCoreContext(builder.Configuration);
+builder.Services.AddRabbitMqServices(builder.Configuration);
+builder.Services.RegisterCustomServices(builder.Configuration);
 builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
