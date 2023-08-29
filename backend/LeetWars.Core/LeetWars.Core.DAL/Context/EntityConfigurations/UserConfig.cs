@@ -29,6 +29,9 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
             builder.HasIndex(e => e.UserName)
                 .IsUnique();
 
+            builder.HasIndex(e => e.Email)
+                .IsUnique();
+
             builder.HasMany(e => e.PreferredLanguages)
                 .WithMany(l => l.Users)
                 .UsingEntity("PreferredLanguages");
