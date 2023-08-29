@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EditorInstance, EditorOption } from 'angular-markdown-editor';
+import { CategoryType } from '@shared/enums/category-type';
+import { TabType } from '@shared/enums/tab-type';
+import { EditorOption } from 'angular-markdown-editor';
 import { MarkdownService } from 'ngx-markdown';
 
 @Component({
@@ -8,27 +10,37 @@ import { MarkdownService } from 'ngx-markdown';
     styleUrls: ['./editor-question.component.sass'],
 })
 export class EditorQuestionComponent implements OnInit {
-    constructor(private markdownService: MarkdownService) {}
+    public selectedCategory: CategoryType = CategoryType.Fundamentals;
 
-    bsEditorInstance: EditorInstance;
+    public selectedTab: TabType = TabType.Description;
+
+    public CategoryType = CategoryType;
+
+    public TabType = TabType;
 
     public editorOptions: EditorOption;
 
     public markdownText: string;
 
-    ngOnInit() {
+    constructor(private markdownService: MarkdownService) {}
+
+    public ngOnInit() {
         this.editorOptions = {
             iconlibrary: 'fa',
-            onShow: (e: EditorInstance) => (this.bsEditorInstance = e),
+            hiddenButtons: ['bootstrap-markdown-cmdBold'],
             parser: (val) => this.markdownService.parse(val.trim()),
-            onPreview: (e) => {
-                console.log(e);
-                console.log(this.markdownText);
-            },
         };
     }
 
-    showFullScreen() {
-        this.bsEditorInstance.setFullscreen(true);
+    public editMarkDown() {
+        this.selectedTab = TabType.Description;
+
+        //add logic
+    }
+
+    public previewMarkDown() {
+        this.selectedTab = TabType.Preview;
+
+        //add logic
     }
 }

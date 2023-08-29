@@ -26,6 +26,11 @@
   color: $satured-grey
 
 .category
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 10px
   background-color: $weak-black
   height: 80px
   width: 100px
@@ -47,13 +52,14 @@
   background-color: $double-weak-white
   max-width: 340px
   border-radius: 8px
+  overflow: hidden
 
 .tab
   font-size: 14px
   padding: 12px 24px
   cursor: pointer
-  &:hover
-    background-color: $light-lavender-grey
+  &:hover, &-active
+    background-color: $delicate-lavender
 
 .editor
   background-color: $strong-black
@@ -61,3 +67,14 @@
   min-height: 260px
   padding: 10px
 
+// Markdown editor styles
+
+::ng-deep .md-header
+  display: none
+
+::ng-deep #markdown-editor
+  background-color: $strong-black
+  color: $white
+  padding: 12px
+  width: 100%
+  max-height: 260px
