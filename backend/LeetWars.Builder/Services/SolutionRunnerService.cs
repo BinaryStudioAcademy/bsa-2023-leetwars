@@ -8,7 +8,7 @@ namespace LeetWars.Builder.Services
     {
         private readonly DockerClient _client = new DockerClientConfiguration().CreateClient();
 
-        public async Task RunCodeAsync(string imageName, string containerName)
+        public async Task RunCodeInContainerAsync(string imageName, string containerName)
         {
             var containerParams = new CreateContainerParameters
             {
@@ -23,7 +23,6 @@ namespace LeetWars.Builder.Services
             await _client.Containers.WaitContainerAsync(container.ID);
 
             await _client.Containers.RemoveContainerAsync(container.ID, new ContainerRemoveParameters());
-
         }
         public void Dispose()
         {

@@ -2,6 +2,6 @@
 {
     public interface ISolutionRunnerService : IDisposable
     {
-        Task RunCodeAsync(string imagename, string containername);
+        Task RunCodeInContainerAsync(string imagename, string containername);
     }
 }

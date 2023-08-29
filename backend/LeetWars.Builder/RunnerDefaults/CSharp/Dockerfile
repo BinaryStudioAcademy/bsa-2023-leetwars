@@ -1,4 +1,4 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:6.0
-COPY ./CSharpBuildAndRun.sh ./CSharpBuildAndRun.sh
+WORKDIR /CSharpRunner
 COPY ./CSharpRunner ./CSharpRunner
-CMD ["sh", "CSharpBuildAndRun.sh"]
+CMD ["sh", "./CSharpRunner/CSharpBuildAndRun.sh"]

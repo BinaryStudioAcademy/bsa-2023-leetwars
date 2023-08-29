@@ -11,6 +11,8 @@ var app = builder.Build();
 app.MapGet("/", () => "Hello World!");
 
 //Test
-app.MapGet("/docker", () => new SolutionRunnerService().RunCodeAsync(DefaultRunnerImageNames.CSharpImage, "test-container"));
+app.MapGet("/docker/csharp", () => new SolutionRunnerService().RunCodeInContainerAsync(DefaultRunnerImageNames.CSharpImage, "csharp-test-container"));
+
+app.MapGet("/docker/js", () => new SolutionRunnerService().RunCodeInContainerAsync(DefaultRunnerImageNames.JSImage, "js-test-container"));
 
 app.Run();

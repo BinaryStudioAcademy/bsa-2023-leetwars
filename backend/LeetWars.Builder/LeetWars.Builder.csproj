@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="RunnerDefaults\JSRunner\**" />
+    <Content Remove="RunnerDefaults\JSRunner\**" />
+    <EmbeddedResource Remove="RunnerDefaults\JSRunner\**" />
+    <None Remove="RunnerDefaults\JSRunner\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="RunnerDefaults\CSharp\CSharpRunner\CSharpRunner.csproj" />
   </ItemGroup>
 
