@@ -51,7 +51,7 @@ services:
         ports:
             - "5080:5080"
         environment:
-            ASPNETCORE_ENVIRONMENT: 'Development'
+            ASPNETCORE_ENVIRONMENT: 'Production'
         env_file:
             - /etc/environment
 
