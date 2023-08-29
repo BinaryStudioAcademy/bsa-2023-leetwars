@@ -29,9 +29,7 @@ public class UsersController : ControllerBase
     [AllowAnonymous]
     public async Task<ActionResult<bool>> CheckEmail([FromQuery] string email)
     {
-        {
-            var createdUser = await _userService.CheckIsExistingEmail(email);
-            return Ok(createdUser);
-        }
+        var createdUser = await _userService.CheckIsExistingEmail(email);
+        return Ok(createdUser);
     }
 }

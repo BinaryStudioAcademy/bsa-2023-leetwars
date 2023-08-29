@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace LeetWars.Core.WebAPI.Validators.User
 {
-    public class UserRegisterDTOValidator : AbstractValidator<NewUserDto>
+    public class UserRegisterDtoValidator : AbstractValidator<NewUserDto>
     {
-        public UserRegisterDTOValidator()
+        public UserRegisterDtoValidator()
         {
             RuleFor(u => u.UserName)
                 .NotEmpty().WithMessage("UserName is requeried")
@@ -30,7 +30,20 @@ namespace LeetWars.Core.WebAPI.Validators.User
 
         private bool BeValidLatinCharacters(string userName)
         {
-            return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, "^[A-Za-z -]+$");
+            CancellationTokenSource cts = new CancellationTokenSource();
+            cts.CancelAfter(5000);
+
+            try
+            {
+                return Task.Run(() =>
+                {
+                    return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, "^[A-Za-z -]+$");
+                }, cts.Token).Result;
+            }
+            catch (OperationCanceledException)
+            {
+                return false;
+            }
         }
     }
 }
