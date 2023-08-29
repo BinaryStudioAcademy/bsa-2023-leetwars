@@ -18,6 +18,12 @@ export class StepsOfProgressComponent implements AfterViewInit {
 
     private readonly largeScreenWidth = 2048;
 
+    private readonly maxProgressWidth = 100;
+
+    private readonly defaultWidthOffset = 1.5;
+
+    private readonly largeScreenWidthOffset = 1.2;
+
     constructor(private el: ElementRef, private cdr: ChangeDetectorRef) {}
 
     @HostListener('window:resize')
@@ -27,7 +33,7 @@ export class StepsOfProgressComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         if (this.activeStepIndex >= this.steps.length) {
-            this.progressWidth = 100;
+            this.progressWidth = this.maxProgressWidth;
             this.cdr.detectChanges();
 
             return;
@@ -48,9 +54,9 @@ export class StepsOfProgressComponent implements AfterViewInit {
             (this.activeStepIndicator?.getBoundingClientRect().left || 0) -
             (this.progressBarLine?.getBoundingClientRect().left || 0);
 
-        this.progressWidth = (activeStepLeft / progressBarWidth) * 100 + 1.5; // calculate width in %
+        this.progressWidth = (activeStepLeft / progressBarWidth) * 100 + this.defaultWidthOffset; // calculate width in %
         if (window.innerWidth > this.largeScreenWidth) {
-            this.progressWidth -= 1.2;
+            this.progressWidth -= this.largeScreenWidthOffset;
         }
 
         this.cdr.detectChanges();
