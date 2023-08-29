@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
+  </ItemGroup>
+
 </Project>

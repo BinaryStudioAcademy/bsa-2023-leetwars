@@ -1,4 +1,6 @@
 using LeetWars.Notifier.Hubs;
+using LeetWars.Notifier.WebAPI.Services;
+using LeetWars.RabbitMQ.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +11,10 @@ builder.Configuration
     .AddEnvironmentVariables()
     .Build();
 
-// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddRabbitMqServices(builder.Configuration);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();

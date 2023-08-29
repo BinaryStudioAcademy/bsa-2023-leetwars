@@ -1,0 +1,34 @@
+<div class="component-container">
+    <div class="chart-header d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-3">
+            <div class="primary-indicator d-flex align-items-center gap-1">
+                <span class="primary-indicator-data">{{totalSubmissions}}</span>
+                submissions in last year
+            </div>
+            <img src="/assets/images/info.svg" alt="info">
+        </div>
+        <div class="d-flex align-items-center justify-content-between gap-3">
+            <div class="common-indicator d-flex align-items-center gap-1">
+                Total active days:
+                <span class="common-indicator-data">{{totalActiveDays}}</span>
+            </div>
+            <div class="common-indicator d-flex align-items-center gap-1">
+                Max streak:
+                <span class="common-indicator-data">{{maxStreak}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="chart-container scrollable">
+        <div class="chart-months">
+            <div class="chart-month" *ngFor="let month of chartData">
+                <div class="chart-month-days">
+                    <div class="chart-day" *ngFor="let spacer of month.spacers"></div>
+                    <div class="chart-day" *ngFor="let day of month.days"
+                         [class.fill]="day.fill" [class.blank]="!day.fill"
+                    ></div>
+                </div>
+                <div class="chart-month-title" *ngIf="month.showTitle">{{month.title}}</div>
+            </div>
+        </div>
+    </div>
+</div>
