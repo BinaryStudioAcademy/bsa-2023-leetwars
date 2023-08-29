@@ -30,20 +30,7 @@ namespace LeetWars.Core.WebAPI.Validators.User
 
         private bool BeValidLatinCharacters(string userName)
         {
-            CancellationTokenSource cts = new CancellationTokenSource();
-            cts.CancelAfter(5000); 
-
-            try
-            {
-                return Task.Run(() =>
-                {
-                    return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, "^[A-Za-z -]+$");
-                }, cts.Token).ConfigureAwait(false).GetAwaiter().GetResult();
-            }
-            catch (OperationCanceledException)
-            {
-                return false;
-            }
+            return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, "^[A-Za-z -]+$", RegexOptions.None, TimeSpan.FromMilliseconds(100));
         }
     }
 }
