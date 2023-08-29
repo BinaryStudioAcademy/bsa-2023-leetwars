@@ -21,13 +21,19 @@ namespace LeetWars.Core.WebAPI.Extentions
             services
                 .AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-            
-            services.AddScoped<IUserService, UserService>();
+
+            services.AddTransient<IChallengeService, ChallengeService>();
+            services.AddTransient<ITagService, TagService>();
+            services.AddTransient<ILanguageService, LanguageService>();
+           services.AddScoped<IUserService, UserService>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetAssembly(typeof(SampleProfile)));
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(ChallengeProfile)));
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(TagProfile)));
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(LanguageProfile)));
         }
 
         public static void AddValidation(this IServiceCollection services)
