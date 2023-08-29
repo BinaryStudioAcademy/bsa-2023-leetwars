@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
     <ProjectReference Include="..\LeetWars.Core.Common\LeetWars.Core.Common.csproj" />
     <ProjectReference Include="..\LeetWars.Core.DAL\LeetWars.Core.DAL.csproj" />
   </ItemGroup>

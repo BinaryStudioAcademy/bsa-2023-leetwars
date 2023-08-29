@@ -18,16 +18,15 @@ export class SuggestedChallengeComponent {
 
     @Input() languages: string[] = [
         'C#',
-        'C++',
-        'C',
-        'Java',
         'Javascript',
-        'Typescript',
     ];
 
     score: string[] = [
+        'Fundamentals',
         'Rank up',
-        'Rank down',
+        'Practice and Repeat',
+        'Beta',
+        'Random',
     ];
 
     @Input() description: string = 'Write a function that takes in a string of one or more words,'
