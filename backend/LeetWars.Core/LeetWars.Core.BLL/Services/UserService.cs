@@ -31,4 +31,9 @@ public class UserService : BaseService, IUserService
         
         return _mapper.Map<UserDto>(createdUser);
     }
+
+    public Task<UserFullDto> GetUserAsync(int id)
+    {
+        var user = _context.Users.FirstOrDefault(u => u.Id == id);
+    }
 }
