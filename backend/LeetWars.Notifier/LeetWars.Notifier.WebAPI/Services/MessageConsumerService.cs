@@ -20,7 +20,7 @@ namespace LeetWars.Notifier.WebAPI.Services
                 var body = args.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
                 Console.WriteLine(message); //impement some logic here using signalR
-                _consumerService.SetAcknowledge(args.DeliveryTag, true);
+                _consumerService.SetAcknowledge(args.DeliveryTag, false);
             });
 
             _consumerService.Listen(handler);

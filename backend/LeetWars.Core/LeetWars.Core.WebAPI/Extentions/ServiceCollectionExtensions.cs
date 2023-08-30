@@ -37,7 +37,7 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.Configure<ProducerSettings>(configuration.GetSection("RabbitMQProducer"));
             services.AddSingleton(sp =>
             {
-                var rabbitUri = new Uri(configuration["RabbitURI"]);
+                var rabbitUri = new Uri(configuration["Rabbit"]);
                 var factory = new ConnectionFactory { Uri = rabbitUri };
                 return factory.CreateConnection();
             });
