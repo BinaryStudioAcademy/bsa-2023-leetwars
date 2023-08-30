@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DropdownItem } from '@shared/models/dropdown-item';
 
 @Component({
@@ -14,7 +14,7 @@ export class ChallengesDropdownSelectComponent implements OnInit {
     selectedItem: DropdownItem;
 
     ngOnInit(): void {
-        this.selectedItem = this.items[0];
+        [this.selectedItem] = this.items;
     }
 
     selectItem(item: DropdownItem) {

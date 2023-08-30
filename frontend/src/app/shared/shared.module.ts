@@ -12,6 +12,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
+import { ChallengesDropdownSelectComponent } from './components/challenges-dropdown-select/challenges-dropdown-select.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
@@ -25,7 +26,6 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { StepsOfProgressComponent } from './components/steps-of-progress/steps-of-progress.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
-import { ChallengesDropdownSelectComponent } from './components/challenges-dropdown-select/challenges-dropdown-select.component';
 
 @NgModule({
     imports: [
