@@ -7,9 +7,9 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
