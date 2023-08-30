@@ -2,8 +2,8 @@
     <div class="filters">
         <h5>Suggested Challenge</h5>
         <div class="dropdowns-container">
-            <app-dropdown-select [items]="languages" ></app-dropdown-select>
-            <app-dropdown-select [items]="score"></app-dropdown-select>
+            <app-dropdown-select [selectText]="'Choose Language...'" [items]="languages" ></app-dropdown-select>
+            <app-dropdown-select [selectText]="'Choose Today\'s Focus...'" [items]="score"></app-dropdown-select>
         </div>
         <div class="button-group">
             <button class="suggested-button skip">

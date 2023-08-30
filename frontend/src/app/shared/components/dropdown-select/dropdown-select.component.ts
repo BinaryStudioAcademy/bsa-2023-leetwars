@@ -12,6 +12,8 @@ export class DropdownSelectComponent {
 
     @Input() items: string[] = [];
 
+    @Input() selectText: string = 'Select';
+
     @Output() SelectedItemsChanged: EventEmitter<string[] | string> = new EventEmitter<string[] | string>();
 
     selectedItem: string | undefined;

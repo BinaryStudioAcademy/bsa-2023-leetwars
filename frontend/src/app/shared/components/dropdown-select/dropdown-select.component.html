@@ -2,7 +2,7 @@
     <div class="button-wrapper d-flex flex-column d-flex flex-grow-1">
         <label class="title">{{ title }}</label>
         <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
-            <span class="float-start">{{ selectedItem ? selectedItem : 'Select' }}</span>
+            <span class="float-start">{{ selectedItem ? selectedItem : selectText }}</span>
             <fa-icon [icon]="'chevron-down'" size="xs"></fa-icon>
         </button>
     </div>
