@@ -27,7 +27,7 @@ public class UsersController :ControllerBase
 
     [HttpGet]
     [AllowAnonymous]
-    public async Task<ActionResult<UserFullDto>> GetUser (int id)
+    public async Task<ActionResult<UserFullDto>> GetUser ([FromBody]int id)
     {
         var user  = await _userService.GetUserAsync(id);
         return Ok(user);
