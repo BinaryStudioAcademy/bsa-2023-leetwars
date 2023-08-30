@@ -6492,6 +6492,13 @@ ngx-infinite-scroll@14.0.0:
   integrity sha512-YZB5PBPXSERNtCGQRZTVflbgkh5asp01NPfC8KPItemmQik1Ip8ZCCbcyHA77TDTdilmaiu8TbguA3geg/LMWw==
   dependencies:
     tslib "^2.3.0"
+    
+ngx-bootstrap@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-9.0.0.tgz#8524958cdd479aefcc9549788694fe08789f2f52"
+  integrity sha512-wVwKs1jIASzJrKSPUhOcHY8f39MKyG31SruJdVQ3S/v/PdBVmVuFUJL86Awc8F60di2xD9C4DzzGObkvsHbirw==
+  dependencies:
+    tslib "^2.3.0"
 
 ngx-monaco-editor-v2@14.x.x:
   version "14.0.4"

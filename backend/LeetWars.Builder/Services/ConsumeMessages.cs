@@ -2,15 +2,15 @@
 using RabbitMQ.Client.Events;
 using System.Text;
 
-namespace LeetWars.Notifier.WebAPI.Services
+namespace LeetWars.Builder.Services
 {
-    public class MessageConsumerService : BackgroundService
+    public class ConsumeMessages : BackgroundService
     {
         private readonly IConsumerService _consumerService;
 
-        public MessageConsumerService(IConsumerService consumerService)
+        public ConsumeMessages(IConsumerService consumerService)
         {
-            _consumerService = consumerService; 
+            _consumerService = consumerService;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -18,9 +18,11 @@ namespace LeetWars.Notifier.WebAPI.Services
             var handler = new EventHandler<BasicDeliverEventArgs>((model, args) =>
             {
                 var body = args.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine(message); //impement some logic here using signalR
-                _consumerService.SetAcknowledge(args.DeliveryTag, false);
+                var message = Encoding.UTF8.GetString(body).Replace('"', '\0');
+
+                Console.WriteLine(message);
+
+                _consumerService.SetAcknowledge(args.DeliveryTag, true);
             });
 
             _consumerService.Listen(handler);

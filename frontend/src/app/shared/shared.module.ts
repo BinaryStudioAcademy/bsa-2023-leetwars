@@ -8,6 +8,8 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
@@ -20,6 +22,9 @@ import { GeneralModalComponent } from './components/general-modal/general-modal.
 import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { StepsOfProgressComponent } from './components/steps-of-progress/steps-of-progress.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 
 @NgModule({
@@ -33,6 +38,8 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         NgbModule,
         MonacoEditorModule,
         InfiniteScrollModule,
+        NgxChartsModule,
+        ProgressbarModule,
     ],
     declarations: [
         LoadingSpinnerComponent,
@@ -45,7 +52,10 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         CodeEditorComponent,
         ChallengeComponent,
         FilteringSectionComponent,
+        PieChartComponent,
+        ProgressBarComponent,
         HeaderComponent,
+        StepsOfProgressComponent,
     ],
     exports: [
         CommonModule,
@@ -64,8 +74,12 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         CustomInputComponent,
         ChallengeComponent,
         FilteringSectionComponent,
+        PieChartComponent,
+        ProgressBarComponent,
         HeaderComponent,
+        StepsOfProgressComponent,
     ],
+
 })
 export class SharedModule {
     constructor(library: FaIconLibrary) {
