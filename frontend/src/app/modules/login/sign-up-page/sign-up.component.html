@@ -10,14 +10,14 @@
                 [InputType]="'email'"
                 [Identifier]="'email'"
                 [Width]="'100%'"
-                [InputLabel]="'Email:'"
+                [InputLabel]="'Email'"
                 [InputPlaceholder]="'Enter your email'"
                 (InputValueChange)="registrationForm.controls['email'].setValue($event)">
             </app-custom-input>
             <app-custom-input
                 [Identifier]="'username'"
                 [Width]="'100%'"
-                [InputLabel]="'Username:'"
+                [InputLabel]="'Username'"
                 [InputPlaceholder]="'Enter your username'"
                 (InputValueChange)="registrationForm.controls['username'].setValue($event)">
             </app-custom-input>
@@ -25,7 +25,7 @@
                 [InputType]="'password'"
                 [Identifier]="'password'"
                 [Width]="'100%'"
-                [InputLabel]="'Password:'"
+                [InputLabel]="'Password'"
                 [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
                 (InputValueChange)="registrationForm.controls['password'].setValue($event)">
             </app-custom-input>
@@ -38,6 +38,11 @@
             <button type="submit" class="form-button" [disabled]="!registrationForm.valid" (click)="signUp()">
                 Enlist
             </button>
+            <div class="have-account">
+                Already registered?
+            <a class="sign-in-link" routerLink="/auth/login">Sign in</a>
+        </div>
         </form>
     </div>
+    <div class="footer"></div>
 </div>

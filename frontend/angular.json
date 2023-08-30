@@ -45,13 +45,20 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "sass",
-                        "assets": ["src/favicon.ico", "src/assets", { "glob": "**/*", "input": "node_modules/monaco-editor", "output": "/assets/monaco/" }],
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            { "glob": "**/*", "input": "node_modules/monaco-editor", "output": "/assets/monaco/" }
+                        ],
                         "styles": ["src/styles/index.sass"],
-                        "scripts": [],
+                        "scripts": [
+                            "node_modules/jquery/dist/jquery.js",
+                            "node_modules/bootstrap-markdown/js/bootstrap-markdown.js"
+                        ],
                         "allowedCommonJsDependencies": ["moment-timezone"],
                         "stylePreprocessorOptions": {
                             "includePaths": ["src/styles"]
-                          }
+                        }
                     },
                     "configurations": {
                         "production": {
@@ -112,9 +119,16 @@
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
                         "inlineStyleLanguage": "sass",
-                        "assets": ["src/favicon.ico", "src/assets", { "glob": "**/*", "input": "node_modules/monaco-editor", "output": "/assets/monaco/" }],
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            { "glob": "**/*", "input": "node_modules/monaco-editor", "output": "/assets/monaco/" }
+                        ],
                         "styles": ["src/styles.sass"],
-                        "scripts": []
+                        "scripts": [
+                            "node_modules/jquery/dist/jquery.js",
+                            "node_modules/bootstrap-markdown/js/bootstrap-markdown.js"
+                        ]
                     }
                 },
                 "lint": {
