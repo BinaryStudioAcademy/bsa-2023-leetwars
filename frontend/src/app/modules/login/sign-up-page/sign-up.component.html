@@ -38,6 +38,11 @@
             <button type="submit" class="form-button" [disabled]="!registrationForm.valid" (click)="signUp()">
                 Enlist
             </button>
+            <div class="have-account">
+                Already registered?
+            <a class="sign-in-link" routerLink="/auth/login">Sign in</a>
+        </div>
         </form>
     </div>
+    <div class="footer"></div>
 </div>
