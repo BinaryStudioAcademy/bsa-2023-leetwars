@@ -99,8 +99,6 @@ namespace LeetWars.Core.BLL.Services
         {
             var userId = _userIdGetter.CurrentUserId;
 
-            var random = new Random(DateTime.Now.Millisecond);
-
             var challenges = _context.Challenges
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
@@ -126,10 +124,10 @@ namespace LeetWars.Core.BLL.Services
                 _ => challenges
             };
 
-            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+            using (var generator = RandomNumberGenerator.Create())
             {
                 var data = new byte[4];
-                rng.GetBytes(data);
+                generator.GetBytes(data);
                 var randomValue = Math.Abs(BitConverter.ToInt32(data, 0));
 
                 int randomPosition = (randomValue % challenges.Count());
