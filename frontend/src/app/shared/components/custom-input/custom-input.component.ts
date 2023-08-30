@@ -33,16 +33,16 @@ export class CustomInputComponent implements ControlValueAccessor {
         }
     }
 
-    registerOnChange(fn: (value: string) => void): void {
+    registerOnChange(fn: (value: string) => void) {
         this.onChange = fn;
         this.onChange(this._value);
     }
 
-    registerOnTouched(fn: () => void): void {
+    registerOnTouched(fn: () => void) {
         this.onTouchedFn = fn;
     }
 
-    writeValue(value: string): void {
+    writeValue(value: string) {
         this.value = value;
     }
 
@@ -66,12 +66,12 @@ export class CustomInputComponent implements ControlValueAccessor {
 
     showPassword = false;
 
-    onInputChange(model: string): void {
+    onInputChange(model: string) {
         this.InputValue = model;
         this.InputValueChange.emit(model);
     }
 
-    togglePasswordVisibility(): void {
+    togglePasswordVisibility() {
         this.InputType = this.InputType === 'password' ? 'text' : 'password';
         this.showPassword = !this.showPassword;
     }
