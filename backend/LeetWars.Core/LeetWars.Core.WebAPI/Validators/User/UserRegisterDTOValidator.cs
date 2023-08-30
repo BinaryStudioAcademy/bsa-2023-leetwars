@@ -30,7 +30,7 @@ namespace LeetWars.Core.WebAPI.Validators.User
 
         private bool BeValidLatinCharacters(string userName)
         {
-            return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, "^[A-Za-z -]+$", RegexOptions.None, TimeSpan.FromMilliseconds(100));
+            return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, Regaxes.RegexPatterns.LatinCharactersPattern, RegexOptions.None, TimeSpan.FromMilliseconds(100));
         }
     }
 }
