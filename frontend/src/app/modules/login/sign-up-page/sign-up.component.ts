@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { latinCharactersPattern, passwordPattern } from '@shared/regaxes/regax-patterns';
 import { catchError, tap } from 'rxjs';
 
 @Component({
@@ -20,13 +21,13 @@ export class SignUpComponent {
             Validators.required,
             Validators.minLength(2),
             Validators.maxLength(50),
-            Validators.pattern('^[A-Za-z\\s-]+$'),
+            Validators.pattern(latinCharactersPattern),
         ]),
         password: new FormControl('', [
             Validators.required,
             Validators.minLength(8),
             Validators.maxLength(32),
-            Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,32}$'),
+            Validators.pattern(passwordPattern),
         ]),
     });
 
