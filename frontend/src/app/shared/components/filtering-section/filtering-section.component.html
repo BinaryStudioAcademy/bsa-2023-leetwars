@@ -1,4 +1,4 @@
-<div class="filtering-section d-flex">
+<div class="filtering-section d-flex mt-3">
     <div class="filters d-flex flex-column">
         <div class="search-container m-0-12px">
             <app-custom-input
@@ -29,9 +29,9 @@
             [items]="tagsList"
             class="m-0-12px mb-28px"></app-dropdown-select>
     </div>
-    <div class="d-grid justify-content-center gap-2">
+    <div class="challenges d-grid justify-content-center gap-2">
         <div *ngFor="let challenge of challengesList">
-            <app-challenge class="challenge-block" [challenge]="challenge"></app-challenge>
+            <app-challenge [challenge]="challenge"></app-challenge>
         </div>
     </div>
 </div>
