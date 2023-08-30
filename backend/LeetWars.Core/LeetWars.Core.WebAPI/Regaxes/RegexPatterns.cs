@@ -2,6 +2,6 @@
 {
     public static class RegexPatterns
     {
-        public static string LatinCharactersPattern = "^[A-Za-z -]+$";
+        public static readonly string LatinCharactersPattern = "^[A-Za-z -]+$";
     }
 }
