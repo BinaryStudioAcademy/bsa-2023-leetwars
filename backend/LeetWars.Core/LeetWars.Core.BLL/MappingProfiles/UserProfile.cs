@@ -1,5 +1,10 @@
 ﻿using AutoMapper;
+using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.Language;
+using LeetWars.Core.Common.DTO.Subscription;
 using LeetWars.Core.Common.DTO.User;
+using LeetWars.Core.Common.DTO.UserLanguageLevel;
+using LeetWars.Core.Common.DTO.UserSolution;
 using LeetWars.Core.DAL.Entities;
 
 namespace LeetWars.Core.BLL.MappingProfiles
@@ -11,7 +16,13 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<User,UserDto>();
             CreateMap<UserDto,User>();
             CreateMap<NewUserDto, User>();
-            CreateMap<User, UserFullDto>().IncludeMembers(x => x.PreferredLanguages).IncludeMembers(x => x.LanguagesWithLevels).IncludeMembers(x => x.Solutions).IncludeMembers(x => x.Challenges).IncludeMembers(x => x.Subscriptions);
+
+            CreateMap<User, UserFullDto>();        
+            CreateMap<Subscription,SubscriptionDto>();
+            CreateMap<Language, LanguageDto>();
+            CreateMap<UserLanguageLevel, UserLanguageLevelDto>();
+            CreateMap<UserSolution, UserSolutionDto>();
+            CreateMap<Challenge, ChallengeDto>();
         }
     }
 }

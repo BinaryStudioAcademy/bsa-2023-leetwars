@@ -36,11 +36,11 @@ public class UserService : BaseService, IUserService
     {
         var user = await _context.Users.Where(u => u.Id == id)
             .Include(user => user.LanguagesWithLevels)
-            .Include(user => user.LanguagesWithLevels)
+            .Include(user => user.PreferredLanguages)
             .Include(user => user.Solutions)
             .Include(user => user.Challenges)
             .FirstOrDefaultAsync();
-        if(user is null)
+       if(user is null)
         {
             throw new ArgumentNullException(id.ToString(),"Not found");
         }

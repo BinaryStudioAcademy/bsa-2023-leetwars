@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserService } from '@core/services/user.service';
 import { UserFull } from '@shared/models/profile/user-full';
 
@@ -8,18 +8,16 @@ import { UserFull } from '@shared/models/profile/user-full';
     styleUrls: ['./profile-page-main-info.component.sass'],
 })
 export class ProfilePageMainInfoComponent {
-    private user: UserFull;
+    @Input() user: UserFull = <UserFull>{};
 
-    constructor(private userService: UserService) {
-        userService.getFullUser(1).subscribe((u) => {
-            this.user = u;
-        });
-    }
+    constructor(private userService: UserService) {}
 
     //replace it with real user interface
-    public username = 'TatiHutii';
+    public username? = '';
 
-    public userRank = '~5,000,000';
+    public languages? = '';
+
+    public userRank = '';
 
     public communityViews = 0;
 

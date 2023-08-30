@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+import { UserService } from '@core/services/user.service';
 import { SubmissionsChartComponent } from '@modules/user/submissions-chart/submissions-chart.component';
 import { UserRoutingModule } from '@modules/user/user-routing.module';
+import { UserFull } from '@shared/models/profile/user-full';
 import { SharedModule } from '@shared/shared.module';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
@@ -17,4 +19,12 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ],
     imports: [SharedModule, UserRoutingModule, ProgressbarModule],
 })
-export class UserModule {}
+export class UserModule {
+    user: UserFull = <UserFull>{};
+
+    constructor(private userService: UserService) {
+        userService.getFullUser(2).subscribe((u: UserFull) => {
+            this.user = u;
+        });
+    }
+}

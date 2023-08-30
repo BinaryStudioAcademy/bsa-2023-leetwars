@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NewUser } from '@shared/models/new-user';
 import { UserFull } from '@shared/models/profile/user-full';
@@ -18,8 +17,6 @@ export class UserService {
     }
 
     public getFullUser(id: number): Observable<UserFull> {
-        const queryParams = new HttpParams().append('id', id);
-
-        return this.httpService.getRequest<UserFull>('/users', queryParams);
+        return this.httpService.getRequest<UserFull>(`/users/${id}`);
     }
 }
