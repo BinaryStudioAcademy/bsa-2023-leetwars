@@ -6815,6 +6815,27 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+ngx-bootstrap@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-9.0.0.tgz#8524958cdd479aefcc9549788694fe08789f2f52"
+  integrity sha512-wVwKs1jIASzJrKSPUhOcHY8f39MKyG31SruJdVQ3S/v/PdBVmVuFUJL86Awc8F60di2xD9C4DzzGObkvsHbirw==
+  dependencies:
+    tslib "^2.3.0"
+
+ngx-markdown@14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-markdown/-/ngx-markdown-14.0.0.tgz#3cf7f5567be448ff188d143f22dedfa0db4f5d38"
+  integrity sha512-gS/41oYTst0pppGk5vcfr+ZqmveGwu66gQo/UOv6TM+LICBCQMbYJwnlPwFtoWgOLMf8JAzCVDMcdu2I0GIG7A==
+  dependencies:
+    "@types/marked" "^4.0.3"
+    clipboard "^2.0.11"
+    emoji-toolkit "^6.6.0"
+    katex "^0.16.0"
+    marked "^4.0.17"
+    mermaid "^9.1.2"
+    prismjs "^1.28.0"
+    tslib "^2.3.0"
+
 ngx-monaco-editor-v2@14.x.x:
   version "14.0.4"
   resolved "https://registry.yarnpkg.com/ngx-monaco-editor-v2/-/ngx-monaco-editor-v2-14.0.4.tgz#48eeed59de2c45c50cff1dec172067d353c2ca02"

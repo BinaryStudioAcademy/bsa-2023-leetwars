@@ -24,6 +24,8 @@ export class EditorQuestionComponent implements OnInit {
 
     public markdownText: string;
 
+    public steps: string[] = ['Question', 'Solutions', 'Testcases'];
+
     constructor(private markdownService: MarkdownService) {}
 
     public ngOnInit() {

@@ -7,6 +7,10 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
@@ -26,7 +30,20 @@ import { StepsOfProgressComponent } from './components/steps-of-progress/steps-o
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, RouterModule, FontAwesomeModule, NgbModule, MonacoEditorModule],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        FontAwesomeModule,
+        NgbModule,
+        MonacoEditorModule,
+        NgxChartsModule,
+        ProgressbarModule,
+        MarkdownModule.forRoot(),
+        AngularMarkdownEditorModule.forRoot({ iconlibrary: 'fa' }),
+    ],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
@@ -64,8 +81,9 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         PieChartComponent,
         ProgressBarComponent,
         HeaderComponent,
+        StepsOfProgressComponent,
+        EditorQuestionComponent,
     ],
-
 })
 export class SharedModule {
     constructor(library: FaIconLibrary) {
