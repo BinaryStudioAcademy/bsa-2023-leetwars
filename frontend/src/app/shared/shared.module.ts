@@ -25,9 +25,9 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { StepsOfProgressComponent } from './components/steps-of-progress/steps-of-progress.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
+import { ChallengesDropdownSelectComponent } from './components/challenges-dropdown-select/challenges-dropdown-select.component';
 
 @NgModule({
-
     imports: [
         CommonModule,
         RouterModule,
@@ -55,6 +55,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ProgressBarComponent,
         HeaderComponent,
         StepsOfProgressComponent,
+        ChallengesDropdownSelectComponent,
     ],
     exports: [
         CommonModule,
@@ -69,6 +70,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
+        ChallengesDropdownSelectComponent,
         SuggestedChallengeComponent,
         CustomInputComponent,
         ChallengeComponent,
@@ -78,7 +80,6 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         HeaderComponent,
         StepsOfProgressComponent,
     ],
-
 })
 export class SharedModule {
     constructor(library: FaIconLibrary) {
