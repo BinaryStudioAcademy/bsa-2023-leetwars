@@ -1,0 +1,30 @@
+<div class="wrapper d-flex flex-column" [class.maximized]="isMaximized">
+    <div class="language-info d-flex" *ngIf="!isMaximized">
+        <span class="language-tooltiptext">Aliquip exercitation est aute dolor magna.</span>
+        <span>Languages</span>
+        <fa-icon [icon]="'circle-info'"></fa-icon>
+    </div>
+    <div class="language-settings d-flex" *ngIf="!isMaximized">
+        <app-challenges-dropdown-select [items]="languagesList"
+            (SelectedItemsChanged)="onSelectedItemChanged($event)"></app-challenges-dropdown-select>
+        <app-challenges-dropdown-select [items]="languageVersionsList"></app-challenges-dropdown-select>
+    </div>
+    <div class="editor-container d-flex flex-column">
+        <div class="actions d-flex">
+            <div class="tabs d-flex">
+                <div class="tab" [class.active]="activeTab === 'test-cases'" (click)="changeTab('test-cases')">Test
+                    Cases
+                </div>
+                <div class="tab" [class.active]="activeTab === 'example-test-cases'"
+                    (click)="changeTab('example-test-cases')">Example Test Cases</div>
+                <div class="tab" [class.active]="activeTab === 'help'" (click)="changeTab('help')">Help</div>
+            </div>
+            <button class="maximize-btn" (click)="toggleMaximize()">
+                <fa-icon [icon]="isMaximized ? ['fas', 'compress'] : ['fas', 'maximize']"></fa-icon>
+            </button>
+        </div>
+        <div class="editor-content">
+            <app-code-editor [language]="selectedLanguage" class="editor"></app-code-editor>
+        </div>
+    </div>
+</div>
