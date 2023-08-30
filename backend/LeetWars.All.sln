@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Core.Common", "Lee
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Core.BLL", "LeetWars.Core\LeetWars.Core.BLL\LeetWars.Core.BLL.csproj", "{0BF81DD6-4BFA-4047-AD37-3C9CAE8E1040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetWars.RabbitMQ", "LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj", "{CD4A8632-3C4D-48BF-83C0-6C41C2A522D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.RabbitMQ", "LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj", "{CD4A8632-3C4D-48BF-83C0-6C41C2A522D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetWars.Builder", "LeetWars.Builder\LeetWars.Builder.csproj", "{75EF42F7-2F18-449F-ADAD-D665992606E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Builder", "LeetWars.Builder\LeetWars.Builder.csproj", "{75EF42F7-2F18-449F-ADAD-D665992606E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetWars.Emailer", "LeetWars.Emailer\LeetWars.Emailer.csproj", "{C61186C3-19AC-4771-8047-DAA02B91A888}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{75EF42F7-2F18-449F-ADAD-D665992606E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75EF42F7-2F18-449F-ADAD-D665992606E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75EF42F7-2F18-449F-ADAD-D665992606E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C61186C3-19AC-4771-8047-DAA02B91A888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C61186C3-19AC-4771-8047-DAA02B91A888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C61186C3-19AC-4771-8047-DAA02B91A888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C61186C3-19AC-4771-8047-DAA02B91A888}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

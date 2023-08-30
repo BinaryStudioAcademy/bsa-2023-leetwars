@@ -1,0 +1,17 @@
+<div class="progress-bar-wrapper d-flex flex-column">
+    <div class="step-names d-grid" [ngStyle]="{ 'grid-template-columns': 'repeat(' + steps.length + ', 1fr)' }">
+        <div class=" step-name" *ngFor="let step of steps; let i = index">
+            <span [ngClass]="{ 'active': i === activeStepIndex }">{{ step }}</span>
+        </div>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-bar-line d-flex">
+            <div class="progress-bar-fill" [style.width.%]="progressWidth"></div>
+        </div>
+        <div class="step-indicators d-flex">
+            <div class="step-indicator d-flex" *ngFor="let step of steps; let i = index"
+                [ngClass]="{ 'active': i === activeStepIndex }">
+            </div>
+        </div>
+    </div>
+</div>
