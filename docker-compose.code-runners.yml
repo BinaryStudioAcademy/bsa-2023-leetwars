@@ -1,0 +1,10 @@
+version: '3.1'
+services:
+  csharpcoderunner:
+    build: ./backend/LeetWars.Builder/RunnerDefaults/CSharp
+    image: csharpcoderunner
+    
+  jscoderunner:
+    build: ./backend/LeetWars.Builder/RunnerDefaults/JS
+    image: jscoderunner
+
