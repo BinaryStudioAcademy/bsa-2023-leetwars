@@ -5,5 +5,5 @@ namespace LeetWars.Core.BLL.Services;
 public interface IUserService
 {
     public Task<UserDto> CreateUserAsync(NewUserDto userDto);
-    public Task<UserFullDto> GetUserAsync(int id);
+    public Task<UserFullDto> GetFullUserAsync(int id);
 }

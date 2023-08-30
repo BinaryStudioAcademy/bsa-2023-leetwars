@@ -32,9 +32,14 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(createdUser);
     }
 
-    public async Task<UserFullDto> GetUserAsync(int id)
+    public async Task<UserFullDto> GetFullUserAsync(int id)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        var user = await _context.Users.Where(u => u.Id == id)
+            .Include(user => user.LanguagesWithLevels)
+            .Include(user => user.LanguagesWithLevels)
+            .Include(user => user.Solutions)
+            .Include(user => user.Challenges)
+            .FirstOrDefaultAsync();
         if(user is null)
         {
             throw new ArgumentNullException(id.ToString(),"Not found");

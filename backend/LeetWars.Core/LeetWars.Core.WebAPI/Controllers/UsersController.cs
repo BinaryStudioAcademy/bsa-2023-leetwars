@@ -25,11 +25,11 @@ public class UsersController :ControllerBase
         return Ok(createdUser);
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     [AllowAnonymous]
-    public async Task<ActionResult<UserFullDto>> GetUser ([FromBody]int id)
+    public async Task<ActionResult<UserFullDto>> GetUser (int id)
     {
-        var user  = await _userService.GetUserAsync(id);
+        var user  = await _userService.GetFullUserAsync(id);
         return Ok(user);
     }
 }

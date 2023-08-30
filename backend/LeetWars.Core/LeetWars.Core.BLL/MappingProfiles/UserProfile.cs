@@ -11,7 +11,7 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<User,UserDto>();
             CreateMap<UserDto,User>();
             CreateMap<NewUserDto, User>();
-            CreateMap<User, UserFullDto>();
+            CreateMap<User, UserFullDto>().IncludeMembers(x => x.PreferredLanguages).IncludeMembers(x => x.LanguagesWithLevels).IncludeMembers(x => x.Solutions).IncludeMembers(x => x.Challenges).IncludeMembers(x => x.Subscriptions);
         }
     }
 }
