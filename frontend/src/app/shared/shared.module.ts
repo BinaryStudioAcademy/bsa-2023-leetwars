@@ -14,8 +14,6 @@ import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeComponent } from './components/challenge/challenge.component';
-import { ChallengesDropdownSelectComponent } from './components/challenges-dropdown-select/challenges-dropdown-select.component';
-import { ChallengesTestPageComponent } from './components/challenges-test-page/challenges-test-page.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
@@ -61,8 +59,6 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ProgressBarComponent,
         HeaderComponent,
         StepsOfProgressComponent,
-        ChallengesDropdownSelectComponent,
-        ChallengesTestPageComponent,
         EditorQuestionComponent,
     ],
     exports: [
@@ -78,7 +74,6 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
-        ChallengesDropdownSelectComponent,
         SuggestedChallengeComponent,
         CustomInputComponent,
         ChallengeComponent,
@@ -87,8 +82,8 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ProgressBarComponent,
         HeaderComponent,
         StepsOfProgressComponent,
-        ChallengesTestPageComponent,
         EditorQuestionComponent,
+        NgbModule,
     ],
 })
 export class SharedModule {

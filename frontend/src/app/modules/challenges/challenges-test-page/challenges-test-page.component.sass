@@ -67,7 +67,8 @@
 :host ::ng-deep .editor .current-line
     background-color: $ultra-transparent-white
     
-.tabs
+.nav-tabs
+    border-bottom: none
     gap: 22px
     @media screen and (max-width: $small) 
         gap: 12px
@@ -77,7 +78,12 @@
 .actions 
     justify-content: space-between
 
-.tab
+.nav-item
+    padding: 0
+
+.nav-link
+    all: unset
+    display: inline-block
     font-size: 13px
     line-height: 40px
     letter-spacing: 0.3px
@@ -87,11 +93,10 @@
     border-radius: 4px
     transition: background-color 0.2s ease
     user-select: none
-
     @media screen and (max-width: $small) 
         padding: 0px 12px 
-    
-.tab.active 
+
+.nav-link.active 
     background-color: $transparent-white
     color: $white-grey
     border-radius: 8px

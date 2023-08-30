@@ -11,14 +11,19 @@
     </div>
     <div class="editor-container d-flex flex-column">
         <div class="actions d-flex">
-            <div class="tabs d-flex">
-                <div class="tab" [class.active]="activeTab === 'test-cases'" (click)="changeTab('test-cases')">Test
-                    Cases
-                </div>
-                <div class="tab" [class.active]="activeTab === 'example-test-cases'"
-                    (click)="changeTab('example-test-cases')">Example Test Cases</div>
-                <div class="tab" [class.active]="activeTab === 'help'" (click)="changeTab('help')">Help</div>
-            </div>
+            <ul class="nav nav-tabs d-flex" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" [class.active]="activeTab === 'test-cases'"
+                        (click)="changeTab('test-cases')">Test Cases</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" [class.active]="activeTab === 'example-test-cases'"
+                        (click)="changeTab('example-test-cases')">Example Test Cases</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" [class.active]="activeTab === 'help'" (click)="changeTab('help')">Help</a>
+                </li>
+            </ul>
             <button class="maximize-btn" (click)="toggleMaximize()">
                 <fa-icon [icon]="isMaximized ? ['fas', 'compress'] : ['fas', 'maximize']"></fa-icon>
             </button>
