@@ -90,7 +90,8 @@ namespace LeetWars.Core.BLL.Services
         {
             var userId = _userIdGetter.CurrentUserId;
             
-            var random = new Random();
+            var random = new Random(DateTime.Now.Millisecond);
+            
             var challenges = _context.Challenges
                     .Include(challenge => challenge.Tags)
                     .Include(challenge => challenge.Author)
