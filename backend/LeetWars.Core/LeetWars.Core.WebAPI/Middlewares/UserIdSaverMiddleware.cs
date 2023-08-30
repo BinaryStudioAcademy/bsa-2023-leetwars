@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using LeetWars.Core.BLL.Interfaces;
 
 namespace LeetWars.Core.WebAPI.Middlewares
 {
-    public class UserIdSetterMiddleware
+    public class UserIdSaverMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public UserIdSetterMiddleware(RequestDelegate next)
+        public UserIdSaverMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, IUserIdSetter userIdSetter)
         {
             var userId = context.User.Claims.FirstOrDefault(c => c.Type == "user_id")?.Value;
             

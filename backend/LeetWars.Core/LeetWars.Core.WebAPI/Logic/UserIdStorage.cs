@@ -1,25 +1,27 @@
-﻿using Thread.NET.BLL.Exceptions;
-using Thread.NET.Common.Logic.Abstractions;
+﻿using LeetWars.Core.BLL.Interfaces;
 
-namespace Thread.NET.Logic
+namespace LeetWars.Core.WebAPI.Logic
 {
     public class UserIdStorage : IUserIdGetter, IUserIdSetter
     {
-        private int _id;
+        private string _id = String.Empty;
 
-        public int CurrentUserId { get => _id; }
-
-        public int GetCurrentUserIdStrict()
+        public string CurrentUserId
         {
-            if (_id == 0)
+            get => _id;
+        }
+
+        public string GetCurrentUserIdOrThrow()
+        {
+            if (String.IsNullOrEmpty(_id))
             {
-                throw new InvalidTokenException("No token with userId was passed");
+                throw new Exception("No token with userId was passed");
             }
 
             return _id;
         }
 
-        public void SetUserId(int userId)
+        public void SetUserId(string userId)
         {
             _id = userId;
         }

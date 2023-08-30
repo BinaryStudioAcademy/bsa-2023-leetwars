@@ -8,12 +8,16 @@ namespace LeetWars.Core.Common.DTO.Challenge
     {
         public string AuthorName { get; set; } = string.Empty;
 
+        public string LevelName { get; set; } = string.Empty;
+
         public string Title { get; set; } = string.Empty;
+        
+        public string Instructions { get; set; } = string.Empty;
 
         public ICollection<TagDto>? Tags { get; set; }
 
         public ICollection<LanguageDto>? Languages { get; set; }
-
+        
         public int Status { get; set; }
     }
 }

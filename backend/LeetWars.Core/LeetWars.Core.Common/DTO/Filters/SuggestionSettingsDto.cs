@@ -1,6 +1,8 @@
-﻿namespace LeetWars.Core.Common.DTO.Filters;
+﻿using LeetWars.Core.DAL.Enums;
 
-public interface SuggestionSettingsDto
+namespace LeetWars.Core.Common.DTO.Filters;
+
+public class SuggestionSettingsDto
 {
     public int LanguageId { get; set; }
     public SuggestionType SuggestionType { get; set; }

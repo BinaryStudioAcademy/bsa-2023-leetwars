@@ -52,6 +52,8 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+app.UseMiddleware<UserIdSaverMiddleware>();
+
 app.UseEndpoints(endpoinds =>
 {
     endpoinds.MapHealthChecks("/health");

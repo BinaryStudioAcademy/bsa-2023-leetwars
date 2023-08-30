@@ -10,22 +10,36 @@ namespace LeetWars.Core.BLL.Services
 {
     public class ChallengeService : BaseService, IChallengeService
     {
-        public ChallengeService(LeetWarsCoreContext context, IMapper mapper) : base(context, mapper) { }
+        private readonly IUserIdGetter _userIdGetter;
 
-        public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters)
+        public ChallengeService(
+            LeetWarsCoreContext context,
+            IMapper mapper,
+            IUserIdGetter userIdGetter
+        ) : base(context, mapper)
         {
+            _userIdGetter = userIdGetter;
+        }
+
+        public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters, PageSettingsDto? page)
+        {
+            var userId = _userIdGetter.CurrentUserId;
+            
             var challenges = _context.Challenges
                     .Include(challenge => challenge.Tags)
                     .Include(challenge => challenge.Author)
+                    .Include(challenge => challenge.Level)
                     .Include(challenge => challenge.Versions)
                         .ThenInclude(version => version.Language)
-                     .Include(challenge => challenge.Versions)
+                    .Include(challenge => challenge.Versions)
                         .ThenInclude(version => version.Solutions)
+                            .ThenInclude(solution => solution.User)
                     .AsQueryable();
 
             if (!string.IsNullOrEmpty(filters.Title))
             {
-                challenges = challenges.Where(p => p.Title.ToLower().Contains(filters.Title.ToLower()));
+                var title = Uri.UnescapeDataString(filters.Title);
+                challenges = challenges.Where(p => p.Title.ToLower().Contains(title.ToLower()));
             }
 
             if (filters.ChallengeStatus.HasValue)
@@ -40,27 +54,66 @@ namespace LeetWars.Core.BLL.Services
                     challenge.Versions.Any(version => version.LanguageId == filters.LanguageId));
             }
 
-            if (filters.TagsIds != null)
-            {
-                challenges = challenges.Where(challenge =>
-                    challenge.Tags.Any(tag => filters.TagsIds.Contains(tag.Id)));
-            }
-
             if (filters.Progress.HasValue)
             {
                 challenges = filters.Progress switch
                 {
-                    ChallengesProgress.NotStarted => challenges.Where(challenge => !challenge.Versions.Any(version => version.Solutions.Any())),
-                    ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version => version.Solutions.Any())),
-                    ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.All(version => 
-                        version.Solutions.All(solution => solution.SubmittedAt.HasValue && solution.SubmittedAt.Value != DateTime.MinValue))),
+                    ChallengesProgress.NotStarted => challenges.Where(challenge => challenge.Versions.All(version => version.Solutions.Count == 0 || version.Solutions.All(solution => solution.User == null || solution.User.Uid != userId))),
+                    ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version => version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId && solution.SubmittedAt == null))),
+                    ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.Any(version => version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId && solution.SubmittedAt.HasValue && solution.SubmittedAt.Value != DateTime.MinValue))),
                     _ => challenges
                 };
             }
 
-
+            if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
+            {
+                challenges = challenges.Skip(page.PageSize * (page.PageNumber - 1))
+                        .Take(page.PageSize);
+            }
+            
             var filteredChallenges = await challenges.ToListAsync();
+            
+            //filter runs on the client because filters.TagsIds[] didn't pass to the server and SQL query get error
+            if (filters.TagsIds != null)
+            {
+                filteredChallenges = filteredChallenges.Where(challenge =>
+                    filters.TagsIds.All(
+                        filterTagId => challenge.Tags.Any(tag => tag.Id.Equals(filterTagId))
+                    )
+                ).ToList();
+            }
+
             return _mapper.Map<List<ChallengePreviewDto>>(filteredChallenges);
+        }
+        
+        public async Task<ChallengePreviewDto> GetChallengeSuggestionAsync(SuggestionSettingsDto settings)
+        {
+            var userId = _userIdGetter.CurrentUserId;
+            
+            var random = new Random();
+            var challenges = _context.Challenges
+                    .Include(challenge => challenge.Tags)
+                    .Include(challenge => challenge.Author)
+                    .Include(challenge => challenge.Level)
+                    .Include(challenge => challenge.Versions)
+                        .ThenInclude(version => version.Language)
+                    .Include(challenge => challenge.Versions)
+                        .ThenInclude(version => version.Solutions)
+                            .ThenInclude(solution => solution.User)
+                    .Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId))
+                    .AsQueryable();
+            
+            challenges = settings.SuggestionType switch
+            {
+                SuggestionType.Beta => challenges.Where(challenge => challenge.Versions.Any(version => version.Status == ChallengeStatus.Beta)),
+                SuggestionType.Fundamentals => challenges.Where(challenge => challenge.Level != null && challenge.Level.Name.ToLower().Contains("easy")),
+                SuggestionType.RankUp => challenges.Where(challenge => challenge.Level != null && challenge.Level.Name.ToLower().Contains("medium")),
+                SuggestionType.PracticeAndRepeat => challenges.Where(challenge => challenge.Versions.Any(version => version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId))),
+                _ => challenges
+            };
+
+
+            return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(random.Next(0,challenges.Count())).FirstOrDefaultAsync());
         }
     }
 }

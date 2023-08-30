@@ -6,15 +6,12 @@ using LeetWars.Core.WebAPI.Validators;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using LeetWars.Core.WebAPI.Logic;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using LeetWars.RabbitMQ;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -31,6 +28,11 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddScoped<IUserService, UserService>();
+            
+            services.AddScoped<UserIdStorage>();
+            services.AddTransient<IUserIdSetter>(s => s.GetService<UserIdStorage>());
+            services.AddTransient<IUserIdGetter>(s => s.GetService<UserIdStorage>());
+
         }
 
         public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)

@@ -1,7 +1,7 @@
-﻿namespace Thread.NET.Common.Logic.Abstractions
+﻿namespace LeetWars.Core.BLL.Interfaces
 {
     public interface IUserIdSetter
     {
-        void SetUserId(int userId);
+        void SetUserId(string userId);
     }
 }
