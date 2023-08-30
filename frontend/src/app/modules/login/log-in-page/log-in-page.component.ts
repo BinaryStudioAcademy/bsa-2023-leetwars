@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { UserService } from '@core/services/user.service';
+import { tap } from 'rxjs';
 
 @Component({
     selector: 'app-log-in-page',
@@ -33,20 +34,20 @@ export class LogInPageComponent implements OnInit {
     }
 
     signIn() {
-        this.userService.checkEmail(this.logInForm.value.email!)
-            .subscribe(result => {
+        this.userService.checkEmail(this.logInForm.value.email!).pipe(
+            tap(result => {
                 if (result) {
                     this.authService.login(
                         this.logInForm.value.email!,
                         this.logInForm.value.password!,
-                    )
-                        .subscribe(() => {
-                            this.router.navigateByUrl('');
-                        });
+                    ).subscribe(() => {
+                        this.router.navigateByUrl('');
+                    });
                 } else {
                     this.isExistingEmail = false;
                 }
                 this.logInForm.markAsUntouched();
-            });
+            }),
+        ).subscribe();
     }
 }

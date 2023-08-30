@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { catchError, tap } from 'rxjs';
 
 @Component({
     selector: 'app-sign-up',
@@ -28,26 +30,42 @@ export class SignUpComponent {
         ]),
     });
 
-    constructor(private authService: AuthService, private router: Router, private userService: UserService) {}
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private userService: UserService,
+        private toastrNotification: ToastrNotificationsService,
+    ) {}
 
     public signUp() {
-        this.userService.checkEmail(this.registrationForm.value.email!)
-            .subscribe(result => {
+        this.userService.checkEmail(this.registrationForm.value.email!).pipe(
+            tap(result => {
                 if (result) {
                     this.isExistingEmail = true;
+                    this.registrationForm.markAsUntouched();
                 } else {
                     this.isExistingEmail = false;
-                    this.authService
-                        .register(
-                            this.registrationForm.value.username!,
-                            this.registrationForm.value.email!,
-                            this.registrationForm.value.password!,
-                        )
-                        .subscribe(() => {
+                    this.authService.register(
+                        this.registrationForm.value.username!,
+                        this.registrationForm.value.email!,
+                        this.registrationForm.value.password!,
+                    ).subscribe(
+                        () => {
                             this.router.navigateByUrl('');
-                        });
+                            this.toastrNotification.showSuccess('You have successfully registered.');
+                        },
+                        error => {
+                            console.error('An error occurred during registration:', error);
+                            this.toastrNotification.showError('Something went wrong');
+                        },
+                    );
                 }
-                this.registrationForm.markAsUntouched();
-            });
+            }),
+            catchError(error => {
+                console.error('An error occurred:', error);
+
+                return [];
+            }),
+        ).subscribe();
     }
 }
