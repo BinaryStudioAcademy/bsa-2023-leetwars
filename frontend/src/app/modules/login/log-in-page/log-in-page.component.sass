@@ -1,4 +1,5 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
 
 .log-in-body
     position: absolute
@@ -7,7 +8,7 @@
     padding: 0px
 
     display: grid
-    grid-template-columns: 70vw 30vw
+    grid-template-columns: 60vw 40vw
 
 .logo-part
     grid-column: 1
@@ -47,7 +48,6 @@
     align-items: center
 
     margin: 0px
-    height: 100%
     width: 100%
 
 .log-in-part
@@ -150,3 +150,9 @@
 
     font-weight: 300
     line-height: normal
+
+@media screen and (max-width: $large)
+  .log-in-body
+    grid-template-columns: 1ft
+    grid-template-rows: auto auto
+
