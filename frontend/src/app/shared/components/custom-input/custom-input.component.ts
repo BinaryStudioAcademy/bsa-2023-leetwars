@@ -1,5 +1,4 @@
 /* eslint-disable no-empty-function */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-use-before-define */
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -17,33 +16,33 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     ],
 })
 export class CustomInputComponent implements ControlValueAccessor {
-    onChange: any = () => {};
+    onChange: (value: string) => void = () => {};
 
-    onTouchedFn = () => {};
+    onTouchedFn: () => void = () => {};
 
     private _value = '';
 
-    get value() {
+    get value(): string {
         return this._value;
     }
 
-    set value(v) {
+    set value(v: string) {
         this._value = v;
         if (this.onChange) {
             this.onChange(this._value);
         }
     }
 
-    registerOnChange(fn: any): void {
+    registerOnChange(fn: (value: string) => void): void {
         this.onChange = fn;
         this.onChange(this._value);
     }
 
-    registerOnTouched(fn: any): void {
+    registerOnTouched(fn: () => void): void {
         this.onTouchedFn = fn;
     }
 
-    writeValue(value: any): void {
+    writeValue(value: string): void {
         this.value = value;
     }
 
@@ -67,12 +66,12 @@ export class CustomInputComponent implements ControlValueAccessor {
 
     showPassword = false;
 
-    onInputChange(model: string) {
+    onInputChange(model: string): void {
         this.InputValue = model;
         this.InputValueChange.emit(model);
     }
 
-    togglePasswordVisibility() {
+    togglePasswordVisibility(): void {
         this.InputType = this.InputType === 'password' ? 'text' : 'password';
         this.showPassword = !this.showPassword;
     }
