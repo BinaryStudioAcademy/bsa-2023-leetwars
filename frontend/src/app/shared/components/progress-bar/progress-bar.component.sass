@@ -1,0 +1,54 @@
+@import 'src/styles/color-variables'
+  
+.level-card
+  width: 214px
+  height: 36px
+
+  &:not(:first-child)
+    height: 52px
+    padding-top: 16px
+
+.progress-bar
+  height: 8px
+  border-radius: 10px
+  margin-top: 8px
+  overflow: hidden
+
+.progress-info
+  display: flex
+  white-space: nowrap
+  height: 20px
+  font-size: 11px
+
+  p
+    color: #EBEBF54D
+    width: 88px
+    height: 16px
+    padding-top: 5px
+    font-size: 11px
+    text-align: end
+
+    &:nth-child(3)
+      width: 88px
+      text-align: start
+
+.level
+  width: 53px
+  height: 16px
+  font-size: 10px
+  font-weight: 400
+  padding-top: 7px
+  color: $light-blue-grey
+
+.number
+  width: 73px
+  height: 20px
+  font-weight: 500
+
+  span:first-child
+    color: $white
+    font-size: 16px
+
+  span:last-child
+    color: $delicate-lavender
+    font-size: 11px
