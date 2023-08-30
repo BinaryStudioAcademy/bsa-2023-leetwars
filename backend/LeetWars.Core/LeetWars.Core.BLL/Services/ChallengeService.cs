@@ -32,10 +32,10 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Author)
                 .Include(challenge => challenge.Level)
                 .Include(challenge => challenge.Versions)
-                .ThenInclude(version => version.Language)
+                    .ThenInclude(version => version.Language)
                 .Include(challenge => challenge.Versions)
-                .ThenInclude(version => version.Solutions)
-                .ThenInclude(solution => solution.User)
+                    .ThenInclude(version => version.Solutions)
+                        .ThenInclude(solution => solution.User)
                 .AsQueryable();
 
             if (!string.IsNullOrEmpty(filters.Title))
@@ -106,10 +106,10 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Author)
                 .Include(challenge => challenge.Level)
                 .Include(challenge => challenge.Versions)
-                .ThenInclude(version => version.Language)
+                    .ThenInclude(version => version.Language)
                 .Include(challenge => challenge.Versions)
-                .ThenInclude(version => version.Solutions)
-                .ThenInclude(solution => solution.User)
+                    .ThenInclude(version => version.Solutions)
+                        .ThenInclude(solution => solution.User)
                 .Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId))
                 .AsQueryable();
 
@@ -126,10 +126,10 @@ namespace LeetWars.Core.BLL.Services
                 _ => challenges
             };
 
-            using (var generatorProvider = new RNGCryptoServiceProvider())
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
             {
                 var data = new byte[4];
-                generatorProvider.GetBytes(data);
+                rng.GetBytes(data);
                 var randomValue = Math.Abs(BitConverter.ToInt32(data, 0));
 
                 int randomPosition = (randomValue % challenges.Count());
