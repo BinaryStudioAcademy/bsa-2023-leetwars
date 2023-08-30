@@ -5,7 +5,7 @@ import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { latinCharactersPattern, passwordPattern } from '@shared/regaxes/regax-patterns';
-import { catchError, tap } from 'rxjs';
+import { switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-sign-up',
@@ -38,35 +38,31 @@ export class SignUpComponent {
         private toastrNotification: ToastrNotificationsService,
     ) {}
 
-    public signUp() {
-        this.userService.checkEmail(this.registrationForm.value.email!).pipe(
-            tap(result => {
-                if (result) {
-                    this.isExistingEmail = true;
-                    this.registrationForm.markAsUntouched();
-                } else {
-                    this.isExistingEmail = false;
-                    this.authService.register(
+    signUp() {
+        this.userService.checkEmail(this.registrationForm.value.email!)
+            .pipe(
+                switchMap(result => {
+                    if (result) {
+                        this.isExistingEmail = true;
+                        this.registrationForm.markAsUntouched();
+                    }
+
+                    return this.authService.register(
                         this.registrationForm.value.username!,
                         this.registrationForm.value.email!,
                         this.registrationForm.value.password!,
-                    ).subscribe(
-                        () => {
-                            this.router.navigateByUrl('');
-                            this.toastrNotification.showSuccess('You have successfully registered.');
-                        },
-                        error => {
-                            console.error('An error occurred during registration:', error);
-                            this.toastrNotification.showError('Something went wrong');
-                        },
                     );
-                }
-            }),
-            catchError(error => {
-                console.error('An error occurred:', error);
-
-                return [];
-            }),
-        ).subscribe();
+                }),
+            )
+            .subscribe(
+                () => {
+                    this.router.navigateByUrl('');
+                    this.toastrNotification.showSuccess('You have successfully registered.');
+                },
+                error => {
+                    this.toastrNotification.showError('Something went wrong');
+                    console.error('Error :', error);
+                },
+            );
     }
 }
