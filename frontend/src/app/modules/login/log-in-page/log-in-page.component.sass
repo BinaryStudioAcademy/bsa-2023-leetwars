@@ -123,6 +123,7 @@
     background-color: $dark-green
 
 .no-account
+    margin-top: 16px
     margin-bottom: 50px
     align-self: flex-end
     color: $white
@@ -143,6 +144,16 @@
 
 @media screen and (max-width: $large)
   .log-in-body
-    grid-template-columns: 1ft
-    grid-template-rows: auto auto
+    grid-template-columns: none
+    grid-template-rows: 35vh 65vh
+    width: 100%
+  .logo-part, .log-in-part
+    grid-column: auto
+  .sign-in-label
+    margin: 16px 0
+  .or-label
+    margin: 0
 
+@media screen and (max-width: $mobile)
+  .log-in-part > *
+    width: 90%
