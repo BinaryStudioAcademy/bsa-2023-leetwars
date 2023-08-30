@@ -1,16 +1,22 @@
-.some-page-wrapper  
-  margin: 15px 
-  display: felx
+.content_wrp  
+    display: grid 
+    grid-template-columns: repeat(5, 1fr) 
+    grid-template-rows: repeat(5, 1fr) 
+    grid-column-gap: 10px 
+    grid-row-gap: 10px 
+    height: 100vh
  
 
-.row  
-  flex-direction: row 
-  flex-wrap: wrap 
-  width: 100% 
- 
-
-.column  
-  flex-direction: column 
-  flex-basis: content
-  flex: 1 
- 
+.user_profile   
+    grid-area: 1 / 1 / 4 / 2  
+.solved   
+    grid-area: 1 / 2 / 2 / 3
+.badges   
+    grid-area: 1 / 3 / 2 / 4   
+.submission_chart   
+    grid-area: 2 / 2 / 3 / 4
+.submissions   
+    grid-area: 3 / 2 / 4 / 4
+    img 
+       max-width: 830px
+       height: 430px

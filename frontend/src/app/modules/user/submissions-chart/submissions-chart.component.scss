@@ -2,78 +2,79 @@
 @import 'scrollable';
 
 :host {
-  display: block;
-  color: $white;
-  padding: 16px;
-  border-radius: 8px;
+    display: block;
+    color: $white;
+    border-radius: 8px;
+    padding-left: 13px;
+    background-color: $deep-dark-grey;
 }
 
 .chart-header {
-  max-width: 800px;
-  flex-wrap: wrap;
-  flex: 0 0 auto;
-  margin-bottom: 16px;
+    max-width: 800px;
+    flex-wrap: wrap;
+    flex: 0 0 auto;
+    margin-bottom: 16px;
 }
 
 .chart-months {
-  display: flex;
-  gap: 7.5px;
+    display: flex;
+    gap: 7.5px;
 }
 
 .chart-month-days {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: repeat(7, 9px);
-  grid-auto-columns: 9px;
-  gap: 2.7px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(7, 9px);
+    grid-auto-columns: 9px;
+    gap: 2.7px;
 }
 
-.chart-month-title{
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-align: center;
-  font-size: 14px;
-  color: $transparent-light-grey;
+.chart-month-title {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-size: 14px;
+    color: $transparent-light-grey;
 }
 
 .chart-day {
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
 
-  &.fill {
-    background: $green;
-  }
+    &.fill {
+        background: $green;
+    }
 
-  &.blank {
-    background: $grey;
-  }
+    &.blank {
+        background: $grey;
+    }
 }
 
 .primary-indicator-data {
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: 500;
-  color: $white;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    color: $white;
 }
 
 .primary-indicator {
-  font-size: 14px;
-  line-height: 100%;
-  font-weight: 400;
-  color: $transparent-light-grey;
+    font-size: 14px;
+    line-height: 100%;
+    font-weight: 400;
+    color: $transparent-light-grey;
 }
 
 .common-indicator-data {
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 500;
-  color: $white;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: $white;
 }
 
 .common-indicator {
-  font-size: 10px;
-  line-height: 16px;
-  font-weight: 400;
-  color: $transparent-light-grey;
+    font-size: 10px;
+    line-height: 16px;
+    font-weight: 400;
+    color: $transparent-light-grey;
 }
