@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { latinCharactersPattern, passwordPattern } from '@shared/regaxes/regax-patterns';
+import { latinCharactersPattern, passwordPattern } from '@shared/regaxes/user-regax-patterns';
 import { switchMap } from 'rxjs';
 
 @Component({
