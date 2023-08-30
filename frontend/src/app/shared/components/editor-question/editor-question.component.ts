@@ -10,7 +10,7 @@ import { MarkdownService } from 'ngx-markdown';
     styleUrls: ['./editor-question.component.sass'],
 })
 export class EditorQuestionComponent implements OnInit {
-    bsEditorInstance: EditorInstance;
+    private bsEditorInstance: EditorInstance;
 
     public selectedCategory: CategoryType = CategoryType.Fundamentals;
 
@@ -25,6 +25,10 @@ export class EditorQuestionComponent implements OnInit {
     public markdownText: string;
 
     public steps: string[] = ['Question', 'Solutions', 'Testcases'];
+
+    public customInputHeight = '48px';
+
+    public customInputWidth = '100%';
 
     constructor(private markdownService: MarkdownService) {}
 
@@ -49,7 +53,5 @@ export class EditorQuestionComponent implements OnInit {
 
     public submitQuestion() {
         this.selectedTab = TabType.Help;
-
-        // add logic with submit
     }
 }
