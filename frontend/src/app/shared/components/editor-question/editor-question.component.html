@@ -5,9 +5,9 @@
         <p class="tip">It's good to provide examples which will help users understand easily.</p>
     </div>
 
-    <div class="categories-list d-flex flex-column gap-2">
+    <div class="categories d-flex flex-column gap-2">
         <p class="question-header">Category *</p>
-        <div class="d-flex gap-2">
+        <div class="categories-list">
             <div
                 class="category"
                 [class.category-active]="selectedCategory === CategoryType.Fundamentals"
@@ -56,18 +56,15 @@
             [Width]="'100%'"
             [InputPlaceholder]="'Give your kata a name'"></app-custom-input>
     </div>
-    <div class="tabs-list mt-12px d-flex">
+    <div class="tabs-list mt-12px d-flex flex-wrap">
         <div class="tab" [class.tab-active]="selectedTab === TabType.Description" (click)="editMarkDown()">
             <span>Description</span>
         </div>
-        <div class="tab d-flex gap-1" [class.tab-active]="selectedTab === TabType.Preview" (click)="previewMarkDown()">
+        <div class="tab d-flex" [class.tab-active]="selectedTab === TabType.Preview" (click)="previewMarkDown()">
             <fa-icon [icon]="'eye'"></fa-icon>
             <span>Preview</span>
         </div>
-        <div
-            class="tab d-flex gap-1"
-            [class.tab-active]="selectedTab === TabType.Help"
-            (click)="selectedTab = TabType.Help">
+        <div class="tab d-flex" [class.tab-active]="selectedTab === TabType.Help" (click)="submitQuestion()">
             <fa-icon [icon]="'circle-question'"></fa-icon>
             <span>Help</span>
         </div>
@@ -75,7 +72,6 @@
     <div class="mt-12px">
         <angular-markdown-editor
             [textareaId]="'markdown-editor'"
-            [rows]="12"
             [name]="'markdownText'"
             [(ngModel)]="markdownText"
             [options]="editorOptions">

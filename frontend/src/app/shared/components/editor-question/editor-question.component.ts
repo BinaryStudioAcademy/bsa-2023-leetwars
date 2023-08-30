@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryType } from '@shared/enums/category-type';
 import { TabType } from '@shared/enums/tab-type';
-import { EditorOption } from 'angular-markdown-editor';
+import { EditorInstance, EditorOption } from 'angular-markdown-editor';
 import { MarkdownService } from 'ngx-markdown';
 
 @Component({
@@ -10,6 +10,8 @@ import { MarkdownService } from 'ngx-markdown';
     styleUrls: ['./editor-question.component.sass'],
 })
 export class EditorQuestionComponent implements OnInit {
+    bsEditorInstance: EditorInstance;
+
     public selectedCategory: CategoryType = CategoryType.Fundamentals;
 
     public selectedTab: TabType = TabType.Description;
@@ -26,21 +28,26 @@ export class EditorQuestionComponent implements OnInit {
 
     public ngOnInit() {
         this.editorOptions = {
-            iconlibrary: 'fa',
-            hiddenButtons: ['bootstrap-markdown-cmdBold'],
             parser: (val) => this.markdownService.parse(val.trim()),
+            onShow: (edInstance: EditorInstance) => {
+                this.bsEditorInstance = edInstance;
+            },
         };
     }
 
     public editMarkDown() {
         this.selectedTab = TabType.Description;
-
-        //add logic
+        this.bsEditorInstance.hidePreview();
     }
 
     public previewMarkDown() {
         this.selectedTab = TabType.Preview;
+        this.bsEditorInstance.showPreview();
+    }
 
-        //add logic
+    public submitQuestion() {
+        this.selectedTab = TabType.Help;
+
+        // add logic with submit
     }
 }
