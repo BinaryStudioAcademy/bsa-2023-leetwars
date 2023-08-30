@@ -60,6 +60,7 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ProgressBarComponent,
         HeaderComponent,
         StepsOfProgressComponent,
+        ChallengesDropdownSelectComponent,
         EditorQuestionComponent,
     ],
     exports: [
