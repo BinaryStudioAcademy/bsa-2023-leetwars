@@ -1,0 +1,199 @@
+@import 'color-variables'
+
+a
+    display: inline-block
+    margin: 24px
+    text-decoration: none
+    color: $white
+   
+.nav-div
+    z-index: 9999
+    position: fixed
+    width: 100%
+    height: 100px
+    top: 0px
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    justify-content: center
+
+.div-unlimited-hero-section
+    top: 0
+    position: relative
+    height: 702px
+    background-size: cover
+    background-image: url(/assets/images/landing-page/unlimited.svg)
+
+
+.div-unlimited-container
+    z-index: 0
+    height: 100%
+    padding-top: 100px
+    display: flex
+    align-items: center
+    justify-content: center
+    position: relative
+    margin-top: 0
+    padding-top: 0
+
+
+
+.div-unlimited
+    width: 60%
+    flex-direction: column
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    color: $white
+    p
+        width: 70%
+        margin-top: 24px
+
+.green-accent-link
+    padding: 16px 64px
+    background-color: $green
+    border-radius: 28px
+    box-shadow: 0 0 0 6px $transparent-green
+    transition: all 0.1s ease-in-out
+    &:hover
+        box-shadow: 0 0 0 10px $transparent-green
+    &:focus
+        box-shadow: 0 0 0 10px $green
+
+#reliable-platform
+    display: flex
+    flex-direction: column
+    align-items: center
+    color: $white
+    h2
+        text-align: center
+        margin: 64px 0
+
+.span-accent
+    color: green
+
+.div-reliable-platform
+    width: 80%
+    margin-top: 24px
+    margin-bottom: 24px
+    display: flex
+    align-items: center
+    justify-content: center
+
+.div-reliable-platform-card
+    position: relative
+    margin: 0 12px
+    width: 330px
+    height: 400px
+    background-color: $transparent-dim-grey
+    border-radius: 16px
+    display: flex
+    align-items: center
+    flex-direction: column
+    justify-content: flex-start  
+    padding-top: 180px  
+    img
+        position: absolute
+        top: -48px
+        width: 190px
+        height: 190px
+
+.div-reliable-platform-card-info
+    padding: 0 22%
+    h3
+        font-size: 1.4rem  
+
+       
+#fun-programming
+    display: flex
+    flex-direction: column
+    align-items: center
+    color: $white
+    h2 //MAKE A VARIABLE
+        text-align: center
+        margin: 64px 0
+
+.div-fun-programming-card
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin: 24px 10%
+    height: 550px
+    >img
+        width: 49%
+
+.fun-programming-card-content
+    box-shadow: 1px 1px 12px rgba(0,0,0,0.1)
+    background-color: $transparent-dim-grey
+    border-radius: 16px
+    width: 49%
+    height: 100%
+    display: flex
+    flex-direction: column
+    padding: 5%
+    img
+        width: 100px
+        height: 100px
+
+.fun-programming-card-text
+    margin-top: 36px
+    text-align: center
+
+#how-it-works
+    color: $white
+    h2 //MAKE A VARIABLE
+        text-align: center
+        margin: 64px 0
+
+.div-how-it-works
+    margin: 24px 10%
+    display: flex
+
+.div-how-it-works-cards
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 36px
+
+.how-it-works-card  
+    background-color: $transparent-dim-grey
+    border-radius: 16px
+    padding: 24px
+    display: flex
+    position: relative
+    img
+        position: absolute
+        bottom: 0
+
+.how-it-works-card-content
+    margin-left: 240px
+
+footer
+    padding: 24px 5%
+    color: $white
+    display: grid
+    grid-template-columns: minmax(250px, 2fr) repeat(auto-fit, minmax(100px, 1fr))
+    column-gap: 24px
+    row-gap: 16px
+
+.div-footer-contact-links
+    a
+        margin: 8px 0
+        color: $grey
+
+.footer-list
+    margin: 8px 0
+    list-style: none
+    a
+        color: $grey
+        margin: 8px 0
+
+// .footer-contact-links
+//     a
+        // border-radius: 50%
+        // border: 2px solid $white
+    // i
+    //     color: white
+    //     font-size: 1rem
