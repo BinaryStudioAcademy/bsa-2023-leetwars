@@ -1,23 +1,25 @@
+@import 'color-variables'
 .solution
-    font-family: Lato
-    background-color: #1D1E21
-    width: 1170px
-    height: 889px
-    padding: 15px 15px 119px 15px
-
-.solution-body
-    background-color: #1D1E21
-    width: 1128px
-    height: 861px
-    padding: 22px 16px 28px 0px
-
-.languages-container
-    background-color: #1D1E21
+    margin: 0
+    padding: 15px 0px 0px 15px
     width: 100%
-    height: 120px
+    height: 100%
+    display: flex
+    flex-direction: column
+    overflow: hidden
+    color: $white-grey
+    
+.languages-container
+    font-size: 14px
+    line-height: 21px
+    gap: 10px
+    border-radius: 4px
+    background-color: $charcoal-gray
+    width: fit-content
+    position: relative
 
 .label
-  background-color: #282828
+  background-color: transparent
   width: 105px
   height: 25px
   border-radius: 4px
@@ -36,64 +38,116 @@
   font-size: 14px
   font-weight: 400
   line-height: 21px
-  color: #EBEBEB
+  color: $gray-smoke
 
 .drop-down-container
-    width: 100%
-    height: 48px
-
-.form-control
-    background-color: black
-    width: 200px
-    height: 40px
+    display: flex
+    gap: 15px
+    margin-top: 8px
+    padding-bottom: 5px
 
 .general-container
-    background-color: #1D1E21
+    margin-top: 9.5px
     width: 100%
-    height: 739px
+    height: 100%
 
 .tabs-container
-    background-color: #1D1E21
-    color: white
     width: 876px
     height: 40px
     display: flex
     overflow: hidden
 
-.tab 
-    width: 111px
-    font-size: 13px
-    font-weight: 400 
-    line-height: 40px
-    padding-left: 22px
-    padding-right: 22px
-    
-.tab:hover
-    background-color: rgba(255, 255, 255, 0.06)
-    border-radius: 8px
+:host ::ng-deep .nav-link,
+:host ::ng-deep .nav-tabs,
+:host ::ng-deep .nav-tab
+    background-color: transparent !important
+    border-color: none !important
+    border: none !important
+    color: inherit !important
+    cursor: pointer !important
+    border-radius: 0 !important
+    transition: none !important
 
-.tab.active
-    background-color: rgba(255, 255, 255, 0.06)
+:host ::ng-deep .nav-link:hover
+    background-color: transparent
+    border-color: none
+    border: none
+
+:host ::ng-deep .nav-tabs
+    height: 40px
+    border: none
+
+:host ::ng-deep .customClass 
+    display: flex
+    padding: 0px 22.09px 0px 22.39px
+    justify-content: center
+    font-size: 13px
+    line-height: 40px
+    color: $gray-graphite
+    cursor: pointer
     border-radius: 8px
+    transition: background-color 0.2s ease
+
+:host ::ng-deep .customHelp
+    display: flex
+    height: 100%
+    width: 92px
+    padding: 0px 22.09px 0px 22.39px
+    justify-content: center
+    flex-shrink: 0
+    font-size: 13px
+    line-height: 40px
+    color: $gray-graphite
+    cursor: pointer
+    border-radius: 8px
+    transition: background-color 0.2s ease
+
+:host ::ng-deep .customClass:hover
+    background-color: $charcoal-gray
+
+:host ::ng-deep .customClass.active
+    background-color: $charcoal-gray
+    color: $gray-smoke
+
+:host ::ng-deep .nav-link
+    width: 111px
+    height: 100%
+    padding: 0
+    color: $gray-graphite
+    border: none
+    text-align: center
+    
+.editor 
+    margin-top: 10px
+    height: 100%
+    padding-bottom: 50px
+
+:host ::ng-deep .editor .margin 
+    background-color: dark-onyx
+    border-right: 1px solid $dim-grey
+
+:host ::ng-deep .editor .monaco-editor-background
+    background-color: dark-onyx
+    padding-left: 20px
+
+:host ::ng-deep .editor .current-line
+    background-color: $ultra-transparent-white
 
 .tab-help 
   width: 46px
   font-size: 13px
   line-height: 40px
-  padding-left: 22px
-  padding-right: 22px
+  padding: 0px 22.09px 0px 22.39px
   display: flex
   justify-content: center
   align-items: center
   gap: 5px
+  margin-left: 20px
+  color: $gray-graphite
 
 .tab-help fa-icon 
   font-size: 12px
-  color: white
+  color: $gray-graphite
 
-.editor-container
-    margin-top: 10px
-    background-color: black
-    width: 100%
-    height: 679px
+
 

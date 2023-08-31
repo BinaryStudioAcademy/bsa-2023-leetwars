@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 interface EditorOptions {
     language: string,
+    theme: string,
 }
 
 @Component({
@@ -14,11 +15,19 @@ export class CodeEditorComponent {
 
     @Input() initSolution: string = '';
 
+    @Output() codeChanged = new EventEmitter<string>();
+
     editorOptions: EditorOptions;
+
+    public onCodeChange(model: string) {
+        this.initSolution = model;
+        this.codeChanged.emit(model);
+    }
 
     constructor() {
         this.editorOptions = {
             language: this.language,
+            theme: 'vs-dark',
         };
     }
 }
