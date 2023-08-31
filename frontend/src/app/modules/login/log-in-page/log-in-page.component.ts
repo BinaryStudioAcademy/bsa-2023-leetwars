@@ -43,7 +43,7 @@ export class LogInPageComponent implements OnInit {
         this.authService.signInWithGitHub().subscribe(
             (user: User) => {
                 this.router.navigate(['/main']);
-                this.toastr.showSuccess(`${user.userName} was successfully signed up`);
+                this.toastr.showSuccess(`${user.userName} was successfully signed in`);
                 // add email sender to user.email
             },
             (error) => {
@@ -56,7 +56,7 @@ export class LogInPageComponent implements OnInit {
         this.authService.signInWithGoogle().subscribe(
             (user: User) => {
                 this.router.navigate(['/main']);
-                this.toastr.showSuccess(`${user.userName} was successfully signed up`);
+                this.toastr.showSuccess(`${user.userName} was successfully signed in`);
                 // add email sender to user.email
             },
             (error) => {
