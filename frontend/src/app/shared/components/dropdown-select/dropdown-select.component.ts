@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
     selector: 'app-dropdown-select',
     templateUrl: './dropdown-select.component.html',
     styleUrls: ['./dropdown-select.component.sass'],
 })
-export class DropdownSelectComponent {
+export class DropdownSelectComponent implements OnInit {
     @Input() isMultiSelection = false;
 
     @Input() title: string;
@@ -14,13 +15,21 @@ export class DropdownSelectComponent {
 
     @Input() selectText: string = 'Select';
 
+    @Input() itemsIcons: IconName[] = [];
+
     @Output() SelectedItemsChanged: EventEmitter<string[] | string> = new EventEmitter<string[] | string>();
 
-    selectedItem: string | undefined;
+    @Input() selectedItem: string | undefined;
 
-    selectedItems: string[] = [];
+    public selectedIcon: IconName;
 
-    toggleItem(item: string) {
+    public selectedItems: string[] = [];
+
+    public ngOnInit() {
+        this.updateSelectedIcon();
+    }
+
+    public toggleItem(item: string) {
         this.selectedItems = this.selectedItems.includes(item)
             ? this.selectedItems.filter((i) => i !== item)
             : [...this.selectedItems, item];
@@ -28,8 +37,13 @@ export class DropdownSelectComponent {
         this.SelectedItemsChanged.emit(this.selectedItems);
     }
 
-    selectItem(item: string) {
+    public selectItem(item: string) {
         this.selectedItem = item;
-        this.SelectedItemsChanged.emit(this.selectedItem);
+        this.updateSelectedIcon();
+    }
+
+    private updateSelectedIcon() {
+        this.selectedIcon = this.itemsIcons[this.items.findIndex((i) => i === this.selectedItem)];
+        this.SelectedItemsChanged.emit(this.selectedItems);
     }
 }
