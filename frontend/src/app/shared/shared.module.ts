@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
@@ -86,7 +87,10 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         HeaderComponent,
         StepsOfProgressComponent,
         EditorQuestionComponent,
+        NgbModule,
+        TabsModule,
     ],
+    providers: [TabsetConfig],
 })
 export class SharedModule {
     constructor(library: FaIconLibrary) {
