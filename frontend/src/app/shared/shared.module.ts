@@ -14,22 +14,21 @@ import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
+<<<<<<< HEAD
 import { ChallengeComponent } from './components/challenge/challenge.component';
 import { ChallengesDropdownSelectComponent } from './components/challenges-dropdown-select/challenges-dropdown-select.component';
+=======
+>>>>>>> dev
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
-import { EditorQuestionComponent } from './components/editor-question/editor-question.component';
-import { FilteringSectionComponent } from './components/filtering-section/filtering-section.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-import { StepsOfProgressComponent } from './components/steps-of-progress/steps-of-progress.component';
-import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
 
 @NgModule({
     imports: [
@@ -52,17 +51,11 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
-        SuggestedChallengeComponent,
         CustomInputComponent,
         CodeEditorComponent,
-        ChallengeComponent,
-        FilteringSectionComponent,
         PieChartComponent,
         ProgressBarComponent,
         HeaderComponent,
-        StepsOfProgressComponent,
-        ChallengesDropdownSelectComponent,
-        EditorQuestionComponent,
     ],
     exports: [
         CommonModule,
@@ -77,18 +70,19 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         ConfirmationModalComponent,
         GeneralModalComponent,
         DropdownSelectComponent,
+<<<<<<< HEAD
         ChallengesDropdownSelectComponent,
         SuggestedChallengeComponent,
+=======
+>>>>>>> dev
         CustomInputComponent,
-        ChallengeComponent,
-        FilteringSectionComponent,
         PieChartComponent,
         ProgressBarComponent,
         HeaderComponent,
-        StepsOfProgressComponent,
-        EditorQuestionComponent,
         NgbModule,
         TabsModule,
+        MarkdownModule,
+        AngularMarkdownEditorModule,
     ],
     providers: [TabsetConfig],
 })

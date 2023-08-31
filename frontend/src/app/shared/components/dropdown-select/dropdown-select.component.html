@@ -1,6 +1,6 @@
 <div ngbDropdown class="dropdown d-inline-flex" [autoClose]="isMultiSelection ? 'outside' : true">
     <div class="button-wrapper d-flex flex-column d-flex flex-grow-1">
-        <label class="title">{{ title }}</label>
+        <label *ngIf="title" class="title">{{ title }}</label>
         <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
             <fa-icon *ngIf="selectedIcon" [icon]="selectedIcon" class="ms-0 selected-icon"></fa-icon>
             <span class="float-start">{{ selectedItem ? selectedItem : selectText }}</span>

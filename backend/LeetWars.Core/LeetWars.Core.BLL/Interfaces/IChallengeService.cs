@@ -6,5 +6,7 @@ namespace LeetWars.Core.BLL.Interfaces
     public interface IChallengeService
     {
         Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters);
+        
+        Task<ChallengeFullDto> GetChallengeByIdAsync(long id);
     }
 }
