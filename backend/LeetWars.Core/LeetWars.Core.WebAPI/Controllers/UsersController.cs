@@ -23,7 +23,7 @@ public class UsersController : ControllerBase
     {
         var createdUser = await _userService.CreateUserAsync(user);
         return Ok(createdUser);
-    }   
+    }
 
     [HttpGet("is-existing-email")]
     [AllowAnonymous]
@@ -32,6 +32,7 @@ public class UsersController : ControllerBase
         var createdUser = await _userService.CheckIsExistingEmail(email);
         return Ok(createdUser);
 
+    }
     [HttpGet("{id}")]
     [AllowAnonymous]
     public async Task<ActionResult<UserFullDto>> GetUser (int id)
