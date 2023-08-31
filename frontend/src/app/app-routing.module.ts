@@ -21,6 +21,10 @@ const routes: Routes = [
         path: 'user',
         loadChildren: () => import('./modules/user/user.module').then((m) => m.UserModule),
     },
+    {
+        path: 'challenges',
+        loadChildren: () => import('./modules/challenges/challenges.module').then((m) => m.ChallengesModule),
+    },
     { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
