@@ -25,7 +25,6 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-import { SolutionComponent } from './components/solution/solution.component';
 
 @NgModule({
     imports: [
@@ -56,7 +55,6 @@ import { SolutionComponent } from './components/solution/solution.component';
         ProgressBarComponent,
         HeaderComponent,
         ChallengesDropdownSelectComponent,
-        SolutionComponent,
 
     ],
     exports: [
@@ -76,7 +74,6 @@ import { SolutionComponent } from './components/solution/solution.component';
         PieChartComponent,
         ProgressBarComponent,
         HeaderComponent,
-        SolutionComponent,
         NgbModule,
         TabsModule,
         MarkdownModule,
