@@ -15,7 +15,7 @@ namespace LeetWars.Core.WebAPI.Logic
         {
             if (String.IsNullOrEmpty(_id))
             {
-                throw new Exception("No token with userId was passed");
+                throw new ArgumentException("No token with userId was passed");
             }
 
             return _id;

@@ -26,8 +26,6 @@ namespace LeetWars.Core.BLL.Services
         public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters,
             PageSettingsDto? page)
         {
-            var userId = _userIdGetter.CurrentUserId;
-
             var challenges = _context.Challenges
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
@@ -85,8 +83,6 @@ namespace LeetWars.Core.BLL.Services
 
         public async Task<ChallengePreviewDto> GetChallengeSuggestionAsync(SuggestionSettingsDto settings)
         {
-            var userId = _userIdGetter.CurrentUserId;
-
             var challenges = _context.Challenges
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
@@ -101,7 +97,7 @@ namespace LeetWars.Core.BLL.Services
 
             challenges = FilterChallengesBySuggestionType(challenges, settings.SuggestionType);
 
-            int randomPosition = GetRandomInt(challenges.Count());
+            var randomPosition = GetRandomInt(challenges.Count());
             
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
@@ -142,7 +138,7 @@ namespace LeetWars.Core.BLL.Services
             };
         }
 
-        private int GetRandomInt(int maxValue)
+        private static int GetRandomInt(int maxValue)
         {
             using (var generator = RandomNumberGenerator.Create())
             {
