@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { User } from '@shared/models/user/user';
+import { UserService } from '@core/services/user.service';
+import { switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-log-in-page',
@@ -17,11 +19,18 @@ export class LogInPageComponent implements OnInit {
         password: new FormControl('', Validators.required),
     });
 
+    isExistingEmail = true;
+
     showPassword: boolean = false;
 
     isDataIncorrect: boolean;
 
-    constructor(private authService: AuthService, private router: Router, private toastr: ToastrNotificationsService) {}
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private userService: UserService,
+        private toastrNotification: ToastrNotificationsService,
+    ) {}
 
     public ngOnInit(): void {
         this.isDataIncorrect = false;
@@ -32,12 +41,30 @@ export class LogInPageComponent implements OnInit {
     }
 
     public signIn() {
-        this.authService
-            .login({ email: this.logInForm.value.email!, password: this.logInForm.value.password! })
-            .subscribe(() => {
-                this.router.navigate(['/main']);
-            });
+        this.userService.checkEmail(this.logInForm.value.email!)
+            .pipe(
+                switchMap(result => {
+                    if (!result) {
+                        this.isExistingEmail = false;
+                        this.logInForm.markAsUntouched();
+                    }
+
+                    return this.authService.login(
+{ email: this.logInForm.value.email!, password: this.logInForm.value.password! }
+                    );
+                }),
+            )
+            .subscribe(
+                () => {
+                    this.router.navigateByUrl('/main');
+                },
+                error => {
+                    this.toastrNotification.showError('Something went wrong');
+                    console.error('Error :', error);
+                },
+            );
     }
+
 
     public signInWithGitHub() {
         this.authService.signInWithGitHub().subscribe(

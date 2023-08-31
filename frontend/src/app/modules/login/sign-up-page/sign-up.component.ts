@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { User } from '@shared/models/user/user';
+import { UserService } from '@core/services/user.service';
+import { latinCharactersPattern, passwordPattern } from '@shared/regaxes/user-regax-patterns';
+import { switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-sign-up',
@@ -11,14 +14,30 @@ import { User } from '@shared/models/user/user';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent {
-    //TODO: Add real validation and don't forget to add it in html file
+    isExistingEmail = false;
+
     registrationForm = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
-        username: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required]),
+        username: new FormControl('', [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(50),
+            Validators.pattern(latinCharactersPattern),
+        ]),
+        password: new FormControl('', [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(32),
+            Validators.pattern(passwordPattern),
+        ]),
     });
 
-    constructor(private authService: AuthService, private router: Router, private toastr: ToastrNotificationsService) {}
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private userService: UserService,
+        private toastrNotification: ToastrNotificationsService,
+    ) {}
 
     public signUpGitHub() {
         this.authService.signInWithGitHub().subscribe(
@@ -47,14 +66,30 @@ export class SignUpComponent {
     }
 
     public signUp() {
-        this.authService
-            .register({
+        this.userService.checkEmail(this.registrationForm.value.email!)
+            .pipe(
+                switchMap(result => {
+                    if (result) {
+                        this.isExistingEmail = true;
+                        this.registrationForm.markAsUntouched();
+                    }
+
+                    return this.authService.register({
                 userName: this.registrationForm.value.username!,
                 email: this.registrationForm.value.email!,
                 password: this.registrationForm.value.password!,
-            })
-            .subscribe(() => {
-                this.router.navigate(['/main']);
             });
+                }),
+            )
+            .subscribe(
+                () => {
+                    this.router.navigate(['/main']);
+                    this.toastrNotification.showSuccess('You have successfully registered.');
+                },
+                error => {
+                    this.toastrNotification.showError('Something went wrong');
+                    console.error('Error :', error);
+                },
+            );
     }
 }
