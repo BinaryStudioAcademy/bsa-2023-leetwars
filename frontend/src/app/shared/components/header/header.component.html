@@ -5,12 +5,12 @@
     <div class="user-menu">
         <div class="notification">
             <fa-layers size="2x">
-                <fa-icon [icon]="['fas', 'bell']"></fa-icon>
-                <fa-layers-counter content="3"></fa-layers-counter>
+                <fa-icon [icon]="['far', 'bell']"></fa-icon>
+                <fa-layers-counter [classes]="['change-color']" content="3"></fa-layers-counter>
             </fa-layers>
         </div>
         <div class="user">
-            <img src="./favicon.ico" alt="User Logo" class="user-logo">
+            <img src=".\assets\images\default-profile-img.jpg" alt="User Logo" class="user-logo">
             <span class="username" (click)="showMenu = !showMenu">John Drake</span>
         </div>
         <div class="menu-wraper">

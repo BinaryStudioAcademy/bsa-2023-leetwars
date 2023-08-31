@@ -25,6 +25,10 @@ const routes: Routes = [
         path: 'challenges',
         loadChildren: () => import('./modules/challenges/challenges.module').then((m) => m.ChallengesModule),
     },
+    {
+        path: 'challenges/:id',
+        loadChildren: () => import('./modules/online-editor/online-editor.module').then((m) => m.OnlineEditorModule),
+    },
     { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
