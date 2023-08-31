@@ -19,11 +19,11 @@
     height: calc(100% - 45px)
     width: 100%
 
-::ng-deep .editor-container
+:host ::ng-deep .editor-container
     margin-top: 9px
     width: 100%
 
-::ng-deep .scroll-decoration
+:host ::ng-deep .scroll-decoration
     box-shadow: none !important
 
 .header, .problem-info ul
@@ -44,7 +44,7 @@
     width: fit-content
     padding-left: 22px
 
-::ng-deep .language-selection .btn
+:host ::ng-deep .language-selection .btn
     border: none !important
     background-color: transparent !important
     height: auto !important
@@ -56,18 +56,18 @@
     font-size: 10px
     font-weight: 500
 
-::ng-deep .dropdown-item
+:host ::ng-deep .dropdown-item
     font-family: Inter
     font-size: 10px
     font-weight: 500
 
-::ng-deep .language-selection .btn span
+:host ::ng-deep .language-selection .btn span
     color: $transparent-light-grey
 
-::ng-deep .language-selection fa-icon
+:host ::ng-deep .language-selection fa-icon
     color: #8A8A8A !important
 
-::ng-deep .language-selection .dropdown-item
+:host ::ng-deep .language-selection .dropdown-item
     color: $transparent-light-grey !important
 
 .vertical-divider
@@ -78,15 +78,15 @@
 button span
     color: $semi-transparent-white
 
-::ng-deep .as-split-gutter
+:host ::ng-deep .as-split-gutter
     background-color: transparent !important
     &-icon
         background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTRweCIgdmlld0JveD0iMCAwIDEyOCA1MTIiPgogICAgPCEtLSEgRm9udCBBd2Vzb21lIEZyZWUgNi40LjIgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UgKENvbW1lcmNpYWwgTGljZW5zZSkgQ29weXJpZ2h0IDIwMjMgRm9udGljb25zLCBJbmMuIC0tPgogICAgPHBhdGgKICAgICAgICBkPSJNNjQgMzYwYTU2IDU2IDAgMSAwIDAgMTEyIDU2IDU2IDAgMSAwIDAtMTEyem0wLTE2MGE1NiA1NiAwIDEgMCAwIDExMiA1NiA1NiAwIDEgMCAwLTExMnpNMTIwIDk2QTU2IDU2IDAgMSAwIDggOTZhNTYgNTYgMCAxIDAgMTEyIDB6IgogICAgICAgIGZpbGw9InJnYmEoOTIsIDkyLCA5MiwgMSkiIC8+Cjwvc3ZnPg==") !important
 
-::ng-deep pre
+:host ::ng-deep pre
     white-space: pre-wrap
 
-::ng-deep .tab-content
+:host ::ng-deep .tab-content
     height: calc(100% - 36px)
     overflow: auto
     font-size: 13px
@@ -99,7 +99,7 @@ button span
     color: white
     position: relative
 
-::ng-deep .selectedTab::after
+:host ::ng-deep .selectedTab::after
     content: ""
     position: absolute
     left: 0
