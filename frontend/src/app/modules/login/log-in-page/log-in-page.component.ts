@@ -31,7 +31,7 @@ export class LogInPageComponent implements OnInit {
 
     signIn() {
         this.authService.login(this.logInForm.value.email!, this.logInForm.value.password!).subscribe(() => {
-            this.router.navigateByUrl('');
+            this.router.navigate(['/main']);
         });
     }
 }

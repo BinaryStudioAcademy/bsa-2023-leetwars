@@ -26,7 +26,7 @@ export class SignUpComponent {
                 this.registrationForm.value.password!,
             )
             .subscribe(() => {
-                this.router.navigateByUrl('');
+                this.router.navigate(['/main']);
             });
     }
 }
