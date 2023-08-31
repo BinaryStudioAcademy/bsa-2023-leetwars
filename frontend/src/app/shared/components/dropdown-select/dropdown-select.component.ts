@@ -42,6 +42,6 @@ export class DropdownSelectComponent implements OnInit {
 
     private updateSelectedIcon() {
         this.selectedIcon = this.itemsIcons[this.items.findIndex((i) => i === this.selectedItem)];
-        this.SelectedItemsChanged.emit(this.selectedItems);
+        this.SelectedItemsChanged.emit(this.selectedItem);
     }
 }
