@@ -141,7 +141,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             .subscribe({
                 next: data => {
                     this.loading = false;
-                    if (data.length === 0) {
+                    if (!data.length) {
                         this.isLastPage = true;
 
                         return;
