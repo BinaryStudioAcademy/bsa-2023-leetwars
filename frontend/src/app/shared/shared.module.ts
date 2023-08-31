@@ -11,12 +11,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
-import { ChallengeComponent } from './components/challenge/challenge.component';
-import { ChallengesDropdownSelectComponent } from './components/challenges-dropdown-select/challenges-dropdown-select.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
-
+import { ChallengesDropdownSelectComponent } from './components/challenges-dropdown-select/challenges-dropdown-select.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
@@ -28,7 +26,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { SolutionComponent } from './components/solution/solution.component';
-
 
 @NgModule({
     imports: [
@@ -78,7 +75,7 @@ import { SolutionComponent } from './components/solution/solution.component';
         CustomInputComponent,
         PieChartComponent,
         ProgressBarComponent,
-        HeaderComponent,    
+        HeaderComponent,
         SolutionComponent,
         NgbModule,
         TabsModule,

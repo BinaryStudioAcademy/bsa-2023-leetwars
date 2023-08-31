@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 interface EditorOptions {
     language: string;
@@ -19,13 +19,10 @@ export class CodeEditorComponent implements OnChanges, OnInit {
 
     editorOptions: EditorOptions;
 
-
     public onCodeChange(model: string) {
         this.initSolution = model;
         this.codeChanged.emit(model);
     }
-
-    constructor() {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['language']) {
@@ -38,7 +35,6 @@ export class CodeEditorComponent implements OnChanges, OnInit {
     }
 
     private updateEditorOptions(): void {
-
         this.editorOptions = {
             language: this.language,
             theme: 'vs-dark',
