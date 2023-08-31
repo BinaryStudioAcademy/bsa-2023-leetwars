@@ -4,13 +4,13 @@
 @import 'color-variables'
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600&family=Open+Sans:wght@300;400;600;700&display=swap')
 
-html, body, :root 
+html, body, :root
     height: 100%
 
 body
     background-color: $dark-grey
 
-button 
+button
     all: unset
     cursor: pointer
 
@@ -23,3 +23,13 @@ ul li
 ul, p
     padding: 0
     margin: 0
+
+input:-webkit-autofill,
+input:-webkit-autofill:active
+    box-shadow: 0 0 0 30px $charcoal-grey inset
+    color: $white !important
+input:-webkit-autofill::first-line
+    color: $white !important
+input:-webkit-autofill:focus
+   -webkit-text-fill-color: $white
+
