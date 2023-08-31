@@ -6,8 +6,8 @@
                 <img src="assets/images/default-profile-img.jpg" alt="User avatar" class="user-avatar">
             </div>
             <div class="user-info d-flex flex-column">
-                <p class="username">{{username}}</p>
-                <p class="user-rank"><span>Rank</span>{{userRank}}</p>
+                <p class="username">{{user.userName}}</p>
+                <p class="user-rank"><span>Rank</span>{{user.totalScore}}</p>
             </div>
         </div>
         <button class="edit-profile-btn">Edit Profile</button>
@@ -28,7 +28,7 @@
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="solution community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'square-check'"></fa-icon>
-                        <p class="list-item-main-text">Solution<span>{{communitySolution}}</span></p>
+                        <p class="list-item-main-text">Solution<span>{{user.solutions.length}}</span></p>
                     </div>
                     <p class="last-week-stats">Last week<span>{{communityLastWeekSolution}}</span></p>
                 </li>
@@ -51,7 +51,7 @@
 
         <div class="languages-container info-container">
             <p class="content-section-name">Languages</p>
-            <p class="not-enough-data">{{languages}}</p>
+            <p class="not-enough-data">{{user.preferredLanguages}}</p>
         </div>
 
         <div class="skills-container info-container">
