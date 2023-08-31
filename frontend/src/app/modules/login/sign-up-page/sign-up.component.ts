@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { User } from '@shared/models/user/user';
 
 @Component({
     selector: 'app-sign-up',
@@ -16,17 +18,43 @@ export class SignUpComponent {
         password: new FormControl('', [Validators.required]),
     });
 
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(private authService: AuthService, private router: Router, private toastr: ToastrNotificationsService) {}
+
+    public signUpGitHub() {
+        this.authService.signInWithGitHub().subscribe(
+            (user: User) => {
+                this.router.navigate(['/main']);
+                this.toastr.showSuccess(`${user.userName} was successfully signed up`);
+                // add email sender to user.email
+            },
+            (error) => {
+                this.toastr.showError(error);
+            },
+        );
+    }
+
+    public signUpGoogle() {
+        this.authService.signInWithGoogle().subscribe(
+            (user: User) => {
+                this.router.navigate(['/main']);
+                this.toastr.showSuccess(`${user.userName} was successfully signed up`);
+                // add email sender to user.email
+            },
+            (error) => {
+                this.toastr.showError(error);
+            },
+        );
+    }
 
     public signUp() {
         this.authService
-            .register(
-                this.registrationForm.value.username!,
-                this.registrationForm.value.email!,
-                this.registrationForm.value.password!,
-            )
+            .register({
+                userName: this.registrationForm.value.username!,
+                email: this.registrationForm.value.email!,
+                password: this.registrationForm.value.password!,
+            })
             .subscribe(() => {
-                this.router.navigateByUrl('');
+                this.router.navigate(['/main']);
             });
     }
 }

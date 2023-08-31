@@ -21,17 +21,31 @@ export class LogInPageComponent implements OnInit {
 
     constructor(private authService: AuthService, private router: Router) {}
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.isDataIncorrect = false;
     }
 
-    toggleShow() {
+    public toggleShow() {
         this.showPassword = !this.showPassword;
     }
 
-    signIn() {
-        this.authService.login(this.logInForm.value.email!, this.logInForm.value.password!).subscribe(() => {
-            this.router.navigateByUrl('');
+    public signIn() {
+        this.authService
+            .login({ email: this.logInForm.value.email!, password: this.logInForm.value.password! })
+            .subscribe(() => {
+                this.router.navigate(['/main']);
+            });
+    }
+
+    public signInWithGitHub() {
+        this.authService.signInWithGitHub().subscribe(() => {
+            this.router.navigate(['/main']);
+        });
+    }
+
+    public signInWithGoogle() {
+        this.authService.signInWithGoogle().subscribe(() => {
+            this.router.navigate(['/main']);
         });
     }
 }

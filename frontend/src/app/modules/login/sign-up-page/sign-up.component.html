@@ -5,7 +5,8 @@
     </div>
     <div class="register-page-container">
         <form [formGroup]="registrationForm" class="register-page-form">
-            <button class="link-profile-button">+ Link Your GitHub Account</button>
+            <button class="link-profile-button" (click)="signUpGitHub()">+ Link Your GitHub Account</button>
+            <button class="link-profile-button" (click)="signUpGoogle()">+ Link Your Google Account</button>
             <app-custom-input
                 [InputType]="'email'"
                 [Identifier]="'email'"
@@ -40,8 +41,8 @@
             </button>
             <div class="have-account">
                 Already registered?
-            <a class="sign-in-link" routerLink="/auth/login">Sign in</a>
-        </div>
+                <a class="sign-in-link" routerLink="/auth/login">Sign in</a>
+            </div>
         </form>
     </div>
     <div class="footer"></div>
