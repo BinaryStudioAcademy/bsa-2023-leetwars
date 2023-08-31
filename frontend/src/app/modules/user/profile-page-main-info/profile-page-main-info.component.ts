@@ -44,7 +44,6 @@ export class ProfilePageMainInfoComponent implements OnChanges {
         const lastWeek = this.getLastWeekDates();
 
         if (this.user.solutions) {
-            console.log(`${new Date().getTime()} > ${new Date(this.user.solutions[2].submittedAt!).getTime()}`);
             this.communityLastWeekSolution = this.user.solutions?.filter(
                 (solution) =>
                     new Date(solution.submittedAt!).getTime() < lastWeek[1].getTime() &&
