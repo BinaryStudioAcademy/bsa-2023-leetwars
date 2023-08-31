@@ -26,8 +26,7 @@ export class AppComponent {
                 this.spinner.hide();
             }
             if (event instanceof NavigationStart) {
-                this.isAuthPage = event.url.startsWith('/auth') || event.url === '/'
-              
+                this.isAuthPage = event.url.startsWith('/auth') || event.url === '/';
             }
         });
     }
