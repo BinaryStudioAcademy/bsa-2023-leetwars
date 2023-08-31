@@ -24,7 +24,7 @@ export class EditorQuestionComponent implements OnInit {
 
     public markdownText: string;
 
-    public steps: string[] = ['Question', 'Solutions', 'Testcases'];
+    public steps: string[] = ['Question', 'Solutions', 'Test Cases'];
 
     public customInputHeight = '48px';
 
