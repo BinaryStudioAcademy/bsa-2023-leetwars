@@ -1,1 +1,1 @@
-<ngx-monaco-editor [options]="editorOptions" [(ngModel)]="initSolution"></ngx-monaco-editor>
+<ngx-monaco-editor [options]="editorOptions" [(ngModel)]="initSolution" (ngModelChange)="onCodeChange($event)"></ngx-monaco-editor>
