@@ -1,6 +1,12 @@
 @import "color-variables"
 @import "fonts"
 
+:host
+  font-family: Open Sans
+
+:host ::ng-deep .float-start
+  color: $lavender-ash
+
 .suggested-body
     display: grid
     grid-template-columns: 40% calc(60% - 2px)
@@ -66,12 +72,19 @@ h5
     background-color: $green
     border: none
     margin-right: 10%
+    margin-left:4px
+
+.train:hover
+    background-color: $dark-green
 
 .skip
-    margin: right 4px
     border: none
     background: none
 
+.skip:hover
+    background-color: $dark-grey
+    border-radius: 9px
+    border: none
 
 .description
     grid-column: 2
@@ -94,6 +107,7 @@ h5
     flex-direction: row
     justify-content: flex-start
     align-content: center
+    align-items: center
 
 
 .difficulty-tag
@@ -134,7 +148,7 @@ h5
     margin-bottom: 10px
     text-overflow: ellipsis
     overflow: auto
-
+    font-weight: 300
 
 .constraints
     margin-bottom: 20px
@@ -154,6 +168,15 @@ h5
     text-overflow: ellipsis
     overflow: hidden
     white-space: nowrap
+    font-weight: 300
+
+    &::before
+      display: inline-block
+      content: ''
+      width: 10px
+      height: 10px
+      background-color: $green
+      border-radius: 50%
 
 .constraints li
     list-style-position: inside

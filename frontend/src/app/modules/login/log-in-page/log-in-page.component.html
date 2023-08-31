@@ -36,6 +36,7 @@
                         [Width]="'100%'"
                         [InputLabel]="'Password'"
                         [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+                        [IsForgetPassword]="true"
                         formControlName="password"
                         (InputValueChange)="logInForm.controls['password'].setValue($event)">
                     </app-custom-input>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
     selector: 'app-suggested-challenge',
@@ -16,21 +17,15 @@ export class SuggestedChallengeComponent {
         'Some another constraint.',
     ];
 
-    @Input() languages: string[] = [
-        'C#',
-        'Javascript',
-    ];
+    @Input() languages: string[] = ['C#', 'JavaScript'];
 
-    score: string[] = [
-        'Fundamentals',
-        'Rank up',
-        'Practice and Repeat',
-        'Beta',
-        'Random',
-    ];
+    score: string[] = ['Fundamentals', 'Rank Up', 'Practice and Repeat', 'Beta', 'Random'];
 
-    @Input() description: string = 'Write a function that takes in a string of one or more words,'
-    + 'and returns the same string, but with all five or more letter, words reversed.';
+    scoreIcons: IconName[] = ['stairs', 'chart-simple', 'repeat', 'lock', 'circle-question'];
+
+    @Input() description: string =
+        'Write a function that takes in a string of one or more words,' +
+        'and returns the same string, but with all five or more letter, words reversed.';
 
     @Input() title: string = 'Stop gninnipS My sdroW!';
 
