@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RoutesRecognized } from '@angular/router';
 import { SpinnerService } from '@core/services/spinner.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { SpinnerService } from '@core/services/spinner.service';
 })
 export class AppComponent {
     isAuthPage: boolean;
+
+    isRouteNotFound: boolean;
 
     constructor(private router: Router, private spinner: SpinnerService) {
         this.listenRouter();
@@ -25,6 +27,14 @@ export class AppComponent {
             ) {
                 this.spinner.hide();
             }
+            if (event instanceof RoutesRecognized) {
+                const route = event.state.root.firstChild;
+
+                if (route) {
+                    this.isRouteNotFound = route.routeConfig === null;
+                }
+            }
+
             if (event instanceof NavigationStart) {
                 this.isAuthPage = event.url.startsWith('/auth') || event.url === '/';
             }
