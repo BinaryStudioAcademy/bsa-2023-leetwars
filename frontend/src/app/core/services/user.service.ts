@@ -18,6 +18,7 @@ export class UserService {
 
     public checkEmail(email: string): Observable<boolean> {
         return this.httpService.getRequest<boolean>(`/users/is-existing-email?email=${email}`);
+    }
 
     public async getFullUser(id: number): Promise<Observable<UserFull>> {
         return this.httpService.getRequest<UserFull>(`/users/${id}`);
