@@ -11,17 +11,24 @@
             <H5 class="or-label">or</H5>
 
             <form class="logInForm" [formGroup]="logInForm">
-                <app-custom-input [InputType]="'email'" [Identifier]="'email'" [Width]="'100%'" [InputLabel]="'Email'"
+                <app-custom-input
+                    [InputType]="'email'"
+                    [Identifier]="'email'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Email'"
                     [InputPlaceholder]="'Enter your email'"
                     (InputValueChange)="logInForm.controls['email'].setValue($event)">
                 </app-custom-input>
-                <app-custom-input [InputType]="'password'" [Identifier]="'password'" [Width]="'100%'"
-                    [InputLabel]="'Password:'" [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+                <app-custom-input
+                    [InputType]="'password'"
+                    [Identifier]="'password'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Password'"
+                    [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+                    [IsForgetPassword]="true"
                     (InputValueChange)="logInForm.controls['password'].setValue($event)">
                 </app-custom-input>
-                <div class="forget-password">
-                    <a href="someUrl" class="forget-password-link">Forget password?</a>
-                </div>
+
                 <button class="submit-sign-in" [disabled]="!logInForm.valid" (click)="signIn()">Sign In</button>
             </form>
         </div>
