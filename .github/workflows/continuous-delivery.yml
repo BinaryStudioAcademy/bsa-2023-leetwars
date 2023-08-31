@@ -128,6 +128,10 @@ jobs:
         with:
           tags: tatihutii/leetwars_frontend:latest
           context: ./frontend
+          build-args: |
+            "NG_APP_FIREBASE_API_KEY=${{ secrets.NG_APP_FIREBASE_API_KEY }}"
+            "NG_APP_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.NG_APP_FIREBASE_MESSAGING_SENDER_ID }}"
+            "NG_APP_FIREBASE_APP_ID=${{ secrets.NG_APP_FIREBASE_APP_ID }}"
           push: true
 
   deploy_images:

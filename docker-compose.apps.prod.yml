@@ -74,8 +74,6 @@ services:
         ports:
             - "80:80"
             - "443:443"
-        env_file:
-            - /etc/environment
         volumes:
             - /etc/letsencrypt:/etc/letsencrypt
 networks:
