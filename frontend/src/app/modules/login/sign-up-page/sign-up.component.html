@@ -11,7 +11,7 @@
                     [InputType]="'email'"
                     [Identifier]="'email'"
                     [Width]="'100%'"
-                    [InputLabel]="'Email:'"
+                    [InputLabel]="'Email'"
                     [InputPlaceholder]="'Enter your email'"
                     formControlName="email"
                     (InputValueChange)="registrationForm.controls['email'].setValue($event)">
@@ -28,7 +28,7 @@
                 <app-custom-input
                     [Identifier]="'username'"
                     [Width]="'100%'"
-                    [InputLabel]="'Username:'"
+                    [InputLabel]="'Username'"
                     [InputPlaceholder]="'Enter your username'"
                     formControlName="username"
                     (InputValueChange)="registrationForm.controls['username'].setValue($event)">
@@ -71,8 +71,8 @@
             </button>
             <div class="have-account">
                 Already registered?
-            <a class="sign-in-link" routerLink="/auth/login">Sign in</a>
-        </div>
+                <a class="sign-in-link" routerLink="/auth/login">Sign in</a>
+            </div>
         </form>
     </div>
     <div class="footer"></div>

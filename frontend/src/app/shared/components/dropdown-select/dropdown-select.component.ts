@@ -9,9 +9,11 @@ import { IconName } from '@fortawesome/fontawesome-svg-core';
 export class DropdownSelectComponent implements OnInit {
     @Input() isMultiSelection = false;
 
-    @Input() title: string;
+    @Input() title: string | undefined;
 
     @Input() items: string[] = [];
+
+    @Input() selectText: string = 'Select';
 
     @Input() itemsIcons: IconName[] = [];
 
@@ -42,6 +44,6 @@ export class DropdownSelectComponent implements OnInit {
 
     private updateSelectedIcon() {
         this.selectedIcon = this.itemsIcons[this.items.findIndex((i) => i === this.selectedItem)];
-        this.SelectedItemsChanged.emit(this.selectedItems);
+        this.SelectedItemsChanged.emit(this.selectedItem);
     }
 }
