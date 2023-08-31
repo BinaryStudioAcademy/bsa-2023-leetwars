@@ -42,7 +42,7 @@ public class UserService : BaseService, IUserService
             .FirstOrDefaultAsync();
        if(user is null)
         {
-            throw new ArgumentNullException(id.ToString(),"Not found");
+            throw new ArgumentNullException("Not Found", new Exception("User was not found"));
         }
         return _mapper.Map<User,UserFullDto>(user);
     }

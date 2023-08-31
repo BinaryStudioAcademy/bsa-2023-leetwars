@@ -9,13 +9,13 @@ import { ColorConstants } from '@shared/constants/color-constants';
 export class SolvedProblemComponent implements OnInit {
     @Input() pieChartActiveColor: string = ColorConstants.pieChartActiveColor;
 
-    @Input() easyLabel: string = 'easy';
+    @Input() easyLabel: string;
 
     @Input() mediumLabel: string;
 
     @Input() hardLabel: string;
 
-    @Input() easyTasksCompleted: number = 10;
+    @Input() easyTasksCompleted: number;
 
     @Input() mediumTasksCompleted: number;
 

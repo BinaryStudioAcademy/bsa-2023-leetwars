@@ -6,7 +6,7 @@ import { MonthChartData } from '@shared/models/submission-chart/month-chart-data
 @Component({
     selector: 'app-submissions-chart',
     templateUrl: './submissions-chart.component.html',
-    styleUrls: ['./submissions-chart.component.scss'],
+    styleUrls: ['./submissions-chart.component.sass'],
 })
 export class SubmissionsChartComponent implements OnInit, OnChanges {
     @Input() solutions: UserSolution[] = [];

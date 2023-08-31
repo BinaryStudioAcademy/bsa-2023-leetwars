@@ -1,3 +1,5 @@
+@import 'color-variables'
+
 .content_wrp  
     display: grid 
     grid-template-columns: repeat(5, 1fr) 
@@ -8,15 +10,20 @@
  
 
 .user_profile   
-    grid-area: 1 / 1 / 4 / 2  
+    grid-area: 1 / 1 / 4 / 2 
 .solved   
     grid-area: 1 / 2 / 2 / 3
 .badges   
-    grid-area: 1 / 3 / 2 / 4   
+    grid-area: 1 / 3 / 2 / 4
 .submission_chart   
     grid-area: 2 / 2 / 3 / 4
 .submissions   
     grid-area: 3 / 2 / 4 / 4
-    img 
-       max-width: 830px
-       height: 430px
+
+#background-color   
+    top:0
+    left:0
+    width:100%
+    height: 415px
+    background-color:$deep-dark-grey 
+            

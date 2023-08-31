@@ -14,12 +14,9 @@ export class UserProfileComponent {
     private unsubscribe$ = new Subject<void>();
 
     constructor(private userService: UserService) {
-        userService.getFullUser(6).then(
-            (result) =>
-                result.subscribe((u): void => {
-                    this.user = u;
-                }),
-            // eslint-disable-next-line function-paren-newline
-        );
+        userService.getFullUser(6).then((result) =>
+            result.subscribe((u): void => {
+                this.user = u;
+            }));
     }
 }
