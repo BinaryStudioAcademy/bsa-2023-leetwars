@@ -19,16 +19,16 @@ public class UserService : BaseService, IUserService
             throw new ArgumentNullException(nameof(userDto));
         }
 
-        bool isExistingEmail = await CheckIsExistingEmail(userDto.Email);
-        if (isExistingEmail)
-        {
-            throw new InvalidOperationException($"A user with email {userDto.Email} is already registered.");
-        }
-
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == userDto.Uid);
         if (user != null)
         {
             return _mapper.Map<UserDto>(user);
+        }
+
+        bool isExistingEmail = await CheckIsExistingEmail(userDto.Email);
+        if (isExistingEmail)
+        {
+            throw new InvalidOperationException($"A user with email {userDto.Email} is already registered.");
         }
         
         var newUser = _mapper.Map<NewUserDto, User>(userDto);

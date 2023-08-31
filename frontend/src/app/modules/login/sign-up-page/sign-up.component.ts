@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { User } from '@shared/models/user/user';
 import { UserService } from '@core/services/user.service';
+import { User } from '@shared/models/user/user';
 import { latinCharactersPattern, passwordPattern } from '@shared/regaxes/user-regax-patterns';
 import { switchMap } from 'rxjs';
 
@@ -43,11 +43,11 @@ export class SignUpComponent {
         this.authService.signInWithGitHub().subscribe(
             (user: User) => {
                 this.router.navigate(['/main']);
-                this.toastr.showSuccess(`${user.userName} was successfully signed up`);
+                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
                 // add email sender to user.email
             },
             (error) => {
-                this.toastr.showError(error);
+                this.toastrNotification.showError(error);
             },
         );
     }
@@ -56,29 +56,30 @@ export class SignUpComponent {
         this.authService.signInWithGoogle().subscribe(
             (user: User) => {
                 this.router.navigate(['/main']);
-                this.toastr.showSuccess(`${user.userName} was successfully signed up`);
+                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
                 // add email sender to user.email
             },
             (error) => {
-                this.toastr.showError(error);
+                this.toastrNotification.showError(error);
             },
         );
     }
 
     public signUp() {
-        this.userService.checkEmail(this.registrationForm.value.email!)
+        this.userService
+            .checkEmail(this.registrationForm.value.email!)
             .pipe(
-                switchMap(result => {
+                switchMap((result) => {
                     if (result) {
                         this.isExistingEmail = true;
                         this.registrationForm.markAsUntouched();
                     }
 
                     return this.authService.register({
-                userName: this.registrationForm.value.username!,
-                email: this.registrationForm.value.email!,
-                password: this.registrationForm.value.password!,
-            });
+                        userName: this.registrationForm.value.username!,
+                        email: this.registrationForm.value.email!,
+                        password: this.registrationForm.value.password!,
+                    });
                 }),
             )
             .subscribe(
@@ -86,7 +87,7 @@ export class SignUpComponent {
                     this.router.navigate(['/main']);
                     this.toastrNotification.showSuccess('You have successfully registered.');
                 },
-                error => {
+                (error) => {
                     this.toastrNotification.showError('Something went wrong');
                     console.error('Error :', error);
                 },

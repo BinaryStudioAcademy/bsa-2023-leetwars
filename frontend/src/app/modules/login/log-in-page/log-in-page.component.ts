@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { User } from '@shared/models/user/user';
 import { UserService } from '@core/services/user.service';
+import { User } from '@shared/models/user/user';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -13,7 +13,6 @@ import { switchMap } from 'rxjs';
     styleUrls: ['./log-in-page.component.sass'],
 })
 export class LogInPageComponent implements OnInit {
-    //TODO: Add real validation and don't forget to add it in html file
     logInForm = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', Validators.required),
@@ -41,40 +40,41 @@ export class LogInPageComponent implements OnInit {
     }
 
     public signIn() {
-        this.userService.checkEmail(this.logInForm.value.email!)
+        this.userService
+            .checkEmail(this.logInForm.value.email!)
             .pipe(
-                switchMap(result => {
+                switchMap((result) => {
                     if (!result) {
                         this.isExistingEmail = false;
                         this.logInForm.markAsUntouched();
                     }
 
-                    return this.authService.login(
-{ email: this.logInForm.value.email!, password: this.logInForm.value.password! }
-                    );
+                    return this.authService.login({
+                        email: this.logInForm.value.email!,
+                        password: this.logInForm.value.password!,
+                    });
                 }),
             )
             .subscribe(
                 () => {
                     this.router.navigateByUrl('/main');
                 },
-                error => {
+                (error) => {
                     this.toastrNotification.showError('Something went wrong');
                     console.error('Error :', error);
                 },
             );
     }
 
-
     public signInWithGitHub() {
         this.authService.signInWithGitHub().subscribe(
             (user: User) => {
                 this.router.navigate(['/main']);
-                this.toastr.showSuccess(`${user.userName} was successfully signed in`);
+                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
                 // add email sender to user.email
             },
             (error) => {
-                this.toastr.showError(error);
+                this.toastrNotification.showError(error);
             },
         );
     }
@@ -83,11 +83,11 @@ export class LogInPageComponent implements OnInit {
         this.authService.signInWithGoogle().subscribe(
             (user: User) => {
                 this.router.navigate(['/main']);
-                this.toastr.showSuccess(`${user.userName} was successfully signed in`);
+                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
                 // add email sender to user.email
             },
             (error) => {
-                this.toastr.showError(error);
+                this.toastrNotification.showError(error);
             },
         );
     }
