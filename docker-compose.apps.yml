@@ -74,6 +74,10 @@ services:
         build:
             context: ./frontend
             dockerfile: Dockerfile.dev
+            args:
+                NG_APP_FIREBASE_API_KEY: ${NG_APP_FIREBASE_API_KEY}
+                NG_APP_FIREBASE_MESSAGING_SENDER_ID: ${NG_APP_FIREBASE_MESSAGING_SENDER_ID}
+                NG_APP_FIREBASE_APP_ID: ${NG_APP_FIREBASE_APP_ID}
         container_name: 'leetwars_frontend'
         restart: on-failure
         ports:
@@ -81,11 +85,6 @@ services:
         networks:
             - back
             - front
-        environment:
-            NG_APP_FIREBASE_API_KEY: ${NG_APP_FIREBASE_API_KEY}
-            NG_APP_FIREBASE_MESSAGING_SENDER_ID: ${NG_APP_FIREBASE_MESSAGING_SENDER_ID}
-            NG_APP_FIREBASE_APP_ID: ${NG_APP_FIREBASE_APP_ID}
-
 
 networks:
     back:

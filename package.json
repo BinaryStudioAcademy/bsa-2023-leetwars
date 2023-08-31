@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@ngx-env/core": "^16.1.3"
+  }
+}
