@@ -1,12 +1,12 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
+import { Challenge } from '@shared/models/challenge/challenge';
 import { ChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { PageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
-import { Challenge } from '@shared/models/challenge/challenge';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class ChallengeService {
         httpParams = setParams<ChallengeFilter>(httpParams, filter);
         httpParams = setParams<PageSettings>(httpParams, page);
 
-        return this.httpService.getRequest<ChallengePreview[]>(this.baseUrl, httpParams);
+        return this.httpService.getRequest<ChallengePreview[]>(this.challengesRoute, httpParams);
     }
 
     public getChallengeSuggestion(settings: SuggestionSettings) {
