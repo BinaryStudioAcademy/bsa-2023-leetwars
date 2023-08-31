@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
@@ -28,7 +29,6 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { StepsOfProgressComponent } from './components/steps-of-progress/steps-of-progress.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
-import { TabsModule, TabsetConfig } from 'ngx-bootstrap/tabs';
 
 @NgModule({
     imports: [
