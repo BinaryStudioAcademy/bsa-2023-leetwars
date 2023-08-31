@@ -11,9 +11,13 @@ export class ChallengesTestPageComponent {
 
     public languageVersionsList: DropdownItem[] = [{ content: 'Node v18.x' }, { content: 'Node v17.x' }];
 
-    public selectedLanguage: string;
+    public tabs = [
+        { title: 'Test Cases', active: true },
+        { title: 'Example Test Cases', content: 'Example Test Cases content' },
+        { title: 'Help', content: 'Help infomation' },
+    ];
 
-    public activeTab: string = 'test-cases';
+    public selectedLanguage: string;
 
     public isMaximized: boolean = false;
 
@@ -22,10 +26,6 @@ export class ChallengesTestPageComponent {
     };
 
     constructor(private cdr: ChangeDetectorRef) {}
-
-    changeTab(tab: string) {
-        this.activeTab = tab;
-    }
 
     toggleMaximize() {
         this.isMaximized = !this.isMaximized;

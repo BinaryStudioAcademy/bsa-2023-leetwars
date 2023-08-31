@@ -28,6 +28,7 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { StepsOfProgressComponent } from './components/steps-of-progress/steps-of-progress.component';
 import { SuggestedChallengeComponent } from './components/suggested-challenge/suggested-challenge.component';
+import { TabsModule, TabsetConfig } from 'ngx-bootstrap/tabs';
 
 @NgModule({
     imports: [
@@ -84,7 +85,9 @@ import { SuggestedChallengeComponent } from './components/suggested-challenge/su
         StepsOfProgressComponent,
         EditorQuestionComponent,
         NgbModule,
+        TabsModule,
     ],
+    providers: [TabsetConfig],
 })
 export class SharedModule {
     constructor(library: FaIconLibrary) {
