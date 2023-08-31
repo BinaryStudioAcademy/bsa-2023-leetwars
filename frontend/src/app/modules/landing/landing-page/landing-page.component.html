@@ -1,5 +1,16 @@
 <div class="nav-div">
-    <nav>
+    <button class="nav-dropbtn">
+        <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+    </button>
+    <div class="nav-dropdown-div">
+        <nav class="dropdown-nav">
+            <a href="">Cases</a>
+            <a href="">Features</a>
+            <a href="">Our Work</a>
+            <a href="" class="green-accent-link">Sign In</a>
+        </nav>
+    </div>
+    <nav class="main-nav">
         <a href="">Cases</a>
         <a href="">Features</a>
         <a href="">Our Work</a>
@@ -10,8 +21,8 @@
     <div class="div-unlimited-container">
         <div class="div-unlimited">
             <h1>Coding Mastery Forged in Challenges</h1>
-            <p>Unveil a coding platform that's your gateway to mastery. 
-                Through captivating challenges, you'll refine your programming skills, 
+            <p>Unveil a coding platform that's your gateway to mastery.
+                Through captivating challenges, you'll refine your programming skills,
                 while achieving each goal becomes a stepping stone toward coding excellence.
             </p>
             <a href="" class="green-accent-link">Get Started</a>
@@ -46,7 +57,7 @@
                 <p>You lose hope as deadlines are missed over and over again</p>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 <div id="fun-programming">
     <h2>
@@ -55,6 +66,7 @@
         <span class="span-accent">We make it fun.</span>
     </h2>
     <div class="div-fun-programming-card">
+        <img src="/assets/images/landing-page/fun-programming1.svg" alt="" class="fun-programming-img mediaq-img">
         <div class="fun-programming-card-content">
             <img src="/assets/images/landing-page/cursor.svg" alt="">
             <div class="fun-programming-card-text">
@@ -62,16 +74,16 @@
                     Breath-taking Challenges
                 </h3>
                 <p>
-                    Embark on an exhilarating coding journey with our platform's challenging puzzles. 
-                    From complex algorithms to real-world simulations, 
+                    Embark on an exhilarating coding journey with our platform's challenging puzzles.
+                    From complex algorithms to real-world simulations,
                     these mind-bending tasks will stretch your skills and leave you with a rewarding sense of accomplishment.
                 </p>
             </div>
         </div>
-        <img src="/assets/images/landing-page/fun-programming1.svg" alt="">
+        <img src="/assets/images/landing-page/fun-programming1.svg" alt="" class="fun-programming-img mediaq-none-img">
     </div>
     <div class="div-fun-programming-card">
-        <img src="/assets/images/landing-page/fun-programming2.svg" alt="">
+        <img src="/assets/images/landing-page/fun-programming2.svg" alt="" class="fun-programming-img">
         <div class="fun-programming-card-content">
             <img src="/assets/images/landing-page/message.svg" alt="">
             <div class="fun-programming-card-text">
@@ -79,14 +91,15 @@
                     Community Collaboration and Support
                 </h3>
                 <p>
-                    Join a thriving developer community on our platform. 
-                    Engage in discussions, seek assistance, and share insights with fellow programmers, 
+                    Join a thriving developer community on our platform.
+                    Engage in discussions, seek assistance, and share insights with fellow programmers,
                     fostering an environment of mutual growth and support.
                 </p>
             </div>
         </div>
     </div>
     <div class="div-fun-programming-card">
+        <img src="/assets/images/landing-page/fun-programming3.svg" alt="" class="fun-programming-img mediaq-img">
         <div class="fun-programming-card-content">
             <img src="/assets/images/landing-page/clock.svg" alt="">
             <div class="fun-programming-card-text">
@@ -94,12 +107,12 @@
                     Quick Growth Through Our Platform
                 </h3>
                 <p>
-                    Achieve swift and substantial progress with our platform's targeted resources, interactive challenges, and expert support. 
+                    Achieve swift and substantial progress with our platform's targeted resources, interactive challenges, and expert support.
                     Fast-track your coding journey and witness impressive growth in your skills and projects
                 </p>
             </div>
         </div>
-        <img src="/assets/images/landing-page/fun-programming3.svg" alt="">
+        <img src="/assets/images/landing-page/fun-programming3.svg" alt="" class="fun-programming-img mediaq-none-img">
     </div>
 </div>
 <div id="how-it-works">
@@ -115,7 +128,7 @@
                 <div class="how-it-works-card-content">
                     <h3>Choose Your Path to Mastery</h3>
                     <p>
-                        Select from a range of carefully crafted learning paths tailored to your coding aspirations, whether 
+                        Select from a range of carefully crafted learning paths tailored to your coding aspirations, whether
                         it's web development, data science, or app creation
                     </p>
                 </div>
@@ -125,7 +138,7 @@
                 <div class="how-it-works-card-content">
                     <h3>Master Coding Through Challenges</h3>
                     <p>
-                        Dive into practical coding challenges that build your problem-solving skills and let you apply 
+                        Dive into practical coding challenges that build your problem-solving skills and let you apply
                         theoretical knowledge to real-world scenarios.
                     </p>
                 </div>
@@ -135,8 +148,8 @@
                 <div class="how-it-works-card-content">
                     <h3>Achieve Your Coding Goals</h3>
                     <p>
-                        Set specific coding goals and track your progress as you work through each module and challenge. 
-                        Our platform's interactive tracking system ensures you stay motivated and focused on reaching your 
+                        Set specific coding goals and track your progress as you work through each module and challenge.
+                        Our platform's interactive tracking system ensures you stay motivated and focused on reaching your
                         milestones, making your coding dreams a reality.
                     </p>
                 </div>
@@ -144,6 +157,7 @@
             </div>
         </div>
     </div>
+    <a href="" class="green-accent-link">Get Started</a>
 </div>
 <footer>
     <div class="footer-get-started">
@@ -213,10 +227,31 @@
             </li>
         </ul>
     </div>
-    <div class="div-footer-contact-links">
+    <div class="div-footer-contacts">
         <h4>Contact</h4>
-        <a href="">support@pixeltrue.com</a>
+        <a href="mailto:email@example.com">email@example.com</a>
         <div class="footer-contact-links">
+            <a href="">
+                <fa-icon [icon]="['fab', 'instagram']"></fa-icon>
+            </a>
+            <a href="">
+                <fa-icon [icon]="['fab', 'tiktok']"></fa-icon>
+            </a>
+            <a href="">
+                <fa-icon [icon]="['fab', 'youtube']"></fa-icon>
+            </a>
+            <a href="">
+                <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+            </a>
+            <a href="">
+                <fa-icon [icon]="['fab', 'pinterest']"></fa-icon>
+            </a>
+            <a href="">
+                <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+            </a>
+            <a href="">
+                <fa-icon [icon]="['fab', 'linkedin']"></fa-icon>
+            </a>
         </div>
     </div>
 </footer>

@@ -5,7 +5,7 @@ a
     margin: 24px
     text-decoration: none
     color: $white
-   
+
 .nav-div
     z-index: 9999
     position: fixed
@@ -17,12 +17,43 @@ a
     align-items: flex-end
     justify-content: center
 
+.nav-dropdown-div
+    position: absolute
+    background-color: $transparent-dark-grey
+    height: 100vh
+    top: 100%
+    left: 0
+    right: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    display: none
+    overflow: hidden
+
+.dropdown-nav
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-evenly
+
+.nav-dropbtn
+    padding: 24px
+    z-index: inherit
+    color: $white
+    font-size: 1.6rem
+    display: none
+
+.nav-dropbtn:focus
+    + .nav-dropdown-div
+        display: flex
+
 .div-unlimited-hero-section
     top: 0
     position: relative
-    height: 702px
+    height: 705px
     background-size: cover
-    background-image: url(/assets/images/landing-page/unlimited.svg)
+    background-image: url("/assets/images/landing-page/unlimited.svg")
+    background-position: 50%
 
 
 .div-unlimited-container
@@ -47,6 +78,8 @@ a
     align-items: center
     text-align: center
     color: $white
+    p, h1
+        text-shadow: 1px 0px 4px $black
     p
         width: 70%
         margin-top: 24px
@@ -62,6 +95,9 @@ a
     &:focus
         box-shadow: 0 0 0 10px $green
 
+#reliable-platform, #fun-programming, #how-it-works
+    background-color: $deep-dark-grey
+
 #reliable-platform
     display: flex
     flex-direction: column
@@ -72,7 +108,7 @@ a
         margin: 64px 0
 
 .span-accent
-    color: green
+    color: $green
 
 .div-reliable-platform
     width: 80%
@@ -81,31 +117,39 @@ a
     display: flex
     align-items: center
     justify-content: center
+    flex-wrap: wrap
 
 .div-reliable-platform-card
     position: relative
-    margin: 0 12px
-    width: 330px
+    margin: 12px 12px
+    flex: 0 1 330px
     height: 400px
     background-color: $transparent-dim-grey
+    box-shadow: $transparent-green 1.95px -1.95px 2.6px
     border-radius: 16px
     display: flex
     align-items: center
     flex-direction: column
-    justify-content: flex-start  
-    padding-top: 180px  
+    justify-content: flex-start
+    padding-top: 180px
     img
         position: absolute
         top: -48px
         width: 190px
         height: 190px
+    &:hover
+        box-shadow: $transparent-green 0px 0px 4px 2px, $transparent-green 0px 0px 16px 0px
+
 
 .div-reliable-platform-card-info
     padding: 0 22%
     h3
-        font-size: 1.4rem  
+        font-size: 1.4rem
+    p
+        color: $very-pale-blue
 
-       
+
+
 #fun-programming
     display: flex
     flex-direction: column
@@ -121,12 +165,14 @@ a
     justify-content: space-between
     margin: 24px 10%
     height: 550px
-    >img
-        width: 49%
+
+.fun-programming-img
+    width: 49%
+
 
 .fun-programming-card-content
     box-shadow: 1px 1px 12px rgba(0,0,0,0.1)
-    background-color: $transparent-dim-grey
+    background-color: dim-grey
     border-radius: 16px
     width: 49%
     height: 100%
@@ -140,15 +186,25 @@ a
 .fun-programming-card-text
     margin-top: 36px
     text-align: center
+    p
+        color: $very-pale-blue
+
+.mediaq-img
+    display: none
 
 #how-it-works
+    display: flex
+    flex-direction: column
+    align-items: center
     color: $white
     h2 //MAKE A VARIABLE
         text-align: center
         margin: 64px 0
+    >a
+        margin: 64px 0
 
 .div-how-it-works
-    margin: 24px 10%
+    margin: 0 5%
     display: flex
 
 .div-how-it-works-cards
@@ -157,43 +213,129 @@ a
     justify-content: space-between
     padding: 36px
 
-.how-it-works-card  
+.how-it-works-card
+    box-shadow: $transparent-green 1.95px -1.95px 2.6px
     background-color: $transparent-dim-grey
     border-radius: 16px
-    padding: 24px
+    padding: 24px 24px 24px 0
     display: flex
     position: relative
     img
         position: absolute
+        left: -24px
         bottom: 0
+    &:hover
+        box-shadow: $transparent-green 0px 0px 4px 2px, $transparent-green 0px 0px 16px 0px
 
 .how-it-works-card-content
     margin-left: 240px
+    p
+        color: $very-pale-blue
+
 
 footer
-    padding: 24px 5%
+    padding: 5%
     color: $white
-    display: grid
-    grid-template-columns: minmax(250px, 2fr) repeat(auto-fit, minmax(100px, 1fr))
-    column-gap: 24px
-    row-gap: 16px
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: flex-start
+    >*
+        margin: 16px
 
-.div-footer-contact-links
-    a
+.div-footer-contacts
+    flex: 1 1 100px
+    >a
         margin: 8px 0
         color: $grey
 
 .footer-list
+    flex: 1 1 100px
     margin: 8px 0
     list-style: none
     a
         color: $grey
         margin: 8px 0
 
-// .footer-contact-links
-//     a
-        // border-radius: 50%
-        // border: 2px solid $white
-    // i
-    //     color: white
-    //     font-size: 1rem
+.footer-get-started
+    flex: 2 1 220px
+    padding-right: 16px
+    >a
+        margin: 16px 0 0 0
+
+.footer-contact-links
+    margin-top: 16px
+    a
+        margin: 0 8px 8px 0
+        border-radius: 50%
+        border: 2px solid $white
+        height: 36px
+        width: 36px
+        display: inline-flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+    i
+        color: white
+        font-size: 1rem
+
+@media screen and (max-width: 1030px)
+    .div-how-it-works
+        margin: 0
+        >img
+            display: none
+
+    .how-it-works-card
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        padding: 24px
+        box-shadow: none
+        >img
+            position: relative
+            width: 190px
+            left:  0
+            margin-bottom: 24px
+        &:nth-child(2)
+            margin-top: 36px
+            margin-bottom: 36px
+
+    .how-it-works-card-content
+        margin: 0
+        padding: 0 36px
+        text-align: center
+
+@media screen and (max-width: 1000px)
+    #fun-programming
+        padding: 36px
+
+    .div-fun-programming-card
+        flex-direction: column
+        height: auto
+        margin-left: 0
+        margin-right: 0
+
+    .fun-programming-img
+        width: 70%
+
+    .mediaq-img
+        display: block
+
+    .mediaq-none-img
+        display: none
+
+    .fun-programming-card-content
+        width: 100%
+
+@media screen and (max-width: 650px)
+    .fun-programming-img
+        display: none
+    .main-nav
+        display: none
+    .nav-dropbtn
+        display: block
+
+@media screen and (max-width: 450px)
+    .green-accent-link
+        padding: 16px 36px
+
