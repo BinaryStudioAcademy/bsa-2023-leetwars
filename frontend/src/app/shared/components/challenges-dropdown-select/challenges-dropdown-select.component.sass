@@ -1,0 +1,58 @@
+@import 'color-variables'
+
+button
+    all: revert
+
+.dropdown
+    width: 100%
+    font-family: 'Lato', sans-serif
+    min-width: 160px
+
+    &-toggle::after
+        display: none !important
+
+    &-menu
+        background-color: $deep-dark-grey
+        border: 1px solid $transparent-white
+        overflow: auto
+        border-radius: 0
+
+    &-item
+        color: $grey
+
+        &:hover
+            background-color: $slightly-transparent-light-grey
+
+        &:focus
+            background-color: transparent
+
+.dropdown-item 
+    padding: 4px 11px
+    
+.circle-icon
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 12px
+    height: 12px
+    border-radius: 50%
+    background-color: #EFEFEF
+    
+    fa-icon
+        color: $black
+
+.btn
+    font-family: inherit
+    align-items: center
+    height: 43px
+    justify-content: space-between
+    padding: 11px 16px 11px 11px
+    color: $white-grey
+    background-color: $ultra-transparent-black
+    border: 1px solid $transparent-white
+
+.float-start
+    gap: 5px
+
+.dropdown-menu-link
+    gap: 7px
