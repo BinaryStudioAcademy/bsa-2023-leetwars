@@ -14,7 +14,7 @@ export class ChallengesDropdownSelectComponent implements OnInit {
     selectedItem: DropdownItem;
 
     ngOnInit(): void {
-        this.selectedItem = this.items[0];
+        [this.selectedItem] = this.items;
     }
 
     selectItem(item: DropdownItem) {

@@ -14,6 +14,6 @@ namespace LeetWars.Core.Common.DTO.Challenge
         public ChallengeLevelDto? Level { get; set; }
         public UserDto? Author { get; set; }
         public ICollection<TagDto>? Tags { get; set; }
-        public ICollection<ChallengeVersionDto>? Versions { get; set; }
+        public ICollection<ChallengeVersionFullDto>? Versions { get; set; }
     }
 }

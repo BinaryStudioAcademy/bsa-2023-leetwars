@@ -9,6 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="RunnerDefaults\JSRunner\**" />
+    <Content Remove="RunnerDefaults\JSRunner\**" />
+    <EmbeddedResource Remove="RunnerDefaults\JSRunner\**" />
+    <None Remove="RunnerDefaults\JSRunner\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="RunnerDefaults\CSharp\CSharpRunner\Program.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="RunnerDefaults\CSharp\CSharpRunner\CSharpRunner.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Docker.DotNet" Version="3.125.15" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
   </ItemGroup>
 
