@@ -81,6 +81,11 @@ services:
         networks:
             - back
             - front
+        environment:
+            NG_APP_FIREBASE_API_KEY: ${NG_APP_FIREBASE_API_KEY}
+            NG_APP_FIREBASE_MESSAGING_SENDER_ID: ${NG_APP_FIREBASE_MESSAGING_SENDER_ID}
+            NG_APP_FIREBASE_APP_ID: ${NG_APP_FIREBASE_APP_ID}
+
 
 networks:
     back:
