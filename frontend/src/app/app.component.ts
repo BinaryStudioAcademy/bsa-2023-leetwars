@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RoutesRecognized } from '@angular/router';
+import {
+    NavigationCancel,
+    NavigationEnd,
+    NavigationError,
+    NavigationStart,
+    Router,
+    RoutesRecognized,
+} from '@angular/router';
 import { SpinnerService } from '@core/services/spinner.service';
 
 @Component({
