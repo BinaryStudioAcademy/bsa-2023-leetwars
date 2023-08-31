@@ -65,7 +65,7 @@ namespace LeetWars.Core.BLL.Services
                             solution.User == null || solution.User.Uid != userId))),
                     ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version =>
                         version.Solutions.Any(solution =>
-                            solution.User != null && solution.User.Uid == userId && solution.SubmittedAt == null))),
+                            solution.User != null && solution.User.Uid == userId && !solution.SubmittedAt.HasValue))),
                     ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.Any(version =>
                         version.Solutions.Any(solution =>
                             solution.User != null && solution.User.Uid == userId && solution.SubmittedAt.HasValue &&
