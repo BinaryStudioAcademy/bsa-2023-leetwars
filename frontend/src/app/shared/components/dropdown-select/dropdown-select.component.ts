@@ -1,24 +1,28 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
     selector: 'app-dropdown-select',
     templateUrl: './dropdown-select.component.html',
     styleUrls: ['./dropdown-select.component.sass'],
 })
-export class DropdownSelectComponent implements OnChanges {
+
+export class DropdownSelectComponent implements OnInit, OnChanges {
     @Input() isMultiSelection = false;
 
-    @Input() title: string;
+    @Input() title: string | undefined;
 
     @Input() items: string[] = [];
 
-    @Input() initialValue: string;
+    //@Input() initialValue: string;
+    @Input() selectText: string = 'Select';
+    @Input() itemsIcons: IconName[] = [];
 
     @Output() SelectedItemsChanged = new EventEmitter<string[] | string>();
 
-    selectedItem: string;
+    @Input() selectedItem: string | undefined;
 
-    selectedItems: string[] = [];
+    public selectedIcon: IconName;
 
     fieldText = '';
 
@@ -38,7 +42,13 @@ export class DropdownSelectComponent implements OnChanges {
         this.fieldText = this.initialValue;
     }
 
-    toggleItem(item: string) {
+    public selectedItems: string[] = [];
+
+    public ngOnInit() {
+        this.updateSelectedIcon();
+    }
+
+    public toggleItem(item: string) {
         this.selectedItems = this.selectedItems.includes(item)
             ? this.selectedItems.filter((i) => i !== item)
             : [...this.selectedItems, item];
@@ -47,9 +57,14 @@ export class DropdownSelectComponent implements OnChanges {
         this.SelectedItemsChanged.emit(this.selectedItems);
     }
 
-    selectItem(item: string) {
+    public selectItem(item: string) {
         this.selectedItem = item;
         this.fieldText = item;
         this.SelectedItemsChanged.emit(this.selectedItem);
+        this.updateSelectedIcon();
+    }
+
+    private updateSelectedIcon() {
+        this.selectedIcon = this.itemsIcons[this.items.findIndex((i) => i === this.selectedItem)];
     }
 }

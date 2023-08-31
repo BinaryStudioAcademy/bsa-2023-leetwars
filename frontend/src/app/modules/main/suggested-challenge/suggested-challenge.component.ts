@@ -8,6 +8,7 @@ import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { Language } from '@shared/models/language/language';
 import { takeUntil } from 'rxjs';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
     selector: 'app-suggested-challenge',
@@ -16,14 +17,11 @@ import { takeUntil } from 'rxjs';
 })
 export class SuggestedChallengeComponent extends BaseComponent implements OnInit {
     challenge?: ChallengePreview;
-
     languagesNames: string[] = [];
-
     languages: Language[] = [];
-
     suggestionTypesNames: string[];
-
     suggestionTypes = SUGGESTION_TYPES;
+    scoreIcons: IconName[] = ['stairs', 'chart-simple', 'repeat', 'lock', 'circle-question'];
 
     suggestionSettings: SuggestionSettings = {
         languageId: 0,

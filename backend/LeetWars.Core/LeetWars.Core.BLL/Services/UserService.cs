@@ -19,6 +19,12 @@ public class UserService : BaseService, IUserService
             throw new ArgumentNullException(nameof(userDto));
         }
 
+        bool isExistingEmail = await CheckIsExistingEmail(userDto.Email);
+        if (isExistingEmail)
+        {
+            throw new InvalidOperationException($"A user with email {userDto.Email} is already registered.");
+        }
+
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == userDto.Uid);
         if (user != null)
         {
@@ -30,5 +36,11 @@ public class UserService : BaseService, IUserService
         await _context.SaveChangesAsync();
         
         return _mapper.Map<UserDto>(createdUser);
+    }
+
+    public async Task<bool> CheckIsExistingEmail(string email)
+    {
+        bool isExistingEmail = await _context.Users.AnyAsync(u => u.Email.ToLower() == email.ToLower());
+        return isExistingEmail;
     }
 }

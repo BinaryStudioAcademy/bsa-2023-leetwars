@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 interface EditorOptions {
-    language: string,
+    language: string;
+    theme: string;
 }
 
 @Component({
@@ -9,16 +10,27 @@ interface EditorOptions {
     templateUrl: './code-editor.component.html',
     styleUrls: ['./code-editor.component.sass'],
 })
-export class CodeEditorComponent {
+export class CodeEditorComponent implements OnChanges, OnInit {
     @Input() language: string;
 
     @Input() initSolution: string = '';
 
     editorOptions: EditorOptions;
 
-    constructor() {
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['language']) {
+            this.updateEditorOptions();
+        }
+    }
+
+    ngOnInit(): void {
+        this.updateEditorOptions();
+    }
+
+    private updateEditorOptions(): void {
         this.editorOptions = {
             language: this.language,
+            theme: 'vs-dark',
         };
     }
 }

@@ -1,6 +1,7 @@
 <div class="input-form">
     <div [style.height]="Height" [style.width]="Width" class="input-form-container">
         <label for="{{ Identifier }}" class="input-form-label">{{ InputLabel }}</label>
+        <a *ngIf="IsForgetPassword" href="someUrl" class="forget-password-link">Forget password</a>
         <input
             type="{{ InputType }}"
             id="{{ Identifier }}"
@@ -9,9 +10,11 @@
             [style.width]="Width"
             class="input-formText"
             [(ngModel)]="InputValue"
+            (blur)="onTouchedFn()"
             (ngModelChange)="onInputChange($event)"
+            (keydown)="onPasswordKeyDown($event)"
             required
-            placeholder="{{ InputPlaceholder }}" />
+            placeholder="{{ InputPlaceholder }}"/>
         <button *ngIf="Identifier === 'password'" class="hide-password" (click)="togglePasswordVisibility()">
             <fa-icon [icon]="showPassword ? ['far', 'eye'] : ['far', 'eye-slash']"></fa-icon>
         </button>

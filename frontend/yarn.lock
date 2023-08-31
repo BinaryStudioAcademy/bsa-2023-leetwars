@@ -2935,6 +2935,13 @@ angular-markdown-editor@^3.1.0:
     jquery "^3.6.4"
     tslib "^2.3.0"
 
+angular-split@14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/angular-split/-/angular-split-14.0.0.tgz#ad25bf31562e58111729ad50b9004042acde7bcd"
+  integrity sha512-Dxczn5rg/LuWwBzmYcpUQD2CNEmVsYhtNcDgSmzJqiLHbWSLc2UvsA/PVbms4TnDg5XT4Zit49dDbxLm9k5fvg==
+  dependencies:
+    tslib "^2.0.0"
+
 ansi-colors@4.1.3, ansi-colors@^4.1.1:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.3.tgz#37611340eb2243e70cc604cad35d63270d48781b"
@@ -6829,10 +6836,10 @@ ngx-bootstrap@9.0.0:
   dependencies:
     tslib "^2.3.0"
 
-ngx-markdown@14.0.0:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-markdown/-/ngx-markdown-14.0.0.tgz#3cf7f5567be448ff188d143f22dedfa0db4f5d38"
-  integrity sha512-gS/41oYTst0pppGk5vcfr+ZqmveGwu66gQo/UOv6TM+LICBCQMbYJwnlPwFtoWgOLMf8JAzCVDMcdu2I0GIG7A==
+ngx-markdown@14.0.1:
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-markdown/-/ngx-markdown-14.0.1.tgz#5e97d91012dd3f429635aa7a18b2b75051eea85e"
+  integrity sha512-y5CY4e0QM0uR6+MvU1rnh1Ks+rku14309kVVojyXLcWl4zlrt8VAYCcf/+A+8z/IDOaz38yTrxNBnvYDJzNzYA==
   dependencies:
     "@types/marked" "^4.0.3"
     clipboard "^2.0.11"

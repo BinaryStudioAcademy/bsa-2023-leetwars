@@ -1,4 +1,5 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
 
 .log-in-body
     position: absolute
@@ -7,7 +8,7 @@
     padding: 0px
 
     display: grid
-    grid-template-columns: 70vw 30vw
+    grid-template-columns: 55vw 45vw
 
 .logo-part
     grid-column: 1
@@ -22,20 +23,6 @@
     height: 100%
     width: 100%
 
-.circle
-    width: 118px
-    height: 118px
-    background-color: $green
-    border-radius: 50%
-
-.logo
-    color: $white
-    font-family: Montserrat
-    font-size: 59.942px
-    font-weight: 600
-    line-height: normal
-    margin-top: 25px
-
 .log-in-part
     grid-column: 2
     background-color: $charcoal-grey
@@ -47,7 +34,6 @@
     align-items: center
 
     margin: 0px
-    height: 100%
     width: 100%
 
 .log-in-part
@@ -103,15 +89,7 @@
     flex-direction: column
     gap: 1.4vw
 
-.forget-password
-    display: flex
-    flex-direction: row
-    justify-content: space-between
-    &-link
-        color: $cornflower
-        font-family: Montserrat
-        font-size: 12px
-        line-height: normal
+
 
 .submit-sign-in
     border-radius: 7px
@@ -133,6 +111,7 @@
     background-color: $dark-green
 
 .no-account
+    margin-top: 16px
     margin-bottom: 50px
     align-self: flex-end
     color: $white
@@ -150,3 +129,23 @@
 
     font-weight: 300
     line-height: normal
+    text-decoration: underline
+
+.sign-up-link:hover
+    color: $vivid-blue
+
+@media screen and (max-width: $large)
+  .log-in-body
+    grid-template-columns: none
+    grid-template-rows: 35vh 65vh
+    width: 100%
+  .logo-part, .log-in-part
+    grid-column: auto
+  .sign-in-label
+    margin: 16px 0
+  .or-label
+    margin: 0
+
+@media screen and (max-width: $mobile)
+  .log-in-part > *
+    width: 90%

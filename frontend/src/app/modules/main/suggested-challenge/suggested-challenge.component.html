@@ -4,6 +4,12 @@
         <div class="dropdowns-container">
             <app-dropdown-select [items]="languagesNames" [initialValue]="languagesNames[0]" (SelectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
             <app-dropdown-select [items]="suggestionTypesNames" [initialValue]="suggestionTypesNames[0]" (SelectedItemsChanged)="onSuggestionTypeChanged($event)"></app-dropdown-select>
+            <!-- <app-dropdown-select [selectText]="'Choose Language...'" [items]="languages" [selectedItem]="languages[1]"></app-dropdown-select>
+            <app-dropdown-select
+                [selectText]="'Choose Today\'s Focus...'"
+                [items]="score"
+                [selectedItem]="score[1]"
+                [itemsIcons]="scoreIcons"></app-dropdown-select> -->
         </div>
         <div class="button-group">
             <button class="suggested-button skip" (click)="getChallenge()">
