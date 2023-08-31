@@ -39,7 +39,35 @@ export class ProfilePageMainInfoComponent implements OnChanges {
     private updateView() {
         this.username = this.user.userName;
         this.languages = this.user.preferredLanguages?.join(', ');
-        this.userRank = this.user.totalScore.toString();
-        this.communitySolution = this.user.solutions.length;
+        this.userRank = this.user.totalScore?.toString();
+        this.communitySolution = this.user.solutions?.length;
+        const lastWeek = this.getLastWeekDates();
+
+        if (this.user.solutions) {
+            console.log(`${new Date().getTime()} > ${new Date(this.user.solutions[2].submittedAt!).getTime()}`);
+            this.communityLastWeekSolution = this.user.solutions?.filter(
+                (solution) =>
+                    new Date(solution.submittedAt!).getTime() < lastWeek[1].getTime() &&
+                    new Date(solution.submittedAt!).getTime() > lastWeek[0].getTime(),
+            ).length;
+        }
+    }
+
+    private getLastWeekDates() {
+        const now = new Date();
+        const dayOfWeek = now.getDay();
+        const numDay = now.getDate();
+
+        const start = new Date(now);
+
+        start.setDate(numDay - dayOfWeek - 7);
+        start.setHours(0, 0, 0, 0);
+
+        const end = new Date(now);
+
+        end.setDate(numDay + (7 - dayOfWeek));
+        end.setHours(0, 0, 0, 0);
+
+        return [start, end];
     }
 }

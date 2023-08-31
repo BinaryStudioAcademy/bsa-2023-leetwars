@@ -16,7 +16,7 @@ export class UserService {
         return this.httpService.postRequest<User>('/users', newUser);
     }
 
-    public getFullUser(id: number): Observable<UserFull> {
+    public async getFullUser(id: number): Promise<Observable<UserFull>> {
         return this.httpService.getRequest<UserFull>(`/users/${id}`);
     }
 }
