@@ -3,6 +3,7 @@ import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { findItemIdByName, SUGGESTION_TYPES } from '@shared/components/suggested-challenge/suggested-challenge.utils';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { Language } from '@shared/models/language/language';
@@ -22,13 +23,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
 
     suggestionTypesNames: string[];
 
-    suggestionTypes = [
-        { name: 'Fundamentals', id: 0 },
-        { name: 'Rank up', id: 1 },
-        { name: 'Practice and Repeat', id: 2 },
-        { name: 'Beta', id: 3 },
-        { name: 'Random', id: 4 },
-    ];
+    suggestionTypes = SUGGESTION_TYPES;
 
     suggestionSettings: SuggestionSettings = {
         languageId: 0,
@@ -51,7 +46,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         if (typeof value !== 'string') {
             return;
         }
-        this.suggestionSettings.languageId = this.languages.find(item => item.name === value)?.id ?? 0;
+        this.suggestionSettings.languageId = findItemIdByName(this.languages, value);
         this.getChallenge();
     }
 
@@ -59,7 +54,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         if (typeof value !== 'string') {
             return;
         }
-        this.suggestionSettings.suggestionType = this.suggestionTypes.find(item => item.name === value)?.id ?? 0;
+        this.suggestionSettings.suggestionType = findItemIdByName(this.suggestionTypes, value);
         this.getChallenge();
     }
 

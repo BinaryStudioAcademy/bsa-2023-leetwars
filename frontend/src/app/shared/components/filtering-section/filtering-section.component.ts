@@ -4,6 +4,7 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { PROGRESES, STATUSES } from '@shared/components/filtering-section/filtering-section.utils';
 import { ChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { Language } from '@shared/models/language/language';
@@ -41,22 +42,13 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         tagsIds: [],
     };
 
-    private progresses = [
-        { name: 'All' },
-        { name: 'Not completed', id: 1 },
-        { name: 'Completed', id: 2 },
-        { name: 'Not trained on', id: 0 },
-    ];
+    private progresses = PROGRESES;
 
     private tags: Tag[] = [];
 
     private languages: Language[] = [];
 
-    private statuses = [
-        { name: 'Approved & Beta' },
-        { name: 'Approved', id: 2 },
-        { name: 'Beta', id: 0 },
-    ];
+    private statuses = STATUSES;
 
     constructor(
         private challengeService: ChallengeService,

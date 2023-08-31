@@ -4,6 +4,7 @@ using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.DAL.Context;
+using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
 using Microsoft.EntityFrameworkCore;
 
@@ -58,20 +59,7 @@ namespace LeetWars.Core.BLL.Services
 
             if (filters.Progress.HasValue)
             {
-                challenges = filters.Progress switch
-                {
-                    ChallengesProgress.NotStarted => challenges.Where(challenge => challenge.Versions.All(version =>
-                        !version.Solutions.Any() || version.Solutions.All(solution =>
-                            solution.User == null || solution.User.Uid != userId))),
-                    ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version =>
-                        version.Solutions.Any(solution =>
-                            solution.User != null && solution.User.Uid == userId && !solution.SubmittedAt.HasValue))),
-                    ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.Any(version =>
-                        version.Solutions.Any(solution =>
-                            solution.User != null && solution.User.Uid == userId && solution.SubmittedAt.HasValue &&
-                            solution.SubmittedAt.Value != DateTime.MinValue))),
-                    _ => challenges
-                };
+                challenges = FilterChallengesByProgress(challenges, filters.Progress);
             }
 
             if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
@@ -80,19 +68,19 @@ namespace LeetWars.Core.BLL.Services
                     .Take(page.PageSize);
             }
 
-            var filteredChallenges = await challenges.ToListAsync();
+            var filterChallenges = challenges.AsEnumerable();
 
             //filter runs on the client because filters.TagsIds[] didn't pass to the server and SQL query get error
             if (filters.TagsIds != null)
             {
-                filteredChallenges = filteredChallenges.Where(challenge =>
+                filterChallenges = filterChallenges.Where(challenge =>
                     filters.TagsIds.All(
                         filterTagId => challenge.Tags.Any(tag => tag.Id.Equals(filterTagId))
                     )
-                ).ToList();
+                );
             }
 
-            return _mapper.Map<List<ChallengePreviewDto>>(filteredChallenges);
+            return _mapper.Map<List<ChallengePreviewDto>>(filterChallenges.ToList());
         }
 
         public async Task<ChallengePreviewDto> GetChallengeSuggestionAsync(SuggestionSettingsDto settings)
@@ -111,7 +99,36 @@ namespace LeetWars.Core.BLL.Services
                 .Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId))
                 .AsQueryable();
 
-            challenges = settings.SuggestionType switch
+            challenges = FilterChallengesBySuggestionType(challenges, settings.SuggestionType);
+
+            int randomPosition = GetRandomInt(challenges.Count());
+            
+            return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
+        }
+
+        private IQueryable<Challenge> FilterChallengesByProgress(IQueryable<Challenge> challenges, ChallengesProgress? progress)
+        {
+            var userId = _userIdGetter.CurrentUserId;
+
+            return progress switch
+            {
+                ChallengesProgress.NotStarted => challenges.Where(challenge => challenge.Versions.All(version =>
+                    !version.Solutions.Any() || version.Solutions.All(solution =>
+                        solution.User == null || solution.User.Uid != userId))),
+                ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version =>
+                    version.Solutions.Any(solution =>
+                        solution.User != null && solution.User.Uid == userId && !solution.SubmittedAt.HasValue))),
+                ChallengesProgress.Completed => challenges.Where(challenge => challenge.Versions.Any(version =>
+                    version.Solutions.Any(solution =>
+                        solution.User != null && solution.User.Uid == userId && solution.SubmittedAt.HasValue))),
+                _ => challenges
+            };
+        }
+        private IQueryable<Challenge> FilterChallengesBySuggestionType(IQueryable<Challenge> challenges, SuggestionType suggestionType)
+        {
+            var userId = _userIdGetter.CurrentUserId;
+
+            return suggestionType switch
             {
                 SuggestionType.Beta => challenges.Where(challenge =>
                     challenge.Versions.Any(version => version.Status == ChallengeStatus.Beta)),
@@ -123,17 +140,17 @@ namespace LeetWars.Core.BLL.Services
                     version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId))),
                 _ => challenges
             };
+        }
 
+        private int GetRandomInt(int maxValue)
+        {
             using (var generator = RandomNumberGenerator.Create())
             {
                 var data = new byte[4];
                 generator.GetBytes(data);
                 var randomValue = Math.Abs(BitConverter.ToInt32(data, 0));
 
-                int randomPosition = (randomValue % challenges.Count());
-                
-                return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition)
-                    .FirstOrDefaultAsync());
+                return randomValue % maxValue;
             }
         }
     }
