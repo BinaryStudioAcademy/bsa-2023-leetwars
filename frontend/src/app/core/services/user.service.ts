@@ -14,4 +14,8 @@ export class UserService {
     public createUser(newUser: NewUser): Observable<User> {
         return this.httpService.postRequest<User>('/users', newUser);
     }
+
+    public checkEmail(email: string): Observable<boolean> {
+        return this.httpService.getRequest<boolean>(`/users/is-existing-email?email=${email}`);
+    }
 }
