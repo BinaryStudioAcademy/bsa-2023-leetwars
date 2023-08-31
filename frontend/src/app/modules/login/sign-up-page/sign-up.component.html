@@ -15,19 +15,12 @@
                 [InputPlaceholder]="'Enter your email'"
                 (InputValueChange)="registrationForm.controls['email'].setValue($event)">
             </app-custom-input>
-            <app-custom-input
-                [Identifier]="'username'"
-                [Width]="'100%'"
-                [InputLabel]="'Username'"
+            <app-custom-input [Identifier]="'username'" [Width]="'100%'" [InputLabel]="'Username'"
                 [InputPlaceholder]="'Enter your username'"
                 (InputValueChange)="registrationForm.controls['username'].setValue($event)">
             </app-custom-input>
-            <app-custom-input
-                [InputType]="'password'"
-                [Identifier]="'password'"
-                [Width]="'100%'"
-                [InputLabel]="'Password'"
-                [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+            <app-custom-input [InputType]="'password'" [Identifier]="'password'" [Width]="'100%'"
+                [InputLabel]="'Password'" [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
                 (InputValueChange)="registrationForm.controls['password'].setValue($event)">
             </app-custom-input>
 
