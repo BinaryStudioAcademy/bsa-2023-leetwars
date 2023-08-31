@@ -1,0 +1,322 @@
+@import 'color-variables'
+
+
+//Mixins
+@mixin flex-center
+    display: flex
+    align-items: center
+    justify-content: center
+
+@mixin footer-grey-link
+    color: $grey
+    margin: 8px 0
+
+@mixin green-shadowing
+    box-shadow: $transparent-green 1.95px -1.95px 2.6px
+    &:hover
+        box-shadow: $transparent-green 0px 0px 4px 2px, $transparent-green 0px 0px 16px 0px
+
+
+//General
+:host
+    font-family: 'Open Sans', sans-serif
+    font-weight: 400
+
+main
+    background-color: $deep-dark-grey
+
+a
+    display: inline-block
+    margin: 24px
+    text-decoration: none
+    color: $white
+
+.green-accent-link
+    padding: 16px 64px
+    background-color: $green
+    border-radius: 28px
+    box-shadow: 0 0 0 6px $transparent-green
+    transition: all 0.1s ease-in-out
+    &:hover
+        box-shadow: 0 0 0 10px $transparent-green
+    &:focus
+        box-shadow: 0 0 0 10px $green
+
+h2
+    text-align: center
+    margin: 64px 0
+
+.span-accent
+    color: $green
+
+
+//Header -> nav
+.nav-container
+    z-index: 9999
+    height: 100px
+
+.nav-dropdown-container
+    background-color: $transparent-dark-grey
+    height: calc( 100vh - 60px )
+    top: 100%
+    left: 0
+    right: 0
+    @include flex-center
+    display: none
+    overflow: hidden
+
+.nav-dropdown
+    justify-content: space-evenly
+
+.nav-dropbtn
+    padding: 8px 36px
+    color: $white
+    font-size: 1.6rem
+    display: none
+
+
+//Unlimited
+.unlimited-hero
+    height: 705px
+    background-size: cover
+    background-image: url("/assets/images/landing-page/unlimited.svg")
+    background-position: 50%
+
+.unlimited-content-wrapper
+    height: 100%
+    @include flex-center
+    margin-top: 0
+    padding-top: 0
+
+.unlimited-content
+    width: 60%
+    @include flex-center
+    color: $white
+    p, h1
+        text-shadow: 1px 0px 4px $black
+    p
+        width: 70%
+        margin-top: 24px
+
+
+//Reliable platform
+#reliable-platform
+    @include flex-center
+    color: $white
+
+.reliable-platform-container
+    width: 80%
+    margin-top: 24px
+    margin-bottom: 24px
+    @include flex-center
+
+.reliable-platform-card
+    position: relative
+    margin: 12px 12px
+    flex: 0 1 330px
+    height: 400px
+    background-color: $transparent-border-grey
+    border-radius: 16px
+    display: flex
+    align-items: center
+    flex-direction: column
+    justify-content: flex-start
+    padding-top: 180px
+    @include green-shadowing
+    img
+        position: absolute
+        top: -48px
+        width: 190px
+        height: 190px
+
+.reliable-platform-card-info
+    padding: 0 22%
+    h3
+        font-size: 1.4rem
+    p
+        color: $very-pale-blue
+
+
+//Fun programming
+#fun-programming
+    color: $white
+
+.fun-programming-card
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin: 24px 10%
+    height: 550px
+
+.fun-programming-img
+    width: 49%
+
+.fun-programming-card-content
+    box-shadow: 1px 1px 12px rgba(0,0,0,0.1)
+    border-radius: 16px
+    width: 49%
+    height: 100%
+    display: flex
+    flex-direction: column
+    padding: 5%
+    img
+        width: 100px
+        height: 100px
+
+.fun-programming-card-info
+    margin-top: 36px
+    text-align: center
+    p
+        color: $very-pale-blue
+
+.mediaq-img
+    display: none
+
+
+//How it works
+#how-it-works
+    color: $white
+    >a
+        margin: 64px 0
+
+.how-it-works-container
+    margin: 0 5%
+
+.how-it-works-content
+    justify-content: space-between
+    padding: 36px
+
+.how-it-works-card
+    background-color: $transparent-border-grey
+    border-radius: 16px
+    padding: 24px 24px 24px 0
+    display: flex
+    position: relative
+    @include green-shadowing
+    img
+        position: absolute
+        left: -24px
+        bottom: 0
+
+.how-it-works-card-info
+    margin-left: 240px
+    p
+        color: $very-pale-blue
+
+
+//Footer
+footer
+    padding: 5%
+    color: $white
+    justify-content: space-between
+    >*
+        margin: 16px
+
+.footer-contacts-container
+    flex: 1 1 100px
+    >a
+        @include footer-grey-link
+
+.footer-list-container
+    flex: 1 1 100px
+    margin: 8px 0
+    list-style: none
+
+.footer-list
+    a
+        @include footer-grey-link
+
+.get-started
+    flex: 2 1 220px
+    padding-right: 16px
+    >a
+        margin: 16px 0 0 0
+
+.footer-contact-links
+    margin-top: 16px
+    a
+        margin: 0 8px 8px 0
+        border-radius: 50%
+        border: 2px solid $white
+        height: 36px
+        width: 36px
+        display: inline-flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+    i
+        color: white
+        font-size: 1rem
+
+
+//Media queries
+@media screen and (max-width: 1030px)
+    .how-it-works-container
+        margin: 0
+        >img
+            display: none
+
+    .how-it-works-card
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        padding: 24px
+        box-shadow: none
+        >img
+            position: relative
+            width: 190px
+            left:  0
+            margin-bottom: 24px
+        &:nth-child(2)
+            margin-top: 36px
+            margin-bottom: 36px
+
+    .how-it-works-card-info
+        margin: 0
+        padding: 0 36px
+        text-align: center
+
+@media screen and (max-width: 1000px)
+    #fun-programming
+        padding: 36px
+
+    .fun-programming-card
+        flex-direction: column
+        height: auto
+        margin-left: 0
+        margin-right: 0
+
+    .fun-programming-img
+        width: 70%
+
+    .mediaq-img
+        display: block
+
+    .mediaq-none-img
+        display: none
+
+    .fun-programming-card-content
+        width: 100%
+
+@media screen and (max-width: 650px)
+    .fun-programming-img
+        display: none
+    .nav-main
+        display: none
+    .nav-dropbtn
+        display: block
+    .nav-container
+        height: 60px
+
+@media screen and (min-width: 651px)
+    .nav-dropdown-container
+        display: none
+
+@media screen and (max-width: 450px)
+    .green-accent-link
+        padding: 16px 36px
+
+
+//for DOM manipulation
+.scrolled
+    background-color: $transparent-dark-grey
