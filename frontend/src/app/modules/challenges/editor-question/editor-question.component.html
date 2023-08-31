@@ -1,0 +1,81 @@
+<app-steps-of-progress [steps]="steps"></app-steps-of-progress>
+<div class="content-wrapper">
+    <div>
+        <h2 class="header">Name and describe your question</h2>
+        <p class="tip">It's good to provide examples which will help users understand easily.</p>
+    </div>
+
+    <div class="categories d-flex flex-column gap-2">
+        <p class="question-header">Category *</p>
+        <div class="categories-list">
+            <div
+                class="category"
+                [class.category-active]="selectedCategory === CategoryType.Fundamentals"
+                (click)="selectedCategory = CategoryType.Fundamentals">
+                <img
+                    class="category-icon"
+                    src="/assets/images/categories-icons/bookmark-icon.png"
+                    alt="bookmark-icon" />
+                <span class="category-text">Fundamentals</span>
+            </div>
+            <div
+                class="category"
+                [class.category-active]="selectedCategory === CategoryType.Algorithms"
+                (click)="selectedCategory = CategoryType.Algorithms">
+                <img class="category-icon" src="/assets/images/categories-icons/abasus-icon.png" alt="abasus-icon" />
+                <span class="category-text">Algorithms</span>
+            </div>
+            <div
+                class="category"
+                [class.category-active]="selectedCategory === CategoryType.BugFixes"
+                (click)="selectedCategory = CategoryType.BugFixes">
+                <img class="category-icon" src="/assets/images/categories-icons/bug-icon.png" alt="bug-icon" />
+                <span class="category-text">Bug Fixes</span>
+            </div>
+            <div
+                class="category"
+                [class.category-active]="selectedCategory === CategoryType.Refactoring"
+                (click)="selectedCategory = CategoryType.Refactoring">
+                <img class="category-icon" src="/assets/images/categories-icons/cone-icon.png" alt="cone-icon" />
+                <span class="category-text">Refactoring</span>
+            </div>
+            <div
+                class="category"
+                [class.category-active]="selectedCategory === CategoryType.Puzzles"
+                (click)="selectedCategory = CategoryType.Puzzles">
+                <img class="category-icon" src="/assets/images/categories-icons/rubik-icon.png" alt="rubik-icon" />
+                <span class="category-text">Puzzles</span>
+            </div>
+        </div>
+    </div>
+    <div class="input-wrapper mt-12px d-flex flex-column gap-2">
+        <p class="question-header">Name *</p>
+        <app-custom-input
+            [Identifier]="'kata-name'"
+            [Height]="customInputHeight"
+            [Width]="customInputWidth"
+            [InputPlaceholder]="'Give your kata a name'"></app-custom-input>
+    </div>
+    <div class="tabs-list mt-12px d-flex flex-wrap">
+        <div class="tab" [class.tab-active]="selectedTab === TabType.Description" (click)="editMarkDown()">
+            <span>Description</span>
+        </div>
+        <div class="tab d-flex" [class.tab-active]="selectedTab === TabType.Preview" (click)="previewMarkDown()">
+            <fa-icon [icon]="'eye'"></fa-icon>
+            <span>Preview</span>
+        </div>
+        <div class="tab d-flex" [class.tab-active]="selectedTab === TabType.Help" (click)="submitQuestion()">
+            <fa-icon [icon]="'circle-question'"></fa-icon>
+            <span>Help</span>
+        </div>
+    </div>
+    <div class="mt-12px">
+        <angular-markdown-editor
+            [textareaId]="'markdown-editor'"
+            [name]="'markdownText'"
+            [(ngModel)]="markdownText"
+            [options]="editorOptions">
+        </angular-markdown-editor>
+        <markdown></markdown>
+    </div>
+</div>

@@ -1,7 +1,8 @@
 <div ngbDropdown class="dropdown d-inline-flex" [autoClose]="isMultiSelection ? 'outside' : true">
     <div class="button-wrapper d-flex flex-column d-flex flex-grow-1">
-        <label class="title">{{ title }}</label>
+        <label *ngIf="title" class="title">{{ title }}</label>
         <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
+            <fa-icon *ngIf="selectedIcon" [icon]="selectedIcon" class="ms-0 selected-icon"></fa-icon>
             <span class="float-start">{{ selectedItem ? selectedItem : 'Select' }}</span>
             <fa-icon [icon]="'chevron-down'" size="xs"></fa-icon>
         </button>
@@ -9,21 +10,23 @@
 
     <div class="w-100 dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenuButton">
         <ng-container *ngIf="!isMultiSelection; else multiSelect">
-            <a ngbDropdownItem (click)="selectItem(item)" *ngFor="let item of items">
+            <a ngbDropdownItem (click)="selectItem(item)" *ngFor="let item of items; let i = index">
                 <fa-icon
                     [icon]="'check'"
                     size="xs"
                     [ngStyle]="{ visibility: selectedItem === item ? 'visible' : 'hidden' }"></fa-icon>
+                <fa-icon *ngIf="itemsIcons[i]" [icon]="itemsIcons[i]" size="xs" class="ms-1 selected-icon"></fa-icon>
                 {{ item }}
             </a>
         </ng-container>
 
         <ng-template #multiSelect>
-            <a ngbDropdownItem (click)="toggleItem(item)" *ngFor="let item of items">
+            <a ngbDropdownItem (click)="toggleItem(item)" *ngFor="let item of items; let i = index">
                 <fa-icon
                     [icon]="'check'"
                     size="xs"
                     [ngStyle]="{ visibility: selectedItems.includes(item) ? 'visible' : 'hidden' }"></fa-icon>
+                <fa-icon *ngIf="itemsIcons[i]" [icon]="itemsIcons[i]" size="xs"></fa-icon>
                 {{ item }}
             </a>
         </ng-template>

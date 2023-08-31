@@ -1,4 +1,13 @@
 FROM node:18.15.0-alpine3.17 as builder
+
+ARG NG_APP_FIREBASE_API_KEY
+ARG NG_APP_FIREBASE_MESSAGING_SENDER_ID
+ARG NG_APP_FIREBASE_APP_ID
+
+ENV NG_APP_FIREBASE_API_KEY=$NG_APP_FIREBASE_API_KEY
+ENV NG_APP_FIREBASE_MESSAGING_SENDER_ID=$NG_APP_FIREBASE_MESSAGING_SENDER_ID
+ENV NG_APP_FIREBASE_APP_ID=$NG_APP_FIREBASE_APP_ID
+
 COPY package.json yarn.lock ./
 RUN yarn && mkdir /client && mv ./node_modules ./client
 WORKDIR /client
@@ -10,4 +19,5 @@ COPY nginx.dev.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /client/dist/* /usr/share/nginx/html
 EXPOSE 80 443
+
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
