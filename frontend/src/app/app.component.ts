@@ -26,11 +26,8 @@ export class AppComponent {
                 this.spinner.hide();
             }
             if (event instanceof NavigationStart) {
-                if (event.url.startsWith('/auth') || event.url === '/') {
-                    this.isAuthPage = true;
-                } else {
-                    this.isAuthPage = false;
-                }
+                this.isAuthPage = event.url.startsWith('/auth') || event.url === '/'
+              
             }
         });
     }
