@@ -56,6 +56,8 @@ export class CustomInputComponent implements ControlValueAccessor {
 
     @Input() FormTextHeight: string = '45px';
 
+    @Input() IsForgetPassword: boolean = false;
+
     @Input() InputValue?: string;
 
     @Input() InputLabel?: string;

@@ -1,9 +1,15 @@
 @import "color-variables"
 @import "fonts"
 
+:host
+  font-family: Open Sans
+
+:host ::ng-deep .float-start
+  color: $lavender-ash
+
 .suggested-body
     display: grid
-    grid-template-columns: 40% calc(100% - 40% - 2px)
+    grid-template-columns: 40% calc(60% - 2px)
     height: 296px
     gap: 2px
     border-radius: 15px
@@ -39,11 +45,11 @@ h5
     justify-content: flex-start
 .dropdown
     width: 95%!important
-    
+
 .app-dropdown-select
     margin-bottom: 10px
     width: 100%
-  
+
 .button-group
     display: flex
     flex-direction: row
@@ -66,12 +72,19 @@ h5
     background-color: $green
     border: none
     margin-right: 10%
+    margin-left:4px
+
+.train:hover
+    background-color: $dark-green
 
 .skip
-    margin: right 4px
     border: none
     background: none
 
+.skip:hover
+    background-color: $dark-grey
+    border-radius: 9px
+    border: none
 
 .description
     grid-column: 2
@@ -84,7 +97,7 @@ h5
 .description
     display: flexbox
     > *
-        margin: 1rem 1rem 
+        margin: 1rem 1rem
 
 .difficulty-and-title
     margin-top: 24px
@@ -94,6 +107,7 @@ h5
     flex-direction: row
     justify-content: flex-start
     align-content: center
+    align-items: center
 
 
 .difficulty-tag
@@ -116,7 +130,7 @@ h5
     align-items: center
 
     padding-left: 5px
-    padding-right: 5px 
+    padding-right: 5px
 
 .task-title
     color: $white
@@ -134,7 +148,7 @@ h5
     margin-bottom: 10px
     text-overflow: ellipsis
     overflow: auto
-    
+    font-weight: 300
 
 .constraints
     margin-bottom: 20px
@@ -143,7 +157,7 @@ h5
     overflow: scroll
     overflow-y: auto
     padding: 0px
-    padding-bottom: 0px 
+    padding-bottom: 0px
 
 .constraints li::marker
     color: $green
@@ -154,24 +168,33 @@ h5
     text-overflow: ellipsis
     overflow: hidden
     white-space: nowrap
+    font-weight: 300
+
+    &::before
+      display: inline-block
+      content: ''
+      width: 10px
+      height: 10px
+      background-color: $green
+      border-radius: 50%
 
 .constraints li
     list-style-position: inside
     margin-bottom: 10px
 
-.constraints li:last-child 
+.constraints li:last-child
     list-style-position: inside
     margin-bottom: 0px
 
 .tags
     display: flex
     flex-direction: row
-    width: calc(100% - 45px - 23px)
-    margin-right:45px
+    width: calc(100% - 68px)
+    margin-right: 45px
     overflow-x: scroll
     padding: 0px
     list-style: none
-    margin-bottom: 0px 
+    margin-bottom: 0px
 
 .tags li
     margin-right: 15px
@@ -182,7 +205,7 @@ h5
     justify-content: center
     align-items: center
     background-color: $dark-grey
-    
+
     white-space: nowrap
     color: $grey
     font-family: Montserrat
@@ -193,7 +216,7 @@ h5
     padding-left: 9px
     padding-right: 9px
     padding-top: 4px
-    padding-bottom: 4px 
+    padding-bottom: 4px
 
 .constraints::-webkit-scrollbar,
 .tags::-webkit-scrollbar
