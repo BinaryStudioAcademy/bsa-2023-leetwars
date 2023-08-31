@@ -40,7 +40,7 @@ public class UserService : BaseService, IUserService
 
     public async Task<bool> CheckIsExistingEmail(string email)
     {
-        bool isExistingEmail = await _context.Users.AnyAsync(u => u.Email == email);
+        bool isExistingEmail = await _context.Users.AnyAsync(u => u.Email.ToLower() == email.ToLower());
         return isExistingEmail;
     }
 }
