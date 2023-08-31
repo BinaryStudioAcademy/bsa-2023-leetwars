@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { UserService } from '@core/services/user.service';
+import { Component, Input, OnChanges } from '@angular/core';
 import { UserFull } from '@shared/models/profile/user-full';
 
 @Component({
@@ -7,12 +6,14 @@ import { UserFull } from '@shared/models/profile/user-full';
     templateUrl: './profile-page-main-info.component.html',
     styleUrls: ['./profile-page-main-info.component.sass'],
 })
-export class ProfilePageMainInfoComponent {
+export class ProfilePageMainInfoComponent implements OnChanges {
     @Input() user: UserFull = <UserFull>{};
 
-    constructor(private userService: UserService) {}
-
     //replace it with real user interface
+    ngOnChanges(): void {
+        this.updateView();
+    }
+
     public username? = '';
 
     public languages? = '';
@@ -34,4 +35,11 @@ export class ProfilePageMainInfoComponent {
     public communityReputation = 0;
 
     public communityLastWeekReputation = 0;
+
+    private updateView() {
+        this.username = this.user.userName;
+        this.languages = this.user.preferredLanguages?.join(', ');
+        this.userRank = this.user.totalScore.toString();
+        this.communitySolution = this.user.solutions.length;
+    }
 }

@@ -1,6 +1,6 @@
 <div class='content_wrp'>
     <div class="user_profile">
-        <app-profile-page-main-info></app-profile-page-main-info>
+        <app-profile-page-main-info [user]="user"></app-profile-page-main-info>
     </div>
     <div class="solved">
         <app-solved-problem></app-solved-problem>
@@ -9,7 +9,7 @@
         <app-solved-problem></app-solved-problem>
     </div>
     <div class="submission_chart">
-        <app-submissions-chart></app-submissions-chart>
+        <app-submissions-chart [solutions]="user.solutions"></app-submissions-chart>
     </div>
     <div class="submissions">
         <img src=".\assets\images\submissions.png" alt="submissions">

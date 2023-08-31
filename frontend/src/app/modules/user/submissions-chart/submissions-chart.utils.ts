@@ -1,6 +1,6 @@
+import { UserSolution } from '@shared/models/profile/user-solution';
 import { DayChartData } from '@shared/models/submission-chart/day-chart-data';
 import { MonthChartData } from '@shared/models/submission-chart/month-chart-data';
-import { UserSolution } from '@shared/models/user-solution/user-solution';
 import * as moment from 'moment/moment';
 import { Moment } from 'moment/moment';
 
@@ -38,7 +38,7 @@ function dayCountInPeriod(dateStart: Moment, dateEnd: Moment) {
 }
 
 function getDayChartData(date: Date, solutions: UserSolution[]): DayChartData {
-    const value = solutions.reduce((previousValue, solution) => {
+    const value = solutions?.reduce((previousValue, solution) => {
         let result = previousValue;
 
         if (solution.submittedAt && moment(solution.submittedAt).startOf('day').isSame(date)) {
@@ -75,7 +75,7 @@ function getMonthChardData(index: number, solutions: UserSolution[]): MonthChart
     return {
         title: firstDayOfMonth.format('MMM'),
         spacers: getBlankArray(firstDayOfMonth.day()),
-        showTitle: (weekCount > 3),
+        showTitle: weekCount > 3,
         days: daysChartData,
     };
 }
@@ -84,8 +84,7 @@ export function getChartData(solutions: UserSolution[]): MonthChartData[] {
     const monthCount = mouthCountInPeriod(getFirstDayOfPeriod(), moment());
     const months = getBlankArray(monthCount);
 
-    const result = months.map((month, index) => getMonthChardData(index, solutions))
-        .reverse();
+    const result = months.map((month, index) => getMonthChardData(index, solutions)).reverse();
 
     return result;
 }
