@@ -66,7 +66,7 @@ namespace LeetWars.Core.BLL.Services
                     .Take(page.PageSize);
             }
 
-            var filterChallenges = challenges.AsEnumerable();
+            IEnumerable<Challenge> filterChallenges = await challenges.ToListAsync();
 
             //filter runs on the client because filters.TagsIds[] didn't pass to the server and SQL query get error
             if (filters.TagsIds != null)
@@ -140,6 +140,11 @@ namespace LeetWars.Core.BLL.Services
 
         private static int GetRandomInt(int maxValue)
         {
+            if (maxValue == 0)
+            {
+                return 0;
+            }
+            
             using (var generator = RandomNumberGenerator.Create())
             {
                 var data = new byte[4];

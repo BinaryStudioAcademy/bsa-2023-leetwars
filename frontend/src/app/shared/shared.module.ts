@@ -75,6 +75,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         TabsModule,
         MarkdownModule,
         AngularMarkdownEditorModule,
+        InfiniteScrollModule,
     ],
     providers: [TabsetConfig],
 })
