@@ -62,5 +62,28 @@ namespace LeetWars.Core.BLL.Services
             var filteredChallenges = await challenges.ToListAsync();
             return _mapper.Map<List<ChallengePreviewDto>>(filteredChallenges);
         }
+
+        public async Task<ChallengeFullDto> GetChallengeByIdAsync(long id)
+        {
+            var challenges = await _context.Challenges
+                .Where(challenge => challenge.Id == id)
+                .Include(challenge => challenge.Level)
+                .Include(challenge => challenge.Tags)
+                .Include(challenge => challenge.Author)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Language)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Solutions)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Tests
+                        .Where(test => test.IsPublic))
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.LanguageVersions)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Author)
+                .FirstOrDefaultAsync();
+
+            return _mapper.Map<ChallengeFullDto>(challenges);
+        }
     }
 }

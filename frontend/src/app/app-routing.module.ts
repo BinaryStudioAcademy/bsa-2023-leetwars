@@ -19,6 +19,10 @@ const routes: Routes = [
         path: 'user',
         loadChildren: () => import('./modules/user/user.module').then((m) => m.UserModule),
     },
+    {
+        path: 'problems/:id',
+        loadChildren: () => import('./modules/online-editor/online-editor.module').then((m) => m.OnlineEditorModule),
+    },
     { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 

@@ -8,13 +8,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class DropdownSelectComponent {
     @Input() isMultiSelection = false;
 
-    @Input() title: string;
+    @Input() title: string | undefined;
 
     @Input() items: string[] = [];
 
     @Output() SelectedItemsChanged: EventEmitter<string[] | string> = new EventEmitter<string[] | string>();
 
-    selectedItem: string | undefined;
+    @Input() selectedItem: string | undefined;
 
     selectedItems: string[] = [];
 
