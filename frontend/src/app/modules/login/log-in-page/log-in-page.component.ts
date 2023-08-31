@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { User } from '@shared/models/user/user';
 
 @Component({
     selector: 'app-log-in-page',
@@ -19,7 +21,7 @@ export class LogInPageComponent implements OnInit {
 
     isDataIncorrect: boolean;
 
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(private authService: AuthService, private router: Router, private toastr: ToastrNotificationsService) {}
 
     public ngOnInit(): void {
         this.isDataIncorrect = false;
@@ -38,14 +40,28 @@ export class LogInPageComponent implements OnInit {
     }
 
     public signInWithGitHub() {
-        this.authService.signInWithGitHub().subscribe(() => {
-            this.router.navigate(['/main']);
-        });
+        this.authService.signInWithGitHub().subscribe(
+            (user: User) => {
+                this.router.navigate(['/main']);
+                this.toastr.showSuccess(`${user.userName} was successfully signed up`);
+                // add email sender to user.email
+            },
+            (error) => {
+                this.toastr.showError(error);
+            },
+        );
     }
 
     public signInWithGoogle() {
-        this.authService.signInWithGoogle().subscribe(() => {
-            this.router.navigate(['/main']);
-        });
+        this.authService.signInWithGoogle().subscribe(
+            (user: User) => {
+                this.router.navigate(['/main']);
+                this.toastr.showSuccess(`${user.userName} was successfully signed up`);
+                // add email sender to user.email
+            },
+            (error) => {
+                this.toastr.showError(error);
+            },
+        );
     }
 }
