@@ -4,9 +4,11 @@ import { SpinnerService } from '@core/services/spinner.service';
 
 @Component({
     selector: 'app-root',
-    template: '<app-loading-spinner></app-loading-spinner><app-header></app-header><router-outlet></router-outlet>',
+    templateUrl: './app.component.html',
 })
 export class AppComponent {
+    isAuthPage: boolean;
+
     constructor(private router: Router, private spinner: SpinnerService) {
         this.listenRouter();
     }
@@ -22,6 +24,13 @@ export class AppComponent {
                 event instanceof NavigationError
             ) {
                 this.spinner.hide();
+            }
+            if (event instanceof NavigationStart) {
+                if (event.url.startsWith('/auth') || event.url === '/') {
+                    this.isAuthPage = true;
+                } else {
+                    this.isAuthPage = false;
+                }
             }
         });
     }
