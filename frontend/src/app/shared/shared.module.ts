@@ -14,7 +14,6 @@ import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
-import { ChallengesDropdownSelectComponent } from './components/challenges-dropdown-select/challenges-dropdown-select.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
@@ -54,7 +53,6 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         PieChartComponent,
         ProgressBarComponent,
         HeaderComponent,
-        ChallengesDropdownSelectComponent,
 
     ],
     exports: [
