@@ -4,7 +4,7 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { PROGRESES, STATUSES } from '@shared/components/filtering-section/filtering-section.utils';
+import { PROGRESES, STATUSES } from '@modules/main/filtering-section/filtering-section.utils';
 import { ChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { Language } from '@shared/models/language/language';

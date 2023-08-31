@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
@@ -14,32 +14,29 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
 
     @Input() items: string[] = [];
 
-    //@Input() initialValue: string;
     @Input() selectText: string = 'Select';
+
     @Input() itemsIcons: IconName[] = [];
 
-    @Output() SelectedItemsChanged = new EventEmitter<string[] | string>();
+    @Input() selectedItem: string;
 
-    @Input() selectedItem: string | undefined;
+    @Output() SelectedItemsChanged = new EventEmitter<string[] | string>();
 
     public selectedIcon: IconName;
 
     fieldText = '';
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['initialValue']) {
+        if (changes['selectedItem']) {
             this.setInitialValue();
         }
     }
 
     setInitialValue() {
         if (this.isMultiSelection) {
-            this.selectedItems = [this.initialValue];
+            this.selectedItems = [this.selectedItem];
         }
-        if (!this.isMultiSelection) {
-            this.selectedItem = this.initialValue;
-        }
-        this.fieldText = this.initialValue;
+        this.fieldText = this.selectedItem;
     }
 
     public selectedItems: string[] = [];

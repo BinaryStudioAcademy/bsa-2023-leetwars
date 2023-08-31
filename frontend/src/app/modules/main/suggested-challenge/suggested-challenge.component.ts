@@ -3,12 +3,11 @@ import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { findItemIdByName, SUGGESTION_TYPES } from '@shared/components/suggested-challenge/suggested-challenge.utils';
+import { findItemIdByName, ICONS, SUGGESTION_TYPES } from '@modules/main/suggested-challenge/suggested-challenge.utils';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { Language } from '@shared/models/language/language';
 import { takeUntil } from 'rxjs';
-import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
     selector: 'app-suggested-challenge',
@@ -17,11 +16,16 @@ import { IconName } from '@fortawesome/fontawesome-svg-core';
 })
 export class SuggestedChallengeComponent extends BaseComponent implements OnInit {
     challenge?: ChallengePreview;
+
     languagesNames: string[] = [];
+
     languages: Language[] = [];
+
     suggestionTypesNames: string[];
+
     suggestionTypes = SUGGESTION_TYPES;
-    scoreIcons: IconName[] = ['stairs', 'chart-simple', 'repeat', 'lock', 'circle-question'];
+
+    suggestionIcons = ICONS;
 
     suggestionSettings: SuggestionSettings = {
         languageId: 0,

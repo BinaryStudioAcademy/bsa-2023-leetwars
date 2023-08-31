@@ -2,14 +2,17 @@
     <div class="filters">
         <h5>Suggested Challenge</h5>
         <div class="dropdowns-container">
-            <app-dropdown-select [items]="languagesNames" [initialValue]="languagesNames[0]" (SelectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
-            <app-dropdown-select [items]="suggestionTypesNames" [initialValue]="suggestionTypesNames[0]" (SelectedItemsChanged)="onSuggestionTypeChanged($event)"></app-dropdown-select>
-            <!-- <app-dropdown-select [selectText]="'Choose Language...'" [items]="languages" [selectedItem]="languages[1]"></app-dropdown-select>
             <app-dropdown-select
+                [items]="languagesNames"
+                [selectedItem]="languagesNames[0]"
+                [selectText]="'Choose Language...'"
+                (SelectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
+            <app-dropdown-select
+                [items]="suggestionTypesNames"
+                [selectedItem]="suggestionTypesNames[0]"
                 [selectText]="'Choose Today\'s Focus...'"
-                [items]="score"
-                [selectedItem]="score[1]"
-                [itemsIcons]="scoreIcons"></app-dropdown-select> -->
+                [itemsIcons]="suggestionIcons"
+                (SelectedItemsChanged)="onSuggestionTypeChanged($event)"></app-dropdown-select>
         </div>
         <div class="button-group">
             <button class="suggested-button skip" (click)="getChallenge()">

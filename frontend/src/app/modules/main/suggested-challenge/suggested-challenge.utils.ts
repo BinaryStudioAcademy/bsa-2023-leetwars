@@ -1,3 +1,5 @@
+import { IconName } from '@fortawesome/fontawesome-svg-core';
+
 export const SUGGESTION_TYPES = [
     { name: 'Fundamentals', id: 0 },
     { name: 'Rank up', id: 1 },
@@ -5,6 +7,8 @@ export const SUGGESTION_TYPES = [
     { name: 'Beta', id: 3 },
     { name: 'Random', id: 4 },
 ];
+
+export const ICONS: IconName[] = ['stairs', 'chart-simple', 'repeat', 'lock', 'circle-question'];
 
 interface SimpleCollection {
     name: string,
