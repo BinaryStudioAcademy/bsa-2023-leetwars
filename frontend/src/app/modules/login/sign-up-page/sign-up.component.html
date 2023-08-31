@@ -4,20 +4,62 @@
     </div>
     <div class="register-page-container">
         <form [formGroup]="registrationForm" class="register-page-form">
-            <button class="link-profile-button">+ Link Your GitHub Account</button>
-            <app-custom-input [InputType]="'email'" [Identifier]="'email'" [Width]="'100%'" [InputLabel]="'Email'"
-                [InputPlaceholder]="'Enter your email'"
-                (InputValueChange)="registrationForm.controls['email'].setValue($event)">
-            </app-custom-input>
-            <app-custom-input [Identifier]="'username'" [Width]="'100%'" [InputLabel]="'Username'"
-                [InputPlaceholder]="'Enter your username'"
-                (InputValueChange)="registrationForm.controls['username'].setValue($event)">
-            </app-custom-input>
-            <app-custom-input [InputType]="'password'" [Identifier]="'password'" [Width]="'100%'"
-                [InputLabel]="'Password'" [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
-                (InputValueChange)="registrationForm.controls['password'].setValue($event)">
-            </app-custom-input>
-
+            <button class="btn btn-link link-profile-button">+ Link Your GitHub Account</button>
+            <div class="mb-2 form-group ">
+                <app-custom-input
+                    [InputType]="'email'"
+                    [Identifier]="'email'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Email'"
+                    [InputPlaceholder]="'Enter your email'"
+                    formControlName="email"
+                    (InputValueChange)="registrationForm.controls['email'].setValue($event)">
+                </app-custom-input>
+                <div class="invalid-feedback d-block" *ngIf="registrationForm.controls['email'].touched && registrationForm.get('email')?.invalid">
+                    <div *ngIf="registrationForm.get('email')?.hasError('required')">Please enter your email</div>
+                    <div *ngIf="registrationForm.get('email')?.hasError('email')">Email format is incorrect. An example of the correct format: example@example.com</div>
+                </div>
+                <div *ngIf="isExistingEmail && registrationForm.controls['email'].untouched " class="invalid-feedback d-block">
+                    A user with this e-mail is already registered, please enter another one.
+                </div>
+            </div>
+            <div class="mb-2">
+                <app-custom-input
+                    [Identifier]="'username'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Username'"
+                    [InputPlaceholder]="'Enter your username'"
+                    formControlName="username"
+                    (InputValueChange)="registrationForm.controls['username'].setValue($event)">
+                </app-custom-input>
+                <div class="invalid-feedback d-block" *ngIf=" registrationForm.controls['username'].touched && registrationForm.get('username')?.invalid">
+                    <div *ngIf="registrationForm.get('username')?.hasError('required')">Please enter your name</div>
+                    <div *ngIf="registrationForm.get('username')?.hasError('minlength')">The name must contain at least 2 characters</div>
+                    <div *ngIf="registrationForm.get('username')?.hasError('maxlength')">Password must be no more than 50 characters</div>
+                    <div *ngIf="registrationForm.get('username')?.hasError('pattern')">
+                        Please enter your name in Latin
+                    </div>
+                </div>
+            </div>
+            <div class="mb-2">
+                <app-custom-input
+                    [InputType]="'password'"
+                    [Identifier]="'password'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Password:'"
+                    [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+                    formControlName="password"
+                    (InputValueChange)="registrationForm.controls['password'].setValue($event)">
+                </app-custom-input>
+                <div class="invalid-feedback d-block" *ngIf=" registrationForm.controls['password'].touched && registrationForm.get('password')?.invalid">
+                    <div *ngIf="registrationForm.get('password')?.hasError('required')">Please enter a password</div>
+                    <div *ngIf="registrationForm.get('password')?.hasError('minlength')">Password must be at least 8 characters</div>
+                    <div *ngIf="registrationForm.get('password')?.hasError('maxlength')">Password must not exceed 32 characters</div>
+                    <div *ngIf="registrationForm.get('password')?.hasError('pattern')">
+                        The password must contain at least one uppercase letter, one lowercase letter, and one number.
+                    </div>
+                </div>
+            </div>
             <p class="privacy-policy-text">
                 By creating an account, you agree to our
                 <a>Privacy Policy</a>

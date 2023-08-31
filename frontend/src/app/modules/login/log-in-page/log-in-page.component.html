@@ -10,24 +10,39 @@
             <H5 class="or-label">or</H5>
 
             <form class="logInForm" [formGroup]="logInForm">
-                <app-custom-input
-                    [InputType]="'email'"
-                    [Identifier]="'email'"
-                    [Width]="'100%'"
-                    [InputLabel]="'Email'"
-                    [InputPlaceholder]="'Enter your email'"
-                    (InputValueChange)="logInForm.controls['email'].setValue($event)">
-                </app-custom-input>
-                <app-custom-input
-                    [InputType]="'password'"
-                    [Identifier]="'password'"
-                    [Width]="'100%'"
-                    [InputLabel]="'Password'"
-                    [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
-                    [IsForgetPassword]="true"
-                    (InputValueChange)="logInForm.controls['password'].setValue($event)">
-                </app-custom-input>
-
+                <div class="mb-2 form-group ">
+                    <app-custom-input
+                        [InputType]="'email'"
+                        [Identifier]="'email'"
+                        [Width]="'100%'"
+                        [InputLabel]="'Email'"
+                        [InputPlaceholder]="'Enter your email'"
+                        formControlName="email"
+                        (InputValueChange)="logInForm.controls['email'].setValue($event)">
+                    </app-custom-input>
+                    <div class="invalid-feedback d-block" *ngIf="logInForm.controls['email'].touched && logInForm.get('email')?.invalid">
+                        <div *ngIf="logInForm.get('email')?.hasError('required')">Please enter your email</div>
+                        <div *ngIf="logInForm.get('email')?.hasError('email')">Email format is incorrect. An example of the correct format: example@example.com</div>
+                </div>
+                <div class="invalid-feedback d-block" *ngIf="!isExistingEmail && logInForm.controls['email'].untouched ">
+                    The user is not exist. Please <a [routerLink]="['/auth/register']">Sign Up</a>
+                </div>
+            </div>
+                <div class="mb-2">
+                    <app-custom-input
+                        [InputType]="'password'"
+                        [Identifier]="'password'"
+                        [Width]="'100%'"
+                        [InputLabel]="'Password'"
+                        [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+                        [IsForgetPassword]="true"
+                        formControlName="password"
+                        (InputValueChange)="logInForm.controls['password'].setValue($event)">
+                    </app-custom-input>
+                    <div class="invalid-feedback d-block" *ngIf=" logInForm.controls['password'].touched && logInForm.get('password')?.invalid">
+                        <div *ngIf="logInForm.get('password')?.hasError('required')">Please enter a password</div>
+                    </div>
+                </div>
                 <button class="submit-sign-in" [disabled]="!logInForm.valid" (click)="signIn()">Sign In</button>
             </form>
         </div>
