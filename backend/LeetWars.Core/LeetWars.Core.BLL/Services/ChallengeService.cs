@@ -66,7 +66,6 @@ namespace LeetWars.Core.BLL.Services
         public async Task<ChallengeFullDto> GetChallengeByIdAsync(long id)
         {
             var challenges = await _context.Challenges
-                .Where(challenge => challenge.Id == id)
                 .Include(challenge => challenge.Level)
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
@@ -81,7 +80,7 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(version => version.LanguageVersions)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Author)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(challenge => challenge.Id == id);
 
             return _mapper.Map<ChallengeFullDto>(challenges);
         }
