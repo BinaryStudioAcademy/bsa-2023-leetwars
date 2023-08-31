@@ -43,9 +43,6 @@
                     <div class="invalid-feedback d-block" *ngIf=" logInForm.controls['password'].touched && logInForm.get('password')?.invalid">
                         <div *ngIf="logInForm.get('password')?.hasError('required')">Please enter a password</div>
                     </div>
-                    <div class="forget-password">
-                        <a href="someUrl" class="forget-password-link">Forget password?</a>
-                    </div>
                 </div>
                 <button class="submit-sign-in" [disabled]="!logInForm.valid" (click)="signIn()">Sign In</button>
             </form>
