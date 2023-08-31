@@ -13,6 +13,8 @@ export class DropdownSelectComponent implements OnInit {
 
     @Input() items: string[] = [];
 
+    @Input() selectText: string = 'Select';
+
     @Input() itemsIcons: IconName[] = [];
 
     @Output() SelectedItemsChanged: EventEmitter<string[] | string> = new EventEmitter<string[] | string>();

@@ -3,7 +3,7 @@
         <label *ngIf="title" class="title">{{ title }}</label>
         <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
             <fa-icon *ngIf="selectedIcon" [icon]="selectedIcon" class="ms-0 selected-icon"></fa-icon>
-            <span class="float-start">{{ selectedItem ? selectedItem : 'Select' }}</span>
+            <span class="float-start">{{ selectedItem ? selectedItem : selectText }}</span>
             <fa-icon [icon]="'chevron-down'" size="xs"></fa-icon>
         </button>
     </div>
