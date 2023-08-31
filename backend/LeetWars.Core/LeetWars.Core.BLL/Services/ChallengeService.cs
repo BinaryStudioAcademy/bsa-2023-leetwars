@@ -61,7 +61,7 @@ namespace LeetWars.Core.BLL.Services
                 challenges = filters.Progress switch
                 {
                     ChallengesProgress.NotStarted => challenges.Where(challenge => challenge.Versions.All(version =>
-                        version.Solutions.Count == 0 || version.Solutions.All(solution =>
+                        !version.Solutions.Any() || version.Solutions.All(solution =>
                             solution.User == null || solution.User.Uid != userId))),
                     ChallengesProgress.Started => challenges.Where(challenge => challenge.Versions.Any(version =>
                         version.Solutions.Any(solution =>
