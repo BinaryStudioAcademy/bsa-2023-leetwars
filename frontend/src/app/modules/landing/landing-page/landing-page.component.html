@@ -1,75 +1,78 @@
-<div class="nav-div">
-    <button class="nav-dropbtn">
+<header class="nav-container" [ngClass]="{'scrolled': isScrolled || isNavShown}">
+    <button class="nav-dropbtn" (click)="updateNavVisibility()">
         <fa-icon [icon]="['fas', 'bars']"></fa-icon>
     </button>
-    <div class="nav-dropdown-div">
-        <nav class="dropdown-nav">
-            <a href="">Cases</a>
-            <a href="">Features</a>
-            <a href="">Our Work</a>
-            <a href="" class="green-accent-link">Sign In</a>
+    <div class="nav-dropdown-container" #navDropdownDiv>
+        <nav class="nav-dropdown">
+            <a href="#reliable-platform">Cases</a>
+            <a href="#fun-programming">Features</a>
+            <a href="#how-it-works">Our Work</a>
+            <a class="green-accent-link" routerLink="auth/login">Sign In</a>
         </nav>
     </div>
-    <nav class="main-nav">
-        <a href="">Cases</a>
-        <a href="">Features</a>
-        <a href="">Our Work</a>
-        <a href="" class="green-accent-link">Sign In</a>
+    <nav class="nav-main">
+        <a href="#reliable-platform">Cases</a>
+        <a href="#fun-programming">Features</a>
+        <a href="#how-it-works">Our Work</a>
+        <a class="green-accent-link" routerLink="auth/login">Sign In</a>
     </nav>
-</div>
-<div class="div-unlimited-hero-section">
-    <div class="div-unlimited-container">
-        <div class="div-unlimited">
-            <h1>Coding Mastery Forged in Challenges</h1>
-            <p>Unveil a coding platform that's your gateway to mastery.
-                Through captivating challenges, you'll refine your programming skills,
-                while achieving each goal becomes a stepping stone toward coding excellence.
-            </p>
-            <a href="" class="green-accent-link">Get Started</a>
+</header>
+<main>
+    <div class="unlimited-hero">
+        <div class="unlimited-content-wrapper">
+            <div class="unlimited-content">
+                <h1>Coding Mastery Forged in Challenges</h1>
+                <p>Unveil a coding platform that's your gateway to mastery.
+                    Through captivating challenges, you'll refine your programming skills,
+                    while achieving each goal becomes a stepping stone toward coding excellence.
+                </p>
+                <a class="green-accent-link" routerLink="auth/register">Get Started</a>
+            </div>
         </div>
     </div>
-</div>
+
 <div id="reliable-platform">
     <h2>
         <span>We get it. Reliable platforms</span>
         <br>
         <span class="span-accent">are hard to find</span>
     </h2>
-     <div class="div-reliable-platform">
-        <div class="div-reliable-platform-card">
+     <div class="reliable-platform-container">
+        <div class="reliable-platform-card">
             <img src="/assets/images/landing-page/reliable1.svg" alt="">
-            <div class="div-reliable-platform-card-info">
+            <div class="reliable-platform-card-info">
                 <h3>Poor Quality</h3>
                 <p>You're tired of the guessing game to find the right challenge</p>
             </div>
         </div>
-        <div class="div-reliable-platform-card">
+        <div class="reliable-platform-card">
             <img src="/assets/images/landing-page/reliable2.svg" alt="">
-            <div class="div-reliable-platform-card-info">
+            <div class="reliable-platform-card-info">
                 <h3>Bad Communication</h3>
                 <p>You're fed up with having to explain yourself multiple times</p>
             </div>
         </div>
-        <div class="div-reliable-platform-card">
+        <div class="reliable-platform-card">
             <img src="/assets/images/landing-page/reliable3.svg" alt="">
-            <div class="div-reliable-platform-card-info">
+            <div class="reliable-platform-card-info">
                 <h3>Missed Deadlines</h3>
                 <p>You lose hope as deadlines are missed over and over again</p>
             </div>
         </div>
     </div>
 </div>
+
 <div id="fun-programming">
     <h2>
         <span>Programming does not have to be boring.</span>
         <br>
         <span class="span-accent">We make it fun.</span>
     </h2>
-    <div class="div-fun-programming-card">
+    <div class="fun-programming-card">
         <img src="/assets/images/landing-page/fun-programming1.svg" alt="" class="fun-programming-img mediaq-img">
         <div class="fun-programming-card-content">
             <img src="/assets/images/landing-page/cursor.svg" alt="">
-            <div class="fun-programming-card-text">
+            <div class="fun-programming-card-info">
                 <h3>
                     Breath-taking Challenges
                 </h3>
@@ -82,11 +85,11 @@
         </div>
         <img src="/assets/images/landing-page/fun-programming1.svg" alt="" class="fun-programming-img mediaq-none-img">
     </div>
-    <div class="div-fun-programming-card">
+    <div class="fun-programming-card">
         <img src="/assets/images/landing-page/fun-programming2.svg" alt="" class="fun-programming-img">
         <div class="fun-programming-card-content">
             <img src="/assets/images/landing-page/message.svg" alt="">
-            <div class="fun-programming-card-text">
+            <div class="fun-programming-card-info">
                 <h3>
                     Community Collaboration and Support
                 </h3>
@@ -98,11 +101,11 @@
             </div>
         </div>
     </div>
-    <div class="div-fun-programming-card">
+    <div class="fun-programming-card">
         <img src="/assets/images/landing-page/fun-programming3.svg" alt="" class="fun-programming-img mediaq-img">
         <div class="fun-programming-card-content">
             <img src="/assets/images/landing-page/clock.svg" alt="">
-            <div class="fun-programming-card-text">
+            <div class="fun-programming-card-info">
                 <h3>
                     Quick Growth Through Our Platform
                 </h3>
@@ -115,17 +118,18 @@
         <img src="/assets/images/landing-page/fun-programming3.svg" alt="" class="fun-programming-img mediaq-none-img">
     </div>
 </div>
+
 <div id="how-it-works">
     <h2>
         <span>How it</span>
         <span class="span-accent"> works</span>
     </h2>
-    <div class="div-how-it-works">
+    <div class="how-it-works-container">
         <img src="/assets/images/landing-page/landing-page-stepper.svg" alt="">
-        <div class="div-how-it-works-cards">
+        <div class="how-it-works-content">
             <div class="how-it-works-card">
                 <img src="/assets/images/landing-page/how-it-works1.svg" alt="">
-                <div class="how-it-works-card-content">
+                <div class="how-it-works-card-info">
                     <h3>Choose Your Path to Mastery</h3>
                     <p>
                         Select from a range of carefully crafted learning paths tailored to your coding aspirations, whether
@@ -135,7 +139,7 @@
             </div>
             <div class="how-it-works-card">
                 <img src="/assets/images/landing-page/how-it-works2.svg" alt="">
-                <div class="how-it-works-card-content">
+                <div class="how-it-works-card-info">
                     <h3>Master Coding Through Challenges</h3>
                     <p>
                         Dive into practical coding challenges that build your problem-solving skills and let you apply
@@ -145,7 +149,7 @@
             </div>
             <div class="how-it-works-card">
                 <img src="/assets/images/landing-page/how-it-works3.svg" alt="">
-                <div class="how-it-works-card-content">
+                <div class="how-it-works-card-info">
                     <h3>Achieve Your Coding Goals</h3>
                     <p>
                         Set specific coding goals and track your progress as you work through each module and challenge.
@@ -153,21 +157,22 @@
                         milestones, making your coding dreams a reality.
                     </p>
                 </div>
-
             </div>
         </div>
     </div>
-    <a href="" class="green-accent-link">Get Started</a>
+    <a class="green-accent-link" routerLink="auth/register">Get Started</a>
 </div>
+</main>
+
 <footer>
-    <div class="footer-get-started">
+    <div class="get-started">
         <p>
             Get actionable tips on how to increase sales and
             conversions with design!
         </p>
-        <a href="" class="green-accent-link">Get Started</a>
+        <a class="green-accent-link" routerLink="auth/register">Get Started</a>
     </div>
-    <div class="div-footer-list">
+    <div class="footer-list-container">
         <h4>Services</h4>
         <ul class="footer-list">
             <li>
@@ -187,7 +192,7 @@
             </li>
         </ul>
     </div>
-    <div class="div-footer-list">
+    <div class="footer-list-container">
         <h4>Company</h4>
         <ul class="footer-list">
             <li>
@@ -207,7 +212,7 @@
             </li>
         </ul>
     </div>
-    <div class="div-footer-list">
+    <div class="footer-list-container">
         <h4>Company</h4>
         <ul class="footer-list">
             <li>
@@ -227,7 +232,7 @@
             </li>
         </ul>
     </div>
-    <div class="div-footer-contacts">
+    <div class="footer-contacts-container">
         <h4>Contact</h4>
         <a href="mailto:email@example.com">email@example.com</a>
         <div class="footer-contact-links">
