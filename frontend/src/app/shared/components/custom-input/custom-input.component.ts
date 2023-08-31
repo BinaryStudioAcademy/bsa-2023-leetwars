@@ -77,4 +77,10 @@ export class CustomInputComponent implements ControlValueAccessor {
         this.InputType = this.InputType === 'password' ? 'text' : 'password';
         this.showPassword = !this.showPassword;
     }
+
+    onPasswordKeyDown(event: KeyboardEvent) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+        }
+    }
 }
