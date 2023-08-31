@@ -6,27 +6,16 @@
     <div class="register-page-container">
         <form [formGroup]="registrationForm" class="register-page-form">
             <button class="link-profile-button">+ Link Your GitHub Account</button>
-            <app-custom-input
-                [InputType]="'email'"
-                [Identifier]="'email'"
-                [Width]="'100%'"
-                [InputLabel]="'Email'"
+            <app-custom-input [InputType]="'email'" [Identifier]="'email'" [Width]="'100%'" [InputLabel]="'Email'"
                 [InputPlaceholder]="'Enter your email'"
                 (InputValueChange)="registrationForm.controls['email'].setValue($event)">
             </app-custom-input>
-            <app-custom-input
-                [Identifier]="'username'"
-                [Width]="'100%'"
-                [InputLabel]="'Username'"
+            <app-custom-input [Identifier]="'username'" [Width]="'100%'" [InputLabel]="'Username'"
                 [InputPlaceholder]="'Enter your username'"
                 (InputValueChange)="registrationForm.controls['username'].setValue($event)">
             </app-custom-input>
-            <app-custom-input
-                [InputType]="'password'"
-                [Identifier]="'password'"
-                [Width]="'100%'"
-                [InputLabel]="'Password'"
-                [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+            <app-custom-input [InputType]="'password'" [Identifier]="'password'" [Width]="'100%'"
+                [InputLabel]="'Password'" [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
                 (InputValueChange)="registrationForm.controls['password'].setValue($event)">
             </app-custom-input>
 
@@ -40,8 +29,8 @@
             </button>
             <div class="have-account">
                 Already registered?
-            <a class="sign-in-link" routerLink="/auth/login">Sign in</a>
-        </div>
+                <a class="sign-in-link" routerLink="/auth/login">Sign in</a>
+            </div>
         </form>
     </div>
     <div class="footer"></div>
