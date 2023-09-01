@@ -57,7 +57,7 @@ export class LogInPageComponent implements OnInit {
             )
             .subscribe(
                 () => {
-                    this.router.navigateByUrl('/main');
+                    this.router.navigate(['/main']);
                 },
                 (error) => {
                     this.toastrNotification.showError('Something went wrong');
