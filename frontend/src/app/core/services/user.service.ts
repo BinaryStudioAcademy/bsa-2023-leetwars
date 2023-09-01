@@ -20,7 +20,7 @@ export class UserService {
         return this.httpService.getRequest<boolean>(`/users/is-existing-email?email=${email}`);
     }
 
-    public async getFullUser(id: number): Promise<Observable<UserFull>> {
+    public getFullUser(id: number): Observable<UserFull> {
         return this.httpService.getRequest<UserFull>(`/users/${id}`);
     }
 }

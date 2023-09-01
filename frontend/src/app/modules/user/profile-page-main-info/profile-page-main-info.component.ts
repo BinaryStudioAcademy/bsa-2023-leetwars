@@ -1,5 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import * as utils from '@modules/user/profile-page-main-info/profile-page-main.utils';
+import { LanguageLevel } from '@shared/enums/languageLevel';
 import { UserFull } from '@shared/models/profile/user-full';
+import { UserLanguageLevel } from '@shared/models/profile/user-language-level';
 import * as moment from 'moment/moment';
 
 @Component({
@@ -11,6 +14,8 @@ export class ProfilePageMainInfoComponent implements OnChanges {
     @Input() user: UserFull = <UserFull>{};
 
     //replace it with real user interface
+    LanguageLevel = LanguageLevel;
+
     public username? = '';
 
     public languages? = '';
@@ -34,18 +39,10 @@ export class ProfilePageMainInfoComponent implements OnChanges {
     public communityLastWeekReputation = 0;
 
     ngOnChanges(): void {
-        this.updateView();
+        this.updateSolutions();
     }
 
-    private updateView() {
-        if (this.user.solutions) {
-            this.communityLastWeekSolution = this.user.solutions?.filter(
-                (solution) =>
-                    new Date(solution.submittedAt!).getTime() >
-                        new Date(moment().subtract(1, 'weeks').startOf('isoWeek').format('YYYY-MM-DD')).getTime() &&
-                    new Date(solution.submittedAt!).getTime() <
-                        new Date(moment().subtract(1, 'weeks').endOf('isoWeek').format('YYYY-MM-DD')).getTime(),
-            ).length;
-        }
+    private updateSolutions() {
+        this.communityLastWeekSolution = utils.getLastWeekCount(this.user.solutions);
     }
 }

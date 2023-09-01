@@ -9,7 +9,7 @@ import { MonthChartData } from '@shared/models/submission-chart/month-chart-data
     styleUrls: ['./submissions-chart.component.sass'],
 })
 export class SubmissionsChartComponent implements OnInit, OnChanges {
-    @Input() solutions: UserSolution[] = [];
+    @Input() solutions: UserSolution[] | undefined = [];
 
     chartData: MonthChartData[] = [];
 
@@ -39,7 +39,9 @@ export class SubmissionsChartComponent implements OnInit, OnChanges {
     private updateChartData() {
         this.clearChartData();
 
-        this.chartData = getChartData(this.solutions);
+        if (this.solutions) {
+            this.chartData = getChartData(this.solutions);
+        }
 
         const allDaysData = this.chartData.flatMap((item) => item.days);
 

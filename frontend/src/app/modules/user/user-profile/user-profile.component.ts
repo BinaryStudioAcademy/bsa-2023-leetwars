@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { UserFull } from '@shared/models/profile/user-full';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-user-profile',
@@ -14,11 +15,20 @@ export class UserProfileComponent {
 
     private unsubscribe$ = new Subject<void>();
 
-    constructor(private userService: UserService, private authService: AuthService) {
+    constructor(
+        private userService: UserService,
+        private authService: AuthService,
+        private toastrNotification: ToastrNotificationsService,
+    ) {
         this.user.id = authService.isAuthorized()?.id ?? 0;
-        userService.getFullUser(this.user.id).then((result) =>
-            result.subscribe((u): void => {
-                this.user = u;
-            }));
+        userService
+            .getFullUser(1)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(
+                (result) => {
+                    this.user = result;
+                },
+                () => this.toastrNotification.showError('User not found'),
+            );
     }
 }
