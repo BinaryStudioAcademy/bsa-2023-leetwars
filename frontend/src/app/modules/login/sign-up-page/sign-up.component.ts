@@ -56,7 +56,7 @@ export class SignUpComponent {
             )
             .subscribe(
                 () => {
-                    this.router.navigateByUrl('');
+                    this.router.navigate(['/main']);
                     this.toastrNotification.showSuccess('You have successfully registered.');
                 },
                 error => {
