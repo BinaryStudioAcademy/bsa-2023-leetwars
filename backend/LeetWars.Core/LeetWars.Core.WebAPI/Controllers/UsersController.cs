@@ -37,7 +37,7 @@ public class UsersController : ControllerBase
     [HttpGet("current")]
     public async Task<ActionResult<UserDto>> GetCurrentUser()
     {
-        var uid = HttpContext.User.Claims.First(i => i.Type == ClaimTypes.NameIdentifier).Value;
+        var uid = _userService.GetCurrentUserUid();
         var user = await _userService.GetUserByUidAsync(uid);
         return Ok(user);
     }
