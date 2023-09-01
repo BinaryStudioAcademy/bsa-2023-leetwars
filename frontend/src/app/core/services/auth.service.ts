@@ -88,8 +88,7 @@ export class AuthService {
 
     // TODO: Implemented only firebase part
     public changePassword(password: string): Observable<void> {
-        return from(this.afAuth.currentUser)
-        .pipe(
+        return from(this.afAuth.currentUser).pipe(
             first(),
             switchMap((user) => {
                 if (user) {
@@ -128,13 +127,13 @@ export class AuthService {
 
     private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string = '') {
         return auth.pipe(switchMap((resp) =>
-                this.userService.createUser({
-                    uid: resp.user?.uid,
-                    userName: userName ?? resp.user?.displayName!,
-                    email: resp.user?.email ?? '',
-                    image: resp.user?.photoURL ?? undefined,
-                    timezone: new Date().getTimezoneOffset() / 60,
-                })), tap((user) => this.setUserInfo(user)));
+            this.userService.createUser({
+                uid: resp.user?.uid,
+                userName: userName ?? resp.user?.displayName!,
+                email: resp.user?.email ?? '',
+                image: resp.user?.photoURL ?? undefined,
+                timezone: new Date().getTimezoneOffset() / 60,
+            })), tap((user) => this.setUserInfo(user)));
     }
 
     private getUserInfo(): User | undefined {
