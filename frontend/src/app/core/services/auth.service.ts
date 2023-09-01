@@ -39,7 +39,7 @@ export class AuthService {
     }
 
     public isAuthorized() {
-        return this.user && this.getUserInfo();
+        return this.getUserToken() && this.getUserInfo();
     }
 
     // TODO: change parameters to DTO
