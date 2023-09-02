@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { passwordMaxLength, passwordMinLength } from '@shared/utils/validation/form-control-validator-options';
+import { passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -12,10 +15,14 @@ import { switchMap } from 'rxjs';
     styleUrls: ['./log-in-page.component.sass'],
 })
 export class LogInPageComponent implements OnInit {
-    //TODO: Add real validation and don't forget to add it in html file
     logInForm = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', Validators.required),
+        password: new FormControl('', [
+            Validators.required,
+            Validators.minLength(passwordMinLength),
+            Validators.maxLength(passwordMaxLength),
+            Validators.pattern(passwordPattern),
+        ]),
     });
 
     isExistingEmail = true;
@@ -39,26 +46,28 @@ export class LogInPageComponent implements OnInit {
         this.showPassword = !this.showPassword;
     }
 
+    getErrorMessage(formControlName: string) {
+        return getErrorMessage(formControlName, this.logInForm);
+    }
+
     public signIn() {
-        this.userService.checkEmail(this.logInForm.value.email!)
+        this.userService
+            .checkEmail(this.logInForm.value.email!)
             .pipe(
-                switchMap(result => {
+                switchMap((result) => {
                     if (!result) {
                         this.isExistingEmail = false;
                         this.logInForm.markAsUntouched();
                     }
 
-                    return this.authService.login(
-                        this.logInForm.value.email!,
-                        this.logInForm.value.password!,
-                    );
+                    return this.authService.login(this.logInForm.value.email!, this.logInForm.value.password!);
                 }),
             )
             .subscribe(
                 () => {
                     this.router.navigateByUrl('/main');
                 },
-                error => {
+                (error) => {
                     this.toastrNotification.showError('Something went wrong');
                     console.error('Error :', error);
                 },
