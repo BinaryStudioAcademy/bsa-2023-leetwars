@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { passwordMaxLength, passwordMinLength } from '@shared/utils/validation/form-control-validator-options';
-import { passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
@@ -17,12 +15,7 @@ import { switchMap } from 'rxjs';
 export class LogInPageComponent implements OnInit {
     logInForm = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [
-            Validators.required,
-            Validators.minLength(passwordMinLength),
-            Validators.maxLength(passwordMaxLength),
-            Validators.pattern(passwordPattern),
-        ]),
+        password: new FormControl('', [Validators.required]),
     });
 
     isExistingEmail = true;
