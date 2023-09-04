@@ -50,12 +50,8 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserDto> GetUserByUidAsync(string uid)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == uid);
-        
-        if (user == null)
-        {
-            throw new InvalidOperationException($"A user with uid {uid} is not found.");
-        }
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == uid)
+            ?? throw new InvalidOperationException($"A user with uid {uid} is not found.");
         
         return _mapper.Map<UserDto>(user);
     }
