@@ -6,6 +6,7 @@ using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
+using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.BLL.Services
@@ -66,19 +67,17 @@ namespace LeetWars.Core.BLL.Services
                     .Take(page.PageSize);
             }
 
-            IEnumerable<Challenge> filterChallenges = await challenges.ToListAsync();
-
-            //filter runs on the client because filters.TagsIds[] didn't pass to the server and SQL query get error
             if (filters.TagsIds != null)
             {
-                filterChallenges = filterChallenges.Where(challenge =>
-                    filters.TagsIds.All(
-                        filterTagId => challenge.Tags.Any(tag => tag.Id.Equals(filterTagId))
-                    )
-                );
+                foreach (var filterTagId in filters.TagsIds)
+                {
+                    challenges = challenges.Where(challenge =>
+                            challenge.Tags.Any(tag => tag.Id == filterTagId)
+                    );
+                }
             }
 
-            return _mapper.Map<List<ChallengePreviewDto>>(filterChallenges.ToList());
+            return _mapper.Map<List<ChallengePreviewDto>>(await challenges.ToListAsync());
         }
 
         public async Task<ChallengePreviewDto> GetChallengeSuggestionAsync(SuggestionSettingsDto settings)
@@ -95,11 +94,24 @@ namespace LeetWars.Core.BLL.Services
                 .Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId))
                 .AsQueryable();
 
-            challenges = FilterChallengesBySuggestionType(challenges, settings.SuggestionType);
+            challenges = await FilterChallengesBySuggestionType(challenges, settings);
 
             var randomPosition = GetRandomInt(challenges.Count());
             
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
+        }
+
+        private async Task<LanguageLevel> GetUserLevelAsync(int languageId)
+        {
+            var userId = _userIdGetter.CurrentUserId;
+            var userLevel = await _context
+                .UserLanguageLevels
+                .Include(userLevel => userLevel.User)
+                .Where(userLevel => userLevel.User != null && userLevel.User.Uid == userId)
+                .Where(userLevel => userLevel.LanguageId == languageId)
+                .FirstOrDefaultAsync();
+
+            return userLevel?.Level ?? LanguageLevel.FirstSteps;
         }
 
         private IQueryable<Challenge> FilterChallengesByProgress(IQueryable<Challenge> challenges, ChallengesProgress? progress)
@@ -120,24 +132,27 @@ namespace LeetWars.Core.BLL.Services
                 _ => challenges
             };
         }
-        private IQueryable<Challenge> FilterChallengesBySuggestionType(IQueryable<Challenge> challenges, SuggestionType suggestionType)
+        private async Task<IQueryable<Challenge>> FilterChallengesBySuggestionType(IQueryable<Challenge> challenges, SuggestionSettingsDto settings)
         {
             var userId = _userIdGetter.CurrentUserId;
-
-            return suggestionType switch
+            var userLevel = await GetUserLevelAsync(settings.LanguageId);
+            var userNextLevel = userLevel.GetNextLevel();
+            
+            return settings.SuggestionType switch
             {
                 SuggestionType.Beta => challenges.Where(challenge =>
                     challenge.Versions.Any(version => version.Status == ChallengeStatus.Beta)),
                 SuggestionType.Fundamentals => challenges.Where(challenge =>
-                    challenge.Level != null && challenge.Level.Name.ToLower().Contains("easy")),
+                    challenge.Category == ChallengeCategory.Fundamentals),
                 SuggestionType.RankUp => challenges.Where(challenge =>
-                    challenge.Level != null && challenge.Level.Name.ToLower().Contains("medium")),
+                    challenge.Level != null && challenge.Level.SkillLevel == userNextLevel),
                 SuggestionType.PracticeAndRepeat => challenges.Where(challenge => challenge.Versions.Any(version =>
                     version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId))),
                 _ => challenges
             };
         }
 
+ 
         private static int GetRandomInt(int maxValue)
         {
             if (maxValue == 0)
