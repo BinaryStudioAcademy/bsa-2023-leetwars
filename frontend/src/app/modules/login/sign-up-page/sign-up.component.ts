@@ -4,7 +4,14 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { latinCharactersPattern, passwordPattern } from '@shared/regaxes/user-regax-patterns';
+import {
+    passwordMaxLength,
+    passwordMinLength,
+    userNameMaxLength,
+    userNameMinLength,
+} from '@shared/utils/validation/form-control-validator-options';
+import { latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -19,17 +26,21 @@ export class SignUpComponent {
         email: new FormControl('', [Validators.required, Validators.email]),
         username: new FormControl('', [
             Validators.required,
-            Validators.minLength(2),
-            Validators.maxLength(50),
+            Validators.minLength(userNameMinLength),
+            Validators.maxLength(userNameMaxLength),
             Validators.pattern(latinCharactersPattern),
         ]),
         password: new FormControl('', [
             Validators.required,
-            Validators.minLength(8),
-            Validators.maxLength(32),
+            Validators.minLength(passwordMinLength),
+            Validators.maxLength(passwordMaxLength),
             Validators.pattern(passwordPattern),
         ]),
     });
+
+    getErrorMessage(formControlName: string) {
+        return getErrorMessage(formControlName, this.registrationForm);
+    }
 
     constructor(
         private authService: AuthService,
@@ -39,9 +50,10 @@ export class SignUpComponent {
     ) {}
 
     signUp() {
-        this.userService.checkEmail(this.registrationForm.value.email!)
+        this.userService
+            .checkEmail(this.registrationForm.value.email!)
             .pipe(
-                switchMap(result => {
+                switchMap((result) => {
                     if (result) {
                         this.isExistingEmail = true;
                         this.registrationForm.markAsUntouched();
@@ -59,7 +71,7 @@ export class SignUpComponent {
                     this.router.navigate(['/main']);
                     this.toastrNotification.showSuccess('You have successfully registered.');
                 },
-                error => {
+                (error) => {
                     this.toastrNotification.showError('Something went wrong');
                     console.error('Error :', error);
                 },
