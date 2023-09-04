@@ -39,7 +39,7 @@ export class LogInPageComponent implements OnInit {
         this.showPassword = !this.showPassword;
     }
 
-    getErrorMessage(formControlName: string) {
+    public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.logInForm);
     }
 
@@ -53,7 +53,7 @@ export class LogInPageComponent implements OnInit {
                         this.logInForm.markAsUntouched();
                     }
 
-                    return this.authService.login(this.logInForm.value.email!, this.logInForm.value.password!);
+                    return this.authService.login(this.logInForm.value.email!.trim(), this.logInForm.value.password!.trim());
                 }),
             )
             .subscribe(

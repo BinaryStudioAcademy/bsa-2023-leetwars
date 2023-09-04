@@ -38,7 +38,7 @@ export class SignUpComponent {
         ]),
     });
 
-    getErrorMessage(formControlName: string) {
+    public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.registrationForm);
     }
 
@@ -60,9 +60,9 @@ export class SignUpComponent {
                     }
 
                     return this.authService.register(
-                        this.registrationForm.value.username!,
-                        this.registrationForm.value.email!,
-                        this.registrationForm.value.password!,
+                        this.registrationForm.value.username!.trim(),
+                        this.registrationForm.value.email!.trim(),
+                        this.registrationForm.value.password!.trim(),
                     );
                 }),
             )
