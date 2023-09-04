@@ -2,8 +2,6 @@ import { Component, Input, OnChanges } from '@angular/core';
 import * as utils from '@modules/user/profile-page-main-info/profile-page-main.utils';
 import { LanguageLevel } from '@shared/enums/languageLevel';
 import { UserFull } from '@shared/models/profile/user-full';
-import { UserLanguageLevel } from '@shared/models/profile/user-language-level';
-import * as moment from 'moment/moment';
 
 @Component({
     selector: 'app-profile-page-main-info',

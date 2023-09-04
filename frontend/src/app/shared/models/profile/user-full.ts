@@ -1,6 +1,7 @@
+import { Challenge } from '@shared/models/challenge/challenge';
+
 import { User } from '../user';
 
-import { Challenge } from './challenge';
 import { Language } from './language';
 import { UserLanguageLevel } from './user-language-level';
 import { UserSolution } from './user-solution';
