@@ -61,7 +61,7 @@ namespace LeetWars.Core.BLL.Services
                 challenges = FilterChallengesByProgress(challenges, filters.Progress);
             }
 
-            if (filters.TagsIds != null)
+            if (filters.TagsIds is not null)
             {
                 var filterTags = _context.Tags.Where(tag => 
                     filters.TagsIds.Contains(tag.Id));
