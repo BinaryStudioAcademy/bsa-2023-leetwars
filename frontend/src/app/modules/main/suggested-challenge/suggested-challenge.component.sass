@@ -3,6 +3,8 @@
 
 :host
   font-family: Open Sans
+  display: flex
+  justify-content: center
 
 :host ::ng-deep .float-start
   color: $lavender-ash
@@ -17,6 +19,7 @@
     background-color: $dark-grey
     margin-bottom: 0.5rem
     box-sizing: border-box
+    max-width: 900px
 
 .suggested-body
     > *
@@ -99,6 +102,7 @@ h5
 
 .description
     display: flexbox
+    font-size: 14px
     > *
         margin: 1rem 1rem
 
@@ -208,11 +212,11 @@ h5
     justify-content: center
     align-items: center
     background-color: $dark-grey
+    border-radius: 4px
 
     white-space: nowrap
     color: $grey
     font-family: Montserrat
-    font-size: 14px
     font-style: normal
     font-weight: 400
     line-height: normal
