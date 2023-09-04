@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { DropdownItem } from '@shared/models/dropdown-item';
 
 import { Tab } from './tab';
@@ -11,26 +11,21 @@ import { Tab } from './tab';
 export class SolutionPageComponent implements OnInit {
     tabName: string = 'Complete solution';
 
-    selectedLanguage: string = 'C#';
+    selectedLanguage: string = 'javascript';
 
     content: string;
 
-    @Input() initialContent: string = 'initial';
+    constructor(private changeDetector: ChangeDetectorRef) {}
 
-    @Input() preloadedContent: string = 'preloaded';
+    @Input() initialContent: string;
 
-    @Input() completedContent: string = 'complete';
+    @Input() preloadedContent: string;
 
-    languageItems: DropdownItem[] =
-        [
-            { content: 'JavaScript', iconName: 'node-js' },
-            { content: 'C#' }];
+    @Input() completedContent: string;
 
-    languageVersionItems: DropdownItem[] =
-        [
-            { content: 'Node v18.x' },
-            { content: 'Node v17.x' },
-        ];
+    languageItems: DropdownItem[] = [{ content: 'JavaScript', iconName: 'node-js' }, { content: 'C#' }];
+
+    languageVersionItems: DropdownItem[] = [{ content: 'Node v18.x' }, { content: 'Node v17.x' }];
 
     tabs: Tab[] = [
         {
@@ -54,33 +49,56 @@ export class SolutionPageComponent implements OnInit {
     ];
 
     ngOnInit(): void {
-        this.selectedLanguage = this.languageItems[0].content;
+        this.selectedLanguage = this.mapLanguageName(this.languageItems[0].content);
         this.content = this.completedContent;
     }
 
     languageChanged(item: DropdownItem): void {
-        this.selectedLanguage = item.content;
+        this.selectedLanguage = this.mapLanguageName(item.content);
+        this.changeDetector.detectChanges();
     }
 
     public onCodeChange(code: string) {
         this.content = code;
-        if (this.tabName === 'Complete solution') {
-            this.completedContent = code;
-        } else if (this.tabName === 'Initial solution') {
-            this.initialContent = code;
-        } else if (this.tabName === 'Preloaded') {
-            this.preloadedContent = code;
+
+        switch (this.tabName) {
+            case 'Complete solution':
+                this.completedContent = code;
+                break;
+            case 'Initial solution':
+                this.initialContent = code;
+                break;
+            case 'Preloaded':
+                this.preloadedContent = code;
+                break;
+            default:
+                break;
         }
     }
 
     switchTab(tabName: string): void {
         this.tabName = tabName;
-        if (tabName === 'Complete solution') {
-            this.content = this.completedContent;
-        } else if (tabName === 'Initial solution') {
-            this.content = this.initialContent;
-        } else if (tabName === 'Preloaded') {
-            this.content = this.preloadedContent;
+
+        switch (tabName) {
+            case 'Complete solution':
+                this.content = this.completedContent;
+                break;
+            case 'Initial solution':
+                this.content = this.initialContent;
+                break;
+            case 'Preloaded':
+                this.content = this.preloadedContent;
+                break;
+            default:
+                break;
         }
+    }
+
+    private languageNameMapping: { [key: string]: string } = {
+        'C#': 'csharp',
+    };
+
+    private mapLanguageName(language: string): string {
+        return this.languageNameMapping[language] || language.toLowerCase();
     }
 }

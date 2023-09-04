@@ -17,11 +17,6 @@
             <tabset class="tabset">
                 <tab  *ngFor="let tabz of tabs" [heading]="tabz.title" [active]="tabz.active"
                     (selectTab)="switchTab(tabz.title)" [disabled]="tabz.disabled" [customClass]="tabz.customClass">
-                    <ng-template tabHeading *ngIf="tabz.title === 'Help'">
-                        <ng-containt ngbTooltip="You see, I show up on click!" style="gap: 9px;">
-                        <fa-icon [icon]="'question-circle'"></fa-icon>
-                    </ng-containt>
-                  </ng-template>
                 </tab>
             </tabset>
             <div class="tab-help">
