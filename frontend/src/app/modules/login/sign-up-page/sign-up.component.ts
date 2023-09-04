@@ -5,7 +5,6 @@ import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
-import { latinCharactersPattern, passwordPattern } from '@shared/regaxes/user-regax-patterns';
 import {
     passwordMaxLength,
     passwordMinLength,
