@@ -15,7 +15,7 @@ namespace LeetWars.Core.WebAPI.Middlewares
         {
             var userId = context.User.Claims.FirstOrDefault(c => c.Type == "user_id")?.Value;
             
-            if (userId != null)
+            if (userId is not null)
             {
                 userIdSetter.SetUserId(userId);
             }

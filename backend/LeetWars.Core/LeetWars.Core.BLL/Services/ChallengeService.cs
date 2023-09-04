@@ -107,8 +107,7 @@ namespace LeetWars.Core.BLL.Services
             var userLevel = await _context
                 .UserLanguageLevels
                 .Include(userLevel => userLevel.User)
-                .Where(userLevel => userLevel.User != null && userLevel.User.Uid == userId)
-                .Where(userLevel => userLevel.LanguageId == languageId)
+                .Where(userLevel => userLevel.User != null && userLevel.User.Uid == userId && userLevel.LanguageId == languageId)
                 .FirstOrDefaultAsync();
 
             return userLevel?.Level ?? LanguageLevel.FirstSteps;
