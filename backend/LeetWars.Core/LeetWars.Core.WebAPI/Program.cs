@@ -12,6 +12,7 @@ builder.Configuration
     .Build();
 
 builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddLeetWarsCoreContext(builder.Configuration);
 builder.Services.AddRabbitMqServices(builder.Configuration);

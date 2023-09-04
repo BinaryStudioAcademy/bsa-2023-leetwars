@@ -39,7 +39,7 @@ export class AuthService {
     }
 
     public isAuthorized() {
-        return this.user && this.getUserInfo();
+        return this.getUserToken() && this.getUserInfo();
     }
 
     // TODO: change parameters to DTO
@@ -56,11 +56,11 @@ export class AuthService {
 
     // TODO: change parameters to DTO
     public login(email: string, password: string) {
-        return this.createUser(
-            from(this.afAuth.signInWithEmailAndPassword(email, password)).pipe(
-                first(),
-                catchError((error) => throwError(error.message)),
-            ),
+        return from(this.afAuth.signInWithEmailAndPassword(email, password)).pipe(
+            first(),
+            catchError((error) => throwError(error.message)),
+            switchMap(() => this.userService.getCurrentUser()),
+            tap((user) => this.setUserInfo(user)),
         );
     }
 
@@ -88,17 +88,16 @@ export class AuthService {
 
     // TODO: Implemented only firebase part
     public changePassword(password: string): Observable<void> {
-        return from(this.afAuth.currentUser)
-            .pipe(
-                first(),
-                switchMap((user) => {
-                    if (user) {
-                        return user.updatePassword(password);
-                    }
+        return from(this.afAuth.currentUser).pipe(
+            first(),
+            switchMap((user) => {
+                if (user) {
+                    return user.updatePassword(password);
+                }
 
-                    throw new Error('User is not authorized');
-                }),
-            );
+                throw new Error('User is not authorized');
+            }),
+        );
     }
 
     public sendVerificationMail(): Observable<void> {

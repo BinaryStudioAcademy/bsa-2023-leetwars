@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
     imports: [
         BrowserModule,
         AppRoutingModule,
+        CoreModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
         NgxChartsModule,
