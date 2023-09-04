@@ -10,6 +10,13 @@
 
     <div class="w-100 dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenuButton">
         <ng-container *ngIf="!isMultiSelection; else multiSelect">
+            <a ngbDropdownItem *ngIf="selectText" (click)="selectItem(selectText)">
+                <fa-icon
+                    [icon]="'check'"
+                    size="xs"
+                    [ngStyle]="{ visibility: selectedItem === selectText ? 'visible' : 'hidden' }"></fa-icon>
+                {{ selectText }}
+            </a>
             <a ngbDropdownItem (click)="selectItem(item)" *ngFor="let item of items; let i = index">
                 <fa-icon
                     [icon]="'check'"
