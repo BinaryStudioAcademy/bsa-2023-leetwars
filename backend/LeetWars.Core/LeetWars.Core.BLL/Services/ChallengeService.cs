@@ -61,20 +61,19 @@ namespace LeetWars.Core.BLL.Services
                 challenges = FilterChallengesByProgress(challenges, filters.Progress);
             }
 
+            if (filters.TagsIds != null)
+            {
+                var filterTags = _context.Tags.Where(tag => 
+                    filters.TagsIds.Contains(tag.Id));
+                
+                challenges = challenges.Where(challenge =>
+                    filterTags.All(tag => challenge.Tags.Contains(tag)));
+            }
+
             if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
             {
                 challenges = challenges.Skip(page.PageSize * (page.PageNumber - 1))
                     .Take(page.PageSize);
-            }
-
-            if (filters.TagsIds != null)
-            {
-                foreach (var filterTagId in filters.TagsIds)
-                {
-                    challenges = challenges.Where(challenge =>
-                            challenge.Tags.Any(tag => tag.Id == filterTagId)
-                    );
-                }
             }
 
             return _mapper.Map<List<ChallengePreviewDto>>(await challenges.ToListAsync());
