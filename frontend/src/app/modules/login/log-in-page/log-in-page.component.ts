@@ -5,6 +5,7 @@ import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
+import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -15,7 +16,7 @@ import { switchMap } from 'rxjs';
 export class LogInPageComponent implements OnInit {
     logInForm = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', Validators.required),
+        password: new FormControl('', [Validators.required]),
     });
 
     isExistingEmail = true;
@@ -37,6 +38,10 @@ export class LogInPageComponent implements OnInit {
 
     public toggleShow() {
         this.showPassword = !this.showPassword;
+    }
+
+    getErrorMessage(formControlName: string) {
+        return getErrorMessage(formControlName, this.logInForm);
     }
 
     public signIn() {

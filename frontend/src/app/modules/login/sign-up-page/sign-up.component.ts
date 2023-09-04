@@ -6,6 +6,14 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
 import { latinCharactersPattern, passwordPattern } from '@shared/regaxes/user-regax-patterns';
+import {
+    passwordMaxLength,
+    passwordMinLength,
+    userNameMaxLength,
+    userNameMinLength,
+} from '@shared/utils/validation/form-control-validator-options';
+import { latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -20,17 +28,21 @@ export class SignUpComponent {
         email: new FormControl('', [Validators.required, Validators.email]),
         username: new FormControl('', [
             Validators.required,
-            Validators.minLength(2),
-            Validators.maxLength(50),
+            Validators.minLength(userNameMinLength),
+            Validators.maxLength(userNameMaxLength),
             Validators.pattern(latinCharactersPattern),
         ]),
         password: new FormControl('', [
             Validators.required,
-            Validators.minLength(8),
-            Validators.maxLength(32),
+            Validators.minLength(passwordMinLength),
+            Validators.maxLength(passwordMaxLength),
             Validators.pattern(passwordPattern),
         ]),
     });
+
+    getErrorMessage(formControlName: string) {
+        return getErrorMessage(formControlName, this.registrationForm);
+    }
 
     constructor(
         private authService: AuthService,
