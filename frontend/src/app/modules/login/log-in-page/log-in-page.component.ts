@@ -53,6 +53,7 @@ export class LogInPageComponent implements OnInit {
                         this.isExistingEmail = false;
                         this.logInForm.markAsUntouched();
                     }
+
                     return this.authService.login({
                         email: this.logInForm.value.email!.trim(),
                         password: this.logInForm.value.password!.trim(),
