@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { User } from '@shared/models/user/user';
 import {
     passwordMaxLength,
     passwordMinLength,
@@ -49,7 +50,33 @@ export class SignUpComponent {
         private toastrNotification: ToastrNotificationsService,
     ) {}
 
-    signUp() {
+    public signUpGitHub() {
+        this.authService.signInWithGitHub().subscribe(
+            (user: User) => {
+                this.router.navigate(['/main']);
+                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
+                // add email sender to user.email
+            },
+            (error) => {
+                this.toastrNotification.showError(error);
+            },
+        );
+    }
+
+    public signUpGoogle() {
+        this.authService.signInWithGoogle().subscribe(
+            (user: User) => {
+                this.router.navigate(['/main']);
+                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
+                // add email sender to user.email
+            },
+            (error) => {
+                this.toastrNotification.showError(error);
+            },
+        );
+    }
+
+    public signUp() {
         this.userService
             .checkEmail(this.registrationForm.value.email!)
             .pipe(
@@ -59,11 +86,11 @@ export class SignUpComponent {
                         this.registrationForm.markAsUntouched();
                     }
 
-                    return this.authService.register(
-                        this.registrationForm.value.username!.trim(),
-                        this.registrationForm.value.email!.trim(),
-                        this.registrationForm.value.password!.trim(),
-                    );
+                    return this.authService.register({
+                        userName: this.registrationForm.value.username!.trim(),
+                        email: this.registrationForm.value.email!.trim(),
+                        password: this.registrationForm.value.password!.trim(),
+                    });
                 }),
             )
             .subscribe(

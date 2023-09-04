@@ -5,8 +5,8 @@
     <div class="log-in-part">
         <div class="form-container">
             <H4 class="sign-in-label">Sign in</H4>
-            <button class="third-party github">Sign in with GitHub</button>
-            <button class="third-party google">Sign in with Google</button>
+            <button class="third-party github" (click)="signInWithGitHub()">Sign in with GitHub</button>
+            <button class="third-party google" (click)="signInWithGoogle()">Sign in with Google</button>
             <H5 class="or-label">or</H5>
 
             <form class="logInForm" [formGroup]="logInForm">
