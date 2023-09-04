@@ -1,5 +1,4 @@
-export enum ChallengeProgress
-{
+export enum ChallengeProgress {
     NotStarted,
     Started,
     Completed

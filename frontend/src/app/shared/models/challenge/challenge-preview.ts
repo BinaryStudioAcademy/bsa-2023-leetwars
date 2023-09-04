@@ -1,6 +1,6 @@
+import { ChallengeStatus } from '@shared/enums/challenge-status';
 import { Language } from '@shared/models/language/language';
 import { Tag } from '@shared/models/tag/tag';
-import {ChallengeStatus} from "@shared/enums/challenge-status";
 
 export interface ChallengePreview {
     authorName: string,

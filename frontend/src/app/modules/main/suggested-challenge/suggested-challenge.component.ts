@@ -1,18 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {BaseComponent} from '@core/base/base.component';
-import {ChallengeService} from '@core/services/challenge.service';
-import {LanguageService} from '@core/services/language.service';
-import {ToastrNotificationsService} from '@core/services/toastr-notifications.service';
+import { Component, OnInit } from '@angular/core';
+import { BaseComponent } from '@core/base/base.component';
+import { ChallengeService } from '@core/services/challenge.service';
+import { LanguageService } from '@core/services/language.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import {
     findItemIdByName, findSuggestionTypeByName,
     ICONS,
-    SUGGESTION_TYPE_NAMES
+    SUGGESTION_TYPE_NAMES,
 } from '@modules/main/suggested-challenge/suggested-challenge.utils';
-import {ChallengePreview} from '@shared/models/challenge/challenge-preview';
-import {SuggestionSettings} from '@shared/models/challenge/suggestion-settings';
-import {Language} from '@shared/models/language/language';
-import {takeUntil} from 'rxjs';
-import {SuggestionType} from "@shared/enums/suggestion-type";
+import { SuggestionType } from '@shared/enums/suggestion-type';
+import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
+import { Language } from '@shared/models/language/language';
+import { takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-suggested-challenge',
