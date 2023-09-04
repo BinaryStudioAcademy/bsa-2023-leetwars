@@ -49,12 +49,12 @@ export class AuthService {
     }
 
     // TODO: change parameters to DTO
-    public login(user: UserLoginDto) {
-        return this.createUser(
-            from(this.afAuth.signInWithEmailAndPassword(user.email, user.password)).pipe(
-                first(),
-                catchError((error) => throwError(error.message)),
-            ),
+    public login(userDto: UserLoginDto) {
+        return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
+            first(),
+            catchError((error) => throwError(error.message)),
+            switchMap(() => this.userService.getCurrentUser()),
+            tap((user) => this.setUserInfo(user)),
         );
     }
 
@@ -126,7 +126,8 @@ export class AuthService {
                     email: resp.user?.email ?? '',
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
-                })),
+                }),
+            ),
             tap((user) => this.setUserInfo(user)),
         );
     }
