@@ -1,6 +1,8 @@
 import { AuditEntity } from '@shared/models/common/audit-entity/audit-entity';
 
-export interface UserSolution extends AuditEntity {
+import { Entity } from '../common/entity';
+
+export interface UserSolution extends AuditEntity, Entity {
     challengeVersionId: number;
     code: string;
     output: string;

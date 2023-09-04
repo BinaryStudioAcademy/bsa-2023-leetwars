@@ -3,6 +3,7 @@ import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { UserFull } from '@shared/models/profile/user-full';
+import { User } from '@shared/models/user';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -20,9 +21,14 @@ export class UserProfileComponent {
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
     ) {
-        this.user.id = authService.isAuthorized()?.id ?? 0;
+        const user = <User>authService.isAuthorized();
+
+        if (user) {
+            this.user.id = user.id ?? 0;
+        }
+        this.user.id = 3;
         userService
-            .getFullUser(1)
+            .getFullUser(this.user.id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(
                 (result) => {

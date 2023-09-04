@@ -3,27 +3,28 @@
         <p>Solved Problems</p>
         <div class="statistics">
             <div class="circle">
-                <app-pie-chart 
-                [currentNumber]="totalTasksCompleted" 
-                [totalNumber]="totalTasks"
-                [activeColor]="pieChartActiveColor">
+                <app-pie-chart [currentNumber]="challengesCompleted.length" [totalNumber]="challenges.length"
+                    [activeColor]="pieChartActiveColor">
                 </app-pie-chart>
 
             </div>
 
             <div class="levels">
                 <div class="level-card">
-                    <app-progress-bar [total]="easyTasks" [solved]="easyTasksCompleted" [data]="'Not enough data'"
+                    <app-progress-bar [total]="challenges | filterByLevel:'easy'"
+                        [solved]=" challengesCompleted | filterByLevel:'easy'" [data]="'Not enough data'"
                         [level]="easyLabel">
                     </app-progress-bar>
                 </div>
                 <div class="level-card">
-                    <app-progress-bar [total]="mediumTasks" [solved]="mediumTasksCompleted" [data]="'Not enough data'"
+                    <app-progress-bar [total]="challenges | filterByLevel:'medium'"
+                        [solved]="challengesCompleted | filterByLevel:'medium'" [data]="'Not enough data'"
                         [level]="mediumLabel">
                     </app-progress-bar>
                 </div>
                 <div class="level-card">
-                    <app-progress-bar [total]="hardTasks" [solved]="hardTasksCompleted" [data]="'Not enough data'"
+                    <app-progress-bar [total]="challenges | filterByLevel:'difficult'"
+                        [solved]="challengesCompleted | filterByLevel:'difficult'" [data]="'Not enough data'"
                         [level]="hardLabel">
                     </app-progress-bar>
                 </div>
