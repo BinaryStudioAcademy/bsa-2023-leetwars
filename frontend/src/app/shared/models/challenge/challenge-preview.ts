@@ -1,5 +1,6 @@
 import { Language } from '@shared/models/language/language';
 import { Tag } from '@shared/models/tag/tag';
+import {ChallengeStatus} from "@shared/enums/challenge-status";
 
 export interface ChallengePreview {
     authorName: string,
@@ -8,5 +9,5 @@ export interface ChallengePreview {
     instructions: string,
     tags: Tag[],
     languages: Language[],
-    status: number,
+    status: ChallengeStatus,
 }

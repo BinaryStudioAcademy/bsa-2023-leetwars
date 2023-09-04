@@ -4,7 +4,7 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { PROGRESES, STATUSES } from '@modules/main/filtering-section/filtering-section.utils';
+import { PROGRESS_NAMES_MAP, STATUS_NAMES_MAP } from '@modules/main/filtering-section/filtering-section.utils';
 import { ChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { Language } from '@shared/models/language/language';
@@ -42,13 +42,13 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         tagsIds: [],
     };
 
-    private progresses = PROGRESES;
+    private progresses = PROGRESS_NAMES_MAP;
 
     private tags: Tag[] = [];
 
     private languages: Language[] = [];
 
-    private statuses = STATUSES;
+    private statuses = STATUS_NAMES_MAP;
 
     constructor(
         private challengeService: ChallengeService,
@@ -95,7 +95,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             return;
         }
 
-        this.filter.challengeStatus = this.statuses.find(item => item.name === value)?.id;
+        this.filter.challengeStatus = this.statuses.find(item => item.name === value)?.status;
         this.resetChallengesData();
     }
 
@@ -104,7 +104,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             return;
         }
 
-        this.filter.progress = this.progresses.find(item => item.name === value)?.id;
+        this.filter.progress = this.progresses.find(item => item.name === value)?.state;
         this.resetChallengesData();
     }
 

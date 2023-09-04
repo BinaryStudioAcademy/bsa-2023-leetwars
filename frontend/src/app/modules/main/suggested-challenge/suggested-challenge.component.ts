@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { BaseComponent } from '@core/base/base.component';
-import { ChallengeService } from '@core/services/challenge.service';
-import { LanguageService } from '@core/services/language.service';
-import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { findItemIdByName, ICONS, SUGGESTION_TYPES } from '@modules/main/suggested-challenge/suggested-challenge.utils';
-import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
-import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
-import { Language } from '@shared/models/language/language';
-import { takeUntil } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {BaseComponent} from '@core/base/base.component';
+import {ChallengeService} from '@core/services/challenge.service';
+import {LanguageService} from '@core/services/language.service';
+import {ToastrNotificationsService} from '@core/services/toastr-notifications.service';
+import {
+    findItemIdByName, findSuggestionTypeByName,
+    ICONS,
+    SUGGESTION_TYPE_NAMES
+} from '@modules/main/suggested-challenge/suggested-challenge.utils';
+import {ChallengePreview} from '@shared/models/challenge/challenge-preview';
+import {SuggestionSettings} from '@shared/models/challenge/suggestion-settings';
+import {Language} from '@shared/models/language/language';
+import {takeUntil} from 'rxjs';
+import {SuggestionType} from "@shared/enums/suggestion-type";
 
 @Component({
     selector: 'app-suggested-challenge',
@@ -23,13 +28,13 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
 
     suggestionTypesNames: string[];
 
-    suggestionTypes = SUGGESTION_TYPES;
+    suggestionTypes = SUGGESTION_TYPE_NAMES;
 
     suggestionIcons = ICONS;
 
     suggestionSettings: SuggestionSettings = {
         languageId: 0,
-        suggestionType: 0,
+        suggestionType: SuggestionType.Fundamentals,
     };
 
     constructor(
@@ -56,7 +61,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         if (typeof value !== 'string') {
             return;
         }
-        this.suggestionSettings.suggestionType = findItemIdByName(this.suggestionTypes, value);
+        this.suggestionSettings.suggestionType = findSuggestionTypeByName(value);
         this.getChallenge();
     }
 
