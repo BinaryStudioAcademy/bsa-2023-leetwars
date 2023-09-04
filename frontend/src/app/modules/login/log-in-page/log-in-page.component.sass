@@ -1,0 +1,151 @@
+@import 'color-variables'
+@import 'screen-sizes-variables'
+
+.log-in-body
+    position: absolute
+    height: 100vh
+    margin: 0px
+    padding: 0px
+
+    display: grid
+    grid-template-columns: 55vw 45vw
+
+.logo-part
+    grid-column: 1
+    background-color: $dark-grey
+
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    margin: 0px
+    height: 100%
+    width: 100%
+
+.log-in-part
+    grid-column: 2
+    background-color: $charcoal-grey
+
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+
+    margin: 0px
+    width: 100%
+
+.log-in-part
+  > *
+    width: 60%
+
+.form-container
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    min-width: 202px
+
+.form-container
+  > *
+    width: 100%
+
+.sign-in-label
+    color: $white
+    font-family: Open Sans
+    font-weight: 700
+    text-align: start
+    margin-bottom: 25px
+
+.third-party
+    color: $white
+    text-align: center
+    font-family: Montserrat
+    font-size: 16px
+
+    font-weight: 600
+    line-height: normal
+
+    background-color: transparent
+
+    border-radius: 7px
+    border: 1px solid $white
+
+    margin-bottom: 15px
+    padding-top: 13px
+    padding-bottom: 13px
+
+.or-label
+    color: $white
+    text-align: center
+
+    font-weight: 500
+    line-height: normal
+    margin-top: 25px
+    margin-bottom: 15px
+
+.logInForm
+    display: flex
+    flex-direction: column
+    gap: 1.4vw
+
+
+
+.submit-sign-in
+    border-radius: 7px
+    background-color: $green
+
+    color: $white
+    text-align: center
+    font-family: Montserrat
+    font-size: 16px
+
+    font-weight: 600
+    line-height: normal
+
+    padding-top: 13px
+    padding-bottom: 13px
+    margin-top: 18px
+
+.submit-sign-in:disabled
+    background-color: $dark-green
+
+.no-account
+    margin-top: 16px
+    margin-bottom: 50px
+    align-self: flex-end
+    color: $white
+    font-family: Open Sans
+    font-size: 14px
+
+    font-weight: 300
+    line-height: normal
+    text-align: center
+
+.sign-up-link
+    color: $cornflower
+    font-family: Open Sans
+    font-size: 14px
+
+    font-weight: 300
+    line-height: normal
+    text-decoration: underline
+
+.sign-up-link:hover
+    color: $vivid-blue
+
+@media screen and (max-width: $large)
+  .log-in-body
+    grid-template-columns: none
+    grid-template-rows: 35vh 65vh
+    width: 100%
+  .logo-part, .log-in-part
+    grid-column: auto
+  .sign-in-label
+    margin: 16px 0
+  .or-label
+    margin: 0
+
+@media screen and (max-width: $mobile)
+  .log-in-part > *
+    width: 90%

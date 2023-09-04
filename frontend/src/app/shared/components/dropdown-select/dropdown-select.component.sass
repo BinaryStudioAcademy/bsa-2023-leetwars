@@ -1,0 +1,55 @@
+@import 'src/styles/color-variables'
+
+button
+    all: revert
+
+.dropdown
+  width: 100%
+
+  &-toggle::after
+    display: none !important
+
+  &-menu
+    background-color: $deep-dark-grey
+    overflow: auto
+
+  &-item
+    color: $grey
+    font-family: Open Sans
+    font-weight: 600
+
+    &:hover
+      background-color: $slightly-transparent-light-grey
+
+    &:focus
+      background-color: transparent
+
+
+
+label
+  font-family: Open Sans
+  font-weight: 600
+  color: $white
+  padding-bottom: 3px
+
+.btn
+  border: $light-lavender-grey 2px solid
+  border-radius: 7px
+  height: 45px
+  gap: 5px
+  color: $grey
+  align-items: center
+  background-color: $dark-grey
+  font-family: Open Sans
+  font-weight: 600
+  padding-left: 14px
+  padding-right: 14px
+  padding-top: 0px
+  padding-bottom: 0px
+
+  fa-icon
+    margin-left: auto
+    color: $light-lavender-grey
+
+.selected-icon
+  color: $light-copper !important

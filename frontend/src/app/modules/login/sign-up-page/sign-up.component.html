@@ -1,0 +1,66 @@
+<div class="register-page-wrp">
+    <div class="logo-container">
+        <img src="assets/images/logo/logo-sign-up.png" alt="LEETWARS">
+    </div>
+    <div class="register-page-container">
+        <form [formGroup]="registrationForm" class="register-page-form">
+            <button class="btn btn-link link-profile-button">+ Link Your GitHub Account</button>
+            <div class="mb-2 form-group">
+                <app-custom-input
+                    [InputType]="'email'"
+                    [Identifier]="'email'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Email'"
+                    [InputPlaceholder]="'Enter your email'"
+                    formControlName="email"
+                    (InputValueChange)="registrationForm.controls['email'].setValue($event)">
+                </app-custom-input>
+                <div class="invalid-feedback d-block" *ngIf="registrationForm.controls['email'].touched && registrationForm.get('email')?.invalid">
+                    <div>{{ getErrorMessage('email') }}</div>
+                </div>
+                <div *ngIf="isExistingEmail && registrationForm.controls['email'].untouched " class="invalid-feedback d-block">
+                    A user with this e-mail is already registered, please enter another one.
+                </div>
+            </div>
+            <div class="mb-2 form-group">
+                <app-custom-input
+                    [Identifier]="'username'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Username'"
+                    [InputPlaceholder]="'Enter your username'"
+                    formControlName="username"
+                    (InputValueChange)="registrationForm.controls['username'].setValue($event)">
+                </app-custom-input>
+                <div class="invalid-feedback d-block" *ngIf="registrationForm.controls['username'].touched && registrationForm.get('username')?.invalid">
+                    <div>{{ getErrorMessage('username') }}</div>
+                </div>
+            </div>
+            <div class="mb-2 form-group">
+                <app-custom-input
+                    [InputType]="'password'"
+                    [Identifier]="'password'"
+                    [Width]="'100%'"
+                    [InputLabel]="'Password:'"
+                    [InputPlaceholder]="'&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"
+                    formControlName="password"
+                    (InputValueChange)="registrationForm.controls['password'].setValue($event)">
+                </app-custom-input>
+                <div class="invalid-feedback d-block" *ngIf="registrationForm.controls['password'].touched && registrationForm.get('password')?.invalid">
+                    <div>{{ getErrorMessage('password') }}</div>
+                </div>
+            </div>
+            <p class="privacy-policy-text">
+                By creating an account, you agree to our
+                <a>Privacy Policy</a>
+            </p>
+            <button type="submit" class="form-button" [disabled]="!registrationForm.valid" (click)="signUp()">
+                Enlist
+            </button>
+            <div class="have-account">
+                Already registered?
+                <a class="sign-in-link" routerLink="/auth/login">Sign in</a>
+            </div>
+        </form>
+    </div>
+    <div class="footer"></div>
+</div>

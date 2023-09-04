@@ -28,6 +28,7 @@
             "parser": "@typescript-eslint/parser",
             "rules": {
                 "no-shadow": "off",
+                "no-empty-function": ["error", { "allow": ["constructors"] }],
                 "@angular-eslint/directive-selector": [
                     "error",
                     {
@@ -53,6 +54,7 @@
                 "@typescript-eslint/type-annotation-spacing": "error",
                 "@typescript-eslint/lines-between-class-members": "off",
                 "@typescript-eslint/indent": ["error", 4],
+                "@typescript-eslint/no-explicit-any": "error",
                 "@typescript-eslint/comma-dangle": "off",
                 "import/prefer-default-export": "off",
                 "import/no-extraneous-dependencies": "off",

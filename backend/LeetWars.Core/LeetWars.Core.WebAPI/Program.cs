@@ -12,13 +12,15 @@ builder.Configuration
     .Build();
 
 builder.Services.AddControllers();
-builder.Services.AddLeetWarsCoreContext(builder.Configuration);
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.RegisterCustomServices();
+builder.Services.AddLeetWarsCoreContext(builder.Configuration);
+builder.Services.AddRabbitMqServices(builder.Configuration);
+builder.Services.RegisterCustomServices(builder.Configuration);
 builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
+builder.Services.AddFirebaseAuthentication(builder.Configuration);
 
 builder.Services.AddCors();
 builder.Services.AddHealthChecks();
@@ -26,6 +28,8 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.WebHost.UseUrls("http://*:5050");
 
 var app = builder.Build();
+
+app.UseLeetWarsCoreContext();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

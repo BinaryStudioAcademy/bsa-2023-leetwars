@@ -29,10 +29,42 @@ services:
         env_file:
             - /etc/environment
 
+    leetwars_builder:
+        image: tatihutii/leetwars_builder:latest
+        volumes:
+            - type: bind
+              source: /var/run/docker.sock
+              target: /var/run/docker.sock
+        container_name: 'leetwars_builder'
+        restart: on-failure
+        networks:
+            - back
+        ports:
+            - "5090:5090"
+        environment:
+            ASPNETCORE_ENVIRONMENT: 'Production'
+        env_file:
+            - /etc/environment
+
+    leetwars_emailer:
+        image: tatihutii/leetwars_emailer:latest
+        container_name: 'leetwars_emailer'
+        restart: on-failure
+        networks:
+            - back
+        ports:
+            - "5080:5080"
+        environment:
+            ASPNETCORE_ENVIRONMENT: 'Production'
+        env_file:
+            - /etc/environment
+
     leetwars_frontend:
         depends_on:
             - leetwars_core
             - leetwars_notifier
+            - leetwars_builder
+            - leetwars_emailer
         image: tatihutii/leetwars_frontend:latest
         container_name: 'leetwars_frontend'
         restart: on-failure

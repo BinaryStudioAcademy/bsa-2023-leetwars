@@ -2,24 +2,24 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [ main, development ]
+    branches: [main, dev]
   pull_request:
-    branches: [ main, development ]
+    branches: [main, dev]
   workflow_dispatch:
 
 jobs:
   build_backend:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore .NET dependencies
-      run: dotnet restore backend/LeetWars.All.sln
-    - name: Build .NET
-      run: dotnet build backend/LeetWars.All.sln --no-restore
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore .NET dependencies
+        run: dotnet restore backend/LeetWars.All.sln
+      - name: Build .NET
+        run: dotnet build backend/LeetWars.All.sln --no-restore
 
   build_frontend:
     runs-on: ubuntu-latest

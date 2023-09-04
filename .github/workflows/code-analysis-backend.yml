@@ -2,7 +2,7 @@ name: Code Analysis Backend
 on:
   push:
     branches:
-      - development
+      - dev
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
