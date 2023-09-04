@@ -48,7 +48,6 @@ export class AuthService {
         );
     }
 
-    // TODO: change parameters to DTO
     public login(userDto: UserLoginDto) {
         return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
             first(),
@@ -126,8 +125,7 @@ export class AuthService {
                     email: resp.user?.email ?? '',
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
-                }),
-            ),
+                })),
             tap((user) => this.setUserInfo(user)),
         );
     }
