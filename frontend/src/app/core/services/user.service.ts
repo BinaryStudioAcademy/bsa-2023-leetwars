@@ -24,6 +24,10 @@ export class UserService {
         return this.httpService.getRequest<boolean>(`/users/is-existing-email?email=${email}`);
     }
 
+    public checkUserName(userName: string): Observable<boolean> {
+        return this.httpService.getRequest<boolean>(`/users/is-existing-username?username=${userName}`);
+    }
+
     public getFullUser(id: number): Observable<UserFull> {
         return this.httpService.getRequest<UserFull>(`/users/${id}`);
     }

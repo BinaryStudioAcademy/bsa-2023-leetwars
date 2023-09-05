@@ -40,6 +40,7 @@
         "eslint-plugin-prettier": "^4.2.1",
         "moment": "^2.29.4",
         "monaco-editor": "0.33.0",
+        "ngx-infinite-scroll": "14.0.0",
         "ngx-markdown": "14.0.1",
         "ngx-bootstrap": "9.0.0",
         "ngx-monaco-editor-v2": "14.x.x",

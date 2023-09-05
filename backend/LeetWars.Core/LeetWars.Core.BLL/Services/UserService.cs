@@ -47,6 +47,12 @@ public class UserService : BaseService, IUserService
         bool isExistingEmail = await _context.Users.AnyAsync(u => u.Email.ToLower() == email.ToLower());
         return isExistingEmail;
     }
+    
+    public async Task<bool> CheckIsExistingUserName(string userName)
+    {
+        bool isExistingUserName = await _context.Users.AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
+        return isExistingUserName;
+    }
 
     public async Task<UserDto> GetUserByUidAsync(string uid)
     {

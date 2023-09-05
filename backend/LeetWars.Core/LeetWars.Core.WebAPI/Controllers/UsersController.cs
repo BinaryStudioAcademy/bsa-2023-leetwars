@@ -42,6 +42,14 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
     
+    [HttpGet("is-existing-username")]
+    [AllowAnonymous]
+    public async Task<ActionResult<bool>> CheckUserName([FromQuery] string username)
+    {
+        var isExistingUserName = await _userService.CheckIsExistingUserName(username);
+        return Ok(isExistingUserName);
+    }
+    
     [HttpGet("current")]
     public async Task<ActionResult<UserDto>> GetCurrentUser()
     {
