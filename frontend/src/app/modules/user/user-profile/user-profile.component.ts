@@ -26,7 +26,6 @@ export class UserProfileComponent {
         if (user) {
             this.user.id = user.id ?? 0;
         }
-        this.user.id = 3;
         userService
             .getFullUser(this.user.id)
             .pipe(takeUntil(this.unsubscribe$))
