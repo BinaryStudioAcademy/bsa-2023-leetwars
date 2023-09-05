@@ -3,13 +3,20 @@
         <label *ngIf="title" class="title">{{ title }}</label>
         <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
             <fa-icon *ngIf="selectedIcon" [icon]="selectedIcon" class="ms-0 selected-icon"></fa-icon>
-            <span class="float-start">{{ selectedItem ? selectedItem : selectText }}</span>
+            <span class="float-start">{{ fieldText ? fieldText : selectText }}</span>
             <fa-icon [icon]="'chevron-down'" size="xs"></fa-icon>
         </button>
     </div>
 
     <div class="w-100 dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenuButton">
         <ng-container *ngIf="!isMultiSelection; else multiSelect">
+            <a ngbDropdownItem *ngIf="selectText" (click)="selectItem(selectText)">
+                <fa-icon
+                    [icon]="'check'"
+                    size="xs"
+                    [ngStyle]="{ visibility: selectedItem === selectText ? 'visible' : 'hidden' }"></fa-icon>
+                {{ selectText }}
+            </a>
             <a ngbDropdownItem (click)="selectItem(item)" *ngFor="let item of items; let i = index">
                 <fa-icon
                     [icon]="'check'"

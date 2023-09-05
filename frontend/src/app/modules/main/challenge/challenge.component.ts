@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
 @Component({
     selector: 'app-challenge',
@@ -6,24 +8,11 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./challenge.component.sass'],
 })
 export class ChallengeComponent {
-    //TODO: Replace every variable started with 'challenge' to real challenge model with @Input decorator
-    @Input() challenge = '';
+    @Input() challenge: ChallengePreview;
 
-    public challengeLevel = 3;
+    public challengeStars = 0;
 
-    public challengeTitle = 'Replace With Alphabet Position';
+    public challengePositiveFeedbacksPercent = 0;
 
-    public challengeStars = 540;
-
-    public challengePositiveFeedbacksPercent = 88;
-
-    public challengeAuthorName = 'Emerson Saris';
-
-    public challengeLanguages = [
-        { imgUrl: '/assets/images/html.png', value: 'HTML, CSS, JS' },
-        { imgUrl: '/assets/images/ruby.png', value: 'Ruby' },
-        { imgUrl: '/assets/images/js.png', value: 'JS' },
-    ];
-
-    public challengeTags = ['Algorithms', 'Strings', 'Data Types', 'Formatting', 'Logic'];
+    public getLanguageIconUrl = getLanguageIconUrl;
 }

@@ -1,18 +1,18 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { User } from '@shared/models/user';
+import { User } from '@shared/models/user/user';
+import { UserLoginDto } from '@shared/models/user/user-login-dto';
+import { UserRegisterDto } from '@shared/models/user/user-register-dto';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
 import { BehaviorSubject, first, from, Observable, switchMap, tap, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { HttpInternalService } from './http-internal.service';
 import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root',
 })
-// TODO: change FakeUser with real entity
 export class AuthService {
     private userSubject: BehaviorSubject<User | undefined>;
 
@@ -22,12 +22,7 @@ export class AuthService {
 
     private tokenKeyName = 'userToken';
 
-    constructor(
-        private httpService: HttpInternalService,
-        private afAuth: AngularFireAuth,
-        private userService: UserService,
-        private ngZone: NgZone,
-    ) {
+    constructor(private afAuth: AngularFireAuth, private userService: UserService) {
         this.userSubject = new BehaviorSubject<User | undefined>(this.getUserInfo());
         afAuth.authState.subscribe(async (user) => {
             if (user) {
@@ -42,25 +37,23 @@ export class AuthService {
         return this.getUserToken() && this.getUserInfo();
     }
 
-    // TODO: change parameters to DTO
-    public register(username: string, email: string, password: string) {
+    public register(user: UserRegisterDto) {
         return this.createUser(
-            from(this.afAuth.createUserWithEmailAndPassword(email, password)).pipe(
+            from(this.afAuth.createUserWithEmailAndPassword(user.email, user.password)).pipe(
                 first(),
                 tap(() => this.sendVerificationMail()),
                 catchError((error) => throwError(error.message)),
             ),
-            username,
+            user.userName,
         );
     }
 
-    // TODO: change parameters to DTO
-    public login(email: string, password: string) {
-        return this.createUser(
-            from(this.afAuth.signInWithEmailAndPassword(email, password)).pipe(
-                first(),
-                catchError((error) => throwError(error.message)),
-            ),
+    public login(userDto: UserLoginDto) {
+        return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
+            first(),
+            catchError((error) => throwError(error.message)),
+            switchMap(() => this.userService.getCurrentUser()),
+            tap((user) => this.setUserInfo(user)),
         );
     }
 
@@ -76,29 +69,26 @@ export class AuthService {
         return localStorage.getItem(this.tokenKeyName);
     }
 
-    // TODO: Implemented only firebase part
     public signInWithGoogle() {
-        return this.signInWithProvider(new GoogleAuthProvider());
+        return this.createUser(this.signInWithProvider(new GoogleAuthProvider()));
     }
 
-    // TODO: Implemented only firebase part
     public signInWithGitHub() {
-        return this.signInWithProvider(new GithubAuthProvider());
+        return this.createUser(this.signInWithProvider(new GithubAuthProvider()));
     }
 
     // TODO: Implemented only firebase part
     public changePassword(password: string): Observable<void> {
-        return from(this.afAuth.currentUser)
-            .pipe(
-                first(),
-                switchMap((user) => {
-                    if (user) {
-                        return user.updatePassword(password);
-                    }
+        return from(this.afAuth.currentUser).pipe(
+            first(),
+            switchMap((user) => {
+                if (user) {
+                    return user.updatePassword(password);
+                }
 
-                    throw new Error('User is not authorized');
-                }),
-            );
+                throw new Error('User is not authorized');
+            }),
+        );
     }
 
     public sendVerificationMail(): Observable<void> {
@@ -126,15 +116,18 @@ export class AuthService {
         );
     }
 
-    private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string = '') {
-        return auth.pipe(switchMap((resp) =>
-            this.userService.createUser({
-                uid: resp.user?.uid,
-                userName: userName ?? resp.user?.displayName!,
-                email: resp.user?.email ?? '',
-                image: resp.user?.photoURL ?? undefined,
-                timezone: new Date().getTimezoneOffset() / 60,
-            })), tap((user) => this.setUserInfo(user)));
+    private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string | undefined = undefined) {
+        return auth.pipe(
+            switchMap((resp) =>
+                this.userService.createUser({
+                    uid: resp.user?.uid,
+                    userName: userName ?? resp.user?.displayName!,
+                    email: resp.user?.email ?? '',
+                    image: resp.user?.photoURL ?? undefined,
+                    timezone: new Date().getTimezoneOffset() / 60,
+                })),
+            tap((user) => this.setUserInfo(user)),
+        );
     }
 
     private getUserInfo(): User | undefined {

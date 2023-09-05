@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { NewUser } from '@shared/models/new-user';
-import { User } from '@shared/models/user';
+import { NewUser } from '@shared/models/user/new-user';
+import { User } from '@shared/models/user/user';
 import { Observable } from 'rxjs';
 
 import { HttpInternalService } from './http-internal.service';
@@ -13,6 +13,10 @@ export class UserService {
 
     public createUser(newUser: NewUser): Observable<User> {
         return this.httpService.postRequest<User>('/users', newUser);
+    }
+
+    public getCurrentUser(): Observable<User> {
+        return this.httpService.getRequest<User>('/users/current');
     }
 
     public checkEmail(email: string): Observable<boolean> {
