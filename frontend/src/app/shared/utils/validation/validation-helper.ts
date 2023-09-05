@@ -1,10 +1,12 @@
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
 import {
     emailValidationErrorMessages,
     passwordValidationErrorMessages,
     usernameValidationErrorMessages,
 } from '@shared/utils/validation/form-controls-error-messages';
 import { ControlErrorMessages } from '@shared/utils/validation/validation-interfaces';
+
+import { emailDomainPattern } from './regex-patterns';
 
 const controlErrorMessagesMap: { [key: string]: ControlErrorMessages } = {
     email: emailValidationErrorMessages,
@@ -23,4 +25,14 @@ export function getErrorMessage(formControlName: string, form: FormGroup): strin
     }
 
     return null;
+}
+
+export function emailWithDotValidator(control: AbstractControl): ValidationErrors | null {
+    const email = control.value as string;
+
+    if (email && emailDomainPattern.test(email)) {
+        return null;
+    }
+
+    return { noDotInDomain: true };
 }
