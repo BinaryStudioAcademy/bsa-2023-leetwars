@@ -1,14 +1,19 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Input } from '@angular/core';
+import {
+    AfterViewInit, ChangeDetectorRef, Component, ElementRef,
+    EventEmitter, HostListener, Input, OnChanges, Output,
+} from '@angular/core';
 
 @Component({
     selector: 'app-steps-of-progress',
     templateUrl: './steps-of-progress.component.html',
     styleUrls: ['./steps-of-progress.component.sass'],
 })
-export class StepsOfProgressComponent implements AfterViewInit {
+export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
     @Input() public steps: string[] = [];
 
     @Input() public activeStepIndex = 0;
+
+    @Output() stepClick = new EventEmitter<number>();
 
     public progressWidth = 0;
 
@@ -40,14 +45,23 @@ export class StepsOfProgressComponent implements AfterViewInit {
         }
 
         this.progressBarLine = this.el.nativeElement.querySelector('.progress-bar-line');
-        this.activeStepIndicator = this.el.nativeElement.querySelectorAll('.step-indicator')[this.activeStepIndex];
         this.updateProgressBarWidth();
+    }
+
+    ngOnChanges(): void {
+        this.updateProgressBarWidth();
+    }
+
+    public onClick(stepNumber: number) {
+        this.stepClick.emit(stepNumber);
     }
 
     private updateProgressBarWidth() {
         if (!this.isActiveStepValid()) {
             return;
         }
+
+        this.activeStepIndicator = this.el.nativeElement.querySelectorAll('.step-indicator')[this.activeStepIndex];
 
         const progressBarWidth = this.progressBarLine?.clientWidth ?? 1; // Ensure non-zero width
         const activeStepLeft =
