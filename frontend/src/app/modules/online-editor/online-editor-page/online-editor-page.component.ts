@@ -25,9 +25,13 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     selectedLanguage: string;
 
+    selectedLanguageVersion: string;
+
     languageNameMap: Map<string, string> = new Map<string, string>([['C#', 'csharp']]);
 
     languages: string[];
+
+    languageVersions: string[];
 
     editorOptions: object;
 
@@ -36,7 +40,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
-        breakpointObserver: BreakpointObserver,
+        private breakpointObserver: BreakpointObserver,
         private router: Router,
     ) {
         breakpointObserver
@@ -59,8 +63,17 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         this.challengeService.getChallengeById(challengeId).subscribe({
             next: (challenge) => {
                 this.languages = challenge.versions.map((v) => v.language.name);
+                const languageVersionNames: string[] = [];
+
+                challenge.versions.forEach((version) => {
+                    version.language.languageVersions.forEach((languageVersion) => {
+                        languageVersionNames.push(languageVersion.version);
+                    });
+                });
+                this.languageVersions = languageVersionNames;
                 this.challenge = challenge;
                 [this.selectedLanguage] = this.languages;
+                [this.selectedLanguageVersion] = this.languageVersions;
                 this.editorOptions = {
                     theme: 'custom-theme',
                     language: this.mapLanguageName(this.selectedLanguage),
@@ -84,6 +97,9 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (<any>window).monaco.editor.setModelLanguage((<any>window).monaco.editor.getModels()[0], selectedLang);
+
+        this.languageVersions = this.getLanguageVersionsByLanguage(selectedLang);
+        [this.selectedLanguageVersion] = this.languageVersions;
     }
 
     selectTab(title: string): void {
@@ -102,6 +118,22 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     private mapLanguageName(language: string): string {
         return this.languageNameMap.get(language) || language.toLowerCase();
+    }
+
+    private getLanguageVersionsByLanguage(language: string): string[] {
+        const languageVersions: string[] = [];
+
+        this.challenge.versions.forEach((version) => {
+            const selectedLang = this.mapLanguageName(version.language.name as string);
+
+            if (selectedLang === language) {
+                version.language.languageVersions.forEach((languageVersion) => {
+                    languageVersions.push(languageVersion.version);
+                });
+            }
+        });
+
+        return languageVersions;
     }
 
     ngOnDestroy(): void {

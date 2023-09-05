@@ -5,6 +5,7 @@ import { Tag } from '../tag/tag';
 import { User } from '../user/user';
 
 export interface Challenge extends AuditEntity {
+    id: number;
     title: string;
     instructions: string;
     levelId: number;

@@ -15,6 +15,13 @@
                         <button ngbNavLink (click)="selectTab('Submissions')">Submissions</button>
                         <ng-template ngbNavContent>Submissions here</ng-template>
                     </li>
+
+                    <li [ngbNavItem]="'Description'" [class.selectedTab]="isSelected('Output')">
+                        <button ngbNavLink (click)="selectTab('Output')">Output</button>
+                        <ng-template ngbNavContent>
+                            <p class="challenge-title">Output</p>
+                        </ng-template>
+                    </li>
                 </ul>
                 <div class="content" [ngbNavOutlet]="nav"></div>
             </div>
@@ -32,9 +39,15 @@
                             (SelectedItemsChanged)="onSelectedLanguageChanged($event)"></app-dropdown-select>
                     </div>
                     <div class="vertical-divider"></div>
-                    <button>
-                        <span>Auto</span>
-                    </button>
+
+                    <div class="language-selection">
+                        <fa-icon [icon]="'info'" size="sm"></fa-icon>
+                        <app-dropdown-select
+                            [isMultiSelection]="false"
+                            [items]="languageVersions"
+                            [selectedItem]="selectedLanguageVersion">
+                        </app-dropdown-select>
+                    </div>
                 </div>
                 <ngx-monaco-editor
                     class="my-code-editor"

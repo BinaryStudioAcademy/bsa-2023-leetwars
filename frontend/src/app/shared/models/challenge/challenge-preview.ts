@@ -3,6 +3,7 @@ import { Language } from '@shared/models/language/language';
 import { Tag } from '@shared/models/tag/tag';
 
 export interface ChallengePreview {
+    id: number
     authorName: string,
     levelName: string,
     title: string,

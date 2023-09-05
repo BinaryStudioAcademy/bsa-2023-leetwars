@@ -1,7 +1,7 @@
 import { ChallengeStatus } from '@shared/enums/challenge-status';
 
 import { AuditEntity } from '../common/audit-entity/audit-entity';
-import { Language } from '../language/language';
+import { LanguageFull } from '../language/languageFull';
 import { LanguageVersion } from '../language-version/language-version';
 import { Test } from '../test/test';
 import { User } from '../user/user';
@@ -16,6 +16,6 @@ export interface ChallengeVersion extends AuditEntity {
     languageVersions: Array<LanguageVersion>;
     solutions: Array<UserSolution>;
     tests: Array<Test>;
-    language: Language;
+    language: LanguageFull;
     author: User;
 }
