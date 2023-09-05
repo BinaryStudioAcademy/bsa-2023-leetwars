@@ -1,4 +1,3 @@
-<app-steps-of-progress [steps]="steps"></app-steps-of-progress>
 <div class="content-wrapper">
     <div>
         <h2 class="header">Name and describe your question</h2>
@@ -10,8 +9,8 @@
         <div class="categories-list">
             <div
                 class="category"
-                [class.category-active]="selectedCategory === CategoryType.Fundamentals"
-                (click)="selectedCategory = CategoryType.Fundamentals">
+                [class.category-active]="category === CategoryType.Fundamentals"
+                (click)="category = CategoryType.Fundamentals">
                 <img
                     class="category-icon"
                     src="/assets/images/categories-icons/bookmark-icon.png"
@@ -20,29 +19,29 @@
             </div>
             <div
                 class="category"
-                [class.category-active]="selectedCategory === CategoryType.Algorithms"
-                (click)="selectedCategory = CategoryType.Algorithms">
+                [class.category-active]="category === CategoryType.Algorithms"
+                (click)="category = CategoryType.Algorithms">
                 <img class="category-icon" src="/assets/images/categories-icons/abasus-icon.png" alt="abasus-icon" />
                 <span class="category-text">Algorithms</span>
             </div>
             <div
                 class="category"
-                [class.category-active]="selectedCategory === CategoryType.BugFixes"
-                (click)="selectedCategory = CategoryType.BugFixes">
+                [class.category-active]="category === CategoryType.BugFixes"
+                (click)="category = CategoryType.BugFixes">
                 <img class="category-icon" src="/assets/images/categories-icons/bug-icon.png" alt="bug-icon" />
                 <span class="category-text">Bug Fixes</span>
             </div>
             <div
                 class="category"
-                [class.category-active]="selectedCategory === CategoryType.Refactoring"
-                (click)="selectedCategory = CategoryType.Refactoring">
+                [class.category-active]="category === CategoryType.Refactoring"
+                (click)="category = CategoryType.Refactoring">
                 <img class="category-icon" src="/assets/images/categories-icons/cone-icon.png" alt="cone-icon" />
                 <span class="category-text">Refactoring</span>
             </div>
             <div
                 class="category"
-                [class.category-active]="selectedCategory === CategoryType.Puzzles"
-                (click)="selectedCategory = CategoryType.Puzzles">
+                [class.category-active]="category === CategoryType.Puzzles"
+                (click)="category = CategoryType.Puzzles">
                 <img class="category-icon" src="/assets/images/categories-icons/rubik-icon.png" alt="rubik-icon" />
                 <span class="category-text">Puzzles</span>
             </div>
@@ -54,7 +53,14 @@
             [Identifier]="'kata-name'"
             [Height]="customInputHeight"
             [Width]="customInputWidth"
+            [InputValue]="name"
+            (InputValueChange)="onNameChange($event)"
+            (focusout)="inputForm.controls.name.markAsTouched()"
+            [class.input-error]="inputForm.controls.name.touched && inputForm.controls.name.invalid"
             [InputPlaceholder]="'Give your kata a name'"></app-custom-input>
+    </div>
+    <div class="validation-error-message" *ngIf="inputForm.controls.name.touched && inputForm.controls.name.invalid">
+        {{ getErrorMessage('name') }}
     </div>
     <div class="tabs-list mt-12px d-flex flex-wrap">
         <div class="tab" [class.tab-active]="selectedTab === TabType.Description" (click)="editMarkDown()">
@@ -73,9 +79,14 @@
         <angular-markdown-editor
             [textareaId]="'markdown-editor'"
             [name]="'markdownText'"
-            [(ngModel)]="markdownText"
+            [(ngModel)]="description"
+            (focusout)="inputForm.controls.description.markAsTouched()"
+            [class.input-error]="inputForm.controls.description.touched && inputForm.controls.description.invalid"
             [options]="editorOptions">
         </angular-markdown-editor>
         <markdown></markdown>
+    </div>
+    <div class="validation-error-message" *ngIf="inputForm.controls.description.touched && inputForm.controls.description.invalid">
+        {{ getErrorMessage('description') }}
     </div>
 </div>
