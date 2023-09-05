@@ -23,55 +23,38 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
 
     public selectedIcon: IconName;
 
-    fieldText = '';
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['selectedItem']) {
-            this.setInitialValue();
-        }
-    }
-
-    setInitialValue() {
-        if (this.isMultiSelection) {
-            this.selectedItems = [this.selectedItem];
-        }
-        this.fieldText = this.selectedItem;
-    }
+    public fieldText = '';
 
     public selectedItems: string[] = [];
+
+    private allSelectionName = 'All';
 
     public ngOnInit() {
         this.updateSelectedIcon();
     }
 
+    public ngOnChanges(changes: SimpleChanges): void {
+        if (changes['selectedItem']) {
+            this.setInitialValue();
+        }
+    }
+
     public toggleItem(item: string) {
-        if (item === 'All') {
-            this.selectedItems = this.selectedItems.includes(item)
-                ? this.selectedItems.filter((i) => i !== item)
-                : [item];
+        const isAllSelected = this.selectedItems.includes(this.allSelectionName);
 
-            this.SelectedItemsChanged.emit(this.selectedItems);
-
-            return;
-        }
-
-        if (item !== 'All' && this.selectedItems.includes('All')) {
-            this.selectedItems = this.selectedItems.includes(item)
-                ? this.selectedItems.filter((i) => i !== 'All')
-                : [...this.selectedItems.filter((i) => i !== 'All'), item];
-
-            this.SelectedItemsChanged.emit(this.selectedItems);
+        if (item === this.allSelectionName) {
+            this.selectedItems = isAllSelected ? [] : [item];
+            this.updateSelectedItems();
 
             return;
         }
 
-        this.selectedItems = this.selectedItems.includes(item)
-            ? this.selectedItems.filter((i) => i !== item)
-            : [...this.selectedItems, item];
+        if (isAllSelected) {
+            this.selectedItems = this.selectedItems.filter((i) => i !== this.allSelectionName);
+        }
 
-        this.fieldText = this.selectedItems.join(', ');
-
-        this.SelectedItemsChanged.emit(this.selectedItems);
+        this.setSelectedItems(item);
+        this.updateSelectedItems();
     }
 
     public selectItem(item: string) {
@@ -81,7 +64,25 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
         this.updateSelectedIcon();
     }
 
+    private setInitialValue() {
+        if (this.isMultiSelection) {
+            this.selectedItems = [this.selectedItem];
+        }
+        this.fieldText = this.selectedItem;
+    }
+
     private updateSelectedIcon() {
         this.selectedIcon = this.itemsIcons[this.items.findIndex((i) => i === this.selectedItem)];
+    }
+
+    private setSelectedItems(item: string) {
+        this.selectedItems = this.selectedItems.includes(item)
+            ? this.selectedItems.filter((i) => i !== item)
+            : [...this.selectedItems, item];
+    }
+
+    private updateSelectedItems() {
+        this.fieldText = this.selectedItems.join(', ');
+        this.SelectedItemsChanged.emit(this.selectedItems);
     }
 }
