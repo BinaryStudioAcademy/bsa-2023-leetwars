@@ -6,6 +6,7 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
 import {
+    emailMaxLength,
     passwordMaxLength,
     passwordMinLength,
     userNameMaxLength,
@@ -24,7 +25,7 @@ export class SignUpComponent {
     isExistingEmail = false;
 
     registrationForm = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
+        email: new FormControl('', [Validators.required, Validators.maxLength(emailMaxLength), Validators.email]),
         username: new FormControl('', [
             Validators.required,
             Validators.minLength(userNameMinLength),
@@ -39,7 +40,7 @@ export class SignUpComponent {
         ]),
     });
 
-    getErrorMessage(formControlName: string) {
+    public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.registrationForm);
     }
 
@@ -87,9 +88,9 @@ export class SignUpComponent {
                     }
 
                     return this.authService.register({
-                        userName: this.registrationForm.value.username!,
-                        email: this.registrationForm.value.email!,
-                        password: this.registrationForm.value.password!,
+                        userName: this.registrationForm.value.username!.trim(),
+                        email: this.registrationForm.value.email!.trim(),
+                        password: this.registrationForm.value.password!.trim(),
                     });
                 }),
             )

@@ -5,6 +5,7 @@ import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
+import { emailMaxLength } from '@shared/utils/validation/form-control-validator-options';
 import { passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
@@ -16,7 +17,7 @@ import { switchMap } from 'rxjs';
 })
 export class LogInPageComponent implements OnInit {
     logInForm = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
+        email: new FormControl('', [Validators.required, Validators.maxLength(emailMaxLength), Validators.email]),
         password: new FormControl('', [Validators.required, Validators.pattern(passwordPattern)]),
     });
 
@@ -41,7 +42,7 @@ export class LogInPageComponent implements OnInit {
         this.showPassword = !this.showPassword;
     }
 
-    getErrorMessage(formControlName: string) {
+    public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.logInForm);
     }
 
@@ -56,8 +57,8 @@ export class LogInPageComponent implements OnInit {
                     }
 
                     return this.authService.login({
-                        email: this.logInForm.value.email!,
-                        password: this.logInForm.value.password!,
+                        email: this.logInForm.value.email!.trim(),
+                        password: this.logInForm.value.password!.trim(),
                     });
                 }),
             )
