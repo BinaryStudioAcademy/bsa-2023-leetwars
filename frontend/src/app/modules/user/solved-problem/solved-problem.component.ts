@@ -60,10 +60,8 @@ export class SolvedProblemComponent implements OnInit, OnChanges {
                 });
         });
         if (this.challenges) {
-            console.log(this.challenges);
             this.challengesCompleted = this.challenges.filter((challenge) =>
-                challenge.versions.filter((version) => version.status === ChallengeStatus.Approved),
-            );
+                challenge.versions.filter((version) => version.status === ChallengeStatus.Approved));
         }
     }
 

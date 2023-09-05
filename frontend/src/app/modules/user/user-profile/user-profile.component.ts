@@ -3,7 +3,7 @@ import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { UserFull } from '@shared/models/profile/user-full';
-import { User } from '@shared/models/user';
+import { User } from '@shared/models/user/user';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
