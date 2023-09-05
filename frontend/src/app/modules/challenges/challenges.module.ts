@@ -7,6 +7,7 @@ import { EditorQuestionComponent } from './editor-question/editor-question.compo
 import { SolutionPageComponent } from './solution-page/solution-page.component';
 import { StepsOfProgressComponent } from './steps-of-progress/steps-of-progress.component';
 import { ChallengesRoutingModule } from './challenges-routing.module';
+import { ChallengeCreationComponent } from './challenge-creation/challenge-creation.component';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { ChallengesRoutingModule } from './challenges-routing.module';
         ChallengesDropdownSelectComponent,
         EditorQuestionComponent,
         SolutionPageComponent,
+        ChallengeCreationComponent,
     ],
     imports: [SharedModule, ChallengesRoutingModule],
 })
