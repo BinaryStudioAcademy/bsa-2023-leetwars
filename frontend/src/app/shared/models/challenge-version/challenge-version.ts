@@ -1,14 +1,13 @@
 import { ChallengeStatus } from '@shared/enums/challenge-status';
 
 import { AuditEntity } from '../common/audit-entity/audit-entity';
-import { Entity } from '../common/entity';
 import { Language } from '../language/language';
 import { LanguageVersion } from '../language-version/language-version';
 import { UserSolution } from '../profile/user-solution';
 import { Test } from '../test/test';
 import { User } from '../user/user';
 
-export interface ChallengeVersion extends AuditEntity, Entity {
+export interface ChallengeVersion extends AuditEntity<number>{
     languageId: number;
     challengeId: number;
     initialSolution: string;
