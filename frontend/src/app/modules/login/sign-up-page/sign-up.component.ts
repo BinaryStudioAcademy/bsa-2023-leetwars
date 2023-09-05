@@ -12,8 +12,8 @@ import {
     userNameMaxLength,
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
-import { latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
-import { emailWithDotValidator, getErrorMessage } from '@shared/utils/validation/validation-helper';
+import { emailPattern, latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -28,8 +28,7 @@ export class SignUpComponent {
         email: new FormControl('', [
             Validators.required,
             Validators.maxLength(emailMaxLength),
-            Validators.email,
-            emailWithDotValidator,
+            Validators.pattern(emailPattern),
         ]),
         username: new FormControl('', [
             Validators.required,
