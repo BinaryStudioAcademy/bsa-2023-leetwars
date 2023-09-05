@@ -175,8 +175,8 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
                 .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Language)
-                    .ThenInclude(language => language.LanguageVersions)
+                       .ThenInclude(version => version.Language!)
+                       .ThenInclude(language => language.LanguageVersions)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
                 .Include(challenge => challenge.Versions)
@@ -187,7 +187,7 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Author)
                 .FirstOrDefaultAsync(challenge => challenge.Id == id);
-
+           
             return _mapper.Map<ChallengeFullDto>(challenges);
         }
     }
