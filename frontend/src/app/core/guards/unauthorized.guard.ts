@@ -5,7 +5,7 @@ import { AuthService } from '@core/services/auth.service';
 @Injectable({
     providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class UnAuthorizedGuard implements CanActivate, CanActivateChild {
     constructor(private router: Router, private authService: AuthService) {}
 
     public canActivate() {
@@ -18,11 +18,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
     private checkActivation() {
         if (this.authService.isAuthorized()) {
-            return true;
+            this.router.navigate(['/main']);
+
+            return false;
         }
 
-        this.router.navigate(['/auth/login']);
-
-        return false;
+        return true;
     }
 }
