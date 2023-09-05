@@ -5,8 +5,7 @@ import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
-import { emailExistsValidator } from '@shared/utils/validation/check-email-exists.validator';
-import { usernameExistsValidator } from '@shared/utils/validation/check-username-exists.validator';
+import { emailExistsValidator } from '@shared/utils/validation/email-exists.validator';
 import {
     emailMaxLength,
     passwordMaxLength,
@@ -15,6 +14,7 @@ import {
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
 import { latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { usernameExistsValidator } from '@shared/utils/validation/username-exists.validator';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 
 @Component({
