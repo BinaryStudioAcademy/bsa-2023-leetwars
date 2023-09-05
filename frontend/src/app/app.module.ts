@@ -4,6 +4,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from '@core/core.module';
 import { environment } from '@env/environment';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
@@ -20,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
     imports: [
         BrowserModule,
         AppRoutingModule,
+        CoreModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
         NgxChartsModule,

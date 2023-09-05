@@ -6,7 +6,8 @@ import { Language } from '../language/language';
 import { LanguageVersion } from '../language-version/language-version';
 import { UserSolution } from '../profile/user-solution';
 import { Test } from '../test/test';
-import { User } from '../user';
+import { User } from '../user/user';
+import { UserSolution } from '../user-solution/user-solution';
 
 export interface ChallengeVersion extends AuditEntity, Entity {
     languageId: number;

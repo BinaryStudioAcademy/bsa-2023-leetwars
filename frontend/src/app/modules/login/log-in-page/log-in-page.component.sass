@@ -72,8 +72,10 @@
     border: 1px solid $white
 
     margin-bottom: 15px
-    padding-top: 13px
-    padding-bottom: 13px
+    padding: 13px 0
+
+    &:hover
+        background-color: $transient-grey
 
 .or-label
     color: $white
@@ -103,16 +105,14 @@
     font-weight: 600
     line-height: normal
 
-    padding-top: 13px
-    padding-bottom: 13px
+    padding: 13px 0
     margin-top: 18px
 
-.submit-sign-in:disabled
-    background-color: $dark-green
+    &:disabled, &:hover
+        background-color: $dark-green
 
 .no-account
-    margin-top: 16px
-    margin-bottom: 50px
+    margin: 16px 0 50px
     align-self: flex-end
     color: $white
     font-family: Open Sans

@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using LeetWars.Core.BLL.Services;
 using LeetWars.Core.Common.DTO.User;
 using Microsoft.AspNetCore.Authorization;
@@ -39,6 +40,14 @@ public class UsersController : ControllerBase
     public async Task<ActionResult<UserFullDto>> GetUser (int id)
     {
         var user  = await _userService.GetFullUserAsync(id);
+        return Ok(user);
+    }
+    
+    [HttpGet("current")]
+    public async Task<ActionResult<UserDto>> GetCurrentUser()
+    {
+        var uid = _userService.GetCurrentUserUid();
+        var user = await _userService.GetUserByUidAsync(uid);
         return Ok(user);
     }
 }
