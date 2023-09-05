@@ -1,7 +1,7 @@
 <div ngbDropdown class="dropdown d-inline-flex" [autoClose]="true">
     <div class="button-wrapper d-flex flex-column d-flex flex-grow-1">
         <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
-            <div class="float-start d-flex">
+            <div *ngIf="selectedItem" class="float-start d-flex">
                 <fa-icon *ngIf="selectedItem.iconName" [icon]="['fab', selectedItem.iconName]"></fa-icon>
                 <p>{{ selectedItem.content }}</p>
             </div>

@@ -1,1 +1,37 @@
-<p>challenge-creation works!</p>
+<app-steps-of-progress
+    [steps]="stepNames"
+    [activeStepIndex]="currentStep"
+    (stepClick)="onStepClick($event)"
+></app-steps-of-progress>
+
+<div class="step-container">
+    <div *ngIf="(currentStep !== 0)" class="language-block">
+        <div class="language-info mb-2">
+            <span>Languages</span>
+            <fa-icon [icon]="'circle-info'" ngbTooltip="Select the required language and version"
+                     placement="right"></fa-icon>
+        </div>
+        <div class="d-flex gap-3">
+            <app-challenges-dropdown-select [items]="languageDropdownItems"
+                                            (SelectedItemsChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
+            <app-challenges-dropdown-select
+                [items]="languageVersionDropdownItems"></app-challenges-dropdown-select>
+        </div>
+    </div>
+
+    <app-editor-question
+        *ngIf="(currentStep === getStepIndex(ChallengeStep.Question))"
+        [name]="challenge.title"
+        [description]="challenge.instructions"
+        [category]="challenge.category"
+        [checkValidation]="getStepChecking(ChallengeStep.Question)"
+        (nameChange)="onNameChange($event)"
+        (descriptionChange)="onDescriptionChange($event)"
+        (categoryChange)="onCategoryChange($event)"
+        (validationChange)="onValidationChange(ChallengeStep.Question, $event)"
+    ></app-editor-question>
+
+    <app-solution-page *ngIf="(currentStep === getStepIndex(ChallengeStep.Solutions))"></app-solution-page>
+
+    <app-challenges-test-page *ngIf="(currentStep === getStepIndex(ChallengeStep.Testcases))"></app-challenges-test-page>
+</div>
