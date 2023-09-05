@@ -97,7 +97,7 @@ namespace LeetWars.Core.BLL.Services
             challenges = await FilterChallengesBySuggestionType(challenges, settings);
 
             var randomPosition = GetRandomInt(challenges.Count());
-            
+
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
 
@@ -136,7 +136,7 @@ namespace LeetWars.Core.BLL.Services
             var userId = _userIdGetter.CurrentUserId;
             var userLevel = await GetUserLevelAsync(settings.LanguageId);
             var userNextLevel = userLevel.GetNextLevel();
-            
+
             return settings.SuggestionType switch
             {
                 SuggestionType.Beta => challenges.Where(challenge =>
@@ -151,14 +151,14 @@ namespace LeetWars.Core.BLL.Services
             };
         }
 
- 
+
         private static int GetRandomInt(int maxValue)
         {
             if (maxValue == 0)
             {
                 return 0;
             }
-            
+
             using (var generator = RandomNumberGenerator.Create())
             {
                 var data = new byte[4];
@@ -177,6 +177,7 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Author)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Language)
+                    .ThenInclude(language => language.LanguageVersions)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
                 .Include(challenge => challenge.Versions)
