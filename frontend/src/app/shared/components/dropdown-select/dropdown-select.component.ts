@@ -39,6 +39,10 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
         }
     }
 
+    public isSelectedTextNotDefault() {
+        return this.selectText !== 'Select';
+    }
+
     public toggleItem(item: string) {
         const isAllSelected = this.selectedItems.includes(this.allSelectionName);
 
