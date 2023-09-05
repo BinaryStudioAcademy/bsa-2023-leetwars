@@ -46,7 +46,7 @@ export class LogInPageComponent implements OnInit {
         this.showPassword = !this.showPassword;
     }
 
-    getErrorMessage(formControlName: string) {
+    public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.logInForm);
     }
 
@@ -61,8 +61,8 @@ export class LogInPageComponent implements OnInit {
                     }
 
                     return this.authService.login({
-                        email: this.logInForm.value.email!,
-                        password: this.logInForm.value.password!,
+                        email: this.logInForm.value.email!.trim(),
+                        password: this.logInForm.value.password!.trim(),
                     });
                 }),
             )
