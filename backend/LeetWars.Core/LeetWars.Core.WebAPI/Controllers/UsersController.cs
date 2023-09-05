@@ -36,7 +36,6 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [AllowAnonymous]
     public async Task<ActionResult<UserFullDto>> GetUser (int id)
     {
         var user  = await _userService.GetFullUserAsync(id);
