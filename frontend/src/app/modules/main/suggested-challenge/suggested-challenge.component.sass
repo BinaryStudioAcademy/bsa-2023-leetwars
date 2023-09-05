@@ -1,5 +1,6 @@
 @import "color-variables"
 @import "fonts"
+@import 'screen-sizes-variables'
 
 :host
   font-family: Open Sans
@@ -10,75 +11,67 @@
   color: $lavender-ash
 
 .suggested-body
-    display: grid
-    grid-template-columns: 40% calc(60% - 2px)
-    height: 296px
+    display: flex
+    min-height: 296px
     gap: 2px
     border-radius: 15px
     border: 2px solid $green
     background-color: $dark-grey
     margin-bottom: 0.5rem
-    box-sizing: border-box
-    max-width: 900px
-
-.suggested-body
-    > *
-        box-sizing: border-box
+    max-width: 916px
+    width: 100%
+    @media screen and (max-width: $medium)
+        flex-direction: column
 
 .filters
-    grid-column: 1
+    width: 40%
     background-color: $charcoal-grey
-    border-radius: 15px
+    border-radius: 15px 0 0 15px
     border: none
-    border-top-right-radius: 0px
-    border-bottom-right-radius: 0px
-    padding-right: 5%
-
-.filters
-    >h5, .dropdowns-container
-        margin-left: 21px
+    padding: 24px 33px 0 21px
+    @media screen and (max-width: $large)
+        padding-right: 22px
+    @media screen and (max-width: $medium)
+        width: 100%
+        border-radius: 15px 15px 0 0
 
 h5
     color: $white
-    margin-top: 24px
+    margin: 0
 
 .dropdowns-container
-    margin-top: 20px
-    display: flex
-    flex-direction: column
-    justify-content: flex-start
+    padding-top: 26px
     gap: 10px
-
-.dropdown
-    width: 95%!important
 
 .app-dropdown-select
     margin-bottom: 10px
     width: 100%
 
 .button-group
-    display: flex
-    flex-direction: row
-    margin-top:20px
+    padding-top: 20px
     justify-content: center
+    gap: 5px
+    @media screen and (max-width: $medium)
+        padding-bottom: 24px
 
 .suggested-button
-    width: 28%
+    width: 105px
     height: 45px
     color: $white
     text-align: center
     font-family: Open Sans
     font-size: 16px
-    font-style: normal
     font-weight: 600
-    line-height: normal
+    @media screen and (max-width: $small-mobile)
+        width: 100%
 
 .train
     border-radius: 9px
     background-color: $green
     border: none
     margin-right: 10%
-    margin-left:4px
+    @media screen and (max-width: $small-mobile)
+        margin-right: 0
 
 .train:hover
     background-color: $dark-green
@@ -93,69 +86,62 @@ h5
     border: none
 
 .description
-    grid-column: 2
+    width: 60%
     background-color: $charcoal-grey
-    border-radius: 15px
-    border-top-left-radius: 0px
-    border-bottom-left-radius: 0px
-
-
-.description
-    display: flexbox
+    border-radius: 0 15px 15px 0
     font-size: 14px
-    > *
-        margin: 1rem 1rem
+    padding: 24px 24px 35px
+    @media screen and (max-width: $medium)
+        width: 100%
+        border-radius: 0 0 15px 15px
 
 .difficulty-and-title
-    margin-top: 24px
-    margin-right: 45px
-    margin-bottom: 18px
-    display: flex
-    flex-direction: row
+    gap: 10px
+    padding-bottom: 18px
     justify-content: flex-start
     align-content: center
     align-items: center
 
-
 .difficulty-tag
     height: 3em
     color: $light-copper
-    text-align: center
     font-family: Inter
     font-size: 12px
-    font-style: normal
-    font-weight: 400
-    line-height: normal
-    vertical-align: middle
-
     border-radius: 5px
     border: 2px solid $light-copper
-    margin-right: 10px
-
-    display: flex
-    justify-content: center
     align-items: center
-
-    padding-left: 5px
-    padding-right: 5px
+    padding: 0 8px
 
 .task-title
     color: $white
     font-size: 16px
-    font-style: normal
     font-weight: 600
     text-overflow: ellipsis
     overflow: hidden
     white-space: nowrap
-    display: flex
+    @media screen and (max-width: $medium)
+        text-overflow: unset
+        overflow: unset
+        white-space: wrap
 
 .description-text
     height: 57px
+    padding-right: 10px
     color: $white
-    margin-bottom: 10px
-    text-overflow: ellipsis
-    overflow: auto
+    overflow-y: scroll
     font-weight: 300
+    flex: 1 1 auto
+    @media screen and (max-width: $medium)
+        height: auto
+        min-height: 57px
+        max-height: 250px
+
+.description-text::-webkit-scrollbar
+    width: 6px
+
+.description-text::-webkit-scrollbar-thumb 
+    border-radius: 6px
+    background-color: $strong-black
 
 .constraints
     margin-bottom: 20px
@@ -194,38 +180,22 @@ h5
     margin-bottom: 0px
 
 .tags
-    display: flex
-    flex-direction: row
-    width: calc(100% - 68px)
-    margin-right: 45px
-    overflow-x: scroll
-    padding: 0px
-    list-style: none
-    margin-bottom: 0px
-
-.tags li
-    margin-right: 15px
+    gap: 15px
+    width: 100%
+    overflow-x: auto
+    padding-top: 18px
 
 .tag-item
-    display: flex
-    flex-direction: row
-    justify-content: center
-    align-items: center
     background-color: $dark-grey
     border-radius: 4px
-
-    white-space: nowrap
     color: $grey
     font-family: Montserrat
-    font-style: normal
-    font-weight: 400
     line-height: normal
-    padding-left: 9px
-    padding-right: 9px
-    padding-top: 4px
-    padding-bottom: 4px
+    padding: 4px 9px
 
 .constraints::-webkit-scrollbar,
-.tags::-webkit-scrollbar,
-.description-text::-webkit-scrollbar
+.tags::-webkit-scrollbar
     width: 0
+
+.tags::-webkit-scrollbar
+    height: 0
