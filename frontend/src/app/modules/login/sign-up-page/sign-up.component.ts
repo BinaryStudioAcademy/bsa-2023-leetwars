@@ -13,7 +13,7 @@ import {
     userNameMaxLength,
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
-import { latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { emailPattern, latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { usernameExistsValidator } from '@shared/utils/validation/username-exists.validator';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 
@@ -26,7 +26,7 @@ export class SignUpComponent {
     registrationForm = new FormGroup({
         email: new FormControl(
             '',
-            [Validators.required, Validators.maxLength(emailMaxLength), Validators.email],
+            [Validators.required, Validators.maxLength(emailMaxLength), Validators.pattern(emailPattern)],
             [emailExistsValidator(this.userService)],
         ),
         username: new FormControl(

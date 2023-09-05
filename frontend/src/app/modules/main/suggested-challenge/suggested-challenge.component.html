@@ -2,38 +2,49 @@
     <div class="filters">
         <h5>Suggested Challenge</h5>
         <div class="dropdowns-container">
-            <app-dropdown-select [selectText]="'Choose Language...'" [items]="languages" [selectedItem]="languages[1]"></app-dropdown-select>
             <app-dropdown-select
+                [items]="languagesNames"
+                [selectedItem]="languagesNames[0]"
+                [selectText]="'Choose Language...'"
+                (SelectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
+            <app-dropdown-select
+                [items]="suggestionTypesNames"
+                [selectedItem]="suggestionTypesNames[0]"
                 [selectText]="'Choose Today\'s Focus...'"
-                [items]="score"
-                [selectedItem]="score[1]"
-                [itemsIcons]="scoreIcons"></app-dropdown-select>
+                [itemsIcons]="suggestionIcons"
+                (SelectedItemsChanged)="onSuggestionTypeChanged($event)"></app-dropdown-select>
         </div>
         <div class="button-group">
-            <button class="suggested-button skip">Skip</button>
-            <button class="suggested-button train">Train</button>
+            <button class="suggested-button skip" (click)="getChallenge()">
+                Skip
+            </button>
+            <button class="suggested-button train">
+                Train
+            </button>
         </div>
     </div>
-    <div class="description">
+
+    <div class="description d-flex justify-content-center align-items-center text-center text-white text-opacity-50" *ngIf="!challenge">
+        <div>
+            <h4>No suggestions</h4>
+            <p>Please select other variants</p>
+        </div>
+    </div>
+    <div class="description" *ngIf="challenge">
         <div class="difficulty-and-title">
             <div class="difficulty-tag">
-                {{ difficulty }}
+                {{ challenge.levelName }}
             </div>
             <div class="task-title">
-                {{ title }}
+                {{ challenge.title }}
             </div>
         </div>
         <div class="description-text">
-            {{ description }}
+            {{ challenge.instructions }}
         </div>
-        <ul class="constraints">
-            <li *ngFor="let constraint of constraints" class="constraints-item">
-                {{ constraint }}
-            </li>
-        </ul>
         <ul class="tags" (wheel)="onMouseWheel($event)">
-            <li *ngFor="let tag of tags" class="tag-item">
-                {{ tag }}
+            <li *ngFor="let tag of challenge.tags" class="tag-item">
+                {{ tag.name }}
             </li>
         </ul>
     </div>

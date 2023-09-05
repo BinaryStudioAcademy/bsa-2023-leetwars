@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -26,9 +25,9 @@ import { AppRoutingModule } from './app-routing.module';
         ToastrModule.forRoot(),
         NgxChartsModule,
         SharedModule,
+        CoreModule,
         AngularFireModule.initializeApp(environment.firebaseConfig, 'leetwars'),
         AngularFireAuthModule,
-        HttpClientModule,
         MonacoEditorModule.forRoot(),
     ],
 })

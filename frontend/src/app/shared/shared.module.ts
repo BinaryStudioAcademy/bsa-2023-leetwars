@@ -11,6 +11,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
@@ -35,6 +36,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         FontAwesomeModule,
         NgbModule,
         MonacoEditorModule,
+        InfiniteScrollModule,
         NgxChartsModule,
         ProgressbarModule,
         MarkdownModule.forRoot(),
@@ -73,6 +75,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         TabsModule,
         MarkdownModule,
         AngularMarkdownEditorModule,
+        InfiniteScrollModule,
     ],
     providers: [TabsetConfig],
 })
