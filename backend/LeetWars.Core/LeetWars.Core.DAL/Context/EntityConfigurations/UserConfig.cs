@@ -37,7 +37,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
                 .UsingEntity("PreferredLanguages");
 
             builder.HasMany(e => e.LanguagesWithLevels)
-                .WithOne()
+                .WithOne(e => e.User)
                 .HasForeignKey(e => e.UserId);
 
             builder.HasMany(e => e.Subscriptions)
