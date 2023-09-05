@@ -12,7 +12,7 @@ import {
     userNameMaxLength,
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
-import { latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { emailPattern, latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
@@ -25,7 +25,11 @@ export class SignUpComponent {
     isExistingEmail = false;
 
     registrationForm = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.maxLength(emailMaxLength), Validators.email]),
+        email: new FormControl('', [
+            Validators.required,
+            Validators.maxLength(emailMaxLength),
+            Validators.pattern(emailPattern),
+        ]),
         username: new FormControl('', [
             Validators.required,
             Validators.minLength(userNameMinLength),

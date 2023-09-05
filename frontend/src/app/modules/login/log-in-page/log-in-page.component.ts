@@ -6,6 +6,7 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
 import { emailMaxLength } from '@shared/utils/validation/form-control-validator-options';
+import { emailPattern } from '@shared/utils/validation/regex-patterns';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
@@ -16,7 +17,11 @@ import { switchMap } from 'rxjs';
 })
 export class LogInPageComponent implements OnInit {
     logInForm = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.maxLength(emailMaxLength), Validators.email]),
+        email: new FormControl('', [
+            Validators.required,
+            Validators.maxLength(emailMaxLength),
+            Validators.pattern(emailPattern),
+        ]),
         password: new FormControl('', [Validators.required]),
     });
 
