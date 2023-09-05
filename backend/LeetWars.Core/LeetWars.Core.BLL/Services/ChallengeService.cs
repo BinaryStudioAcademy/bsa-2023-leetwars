@@ -61,20 +61,19 @@ namespace LeetWars.Core.BLL.Services
                 challenges = FilterChallengesByProgress(challenges, filters.Progress);
             }
 
+            if (filters.TagsIds is not null)
+            {
+                var filterTags = _context.Tags.Where(tag => 
+                    filters.TagsIds.Contains(tag.Id));
+                
+                challenges = challenges.Where(challenge =>
+                    filterTags.All(tag => challenge.Tags.Contains(tag)));
+            }
+
             if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
             {
                 challenges = challenges.Skip(page.PageSize * (page.PageNumber - 1))
                     .Take(page.PageSize);
-            }
-
-            if (filters.TagsIds != null)
-            {
-                foreach (var filterTagId in filters.TagsIds)
-                {
-                    challenges = challenges.Where(challenge =>
-                            challenge.Tags.Any(tag => tag.Id == filterTagId)
-                    );
-                }
             }
 
             return _mapper.Map<List<ChallengePreviewDto>>(await challenges.ToListAsync());
@@ -97,7 +96,7 @@ namespace LeetWars.Core.BLL.Services
             challenges = await FilterChallengesBySuggestionType(challenges, settings);
 
             var randomPosition = GetRandomInt(challenges.Count());
-
+            
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
 
@@ -136,7 +135,7 @@ namespace LeetWars.Core.BLL.Services
             var userId = _userIdGetter.CurrentUserId;
             var userLevel = await GetUserLevelAsync(settings.LanguageId);
             var userNextLevel = userLevel.GetNextLevel();
-
+            
             return settings.SuggestionType switch
             {
                 SuggestionType.Beta => challenges.Where(challenge =>
@@ -151,20 +150,20 @@ namespace LeetWars.Core.BLL.Services
             };
         }
 
-
+ 
         private static int GetRandomInt(int maxValue)
         {
             if (maxValue == 0)
             {
                 return 0;
             }
-
+            
             using (var generator = RandomNumberGenerator.Create())
             {
                 var data = new byte[4];
                 generator.GetBytes(data);
                 var randomValue = Math.Abs(BitConverter.ToInt32(data, 0));
-
+                
                 return randomValue % maxValue;
             }
         }
