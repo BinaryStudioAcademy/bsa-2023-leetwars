@@ -6,7 +6,6 @@ import { IconName } from '@fortawesome/fontawesome-svg-core';
     templateUrl: './dropdown-select.component.html',
     styleUrls: ['./dropdown-select.component.sass'],
 })
-
 export class DropdownSelectComponent implements OnInit, OnChanges {
     @Input() isMultiSelection = false;
 
@@ -46,11 +45,32 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
     }
 
     public toggleItem(item: string) {
+        if (item === 'All') {
+            this.selectedItems = this.selectedItems.includes(item)
+                ? this.selectedItems.filter((i) => i !== item)
+                : [item];
+
+            this.SelectedItemsChanged.emit(this.selectedItems);
+
+            return;
+        }
+
+        if (item !== 'All' && this.selectedItems.includes('All')) {
+            this.selectedItems = this.selectedItems.includes(item)
+                ? this.selectedItems.filter((i) => i !== 'All')
+                : [...this.selectedItems.filter((i) => i !== 'All'), item];
+
+            this.SelectedItemsChanged.emit(this.selectedItems);
+
+            return;
+        }
+
         this.selectedItems = this.selectedItems.includes(item)
             ? this.selectedItems.filter((i) => i !== item)
             : [...this.selectedItems, item];
 
         this.fieldText = this.selectedItems.join(', ');
+
         this.SelectedItemsChanged.emit(this.selectedItems);
     }
 
