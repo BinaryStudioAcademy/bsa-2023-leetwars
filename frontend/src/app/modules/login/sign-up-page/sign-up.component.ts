@@ -5,6 +5,8 @@ import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
+import { emailExistsValidator } from '@shared/utils/validation/check-email-exists.validator';
+import { usernameExistsValidator } from '@shared/utils/validation/check-username-exists.validator';
 import {
     emailMaxLength,
     passwordMaxLength,
@@ -14,7 +16,6 @@ import {
 } from '@shared/utils/validation/form-control-validator-options';
 import { latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
-import { switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-sign-up',
@@ -22,16 +23,22 @@ import { switchMap } from 'rxjs';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent {
-    isExistingEmail = false;
-
     registrationForm = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.maxLength(emailMaxLength), Validators.email]),
-        username: new FormControl('', [
-            Validators.required,
-            Validators.minLength(userNameMinLength),
-            Validators.maxLength(userNameMaxLength),
-            Validators.pattern(latinCharactersPattern),
-        ]),
+        email: new FormControl(
+            '',
+            [Validators.required, Validators.maxLength(emailMaxLength), Validators.email],
+            [emailExistsValidator(this.userService)],
+        ),
+        username: new FormControl(
+            '',
+            [
+                Validators.required,
+                Validators.minLength(userNameMinLength),
+                Validators.maxLength(userNameMaxLength),
+                Validators.pattern(latinCharactersPattern),
+            ],
+            [usernameExistsValidator(this.userService)],
+        ),
         password: new FormControl('', [
             Validators.required,
             Validators.minLength(passwordMinLength),
@@ -78,22 +85,12 @@ export class SignUpComponent {
     }
 
     public signUp() {
-        this.userService
-            .checkEmail(this.registrationForm.value.email!)
-            .pipe(
-                switchMap((result) => {
-                    if (result) {
-                        this.isExistingEmail = true;
-                        this.registrationForm.markAsUntouched();
-                    }
-
-                    return this.authService.register({
-                        userName: this.registrationForm.value.username!.trim(),
-                        email: this.registrationForm.value.email!.trim(),
-                        password: this.registrationForm.value.password!.trim(),
-                    });
-                }),
-            )
+        this.authService
+            .register({
+                userName: this.registrationForm.value.username!.trim(),
+                email: this.registrationForm.value.email!.trim(),
+                password: this.registrationForm.value.password!.trim(),
+            })
             .subscribe(
                 () => {
                     this.router.navigate(['/main']);
