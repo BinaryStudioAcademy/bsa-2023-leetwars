@@ -5,6 +5,7 @@ import {
     usernameValidationErrorMessages,
 } from '@shared/utils/validation/form-controls-error-messages';
 import { ControlErrorMessages } from '@shared/utils/validation/validation-interfaces';
+
 import { emailDomainPattern } from './regex-patterns';
 
 const controlErrorMessagesMap: { [key: string]: ControlErrorMessages } = {
