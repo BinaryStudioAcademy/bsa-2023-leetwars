@@ -6,8 +6,8 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
 import { emailMaxLength } from '@shared/utils/validation/form-control-validator-options';
-import { emailWithDotValidator, getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { emailWithDotValidator, getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
 @Component({
