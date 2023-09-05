@@ -6,6 +6,7 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
 import {
+    emailMaxLength,
     passwordMaxLength,
     passwordMinLength,
     userNameMaxLength,
@@ -24,7 +25,7 @@ export class SignUpComponent {
     isExistingEmail = false;
 
     registrationForm = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
+        email: new FormControl('', [Validators.required, Validators.maxLength(emailMaxLength), Validators.email]),
         username: new FormControl('', [
             Validators.required,
             Validators.minLength(userNameMinLength),
