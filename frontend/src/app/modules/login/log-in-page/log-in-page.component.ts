@@ -7,6 +7,7 @@ import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
 import { emailMaxLength } from '@shared/utils/validation/form-control-validator-options';
 import { emailWithDotValidator, getErrorMessage } from '@shared/utils/validation/validation-helper';
+import { passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -22,7 +23,8 @@ export class LogInPageComponent implements OnInit {
             Validators.email,
             emailWithDotValidator,
         ]),
-        password: new FormControl('', [Validators.required]),
+
+        password: new FormControl('', [Validators.required, Validators.pattern(passwordPattern)]),
     });
 
     isExistingEmail = true;
