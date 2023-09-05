@@ -37,6 +37,8 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     initialSolution: string | undefined;
 
+    testCode: string | undefined;
+
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
@@ -81,8 +83,10 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
                     automaticLayout: true,
                     useShadows: false,
                     wordWrap: 'on',
+                    lineNumbers: 'on',
                 };
                 this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
+                this.testCode = this.getInitialTestByChallengeVersionId(challenge.versions[0].id);
             },
             error: () => {
                 this.router.navigateByUrl('/not-found');
@@ -116,6 +120,14 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         return version?.initialSolution;
     }
 
+    private getInitialTestByChallengeVersionId(id: number): string {
+        const selectedVersion = this.challenge.versions.find((version) => version.id === id);
+
+        const testCode = selectedVersion!.tests[0].code;
+
+        return testCode;
+    }
+
     private mapLanguageName(language: string): string {
         return this.languageNameMap.get(language) || language.toLowerCase();
     }
@@ -124,7 +136,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         const languageVersions: string[] = [];
 
         this.challenge.versions.forEach((version) => {
-            const selectedLang = this.mapLanguageName(version.language.name as string);
+            const selectedLang = this.mapLanguageName(version.language.name);
 
             if (selectedLang === language) {
                 version.language.languageVersions.forEach((languageVersion) => {

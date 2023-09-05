@@ -1,4 +1,4 @@
-<div class="page-container vh-100">
+<div class="page-container">
     <as-split [direction]="splitDirection" [gutterSize]="8">
         <as-split-area [size]="50" [minSize]="splitLeftMinSize">
             <div class="problem-info h-100">
@@ -16,11 +16,9 @@
                         <ng-template ngbNavContent>Submissions here</ng-template>
                     </li>
 
-                    <li [ngbNavItem]="'Description'" [class.selectedTab]="isSelected('Output')">
+                    <li [ngbNavItem]="'Output'" [class.selectedTab]="isSelected('Output')">
                         <button ngbNavLink (click)="selectTab('Output')">Output</button>
-                        <ng-template ngbNavContent>
-                            <p class="challenge-title">Output</p>
-                        </ng-template>
+                        <ng-template ngbNavContent>Output here</ng-template>
                     </li>
                 </ul>
                 <div class="content" [ngbNavOutlet]="nav"></div>
@@ -28,7 +26,7 @@
         </as-split-area>
 
         <as-split-area [size]="50" [minSize]="splitRightMinSize">
-            <div class="editor h-100">
+            <div class="editor h-50">
                 <div class="header">
                     <div class="language-selection">
                         <fa-icon [icon]="'info'" size="sm"></fa-icon>
@@ -36,12 +34,8 @@
                             [isMultiSelection]="false"
                             [items]="languages"
                             [selectedItem]="selectedLanguage"
-                            (SelectedItemsChanged)="onSelectedLanguageChanged($event)"></app-dropdown-select>
-                    </div>
-                    <div class="vertical-divider"></div>
-
-                    <div class="language-selection">
-                        <fa-icon [icon]="'info'" size="sm"></fa-icon>
+                            (SelectedItemsChanged)="onSelectedLanguageChanged($event)">
+                        </app-dropdown-select>
                         <app-dropdown-select
                             [isMultiSelection]="false"
                             [items]="languageVersions"
@@ -54,6 +48,26 @@
                     [options]="editorOptions"
                     [(ngModel)]="initialSolution"></ngx-monaco-editor>
             </div>
+
+            <div class="editor test-wrp">
+                <div class="header">
+                    <div class="language-selection">
+                        Sample test
+                    </div>
+                </div>
+                <div class="editor-test">
+                    <ngx-monaco-editor
+                        class="my-code-editor"
+                        [options]="editorOptions"
+                        [(ngModel)]="testCode"></ngx-monaco-editor>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="run-test">Run sample tests</button>
+                <button class="sumbit">Submit</button>
+            </div>
+
         </as-split-area>
     </as-split>
 </div>
