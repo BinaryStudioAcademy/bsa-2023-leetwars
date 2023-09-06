@@ -5,7 +5,7 @@ import { User } from '@shared/models/user/user';
 import { Observable } from 'rxjs';
 
 import { HttpInternalService } from './http-internal.service';
-import { UserSolutionsGroupedBySkillLevelDto } from '@shared/models/user/user-solutions-groupedby-skill-level-dto';
+import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level-dto';
 
 @Injectable({
     providedIn: 'root',
@@ -33,8 +33,8 @@ export class UserService {
         return this.httpService.getRequest<UserFull>(`/users/${id}`);
     }
 
-    public getUserChallengesInfoByTags(id:number): Observable<UserSolutionsGroupedBySkillLevelDto[]>
+    public getUserChallengesInfoByTags(id:number): Observable<IUserSolutionsGroupedBySkillLevel[]>
     {
-        return this.httpService.getRequest<UserSolutionsGroupedBySkillLevelDto[]>(`/users/${id}/user-challenges`);
+        return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(`/users/${id}/user-challenges`);
     }
 }

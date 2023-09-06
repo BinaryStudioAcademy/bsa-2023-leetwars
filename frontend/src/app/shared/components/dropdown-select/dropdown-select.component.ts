@@ -25,7 +25,7 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
     public selectedIcon: IconName;
 
     fieldText = '';
-
+    
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['selectedItem']) {
             this.setInitialValue();

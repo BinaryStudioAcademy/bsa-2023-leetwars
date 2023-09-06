@@ -3,21 +3,21 @@
         <p>Solved Problems</p>
         <div class="statistics">
             <div class="circle">
-    <app-pie-chart [currentNumber]=" totalTasksCompleted" [totalNumber]="totalTasks"
+    <app-pie-chart [currentNumber]="totalTasksCompleted" [totalNumber]="totalTasks"
                     [activeColor]="pieChartActiveColor">
                 </app-pie-chart>
 
             </div>
-
-            <div class="levels" *ngFor="let bar of bars"> 
-                <div class="level-card">
+            <div class="levels" > 
+            <div class="levels level-card" *ngFor="let bar of bars"> 
+                <div class="level-card" >
                     <app-progress-bar [total]="bar.Total"
                         [solved]="bar.Done" 
-                        [data]="'Not enough data'"
                         [level]="bar.Label">
                     </app-progress-bar>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

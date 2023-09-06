@@ -4,7 +4,7 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { UserFull } from '@shared/models/profile/user-full';
 import { User } from '@shared/models/user/user';
-import { UserSolutionsGroupedBySkillLevelDto } from '@shared/models/user/user-solutions-groupedby-skill-level-dto';
+import { IUserSolutionsGroupedBySkillLevel as IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level-dto';
 import { Subject, takeUntil } from 'rxjs';
 import { IBar } from '../solved-problem/solved-problem.component';
 
@@ -15,7 +15,7 @@ import { IBar } from '../solved-problem/solved-problem.component';
 })
 export class UserProfileComponent implements OnInit {
     user: UserFull = <UserFull>{};
-    userSolutions: UserSolutionsGroupedBySkillLevelDto[] = [];
+    userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
     bars: IBar[] = [];
     private unsubscribe$ = new Subject<void>();
 
@@ -43,15 +43,12 @@ export class UserProfileComponent implements OnInit {
             .getUserChallengesInfoByTags(this.user.id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(
-                (result: UserSolutionsGroupedBySkillLevelDto[]) => {
-                    
-                    console.log(JSON.stringify(result));
+                (result: IUserSolutionsGroupedBySkillLevel[]) => {
                     this.userSolutions = result;
-                    console.log(JSON.stringify(this.userSolutions));
                     this.bars = result.map((r) => ({
-                        Label: r.name.toString(),
+                        Label: r.name,
                         Done: r.taskCountDtos.length,
-                        Total: 200,
+                        Total: r.totalCount,
                          
                     }));
                     

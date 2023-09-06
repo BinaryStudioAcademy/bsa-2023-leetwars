@@ -1,5 +1,5 @@
 export enum LanguageLevel {
-    FirstSteps,
+    FirstSteps, 
     AdvancedBeginner,
     Competent,
     Proficient,

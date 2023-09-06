@@ -51,61 +51,29 @@
 
         <div class="languages-container info-container">
             <p class="content-section-name">Languages</p>
-            <p class="not-enough-data" *ngFor="let language of user.preferredLanguages">{{language.name}}</p>
+            <div class="languages-item" *ngFor="let language of user.preferredLanguages">{{language.name}}</div>
         </div>
 
         <div class="skills-container info-container">
             <p class="content-section-name">Skills</p>
-            <ul class="skills-list d-flex flex-column">
+            <ul class="skills-list d-flex flex-column" *ngFor="let userSolution of userSolutions">
                 <li class="skills-list-item">
-                    <div class="skills-list-item-container d-flex flex-column">
-                        <p class="skills-list-item-text advanced">Advanced
+                    <div class="skills-list-item-container d-flex flex-column ">
+                        <p class="skills-list-item-text advanced">{{userSolution.name}}
                         </p>
-                        <ng-container *ngIf="!user.languagesWithLevels?.length; then noData; else hasAdvanceData"></ng-container>
+                        <div class="scroll-container" >
+                        <ng-container *ngIf="!userSolution.taskCountDtos?.length; then noData; else hasAdvanceData"></ng-container>
                         <ng-template #noData>
                             <p class="not-enough-data">Not enough data</p>
                         </ng-template>
                         <ng-template #hasAdvanceData>
-                            <div *ngFor="let item of user.languagesWithLevels">
-                                <div *ngIf="item.level === LanguageLevel.Master">{{item}}</div>
+                            <div class="skills-list">
+                            <div  *ngFor="let item of userSolution.taskCountDtos"  class="skills-item">
+                                    {{item.name}} - {{item.challengeCount}}
                             </div>
+                        </div>
                         </ng-template>
                     </div>
-                </li>
-                <li class="skills-list-item">
-                    <div class="skills-list-item-container d-flex flex-column">
-                        <p class="skills-list-item-text intermediate">Intermediate</p>
-                        <ng-container *ngIf="!user.languagesWithLevels; then noData; else hasIntermediateData"></ng-container>
-                        <ng-template #noData>
-                            <p class="not-enough-data">Not enough data</p>
-                        </ng-template>
-                        <ng-template #hasIntermediateData>
-                            
-                             <div *ngFor="let item of user.challenges">
-                                <div *ngFor="let tag of item.tags">
-                                    {{tag.name}} 
-                                </div>
-                            </div> 
-                            <!-- <div *ngFor="let item of user.languagesWithLevels">
-                                <div *ngIf="item.level === LanguageLevel.Competent || item.level === LanguageLevel.Proficient">
-                                    {{ item.language?.name }} 
-                                </div>
-                            </div> -->
-                        </ng-template>
-                    </div>
-                </li>
-                <li class="skills-list-item">
-                    <div class="skills-list-item-container d-flex flex-column">
-                        <p class="skills-list-item-text fundamental">Fundamental</p>
-                        <ng-container *ngIf="!user.languagesWithLevels; then noData; else hasFundamentalData"></ng-container>
-                        <ng-template #noData>
-                            <p class="not-enough-data">Not enough data</p>
-                        </ng-template>
-                        <ng-template #hasFundamentalData>
-                            <div *ngFor="let item of user.languagesWithLevels">
-                                <div *ngIf="item.level === LanguageLevel.FirstSteps || item.level === LanguageLevel.Proficient">{{item}}</div>
-                            </div>
-                        </ng-template>
                     </div>
                 </li>
             </ul>

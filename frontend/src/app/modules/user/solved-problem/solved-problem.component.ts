@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges,} from '@angular/core';
 import { ColorConstants } from '@shared/constants/color-constants';
+import { LanguageLevel } from '@shared/enums/languageLevel';
+
 
 export interface IBar {
-    Label: string;
+    Label: LanguageLevel;
     Done: number;
     Total: number;
 }
@@ -12,7 +14,7 @@ export interface IBar {
     templateUrl: './solved-problem.component.html',
     styleUrls: ['./solved-problem.component.sass'],
 })
-export class SolvedProblemComponent implements OnInit {
+export class SolvedProblemComponent implements OnChanges {
     @Input() pieChartActiveColor: string = ColorConstants.pieChartActiveColor;
 
     @Input() bars: IBar[] = [];
@@ -23,8 +25,12 @@ export class SolvedProblemComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit() {
+
+    ngOnChanges({bars}: SimpleChanges) {
+        if(bars){
         this.totalTasks = this.bars.reduce((acc, bar) => acc + bar.Total, 0);
         this.totalTasksCompleted = this.bars.reduce((acc, bar) => acc + bar.Done, 0);
-    }
+    }}
+    
+    
 }
