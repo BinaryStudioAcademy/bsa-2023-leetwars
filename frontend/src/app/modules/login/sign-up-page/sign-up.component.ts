@@ -16,6 +16,7 @@ import {
 import { emailPattern, latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { usernameExistsValidator } from '@shared/utils/validation/username-exists.validator';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
+import { catchError, of } from 'rxjs';
 
 @Component({
     selector: 'app-sign-up',
@@ -23,7 +24,7 @@ import { getErrorMessage } from '@shared/utils/validation/validation-helper';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent {
-    registrationForm = new FormGroup({
+    public registrationForm = new FormGroup({
         email: new FormControl(
             '',
             [Validators.required, Validators.maxLength(emailMaxLength), Validators.pattern(emailPattern)],
@@ -47,6 +48,8 @@ export class SignUpComponent {
         ]),
     });
 
+    private providerName: string = 'firebase';
+
     public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.registrationForm);
     }
@@ -59,29 +62,49 @@ export class SignUpComponent {
     ) {}
 
     public signUpGitHub() {
-        this.authService.signInWithGitHub().subscribe(
-            (user: User) => {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
-                // add email sender to user.email
-            },
-            (error) => {
-                this.toastrNotification.showError(error);
-            },
-        );
+        this.authService
+            .signInWithGitHub()
+            .pipe(
+                catchError((error: string) => {
+                    if (!error.toLowerCase().includes(this.providerName)) {
+                        this.toastrNotification.showError(error);
+                    } else {
+                        console.error(error);
+                    }
+
+                    return of(undefined);
+                }),
+            )
+            .subscribe((user: User | undefined) => {
+                if (user) {
+                    this.router.navigate(['/main']);
+                    this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
+                    // add email sender to user.email
+                }
+            });
     }
 
     public signUpGoogle() {
-        this.authService.signInWithGoogle().subscribe(
-            (user: User) => {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
-                // add email sender to user.email
-            },
-            (error) => {
-                this.toastrNotification.showError(error);
-            },
-        );
+        this.authService
+            .signInWithGoogle()
+            .pipe(
+                catchError((error: string) => {
+                    if (!error.toLowerCase().includes(this.providerName)) {
+                        this.toastrNotification.showError(error);
+                    } else {
+                        console.error(error);
+                    }
+
+                    return of(undefined);
+                }),
+            )
+            .subscribe((user: User | undefined) => {
+                if (user) {
+                    this.router.navigate(['/main']);
+                    this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
+                    // add email sender to user.email
+                }
+            });
     }
 
     public signUp() {

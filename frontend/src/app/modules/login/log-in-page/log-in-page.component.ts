@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
@@ -6,26 +6,24 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
-import { switchMap } from 'rxjs';
+import { catchError, of, switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-log-in-page',
     templateUrl: './log-in-page.component.html',
     styleUrls: ['./log-in-page.component.sass'],
 })
-export class LogInPageComponent implements OnInit {
-    logInForm = new FormGroup({
+export class LogInPageComponent {
+    public logInForm = new FormGroup({
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
     });
 
-    isExistingEmail = true;
+    public isExistingEmail = true;
 
-    isSignInError = false;
+    public isSignInError = false;
 
-    showPassword: boolean = false;
-
-    isDataIncorrect: boolean;
+    private providerName: string = 'firebase';
 
     constructor(
         private authService: AuthService,
@@ -33,14 +31,6 @@ export class LogInPageComponent implements OnInit {
         private userService: UserService,
         private toastrNotification: ToastrNotificationsService,
     ) {}
-
-    public ngOnInit(): void {
-        this.isDataIncorrect = false;
-    }
-
-    public toggleShow() {
-        this.showPassword = !this.showPassword;
-    }
 
     public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.logInForm);
@@ -76,28 +66,48 @@ export class LogInPageComponent implements OnInit {
     }
 
     public signInWithGitHub() {
-        this.authService.signInWithGitHub().subscribe(
-            (user: User) => {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
-                // add email sender to user.email
-            },
-            (error) => {
-                this.toastrNotification.showError(error);
-            },
-        );
+        this.authService.signInWithGitHub()
+            .pipe(
+                catchError((error: string) => {
+                    if (!error.toLowerCase().includes(this.providerName)) {
+                        this.toastrNotification.showError(error);
+                    } else {
+                        console.error(error);
+                    }
+
+                    return of(undefined);
+                }),
+            ).subscribe(
+                (user: User | undefined) => {
+                    if (user) {
+                        this.router.navigate(['/main']);
+                        this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
+                        // add email sender to user.email
+                    }
+                },
+            );
     }
 
     public signInWithGoogle() {
-        this.authService.signInWithGoogle().subscribe(
-            (user: User) => {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
-                // add email sender to user.email
-            },
-            (error) => {
-                this.toastrNotification.showError(error);
-            },
-        );
+        this.authService.signInWithGoogle()
+            .pipe(
+                catchError((error: string) => {
+                    if (!error.toLowerCase().includes(this.providerName)) {
+                        this.toastrNotification.showError(error);
+                    } else {
+                        console.error(error);
+                    }
+
+                    return of(undefined);
+                }),
+            ).subscribe(
+                (user: User | undefined) => {
+                    if (user) {
+                        this.router.navigate(['/main']);
+                        this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
+                        // add email sender to user.email
+                    }
+                },
+            );
     }
 }
