@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using AutoMapper;
+using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
@@ -80,5 +81,29 @@ public class UserService : BaseService, IUserService
             throw new ArgumentNullException("Not Found", new Exception("User was not found"));
         }
         return _mapper.Map<User,UserFullDto>(user);
+    }
+    public async Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTags(long currentUserId)
+    {
+
+        var challenges = await _context.Challenges
+        .Include(x => x.Level)
+        .Include(x => x.Tags)
+        .Include(challenge => challenge.Versions)
+         .ThenInclude(version => version.Solutions)
+            .ThenInclude(solution => solution.User)
+        .Where(x => x.Versions.SelectMany(s => s.Solutions).Any(y => y.SubmittedAt.HasValue && y.User.Id == currentUserId))
+        .GroupBy(x => x.Level.SkillLevel)
+        .Select(x => new UserSolutionsGroupedBySkillLevelDto
+        {
+            Name = x.Key,
+            TaskCountDtos = x
+                .SelectMany(y => y.Tags)
+                .GroupBy(y => y.Name)
+                .Select(y => new TaskCountDto { Name = y.Key, ChallengeCount = y.Count() })
+        })
+        .ToListAsync();
+
+        return challenges;
+
     }
 }

@@ -7,7 +7,7 @@ import { UserSolution } from './user-solution';
 
 export interface UserFull extends User {
     preferredLanguages: Language[];
-    languageWithLevels: UserLanguageLevel[];
+    languagesWithLevels: UserLanguageLevel[];
     solutions: UserSolution[] | undefined;
     challenges: Challenge[];
 }

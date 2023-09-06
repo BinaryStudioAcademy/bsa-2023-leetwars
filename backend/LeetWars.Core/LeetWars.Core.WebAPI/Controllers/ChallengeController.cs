@@ -1,6 +1,7 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
@@ -10,8 +11,8 @@ namespace LeetWars.Core.WebAPI.Controllers
     public class ChallengeController : ControllerBase
     {
         private readonly IChallengeService _challengeService;
-        
-        public ChallengeController(IChallengeService challengeService) 
+
+        public ChallengeController(IChallengeService challengeService)
         {
             _challengeService = challengeService;
         }
@@ -20,6 +21,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         public async Task<ActionResult<ChallengePreviewDto>> GetAllAsync([FromQuery] ChallengesFiltersDto filters, [FromQuery] PageSettingsDto page)
         {
             var challenges = await _challengeService.GetChallengesAsync(filters, page);
+
             return Ok(challenges);
         }
 

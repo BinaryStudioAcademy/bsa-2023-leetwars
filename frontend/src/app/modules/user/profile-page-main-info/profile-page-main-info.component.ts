@@ -3,6 +3,8 @@ import * as utils from '@modules/user/profile-page-main-info/profile-page-main.u
 import { LanguageLevel } from '@shared/enums/languageLevel';
 import { UserFull } from '@shared/models/profile/user-full';
 
+
+
 @Component({
     selector: 'app-profile-page-main-info',
     templateUrl: './profile-page-main-info.component.html',
@@ -10,7 +12,11 @@ import { UserFull } from '@shared/models/profile/user-full';
 })
 export class ProfilePageMainInfoComponent implements OnChanges {
     @Input() user: UserFull = <UserFull>{};
+    
 
+    constructor() {
+    }
+    public languagesNames: string[] = [];
     //replace it with real user interface
     LanguageLevel = LanguageLevel;
 
@@ -38,9 +44,12 @@ export class ProfilePageMainInfoComponent implements OnChanges {
 
     ngOnChanges(): void {
         this.updateSolutions();
+        console.log(this.user);
     }
 
+    
     private updateSolutions() {
         this.communityLastWeekSolution = utils.getLastWeekCount(this.user.solutions);
     }
+    
 }
