@@ -10,7 +10,7 @@
 
     <div class="w-100 dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenuButton">
         <ng-container *ngIf="!isMultiSelection; else multiSelect">
-            <a ngbDropdownItem *ngIf="selectText" (click)="selectItem(selectText)">
+            <a ngbDropdownItem *ngIf="isSelectedTextNotDefault()" (click)="selectItem(selectText)">
                 <fa-icon
                     [icon]="'check'"
                     size="xs"
