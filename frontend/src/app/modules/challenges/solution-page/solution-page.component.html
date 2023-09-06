@@ -1,22 +1,28 @@
 <div class="solution">
     <div class="languages-container">
-            <div class="label">
-                <div class="label-text">Languages:</div>
-                <ng-containt ngbTooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit" placement="bottom">
+        <div class="label">
+            <div class="label-text">Languages:</div>
+            <ng-containt ngbTooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit" placement="bottom">
                 <fa-icon [icon]="'circle-info'"></fa-icon>
             </ng-containt>
-            </div>
+        </div>
     </div>
     <div class="drop-down-container">
-        <app-challenges-dropdown-select (SelectedItemsChanged)="selectedLanguage"
+        <app-challenges-dropdown-select
+            (selectedItemsChanged)="(selectedLanguage)"
             [items]="languageItems"></app-challenges-dropdown-select>
         <app-challenges-dropdown-select [items]="languageVersionItems"></app-challenges-dropdown-select>
     </div>
     <div class="general-container">
         <div class="tabs-container">
             <tabset class="tabset">
-                <tab  *ngFor="let tabz of tabs" [heading]="tabz.title" [active]="tabz.active"
-                    (selectTab)="switchTab(tabz.title)" [disabled]="tabz.disabled" [customClass]="tabz.customClass">
+                <tab
+                    *ngFor="let tabz of tabs"
+                    [heading]="tabz.title"
+                    [active]="tabz.active"
+                    (selectTab)="switchTab(tabz.title)"
+                    [disabled]="tabz.disabled"
+                    [customClass]="tabz.customClass">
                 </tab>
             </tabset>
             <div class="tab-help">
@@ -27,8 +33,10 @@
             </div>
         </div>
         <div class="editor">
-        <app-code-editor [language]="selectedLanguage" [initSolution]="content"
-            (codeChanged)="onCodeChange($event)"></app-code-editor>
+            <app-code-editor
+                [language]="selectedLanguage"
+                [initSolution]="content"
+                (codeChanged)="onCodeChange($event)"></app-code-editor>
         </div>
     </div>
 </div>

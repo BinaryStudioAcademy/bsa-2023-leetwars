@@ -13,25 +13,25 @@
             [isMultiSelection]="false"
             [title]="'By language'"
             [items]="languagesNames"
-            (SelectedItemsChanged)="onLanguageChange($event)"
+            (selectedItemsChanged)="onLanguageChange($event)"
             class="m-0-12px"></app-dropdown-select>
         <app-dropdown-select
             [isMultiSelection]="false"
             [title]="'By status'"
             [items]="statusesNames"
-            (SelectedItemsChanged)="onStatusChange($event)"
+            (selectedItemsChanged)="onStatusChange($event)"
             class="m-0-12px"></app-dropdown-select>
         <app-dropdown-select
             [isMultiSelection]="false"
             [title]="'By progress'"
             [items]="progressesNames"
-            (SelectedItemsChanged)="onProgressChange($event)"
+            (selectedItemsChanged)="onProgressChange($event)"
             class="m-0-12px"></app-dropdown-select>
         <app-dropdown-select
             [isMultiSelection]="true"
             [title]="'By tags'"
             [items]="tagsNames"
-            (SelectedItemsChanged)="onTagsChange($event)"
+            (selectedItemsChanged)="onTagsChange($event)"
             class="m-0-12px mb-28px"></app-dropdown-select>
     </div>
     <div class="challenges d-grid justify-content-center gap-2" infinite-scroll (scrolled)="onScroll()">
