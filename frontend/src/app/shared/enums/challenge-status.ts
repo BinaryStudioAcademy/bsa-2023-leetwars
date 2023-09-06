@@ -1,6 +1,6 @@
 export enum ChallengeStatus {
-    Beta,
-    Pending,
-    Approved,
-    Rejected,
+    Beta = 'Beta',
+    Pending = 'Pending',
+    Approved = 'Approved',
+    Rejected = 'Rejected',
 }
