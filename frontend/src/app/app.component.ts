@@ -14,9 +14,11 @@ import { SpinnerService } from '@core/services/spinner.service';
     templateUrl: './app.component.html',
 })
 export class AppComponent {
-    isWithoutHeaderPage: boolean;
+    showHeader: boolean;
 
-    isRouteFound: boolean;
+    private isWithoutHeaderPage: boolean;
+
+    private isRouteFound: boolean;
 
     constructor(private router: Router, private spinner: SpinnerService) {
         this.listenRouter();
@@ -46,9 +48,10 @@ export class AppComponent {
             }
 
             if (event instanceof NavigationStart) {
-                this.isWithoutHeaderPage =
-                    event.url.startsWith('/auth') || event.url.startsWith('/challenges') || event.url === '/';
+                this.isWithoutHeaderPage = event.url.startsWith('/auth') || event.url === '/';
             }
+
+            this.showHeader = !this.isWithoutHeaderPage && this.isRouteFound;
         });
     }
 }
