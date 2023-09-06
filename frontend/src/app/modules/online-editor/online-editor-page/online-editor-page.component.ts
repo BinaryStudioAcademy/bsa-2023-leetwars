@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChallengeService } from '@core/services/challenge.service';
 import { Challenge } from '@shared/models/challenge/challenge';
+import { ChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -35,9 +36,9 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     editorOptions: object;
 
-    initialSolution: string | undefined;
+    initialSolution?: string;
 
-    testCode: string | undefined;
+    testCode?: string;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -58,40 +59,10 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit() {
-        const challengeId = this.activatedRoute.snapshot.params['id'];
-
         this.splitDirection = 'horizontal';
+        const challengeId = parseInt(this.activatedRoute.snapshot.params['id'], 10);
 
-        this.challengeService.getChallengeById(challengeId).subscribe({
-            next: (challenge) => {
-                this.languages = challenge.versions.map((v) => v.language.name);
-                const languageVersionNames: string[] = [];
-
-                challenge.versions.forEach((version) => {
-                    version.language.languageVersions.forEach((languageVersion) => {
-                        languageVersionNames.push(languageVersion.version);
-                    });
-                });
-                this.languageVersions = languageVersionNames;
-                this.challenge = challenge;
-                [this.selectedLanguage] = this.languages;
-                [this.selectedLanguageVersion] = this.languageVersions;
-                this.editorOptions = {
-                    theme: 'custom-theme',
-                    language: this.mapLanguageName(this.selectedLanguage),
-                    minimap: { enabled: false },
-                    automaticLayout: true,
-                    useShadows: false,
-                    wordWrap: 'on',
-                    lineNumbers: 'on',
-                };
-                this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
-                this.testCode = this.getInitialTestByChallengeVersionId(challenge.versions[0].id);
-            },
-            error: () => {
-                this.router.navigateByUrl('/not-found');
-            },
-        });
+        this.loadChallenge(challengeId);
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
@@ -114,38 +85,71 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         return this.activeTab === title;
     }
 
+    private loadChallenge(challengeId: number) {
+        this.challengeService.getChallengeById(challengeId).subscribe(
+            (challenge) => {
+                this.setupLanguages(challenge);
+                this.setupEditorOptions();
+            },
+            () => {
+                this.router.navigateByUrl('/not-found');
+            },
+        );
+    }
+
+    private setupLanguages(challenge: Challenge) {
+        this.challenge = challenge;
+        this.languages = challenge.versions.map((v) => v.language.name);
+        this.languageVersions = this.extractLanguageVersions(challenge.versions);
+        [this.selectedLanguage] = this.languages;
+        [this.selectedLanguageVersion] = this.languageVersions;
+    }
+
+    private extractLanguageVersions(versions: ChallengeVersion[]) {
+        return versions.reduce((languageVersionNames: string[], version: ChallengeVersion) => {
+            const versionLanguages = version.language.languageVersions.map((languageVersion) => languageVersion.version);
+
+            return languageVersionNames.concat(versionLanguages);
+        }, []);
+    }
+
+    private setupEditorOptions() {
+        this.editorOptions = {
+            theme: 'custom-theme',
+            language: this.mapLanguageName(this.selectedLanguage),
+            minimap: { enabled: false },
+            automaticLayout: true,
+            useShadows: false,
+            wordWrap: 'on',
+            lineNumbers: 'on',
+        };
+        this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
+        this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0].id);
+    }
+
     private getInitialSolutionByLanguage(language: string): string | undefined {
         const version = this.challenge.versions.find((v) => v.language.name === language);
 
         return version?.initialSolution;
     }
 
-    private getInitialTestByChallengeVersionId(id: number): string {
+    private getInitialTestByChallengeVersionId(id: number) {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
-        const testCode = selectedVersion!.tests[0].code;
-
-        return testCode;
+        return (selectedVersion && selectedVersion.tests.length > 0)
+            ? selectedVersion.tests[0].code
+            : 'No tests available';
     }
 
     private mapLanguageName(language: string): string {
         return this.languageNameMap.get(language) || language.toLowerCase();
     }
 
-    private getLanguageVersionsByLanguage(language: string): string[] {
-        const languageVersions: string[] = [];
-
-        this.challenge.versions.forEach((version) => {
-            const selectedLang = this.mapLanguageName(version.language.name);
-
-            if (selectedLang === language) {
-                version.language.languageVersions.forEach((languageVersion) => {
-                    languageVersions.push(languageVersion.version);
-                });
-            }
-        });
-
-        return languageVersions;
+    private getLanguageVersionsByLanguage(language: string) {
+        return this.challenge.versions
+            .filter((version) => this.mapLanguageName(version.language.name) === language)
+            .flatMap((version) => version.language.languageVersions
+                .map((languageVersion) => languageVersion.version));
     }
 
     ngOnDestroy(): void {
