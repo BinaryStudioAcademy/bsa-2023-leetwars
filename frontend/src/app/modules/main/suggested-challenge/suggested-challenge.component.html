@@ -6,25 +6,23 @@
                 [items]="languagesNames"
                 [selectedItem]="languagesNames[0]"
                 [selectText]="'Choose Language...'"
-                (SelectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
+                (selectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
             <app-dropdown-select
                 [items]="suggestionTypesNames"
                 [selectedItem]="suggestionTypesNames[0]"
                 [selectText]="'Choose Today\'s Focus...'"
                 [itemsIcons]="suggestionIcons"
-                (SelectedItemsChanged)="onSuggestionTypeChanged($event)"></app-dropdown-select>
+                (selectedItemsChanged)="onSuggestionTypeChanged($event)"></app-dropdown-select>
         </div>
         <div class="button-group">
-            <button class="suggested-button skip" (click)="getChallenge()">
-                Skip
-            </button>
-            <button class="suggested-button train">
-                Train
-            </button>
+            <button class="suggested-button skip" (click)="getChallenge()">Skip</button>
+            <button class="suggested-button train">Train</button>
         </div>
     </div>
 
-    <div class="description d-flex justify-content-center align-items-center text-center text-white text-opacity-50" *ngIf="!challenge">
+    <div
+        class="description d-flex justify-content-center align-items-center text-center text-white text-opacity-50"
+        *ngIf="!challenge">
         <div>
             <h4>No suggestions</h4>
             <p>Please select other variants</p>
