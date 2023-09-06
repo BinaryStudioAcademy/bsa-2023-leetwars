@@ -1,34 +1,20 @@
-<div class="solution">
-    <div class="languages-container">
-            <div class="label">
-                <div class="label-text">Languages:</div>
-                <ng-containt ngbTooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit" placement="bottom">
-                <fa-icon [icon]="'circle-info'"></fa-icon>
-            </ng-containt>
-            </div>
-    </div>
-    <div class="drop-down-container">
-        <app-challenges-dropdown-select (SelectedItemsChanged)="selectedLanguage"
-            [items]="languageItems"></app-challenges-dropdown-select>
-        <app-challenges-dropdown-select [items]="languageVersionItems"></app-challenges-dropdown-select>
-    </div>
-    <div class="general-container">
-        <div class="tabs-container">
-            <tabset class="tabset">
-                <tab  *ngFor="let tabz of tabs" [heading]="tabz.title" [active]="tabz.active"
-                    (selectTab)="switchTab(tabz.title)" [disabled]="tabz.disabled" [customClass]="tabz.customClass">
-                </tab>
-            </tabset>
-            <div class="tab-help">
-                <ng-containt ngbTooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit" placement="top">
-                    <fa-icon [icon]="'question-circle'"></fa-icon>
-                </ng-containt>
-                <div class="tab-text">Help</div>
-            </div>
+<div class="solution-container">
+    <div class="tabs-container">
+        <tabset class="tabset">
+            <tab *ngFor="let tab of tabs" [heading]="tab.type.toString()" [active]="tab.active"
+                (selectTab)="switchTab(tab)" [disabled]="tab.disabled" [customClass]="getTabClass(tab)">
+            </tab>
+        </tabset>
+        <div class="tab-help">
+            <fa-icon [icon]="'question-circle'" ngbTooltip="Help message" placement="top"></fa-icon>
+            <div class="tab-text">Help</div>
         </div>
-        <div class="editor">
-        <app-code-editor [language]="selectedLanguage" [initSolution]="content"
+    </div>
+    <div class="editor">
+        <app-code-editor
+            [language]="editorLanguage"
+            [initSolution]="editorContent"
+            (focusout)=editorFocusOut()
             (codeChanged)="onCodeChange($event)"></app-code-editor>
-        </div>
     </div>
 </div>
