@@ -5,15 +5,18 @@ import { UserLoginDto } from '@shared/models/user/user-login-dto';
 import { UserRegisterDto } from '@shared/models/user/user-register-dto';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
-import { BehaviorSubject, first, from, Observable, switchMap, tap, throwError } from 'rxjs';
+import { BehaviorSubject, first, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { ToastrNotificationsService } from './toastr-notifications.service';
 import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
+    private providerName: string = 'firebase';
+
     private userSubject: BehaviorSubject<User | undefined>;
 
     private user: User | undefined;
@@ -22,7 +25,11 @@ export class AuthService {
 
     private tokenKeyName = 'userToken';
 
-    constructor(private afAuth: AngularFireAuth, private userService: UserService) {
+    constructor(
+        private afAuth: AngularFireAuth,
+        private userService: UserService,
+        private toastrNotification: ToastrNotificationsService,
+    ) {
         this.userSubject = new BehaviorSubject<User | undefined>(this.getUserInfo());
         afAuth.authState.subscribe(async (user) => {
             if (user) {
@@ -127,6 +134,15 @@ export class AuthService {
                     timezone: new Date().getTimezoneOffset() / 60,
                 })),
             tap((user) => this.setUserInfo(user)),
+            catchError((error: string) => {
+                if (!error.toLowerCase().includes(this.providerName)) {
+                    this.toastrNotification.showError(error);
+                } else {
+                    console.error(error);
+                }
+
+                return of(undefined);
+            }),
         );
     }
 

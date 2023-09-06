@@ -6,7 +6,7 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { User } from '@shared/models/user/user';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
-import { catchError, of, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-log-in-page',
@@ -22,8 +22,6 @@ export class LogInPageComponent {
     public isExistingEmail = true;
 
     public isSignInError = false;
-
-    private providerName: string = 'firebase';
 
     constructor(
         private authService: AuthService,
@@ -66,48 +64,22 @@ export class LogInPageComponent {
     }
 
     public signInWithGitHub() {
-        this.authService.signInWithGitHub()
-            .pipe(
-                catchError((error: string) => {
-                    if (!error.toLowerCase().includes(this.providerName)) {
-                        this.toastrNotification.showError(error);
-                    } else {
-                        console.error(error);
-                    }
-
-                    return of(undefined);
-                }),
-            ).subscribe(
-                (user: User | undefined) => {
-                    if (user) {
-                        this.router.navigate(['/main']);
-                        this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
-                        // add email sender to user.email
-                    }
-                },
-            );
+        this.authService.signInWithGitHub().subscribe((user: User | undefined) => {
+            if (user) {
+                this.router.navigate(['/main']);
+                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
+                // add email sender to user.email
+            }
+        });
     }
 
     public signInWithGoogle() {
-        this.authService.signInWithGoogle()
-            .pipe(
-                catchError((error: string) => {
-                    if (!error.toLowerCase().includes(this.providerName)) {
-                        this.toastrNotification.showError(error);
-                    } else {
-                        console.error(error);
-                    }
-
-                    return of(undefined);
-                }),
-            ).subscribe(
-                (user: User | undefined) => {
-                    if (user) {
-                        this.router.navigate(['/main']);
-                        this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
-                        // add email sender to user.email
-                    }
-                },
-            );
+        this.authService.signInWithGoogle().subscribe((user: User | undefined) => {
+            if (user) {
+                this.router.navigate(['/main']);
+                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
+                // add email sender to user.email
+            }
+        });
     }
 }
