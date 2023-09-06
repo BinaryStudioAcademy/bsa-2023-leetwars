@@ -103,6 +103,8 @@ public class UserService : BaseService, IUserService
         })
         .ToListAsync();
 
+        var data = await _context.UserSolutions.Where(x => x.User.Id == currentUserId).ToListAsync();
+
         return challenges;
 
     }
