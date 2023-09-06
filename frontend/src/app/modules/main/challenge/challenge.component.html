@@ -5,16 +5,16 @@
             <span class="title text-wrap">{{ challenge.title }}</span>
         </div>
         <div class="info-row d-flex">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center info-item">
                 <fa-icon [icon]="['far', 'star']" size="2xs"></fa-icon>
                 <span class="icon icon-border">{{ challengeStars }}</span>
             </div>
-            <div class="d-flex align-items-center ml-6px">
+            <div class="d-flex align-items-center ml-6px info-item">
                 <!-- pro version required for regular chart-simple -->
                 <fa-icon [icon]="'chart-simple'" size="2xs"></fa-icon>
                 <span class="icon icon-border">{{ challengePositiveFeedbacksPercent }}% positive feedback</span>
             </div>
-            <div class="d-flex align-items-center ml-6px">
+            <div class="d-flex align-items-center ml-6px info-item">
                 <fa-icon [icon]="['far', 'user']" size="2xs"></fa-icon>
                 <span class="icon">
                     <!-- TODO: Add author link -->
@@ -32,7 +32,7 @@
 </div>
 
 <div class="tags d-flex flex-wrap gap-2">
-    <div *ngFor="let tag of challenge.tags" class="tag-block d-flex align-items-center justify-content-center">
+    <div *ngFor="let tag of challenge.tags" class="tag-block d-flex">
         <span>{{ tag.name }}</span>
     </div>
 </div>

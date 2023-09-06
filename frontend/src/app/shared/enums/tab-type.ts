@@ -1,5 +1,5 @@
 export enum TabType {
-    Description,
-    Preview,
-    Help,
+    Description = 'Description',
+    Preview = 'Preview',
+    Help = 'Help',
 }

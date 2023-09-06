@@ -1,7 +1,7 @@
 export enum CategoryType {
-    Fundamentals,
-    Algorithms,
-    BugFixes,
-    Refactoring,
-    Puzzles,
+    Fundamentals = 'Fundamentals',
+    Algorithms = 'Algorithms',
+    BugFixes = 'BugFixes',
+    Refactoring = 'Refactoring',
+    Puzzles = 'Puzzles',
 }
