@@ -13,7 +13,7 @@ import {
     userNameMaxLength,
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
-import { emailPattern, latinCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { emailPattern, latinOrCyrillicCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { usernameExistsValidator } from '@shared/utils/validation/username-exists.validator';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 
@@ -35,7 +35,7 @@ export class SignUpComponent {
                 Validators.required,
                 Validators.minLength(userNameMinLength),
                 Validators.maxLength(userNameMaxLength),
-                Validators.pattern(latinCharactersPattern),
+                Validators.pattern(latinOrCyrillicCharactersPattern),
             ],
             [usernameExistsValidator(this.userService)],
         ),
