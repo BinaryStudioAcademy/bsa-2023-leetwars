@@ -20,6 +20,8 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
 
     @Input() selectedItem: string;
 
+    @Input() selectedItems: string[] = [];
+
     @Output() SelectedItemsChanged = new EventEmitter<string[] | string>();
 
     public selectedIcon: IconName;
@@ -30,6 +32,9 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
         if (changes['selectedItem']) {
             this.setInitialValue();
         }
+        if (changes['selectedItems']) {
+            this.fieldText = this.selectedItems.join(', ');
+        }
     }
 
     setInitialValue() {
@@ -38,8 +43,6 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
         }
         this.fieldText = this.selectedItem;
     }
-
-    public selectedItems: string[] = [];
 
     public ngOnInit() {
         this.updateSelectedIcon();

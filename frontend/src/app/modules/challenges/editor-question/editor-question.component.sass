@@ -48,7 +48,7 @@
     font-size: 12px
 
 .input-wrapper
-  max-width: 876px
+    max-width: max(85%,1117px)
 
 .tabs-list
   background-color: $double-weak-white
@@ -69,6 +69,15 @@
   color: $white
   min-height: 260px
   padding: 10px
+
+.input-column
+    flex: 0 1 550px
+    flex-wrap: wrap
+
+:host ::ng-deep app-dropdown-select
+    label
+        color: $satured-grey
+        font-weight: 400
 
 // Markdown editor styles
 

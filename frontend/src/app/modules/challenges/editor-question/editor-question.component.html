@@ -10,7 +10,7 @@
             <div
                 class="category"
                 [class.category-active]="category === CategoryType.Fundamentals"
-                (click)="category = CategoryType.Fundamentals">
+                (click)="onCategoryChange(CategoryType.Fundamentals)">
                 <img
                     class="category-icon"
                     src="/assets/images/categories-icons/bookmark-icon.png"
@@ -20,34 +20,65 @@
             <div
                 class="category"
                 [class.category-active]="category === CategoryType.Algorithms"
-                (click)="category = CategoryType.Algorithms">
+                (click)="onCategoryChange(CategoryType.Algorithms)">
                 <img class="category-icon" src="/assets/images/categories-icons/abasus-icon.png" alt="abasus-icon" />
                 <span class="category-text">Algorithms</span>
             </div>
             <div
                 class="category"
                 [class.category-active]="category === CategoryType.BugFixes"
-                (click)="category = CategoryType.BugFixes">
+                (click)="onCategoryChange(CategoryType.BugFixes)">
                 <img class="category-icon" src="/assets/images/categories-icons/bug-icon.png" alt="bug-icon" />
                 <span class="category-text">Bug Fixes</span>
             </div>
             <div
                 class="category"
                 [class.category-active]="category === CategoryType.Refactoring"
-                (click)="category = CategoryType.Refactoring">
+                (click)="onCategoryChange(CategoryType.Refactoring)">
                 <img class="category-icon" src="/assets/images/categories-icons/cone-icon.png" alt="cone-icon" />
                 <span class="category-text">Refactoring</span>
             </div>
             <div
                 class="category"
                 [class.category-active]="category === CategoryType.Puzzles"
-                (click)="category = CategoryType.Puzzles">
+                (click)="onCategoryChange(CategoryType.Puzzles)">
                 <img class="category-icon" src="/assets/images/categories-icons/rubik-icon.png" alt="rubik-icon" />
                 <span class="category-text">Puzzles</span>
             </div>
         </div>
     </div>
-    <div class="input-wrapper mt-12px d-flex flex-column gap-2">
+
+    <div class="d-flex gap-3">
+        <div class="input-column">
+            <app-dropdown-select
+                [title]="'Level *'"
+                [items]="allLevelsNames"
+                [selectedItem]="selectedLevelName"
+                (SelectedItemsChanged)="onLevelChange($event)"
+                (focusout)="inputForm.controls.level.markAsTouched()"
+                [class.input-error]="inputForm.controls.level.touched && inputForm.controls.level.invalid"
+                class="d-block mt-3"></app-dropdown-select>
+            <div class="validation-error-message" *ngIf="inputForm.controls.level.touched && inputForm.controls.level.invalid">
+                {{ getErrorMessage('level') }}
+            </div>
+        </div>
+        <div class="input-column">
+            <app-dropdown-select
+                [isMultiSelection]="true"
+                [title]="'Tags *'"
+                [items]="allTagsNames"
+                [selectedItems]="selectedTagsNames"
+                (SelectedItemsChanged)="onTagsChange($event)"
+                (focusout)="inputForm.controls.tags.markAsTouched()"
+                [class.input-error]="inputForm.controls.tags.touched && inputForm.controls.tags.invalid"
+                class="d-block mt-3"></app-dropdown-select>
+            <div class="validation-error-message" *ngIf="inputForm.controls.tags.touched && inputForm.controls.tags.invalid">
+                {{ getErrorMessage('tags') }}
+            </div>
+        </div>
+    </div>
+
+    <div class="input-wrapper mt-12px d-flex flex-column gap-1">
         <p class="question-header">Name *</p>
         <app-custom-input
             [Identifier]="'kata-name'"

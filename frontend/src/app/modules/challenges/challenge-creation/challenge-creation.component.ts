@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
+import { ChallengeLevelService } from '@core/services/challenge-level.service';
 import { LanguageService } from '@core/services/language.service';
+import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import {
     getDropdownItems,
@@ -13,11 +15,12 @@ import {
 import { CategoryType } from '@shared/enums/category-type';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { NewChallenge } from '@shared/models/challenge/new-challenge';
+import { ChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { DropdownItem } from '@shared/models/dropdown-item';
 import { Language } from '@shared/models/language/language';
+import { Tag } from '@shared/models/tag/tag';
 import { getEditorLanguageName } from '@shared/utils/editor-languages';
-import { select } from 'd3-selection';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -35,6 +38,10 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
     public challenge: NewChallenge;
 
     public challengeVersion: NewChallengeVersion;
+
+    public tags: Tag[] = [];
+
+    public challengeLevels: ChallengeLevel[] = [];
 
     public languages: Language[] = [];
 
@@ -54,7 +61,9 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     constructor(
         private challengeService: ChallengeService,
+        private challengeLevelService: ChallengeLevelService,
         private languageService: LanguageService,
+        private tagService: TagService,
         private toastrService: ToastrNotificationsService,
     ) {
         super();
@@ -65,6 +74,8 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     ngOnInit(): void {
         this.getLanguages();
+        this.getTags();
+        this.getChallengeLevels();
     }
 
     onStepClick(stepIndex: number) {
@@ -83,6 +94,10 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     onCategoryChange(value: CategoryType) {
         this.challenge.category = value;
+    }
+
+    onSelectedTagsChange(value: Tag[]) {
+        this.challenge.tags = value;
     }
 
     onValidationChange(stepType: ChallengeStep, isValid: boolean) {
@@ -146,6 +161,32 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
                         return version;
                     });
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
+    }
+
+    private getTags() {
+        this.tagService.getTags()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: data => {
+                    this.tags = data;
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
+    }
+
+    private getChallengeLevels() {
+        this.challengeLevelService.getLevels()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: data => {
+                    this.challengeLevels = data;
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');

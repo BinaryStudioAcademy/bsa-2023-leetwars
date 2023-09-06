@@ -21,8 +21,8 @@
                 <app-challenges-dropdown-select [items]="languageDropdownItems"
                                                 [selectedItem]="currentLanguage"
                                                 (selectedItemChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
-                <app-challenges-dropdown-select
-                    [items]="languageVersionDropdownItems"></app-challenges-dropdown-select>
+<!--                <app-challenges-dropdown-select-->
+<!--                    [items]="languageVersionDropdownItems"></app-challenges-dropdown-select>-->
             </div>
         </div>
     </div>
@@ -32,10 +32,15 @@
         [name]="challenge.title"
         [description]="challenge.instructions"
         [category]="challenge.category"
+        [allTags]="tags"
+        [selectedTags]="challenge.tags"
+        [allLevels]="challengeLevels"
+        [selectedLevel]="challenge.level"
         [checkValidation]="getStepChecking(ChallengeStep.Question)"
         (nameChange)="onNameChange($event)"
         (descriptionChange)="onDescriptionChange($event)"
         (categoryChange)="onCategoryChange($event)"
+        (selectedTagsChange)="onSelectedTagsChange($event)"
         (validationChange)="onValidationChange(ChallengeStep.Question, $event)"
     ></app-editor-question>
 

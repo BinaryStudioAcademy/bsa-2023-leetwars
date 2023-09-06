@@ -34,3 +34,9 @@ export const challengeNameValidationErrorMessages: ControlErrorMessages = {
 export const challengeDescriptionValidationErrorMessages: ControlErrorMessages = {
     required: 'Please enter challenge description',
 };
+export const challengeLevelValidationErrorMessages: ControlErrorMessages = {
+    required: 'Please enter challenge level',
+};
+export const challengeTagsValidationErrorMessages: ControlErrorMessages = {
+    required: 'Please enter challenge tags',
+};
