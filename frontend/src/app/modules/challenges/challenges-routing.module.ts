@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ChallengesTestPageComponent } from './challenges-test-page/challenges-test-page.component';
 import { EditorQuestionComponent } from './editor-question/editor-question.component';
+import { OnlineEditorPageComponent } from './online-editor/online-editor-page/online-editor-page.component';
 
 const routes: Routes = [
     {
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
         path: 'question',
         component: EditorQuestionComponent,
+    },
+    {
+        path: ':id',
+        component: OnlineEditorPageComponent,
     },
 ];
 

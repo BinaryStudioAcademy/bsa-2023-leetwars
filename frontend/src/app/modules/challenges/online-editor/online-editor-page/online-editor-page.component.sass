@@ -1,0 +1,152 @@
+@import 'src/styles/color-variables'
+
+.page-container
+    padding: 8px
+    height: 90%
+
+.problem-info, .editor
+    border-radius: 5px
+    background-color: $charcoal-grey
+    color: $white
+    font-family: Inter
+    font-size: 11px
+    font-weight: 500
+    letter-spacing: 0em
+
+.content
+    padding: 16px
+
+.my-code-editor
+    height: calc(100% - 45px)
+    width: 100%
+
+.editor-test
+    height: calc(100% - 45px)
+    width: 100%
+
+.test-wrp
+    margin-top: 10px
+    height: 42%
+
+:host ::ng-deep .editor-container
+    margin-top: 9px
+    width: 100%
+
+
+:host ::ng-deep .scroll-decoration
+    box-shadow: none !important
+
+.header, .problem-info ul
+    height: 36px
+    display: flex
+    gap: 12px
+    align-items: center
+    background-color: $charcoal
+    border-radius: 5px 5px 0px 0px
+    border-bottom: 1px solid $extra-light-gray
+
+.language-selection
+    height: 100%
+    display: flex
+    align-items: center
+
+.language-selection
+    width: fit-content
+    padding-left: 22px
+
+.language-selection app-dropdown-select
+    margin-right: 10px
+
+
+:host ::ng-deep .language-selection .btn
+    border: none !important
+    background-color: transparent !important
+    height: auto !important
+    color: $transparent-light-grey
+    padding-left: 4px !important
+    padding-right: 0px !important
+    gap: 8px !important
+    font-family: Inter
+    font-size: 10px
+    font-weight: 500
+
+:host ::ng-deep .dropdown-item
+    font-family: Inter
+    font-size: 10px
+    font-weight: 500
+
+:host ::ng-deep .language-selection .btn span
+    color: $transparent-light-grey
+
+:host ::ng-deep .language-selection fa-icon
+    color: #8A8A8A !important
+
+:host ::ng-deep .language-selection .dropdown-item
+    color: $transparent-light-grey !important
+
+.vertical-divider
+    width: 1px
+    height: 12px
+    background-color: $soft-celestial
+
+button span
+    color: $semi-transparent-white
+
+:host ::ng-deep .as-split-gutter
+    background-color: transparent !important
+    &-icon
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTRweCIgdmlld0JveD0iMCAwIDEyOCA1MTIiPgogICAgPCEtLSEgRm9udCBBd2Vzb21lIEZyZWUgNi40LjIgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UgKENvbW1lcmNpYWwgTGljZW5zZSkgQ29weXJpZ2h0IDIwMjMgRm9udGljb25zLCBJbmMuIC0tPgogICAgPHBhdGgKICAgICAgICBkPSJNNjQgMzYwYTU2IDU2IDAgMSAwIDAgMTEyIDU2IDU2IDAgMSAwIDAtMTEyem0wLTE2MGE1NiA1NiAwIDEgMCAwIDExMiA1NiA1NiAwIDEgMCAwLTExMnpNMTIwIDk2QTU2IDU2IDAgMSAwIDggOTZhNTYgNTYgMCAxIDAgMTEyIDB6IgogICAgICAgIGZpbGw9InJnYmEoOTIsIDkyLCA5MiwgMSkiIC8+Cjwvc3ZnPg==") !important
+
+:host ::ng-deep pre
+    white-space: pre-wrap
+
+:host ::ng-deep .tab-content
+    height: calc(100% - 36px)
+    overflow: auto
+    font-size: 13px
+    font-weight: 400
+
+.selectedTab
+    height: 100%
+    display: flex
+    align-items: center
+    color: white
+    position: relative
+
+:host ::ng-deep .selectedTab::after
+    content: ""
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    height: 2px
+    background-color: $slate-gray
+
+.problem-info ul
+    padding-left: 16px
+    color: $transparent-light-grey
+
+.challenge-title
+    font-size: 16px
+    padding-bottom: 16px
+
+.actions
+    margin-top: 15px
+    display: flex
+    justify-content: flex-end
+    gap: 10px
+    padding: 4px
+
+.actions button
+    padding: 3px 6px
+    border-radius: 5px
+
+button.sumbit
+    background-color: $green
+    color: white
+    border: none
+
+button.run-test
+    background-color: $charcoal
+    color: white
+    border: none

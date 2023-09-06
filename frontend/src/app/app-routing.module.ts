@@ -30,11 +30,11 @@ const routes: Routes = [
         loadChildren: () => import('./modules/challenges/challenges.module').then((m) => m.ChallengesModule),
         canActivate: [AuthorizedGuard],
     },
-    {
-        path: 'challenges/:id',
-        loadChildren: () => import('./modules/online-editor/online-editor.module').then((m) => m.OnlineEditorModule),
-        canActivate: [AuthorizedGuard],
-    },
+    // {
+    //     path: 'challenges/:id',
+    //     loadChildren: () => import('./modules/challenges/online-editor/online-editor.module').then((m) => m.OnlineEditorModule),
+    //     canActivate: [AuthorizedGuard],
+    // },
     { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
