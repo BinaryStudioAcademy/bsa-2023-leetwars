@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { User } from '@shared/models/user/user';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
@@ -64,22 +63,10 @@ export class LogInPageComponent {
     }
 
     public signInWithGitHub() {
-        this.authService.signInWithGitHub().subscribe((user: User | undefined) => {
-            if (user) {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
-                // add email sender to user.email
-            }
-        });
+        this.authService.signInWithGitHub();
     }
 
     public signInWithGoogle() {
-        this.authService.signInWithGoogle().subscribe((user: User | undefined) => {
-            if (user) {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
-                // add email sender to user.email
-            }
-        });
+        this.authService.signInWithGoogle();
     }
 }

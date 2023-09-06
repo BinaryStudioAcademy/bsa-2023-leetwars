@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import { User } from '@shared/models/user/user';
 import { UserLoginDto } from '@shared/models/user/user-login-dto';
 import { UserRegisterDto } from '@shared/models/user/user-register-dto';
@@ -28,6 +29,7 @@ export class AuthService {
     constructor(
         private afAuth: AngularFireAuth,
         private userService: UserService,
+        private router: Router,
         private toastrNotification: ToastrNotificationsService,
     ) {
         this.userSubject = new BehaviorSubject<User | undefined>(this.getUserInfo());
@@ -76,12 +78,12 @@ export class AuthService {
         return localStorage.getItem(this.tokenKeyName);
     }
 
-    public signInWithGoogle() {
-        return this.createUser(this.signInWithProvider(new GoogleAuthProvider()));
+    public signInWithGoogle(isLogin: boolean = true) {
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider())), isLogin);
     }
 
-    public signInWithGitHub() {
-        return this.createUser(this.signInWithProvider(new GithubAuthProvider()));
+    public signInWithGitHub(isLogin: boolean = true) {
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider())), isLogin);
     }
 
     // TODO: Implemented only firebase part
@@ -123,6 +125,18 @@ export class AuthService {
         );
     }
 
+    private signWithProvider(observable: Observable<User | undefined>, isLogin: boolean) {
+        return observable.subscribe((user?: User) => {
+            if (user) {
+                this.router.navigate(['/main']);
+                this.toastrNotification.showSuccess(
+                    `${user.userName} was successfully signed ${isLogin ? 'in' : 'up'}`,
+                );
+                // add email sender to user.email
+            }
+        });
+    }
+
     private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string | undefined = undefined) {
         return auth.pipe(
             switchMap((resp) =>
@@ -134,11 +148,15 @@ export class AuthService {
                     timezone: new Date().getTimezoneOffset() / 60,
                 })),
             tap((user) => this.setUserInfo(user)),
-            catchError((error: string) => {
-                if (!error.toLowerCase().includes(this.providerName)) {
-                    this.toastrNotification.showError(error);
-                } else {
-                    console.error(error);
+            catchError((error: string | Error) => {
+                let message = error as string;
+
+                if (typeof error !== 'string') {
+                    message = error.message;
+                }
+
+                if (!message.toLowerCase().includes(this.providerName)) {
+                    this.toastrNotification.showError(message);
                 }
 
                 return of(undefined);

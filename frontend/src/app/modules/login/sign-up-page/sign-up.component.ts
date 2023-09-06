@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { User } from '@shared/models/user/user';
 import { emailExistsValidator } from '@shared/utils/validation/email-exists.validator';
 import {
     emailMaxLength,
@@ -59,23 +58,11 @@ export class SignUpComponent {
     ) {}
 
     public signUpGitHub() {
-        this.authService.signInWithGitHub().subscribe((user: User | undefined) => {
-            if (user) {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
-                // add email sender to user.email
-            }
-        });
+        this.authService.signInWithGitHub(false);
     }
 
     public signUpGoogle() {
-        this.authService.signInWithGoogle().subscribe((user: User | undefined) => {
-            if (user) {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
-                // add email sender to user.email
-            }
-        });
+        this.authService.signInWithGoogle(false);
     }
 
     public signUp() {
