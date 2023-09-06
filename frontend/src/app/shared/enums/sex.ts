@@ -1,6 +1,6 @@
 export enum Sex {
-    Unset,
-    Male,
-    Female,
-    Another,
+    Unset = 'Unset',
+    Male = 'Male',
+    Female = 'Female',
+    Another = 'Another',
 }
