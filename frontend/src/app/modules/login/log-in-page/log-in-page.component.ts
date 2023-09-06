@@ -21,6 +21,8 @@ export class LogInPageComponent implements OnInit {
 
     isExistingEmail = true;
 
+    isSignInError = false;
+
     showPassword: boolean = false;
 
     isDataIncorrect: boolean;
@@ -66,6 +68,8 @@ export class LogInPageComponent implements OnInit {
                 },
                 (error) => {
                     this.toastrNotification.showError('Something went wrong');
+                    this.isSignInError = true;
+                    this.logInForm.markAsUntouched();
                     console.error('Error :', error);
                 },
             );
