@@ -34,9 +34,9 @@
             (SelectedItemsChanged)="onTagsChange($event)"
             class="m-0-12px mb-28px"></app-dropdown-select>
     </div>
-    <div class="d-grid justify-content-center gap-2">
-        <div infinite-scroll (scrolled)="onScroll()" >
-            <div class="d-flex text-center text-white text-opacity-50 mt-3" *ngIf="!challenges.length">
+    <div class="challenges d-grid justify-content-center gap-2">
+        <div infinite-scroll (scrolled)="onScroll()">
+            <div class="d-flex text-center text-white text-opacity-50 mt-3" *ngIf="!challenges.length && !loading">
                 <div>
                     <h4>No available challenge</h4>
                     <p>Please select other variants</p>
