@@ -2,14 +2,22 @@
 @import 'screen-sizes-variables'
 
 :host
+  height: 100%
   font-family: Inter
   color: $white
+  display: block
+  background-color: $deep-dark-grey
+  overflow: auto
+
+:host ::ng-deep #kata-name
+  border: none
+  background-color: $very-weak-black
 
 .mt-12px
   margin-top: 12px
 
 .content-wrapper
-  padding: 10px 35px
+  padding: 10px 25px
 
 .header
   font-size: 26px
@@ -51,7 +59,7 @@
     font-size: 12px
 
 .input-wrapper
-  max-width: 876px
+  max-width: 85%
 
 .tabs-list
   background-color: $double-weak-white
