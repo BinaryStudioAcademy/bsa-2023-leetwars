@@ -47,6 +47,8 @@ export function getNewChallenge(): NewChallenge {
         title: '',
         instructions: '',
         category: CategoryType.Fundamentals,
+        levelId: 0,
+        level: { id: 0, name: '', skillLevel: 0, reward: 0 },
         tags: [],
         versions: [],
     };

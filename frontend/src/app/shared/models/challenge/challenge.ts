@@ -8,7 +8,7 @@ export interface Challenge extends AuditEntity {
     title: string;
     instructions: string;
     levelId: number;
-    level: ChallengeLevel;
+    level?: ChallengeLevel;
     author: User;
     tags: Array<Tag>;
     versions: Array<ChallengeVersion>;
