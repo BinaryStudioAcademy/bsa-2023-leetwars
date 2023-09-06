@@ -1,6 +1,18 @@
 @import 'color-variables'
 
 .input-error
+    &.nav-item
+        position: relative
+        border: 1px solid $vibrant-red
+        &::after
+            content: 'REQUIRED'
+            position: absolute
+            font-size: 10px
+            color: $vibrant-red
+            top: 0px
+            right: 4px
+
+
     input.input-formText, textarea.md-input
         border-color: $vibrant-red
 

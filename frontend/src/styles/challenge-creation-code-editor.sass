@@ -1,0 +1,17 @@
+@import "screen-sizes-variables"
+@import "color-variables"
+
+:host ::ng-deep .editor .editor-container
+    height: calc(100vh - 270px)
+    min-height: 400px
+
+:host ::ng-deep .editor .margin
+    background-color: $strong-black
+    border-right: 1px solid $dim-grey
+
+:host ::ng-deep .editor .monaco-editor-background
+    background-color: $strong-black
+    padding-left: 20px
+
+:host ::ng-deep .editor .current-line
+    background-color: $ultra-transparent-white
