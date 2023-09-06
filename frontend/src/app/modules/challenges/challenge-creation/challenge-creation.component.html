@@ -5,17 +5,25 @@
 ></app-steps-of-progress>
 
 <div class="step-container">
-    <div *ngIf="(currentStep !== 0)" class="language-block">
-        <div class="language-info mb-2">
-            <span>Languages</span>
-            <fa-icon [icon]="'circle-info'" ngbTooltip="Select the required language and version"
-                     placement="right"></fa-icon>
-        </div>
-        <div class="d-flex gap-3">
-            <app-challenges-dropdown-select [items]="languageDropdownItems"
-                                            (SelectedItemsChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
-            <app-challenges-dropdown-select
-                [items]="languageVersionDropdownItems"></app-challenges-dropdown-select>
+    <div class="d-flex flex-md-row-reverse flex-column flex-wrap justify-content-between align-items-start">
+        <button
+            *ngIf="(currentStep === getStepIndex(ChallengeStep.Testcases))"
+            class="accent-button me-3 mt-2 mb-4"
+            (click)="onBtnCreateClick()"
+        >CREATE CHALLENGE</button>
+        <div *ngIf="(currentStep !== getStepIndex(ChallengeStep.Question))" class="language-block flex-grow-1 mb-2">
+            <div class="language-info mb-2">
+                <span>Languages</span>
+                <fa-icon [icon]="'circle-info'" ngbTooltip="Select the required language and version"
+                         placement="right"></fa-icon>
+            </div>
+            <div class="d-flex gap-3 mb-2">
+                <app-challenges-dropdown-select [items]="languageDropdownItems"
+                                                [selectedItem]="currentLanguage"
+                                                (selectedItemChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
+                <app-challenges-dropdown-select
+                    [items]="languageVersionDropdownItems"></app-challenges-dropdown-select>
+            </div>
         </div>
     </div>
 
@@ -31,7 +39,27 @@
         (validationChange)="onValidationChange(ChallengeStep.Question, $event)"
     ></app-editor-question>
 
-    <app-solution-page *ngIf="(currentStep === getStepIndex(ChallengeStep.Solutions))"></app-solution-page>
+    <app-solution-page
+        *ngIf="(currentStep === getStepIndex(ChallengeStep.Solutions))"
+        [completeSolution]="challengeVersion.completeSolution"
+        [initialSolution]="challengeVersion.initialSolution"
+        [preloadedCode]="challengeVersion.preloadedCode"
+        [editorLanguage]="editorLanguage"
+        [checkValidation]="getStepChecking(ChallengeStep.Solutions)"
+        (completeSolutionChange)="onCompleteSolutionChange($event)"
+        (initialSolutionChange)="onInitialSolutionChange($event)"
+        (preloadedCodeChange)="onPreloadedCodeChange($event)"
+        (validationChange)="onValidationChange(ChallengeStep.Solutions, $event)"
+    ></app-solution-page>
 
-    <app-challenges-test-page *ngIf="(currentStep === getStepIndex(ChallengeStep.Testcases))"></app-challenges-test-page>
+    <app-challenges-test-page
+        *ngIf="(currentStep === getStepIndex(ChallengeStep.Testcases))"
+        [testCases]="challengeVersion.testCases"
+        [exampleTestCases]="challengeVersion.exampleTestCases"
+        [editorLanguage]="editorLanguage"
+        [checkValidation]="getStepChecking(ChallengeStep.Testcases)"
+        (testCasesChange)="onTestCasesChange($event)"
+        (exampleTestCasesChange)="onExampleTestCasesChangeChange($event)"
+        (validationChange)="onValidationChange(ChallengeStep.Testcases, $event)"
+    ></app-challenges-test-page>
 </div>

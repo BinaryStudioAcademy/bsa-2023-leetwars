@@ -2,7 +2,7 @@
 
 .step-container
     color: $white-grey
-    padding: 20px
+    padding: 0 20px 20px
 
 .language-info
     display: inline-flex
@@ -13,3 +13,14 @@
     border-radius: 4px
     background-color: $elegant-grey
     cursor: default
+
+.accent-button
+    padding: 16px 64px
+    background-color: $green
+    border-radius: 28px
+    box-shadow: 0 0 0 6px $transparent-green
+    transition: all 0.1s ease-in-out
+    &:hover
+        box-shadow: 0 0 0 10px $transparent-green
+    &:active
+        transform: scale(98%)

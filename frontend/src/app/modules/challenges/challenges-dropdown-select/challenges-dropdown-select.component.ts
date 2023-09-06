@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DropdownItem } from '@shared/models/dropdown-item';
 
 @Component({
@@ -6,20 +6,15 @@ import { DropdownItem } from '@shared/models/dropdown-item';
     templateUrl: './challenges-dropdown-select.component.html',
     styleUrls: ['./challenges-dropdown-select.component.sass'],
 })
-export class ChallengesDropdownSelectComponent implements OnInit {
+export class ChallengesDropdownSelectComponent {
     @Input() items: DropdownItem[] = [];
 
-    @Output() SelectedItemsChanged: EventEmitter<DropdownItem> = new EventEmitter<DropdownItem>();
+    @Input() selectedItem?: DropdownItem;
 
-    selectedItem: DropdownItem;
-
-    ngOnInit(): void {
-        [this.selectedItem] = this.items;
-        this.SelectedItemsChanged.emit(this.selectedItem);
-    }
+    @Output() selectedItemChanged = new EventEmitter<DropdownItem>();
 
     selectItem(item: DropdownItem) {
         this.selectedItem = item;
-        this.SelectedItemsChanged.emit(this.selectedItem);
+        this.selectedItemChanged.emit(this.selectedItem);
     }
 }

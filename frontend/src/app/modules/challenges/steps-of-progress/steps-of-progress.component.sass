@@ -1,9 +1,12 @@
 @import 'color-variables'
-@import "screen-sizes-variables"
+@import 'screen-sizes-variables'
+
+:host
+    display: block
+    padding: 20px 0
 
 .progress-bar-wrapper
     justify-content: space-between
-    margin: 20px
     height: 60px
     font-family: 'Inter', sans-serif
     @media screen and (max-width: $tablet)

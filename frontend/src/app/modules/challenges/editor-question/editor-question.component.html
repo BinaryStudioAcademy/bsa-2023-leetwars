@@ -75,6 +75,9 @@
             <span>Help</span>
         </div>
     </div>
+    <div class="validation-error-message" *ngIf="inputForm.controls.description.touched && inputForm.controls.description.invalid">
+        {{ getErrorMessage('description') }}
+    </div>
     <div class="mt-12px">
         <angular-markdown-editor
             [textareaId]="'markdown-editor'"
@@ -85,8 +88,5 @@
             [options]="editorOptions">
         </angular-markdown-editor>
         <markdown></markdown>
-    </div>
-    <div class="validation-error-message" *ngIf="inputForm.controls.description.touched && inputForm.controls.description.invalid">
-        {{ getErrorMessage('description') }}
     </div>
 </div>

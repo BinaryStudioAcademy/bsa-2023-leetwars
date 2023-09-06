@@ -57,7 +57,9 @@ export function getNewChallengeVersion(): NewChallengeVersion {
         languageId: 0,
         initialSolution: '',
         completeSolution: '',
-        tests: [],
+        preloadedCode: '',
+        testCases: '',
+        exampleTestCases: '',
     };
 }
 

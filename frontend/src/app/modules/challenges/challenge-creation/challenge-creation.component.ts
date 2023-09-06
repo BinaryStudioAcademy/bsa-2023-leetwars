@@ -16,6 +16,8 @@ import { NewChallenge } from '@shared/models/challenge/new-challenge';
 import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { DropdownItem } from '@shared/models/dropdown-item';
 import { Language } from '@shared/models/language/language';
+import { getEditorLanguageName } from '@shared/utils/editor-languages';
+import { select } from 'd3-selection';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -37,6 +39,10 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
     public languages: Language[] = [];
 
     public languageDropdownItems: DropdownItem[] = [];
+
+    public currentLanguage?: DropdownItem;
+
+    public editorLanguage = '';
 
     public languageVersionDropdownItems: DropdownItem[] = [];
 
@@ -87,8 +93,42 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         }
     }
 
+    onCompleteSolutionChange(value: string) {
+        this.challengeVersion.completeSolution = value;
+    }
+
+    onInitialSolutionChange(value: string) {
+        this.challengeVersion.initialSolution = value;
+    }
+
+    onPreloadedCodeChange(value: string) {
+        this.challengeVersion.preloadedCode = value;
+    }
+
+    onTestCasesChange(value: string) {
+        this.challengeVersion.testCases = value;
+    }
+
+    onExampleTestCasesChangeChange(value: string) {
+        this.challengeVersion.exampleTestCases = value;
+    }
+
+    onBtnCreateClick() {
+        if (stepAllowed(this.steps.length)) {
+            console.log('hello');
+        }
+    }
+
     onLanguageChanged(selectedItem: DropdownItem) {
-        console.log(selectedItem);
+        this.currentLanguage = selectedItem;
+        const language = this.languages.find(l => l.name === selectedItem.content);
+
+        if (!language) {
+            return;
+        }
+
+        this.editorLanguage = getEditorLanguageName(language.name);
+        this.challengeVersion = this.challenge.versions.find(v => v.languageId === language.id)!;
     }
 
     private getLanguages() {
@@ -98,6 +138,14 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                 next: data => {
                     this.languages = data;
                     this.languageDropdownItems = getDropdownItems(data.map(item => item.name));
+                    [this.currentLanguage] = this.languageDropdownItems;
+                    this.challenge.versions = data.map(l => {
+                        const version = getNewChallengeVersion();
+
+                        version.languageId = l.id;
+
+                        return version;
+                    });
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
