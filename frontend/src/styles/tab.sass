@@ -1,0 +1,38 @@
+@import 'screen-sizes-variables'
+@import 'color-variables'
+
+:host ::ng-deep tabset ul
+    border-bottom: none
+    gap: 5px
+    @media screen and (max-width: $small)
+        gap: 5px
+    @media screen and (max-width: $small-mobile)
+        flex-direction: column
+
+:host ::ng-deep tabset li
+    padding: 0
+    border: solid 1px transparent
+    border-radius: 8px
+
+:host ::ng-deep tabset li.nav-item a
+    display: inline-block
+    font-size: 13px
+    line-height: 40px
+    letter-spacing: 0.3px
+    padding: 0px 22px
+    color: $silver
+    cursor: pointer
+    border: solid 1px transparent !important
+    border-radius: 8px
+    transition: background-color 0.2s ease
+    user-select: none
+    &:hover
+        background-color: $transparent-white
+        color: $white-grey
+    @media screen and (max-width: $small)
+        padding: 0px 12px
+
+:host ::ng-deep tabset li a.active
+    background-color: $transparent-white !important
+    color: $white-grey !important
+    border-radius: 8px
