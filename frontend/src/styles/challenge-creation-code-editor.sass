@@ -2,7 +2,11 @@
 @import "color-variables"
 
 :host ::ng-deep .editor .editor-container
-    height: calc(100vh - 270px)
+    height: calc(100vh - 265px)
+    min-height: 400px
+
+:host ::ng-deep .maximized .editor .editor-container
+    height: calc(100vh - 90px)
     min-height: 400px
 
 :host ::ng-deep .editor .margin

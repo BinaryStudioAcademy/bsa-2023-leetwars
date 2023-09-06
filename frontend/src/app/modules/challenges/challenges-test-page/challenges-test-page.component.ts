@@ -132,5 +132,11 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
 
     toggleMaximize() {
         this.isMaximized = !this.isMaximized;
+
+        setTimeout(() => {
+            const resizeEvent = new Event('resize');
+
+            window.dispatchEvent(resizeEvent);
+        }, 50);
     }
 }
