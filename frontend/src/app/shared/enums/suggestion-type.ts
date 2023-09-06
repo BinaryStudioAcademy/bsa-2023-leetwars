@@ -1,7 +1,7 @@
 export enum SuggestionType {
-    Fundamentals,
-    RankUp,
-    PracticeAndRepeat,
-    Beta,
-    Random
+    Fundamentals = 'Fundamentals',
+    RankUp = 'RankUp',
+    PracticeAndRepeat = 'PracticeAndRepeat',
+    Beta = 'Beta',
+    Random = 'Random',
 }
