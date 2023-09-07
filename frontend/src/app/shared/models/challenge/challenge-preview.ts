@@ -10,4 +10,5 @@ export interface ChallengePreview {
     tags: Tag[],
     languages: Language[],
     status: ChallengeStatus,
+    isStarry: boolean;
 }

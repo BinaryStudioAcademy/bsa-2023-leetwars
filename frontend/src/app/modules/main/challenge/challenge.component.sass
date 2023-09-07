@@ -29,20 +29,26 @@
 .description
     margin-bottom: 18px
 
-.info-row, .title-row 
+.info-row, .title-row
     white-space: nowrap
 
 .info-item
     @media (max-width: $mobile)
         margin: 0
 
-.info-row 
+.info-row
     @media (max-width: $mobile)
         white-space: normal
         flex-direction: column
 
 .title-row
     margin-bottom: 10px
+
+.star-icon
+    position: absolute
+    right: 0
+    font-size: 36px
+    cursor: pointer
 
 .level
     font-size: 12px
@@ -56,6 +62,7 @@
     font-family: 'Open Sans', sans-serif
     font-size: 18px
     font-weight: 600
+    max-width: 70%
 
 .author
     color: $light-copper

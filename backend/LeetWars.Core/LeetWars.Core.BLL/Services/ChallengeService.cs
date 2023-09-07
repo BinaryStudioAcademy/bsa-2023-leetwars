@@ -36,6 +36,8 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
                         .ThenInclude(solution => solution.User)
+                .Include(challenge => challenge.Stars)
+                    .ThenInclude(star => star.Author)
                 .AsQueryable();
 
             if (!string.IsNullOrEmpty(filters.Title))
