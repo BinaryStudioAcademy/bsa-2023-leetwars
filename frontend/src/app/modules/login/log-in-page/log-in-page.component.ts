@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { User } from '@shared/models/user/user';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
@@ -13,17 +12,15 @@ import { switchMap } from 'rxjs';
     templateUrl: './log-in-page.component.html',
     styleUrls: ['./log-in-page.component.sass'],
 })
-export class LogInPageComponent implements OnInit {
-    logInForm = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
+export class LogInPageComponent {
+    public logInForm = new FormGroup({
+        email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
     });
 
-    isExistingEmail = true;
+    public isExistingEmail = true;
 
-    showPassword: boolean = false;
-
-    isDataIncorrect: boolean;
+    public isSignInError = false;
 
     constructor(
         private authService: AuthService,
@@ -32,15 +29,7 @@ export class LogInPageComponent implements OnInit {
         private toastrNotification: ToastrNotificationsService,
     ) {}
 
-    public ngOnInit(): void {
-        this.isDataIncorrect = false;
-    }
-
-    public toggleShow() {
-        this.showPassword = !this.showPassword;
-    }
-
-    getErrorMessage(formControlName: string) {
+    public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.logInForm);
     }
 
@@ -55,8 +44,8 @@ export class LogInPageComponent implements OnInit {
                     }
 
                     return this.authService.login({
-                        email: this.logInForm.value.email!,
-                        password: this.logInForm.value.password!,
+                        email: this.logInForm.value.email!.trim(),
+                        password: this.logInForm.value.password!.trim(),
                     });
                 }),
             )
@@ -66,34 +55,18 @@ export class LogInPageComponent implements OnInit {
                 },
                 (error) => {
                     this.toastrNotification.showError('Something went wrong');
+                    this.isSignInError = true;
+                    this.logInForm.markAsUntouched();
                     console.error('Error :', error);
                 },
             );
     }
 
     public signInWithGitHub() {
-        this.authService.signInWithGitHub().subscribe(
-            (user: User) => {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
-                // add email sender to user.email
-            },
-            (error) => {
-                this.toastrNotification.showError(error);
-            },
-        );
+        this.authService.signInWithGitHub();
     }
 
     public signInWithGoogle() {
-        this.authService.signInWithGoogle().subscribe(
-            (user: User) => {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed in`);
-                // add email sender to user.email
-            },
-            (error) => {
-                this.toastrNotification.showError(error);
-            },
-        );
+        this.authService.signInWithGoogle();
     }
 }

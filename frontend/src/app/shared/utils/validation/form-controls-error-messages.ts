@@ -1,4 +1,5 @@
 import {
+    emailMaxLength,
     passwordMaxLength,
     passwordMinLength,
     userNameMaxLength,
@@ -8,7 +9,8 @@ import { ControlErrorMessages } from '@shared/utils/validation/validation-interf
 
 export const emailValidationErrorMessages: ControlErrorMessages = {
     required: 'Please enter your Email',
-    email: 'Email format is incorrect. An example of the correct format: example@example.com',
+    maxlength: `Email must not exceed ${emailMaxLength} characters`,
+    pattern: 'Email format is incorrect. An example of the correct format: example@example.com',
 };
 
 export const usernameValidationErrorMessages: ControlErrorMessages = {

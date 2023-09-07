@@ -22,4 +22,8 @@ export class UserService {
     public checkEmail(email: string): Observable<boolean> {
         return this.httpService.getRequest<boolean>(`/users/is-existing-email?email=${email}`);
     }
+
+    public checkUserName(userName: string): Observable<boolean> {
+        return this.httpService.getRequest<boolean>(`/users/is-existing-username?username=${userName}`);
+    }
 }

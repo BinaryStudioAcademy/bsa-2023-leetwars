@@ -1,5 +1,6 @@
 using LeetWars.Core.WebAPI.Extentions;
 using LeetWars.Core.WebAPI.Middlewares;
+using Newtonsoft.Json.Converters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,8 @@ builder.Configuration
     .AddEnvironmentVariables()
     .Build();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(x => x.SerializerSettings.Converters.Add(new StringEnumConverter()));
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddLeetWarsCoreContext(builder.Configuration);
@@ -52,6 +54,8 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseMiddleware<UserIdSaverMiddleware>();
 
 app.UseEndpoints(endpoinds =>
 {

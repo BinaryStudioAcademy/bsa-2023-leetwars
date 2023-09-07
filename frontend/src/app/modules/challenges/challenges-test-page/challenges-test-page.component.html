@@ -5,16 +5,21 @@
         <fa-icon [icon]="'circle-info'"></fa-icon>
     </div>
     <div class="language-settings d-flex" *ngIf="!isMaximized">
-        <app-challenges-dropdown-select [items]="languagesList"
-            (SelectedItemsChanged)="onSelectedItemChanged($event)"></app-challenges-dropdown-select>
+        <app-challenges-dropdown-select
+            [items]="languagesList"
+            (selectedItemsChanged)="onSelectedItemChanged($event)"></app-challenges-dropdown-select>
         <app-challenges-dropdown-select [items]="languageVersionsList"></app-challenges-dropdown-select>
     </div>
     <div class="editor-container d-flex flex-column">
         <div class="actions d-flex">
             <tabset>
-                <tab *ngFor="let tabz of tabs" [heading]="tabz.title" [active]="tabz.active"
-                    (selectTab)="tabz.active = true" (deselect)="tabz.active = false">
-                    {{tabz?.content}}
+                <tab
+                    *ngFor="let tabz of tabs"
+                    [heading]="tabz.title"
+                    [active]="tabz.active"
+                    (selectTab)="tabz.active = true"
+                    (deselect)="tabz.active = false">
+                    {{ tabz?.content }}
                 </tab>
             </tabset>
             <button class="maximize-btn" (click)="toggleMaximize()">
