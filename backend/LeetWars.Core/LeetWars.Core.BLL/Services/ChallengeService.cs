@@ -179,9 +179,6 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
                 .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Tests
-                        .Where(test => test.IsPublic))
-                .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.LanguageVersions)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Author)

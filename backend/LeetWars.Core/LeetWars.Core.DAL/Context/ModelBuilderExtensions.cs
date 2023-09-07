@@ -71,7 +71,7 @@ namespace LeetWars.Core.DAL.Context
             Faker.GlobalUniqueIndex = 0;
 
             return new Faker<ChallengeVersion>()
-                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text()))
+                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text(),"", f.Lorem.Text(), f.Lorem.Text()))
                 .UseSeed(SeedDefaults.ChallengeVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)

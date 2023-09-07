@@ -30,10 +30,6 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
             builder.HasMany(e => e.Solutions)
                 .WithOne()
                 .HasForeignKey(e => e.ChallengeVersionId);
-
-            builder.HasMany(e => e.Tests)
-                .WithOne()
-                .HasForeignKey(e => e.ChallengeVersionId);
         }
     }
 }
