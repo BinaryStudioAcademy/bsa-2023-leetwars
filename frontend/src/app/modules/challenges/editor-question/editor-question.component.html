@@ -9,7 +9,7 @@
         <div class="categories-list">
             <div
                 class="category"
-                [class.category-active]="category === CategoryType.Fundamentals"
+                [class.category-active]="challenge.category === CategoryType.Fundamentals"
                 (click)="onCategoryChange(CategoryType.Fundamentals)">
                 <img
                     class="category-icon"
@@ -19,28 +19,28 @@
             </div>
             <div
                 class="category"
-                [class.category-active]="category === CategoryType.Algorithms"
+                [class.category-active]="challenge.category === CategoryType.Algorithms"
                 (click)="onCategoryChange(CategoryType.Algorithms)">
                 <img class="category-icon" src="/assets/images/categories-icons/abasus-icon.png" alt="abasus-icon" />
                 <span class="category-text">Algorithms</span>
             </div>
             <div
                 class="category"
-                [class.category-active]="category === CategoryType.BugFixes"
+                [class.category-active]="challenge.category === CategoryType.BugFixes"
                 (click)="onCategoryChange(CategoryType.BugFixes)">
                 <img class="category-icon" src="/assets/images/categories-icons/bug-icon.png" alt="bug-icon" />
                 <span class="category-text">Bug Fixes</span>
             </div>
             <div
                 class="category"
-                [class.category-active]="category === CategoryType.Refactoring"
+                [class.category-active]="challenge.category === CategoryType.Refactoring"
                 (click)="onCategoryChange(CategoryType.Refactoring)">
                 <img class="category-icon" src="/assets/images/categories-icons/cone-icon.png" alt="cone-icon" />
                 <span class="category-text">Refactoring</span>
             </div>
             <div
                 class="category"
-                [class.category-active]="category === CategoryType.Puzzles"
+                [class.category-active]="challenge.category === CategoryType.Puzzles"
                 (click)="onCategoryChange(CategoryType.Puzzles)">
                 <img class="category-icon" src="/assets/images/categories-icons/rubik-icon.png" alt="rubik-icon" />
                 <span class="category-text">Puzzles</span>
@@ -55,7 +55,6 @@
                 [items]="allLevelsNames"
                 [selectedItem]="selectedLevelName"
                 (selectedItemsChanged)="onLevelChange($event)"
-                (focusout)="inputForm.controls.level.markAsTouched()"
                 [class.input-error]="inputForm.controls.level.touched && inputForm.controls.level.invalid"
                 class="d-block mt-3"></app-dropdown-select>
             <div class="validation-error-message" *ngIf="inputForm.controls.level.touched && inputForm.controls.level.invalid">
@@ -69,7 +68,6 @@
                 [items]="allTagsNames"
                 [selectedItems]="selectedTagsNames"
                 (selectedItemsChanged)="onTagsChange($event)"
-                (focusout)="inputForm.controls.tags.markAsTouched()"
                 [class.input-error]="inputForm.controls.tags.touched && inputForm.controls.tags.invalid"
                 class="d-block mt-3"></app-dropdown-select>
             <div class="validation-error-message" *ngIf="inputForm.controls.tags.touched && inputForm.controls.tags.invalid">
@@ -84,7 +82,7 @@
             [Identifier]="'kata-name'"
             [Height]="customInputHeight"
             [Width]="customInputWidth"
-            [InputValue]="name"
+            [InputValue]="challenge.title"
             (InputValueChange)="onNameChange($event)"
             (focusout)="inputForm.controls.name.markAsTouched()"
             [class.input-error]="inputForm.controls.name.touched && inputForm.controls.name.invalid"
@@ -113,7 +111,7 @@
         <angular-markdown-editor
             [textareaId]="'markdown-editor'"
             [name]="'markdownText'"
-            [(ngModel)]="description"
+            [(ngModel)]="challenge.instructions"
             (focusout)="inputForm.controls.description.markAsTouched()"
             [class.input-error]="inputForm.controls.description.touched && inputForm.controls.description.invalid"
             [options]="editorOptions">

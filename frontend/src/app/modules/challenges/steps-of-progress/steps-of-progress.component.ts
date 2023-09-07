@@ -2,6 +2,7 @@ import {
     AfterViewInit, ChangeDetectorRef, Component, ElementRef,
     EventEmitter, HostListener, Input, OnChanges, Output,
 } from '@angular/core';
+import { ChallengeStep } from '@shared/enums/challenge-step';
 
 @Component({
     selector: 'app-steps-of-progress',
@@ -9,11 +10,11 @@ import {
     styleUrls: ['./steps-of-progress.component.sass'],
 })
 export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
-    @Input() public steps: string[] = [];
+    @Input() public steps: ChallengeStep[] = [];
 
-    @Input() public activeStepIndex = 0;
+    @Input() public currentStep: ChallengeStep;
 
-    @Output() stepClick = new EventEmitter<number>();
+    @Output() stepClick = new EventEmitter<ChallengeStep>();
 
     public progressWidth = 0;
 
@@ -37,7 +38,9 @@ export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
     }
 
     ngAfterViewInit() {
-        if (this.activeStepIndex >= this.steps.length) {
+        const currentIndex = this.getCurrentStepIndex();
+
+        if (currentIndex >= this.steps.length) {
             this.progressWidth = this.maxProgressWidth;
             this.cdr.detectChanges();
 
@@ -52,8 +55,12 @@ export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
         this.updateProgressBarWidth();
     }
 
-    public onClick(stepNumber: number) {
-        this.stepClick.emit(stepNumber);
+    public onClick(step: ChallengeStep) {
+        this.stepClick.emit(step);
+    }
+
+    private getCurrentStepIndex() {
+        return this.steps.findIndex(s => s === this.currentStep);
     }
 
     private updateProgressBarWidth() {
@@ -61,7 +68,9 @@ export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
             return;
         }
 
-        this.activeStepIndicator = this.el.nativeElement.querySelectorAll('.step-indicator')[this.activeStepIndex];
+        const currentIndex = this.getCurrentStepIndex();
+
+        this.activeStepIndicator = this.el.nativeElement.querySelectorAll('.step-indicator')[currentIndex];
 
         const progressBarWidth = this.progressBarLine?.clientWidth ?? 1; // Ensure non-zero width
         const activeStepLeft =
@@ -77,6 +86,8 @@ export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
     }
 
     private isActiveStepValid(): boolean {
-        return this.activeStepIndex >= 0 && this.activeStepIndex < this.steps.length;
+        const currentIndex = this.getCurrentStepIndex();
+
+        return currentIndex >= 0 && currentIndex < this.steps.length;
     }
 }

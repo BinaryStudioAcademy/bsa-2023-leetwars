@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { fillFormInputs } from '@modules/challenges/challenge-creation/challenge-creation.utils';
+import { getNewChallenge } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { CategoryType } from '@shared/enums/category-type';
 import { TabType } from '@shared/enums/tab-type';
+import { NewChallenge } from '@shared/models/challenge/new-challenge';
 import { ChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { Tag } from '@shared/models/tag/tag';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
@@ -15,31 +16,13 @@ import { MarkdownService } from 'ngx-markdown';
     styleUrls: ['./editor-question.component.sass'],
 })
 export class EditorQuestionComponent implements OnInit, OnChanges {
-    @Input() name = '';
-
-    @Input() description = '';
-
-    @Input() category: CategoryType;
+    @Input() challenge: NewChallenge = getNewChallenge();
 
     @Input() allTags: Tag[];
 
-    @Input() selectedTags: Tag[];
-
     @Input() allLevels: ChallengeLevel[];
 
-    @Input() selectedLevel?: ChallengeLevel;
-
     @Input() checkValidation = false;
-
-    @Output() nameChange = new EventEmitter<string>();
-
-    @Output() descriptionChange = new EventEmitter<string>();
-
-    @Output() selectedTagsChange = new EventEmitter<Tag[]>();
-
-    @Output() selectedLevelChange = new EventEmitter<ChallengeLevel | undefined>();
-
-    @Output() categoryChange = new EventEmitter<CategoryType>();
 
     @Output() validationChange = new EventEmitter<boolean>();
 
@@ -52,10 +35,10 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
     public selectedLevelName = '';
 
     inputForm = new FormGroup({
-        name: new FormControl(this.name, [
+        name: new FormControl(this.challenge.title, [
             Validators.required,
         ]),
-        description: new FormControl(this.description, [
+        description: new FormControl(this.challenge.instructions, [
             Validators.required,
         ]),
         tags: new FormControl(this.selectedTagsNames, [
@@ -80,7 +63,8 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
 
     public customInputWidth = '100%';
 
-    constructor(private markdownService: MarkdownService) {}
+    constructor(private markdownService: MarkdownService) {
+    }
 
     public ngOnInit() {
         this.editorOptions = {
@@ -107,22 +91,21 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
     }
 
     public onNameChange(value: string) {
-        this.nameChange.emit(value);
+        this.challenge.title = value;
 
         this.inputForm.controls.name.setValue(value);
         this.validationChange.emit(this.inputForm.valid);
     }
 
     public onDescriptionChange(value: string) {
-        this.descriptionChange.emit(value);
+        this.challenge.instructions = value;
 
         this.inputForm.controls.description.setValue(value);
         this.validationChange.emit(this.inputForm.valid);
     }
 
     public onCategoryChange(value: CategoryType) {
-        this.categoryChange.emit(value);
-        this.category = value;
+        this.challenge.category = value;
     }
 
     public onTagsChange(value: string | string[]) {
@@ -130,11 +113,9 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             return;
         }
 
-        const selectedTags = value.map(tagName =>
+        this.challenge.tags = value.map(tagName =>
             this.allTags.find(item => item.name === tagName))
             .filter(item => item !== undefined) as Tag[];
-
-        this.selectedTagsChange.emit(selectedTags);
 
         this.inputForm.controls.tags.setValue(value);
         this.validationChange.emit(this.inputForm.valid);
@@ -145,11 +126,9 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             return;
         }
 
-        const selectedLevel = this.allLevels.find(item => item.name === value);
+        this.challenge.level = this.allLevels.find(item => item.name === value);
 
-        this.selectedLevelChange.emit(selectedLevel);
-
-        this.inputForm.controls.level.setValue(selectedLevel?.name ?? '');
+        this.inputForm.controls.level.setValue(this.challenge.level?.name ?? '');
         this.validationChange.emit(this.inputForm.valid);
     }
 
@@ -157,30 +136,25 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
         return getErrorMessage(formControlName, this.inputForm);
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['checkValidation']) {
-            if (this.checkValidation) {
-                this.inputForm.markAllAsTouched();
-            }
+    ngOnChanges({ checkValidation, challenge, allTags, allLevels }: SimpleChanges): void {
+        if (checkValidation && checkValidation.currentValue) {
+            this.inputForm.markAllAsTouched();
         }
-        this.mapFieldsForDropdownSelect(changes);
-        fillFormInputs(this.inputForm, changes);
-    }
-
-    private mapFieldsForDropdownSelect(changes: SimpleChanges) {
-        if (changes['allTags']) {
+        if (allTags) {
             this.allTagsNames = this.allTags.map(t => t.name);
         }
-        if (changes['selectedTags']) {
-            this.selectedTagsNames = this.selectedTags.map(t => t.name);
-            this.inputForm.controls.tags.setValue(this.selectedTagsNames);
-        }
-        if (changes['allLevels']) {
+        if (allLevels) {
             this.allLevelsNames = this.allLevels.map(t => t.name);
         }
-        if (changes['selectedLevel']) {
-            this.selectedLevelName = this.selectedLevel?.name ?? '';
+        if (challenge) {
+            this.selectedTagsNames = this.challenge.tags.map(t => t.name);
+            this.inputForm.controls.tags.setValue(this.selectedTagsNames);
+
+            this.selectedLevelName = this.challenge.level?.name ?? '';
             this.inputForm.controls.level.setValue(this.selectedLevelName);
+
+            this.inputForm.controls.name.setValue(this.challenge.title);
+            this.inputForm.controls.description.setValue(this.challenge.instructions);
         }
     }
 }

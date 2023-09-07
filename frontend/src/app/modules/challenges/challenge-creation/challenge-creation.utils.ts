@@ -6,18 +6,18 @@ import { NewChallenge } from '@shared/models/challenge/new-challenge';
 import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { DropdownItem } from '@shared/models/dropdown-item';
 
-export const steps = [
+export const stepData = [
     { step: ChallengeStep.Question, isValid: false, checkValidation: false },
     { step: ChallengeStep.Solutions, isValid: false, checkValidation: false },
     { step: ChallengeStep.Testcases, isValid: false, checkValidation: false },
 ];
 
 export function getStepIndex(step: ChallengeStep) {
-    return steps.findIndex(s => s.step === step);
+    return stepData.findIndex(s => s.step === step);
 }
 
 export function getStep(step: ChallengeStep) {
-    return steps.find(s => s.step === step);
+    return stepData.find(s => s.step === step);
 }
 
 export function getStepChecking(stepType: ChallengeStep) {
@@ -30,15 +30,25 @@ export function getStepChecking(stepType: ChallengeStep) {
     return false;
 }
 
-export function stepAllowed(stepIndex: number) {
-    return steps.every((value, index) => {
+export function stepAllowed(step: ChallengeStep) {
+    const stepIndex = getStepIndex(step);
+
+    return stepData.every((value, index) => {
         if (index < stepIndex) {
-            steps[index].checkValidation = true;
+            stepData[index].checkValidation = true;
 
             return value.isValid;
         }
 
         return true;
+    });
+}
+
+export function allStepsAllowed() {
+    return stepData.every((step, index) => {
+        stepData[index].checkValidation = true;
+
+        return step.isValid;
     });
 }
 
@@ -86,15 +96,5 @@ export function getDropdownItems(names: string[]): DropdownItem[] {
         }
 
         return { content: itemName };
-    });
-}
-
-export function fillFormInputs(form: FormGroup, changes: SimpleChanges) {
-    Object.keys(changes).forEach(changesKey => {
-        const field = form.get(changesKey);
-
-        if (field) {
-            field.setValue(changes[changesKey].currentValue);
-        }
     });
 }

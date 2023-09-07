@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { fillFormInputs } from '@modules/challenges/challenge-creation/challenge-creation.utils';
+import { getNewChallengeVersion } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { NavigationTabType } from '@shared/enums/navigation-tab-type';
+import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { NavigationTab } from '@shared/models/navigation-tab';
 
 import { tabs } from './challenges-test-page.utils';
@@ -12,17 +13,11 @@ import { tabs } from './challenges-test-page.utils';
     styleUrls: ['./challenges-test-page.component.sass'],
 })
 export class ChallengesTestPageComponent implements OnInit, OnChanges {
+    @Input() challengeVersion: NewChallengeVersion = getNewChallengeVersion();
+
     @Input() editorLanguage: string;
 
-    @Input() testCases: string;
-
-    @Input() exampleTestCases: string;
-
     @Input() checkValidation = false;
-
-    @Output() testCasesChange = new EventEmitter<string>();
-
-    @Output() exampleTestCasesChange = new EventEmitter<string>();
 
     @Output() validationChange = new EventEmitter<boolean>();
 
@@ -44,7 +39,7 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
     });
 
     ngOnInit(): void {
-        this.editorContent = this.testCases;
+        this.editorContent = this.challengeVersion.testCases;
     }
 
     public onCodeChange(code: string) {
@@ -52,16 +47,12 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
 
         switch (this.currentTab.type) {
             case NavigationTabType.TestCases:
-                this.testCases = code;
-                this.testCasesChange.emit(code);
-
+                this.challengeVersion.testCases = code;
                 this.inputForm.controls.testCases.setValue(code);
 
                 break;
             case NavigationTabType.ExampleTestCases:
-                this.exampleTestCases = code;
-                this.exampleTestCasesChange.emit(code);
-
+                this.challengeVersion.exampleTestCases = code;
                 this.inputForm.controls.exampleTestCases.setValue(code);
 
                 break;
@@ -79,23 +70,26 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
     public updateEditorContent() {
         switch (this.currentTab.type) {
             case NavigationTabType.TestCases:
-                this.editorContent = this.testCases;
+                this.editorContent = this.challengeVersion.testCases;
                 break;
             case NavigationTabType.ExampleTestCases:
-                this.editorContent = this.exampleTestCases;
+                this.editorContent = this.challengeVersion.exampleTestCases;
                 break;
             default:
                 break;
         }
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['checkValidation']) {
-            if (this.checkValidation) {
-                this.inputForm.markAllAsTouched();
-            }
+    ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
+        if (checkValidation && checkValidation.currentValue) {
+            this.inputForm.markAllAsTouched();
         }
-        fillFormInputs(this.inputForm, changes);
+
+        if (challengeVersion) {
+            this.inputForm.controls.testCases.setValue(this.challengeVersion.testCases);
+            this.inputForm.controls.exampleTestCases.setValue(this.challengeVersion.exampleTestCases);
+        }
+
         this.updateEditorContent();
     }
 
