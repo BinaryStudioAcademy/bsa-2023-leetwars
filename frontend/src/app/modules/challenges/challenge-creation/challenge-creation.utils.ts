@@ -48,7 +48,6 @@ export function getNewChallenge(): NewChallenge {
         instructions: '',
         category: CategoryType.Fundamentals,
         levelId: 0,
-        level: { id: 0, name: '', skillLevel: 0, reward: 0 },
         tags: [],
         versions: [],
     };
@@ -62,6 +61,15 @@ export function getNewChallengeVersion(): NewChallengeVersion {
         preloadedCode: '',
         testCases: '',
         exampleTestCases: '',
+    };
+}
+
+export function prepareChallengeDto(challenge: NewChallenge): NewChallenge {
+    return {
+        ...challenge,
+        levelId: challenge.level?.id ?? 0,
+        versions: challenge.versions.filter(v =>
+            v.languageId && v.completeSolution && v.initialSolution && v.testCases && v.exampleTestCases),
     };
 }
 

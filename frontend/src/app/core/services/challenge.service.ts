@@ -4,6 +4,7 @@ import { HttpInternalService } from '@core/services/http-internal.service';
 import { Challenge } from '@shared/models/challenge/challenge';
 import { ChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { NewChallenge } from '@shared/models/challenge/new-challenge';
 import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { PageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
@@ -36,5 +37,9 @@ export class ChallengeService {
 
     public getChallengeById(id: number): Observable<Challenge> {
         return this.httpService.getRequest<Challenge>(`${this.challengesRoute}/${id}`);
+    }
+
+    public createChallenge(challenge: NewChallenge): Observable<Challenge> {
+        return this.httpService.postRequest<Challenge>(`${this.challengesRoute}`, challenge);
     }
 }

@@ -7,7 +7,7 @@ export interface NewChallenge {
     title: string;
     instructions: string;
     levelId: number;
-    level: ChallengeLevel;
+    level?: ChallengeLevel;
     category: CategoryType;
     tags: Array<Tag>;
     versions: Array<NewChallengeVersion>;

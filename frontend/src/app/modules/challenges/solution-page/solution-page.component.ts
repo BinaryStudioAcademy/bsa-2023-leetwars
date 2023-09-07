@@ -109,24 +109,6 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         }
     }
 
-    public getErrorMessage() {
-        const solutions: string[] = [];
-
-        if (this.inputForm.controls.completeSolution.touched && this.inputForm.controls.completeSolution.invalid) {
-            solutions.push('Complete');
-        }
-        if (this.inputForm.controls.initialSolution.touched && this.inputForm.controls.initialSolution.invalid) {
-            solutions.push('Initial');
-        }
-
-        if (!solutions.length) {
-            return '';
-        }
-        console.log('validation');
-
-        return `${solutions.join(', ')} ${solutions.length === 1 ? 'solution is' : 'solutions are'} required`;
-    }
-
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['checkValidation']) {
             if (this.checkValidation) {
@@ -135,7 +117,6 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         }
         fillFormInputs(this.inputForm, changes);
         this.updateEditorContent();
-        console.log('ngOnChanges');
     }
 
     getTabClass(tab: NavigationTab) {

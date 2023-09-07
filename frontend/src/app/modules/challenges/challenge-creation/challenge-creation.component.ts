@@ -8,7 +8,7 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import {
     getDropdownItems,
     getNewChallenge,
-    getNewChallengeVersion, getStep, getStepChecking, getStepIndex,
+    getNewChallengeVersion, getStep, getStepChecking, getStepIndex, prepareChallengeDto,
     stepAllowed,
     steps,
 } from '@modules/challenges/challenge-creation/challenge-creation.utils';
@@ -100,6 +100,10 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.challenge.tags = value;
     }
 
+    onSelectedLevelChange(value?: ChallengeLevel) {
+        this.challenge.level = value;
+    }
+
     onValidationChange(stepType: ChallengeStep, isValid: boolean) {
         const step = getStep(stepType);
 
@@ -130,7 +134,18 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     onBtnCreateClick() {
         if (stepAllowed(this.steps.length)) {
-            console.log('hello');
+            const newChallenge = prepareChallengeDto(this.challenge);
+
+            this.challengeService.createChallenge(newChallenge)
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    next: () => {
+                        this.toastrService.showSuccess('Challenge was successful created');
+                    },
+                    error: () => {
+                        this.toastrService.showError('Server connection error');
+                    },
+                });
         }
     }
 
@@ -153,7 +168,6 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                 next: data => {
                     this.languages = data;
                     this.languageDropdownItems = getDropdownItems(data.map(item => item.name));
-                    [this.currentLanguage] = this.languageDropdownItems;
                     this.challenge.versions = data.map(l => {
                         const version = getNewChallengeVersion();
 
@@ -161,6 +175,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
                         return version;
                     });
+                    this.onLanguageChanged(this.languageDropdownItems[0]);
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
