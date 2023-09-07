@@ -128,7 +128,7 @@ export class AuthService {
     private signWithProvider(observable: Observable<User | undefined>, isLogin: boolean) {
         return observable.subscribe((user?: User) => {
             if (user) {
-                this.router.navigate(['/main']);
+                this.router.navigate(['']);
                 this.toastrNotification.showSuccess(
                     `${user.userName} was successfully signed ${isLogin ? 'in' : 'up'}`,
                 );
