@@ -5,5 +5,4 @@ namespace LeetWars.Core.BLL.Interfaces;
 public interface IChallengeLevelService
 {
     Task<ICollection<ChallengeLevelDto>> GetAllLevelsAsync();
-
 }

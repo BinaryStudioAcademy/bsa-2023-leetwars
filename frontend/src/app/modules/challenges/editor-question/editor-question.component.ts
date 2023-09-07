@@ -163,6 +163,11 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
                 this.inputForm.markAllAsTouched();
             }
         }
+        this.mapFieldsForDropdownSelect(changes);
+        fillFormInputs(this.inputForm, changes);
+    }
+
+    private mapFieldsForDropdownSelect(changes: SimpleChanges) {
         if (changes['allTags']) {
             this.allTagsNames = this.allTags.map(t => t.name);
         }
@@ -177,6 +182,5 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             this.selectedLevelName = this.selectedLevel?.name ?? '';
             this.inputForm.controls.level.setValue(this.selectedLevelName);
         }
-        fillFormInputs(this.inputForm, changes);
     }
 }

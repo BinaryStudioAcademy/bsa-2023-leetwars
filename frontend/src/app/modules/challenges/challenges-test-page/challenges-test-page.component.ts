@@ -56,7 +56,6 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
                 this.testCasesChange.emit(code);
 
                 this.inputForm.controls.testCases.setValue(code);
-                this.validationChange.emit(this.inputForm.valid);
 
                 break;
             case NavigationTabType.ExampleTestCases:
@@ -64,12 +63,12 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
                 this.exampleTestCasesChange.emit(code);
 
                 this.inputForm.controls.exampleTestCases.setValue(code);
-                this.validationChange.emit(this.inputForm.valid);
 
                 break;
             default:
                 break;
         }
+        this.validationChange.emit(this.inputForm.valid);
     }
 
     switchTab(tab: NavigationTab): void {
