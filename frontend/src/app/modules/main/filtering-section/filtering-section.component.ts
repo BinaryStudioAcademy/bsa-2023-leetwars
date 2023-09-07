@@ -120,6 +120,10 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.resetChallengesData();
     }
 
+    public updateChallengeStar() {
+        // will be something
+    }
+
     private getChalenges() {
         if (this.isLastPage) {
             return;

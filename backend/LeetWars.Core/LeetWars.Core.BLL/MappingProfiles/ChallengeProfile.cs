@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
+using LeetWars.Core.BLL.MappingProfiles.Resolvers;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
@@ -11,10 +12,8 @@ namespace LeetWars.Core.BLL.MappingProfiles
 {
     public class ChallengeProfile : Profile
     {
-        public ChallengeProfile(IUserIdGetter userIdGetter)
+        public ChallengeProfile()
         {
-            var currentUserId = userIdGetter.CurrentUserId;
-
             CreateMap<Challenge, ChallengePreviewDto>()
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author != null ? $"{src.Author.FirstName} {src.Author.LastName}" : null))
                 .ForMember(dest => dest.LevelName, opt => opt.MapFrom(src => src.Level != null ? src.Level.Name : null))
@@ -22,8 +21,8 @@ namespace LeetWars.Core.BLL.MappingProfiles
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.Languages, opt => opt.MapFrom(src => src.Versions.Select(version => version.Language)))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Versions.Any() ? src.Versions.First().Status : 0))
-                .ForMember(dest => dest.isStarry, opt => opt.MapFrom(src => src.Stars.Any(star => star.ChallengeId == src.Id && star.AuthorId == currentUserId));
-            
+                .ForMember(dest => dest.isStarry, exp => exp.MapFrom<ChallengeStarResolver>());
+
             CreateMap<ChallengeVersion, ChallengeVersionFullDto>();
             
             CreateMap<UserSolution, UserSolutionDto>();

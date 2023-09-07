@@ -4,10 +4,10 @@
     {
         public long ChallengeId { get; set; }
 
-        public string AuthorId { get; set; } = string.Empty;
+        public long AuthorId { get; set; }
 
-        public Challenge? Challenge { get; set; }
+        public Challenge Challenge { get; set; } = null!;
 
-        public User? Author { get; set; }
+        public User Author { get; set; } = null!;
     }
 }

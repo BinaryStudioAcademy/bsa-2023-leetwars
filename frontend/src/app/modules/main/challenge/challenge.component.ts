@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
@@ -10,9 +10,15 @@ import { getLanguageIconUrl } from '@shared/utils/language-icons';
 export class ChallengeComponent {
     @Input() challenge: ChallengePreview;
 
+    @Output() starChallenge = new EventEmitter<boolean>();
+
     public challengeStars = 0;
 
     public challengePositiveFeedbacksPercent = 0;
 
     public getLanguageIconUrl = getLanguageIconUrl;
+
+    public starChange() {
+        this.starChallenge.emit(!this.challenge.isStarry);
+    }
 }
