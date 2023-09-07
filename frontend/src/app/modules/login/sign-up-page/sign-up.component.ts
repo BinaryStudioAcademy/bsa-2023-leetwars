@@ -61,7 +61,7 @@ export class SignUpComponent {
     public signUpGitHub() {
         this.authService.signInWithGitHub().subscribe(
             (user: User) => {
-                this.router.navigate(['/main']);
+                this.router.navigate(['']);
                 this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
                 // add email sender to user.email
             },
@@ -74,7 +74,7 @@ export class SignUpComponent {
     public signUpGoogle() {
         this.authService.signInWithGoogle().subscribe(
             (user: User) => {
-                this.router.navigate(['/main']);
+                this.router.navigate(['']);
                 this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
                 // add email sender to user.email
             },
@@ -93,7 +93,7 @@ export class SignUpComponent {
             })
             .subscribe(
                 () => {
-                    this.router.navigate(['/main']);
+                    this.router.navigate(['']);
                     this.toastrNotification.showSuccess('You have successfully registered.');
                 },
                 (error) => {
