@@ -2,16 +2,17 @@
 @import 'screen-sizes-variables'
 
 :host
-  height: 100%
+  // TODO Fix breaking changes
+  //height: 100%
   font-family: Inter
   color: $white
   display: block
-  background-color: $deep-dark-grey
-  overflow: auto
+  //background-color: $deep-dark-grey
+  //overflow: auto
 
 :host ::ng-deep #kata-name
-  border: none
-  background-color: $very-weak-black
+  //border: none
+  //background-color: $very-weak-black
 
 .mt-12px
   margin-top: 12px
@@ -56,7 +57,7 @@
     font-size: 12px
 
 .input-wrapper
-    max-width: max(85%,1117px)
+  max-width: max(85%,1117px)
 
 
 .tabs-list
@@ -80,18 +81,18 @@
   padding: 10px
 
 .input-column
-    flex: 0 1 550px
-    flex-wrap: wrap
+  flex: 0 1 550px
+  flex-wrap: wrap
 
 :host ::ng-deep app-dropdown-select
-    label
-        color: $satured-grey
-        font-weight: 400
+  label
+    color: $satured-grey
+    font-weight: 400
 
 // Markdown editor styles
 
 :host ::ng-deep textarea
-  border: none
+  //border: none
 
 :host ::ng-deep .md-header
   display: none
