@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
-import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
-import { StarService } from '@core/services/star.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { PROGRESS_NAMES_MAP, STATUS_NAMES_MAP } from '@modules/main/filtering-section/filtering-section.utils';
 import { ChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
-import { Star } from '@shared/models/challenge-star/star';
 import { Language } from '@shared/models/language/language';
 import { PageSettings } from '@shared/models/page-settings';
 import { Tag } from '@shared/models/tag/tag';
-import { User } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -54,14 +50,10 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     private statuses = STATUS_NAMES_MAP;
 
-    private user: User;
-
     constructor(
         private challengeService: ChallengeService,
         private languageService: LanguageService,
         private tagService: TagService,
-        private starService: StarService,
-        private authService: AuthService,
         private toastrService: ToastrNotificationsService,
     ) {
         super();
@@ -71,10 +63,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.getChalenges();
         this.getLanguages();
         this.getTags();
-
-        this.authService.getUser().subscribe((user) => {
-            this.user = user;
-        });
 
         this.statusesNames = this.statuses.map((item) => item.name);
         this.progressesNames = this.progresses.map((item) => item.name);
@@ -130,19 +118,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             .filter((item) => item !== 0);
 
         this.resetChallengesData();
-    }
-
-    public updateChallengeStar(challenge: ChallengePreview) {
-        const star: Star = {
-            authorId: this.user.id,
-            challenge,
-            isStar: !challenge.isStarry,
-        };
-
-        this.starService.updateStar(star).subscribe((starResp: Star) => {
-            challenge.isStarry = starResp.isStar;
-            challenge.starsAmount = starResp.isStar ? challenge.starsAmount + 1 : challenge.starsAmount - 1;
-        });
     }
 
     private getChalenges() {
