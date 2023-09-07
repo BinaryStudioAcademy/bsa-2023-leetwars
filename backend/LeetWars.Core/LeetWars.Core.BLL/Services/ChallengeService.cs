@@ -2,6 +2,7 @@
 using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
@@ -187,9 +188,49 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(version => version.LanguageVersions)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Author)
+                .Include(challenge => challenge.Stars)
+                    .ThenInclude(star => star.Author)
                 .FirstOrDefaultAsync(challenge => challenge.Id == id);
 
             return _mapper.Map<ChallengeFullDto>(challenges);
+        }
+
+        public async Task<ChallengePreviewDto> Update(ChallengeStarDto challengeStarDto)
+        {
+            if (challengeStarDto.IsStar)
+            {
+                await _context.ChallengeStars.AddAsync(_mapper.Map<ChallengeStar>(challengeStarDto));
+            }
+            else
+            {
+                var challengeStar = await _context.ChallengeStars
+                    .SingleOrDefaultAsync(cs => cs.AuthorId == challengeStarDto.AuthorId
+                                       && cs.Challenge!.Id == challengeStarDto.Challenge.Id);
+
+                if (challengeStar is null)
+                {
+                    throw new ArgumentNullException(nameof(challengeStarDto));
+                }
+
+                _context.ChallengeStars.Remove(challengeStar);
+            }
+
+            await _context.SaveChangesAsync();
+
+            var challenge = await _context.Challenges
+                .Include(challenge => challenge.Tags)
+                .Include(challenge => challenge.Author)
+                .Include(challenge => challenge.Level)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Language)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Solutions)
+                        .ThenInclude(solution => solution.User)
+                .Include(challenge => challenge.Stars)
+                    .ThenInclude(star => star.Author)
+                .SingleOrDefaultAsync(challenge => challenge.Id == challengeStarDto.Challenge.Id);
+
+            return _mapper.Map<ChallengePreviewDto>(challenge);
         }
     }
 }
