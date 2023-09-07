@@ -51,7 +51,7 @@ export class LogInPageComponent {
             )
             .subscribe(
                 () => {
-                    this.router.navigate(['/main']);
+                    this.router.navigate(['']);
                 },
                 (error) => {
                     this.toastrNotification.showError('Something went wrong');

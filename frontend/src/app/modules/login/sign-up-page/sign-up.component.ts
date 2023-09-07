@@ -12,7 +12,11 @@ import {
     userNameMaxLength,
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
-import { emailPattern, latinOrCyrillicCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import {
+    emailPattern,
+    latinOrCyrillicCharactersPattern,
+    passwordPattern,
+} from '@shared/utils/validation/regex-patterns';
 import { usernameExistsValidator } from '@shared/utils/validation/username-exists.validator';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 
@@ -74,7 +78,7 @@ export class SignUpComponent {
             })
             .subscribe(
                 () => {
-                    this.router.navigate(['/main']);
+                    this.router.navigate(['']);
                     this.toastrNotification.showSuccess('You have successfully registered.');
                 },
                 (error) => {
