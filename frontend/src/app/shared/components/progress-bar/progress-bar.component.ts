@@ -28,5 +28,4 @@ export class ProgressBarComponent implements OnInit {
         this.progressBarColor = LevelColorMapper[this.level].activeColor;
         this.backgroundBarColor = LevelColorMapper[this.level].inactiveColor;
     }
-    
 }
