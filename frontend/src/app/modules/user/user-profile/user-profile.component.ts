@@ -45,8 +45,8 @@ export class UserProfileComponent implements OnInit {
             .getFullUser(this.user!.id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: (result) => (this.fullUser = result),
-                error: () => this.toastrNotification.showError('User not found'),
+                next: (result) => { this.fullUser = result; },
+                error: () => { this.toastrNotification.showError('User not found'); },
             });
     }
 
@@ -66,7 +66,7 @@ export class UserProfileComponent implements OnInit {
                         ...getInactiveBars(result),
                     ];
                 },
-                error: () => this.toastrNotification.showError('Server connection error'),
+                error: () => { this.toastrNotification.showError('Server connection error'); },
             });
     }
 }
