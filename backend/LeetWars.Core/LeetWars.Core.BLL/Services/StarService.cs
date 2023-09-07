@@ -27,7 +27,7 @@ namespace LeetWars.Core.BLL.Services
 
                 if (challengeStar is null)
                 {
-                    throw new ArgumentNullException(nameof(challengeStar));
+                    throw new ArgumentNullException(nameof(challengeStarDto));
                 }
 
                 _context.ChallengeStars.Remove(challengeStar);
