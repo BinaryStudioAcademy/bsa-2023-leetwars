@@ -1,6 +1,6 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 
-export interface DropdownItem {
+export interface IDropdownItem {
     iconName?: IconName;
     content: string;
 }

@@ -1,3 +1,3 @@
-export interface Language {
+export interface ILanguage {
     name: string;
 }

@@ -1,16 +1,16 @@
 @import 'src/styles/color-variables'
 
 .container
-  height: 186px
-  width: 410px
-  padding-left: 0
+  padding: 0
+  height: 100%
+  width: 100%
 
 .main-container
-  height: 186px
-  width: 410px
+  height: 100%
+  width: 100%
   background-color: $deep-dark-grey
   padding-top: 16px
-  padding-left: 13px
+  padding-left: 6px
   border-radius: 8px
   font-family: Inter
 
@@ -22,11 +22,12 @@
   color: $light-blue-grey
 
 .statistics
-  height: 140px
-  width: 346px
   margin-left: 18px
   display: flex
   background-color: transparent
+  max-height: 170px
+  height: fit-content
+  padding-bottom: 30px
 
 .circle
   width: 100px
@@ -36,32 +37,19 @@
   align-items: center
   
 .levels
+  overflow-y: auto
+  overflow-x: hidden  
   display: flex
   flex-direction: column
-  width: 214px
   margin-left: 32px
+  width: 100%
+  padding-left: 15px
+  align-items: flex-start
 
 .level-card
-  width: 214px
+  width: 97%
   height: 36px
   
   &:not(:first-child)
     height: 52px
     padding-top: 16px
- 
-// :host ::ng-deep .level-card:nth-child(1) .progress-bar 
-//     background-color: $emerald-green
-//     width: 100%
-
-
-// :host ::ng-deep .level-card:nth-child(2) .progress-bar 
-//     background-color: $amber-orange
-//     width: 100%
-
-
-:host ::ng-deep .level-card .progress-bar .progress
-    width: 100%
-
-
-// :host ::ng-deep .progress 
-//      opacity: 0.2

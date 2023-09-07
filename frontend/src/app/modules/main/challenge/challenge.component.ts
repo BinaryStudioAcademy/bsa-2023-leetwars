@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
 @Component({
@@ -8,7 +8,7 @@ import { getLanguageIconUrl } from '@shared/utils/language-icons';
     styleUrls: ['./challenge.component.sass'],
 })
 export class ChallengeComponent {
-    @Input() challenge: ChallengePreview;
+    @Input() challenge: IChallengePreview;
 
     public challengeStars = 0;
 

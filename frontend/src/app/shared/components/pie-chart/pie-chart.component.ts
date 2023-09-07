@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ColorConstants } from '@shared/constants/color-constants';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 
@@ -39,7 +39,7 @@ export class PieChartComponent implements OnChanges {
                     value: this.totalNumber - this.currentNumber,
                 },
             ];
-            
+
             this.colorScheme = {
                 name: 'myScheme',
                 selectable: true,

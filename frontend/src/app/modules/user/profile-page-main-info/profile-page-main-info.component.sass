@@ -1,6 +1,7 @@
 @import 'color-variables'
 
 .profile-main-info-wrapper 
+    height: 100%
     font-family: 'Inter', sans-serif
     background-color: $deep-dark-grey
     color: $white
@@ -134,12 +135,15 @@
     color: $delicate-lavender
     text-align: center
     
-.languages-item
+.languages-item-container
     display: flex
     flex-direction: row
-    color: white
+    gap: 6px
+.languages-item
+    display: flex
     text-align: start
     font-size: 11px
+    color: $white
     
 .content-section-name 
     font-size: 15px
@@ -153,16 +157,28 @@
     flex-direction: column
     gap: 16px
 
+.name-container
+    display: flex
+    span
+        margin-top: 5px
+        margin-left: 3px
+        font-size: 10px
+        color: $delicate-lavender
+
+.skills-list
+    display: flex
+    flex-wrap: wrap
+
 .scroll-container
     max-height: 50px
     overflow-y: auto 
+
 .skills-item
     border:  1px solid black
     border-radius: 8px
     padding: 5px
-    margin-bottom: 5px
-    margin-left: 2px
     font-size: 10px
     display: inline-block
     width: fit-content
+    color: $white
 

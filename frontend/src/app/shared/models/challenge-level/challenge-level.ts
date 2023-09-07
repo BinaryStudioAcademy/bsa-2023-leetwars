@@ -1,6 +1,6 @@
 import { Entity } from '../common/entity';
 
-export interface ChallengeLevel extends Entity<number> {
+export interface IChallengeLevel extends Entity<number> {
     name: string;
     reward: number;
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { DropdownItem } from '@shared/models/dropdown-item';
+import { IDropdownItem } from '@shared/models/dropdown-item';
 
 @Component({
     selector: 'app-challenges-test-page',
@@ -7,9 +7,9 @@ import { DropdownItem } from '@shared/models/dropdown-item';
     styleUrls: ['./challenges-test-page.component.sass'],
 })
 export class ChallengesTestPageComponent {
-    public languagesList: DropdownItem[] = [{ content: 'JavaScript', iconName: 'node-js' }, { content: 'C#' }];
+    public languagesList: IDropdownItem[] = [{ content: 'JavaScript', iconName: 'node-js' }, { content: 'C#' }];
 
-    public languageVersionsList: DropdownItem[] = [{ content: 'Node v18.x' }, { content: 'Node v17.x' }];
+    public languageVersionsList: IDropdownItem[] = [{ content: 'Node v18.x' }, { content: 'Node v17.x' }];
 
     public tabs = [
         { title: 'Test Cases', active: true },
@@ -31,7 +31,7 @@ export class ChallengesTestPageComponent {
         this.isMaximized = !this.isMaximized;
     }
 
-    onSelectedItemChanged(selectedItem: DropdownItem) {
+    onSelectedItemChanged(selectedItem: IDropdownItem) {
         this.selectedLanguage = this.mapLanguageName(selectedItem.content);
         this.cdr.detectChanges();
     }

@@ -1,5 +1,4 @@
-export interface TaskCountDto
-{
+export interface ITaskCount {
     name: string;
     challengeCount: number;
 }

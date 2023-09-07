@@ -1,10 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import * as utils from '@modules/user/profile-page-main-info/profile-page-main.utils';
-import { LanguageLevel } from '@shared/enums/languageLevel';
-import { UserFull as IUserFull } from '@shared/models/profile/user-full';
-import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level-dto';
-
-
+import { IUserFull } from '@shared/models/profile/user-full';
+import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 
 @Component({
     selector: 'app-profile-page-main-info',
@@ -13,13 +10,8 @@ import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solu
 })
 export class ProfilePageMainInfoComponent implements OnChanges {
     @Input() user: IUserFull = <IUserFull>{};
-    @Input() userSolutions: IUserSolutionsGroupedBySkillLevel [] = [];
 
-    constructor() {
-    }
-    public languagesNames: string[] = [];
-    //replace it with real user interface
-    LanguageLevel = LanguageLevel;
+    @Input() userSolutions: IUserSolutionsGroupedBySkillLevel [] = [];
 
     public username? = '';
 
@@ -45,12 +37,9 @@ export class ProfilePageMainInfoComponent implements OnChanges {
 
     ngOnChanges(): void {
         this.updateSolutions();
-        console.log(this.user);
     }
 
-    
     private updateSolutions() {
         this.communityLastWeekSolution = utils.getLastWeekCount(this.user.solutions);
     }
-    
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { getChartData } from '@modules/user/submissions-chart/submissions-chart.utils';
-import { UserSolution } from '@shared/models/profile/user-solution';
-import { MonthChartData } from '@shared/models/submission-chart/month-chart-data';
+import { IUserSolution } from '@shared/models/profile/user-solution';
+import { IMonthChartData } from '@shared/models/submission-chart/month-chart-data';
 
 @Component({
     selector: 'app-submissions-chart',
@@ -9,9 +9,9 @@ import { MonthChartData } from '@shared/models/submission-chart/month-chart-data
     styleUrls: ['./submissions-chart.component.sass'],
 })
 export class SubmissionsChartComponent implements OnInit, OnChanges {
-    @Input() solutions: UserSolution[] | undefined = [];
+    @Input() solutions: IUserSolution[] | undefined = [];
 
-    chartData: MonthChartData[] = [];
+    chartData: IMonthChartData[] = [];
 
     totalSubmissions = 0;
 

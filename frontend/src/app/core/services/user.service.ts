@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { UserFull } from '@shared/models/profile/user-full';
-import { NewUser } from '@shared/models/user/new-user';
-import { User } from '@shared/models/user/user';
+import { IUserFull } from '@shared/models/profile/user-full';
+import { INewUser } from '@shared/models/user/new-user';
+import { IUser } from '@shared/models/user/user';
+import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 import { Observable } from 'rxjs';
 
 import { HttpInternalService } from './http-internal.service';
-import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level-dto';
 
 @Injectable({
     providedIn: 'root',
@@ -13,12 +13,12 @@ import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solu
 export class UserService {
     constructor(private httpService: HttpInternalService) {}
 
-    public createUser(newUser: NewUser): Observable<User> {
-        return this.httpService.postRequest<User>('/users', newUser);
+    public createUser(newUser: INewUser): Observable<IUser> {
+        return this.httpService.postRequest<IUser>('/users', newUser);
     }
 
-    public getCurrentUser(): Observable<User> {
-        return this.httpService.getRequest<User>('/users/current');
+    public getCurrentUser(): Observable<IUser> {
+        return this.httpService.getRequest<IUser>('/users/current');
     }
 
     public checkEmail(email: string): Observable<boolean> {
@@ -29,12 +29,11 @@ export class UserService {
         return this.httpService.getRequest<boolean>(`/users/is-existing-username?username=${userName}`);
     }
 
-    public getFullUser(id: number): Observable<UserFull> {
-        return this.httpService.getRequest<UserFull>(`/users/${id}`);
+    public getFullUser(id: number): Observable<IUserFull> {
+        return this.httpService.getRequest<IUserFull>(`/users/${id}`);
     }
 
-    public getUserChallengesInfoByTags(id:number): Observable<IUserSolutionsGroupedBySkillLevel[]>
-    {
+    public getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {
         return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(`/users/${id}/user-challenges`);
     }
 }

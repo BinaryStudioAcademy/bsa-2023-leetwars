@@ -1,16 +1,17 @@
-<div class='content_wrp'>
-    <div class="user_profile">
-        <app-profile-page-main-info [user]="user" [userSolutions]="userSolutions"></app-profile-page-main-info>
-    </div>
-    <div class="solved">
-        <app-solved-problem [bars]="bars"></app-solved-problem>
-    </div>
-    <div class="badges">
-        <app-solved-problem></app-solved-problem>
-    </div>
-    <div class="submission_chart">
-        <app-submissions-chart [solutions]="user.solutions"></app-submissions-chart>
-    </div>
-    <div class="submissions" id="background-color">
+<div class="main-wrapper">
+    <div class='content_wrp'>
+        <div class="user_profile">
+            <app-profile-page-main-info [user]="fullUser" [userSolutions]="userSolutions"></app-profile-page-main-info>
+        </div>
+        <div class="solved">
+            <app-solved-problem [bars]="bars"></app-solved-problem>
+        </div>
+        <div class="badges">
+        </div>
+        <div class="submission_chart">
+            <app-submissions-chart [solutions]="fullUser.solutions" class="custom-chart"></app-submissions-chart>
+        </div>
+        <div class="submissions" id="background-color">
+        </div>
     </div>
 </div>

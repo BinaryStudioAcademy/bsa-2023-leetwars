@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { DropdownItem } from '@shared/models/dropdown-item';
+import { IDropdownItem } from '@shared/models/dropdown-item';
 
 import { Tab } from './tab';
 
@@ -23,9 +23,9 @@ export class SolutionPageComponent implements OnInit {
 
     @Input() completedContent: string;
 
-    languageItems: DropdownItem[] = [{ content: 'JavaScript', iconName: 'node-js' }, { content: 'C#' }];
+    languageItems: IDropdownItem[] = [{ content: 'JavaScript', iconName: 'node-js' }, { content: 'C#' }];
 
-    languageVersionItems: DropdownItem[] = [{ content: 'Node v18.x' }, { content: 'Node v17.x' }];
+    languageVersionItems: IDropdownItem[] = [{ content: 'Node v18.x' }, { content: 'Node v17.x' }];
 
     tabs: Tab[] = [
         {
@@ -53,7 +53,7 @@ export class SolutionPageComponent implements OnInit {
         this.content = this.completedContent;
     }
 
-    languageChanged(item: DropdownItem): void {
+    languageChanged(item: IDropdownItem): void {
         this.selectedLanguage = this.mapLanguageName(item.content);
         this.changeDetector.detectChanges();
     }

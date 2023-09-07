@@ -1,13 +1,13 @@
-import { Challenge } from '@shared/models/challenge/challenge';
-import { User } from '@shared/models/user/user';
+import { IChallenge } from '@shared/models/challenge/challenge';
+import { IUser } from '@shared/models/user/user';
 
-import { Language } from './language';
-import { UserLanguageLevel } from './user-language-level';
-import { UserSolution } from './user-solution';
+import { ILanguage } from './language';
+import { IUserLanguageLevel } from './user-language-level';
+import { IUserSolution } from './user-solution';
 
-export interface UserFull extends User {
-    preferredLanguages: Language[];
-    languagesWithLevels: UserLanguageLevel[];
-    solutions: UserSolution[] | undefined;
-    challenges: Challenge[];
+export interface IUserFull extends IUser {
+    preferredLanguages: ILanguage[];
+    languagesWithLevels: IUserLanguageLevel[];
+    solutions: IUserSolution[] | undefined;
+    challenges: IChallenge[];
 }

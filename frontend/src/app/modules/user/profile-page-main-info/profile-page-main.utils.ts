@@ -1,7 +1,7 @@
-import { UserSolution } from '@shared/models/profile/user-solution';
+import { IUserSolution } from '@shared/models/profile/user-solution';
 import * as moment from 'moment';
 
-export function getLastWeekCount(solutions: UserSolution[] | undefined): number {
+export function getLastWeekCount(solutions: IUserSolution[] | undefined): number {
     if (solutions) {
         return solutions.filter(
             (solution) =>
