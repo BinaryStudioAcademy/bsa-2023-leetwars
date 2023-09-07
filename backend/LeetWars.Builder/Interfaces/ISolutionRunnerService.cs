@@ -2,6 +2,6 @@
 {
     public interface ISolutionRunnerService
     {
-        Task RunCodeInContainerAsync(string imageName, string containerName);
+        Task<string?> RunCodeInContainerAsync(string imageName, string containerName);
     }
 }
