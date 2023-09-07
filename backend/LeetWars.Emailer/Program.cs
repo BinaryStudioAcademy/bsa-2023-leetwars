@@ -8,8 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddScoped<IValidator<MailDto>, MailDtoValidator>();
+builder.Services.AddCors();
 
 var app = builder.Build();
+
+app.UseHttpsRedirection();
+
+app.UseCors(opt => opt
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowAnyOrigin());
 
 app.MapPost("/emailer/sendEmail", (IMailService mailService, MailDto mailDto) =>
 {
