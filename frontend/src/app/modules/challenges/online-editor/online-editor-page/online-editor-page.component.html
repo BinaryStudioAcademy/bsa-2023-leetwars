@@ -43,10 +43,10 @@
                         </app-dropdown-select>
                     </div>
                 </div>
-                <ngx-monaco-editor
-                    class="my-code-editor"
-                    [options]="editorOptions"
-                    [(ngModel)]="initialSolution"></ngx-monaco-editor>
+                <app-code-editor
+                class="my-code-editor"
+                [language]="selectedLanguage"
+                [initSolution]="initialSolution"  ></app-code-editor>
             </div>
 
             <div class="editor test-wrp">
@@ -56,10 +56,10 @@
                     </div>
                 </div>
                 <div class="editor-test">
-                    <ngx-monaco-editor
-                        class="my-code-editor"
-                        [options]="editorOptions"
-                        [(ngModel)]="testCode"></ngx-monaco-editor>
+                    <app-code-editor
+                    class="my-code-editor"
+                    [language]="selectedLanguage"
+                    [initSolution]="testCode"  ></app-code-editor>
                 </div>
             </div>
 

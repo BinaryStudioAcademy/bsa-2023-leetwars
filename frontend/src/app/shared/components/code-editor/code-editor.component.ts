@@ -3,6 +3,13 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 interface EditorOptions {
     language: string;
     theme: string;
+    minimap: {
+        enabled: boolean;
+    };
+    automaticLayout: boolean;
+    useShadows: boolean;
+    wordWrap: string;
+    lineNumbers: string;
 }
 
 @Component({
@@ -11,6 +18,8 @@ interface EditorOptions {
     styleUrls: ['./code-editor.component.sass'],
 })
 export class CodeEditorComponent implements OnChanges, OnInit {
+    languageNameMap: Map<string, string> = new Map<string, string>([['C#', 'csharp']]);
+
     @Input() language: string;
 
     @Input() initSolution: string = '';
@@ -34,10 +43,19 @@ export class CodeEditorComponent implements OnChanges, OnInit {
         this.updateEditorOptions();
     }
 
+    private mapLanguageName(language: string): string {
+        return this.languageNameMap.get(language) || language.toLowerCase();
+    }
+
     private updateEditorOptions(): void {
         this.editorOptions = {
-            language: this.language,
-            theme: 'vs-dark',
+            theme: 'custom-theme',
+            language: this.mapLanguageName(this.language),
+            minimap: { enabled: false },
+            automaticLayout: true,
+            useShadows: false,
+            wordWrap: 'on',
+            lineNumbers: 'on',
         };
     }
 }

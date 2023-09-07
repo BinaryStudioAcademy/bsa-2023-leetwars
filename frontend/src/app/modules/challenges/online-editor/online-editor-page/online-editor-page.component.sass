@@ -20,6 +20,9 @@
     height: calc(100% - 45px)
     width: 100%
 
+.editor.h-50
+    overflow: hidden
+
 .editor-test
     height: calc(100% - 45px)
     width: 100%
@@ -31,7 +34,6 @@
 :host ::ng-deep .editor-container
     margin-top: 9px
     width: 100%
-
 
 :host ::ng-deep .scroll-decoration
     box-shadow: none !important
@@ -139,8 +141,11 @@ button span
 .actions button
     padding: 3px 6px
     border-radius: 5px
+    color: $white
 
 button.sumbit
     background-color: $green
-    color: white
-    border: none
+
+button.run-test
+    background-color: $charcoal-grey
+

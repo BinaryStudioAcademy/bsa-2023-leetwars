@@ -34,11 +34,9 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     languageVersions: string[];
 
-    editorOptions: object;
+    initialSolution: string;
 
-    initialSolution?: string;
-
-    testCode?: string;
+    testCode: string;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -70,7 +68,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
 
-        this.initialSolution = this.getInitialSolutionByLanguage($event as string);
+        this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (<any>window).monaco.editor.setModelLanguage((<any>window).monaco.editor.getModels()[0], selectedLang);
@@ -113,16 +111,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     private setupEditorOptions() {
-        this.editorOptions = {
-            theme: 'custom-theme',
-            language: this.mapLanguageName(this.selectedLanguage),
-            minimap: { enabled: false },
-            automaticLayout: true,
-            useShadows: false,
-            wordWrap: 'on',
-            lineNumbers: 'on',
-        };
-        this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
+        this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage)!;
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0].id);
     }
 
