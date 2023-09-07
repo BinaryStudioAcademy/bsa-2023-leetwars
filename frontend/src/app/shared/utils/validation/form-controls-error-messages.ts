@@ -17,7 +17,7 @@ export const usernameValidationErrorMessages: ControlErrorMessages = {
     required: 'Please enter your username',
     minlength: `Username must be at least ${userNameMinLength} characters`,
     maxlength: `Username must not exceed ${userNameMaxLength} characters`,
-    pattern: 'Please enter your username in Latin. Allowed characters: letters, spaces, dashes',
+    pattern: 'Please enter your username in Latin or Cyrillic. Allowed characters: letters, digits, underscores',
 };
 
 export const passwordValidationErrorMessages: ControlErrorMessages = {
