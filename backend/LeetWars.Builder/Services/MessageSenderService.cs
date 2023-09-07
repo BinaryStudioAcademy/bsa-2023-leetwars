@@ -17,4 +17,8 @@ public class MessageSenderService : IMessageSenderService
     {
         _producerService.Send(obj, ExchangeType.Direct);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> feature/91-test-execution

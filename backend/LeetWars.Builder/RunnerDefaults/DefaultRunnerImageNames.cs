@@ -6,6 +6,21 @@
 
         public const string CSharpImage = "csharpcoderunner";
 
+        public const string CSharpTestImage = "csharptestrunner1";
+
+        public const string CSharpBuildImage = "csharpcodebuilder";
+
         public const string JSImage = "jscoderunner";
+    }
+
+    public static class CSharpFileNaming
+    {
+        public const string SolutionFileName = "Solution.cs";
+
+        public const string SolutionTestFileName = "Tests.cs";
+
+        public const string TestResultsFileName = "testresults.trx";
+
+        public const string BuildErrorResultsFileName = "errbuildoutput.txt";
     }
 }

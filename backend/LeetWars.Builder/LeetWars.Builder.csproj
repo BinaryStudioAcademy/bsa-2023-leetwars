@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="RunnerDefaults\CSharp\CSharpCodeBuilder\SolutionBuilder\SolutionBuilder.csproj" />
     <None Include="RunnerDefaults\CSharp\CSharpRunner\CSharpRunner.csproj" />
     <None Include="RunnerDefaults\CSharp\CSharpTestRunner\SolutionTester.Tests\SolutionTester.Tests.csproj" />
   </ItemGroup>

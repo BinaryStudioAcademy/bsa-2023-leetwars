@@ -1,6 +1,8 @@
 ﻿using Docker.DotNet;
 using Docker.DotNet.Models;
 using LeetWars.Builder.Interfaces;
+using LeetWars.Builder.Models;
+using Newtonsoft.Json;
 
 namespace LeetWars.Builder.Services
 {
@@ -59,6 +61,111 @@ namespace LeetWars.Builder.Services
             var testResultOutput = XmlTestResultParserService.ParseCSharpTestResult(stringResult);
 
             return stringResult;
+        }
+
+        public async Task<BuildResult> RunSolutionBuild(string processName, string code)
+        {
+            return await RunCSharpBuild(processName, code);
+        }
+
+        public async Task<string> RunSolutionTests(string processName, string code, string tests)
+        {
+
+            return JsonConvert.SerializeObject(await RunCSharpSolutionTests(processName, code, tests));
+        }
+
+        public async Task<CSharpTestOutput> RunCSharpSolutionTests(string containerName, string csharpCode, string csharpTests)
+        {
+            //Create volume
+            var volumeName = containerName + "-volume";
+
+            await _client.Volumes.CreateAsync(new VolumesCreateParameters
+            {
+                Name = volumeName
+            });
+
+            //Create container and bind a volume with data on it
+            var containerParams = new CreateContainerParameters
+            {
+                Image = RunnerDefaults.DefaultRunnerImageNames.CSharpTestImage,
+                Name = containerName,
+                HostConfig = new HostConfig
+                {
+                    Binds = new List<string>
+                    {
+                        $"{volumeName}:/LocalVolume"
+                    },
+                }
+            };
+
+            var container = await _client.Containers.CreateContainerAsync(containerParams);
+
+            //Add needed files to a volume
+            await StringToFileInContainerAsync(csharpCode, RunnerDefaults.CSharpFileNaming.SolutionFileName, container.ID, "/LocalVolume/");
+
+            await StringToFileInContainerAsync(csharpTests, RunnerDefaults.CSharpFileNaming.SolutionTestFileName, container.ID, "/LocalVolume/");
+
+            //Start action
+            await _client.Containers.StartContainerAsync(container.ID, null);
+
+            await _client.Containers.WaitContainerAsync(container.ID);
+
+            //Manipulate data that container outputted
+            var stringResult = await FileInContainerToStringAsync(container.ID, $"/LocalVolume/{RunnerDefaults.CSharpFileNaming.TestResultsFileName}");
+
+            return stringResult != null ? XmlTestResultParserService.ParseCSharpTestResult(stringResult) : throw new ArgumentException("Such file does not exist or is named incorrectly");
+
+        }
+
+        public async Task<BuildResult> RunCSharpBuild(string containerName, string csharpCode)
+        {
+            //Create volume
+            var volumeName = containerName + "-volume";
+
+            await _client.Volumes.CreateAsync(new VolumesCreateParameters
+            {
+                Name = volumeName
+            });
+
+            //Create container and bind a volume with data on it
+            var containerParams = new CreateContainerParameters
+            {
+                Image = RunnerDefaults.DefaultRunnerImageNames.CSharpBuildImage,
+                Name = containerName,
+                HostConfig = new HostConfig
+                {
+                    Binds = new List<string>
+                    {
+                        $"{volumeName}:/LocalVolume"
+                    },
+                }
+            };
+
+            var container = await _client.Containers.CreateContainerAsync(containerParams);
+
+            //Add needed files to a volume
+            await StringToFileInContainerAsync(csharpCode, RunnerDefaults.CSharpFileNaming.SolutionFileName, container.ID, "/LocalVolume/");
+
+            //Start action
+            await _client.Containers.StartContainerAsync(container.ID, null);
+
+            var containerResponse = await _client.Containers.WaitContainerAsync(container.ID);
+
+
+            var result = new BuildResult
+            {
+                IsSuccess = containerResponse.StatusCode == 0
+            };
+
+            //Manipulate data that container outputted
+            if(containerResponse.StatusCode == 1)
+            {
+                var errors = await FileInContainerToStringAsync(container.ID, $"/LocalVolume/{RunnerDefaults.CSharpFileNaming.BuildErrorResultsFileName}");
+                result.BuildErrorOutput = errors;
+            }
+
+            return result;
+
         }
 
         private async Task StringToFileInContainerAsync(string input, string newFileNameWithExtenstion, string containerId, string pathInContainer)
