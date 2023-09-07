@@ -22,7 +22,8 @@ namespace LeetWars.Core.BLL.MappingProfiles
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.Languages, opt => opt.MapFrom(src => src.Versions.Select(version => version.Language)))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Versions.Any() ? src.Versions.First().Status : 0))
-                .ForMember(dest => dest.isStarry, exp => exp.MapFrom<ChallengeStarResolver>());
+                .ForMember(dest => dest.IsStarry, exp => exp.MapFrom<ChallengeStarResolver>())
+                .ForMember(dest => dest.StarsAmount, exp => exp.MapFrom(src => src.Stars.Count()));
 
             CreateMap<ChallengeVersion, ChallengeVersionFullDto>();
             

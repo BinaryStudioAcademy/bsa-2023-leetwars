@@ -141,6 +141,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
         this.starService.updateStar(star).subscribe((starResp: Star) => {
             challenge.isStarry = starResp.isStar;
+            challenge.starsAmount = starResp.isStar ? challenge.starsAmount + 1 : challenge.starsAmount - 1;
         });
     }
 
