@@ -1,15 +1,32 @@
-@import 'src/styles/color-variables'
+@import 'color-variables'
+@import 'screen-sizes-variables'
 
-:host
-  display: flex
-  justify-content: center
+.filtering-section
+  justify-content: space-between
+  gap: 3%
+  @media (max-width: $medium)
+    gap: 2%
+  @media (max-width: $small-medium)
+    flex-direction: column
+    gap: 15px
 
 .filters
   border: 1px solid $grey
   border-radius: 14px
-  margin-right: 20px
-  max-width: 420px
+  width: 38%
   height: 480px
+  @media (max-width: $medium)
+    width: 34%
+  @media (max-width: $small-medium)
+    width: 100%
+
+.challenges
+  border-radius: 4px
+  width: 59%
+  @media (max-width: $medium)
+    width: 64%
+  @media (max-width: $small-medium)
+    width: 100%
 
 .m-0-12px
   margin: 20px 20px 0
@@ -20,7 +37,6 @@
 .search-container
   position: relative
   margin-top: 28px
-  width: 350px
 
 .search-filter
   font-family: Open Sans
@@ -39,34 +55,5 @@
     color: $white
     cursor: pointer
 
-.challenges
-    border-radius: 4px
-
 :host ::ng-deep .title
-    font-size: 14px
-@media (max-width: 992px)
-  .filters
-    max-width: 224px
-
-  .search-container
-    width: 180px
-
-@media (max-width: 768px)
-  .filtering-section
-    flex-direction: column
-    align-items: center
-
-  .filters
-    margin-right: 0
-    margin-bottom: 16px
-    max-width: 440px
-
-  .search-container
-    width: 400px
-
-@media (max-width: 576px)
-  .filters
-    max-width: 274px
-
-  .search-container
-    width: 220px
+  font-size: 14px

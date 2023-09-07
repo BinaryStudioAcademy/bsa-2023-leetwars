@@ -1,5 +1,5 @@
 export enum ChallengeProgress {
-    NotStarted,
-    Started,
-    Completed
+    NotStarted = 'NotStarted',
+    Started = 'Started',
+    Completed = 'Completed',
 }

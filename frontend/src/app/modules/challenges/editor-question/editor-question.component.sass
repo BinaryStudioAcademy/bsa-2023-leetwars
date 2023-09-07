@@ -2,8 +2,16 @@
 @import 'screen-sizes-variables'
 
 :host
+  height: 100%
   font-family: Inter
   color: $white
+  display: block
+  background-color: $deep-dark-grey
+  overflow: auto
+
+:host ::ng-deep #kata-name
+  border: none
+  background-color: $very-weak-black
 
 .mt-12px
   margin-top: 12px
@@ -50,6 +58,7 @@
 .input-wrapper
     max-width: max(85%,1117px)
 
+
 .tabs-list
   background-color: $double-weak-white
   max-width: 340px
@@ -80,6 +89,9 @@
         font-weight: 400
 
 // Markdown editor styles
+
+:host ::ng-deep textarea
+  border: none
 
 :host ::ng-deep .md-header
   display: none
