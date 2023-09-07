@@ -13,15 +13,15 @@ namespace LeetWars.Core.BLL.Services
 {
     public class ChallengeService : BaseService, IChallengeService
     {
-        private readonly IUserIdGetter _userIdGetter;
+        private readonly IUserGetter _userGetter;
 
         public ChallengeService(
             LeetWarsCoreContext context,
             IMapper mapper,
-            IUserIdGetter userIdGetter
+            IUserGetter userGetter
         ) : base(context, mapper)
         {
-            _userIdGetter = userIdGetter;
+            _userGetter = userGetter;
         }
 
         public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters,
@@ -102,7 +102,7 @@ namespace LeetWars.Core.BLL.Services
 
         private async Task<LanguageLevel> GetUserLevelAsync(int languageId)
         {
-            var userId = _userIdGetter.CurrentUserId;
+            var userId = _userGetter.CurrentUserId;
             var userLevel = await _context
                 .UserLanguageLevels
                 .Include(userLevel => userLevel.User)
@@ -114,7 +114,7 @@ namespace LeetWars.Core.BLL.Services
 
         private IQueryable<Challenge> FilterChallengesByProgress(IQueryable<Challenge> challenges, ChallengesProgress? progress)
         {
-            var userId = _userIdGetter.CurrentUserId;
+            var userId = _userGetter.CurrentUserId;
 
             return progress switch
             {
@@ -132,7 +132,7 @@ namespace LeetWars.Core.BLL.Services
         }
         private async Task<IQueryable<Challenge>> FilterChallengesBySuggestionType(IQueryable<Challenge> challenges, SuggestionSettingsDto settings)
         {
-            var userId = _userIdGetter.CurrentUserId;
+            var userId = _userGetter.CurrentUserId;
             var userLevel = await GetUserLevelAsync(settings.LanguageId);
             var userNextLevel = userLevel.GetNextLevel();
             
@@ -189,7 +189,7 @@ namespace LeetWars.Core.BLL.Services
 
         public async Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
-            var currentUser = await GetCurrentUserEntity();
+            var currentUser = _userGetter.GetCurrentUserOrThrow();
             var challenge = _mapper.Map<Challenge>(challengeDto);
 
             challenge.CreatedAt = DateTime.UtcNow;
@@ -198,9 +198,9 @@ namespace LeetWars.Core.BLL.Services
             
             await _context.SaveChangesAsync();
             
-            if (challengeDto.Tags is not null && challengeDto.Tags.Count > 0)
+            if ((challengeDto.Tags?.Count ?? 0) > 0)
             {
-                foreach (var tagDto in challengeDto.Tags)
+                foreach (var tagDto in challengeDto.Tags!)
                 {
                     var tag = _mapper.Map<Tag>(tagDto);
                     challenge.ChallengeTags.Add(new ChallengeTag()
@@ -213,9 +213,9 @@ namespace LeetWars.Core.BLL.Services
                 await _context.SaveChangesAsync();
             }
 
-            if (challengeDto.Versions is not null && challengeDto.Versions.Count > 0)
+            if ((challengeDto.Versions?.Count ?? 0) > 0)
             {
-                foreach (var challengeVersionDto in challengeDto.Versions)
+                foreach (var challengeVersionDto in challengeDto.Versions!)
                 {
                     var challengeVersion = _mapper.Map<ChallengeVersion>(challengeVersionDto);
                     challengeVersion.ChallengeId = challenge.Id;
@@ -230,10 +230,5 @@ namespace LeetWars.Core.BLL.Services
             return await GetChallengeByIdAsync(challenge.Id);
         }
 
-        private async Task<User> GetCurrentUserEntity()
-        {
-            var userId = _userIdGetter.GetCurrentUserIdOrThrow();
-            return await _context.Users.FirstAsync(u => u.Uid == userId);
-        }
     }
 }

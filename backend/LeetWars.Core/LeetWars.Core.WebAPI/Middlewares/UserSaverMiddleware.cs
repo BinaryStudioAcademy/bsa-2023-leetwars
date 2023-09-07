@@ -2,22 +2,22 @@
 
 namespace LeetWars.Core.WebAPI.Middlewares
 {
-    public class UserIdSaverMiddleware
+    public class UserSaverMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public UserIdSaverMiddleware(RequestDelegate next)
+        public UserSaverMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext context, IUserIdSetter userIdSetter)
+        public async Task InvokeAsync(HttpContext context, IUserSetter userSetter)
         {
             var userId = context.User.Claims.FirstOrDefault(c => c.Type == "user_id")?.Value;
             
             if (userId is not null)
             {
-                userIdSetter.SetUserId(userId);
+                await userSetter.SetUserId(userId);
             }
 
             await _next.Invoke(context);

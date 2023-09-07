@@ -32,9 +32,9 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddScoped<IUserService, UserService>();
             
-            services.AddScoped<UserIdStorage>();
-            services.AddTransient<IUserIdSetter>(s => s.GetService<UserIdStorage>()!);
-            services.AddTransient<IUserIdGetter>(s => s.GetService<UserIdStorage>()!);
+            services.AddScoped<UserStorage>();
+            services.AddTransient<IUserSetter>(s => s.GetService<UserStorage>()!);
+            services.AddTransient<IUserGetter>(s => s.GetService<UserStorage>()!);
 
         }
 
