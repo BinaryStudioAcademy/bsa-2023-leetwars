@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { User } from '@shared/models/user/user';
 import { emailExistsValidator } from '@shared/utils/validation/email-exists.validator';
 import {
     emailMaxLength,
@@ -23,7 +22,7 @@ import { getErrorMessage } from '@shared/utils/validation/validation-helper';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent {
-    registrationForm = new FormGroup({
+    public registrationForm = new FormGroup({
         email: new FormControl(
             '',
             [Validators.required, Validators.maxLength(emailMaxLength), Validators.pattern(emailPattern)],
@@ -59,29 +58,11 @@ export class SignUpComponent {
     ) {}
 
     public signUpGitHub() {
-        this.authService.signInWithGitHub().subscribe(
-            (user: User) => {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
-                // add email sender to user.email
-            },
-            (error) => {
-                this.toastrNotification.showError(error);
-            },
-        );
+        this.authService.signInWithGitHub(false);
     }
 
     public signUpGoogle() {
-        this.authService.signInWithGoogle().subscribe(
-            (user: User) => {
-                this.router.navigate(['/main']);
-                this.toastrNotification.showSuccess(`${user.userName} was successfully signed up`);
-                // add email sender to user.email
-            },
-            (error) => {
-                this.toastrNotification.showError(error);
-            },
-        );
+        this.authService.signInWithGoogle(false);
     }
 
     public signUp() {
