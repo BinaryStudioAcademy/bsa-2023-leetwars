@@ -14,13 +14,21 @@
     background-color: $elegant-grey
     cursor: default
 
-.accent-button
-    padding: 16px 25px
-    background-color: $green
-    border-radius: 28px
-    box-shadow: 0 0 0 3px $transparent-green
+.custom-button
+    color: $white-grey
+    padding: 10px 15px
+    border: 1px solid $border-grey
+    border-radius: 4px
     transition: all 0.1s ease-in-out
-    &:hover
-        box-shadow: 0 0 0 5px $transparent-green
     &:active
         transform: scale(98%)
+    &.accent
+        color: $white-grey
+        background-color: $green
+        border: 1px solid $green
+        text-shadow: $dark-grey 1px 1px 1px
+    &:disabled
+        pointer-events: none
+        color: $silver
+        text-shadow: none
+

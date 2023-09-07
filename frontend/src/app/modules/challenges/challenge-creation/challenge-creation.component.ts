@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ChallengeLevelService } from '@core/services/challenge-level.service';
@@ -65,6 +66,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         private languageService: LanguageService,
         private tagService: TagService,
         private toastrService: ToastrNotificationsService,
+        private router: Router,
     ) {
         super();
         this.stepNames = this.steps.map(s => s.step.toString());
@@ -147,6 +149,10 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                     },
                 });
         }
+    }
+
+    onBtnCancelClick() {
+        this.router.navigate(['/']);
     }
 
     onLanguageChanged(selectedItem: DropdownItem) {

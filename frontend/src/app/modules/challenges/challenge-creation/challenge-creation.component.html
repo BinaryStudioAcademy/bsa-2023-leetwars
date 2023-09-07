@@ -1,3 +1,16 @@
+<div class="d-flex gap-4 pt-4 ps-3">
+    <button
+        [disabled]="(currentStep !== getStepIndex(ChallengeStep.Testcases))"
+        class="custom-button accent"
+        (click)="onBtnCreateClick()"
+    >Create challenge</button>
+    <button
+        class="custom-button"
+        (click)="onBtnCancelClick()"
+    >Cancel</button>
+
+</div>
+
 <app-steps-of-progress
     [steps]="stepNames"
     [activeStepIndex]="currentStep"
@@ -5,25 +18,18 @@
 ></app-steps-of-progress>
 
 <div class="step-container">
-    <div class="d-flex flex-md-row-reverse flex-column flex-wrap justify-content-between align-items-start">
-        <button
-            *ngIf="(currentStep === getStepIndex(ChallengeStep.Testcases))"
-            class="accent-button me-3 mt-2 mb-4"
-            (click)="onBtnCreateClick()"
-        >CREATE CHALLENGE</button>
-        <div *ngIf="(currentStep !== getStepIndex(ChallengeStep.Question))" class="language-block flex-grow-1 mb-2">
-            <div class="language-info mb-2">
-                <span>Languages</span>
-                <fa-icon [icon]="'circle-info'" ngbTooltip="Select the required language and version"
-                         placement="right"></fa-icon>
-            </div>
-            <div class="d-flex gap-3 mb-2">
-                <app-challenges-dropdown-select [items]="languageDropdownItems"
-                                                [selectedItem]="currentLanguage"
-                                                (selectedItemChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
+    <div *ngIf="(currentStep !== getStepIndex(ChallengeStep.Question))" class="language-block flex-grow-1 mb-2">
+        <div class="language-info mb-2">
+            <span>Languages</span>
+            <fa-icon [icon]="'circle-info'" ngbTooltip="Select the required language and version"
+                     placement="right"></fa-icon>
+        </div>
+        <div class="d-flex gap-3 mb-2">
+            <app-challenges-dropdown-select [items]="languageDropdownItems"
+                                            [selectedItem]="currentLanguage"
+                                            (selectedItemChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
 <!--                <app-challenges-dropdown-select-->
 <!--                    [items]="languageVersionDropdownItems"></app-challenges-dropdown-select>-->
-            </div>
         </div>
     </div>
 

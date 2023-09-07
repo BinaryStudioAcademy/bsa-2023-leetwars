@@ -1,10 +1,16 @@
 <div class="component-container" [class.maximized]="isMaximized">
     <div class="actions d-flex">
-        <tabset>
-            <tab *ngFor="let tab of tabs" [heading]="tab.type.toString()" [active]="tab.active"
-                  (selectTab)="switchTab(tab)" [disabled]="tab.disabled" [customClass]="getTabClass(tab)">
-            </tab>
-        </tabset>
+        <div class="d-flex">
+            <tabset>
+                <tab *ngFor="let tab of tabs" [heading]="tab.type.toString()" [active]="tab.active"
+                     (selectTab)="switchTab(tab)" [disabled]="tab.disabled" [customClass]="getTabClass(tab)">
+                </tab>
+            </tabset>
+            <div class="tab-help">
+                <fa-icon [icon]="'question-circle'" ngbTooltip="Help message" placement="top"></fa-icon>
+                <div class="tab-text">Help</div>
+            </div>
+        </div>
         <button class="maximize-btn" (click)="toggleMaximize()">
             <fa-icon [icon]="isMaximized ? ['fas', 'compress'] : ['fas', 'maximize']"></fa-icon>
         </button>
