@@ -14,8 +14,9 @@ namespace LeetWars.Core.DAL.Context
 
             //Connections
             builder.HasMany(e => e.Tags)
-                .WithMany(e => e.Challenges);
-
+                .WithMany(e => e.Challenges)
+                .UsingEntity<ChallengeTag>();
+            
             builder.HasOne(e => e.Level)
                 .WithMany()
                 .HasForeignKey(e => e.LevelId);

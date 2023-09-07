@@ -192,27 +192,33 @@ namespace LeetWars.Core.BLL.Services
             var currentUser = await GetCurrentUserEntity();
             var challenge = _mapper.Map<Challenge>(challengeDto);
 
-            if (challengeDto.Tags is not null)
-            {
-                foreach (var tagDto in challengeDto.Tags)
-                {
-                    var tag = _mapper.Map<Tag>(tagDto);
-                    challenge.Tags.Add(tag);
-                }
-            }
-            
             challenge.CreatedAt = DateTime.UtcNow;
             challenge.CreatedBy = currentUser.Id;
             _context.Challenges.Add(challenge);
             
             await _context.SaveChangesAsync();
+            
+            if (challengeDto.Tags is not null && challengeDto.Tags.Count > 0)
+            {
+                foreach (var tagDto in challengeDto.Tags)
+                {
+                    var tag = _mapper.Map<Tag>(tagDto);
+                    challenge.ChallengeTags.Add(new ChallengeTag()
+                    {
+                        ChallengeId = challenge.Id,
+                        TagId = tag.Id,
+                    });
+                }
+                
+                await _context.SaveChangesAsync();
+            }
 
-            if (challengeDto.Versions is not null)
+            if (challengeDto.Versions is not null && challengeDto.Versions.Count > 0)
             {
                 foreach (var challengeVersionDto in challengeDto.Versions)
                 {
                     var challengeVersion = _mapper.Map<ChallengeVersion>(challengeVersionDto);
-                    challengeVersion.Id = challenge.Id;
+                    challengeVersion.ChallengeId = challenge.Id;
                     challengeVersion.CreatedAt = DateTime.UtcNow;
                     challengeVersion.CreatedBy = currentUser.Id;
                     _context.ChallengeVersions.Add(challengeVersion);
