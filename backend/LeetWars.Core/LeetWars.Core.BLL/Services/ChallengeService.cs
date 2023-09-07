@@ -3,6 +3,7 @@ using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.UserSolution;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
@@ -14,14 +15,17 @@ namespace LeetWars.Core.BLL.Services
     public class ChallengeService : BaseService, IChallengeService
     {
         private readonly IUserIdGetter _userIdGetter;
+        private readonly IMessageSenderService _messageSenderService;
 
         public ChallengeService(
             LeetWarsCoreContext context,
             IMapper mapper,
-            IUserIdGetter userIdGetter
+            IUserIdGetter userIdGetter,
+            IMessageSenderService messageSenderService
         ) : base(context, mapper)
         {
             _userIdGetter = userIdGetter;
+            _messageSenderService = messageSenderService;
         }
 
         public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters,
@@ -188,6 +192,11 @@ namespace LeetWars.Core.BLL.Services
                 .FirstOrDefaultAsync(challenge => challenge.Id == id);
 
             return _mapper.Map<ChallengeFullDto>(challenges);
+        }
+
+        public void ComputeResult(UserCodeDto solution)
+        {
+            _messageSenderService.SendMessageToRabbitMQ(solution.Code);
         }
     }
 }

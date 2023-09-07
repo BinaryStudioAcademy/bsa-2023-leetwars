@@ -84,8 +84,6 @@ public class ConsumerService : IConsumerService
         }
     }
 
-
-
     public void Dispose()
     {
         Dispose(disposing: true);

@@ -1,8 +1,14 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BroadcastHubService } from '@core/hubs/broadcast-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { ApiResponse } from '@shared/models/api-response';
 import { Challenge } from '@shared/models/challenge/challenge';
+import { UserCode } from '@shared/models/user-solution/user-code';
+import { UserSolution } from '@shared/models/user-solution/user-solution';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -33,11 +39,15 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     initialSolution: string | undefined;
 
+    solution: UserCode
+
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
         breakpointObserver: BreakpointObserver,
         private router: Router,
+        private signalRService: BroadcastHubService,
+        private toastrNotification: ToastrNotificationsService,
     ) {
         breakpointObserver
             .observe(['(max-width: 843px)'])
@@ -52,9 +62,18 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit() {
+        this.signalRService.start();
+
         const challengeId = this.activatedRoute.snapshot.params['id'];
 
         this.splitDirection = 'horizontal';
+
+        this.signalRService.listenMessages((msg: string) => {
+            if(msg == "Hello Mario") {
+                this.toastrNotification.showSuccess(`code was compiled successfully`);
+            }
+            console.log(`Received message: ${msg}`);
+        });
 
         this.challengeService.getChallengeById(challengeId).subscribe({
             next: (challenge) => {
@@ -104,7 +123,25 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         return this.languageNameMap.get(language) || language.toLowerCase();
     }
 
+    sendCode(): void {
+
+        this.solution = {
+            code: this.initialSolution as string,
+            language: this.selectedLanguage,
+            output: "",
+        }
+
+        this.challengeService.postCode(this.solution, this.challenge.id, this.selectedLanguage).subscribe((response: ApiResponse) => {
+            if (response.status === 'Success') {
+              console.log(`Success: ${response.message}`);
+            } else {
+              console.error(`Error: ${response.message}`);
+            }
+          });
+    }
+
     ngOnDestroy(): void {
+        this.signalRService.stop()
         this.destroyed$.next();
         this.destroyed$.complete();
     }

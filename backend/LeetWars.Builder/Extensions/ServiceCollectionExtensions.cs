@@ -20,5 +20,17 @@ namespace LeetWars.Builder.Extensions
             services.AddSingleton<IConsumerService, ConsumerService>();
         }
 
+        public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<ProducerSettings>(configuration.GetSection("RabbitMQProducer"));
+            services.AddSingleton(sp =>
+            {
+                var rabbitUri = new Uri(configuration["Rabbit"]);
+                var factory = new ConnectionFactory { Uri = rabbitUri };
+                return factory.CreateConnection();
+            });
+            services.AddSingleton(sp => sp.GetRequiredService<IOptions<ProducerSettings>>().Value);
+            services.AddSingleton<IProducerService, ProducerService>();
+        }
     }
 }

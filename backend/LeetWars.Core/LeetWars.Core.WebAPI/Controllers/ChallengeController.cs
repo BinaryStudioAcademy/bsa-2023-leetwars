@@ -1,6 +1,8 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.UserSolution;
+using LeetWars.Core.DAL.Entities.HelperEntities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
@@ -10,8 +12,8 @@ namespace LeetWars.Core.WebAPI.Controllers
     public class ChallengeController : ControllerBase
     {
         private readonly IChallengeService _challengeService;
-        
-        public ChallengeController(IChallengeService challengeService) 
+
+        public ChallengeController(IChallengeService challengeService)
         {
             _challengeService = challengeService;
         }
@@ -29,12 +31,24 @@ namespace LeetWars.Core.WebAPI.Controllers
             var challenge = await _challengeService.GetChallengeSuggestionAsync(settings);
             return Ok(challenge);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeFullDto>> GetById(long id)
         {
             var challenges = await _challengeService.GetChallengeByIdAsync(id);
             return Ok(challenges);
+        }
+
+        [HttpPost("{id}/{selectedLanguage}")]
+        public ActionResult<ApiResponse> GetCode(UserCodeDto userCode)
+        {
+            _challengeService.ComputeResult(userCode);
+            var response = new ApiResponse
+            {
+                Status = "Success",
+                Message = "Code computed successfully."
+            };
+            return Ok(response);
         }
     }
 }

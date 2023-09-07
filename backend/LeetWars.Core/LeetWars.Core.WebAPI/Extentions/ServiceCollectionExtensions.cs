@@ -50,6 +50,20 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddSingleton<IProducerService, ProducerService>();
         }
 
+        //public static void RegisterProduceMessagesServices(this IServiceCollection services, IConfiguration configuration)
+        //{
+        //    services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
+
+        //    services.AddSingleton(con => new ConnectionFactory()
+        //    {
+        //        Uri = new Uri(configuration["Rabbit"])
+        //    }
+        //    .CreateConnection());
+
+        //    services.AddSingleton(sp => sp.GetRequiredService<IOptions<ConsumerSettings>>().Value);
+        //    services.AddSingleton<IConsumerService, ConsumerService>();
+        //}
+
         public static void AddAutoMapper(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetAssembly(typeof(SampleProfile)));
