@@ -1,13 +1,10 @@
 import {
-    AfterViewChecked,
     Component,
-    ElementRef,
     EventEmitter,
     Input,
     OnChanges,
     OnInit,
     Output,
-    Renderer2,
     SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

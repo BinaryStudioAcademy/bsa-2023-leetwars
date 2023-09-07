@@ -54,7 +54,7 @@
                 [title]="'Level *'"
                 [items]="allLevelsNames"
                 [selectedItem]="selectedLevelName"
-                (SelectedItemsChanged)="onLevelChange($event)"
+                (selectedItemsChanged)="onLevelChange($event)"
                 (focusout)="inputForm.controls.level.markAsTouched()"
                 [class.input-error]="inputForm.controls.level.touched && inputForm.controls.level.invalid"
                 class="d-block mt-3"></app-dropdown-select>
@@ -68,7 +68,7 @@
                 [title]="'Tags *'"
                 [items]="allTagsNames"
                 [selectedItems]="selectedTagsNames"
-                (SelectedItemsChanged)="onTagsChange($event)"
+                (selectedItemsChanged)="onTagsChange($event)"
                 (focusout)="inputForm.controls.tags.markAsTouched()"
                 [class.input-error]="inputForm.controls.tags.touched && inputForm.controls.tags.invalid"
                 class="d-block mt-3"></app-dropdown-select>
