@@ -118,6 +118,10 @@ export class AuthService {
         return from(this.afAuth.sendPasswordResetEmail(passwordResetEmail)).pipe(first());
     }
 
+    public getUser() {
+        return of(this.getUserInfo()!);
+    }
+
     private signInWithProvider(provider: firebase.auth.AuthProvider) {
         return from(this.afAuth.signInWithPopup(provider)).pipe(
             first(),
@@ -146,7 +150,8 @@ export class AuthService {
                     email: resp.user?.email ?? '',
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
-                })),
+                }),
+            ),
             tap((user) => this.setUserInfo(user)),
             catchError((error: string | Error) => {
                 let message = error as string;

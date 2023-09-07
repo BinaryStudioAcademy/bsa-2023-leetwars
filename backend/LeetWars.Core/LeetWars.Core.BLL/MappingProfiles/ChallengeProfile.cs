@@ -3,6 +3,7 @@ using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.BLL.MappingProfiles.Resolvers;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeLevel;
+using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
 using LeetWars.Core.Common.DTO.Test;
 using LeetWars.Core.Common.DTO.UserSolution;
@@ -32,6 +33,11 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<ChallengeLevel, ChallengeLevelDto>();
             
             CreateMap<Challenge, ChallengeFullDto>();
+
+            CreateMap<ChallengeStarDto, ChallengeStar>()
+                .ForMember(dest => dest.ChallengeId, opt => opt.MapFrom(src => src.Challenge.Id))
+                .ForMember(dest => dest.Challenge, opt => opt.Ignore())
+                .ForMember(dest => dest.Author, opt => opt.Ignore());
         }
     }
 }

@@ -1,7 +1,7 @@
-import { Entity } from '../common/entity';
+import { ChallengePreview } from '../challenge/challenge-preview';
 
-export interface Star extends Entity {
-    challengeId: number;
-    authorId: string;
+export interface Star {
+    challenge: ChallengePreview;
+    authorId: number;
     isStar: boolean;
 }

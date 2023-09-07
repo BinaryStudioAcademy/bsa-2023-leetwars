@@ -16,7 +16,7 @@ namespace LeetWars.Core.BLL.MappingProfiles.Resolvers
 
         public bool Resolve(Challenge src, ChallengePreviewDto dest, bool destMember, ResolutionContext context)
         {
-            return src.Stars.Any(star => star.ChallengeId == src.Id && star.Author.Uid == _userIdGetter.CurrentUserId);
+            return src.Stars.Any(star => star.ChallengeId == src.Id && star.Author is not null ? star.Author.Uid == _userIdGetter.CurrentUserId : false);
         }
     }
 }

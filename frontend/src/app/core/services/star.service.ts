@@ -9,9 +9,9 @@ import { HttpInternalService } from './http-internal.service';
 export class StarService {
     public baseUrl = '/stars';
 
-    constructor(private httpService: HttpInternalService) { }
+    constructor(private httpService: HttpInternalService) {}
 
-    public getTags() {
-        return this.httpService.getRequest<Star[]>(this.baseUrl);
+    public updateStar(star: Star) {
+        return this.httpService.putRequest<Star>(this.baseUrl, star);
     }
 }

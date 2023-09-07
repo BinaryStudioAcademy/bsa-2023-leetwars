@@ -1,12 +1,13 @@
-﻿using LeetWars.Core.DAL.Entities;
+﻿using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.DAL.Entities;
 
 namespace LeetWars.Core.Common.DTO.ChallengeStar
 {
-    public class ChallengeStarDto : Entity<long>
+    public class ChallengeStarDto
     {
-        public long ChallengeId { get; set; }
+        public ChallengePreviewDto Challenge { get; set; } = null!;
 
-        public string AuthorId { get; set; } = string.Empty;
+        public long AuthorId { get; set; }
 
         public bool IsStar { get; set; }
     }

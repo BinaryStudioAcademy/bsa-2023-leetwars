@@ -6,8 +6,8 @@
 
         public long AuthorId { get; set; }
 
-        public Challenge Challenge { get; set; } = null!;
+        public Challenge? Challenge { get; set; }
 
-        public User Author { get; set; } = null!;
+        public User? Author { get; set; }
     }
 }

@@ -10,7 +10,7 @@ import { getLanguageIconUrl } from '@shared/utils/language-icons';
 export class ChallengeComponent {
     @Input() challenge: ChallengePreview;
 
-    @Output() starChallenge = new EventEmitter<boolean>();
+    @Output() starChallenge = new EventEmitter<ChallengePreview>();
 
     public challengeStars = 0;
 
@@ -19,6 +19,6 @@ export class ChallengeComponent {
     public getLanguageIconUrl = getLanguageIconUrl;
 
     public starChange() {
-        this.starChallenge.emit(!this.challenge.isStarry);
+        this.starChallenge.emit(this.challenge);
     }
 }

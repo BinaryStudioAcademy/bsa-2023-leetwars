@@ -43,7 +43,7 @@
         </div>
 
         <div *ngFor="let challenge of challenges">
-            <app-challenge [challenge]="challenge" (starChallenge)="updateChallengeStar()"></app-challenge>
+            <app-challenge [challenge]="challenge" (starChallenge)="updateChallengeStar($event)"></app-challenge>
         </div>
         <div *ngIf="loading">
             <p class="text-center text-white text-opacity-50 mt-3">Loading...</p>
