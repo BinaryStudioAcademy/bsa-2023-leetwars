@@ -150,8 +150,7 @@ export class AuthService {
                     email: resp.user?.email ?? '',
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
-                }),
-            ),
+                })),
             tap((user) => this.setUserInfo(user)),
             catchError((error: string | Error) => {
                 let message = error as string;
