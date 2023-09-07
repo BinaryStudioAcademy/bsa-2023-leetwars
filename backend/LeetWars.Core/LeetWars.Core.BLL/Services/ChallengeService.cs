@@ -186,5 +186,48 @@ namespace LeetWars.Core.BLL.Services
 
             return _mapper.Map<ChallengeFullDto>(challenges);
         }
+
+        public async Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto)
+        {
+            var currentUser = await GetCurrentUserEntity();
+            var challenge = _mapper.Map<Challenge>(challengeDto);
+
+            if (challengeDto.Tags is not null)
+            {
+                foreach (var tagDto in challengeDto.Tags)
+                {
+                    var tag = _mapper.Map<Tag>(tagDto);
+                    challenge.Tags.Add(tag);
+                }
+            }
+            
+            challenge.CreatedAt = DateTime.UtcNow;
+            challenge.CreatedBy = currentUser.Id;
+            _context.Challenges.Add(challenge);
+            
+            await _context.SaveChangesAsync();
+
+            if (challengeDto.Versions is not null)
+            {
+                foreach (var challengeVersionDto in challengeDto.Versions)
+                {
+                    var challengeVersion = _mapper.Map<ChallengeVersion>(challengeVersionDto);
+                    challengeVersion.Id = challenge.Id;
+                    challengeVersion.CreatedAt = DateTime.UtcNow;
+                    challengeVersion.CreatedBy = currentUser.Id;
+                    _context.ChallengeVersions.Add(challengeVersion);
+                }
+                
+                await _context.SaveChangesAsync();
+            }
+            
+            return await GetChallengeByIdAsync(challenge.Id);
+        }
+
+        private async Task<User> GetCurrentUserEntity()
+        {
+            var userId = _userIdGetter.GetCurrentUserIdOrThrow();
+            return await _context.Users.FirstAsync(u => u.Uid == userId);
+        }
     }
 }

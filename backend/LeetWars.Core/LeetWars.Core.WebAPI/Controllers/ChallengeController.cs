@@ -1,6 +1,7 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
@@ -35,6 +36,13 @@ namespace LeetWars.Core.WebAPI.Controllers
         {
             var challenges = await _challengeService.GetChallengeByIdAsync(id);
             return Ok(challenges);
+        }
+        
+        [HttpPost]
+        public async Task<ActionResult<ChallengeFullDto>> CreateChallengeAsync(NewChallengeDto challengeDto)
+        {
+            var challenge = await _challengeService.CreateChallengeAsync(challengeDto);
+            return Ok(challenge);
         }
     }
 }

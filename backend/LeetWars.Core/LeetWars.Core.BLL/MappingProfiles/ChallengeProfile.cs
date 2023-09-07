@@ -29,6 +29,12 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<ChallengeLevel, ChallengeLevelDto>();
             
             CreateMap<Challenge, ChallengeFullDto>();
+
+            CreateMap<NewChallengeDto, Challenge>()
+                .ForMember(dest => dest.Tags, opt => opt.Ignore())
+                .ForMember(dest => dest.Versions, opt => opt.Ignore());
+            
+            CreateMap<NewChallengeVersionDto, ChallengeVersion>();
         }
     }
 }
