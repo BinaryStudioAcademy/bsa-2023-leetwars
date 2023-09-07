@@ -1,5 +1,3 @@
-import { SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { CategoryType } from '@shared/enums/category-type';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { NewChallenge } from '@shared/models/challenge/new-challenge';
