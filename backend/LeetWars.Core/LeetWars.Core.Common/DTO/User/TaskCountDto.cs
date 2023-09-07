@@ -2,7 +2,7 @@
 {
     public class TaskCountDto
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public int ChallengeCount { get; set; }
 
     }

@@ -91,13 +91,13 @@ public class UserService : BaseService, IUserService
             .Include(challenge => challenge.Versions)
                 .ThenInclude(version => version.Solutions)
                     .ThenInclude(solution => solution.User)
-            .GroupBy(x => x.Level.SkillLevel)
+            .GroupBy(x => x.Level!.SkillLevel)
             .Select(x => new UserSolutionsGroupedBySkillLevelDto
             {
                 TotalCount = x.Count(),
                 Name = x.Key,
                 TaskCountDtos = x
-                    .Where(x => x.Versions.SelectMany(s => s.Solutions).Any(y => y.SubmittedAt.HasValue && y.User.Id == currentUserId))
+                    .Where(x => x.Versions.SelectMany(s => s.Solutions).Any(y => y.SubmittedAt.HasValue && y.User!.Id == currentUserId))
                     .SelectMany(y => y.Tags)
                     .GroupBy(y => y.Name)
                     .Select(y => new TaskCountDto { Name = y.Key, ChallengeCount = y.Count() }),
