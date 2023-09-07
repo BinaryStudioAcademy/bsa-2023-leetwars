@@ -1,6 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ChallengeService } from '@core/services/challenge.service';
 import { Challenge } from '@shared/models/challenge/challenge';
 import { ChallengeVersion } from '@shared/models/challenge-version/challenge-version';
@@ -60,9 +60,11 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     ngOnInit() {
         this.splitDirection = 'horizontal';
-        const challengeId = parseInt(this.activatedRoute.snapshot.params['id'], 10);
+        this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+            const challengeId = +params.get('id')!;
 
-        this.loadChallenge(challengeId);
+            this.loadChallenge(challengeId);
+        });
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
@@ -106,11 +108,8 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     private extractLanguageVersions(versions: ChallengeVersion[]) {
-        return versions.reduce((languageVersionNames: string[], version: ChallengeVersion) => {
-            const versionLanguages = version.language.languageVersions.map((languageVersion) => languageVersion.version);
-
-            return languageVersionNames.concat(versionLanguages);
-        }, []);
+        return versions.flatMap((version) =>
+            version.language.languageVersions.map((languageVersion) => languageVersion.version));
     }
 
     private setupEditorOptions() {
