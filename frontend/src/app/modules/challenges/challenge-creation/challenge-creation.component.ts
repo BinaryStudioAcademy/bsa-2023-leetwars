@@ -143,6 +143,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                 .subscribe({
                     next: () => {
                         this.toastrService.showSuccess('Challenge was successful created');
+                        this.router.navigate(['/']);
                     },
                     error: () => {
                         this.toastrService.showError('Server connection error');
