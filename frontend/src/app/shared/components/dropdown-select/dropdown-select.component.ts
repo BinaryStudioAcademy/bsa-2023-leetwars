@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
@@ -6,7 +6,7 @@ import { IconName } from '@fortawesome/fontawesome-svg-core';
     templateUrl: './dropdown-select.component.html',
     styleUrls: ['./dropdown-select.component.sass'],
 })
-export class DropdownSelectComponent implements OnInit {
+export class DropdownSelectComponent implements OnInit, OnChanges {
     @Input() isMultiSelection = false;
 
     @Input() title: string | undefined;
@@ -17,33 +17,76 @@ export class DropdownSelectComponent implements OnInit {
 
     @Input() itemsIcons: IconName[] = [];
 
-    @Output() SelectedItemsChanged: EventEmitter<string[] | string> = new EventEmitter<string[] | string>();
+    @Input() selectedItem: string;
 
-    @Input() selectedItem: string | undefined;
+    @Output() selectedItemsChanged = new EventEmitter<string[] | string>();
 
     public selectedIcon: IconName;
 
+    public fieldText = '';
+
     public selectedItems: string[] = [];
+
+    private allSelectionName = 'All';
 
     public ngOnInit() {
         this.updateSelectedIcon();
     }
 
-    public toggleItem(item: string) {
-        this.selectedItems = this.selectedItems.includes(item)
-            ? this.selectedItems.filter((i) => i !== item)
-            : [...this.selectedItems, item];
+    public ngOnChanges({ selectedItem }: SimpleChanges): void {
+        if (selectedItem) {
+            this.setInitialValue();
+        }
+    }
 
-        this.SelectedItemsChanged.emit(this.selectedItems);
+    public isSelectedTextNotDefault() {
+        return this.selectText !== 'Select';
+    }
+
+    public toggleItem(item: string) {
+        const isAllSelected = this.selectedItems.includes(this.allSelectionName);
+
+        if (item === this.allSelectionName) {
+            this.selectedItems = isAllSelected ? [] : [item];
+            this.updateSelectedItems();
+
+            return;
+        }
+
+        if (isAllSelected) {
+            this.selectedItems = this.selectedItems.filter((i) => i !== this.allSelectionName);
+        }
+
+        this.setSelectedItems(item);
+        this.updateSelectedItems();
     }
 
     public selectItem(item: string) {
         this.selectedItem = item;
+        this.fieldText = item;
+        this.selectedItemsChanged.emit(this.selectedItem);
         this.updateSelectedIcon();
+    }
+
+    private setInitialValue() {
+        if (this.isMultiSelection) {
+            this.selectedItems = [this.selectedItem];
+        }
+        this.fieldText = this.selectedItem;
     }
 
     private updateSelectedIcon() {
         this.selectedIcon = this.itemsIcons[this.items.findIndex((i) => i === this.selectedItem)];
-        this.SelectedItemsChanged.emit(this.selectedItem);
+    }
+
+    private setSelectedItems(item: string) {
+        this.selectedItems = this.selectedItems.includes(item)
+            ? this.selectedItems.filter((i) => i !== item)
+            : [...this.selectedItems, item];
+    }
+
+    private updateSelectedItems() {
+        this.fieldText = this.selectedItems.join(', ');
+        this.selectedItemsChanged.emit(this.selectedItems);
     }
 }

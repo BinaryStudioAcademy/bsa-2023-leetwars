@@ -9,17 +9,17 @@ import { DropdownItem } from '@shared/models/dropdown-item';
 export class ChallengesDropdownSelectComponent implements OnInit {
     @Input() items: DropdownItem[] = [];
 
-    @Output() SelectedItemsChanged: EventEmitter<DropdownItem> = new EventEmitter<DropdownItem>();
+    @Output() selectedItemsChanged: EventEmitter<DropdownItem> = new EventEmitter<DropdownItem>();
 
     selectedItem: DropdownItem;
 
     ngOnInit(): void {
         [this.selectedItem] = this.items;
-        this.SelectedItemsChanged.emit(this.selectedItem);
+        this.selectedItemsChanged.emit(this.selectedItem);
     }
 
     selectItem(item: DropdownItem) {
         this.selectedItem = item;
-        this.SelectedItemsChanged.emit(this.selectedItem);
+        this.selectedItemsChanged.emit(this.selectedItem);
     }
 }
