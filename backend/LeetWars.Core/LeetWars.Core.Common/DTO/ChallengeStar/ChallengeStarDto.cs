@@ -7,5 +7,7 @@ namespace LeetWars.Core.Common.DTO.ChallengeStar
         public long ChallengeId { get; set; }
 
         public string AuthorId { get; set; } = string.Empty;
+
+        public bool IsStar { get; set; }
     }
 }

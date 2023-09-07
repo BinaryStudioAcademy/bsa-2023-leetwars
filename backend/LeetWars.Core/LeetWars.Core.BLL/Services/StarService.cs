@@ -3,6 +3,7 @@ using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -21,14 +22,32 @@ namespace LeetWars.Core.BLL.Services
             return challengeStarDto;
         }
 
-        public Task Delete(long id)
+        public async Task Delete(long id)
         {
-            throw new NotImplementedException();
+            var challengeStar = await _context.ChallengeStars.SingleOrDefaultAsync(cs => cs.Id == id);
+
+            if(challengeStar is null)
+            {
+                throw new ArgumentNullException(nameof(challengeStar));
+            }
+
+            _context.ChallengeStars.Remove(challengeStar);
+
+            await _context.SaveChangesAsync();
         }
 
-        public Task<ChallengeStarDto> Update(ChallengeStarDto challengeStarDto)
+        public async Task<ChallengeStarDto> Update(ChallengeStarDto challengeStarDto)
         {
-            throw new NotImplementedException();
+            if(challengeStarDto.IsStar)
+            {
+                await Add(challengeStarDto);
+            }
+            else
+            {
+                await Delete(challengeStarDto.Id);
+            }
+
+            return challengeStarDto;
         }
     }
 }
