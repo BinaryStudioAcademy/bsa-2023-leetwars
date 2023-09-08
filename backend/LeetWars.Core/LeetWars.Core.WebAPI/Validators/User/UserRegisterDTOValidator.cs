@@ -17,8 +17,8 @@ namespace LeetWars.Core.WebAPI.Validators.User
                 .NotEmpty().WithMessage("UserName is requeried")
                 .Length(2, 50)
                     .WithMessage("The name must contain at least 2 and at most 50 characters.")
-                .Must(BeValidLatinCharacters)
-                  .WithMessage("Enter your name in Latin");
+                .Must(BeValidLatinOrCyrillicCharacters)
+                  .WithMessage("Enter your name in Latin or Cyrillic");
 
             RuleFor(u => u.Email)
                 .EmailAddress()
@@ -28,9 +28,9 @@ namespace LeetWars.Core.WebAPI.Validators.User
                     .WithMessage("Email can't be longer than 255 characters.");
         }
 
-        private bool BeValidLatinCharacters(string userName)
+        private bool BeValidLatinOrCyrillicCharacters(string userName)
         {
-            return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, Regaxes.RegexPatterns.LatinCharactersPattern, RegexOptions.None, TimeSpan.FromMilliseconds(100));
+            return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, Regaxes.RegexPatterns.LatinOrCyrillicCharactersPattern, RegexOptions.None, TimeSpan.FromMilliseconds(100));
         }
     }
 }
