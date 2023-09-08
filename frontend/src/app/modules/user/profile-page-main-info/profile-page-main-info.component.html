@@ -1,20 +1,17 @@
 <div class="profile-main-info-wrapper d-flex flex-column">
-
     <div class="profile-main-info-header info-container">
         <div class="user-info-container d-flex flex-row">
             <div class="user-avatar-container">
                 <img src="assets/images/default-profile-img.jpg" alt="User avatar" class="user-avatar">
             </div>
             <div class="user-info d-flex flex-column">
-                <p class="username">{{username}}</p>
-                <p class="user-rank"><span>Rank</span>{{userRank}}</p>
+                <p class="username">{{user.userName}}</p>
+                <p class="user-rank"><span>Rank</span>{{user.totalScore}}</p>
             </div>
         </div>
         <button class="edit-profile-btn">Edit Profile</button>
     </div>
-
     <div class="profile-main-info-content">
-
         <div class="community-stats-container info-container">
             <p class="content-section-name">Community Stats</p>
             <ul class="community-stats-list d-flex flex-column">
@@ -28,7 +25,7 @@
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="solution community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'square-check'"></fa-icon>
-                        <p class="list-item-main-text">Solution<span>{{communitySolution}}</span></p>
+                        <p class="list-item-main-text">Solution<span>{{user.solutions?.length}}</span></p>
                     </div>
                     <p class="last-week-stats">Last week<span>{{communityLastWeekSolution}}</span></p>
                 </li>
@@ -48,36 +45,39 @@
                 </li>
             </ul>
         </div>
-
         <div class="languages-container info-container">
             <p class="content-section-name">Languages</p>
-            <p class="not-enough-data">Not enough data</p>
+            <div class="languages-item-container">
+                <div class="languages-item" *ngFor="let language of user.preferredLanguages">{{language.name}}</div>
+            </div>
         </div>
-
         <div class="skills-container info-container">
             <p class="content-section-name">Skills</p>
-            <ul class="skills-list d-flex flex-column">
+            <ul class="skills-list d-flex flex-column" *ngFor="let userSolution of userSolutions">
                 <li class="skills-list-item">
-                    <div class="skills-list-item-container d-flex flex-column">
-                        <p class="skills-list-item-text advanced">Advanced</p>
-                        <p class="not-enough-data">Not enough data</p>
-                    </div>
-                </li>
-                <li class="skills-list-item">
-                    <div class="skills-list-item-container d-flex flex-column">
-                        <p class="skills-list-item-text intermediate">Intermediate</p>
-                        <p class="not-enough-data">Not enough data</p>
-                    </div>
-                </li>
-                <li class="skills-list-item">
-                    <div class="skills-list-item-container d-flex flex-column">
-                        <p class="skills-list-item-text fundamental">Fundamental</p>
-                        <p class="not-enough-data">Not enough data</p>
+                    <div class="skills-list-item-container d-flex flex-column ">
+                        <p class="skills-list-item-text advanced">{{userSolution.name}}
+                        </p>
+                        <div class="scroll-container">
+                            <ng-container
+                                *ngIf="!userSolution.taskCountDtos?.length; then noData; else hasAdvanceData"></ng-container>
+                            <ng-template #noData>
+                                <p class="not-enough-data">Not enough data</p>
+                            </ng-template>
+                            <ng-template #hasAdvanceData>
+                                <div class="skills-list">
+                                    <div *ngFor="let item of userSolution.taskCountDtos" class="skill">
+                                        <div class="name-container">
+                                            <div class="skills-item">{{item.name}}</div>
+                                            <span>x{{item.challengeCount}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div>
                     </div>
                 </li>
             </ul>
         </div>
-
     </div>
-
 </div>

@@ -5,11 +5,11 @@ import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { PROGRESS_NAMES_MAP, STATUS_NAMES_MAP } from '@modules/main/filtering-section/filtering-section.utils';
-import { ChallengeFilter } from '@shared/models/challenge/challenge-filter';
-import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
-import { Language } from '@shared/models/language/language';
-import { PageSettings } from '@shared/models/page-settings';
-import { Tag } from '@shared/models/tag/tag';
+import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
+import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { ILanguage } from '@shared/models/language/language';
+import { IPageSettings } from '@shared/models/page-settings';
+import { ITag } from '@shared/models/tag/tag';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -18,7 +18,7 @@ import { takeUntil } from 'rxjs';
     styleUrls: ['./filtering-section.component.sass'],
 })
 export class FilteringSectionComponent extends BaseComponent implements OnInit {
-    public challenges: ChallengePreview[] = [];
+    public challenges: IChallengePreview[] = [];
 
     public loading = false;
 
@@ -30,23 +30,23 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     public tagsNames: string[] = [];
 
-    private page: PageSettings = {
+    private page: IPageSettings = {
         pageNumber: 0,
         pageSize: 10,
     };
 
     private isLastPage = false;
 
-    private filter: ChallengeFilter = {
+    private filter: IChallengeFilter = {
         title: '',
         tagsIds: [],
     };
 
     private progresses = PROGRESS_NAMES_MAP;
 
-    private tags: Tag[] = [];
+    private tags: ITag[] = [];
 
-    private languages: Language[] = [];
+    private languages: ILanguage[] = [];
 
     private statuses = STATUS_NAMES_MAP;
 

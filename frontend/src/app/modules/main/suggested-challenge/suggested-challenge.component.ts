@@ -9,9 +9,9 @@ import {
     SUGGESTION_TYPE_NAMES,
 } from '@modules/main/suggested-challenge/suggested-challenge.utils';
 import { SuggestionType } from '@shared/enums/suggestion-type';
-import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
-import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
-import { Language } from '@shared/models/language/language';
+import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
+import { ILanguage } from '@shared/models/language/language';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -20,11 +20,11 @@ import { takeUntil } from 'rxjs';
     styleUrls: ['./suggested-challenge.component.sass'],
 })
 export class SuggestedChallengeComponent extends BaseComponent implements OnInit {
-    challenge?: ChallengePreview;
+    challenge?: IChallengePreview;
 
     languagesNames: string[] = [];
 
-    languages: Language[] = [];
+    languages: ILanguage[] = [];
 
     suggestionTypesNames: string[];
 
@@ -32,7 +32,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
 
     suggestionIcons = ICONS;
 
-    suggestionSettings: SuggestionSettings = {
+    suggestionSettings: ISuggestionSettings = {
         languageId: 0,
         suggestionType: SuggestionType.Fundamentals,
     };
