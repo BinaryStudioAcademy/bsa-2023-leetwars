@@ -29,7 +29,7 @@ namespace LeetWars.Emailer.Services
             await _sendGridClient.SendEmailAsync(message);
         }
 
-        public async Task<IResult> SendWithValidationCheck(MailDto mailDto)
+        public async Task<IResult> SendWithValidationCheckAsync(MailDto mailDto)
         {
             ValidationResult validationResult = await _validator.ValidateAsync(mailDto);
             if (!validationResult.IsValid)

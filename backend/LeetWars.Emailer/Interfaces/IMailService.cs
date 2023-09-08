@@ -4,6 +4,6 @@ namespace LeetWars.Emailer.Interfaces
 {
     public interface IMailService
     {
-        Task<IResult> SendWithValidationCheck(MailDto mailDto);
+        Task<IResult> SendWithValidationCheckAsync(MailDto mailDto);
     }
 }

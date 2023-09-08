@@ -7,9 +7,9 @@ import { HttpInternalService } from './http-internal.service';
     providedIn: 'root',
 })
 export class EmailService {
-    public baseUrl: string = 'http://localhost:5080/emailer';
+    public baseUrl: string = "/emailer";
 
-    constructor(private httpService: HttpInternalService) {}
+    constructor(private httpService: HttpInternalService) { }
 
     public sendEmail(mail: Mail) {
         return this.httpService.postRequest(`${this.baseUrl}/sendEmail`, mail).subscribe();

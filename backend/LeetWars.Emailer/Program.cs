@@ -9,19 +9,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddScoped<IValidator<MailDto>, MailDtoValidator>();
 builder.Services.AddCors();
+builder.WebHost.UseUrls("http://*:5080");
 
 var app = builder.Build();
-
-app.UseHttpsRedirection();
 
 app.UseCors(opt => opt
     .AllowAnyHeader()
     .AllowAnyMethod()
     .AllowAnyOrigin());
 
+app.UseHttpsRedirection();
+
 app.MapPost("/emailer/sendEmail", (IMailService mailService, MailDto mailDto) =>
 {
-    return mailService.SendWithValidationCheck(mailDto);
+    return mailService.SendWithValidationCheckAsync(mailDto);
 });
 
 app.Run();
