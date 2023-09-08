@@ -1,6 +1,6 @@
 import { IChallengeLevel } from '../challenge-level/challenge-level';
-import { IChallengeVersion } from '../challenge-version/challenge-version';
 import { Star } from '../challenge-star/star';
+import { IChallengeVersion } from '../challenge-version/challenge-version';
 import { AuditEntity } from '../common/audit-entity/audit-entity';
 import { ITag } from '../tag/tag';
 import { IUser } from '../user/user';

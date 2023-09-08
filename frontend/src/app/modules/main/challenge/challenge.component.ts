@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { Star } from '@shared/models/challenge-star/star';
 import { IUser } from '@shared/models/user/user';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';

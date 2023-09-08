@@ -5,8 +5,8 @@ import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
-import { IPageSettings } from '@shared/models/page-settings';
 import { Star } from '@shared/models/challenge-star/star';
+import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
 
