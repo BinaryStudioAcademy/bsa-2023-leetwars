@@ -1,5 +1,8 @@
 <header class="nav-container position-fixed flex-column navbar fixed-top align-items-end justify-content-center"
     [ngClass]="{'scrolled': isScrolled || isNavShown}">
+    <div class="logo-container">
+        <img src="assets/images/logo/logo-sign-up.png" alt="LEETWARS">
+    </div>
     <button class="nav-dropbtn" (click)="updateNavVisibility()" aria-label="menu">
         <fa-icon [icon]="['fas', 'bars']"></fa-icon>
     </button>

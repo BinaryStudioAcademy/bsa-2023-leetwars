@@ -7,13 +7,12 @@ import { NotFoundComponent } from '@shared/components/not-found/not-found.compon
 const routes: Routes = [
     {
         path: '',
-        loadChildren: () => import('./modules/landing/landing.module').then((m) => m.LandingModule),
-        canActivate: [UnAuthorizedGuard],
+        loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
+        canMatch: [AuthorizedGuard],
     },
     {
-        path: 'main',
-        loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
-        canActivate: [AuthorizedGuard],
+        path: '',
+        loadChildren: () => import('./modules/landing/landing.module').then((m) => m.LandingModule),
     },
     {
         path: 'auth',

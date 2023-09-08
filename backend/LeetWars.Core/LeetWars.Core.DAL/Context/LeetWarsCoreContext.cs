@@ -8,6 +8,7 @@ namespace LeetWars.Core.DAL.Context
         public DbSet<Challenge> Challenges => Set<Challenge>();
         public DbSet<ChallengeLevel> ChallengeLevels => Set<ChallengeLevel>();
         public DbSet<ChallengeVersion> ChallengeVersions => Set<ChallengeVersion>();
+        public DbSet<ChallengeStar> ChallengeStars => Set<ChallengeStar>();
         public DbSet<Language> Languages => Set<Language>();
         public DbSet<LanguageVersion> LanguageVersions => Set<LanguageVersion>();
         public DbSet<Subscription> Subscriptions => Set<Subscription>();
