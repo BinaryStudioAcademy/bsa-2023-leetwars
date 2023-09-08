@@ -16,4 +16,3 @@ export interface IChallenge extends AuditEntity<number> {
     versions: Array<IChallengeVersion>;
     stars: Array<Star>;
 }
-
