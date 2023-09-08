@@ -114,13 +114,22 @@ namespace LeetWars.Core.BLL.Services
         {
             if (!challengeStarDto.IsStar)
             {
-                await _context.ChallengeStars.AddAsync(_mapper.Map<ChallengeStar>(challengeStarDto));
+                var challengeStar = _mapper.Map<ChallengeStar>(challengeStarDto);
+
+                if(await GetChallengeStarAsync(challengeStar.Id) is not null)
+                {
+                    throw new ArgumentNullException(nameof(challengeStarDto));
+                }
+
+                await _context.ChallengeStars.AddAsync(challengeStar);
             }
             else
             {
                 var challengeStar = await _context.ChallengeStars
                     .Include(cs => cs.Challenge)
-                    .SingleOrDefaultAsync(cs => cs.AuthorId == challengeStarDto.AuthorId
+                    .Include(cs => cs.Author)
+                        .ThenInclude(a => a!.Challenges)
+                    .SingleOrDefaultAsync(cs => cs.Author!.Id == challengeStarDto.AuthorId
                                        && cs.Challenge!.Id == challengeStarDto.Challenge.Id);
 
                 if (challengeStar is null)
@@ -158,6 +167,15 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Stars)
                     .ThenInclude(star => star.Author)
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+        }
+
+        private async Task<ChallengeStar?> GetChallengeStarAsync(long id)
+        {
+            return await _context.ChallengeStars
+                    .Include(challengeStar => challengeStar.Challenge)
+                    .Include(challengeStar => challengeStar.Author)
+                        .ThenInclude(author => author!.Challenges)
+                    .SingleOrDefaultAsync(cs => cs.Id == id);
         }
 
         private async Task<LanguageLevel> GetUserLevelAsync(int languageId)
