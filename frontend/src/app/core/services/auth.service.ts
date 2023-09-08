@@ -18,9 +18,9 @@ import { UserService } from './user.service';
 export class AuthService {
     private providerName: string = 'firebase';
 
-    public userSubject: BehaviorSubject<IUser | null>;
+    public userSubject: BehaviorSubject<IUser | undefined>;
 
-    private user: IUser | null;
+    private user: IUser | undefined;
 
     private userKeyName = 'userInfo';
 
@@ -32,7 +32,7 @@ export class AuthService {
         private router: Router,
         private toastrNotification: ToastrNotificationsService,
     ) {
-        this.userSubject = new BehaviorSubject<IUser | null>(this.getUserInfo());
+        this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
         afAuth.authState.subscribe(async (user) => {
             if (user) {
                 localStorage.setItem(this.tokenKeyName, await user.getIdToken());
@@ -43,7 +43,7 @@ export class AuthService {
     }
 
     public isAuthorized() {
-        return this.getUserToken() ? this.getUserInfo() : null;
+        return this.getUserToken() && this.getUserInfo();
     }
 
     public register(user: IUserRegister) {
@@ -68,8 +68,8 @@ export class AuthService {
 
     public logout() {
         this.removeUserInfo();
-        this.user = null;
-        this.userSubject.next(this.user);
+        this.user = undefined;
+        this.userSubject.next(undefined);
 
         return from(this.afAuth.signOut());
     }
@@ -164,14 +164,14 @@ export class AuthService {
         );
     }
 
-    public getUserInfo(): IUser | null {
+    public getUserInfo(): IUser | undefined {
         const userInfo = localStorage.getItem(this.userKeyName);
 
         if (userInfo) {
             return JSON.parse(userInfo);
         }
 
-        return null;
+        return undefined;
     }
 
     private setUserInfo(user: IUser) {

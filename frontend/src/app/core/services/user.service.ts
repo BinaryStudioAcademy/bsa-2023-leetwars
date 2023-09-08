@@ -11,26 +11,28 @@ import { HttpInternalService } from './http-internal.service';
     providedIn: 'root',
 })
 export class UserService {
+    private readonly baseUrl: string = '/users';
+
     constructor(private httpService: HttpInternalService) {}
 
     public createUser(newUser: INewUser): Observable<IUser> {
-        return this.httpService.postRequest<IUser>('/users', newUser);
+        return this.httpService.postRequest<IUser>(`${this.baseUrl}`, newUser);
     }
 
     public getCurrentUser(): Observable<IUser> {
-        return this.httpService.getRequest<IUser>('/users/current');
+        return this.httpService.getRequest<IUser>(`${this.baseUrl}/current`);
     }
 
     public checkEmail(email: string): Observable<boolean> {
-        return this.httpService.getRequest<boolean>(`/users/is-existing-email?email=${email}`);
+        return this.httpService.getRequest<boolean>(`${this.baseUrl}/is-existing-email?email=${email}`);
     }
 
     public checkUserName(userName: string): Observable<boolean> {
-        return this.httpService.getRequest<boolean>(`/users/is-existing-username?username=${userName}`);
+        return this.httpService.getRequest<boolean>(`${this.baseUrl}/is-existing-username?username=${userName}`);
     }
 
     public getFullUser(id: number): Observable<IUserFull> {
-        return this.httpService.getRequest<IUserFull>(`/users/${id}`);
+        return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/${id}`);
     }
 
     public getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {

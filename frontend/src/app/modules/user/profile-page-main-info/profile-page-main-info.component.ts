@@ -13,12 +13,6 @@ export class ProfilePageMainInfoComponent implements OnChanges {
 
     @Input() userSolutions: IUserSolutionsGroupedBySkillLevel [] = [];
 
-    public username? = '';
-
-    public languages? = '';
-
-    public userRank = '';
-
     public communityViews = 0;
 
     public communityLastWeekViews = 0;

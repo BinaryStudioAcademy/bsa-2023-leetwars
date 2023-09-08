@@ -32,7 +32,7 @@ export class UserProfileComponent implements OnInit {
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
     ) {
-        this.user = this.authService.isAuthorized();
+        this.user = this.authService.getUserInfo();
     }
 
     ngOnInit(): void {
