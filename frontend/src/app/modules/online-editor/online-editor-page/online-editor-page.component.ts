@@ -2,7 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChallengeService } from '@core/services/challenge.service';
-import { Challenge } from '@shared/models/challenge/challenge';
+import { IChallenge } from '@shared/models/challenge/challenge';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     splitRightMinSize: number = 20;
 
-    challenge: Challenge;
+    challenge: IChallenge;
 
     selectedLanguage: string;
 

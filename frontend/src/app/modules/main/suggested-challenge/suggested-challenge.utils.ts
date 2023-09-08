@@ -1,6 +1,6 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { SuggestionType } from '@shared/enums/suggestion-type';
-import { Language } from '@shared/models/language/language';
+import { ILanguage } from '@shared/models/language/language';
 
 export const SUGGESTION_TYPE_NAMES = [
     { type: SuggestionType.Fundamentals, name: 'Fundamentals' },
@@ -12,7 +12,7 @@ export const SUGGESTION_TYPE_NAMES = [
 
 export const ICONS: IconName[] = ['stairs', 'chart-simple', 'repeat', 'lock', 'circle-question'];
 
-export function findItemIdByName(collection: Language[], name: string) {
+export function findItemIdByName(collection: ILanguage[], name: string) {
     return collection.find(item => item.name === name)?.id ?? 0;
 }
 

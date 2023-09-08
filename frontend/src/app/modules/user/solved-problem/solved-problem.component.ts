@@ -1,38 +1,31 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ColorConstants } from '@shared/constants/color-constants';
+import { LanguageLevel } from '@shared/enums/languageLevel';
+
+export interface IBar {
+    Label: LanguageLevel;
+    Done: number;
+    Total: number;
+}
 
 @Component({
     selector: 'app-solved-problem',
     templateUrl: './solved-problem.component.html',
     styleUrls: ['./solved-problem.component.sass'],
 })
-export class SolvedProblemComponent implements OnInit {
+export class SolvedProblemComponent implements OnChanges {
     @Input() pieChartActiveColor: string = ColorConstants.pieChartActiveColor;
 
-    @Input() easyLabel: string;
+    @Input() bars: IBar[] = [];
 
-    @Input() mediumLabel: string;
+    totalTasks: number = 0;
 
-    @Input() hardLabel: string;
+    totalTasksCompleted: number = 0;
 
-    @Input() easyTasksCompleted: number;
-
-    @Input() mediumTasksCompleted: number;
-
-    @Input() hardTasksCompleted: number;
-
-    @Input() easyTasks: number;
-
-    @Input() mediumTasks: number;
-
-    @Input() hardTasks: number;
-
-    totalTasks: number;
-
-    totalTasksCompleted: number;
-
-    ngOnInit() {
-        this.totalTasks = this.easyTasks + this.mediumTasks + this.hardTasks;
-        this.totalTasksCompleted = this.easyTasksCompleted + this.mediumTasksCompleted + this.hardTasksCompleted;
+    ngOnChanges({ bars }: SimpleChanges) {
+        if (bars) {
+            this.totalTasks = this.bars.reduce((acc, bar) => acc + bar.Total, 0);
+            this.totalTasksCompleted = this.bars.reduce((acc, bar) => acc + bar.Done, 0);
+        }
     }
 }
