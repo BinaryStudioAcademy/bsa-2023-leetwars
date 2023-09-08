@@ -34,7 +34,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeFullDto>> GetById(long id)
         {
-            var challenges = await _challengeService.GetChallengeByIdAsync(id);
+            var challenges = await _challengeService.GetChallengeFullDtoByIdAsync(id);
             return Ok(challenges);
         }
 

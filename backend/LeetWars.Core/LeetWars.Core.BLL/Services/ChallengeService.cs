@@ -103,6 +103,62 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
 
+        public async Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id)
+        {
+            var challenge = await GetChallengeByIdAsync(id);
+
+            return _mapper.Map<ChallengeFullDto>(challenge);
+        }
+
+        public async Task<ChallengePreviewDto> Update(ChallengeStarDto challengeStarDto)
+        {
+            if (challengeStarDto.IsStar)
+            {
+                await _context.ChallengeStars.AddAsync(_mapper.Map<ChallengeStar>(challengeStarDto));
+            }
+            else
+            {
+                var challengeStar = await _context.ChallengeStars
+                    .SingleOrDefaultAsync(cs => cs.AuthorId == challengeStarDto.AuthorId
+                                       && cs.Challenge!.Id == challengeStarDto.Challenge.Id);
+
+                if (challengeStar is null)
+                {
+                    throw new ArgumentNullException(nameof(challengeStarDto));
+                }
+
+                _context.ChallengeStars.Remove(challengeStar);
+            }
+
+            await _context.SaveChangesAsync();
+
+            var challenge = await GetChallengeByIdAsync(challengeStarDto.Challenge.Id);
+
+            return _mapper.Map<ChallengePreviewDto>(challenge);
+        }
+
+        private async Task<Challenge?> GetChallengeByIdAsync(long challengeId)
+        {
+            return await _context.Challenges
+                .Include(challenge => challenge.Level)
+                .Include(challenge => challenge.Tags)
+                .Include(challenge => challenge.Author)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Language)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Solutions)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Tests
+                        .Where(test => test.IsPublic))
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.LanguageVersions)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Author)
+                .Include(challenge => challenge.Stars)
+                    .ThenInclude(star => star.Author)
+                .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+        }
+
         private async Task<LanguageLevel> GetUserLevelAsync(int languageId)
         {
             var userId = _userIdGetter.CurrentUserId;
@@ -138,7 +194,7 @@ namespace LeetWars.Core.BLL.Services
             var userId = _userIdGetter.CurrentUserId;
             var userLevel = await GetUserLevelAsync(settings.LanguageId);
             var userNextLevel = userLevel.GetNextLevel();
-            
+
             return settings.SuggestionType switch
             {
                 SuggestionType.Beta => challenges.Where(challenge =>
@@ -153,14 +209,13 @@ namespace LeetWars.Core.BLL.Services
             };
         }
 
- 
         private static int GetRandomInt(int maxValue)
         {
             if (maxValue == 0)
             {
                 return 0;
             }
-            
+
             using (var generator = RandomNumberGenerator.Create())
             {
                 var data = new byte[4];
@@ -169,68 +224,6 @@ namespace LeetWars.Core.BLL.Services
 
                 return randomValue % maxValue;
             }
-        }
-
-        public async Task<ChallengeFullDto> GetChallengeByIdAsync(long id)
-        {
-            var challenges = await _context.Challenges
-                .Include(challenge => challenge.Level)
-                .Include(challenge => challenge.Tags)
-                .Include(challenge => challenge.Author)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Language)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Solutions)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Tests
-                        .Where(test => test.IsPublic))
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.LanguageVersions)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Author)
-                .Include(challenge => challenge.Stars)
-                    .ThenInclude(star => star.Author)
-                .FirstOrDefaultAsync(challenge => challenge.Id == id);
-
-            return _mapper.Map<ChallengeFullDto>(challenges);
-        }
-
-        public async Task<ChallengePreviewDto> Update(ChallengeStarDto challengeStarDto)
-        {
-            if (challengeStarDto.IsStar)
-            {
-                await _context.ChallengeStars.AddAsync(_mapper.Map<ChallengeStar>(challengeStarDto));
-            }
-            else
-            {
-                var challengeStar = await _context.ChallengeStars
-                    .SingleOrDefaultAsync(cs => cs.AuthorId == challengeStarDto.AuthorId
-                                       && cs.Challenge!.Id == challengeStarDto.Challenge.Id);
-
-                if (challengeStar is null)
-                {
-                    throw new ArgumentNullException(nameof(challengeStarDto));
-                }
-
-                _context.ChallengeStars.Remove(challengeStar);
-            }
-
-            await _context.SaveChangesAsync();
-
-            var challenge = await _context.Challenges
-                .Include(challenge => challenge.Tags)
-                .Include(challenge => challenge.Author)
-                .Include(challenge => challenge.Level)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Language)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Solutions)
-                        .ThenInclude(solution => solution.User)
-                .Include(challenge => challenge.Stars)
-                    .ThenInclude(star => star.Author)
-                .SingleOrDefaultAsync(challenge => challenge.Id == challengeStarDto.Challenge.Id);
-
-            return _mapper.Map<ChallengePreviewDto>(challenge);
         }
     }
 }
