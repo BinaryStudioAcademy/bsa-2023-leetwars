@@ -23,7 +23,6 @@ namespace LeetWars.Core.WebAPI.Controllers
         {
             var emailApiUri = _configuration["EmailApiURI"];
             var objectToSend = JsonConvert.SerializeObject(mailDto);
-            Console.WriteLine(emailApiUri);
             var request = await _httpService.PostRequestAsync(emailApiUri, objectToSend);
             return StatusCode((int)request.StatusCode, request);
         }

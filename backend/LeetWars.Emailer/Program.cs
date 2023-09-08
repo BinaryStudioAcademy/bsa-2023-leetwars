@@ -9,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddScoped<IValidator<MailDto>, MailDtoValidator>();
 builder.Services.AddCors();
-builder.WebHost.UseUrls("http://*:5080");
 
 var app = builder.Build();
 
