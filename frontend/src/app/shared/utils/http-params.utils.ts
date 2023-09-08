@@ -1,17 +1,20 @@
 import { HttpParams } from '@angular/common/http';
 
 function notEmpty<T>(value: T): boolean {
-    return !!value || typeof value === 'number';
+    return (!!value || typeof value === 'number');
 }
 
 function setArrayOfValues(params: HttpParams, key: string, arrayValues: string[]): HttpParams {
-    return arrayValues.reduce((prevParams, value) => {
-        if (notEmpty(value)) {
-            return prevParams.append(key, encodeURIComponent(String(value)));
-        }
+    return arrayValues.reduce(
+        (prevParams, value) => {
+            if (notEmpty(value)) {
+                return prevParams.append(key, encodeURIComponent(String(value)));
+            }
 
-        return prevParams;
-    }, params);
+            return prevParams;
+        },
+        params,
+    );
 }
 
 /**
@@ -25,7 +28,7 @@ export function setParams<T>(params: HttpParams, obj?: T): HttpParams {
 
     let newParams = params;
 
-    Object.keys(obj).forEach((key) => {
+    Object.keys(obj).forEach(key => {
         const filterKey = key as keyof typeof obj;
 
         if (Array.isArray(obj[filterKey])) {

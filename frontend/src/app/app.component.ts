@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import {
+    NavigationCancel,
+    NavigationEnd,
+    NavigationError,
+    NavigationStart,
+    Router,
+} from '@angular/router';
 import { SpinnerService } from '@core/services/spinner.service';
 
 import { HeaderService } from './core/services/header-service';
@@ -9,7 +15,11 @@ import { HeaderService } from './core/services/header-service';
     templateUrl: './app.component.html',
 })
 export class AppComponent {
-    constructor(private router: Router, private spinner: SpinnerService, private headerService: HeaderService) {
+    constructor(
+        private router: Router,
+        private spinner: SpinnerService,
+        private headerService: HeaderService,
+    ) {
         this.listenRouter();
     }
 
@@ -24,8 +34,8 @@ export class AppComponent {
             }
             if (
                 event instanceof NavigationEnd ||
-                event instanceof NavigationCancel ||
-                event instanceof NavigationError
+          event instanceof NavigationCancel ||
+          event instanceof NavigationError
             ) {
                 this.spinner.hide();
             }

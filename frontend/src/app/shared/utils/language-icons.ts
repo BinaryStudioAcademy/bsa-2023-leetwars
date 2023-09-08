@@ -14,7 +14,7 @@ function generateLanguageIconUrl(languageUrl: string) {
 }
 
 export function getLanguageIconUrl(languageName: string) {
-    const icon = LANGUAGE_ICONS.find((li) => li.name.toLowerCase() === languageName.toLowerCase());
+    const icon = LANGUAGE_ICONS.find(li => li.name.toLowerCase() === languageName.toLowerCase());
 
     if (icon) {
         return generateLanguageIconUrl(icon.url);

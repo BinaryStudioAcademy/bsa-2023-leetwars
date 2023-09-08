@@ -36,7 +36,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/online-editor/online-editor.module').then((m) => m.OnlineEditorModule),
         canActivate: [AuthorizedGuard],
     },
-    { path: '**', component: NotFoundComponent, pathMatch: 'full', canActivate: [HideHeaderGuard] },
+    { path: '**',
+        component: NotFoundComponent,
+        pathMatch: 'full',
+        canActivate: [HideHeaderGuard] },
 ];
 
 @NgModule({

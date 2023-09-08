@@ -11,7 +11,7 @@ import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solu
 export class ProfilePageMainInfoComponent implements OnChanges {
     @Input() user: IUserFull = <IUserFull>{};
 
-    @Input() userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
+    @Input() userSolutions: IUserSolutionsGroupedBySkillLevel [] = [];
 
     public communityViews = 0;
 
