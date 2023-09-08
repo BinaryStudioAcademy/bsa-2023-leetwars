@@ -137,6 +137,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengePreviewDto>(challenge);
         }
 
+
         private async Task<Challenge?> GetChallengeByIdAsync(long challengeId)
         {
             return await _context.Challenges
@@ -144,7 +145,8 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
                 .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Language)
+                    .ThenInclude(version => version.Language!)
+                    .ThenInclude(language => language.LanguageVersions)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
                 .Include(challenge => challenge.Versions)
@@ -224,29 +226,6 @@ namespace LeetWars.Core.BLL.Services
                 
                 return randomValue % maxValue;
             }
-        }
-
-        public async Task<ChallengeFullDto> GetChallengeByIdAsync(long id)
-        {
-            var challenges = await _context.Challenges
-                .Include(challenge => challenge.Level)
-                .Include(challenge => challenge.Tags)
-                .Include(challenge => challenge.Author)
-                .Include(challenge => challenge.Versions)
-                       .ThenInclude(version => version.Language!)
-                       .ThenInclude(language => language.LanguageVersions)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Solutions)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Tests
-                        .Where(test => test.IsPublic))
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.LanguageVersions)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Author)
-                .FirstOrDefaultAsync(challenge => challenge.Id == id);
-           
-            return _mapper.Map<ChallengeFullDto>(challenges);
         }
     }
 }
