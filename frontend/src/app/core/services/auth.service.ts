@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
 import { IUser } from '@shared/models/user/user';
 import { IUserLogin } from '@shared/models/user/user-login';
 import { IUserRegister } from '@shared/models/user/user-register';

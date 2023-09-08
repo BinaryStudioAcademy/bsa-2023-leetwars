@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@core/services/auth.service';
 import { UserService } from '@core/services/user.service';
-import { User } from '@shared/models/user/user';
+import { IUser } from '@shared/models/user/user';
 import { AuthHelper } from '@shared/utils/auth.helper';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
@@ -49,7 +49,7 @@ export class LogInPageComponent {
                 }),
             )
             .subscribe(
-                ({ userName, firstName }: User) => {
+                ({ userName, firstName }: IUser) => {
                     this.authHelper.handleAuthSuccess(userName || (firstName!), '', true);
                 },
                 () => {
