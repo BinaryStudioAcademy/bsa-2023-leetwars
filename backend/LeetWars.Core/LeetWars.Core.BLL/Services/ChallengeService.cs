@@ -96,7 +96,7 @@ namespace LeetWars.Core.BLL.Services
                 .Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId))
                 .AsQueryable();
 
-            challenges = await FilterChallengesBySuggestionType(challenges, settings);
+            challenges = await FilterChallengesBySuggestionTypeAsync(challenges, settings);
 
             var randomPosition = GetRandomInt(challenges.Count());
             
@@ -110,7 +110,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengeFullDto>(challenge);
         }
 
-        public async Task<ChallengePreviewDto> Update(ChallengeStarDto challengeStarDto)
+        public async Task<ChallengePreviewDto> UpdateAsync(ChallengeStarDto challengeStarDto)
         {
             if (!challengeStarDto.IsStar)
             {
@@ -190,7 +190,7 @@ namespace LeetWars.Core.BLL.Services
                 _ => challenges
             };
         }
-        private async Task<IQueryable<Challenge>> FilterChallengesBySuggestionType(IQueryable<Challenge> challenges, SuggestionSettingsDto settings)
+        private async Task<IQueryable<Challenge>> FilterChallengesBySuggestionTypeAsync(IQueryable<Challenge> challenges, SuggestionSettingsDto settings)
         {
             var userId = _userIdGetter.CurrentUserId;
             var userLevel = await GetUserLevelAsync(settings.LanguageId);
