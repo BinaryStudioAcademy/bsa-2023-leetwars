@@ -118,6 +118,10 @@ export class AuthService {
         return from(this.afAuth.sendPasswordResetEmail(passwordResetEmail)).pipe(first());
     }
 
+    public getUser() {
+        return of(this.getUserInfo()!);
+    }
+
     private signInWithProvider(provider: firebase.auth.AuthProvider) {
         return from(this.afAuth.signInWithPopup(provider)).pipe(
             first(),
