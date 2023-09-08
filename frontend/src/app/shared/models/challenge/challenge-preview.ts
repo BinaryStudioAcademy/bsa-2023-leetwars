@@ -10,4 +10,6 @@ export interface IChallengePreview {
     tags: ITag[],
     languages: ILanguage[],
     status: ChallengeStatus,
+    isStarry: boolean;
+    starsAmount: number;
 }

@@ -6,6 +6,7 @@ import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { IPageSettings } from '@shared/models/page-settings';
+import { Star } from '@shared/models/challenge-star/star';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
 
@@ -15,7 +16,7 @@ import { Observable } from 'rxjs';
 export class ChallengeService {
     public challengesRoute = '/challenge';
 
-    constructor(private httpService: HttpInternalService) { }
+    constructor(private httpService: HttpInternalService) {}
 
     public getChallenges(filter?: IChallengeFilter, page?: IPageSettings) {
         let httpParams = new HttpParams();
@@ -36,5 +37,9 @@ export class ChallengeService {
 
     public getChallengeById(id: number): Observable<IChallenge> {
         return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/${id}`);
+    }
+
+    public updateStar(star: Star): Observable<IChallengePreview> {
+        return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
     }
 }
