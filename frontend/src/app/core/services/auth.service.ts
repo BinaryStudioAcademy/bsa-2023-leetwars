@@ -118,6 +118,10 @@ export class AuthService {
         return from(this.afAuth.sendPasswordResetEmail(passwordResetEmail)).pipe(first());
     }
 
+    public getUser() {
+        return of(this.getUserInfo()!);
+    }
+
     private signInWithProvider(provider: firebase.auth.AuthProvider) {
         return from(this.afAuth.signInWithPopup(provider)).pipe(
             first(),
@@ -128,7 +132,7 @@ export class AuthService {
     private signWithProvider(observable: Observable<User | undefined>, isLogin: boolean) {
         return observable.subscribe((user?: User) => {
             if (user) {
-                this.router.navigate(['/main']);
+                this.router.navigate(['']);
                 this.toastrNotification.showSuccess(
                     `${user.userName} was successfully signed ${isLogin ? 'in' : 'up'}`,
                 );

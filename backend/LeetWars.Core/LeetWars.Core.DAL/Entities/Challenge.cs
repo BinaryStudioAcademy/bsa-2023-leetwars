@@ -13,6 +13,7 @@ namespace LeetWars.Core.DAL.Entities
         public User? Author { get; set; }
         public ICollection<Tag> Tags { get; } = new List<Tag>();
         public ICollection<ChallengeVersion> Versions { get; } = new List<ChallengeVersion>();
+        public ICollection<ChallengeStar> Stars { get; } = new List<ChallengeStar>();   
 
         public Challenge(string title, string instructions)
         {

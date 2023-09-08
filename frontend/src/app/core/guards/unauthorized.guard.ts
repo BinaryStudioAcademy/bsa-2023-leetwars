@@ -18,7 +18,7 @@ export class UnAuthorizedGuard implements CanActivate, CanActivateChild {
 
     private checkActivation() {
         if (this.authService.isAuthorized()) {
-            this.router.navigate(['/main']);
+            this.router.navigate(['']);
 
             return false;
         }

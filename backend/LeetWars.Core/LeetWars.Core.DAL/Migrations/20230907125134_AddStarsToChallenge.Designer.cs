@@ -4,6 +4,7 @@ using LeetWars.Core.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeetWars.Core.DAL.Migrations
 {
     [DbContext(typeof(LeetWarsCoreContext))]
-    partial class LeetWarsCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20230907125134_AddStarsToChallenge")]
+    partial class AddStarsToChallenge
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -22,5 +22,9 @@ namespace LeetWars.Core.Common.DTO.Challenge
         public ICollection<LanguageDto>? Languages { get; set; }
         
         public int Status { get; set; }
+
+        public bool IsStarry { get; set; }
+
+        public int StarsAmount { get; set; }
     }
 }
