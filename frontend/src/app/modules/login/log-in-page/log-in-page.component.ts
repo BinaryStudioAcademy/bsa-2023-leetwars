@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
-import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { User } from '@shared/models/user/user';
+import { AuthHelper } from '@shared/utils/auth.helper';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
@@ -24,10 +24,9 @@ export class LogInPageComponent {
 
     constructor(
         private authService: AuthService,
-        private router: Router,
         private userService: UserService,
-        private toastrNotification: ToastrNotificationsService,
-    ) {}
+        private authHelper: AuthHelper,
+    ) { }
 
     public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.logInForm);
@@ -50,14 +49,12 @@ export class LogInPageComponent {
                 }),
             )
             .subscribe(
-                () => {
-                    this.router.navigate(['']);
+                ({ userName, firstName }: User) => {
+                    this.authHelper.handleAuthSuccess(userName || (firstName!), '', true);
                 },
-                (error) => {
-                    this.toastrNotification.showError('Something went wrong');
+                () => {
                     this.isSignInError = true;
-                    this.logInForm.markAsUntouched();
-                    console.error('Error :', error);
+                    this.authHelper.handleAuthError(this.logInForm);
                 },
             );
     }
