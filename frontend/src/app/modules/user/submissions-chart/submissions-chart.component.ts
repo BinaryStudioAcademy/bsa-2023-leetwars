@@ -1,17 +1,17 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { getChartData } from '@modules/user/submissions-chart/submissions-chart.utils';
-import { MonthChartData } from '@shared/models/submission-chart/month-chart-data';
-import { UserSolution } from '@shared/models/user-solution/user-solution';
+import { IUserSolution } from '@shared/models/profile/user-solution';
+import { IMonthChartData } from '@shared/models/submission-chart/month-chart-data';
 
 @Component({
     selector: 'app-submissions-chart',
     templateUrl: './submissions-chart.component.html',
-    styleUrls: ['./submissions-chart.component.scss'],
+    styleUrls: ['./submissions-chart.component.sass'],
 })
 export class SubmissionsChartComponent implements OnInit, OnChanges {
-    @Input() solutions: UserSolution[] = [];
+    @Input() solutions: IUserSolution[] | undefined = [];
 
-    chartData: MonthChartData[] = [];
+    chartData: IMonthChartData[] = [];
 
     totalSubmissions = 0;
 
@@ -39,11 +39,13 @@ export class SubmissionsChartComponent implements OnInit, OnChanges {
     private updateChartData() {
         this.clearChartData();
 
-        this.chartData = getChartData(this.solutions);
+        if (this.solutions) {
+            this.chartData = getChartData(this.solutions);
+        }
 
-        const allDaysData = this.chartData.flatMap(item => item.days);
+        const allDaysData = this.chartData.flatMap((item) => item.days);
 
-        allDaysData.forEach(dayData => this.updateTotalData(dayData.value));
+        allDaysData.forEach((dayData) => this.updateTotalData(dayData.value));
     }
 
     private updateTotalData(daySubmissionsCount: number) {

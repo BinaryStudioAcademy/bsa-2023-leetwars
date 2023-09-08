@@ -1,4 +1,4 @@
-export interface UserRegisterDto {
+export interface IUserRegister {
     userName: string;
     password: string;
     email: string;

@@ -55,6 +55,7 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddAutoMapper(Assembly.GetAssembly(typeof(ChallengeProfile)));
             services.AddAutoMapper(Assembly.GetAssembly(typeof(TagProfile)));
             services.AddAutoMapper(Assembly.GetAssembly(typeof(LanguageProfile)));
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(UserProfile)));
         }
 
         public static void AddValidation(this IServiceCollection services)

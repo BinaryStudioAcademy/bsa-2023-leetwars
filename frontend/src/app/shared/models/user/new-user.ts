@@ -1,4 +1,4 @@
-export interface NewUser {
+export interface INewUser {
     uid?: string;
     timezone: number;
     email: string;
