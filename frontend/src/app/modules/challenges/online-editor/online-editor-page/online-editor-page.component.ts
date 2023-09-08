@@ -2,8 +2,10 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ChallengeService } from '@core/services/challenge.service';
+import { languageNameMap } from '@shared/mappings/language-map';
 import { Challenge } from '@shared/models/challenge/challenge';
 import { ChallengeVersion } from '@shared/models/challenge-version/challenge-version';
+import { EditorOptions } from '@shared/models/options/editor-options';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -28,15 +30,15 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     selectedLanguageVersion: string;
 
-    languageNameMap: Map<string, string> = new Map<string, string>([['C#', 'csharp']]);
-
     languages: string[];
 
     languageVersions: string[];
 
-    initialSolution: string;
+    initialSolution?: string;
 
-    testCode: string;
+    testCode?: string;
+
+    editorOptions: EditorOptions;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -69,9 +71,6 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         const selectedLang = this.mapLanguageName($event as string);
 
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
-
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (<any>window).monaco.editor.setModelLanguage((<any>window).monaco.editor.getModels()[0], selectedLang);
 
         this.languageVersions = this.getLanguageVersionsByLanguage(selectedLang);
         [this.selectedLanguageVersion] = this.languageVersions;
@@ -111,7 +110,16 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     private setupEditorOptions() {
-        this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage)!;
+        this.editorOptions = {
+            theme: 'custom-theme',
+            language: this.mapLanguageName(this.selectedLanguage),
+            minimap: { enabled: false },
+            automaticLayout: true,
+            useShadows: false,
+            wordWrap: 'on',
+            lineNumbers: 'on',
+        };
+        this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0].id);
     }
 
@@ -124,13 +132,13 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     private getInitialTestByChallengeVersionId(id: number) {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
-        return (selectedVersion && selectedVersion.tests.length > 0)
+        return (selectedVersion && selectedVersion.tests.length)
             ? selectedVersion.tests[0].code
             : 'No tests available';
     }
 
     private mapLanguageName(language: string): string {
-        return this.languageNameMap.get(language) || language.toLowerCase();
+        return languageNameMap.get(language) || language.toLowerCase();
     }
 
     private getLanguageVersionsByLanguage(language: string) {
