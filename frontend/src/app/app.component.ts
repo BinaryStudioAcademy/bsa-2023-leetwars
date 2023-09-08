@@ -5,23 +5,26 @@ import {
     NavigationError,
     NavigationStart,
     Router,
-    RoutesRecognized,
 } from '@angular/router';
 import { SpinnerService } from '@core/services/spinner.service';
+
+import { HeaderService } from './core/services/header-service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
 })
 export class AppComponent {
-    showHeader: boolean;
-
-    private isWithoutHeaderPage: boolean;
-
-    private isRouteFound: boolean;
-
-    constructor(private router: Router, private spinner: SpinnerService) {
+    constructor(
+        private router: Router,
+        private spinner: SpinnerService,
+        private headerService: HeaderService,
+    ) {
         this.listenRouter();
+    }
+
+    get showHeader(): boolean {
+        return this.headerService.getShowHeader();
     }
 
     private listenRouter() {
@@ -31,27 +34,11 @@ export class AppComponent {
             }
             if (
                 event instanceof NavigationEnd ||
-                event instanceof NavigationCancel ||
-                event instanceof NavigationError
+          event instanceof NavigationCancel ||
+          event instanceof NavigationError
             ) {
                 this.spinner.hide();
             }
-
-            if (event instanceof RoutesRecognized) {
-                const route = event.state.root.firstChild;
-
-                if (route) {
-                    const isFallbackRoute = route.routeConfig?.path === '**' && route.routeConfig?.pathMatch === 'full';
-
-                    this.isRouteFound = !isFallbackRoute;
-                }
-            }
-
-            if (event instanceof NavigationStart) {
-                this.isWithoutHeaderPage = event.url.startsWith('/auth') || event.url === '/';
-            }
-
-            this.showHeader = !this.isWithoutHeaderPage && this.isRouteFound;
         });
     }
 }
