@@ -112,13 +112,14 @@ namespace LeetWars.Core.BLL.Services
 
         public async Task<ChallengePreviewDto> Update(ChallengeStarDto challengeStarDto)
         {
-            if (challengeStarDto.IsStar)
+            if (!challengeStarDto.IsStar)
             {
                 await _context.ChallengeStars.AddAsync(_mapper.Map<ChallengeStar>(challengeStarDto));
             }
             else
             {
                 var challengeStar = await _context.ChallengeStars
+                    .Include(cs => cs.Challenge)
                     .SingleOrDefaultAsync(cs => cs.AuthorId == challengeStarDto.AuthorId
                                        && cs.Challenge!.Id == challengeStarDto.Challenge.Id);
 
