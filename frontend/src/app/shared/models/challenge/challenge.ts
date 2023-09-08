@@ -1,18 +1,19 @@
-import { ChallengeLevel } from '../challenge-level/challenge-level';
+import { IChallengeLevel } from '../challenge-level/challenge-level';
 import { Star } from '../challenge-star/star';
-import { ChallengeVersion } from '../challenge-version/challenge-version';
+import { IChallengeVersion } from '../challenge-version/challenge-version';
 import { AuditEntity } from '../common/audit-entity/audit-entity';
-import { Tag } from '../tag/tag';
-import { User } from '../user/user';
+import { ITag } from '../tag/tag';
+import { IUser } from '../user/user';
 
-export interface Challenge extends AuditEntity {
+export interface IChallenge extends AuditEntity<number> {
     id: number;
     title: string;
     instructions: string;
     levelId: number;
-    level: ChallengeLevel;
-    author: User;
-    tags: Array<Tag>;
-    versions: Array<ChallengeVersion>;
+    level: IChallengeLevel;
+    author: IUser;
+    tags: Array<ITag>;
+    versions: Array<IChallengeVersion>;
     stars: Array<Star>;
 }
+

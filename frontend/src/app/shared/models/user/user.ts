@@ -2,7 +2,7 @@ import { Country } from '@shared/enums/country';
 import { Sex } from '@shared/enums/sex';
 import { UserStatus } from '@shared/enums/userStatus';
 
-export interface User {
+export interface IUser {
     id: number;
     timezone: number;
     country?: Country;

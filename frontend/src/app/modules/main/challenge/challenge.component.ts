@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
-import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { Star } from '@shared/models/challenge-star/star';
-import { User } from '@shared/models/user/user';
+import { IUser } from '@shared/models/user/user';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
 @Component({
@@ -18,13 +18,13 @@ export class ChallengeComponent {
         });
     }
 
-    @Input() challenge: ChallengePreview;
+    @Input() challenge: IChallengePreview;
 
     public challengePositiveFeedbacksPercent = 0;
 
     public getLanguageIconUrl = getLanguageIconUrl;
 
-    private user: User;
+    private user: IUser;
 
     public starChange() {
         const star: Star = {
@@ -33,7 +33,7 @@ export class ChallengeComponent {
             isStar: !this.challenge.isStarry,
         };
 
-        this.challengeService.updateStar(star).subscribe((challenge: ChallengePreview) => {
+        this.challengeService.updateStar(star).subscribe((challenge: IChallengePreview) => {
             this.challenge = challenge;
         });
     }

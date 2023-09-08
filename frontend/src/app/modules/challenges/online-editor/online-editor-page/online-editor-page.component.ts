@@ -3,8 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ChallengeService } from '@core/services/challenge.service';
 import { languageNameMap } from '@shared/mappings/language-map';
-import { Challenge } from '@shared/models/challenge/challenge';
-import { ChallengeVersion } from '@shared/models/challenge-version/challenge-version';
+import { IChallenge } from '@shared/models/challenge/challenge';
+import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -24,7 +24,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     splitRightMinSize: number = 20;
 
-    challenge: Challenge;
+    challenge: IChallenge;
 
     selectedLanguage: string;
 
@@ -96,7 +96,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         );
     }
 
-    private setupLanguages(challenge: Challenge) {
+    private setupLanguages(challenge: IChallenge) {
         this.challenge = challenge;
         this.languages = challenge.versions.map((v) => v.language.name);
         this.languageVersions = this.extractLanguageVersions(challenge.versions);
@@ -104,7 +104,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         [this.selectedLanguageVersion] = this.languageVersions;
     }
 
-    private extractLanguageVersions(versions: ChallengeVersion[]) {
+    private extractLanguageVersions(versions: IChallengeVersion[]) {
         return versions.flatMap((version) =>
             version.language.languageVersions.map((languageVersion) => languageVersion.version));
     }

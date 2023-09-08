@@ -1,9 +1,7 @@
 <div class="progress-info">
-    <div class="level">{{level}}</div>
+    <div class="level">{{labelName}}</div>
     <div class="number"><span>{{solved}}</span><span>/{{total}}</span></div>
-    <p>{{data}}</p>
 </div>
-
 <div class="progress-bar">
-    <progressbar [max]="total" [value]="solved"></progressbar>
+    <progressbar [max]="total" [value]="solved" [ngStyle]="{'--bs-progress-bar-bg': progressBarColor, '--bs-progress-bg': backgroundBarColor}"></progressbar>
 </div>

@@ -1,6 +1,6 @@
 import { SuggestionType } from '@shared/enums/suggestion-type';
 
-export interface SuggestionSettings {
+export interface ISuggestionSettings {
     languageId: number,
     suggestionType: SuggestionType,
 }

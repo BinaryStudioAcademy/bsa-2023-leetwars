@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { User } from '@shared/models/user/user';
-import { UserLoginDto } from '@shared/models/user/user-login-dto';
-import { UserRegisterDto } from '@shared/models/user/user-register-dto';
+import { IUser } from '@shared/models/user/user';
+import { IUserLogin } from '@shared/models/user/user-login';
+import { IUserRegister } from '@shared/models/user/user-register';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
 import { BehaviorSubject, first, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
@@ -18,9 +18,9 @@ import { UserService } from './user.service';
 export class AuthService {
     private providerName: string = 'firebase';
 
-    private userSubject: BehaviorSubject<User | undefined>;
+    public userSubject: BehaviorSubject<IUser | undefined>;
 
-    private user: User | undefined;
+    private user: IUser | undefined;
 
     private userKeyName = 'userInfo';
 
@@ -32,7 +32,7 @@ export class AuthService {
         private router: Router,
         private toastrNotification: ToastrNotificationsService,
     ) {
-        this.userSubject = new BehaviorSubject<User | undefined>(this.getUserInfo());
+        this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
         afAuth.authState.subscribe(async (user) => {
             if (user) {
                 localStorage.setItem(this.tokenKeyName, await user.getIdToken());
@@ -46,7 +46,7 @@ export class AuthService {
         return this.getUserToken() && this.getUserInfo();
     }
 
-    public register(user: UserRegisterDto) {
+    public register(user: IUserRegister) {
         return this.createUser(
             from(this.afAuth.createUserWithEmailAndPassword(user.email, user.password)).pipe(
                 first(),
@@ -57,7 +57,7 @@ export class AuthService {
         );
     }
 
-    public login(userDto: UserLoginDto) {
+    public login(userDto: IUserLogin) {
         return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
             first(),
             catchError((error) => throwError(error.message)),
@@ -129,8 +129,8 @@ export class AuthService {
         );
     }
 
-    private signWithProvider(observable: Observable<User | undefined>, isLogin: boolean) {
-        return observable.subscribe((user?: User) => {
+    private signWithProvider(observable: Observable<IUser | undefined>, isLogin: boolean) {
+        return observable.subscribe((user?: IUser) => {
             if (user) {
                 this.router.navigate(['']);
                 this.toastrNotification.showSuccess(
@@ -168,7 +168,7 @@ export class AuthService {
         );
     }
 
-    private getUserInfo(): User | undefined {
+    public getUserInfo(): IUser | undefined {
         const userInfo = localStorage.getItem(this.userKeyName);
 
         if (userInfo) {
@@ -178,7 +178,7 @@ export class AuthService {
         return undefined;
     }
 
-    private setUserInfo(user: User) {
+    private setUserInfo(user: IUser) {
         localStorage.setItem(this.userKeyName, JSON.stringify(user));
         this.userSubject.next(user);
         this.user = user;

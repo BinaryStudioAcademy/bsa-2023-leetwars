@@ -1,6 +1,6 @@
 import { Component, ComponentRef, Input, Type } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalButton } from '@shared/models/modal-button';
+import { IModalButton } from '@shared/models/modal-button';
 
 @Component({
     selector: 'app-general-modal',
@@ -14,5 +14,5 @@ export class GeneralModalComponent<T> {
 
     @Input() componentToDisplay: Type<ComponentRef<T>>;
 
-    @Input() buttons: ModalButton[] = [];
+    @Input() buttons: IModalButton[] = [];
 }
