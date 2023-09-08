@@ -7,7 +7,7 @@ import { HttpInternalService } from './http-internal.service';
     providedIn: 'root',
 })
 export class EmailService {
-    public baseUrl: string = "/emailer";
+    public baseUrl: string = '/emailer';
 
     constructor(private httpService: HttpInternalService) { }
 
