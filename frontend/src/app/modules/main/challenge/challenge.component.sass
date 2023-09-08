@@ -13,6 +13,7 @@
 .icon
     font-size: 12px
     padding: 0 6px
+    min-width: 24px
 
 .icon-border
     border-right: 2px solid $border-grey
@@ -29,14 +30,14 @@
 .description
     margin-bottom: 18px
 
-.info-row, .title-row 
+.info-row, .title-row
     white-space: nowrap
 
 .info-item
     @media (max-width: $mobile)
         margin: 0
 
-.info-row 
+.info-row
     @media (max-width: $mobile)
         white-space: normal
         flex-direction: column
@@ -46,6 +47,14 @@
 
 .title:hover
     cursor: pointer
+
+.star-icon
+    position: absolute
+    top: 0
+    right: 0
+    cursor: pointer
+    color: $green
+    user-select: none
 
 .level
     font-size: 12px
@@ -59,6 +68,7 @@
     font-family: 'Open Sans', sans-serif
     font-size: 18px
     font-weight: 600
+    max-width: 70%
 
 .author
     color: $light-copper

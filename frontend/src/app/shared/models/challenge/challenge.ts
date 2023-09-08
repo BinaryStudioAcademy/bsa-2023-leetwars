@@ -1,4 +1,5 @@
 import { ChallengeLevel } from '../challenge-level/challenge-level';
+import { Star } from '../challenge-star/star';
 import { ChallengeVersion } from '../challenge-version/challenge-version';
 import { AuditEntity } from '../common/audit-entity/audit-entity';
 import { Tag } from '../tag/tag';
@@ -13,4 +14,5 @@ export interface Challenge extends AuditEntity {
     author: User;
     tags: Array<Tag>;
     versions: Array<ChallengeVersion>;
+    stars: Array<Star>;
 }

@@ -4,11 +4,13 @@ import { Tag } from '@shared/models/tag/tag';
 
 export interface ChallengePreview {
     id: number
-    authorName: string,
-    levelName: string,
-    title: string,
-    instructions: string,
-    tags: Tag[],
-    languages: Language[],
-    status: ChallengeStatus,
+    authorName: string;
+    levelName: string;
+    title: string;
+    instructions: string;
+    tags: Tag[];
+    languages: Language[];
+    status: ChallengeStatus;
+    isStarry: boolean;
+    starsAmount: number;
 }

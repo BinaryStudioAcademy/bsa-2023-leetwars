@@ -64,8 +64,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.getLanguages();
         this.getTags();
 
-        this.statusesNames = this.statuses.map(item => item.name);
-        this.progressesNames = this.progresses.map(item => item.name);
+        this.statusesNames = this.statuses.map((item) => item.name);
+        this.progressesNames = this.progresses.map((item) => item.name);
     }
 
     public onScroll() {
@@ -86,7 +86,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             return;
         }
 
-        this.filter.languageId = this.languages.find(item => item.name === value)?.id;
+        this.filter.languageId = this.languages.find((item) => item.name === value)?.id;
         this.resetChallengesData();
     }
 
@@ -95,7 +95,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             return;
         }
 
-        this.filter.challengeStatus = this.statuses.find(item => item.name === value)?.status;
+        this.filter.challengeStatus = this.statuses.find((item) => item.name === value)?.status;
         this.resetChallengesData();
     }
 
@@ -104,7 +104,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             return;
         }
 
-        this.filter.progress = this.progresses.find(item => item.name === value)?.state;
+        this.filter.progress = this.progresses.find((item) => item.name === value)?.state;
         this.resetChallengesData();
     }
 
@@ -113,9 +113,9 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             return;
         }
 
-        this.filter.tagsIds = value.map(tagName =>
-            this.tags.find(item => item.name === tagName)?.id ?? 0)
-            .filter(item => item !== 0);
+        this.filter.tagsIds = value
+            .map((tagName) => this.tags.find((item) => item.name === tagName)?.id ?? 0)
+            .filter((item) => item !== 0);
 
         this.resetChallengesData();
     }
@@ -128,10 +128,11 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.page.pageNumber++;
         this.loading = true;
 
-        this.challengeService.getChallenges(this.filter, this.page)
+        this.challengeService
+            .getChallenges(this.filter, this.page)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: data => {
+                next: (data) => {
                     this.loading = false;
                     if (!data.length) {
                         this.isLastPage = true;
@@ -148,12 +149,13 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     }
 
     private getTags() {
-        this.tagService.getTags()
+        this.tagService
+            .getTags()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: data => {
+                next: (data) => {
                     this.tags = data;
-                    this.tagsNames = ['All', ...data.map(tag => tag.name)];
+                    this.tagsNames = ['All', ...data.map((tag) => tag.name)];
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
@@ -162,12 +164,13 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     }
 
     private getLanguages() {
-        this.languageService.getLanguages()
+        this.languageService
+            .getLanguages()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: data => {
+                next: (data) => {
                     this.languages = data;
-                    this.languagesNames = ['All', ...data.map(language => language.name)];
+                    this.languagesNames = ['All', ...data.map((language) => language.name)];
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
