@@ -8,7 +8,7 @@ import { ITag } from '@shared/models/tag/tag';
 export class TagService {
     public baseUrl = '/tags';
 
-    constructor(private httpService: HttpInternalService) { }
+    constructor(private httpService: HttpInternalService) {}
 
     public getTags() {
         return this.httpService.getRequest<ITag[]>(this.baseUrl);
