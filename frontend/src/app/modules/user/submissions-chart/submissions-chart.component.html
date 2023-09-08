@@ -23,9 +23,8 @@
             <div class="chart-month" *ngFor="let month of chartData">
                 <div class="chart-month-days">
                     <div class="chart-day" *ngFor="let spacer of month.spacers"></div>
-                    <div class="chart-day" *ngFor="let day of month.days"
-                         [class.fill]="day.fill" [class.blank]="!day.fill"
-                    ></div>
+                    <div class="chart-day" *ngFor="let day of month.days" [class.fill]="day.fill"
+                        [class.blank]="!day.fill"></div>
                 </div>
                 <div class="chart-month-title" *ngIf="month.showTitle">{{month.title}}</div>
             </div>

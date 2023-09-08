@@ -1,7 +1,7 @@
-import { ChallengePreview } from '../challenge/challenge-preview';
+import { IChallengePreview } from '../challenge/challenge-preview';
 
 export interface Star {
-    challenge: ChallengePreview;
+    challenge: IChallengePreview;
     authorId: number;
     isStar: boolean;
 }
