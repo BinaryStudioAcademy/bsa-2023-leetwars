@@ -1,14 +1,13 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpResponse } from '@microsoft/signalr';
-import { Challenge } from '@shared/models/challenge/challenge';
-import { CodeRunRequest } from '@shared/models/code-run-request/code-run-request';
 import { HttpInternalService } from '@core/services/http-internal.service';
+import { HttpResponse } from '@microsoft/signalr';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { Star } from '@shared/models/challenge-star/star';
+import { CodeRunRequest } from '@shared/models/code-run-request/code-run-request';
 import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
@@ -47,6 +46,6 @@ export class ChallengeService {
     }
 
     public runTests(request: CodeRunRequest): Observable<HttpResponse> {
-        return this.httpService.postRequest<HttpResponse>(`${this.challengesRoute}test`, request);
+        return this.httpService.postRequest<HttpResponse>(`${this.challengesRoute}/test`, request);
     }
 }

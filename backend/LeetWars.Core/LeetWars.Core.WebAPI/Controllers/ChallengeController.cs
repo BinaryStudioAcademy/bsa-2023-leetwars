@@ -33,7 +33,7 @@ namespace LeetWars.Core.WebAPI.Controllers
             var challenge = await _challengeService.GetChallengeSuggestionAsync(settings);
             return Ok(challenge);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeFullDto>> GetById(long id)
         {
@@ -47,10 +47,13 @@ namespace LeetWars.Core.WebAPI.Controllers
             _challengeService.SendCodeRunRequest(codeRunRequest);
             return Ok();
 
+        }
+
         [HttpPut]
         public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
         {
             return Ok(await _challengeService.Update(challengeStarDto));
         }
+
     }
 }

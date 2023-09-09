@@ -16,19 +16,18 @@ namespace LeetWars.Core.BLL.Services
     public class ChallengeService : BaseService, IChallengeService
     {
         private readonly IUserIdGetter _userIdGetter;
-        private IMessageSenderService _messageSenderService;
-        public ChallengeService(LeetWarsCoreContext context, IMapper mapper, IMessageSenderService messageSenderService) : base(context, mapper) 
-        { 
-            _messageSenderService = messageSenderService;
-        }
+
+        private readonly IMessageSenderService _messageSenderService;
 
         public ChallengeService(
             LeetWarsCoreContext context,
             IMapper mapper,
-            IUserIdGetter userIdGetter
+            IUserIdGetter userIdGetter,
+            IMessageSenderService messageSenderService
         ) : base(context, mapper)
         {
             _userIdGetter = userIdGetter;
+            _messageSenderService = messageSenderService;
         }
 
         public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters,

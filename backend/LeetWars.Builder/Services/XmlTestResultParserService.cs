@@ -1,5 +1,6 @@
 ﻿using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
+using System.Globalization;
 using System.Xml;
 
 namespace LeetWars.Builder.Services
@@ -8,21 +9,21 @@ namespace LeetWars.Builder.Services
     {
         public TestsOutput ParseCSharpTestResult(string xmlTestResult)
         {
-            XmlDocument doc = new();
+            XmlDocument xmlDoc = new();
 
-            doc.LoadXml(xmlTestResult);
+            xmlDoc.LoadXml(xmlTestResult);
 
-            XmlNamespaceManager nsManager = new (doc.NameTable);
+            XmlNamespaceManager nsManager = new (xmlDoc.NameTable);
 
-            nsManager.AddNamespace("ns", "http://microsoft.com/schemas/VisualStudio/TeamTest/2010");
+            if(xmlDoc.DocumentElement?.NamespaceURI != null) nsManager.AddNamespace("ns", xmlDoc.DocumentElement.NamespaceURI);
 
-            XmlNode? countersNode = doc.SelectSingleNode("/ns:TestRun/ns:ResultSummary/ns:Counters", nsManager);
+            XmlNode? countersNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:ResultSummary/ns:Counters", nsManager);
 
-            XmlNode? resultSummaryNode = doc.SelectSingleNode("/ns:TestRun/ns:ResultSummary", nsManager);
+            XmlNode? resultSummaryNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:ResultSummary", nsManager);
 
-            XmlNode? startTimeNode = doc.SelectSingleNode("/ns:TestRun/ns:Times", nsManager);
+            XmlNode? startTimeNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:Times", nsManager);
 
-            XmlNodeList? unitTestResultNodes = doc.SelectNodes("/ns:TestRun/ns:Results/ns:UnitTestResult", nsManager);
+            XmlNodeList? unitTestResultNodes = xmlDoc.SelectNodes("/ns:TestRun/ns:Results/ns:UnitTestResult", nsManager);
 
             if (countersNode == null || resultSummaryNode == null || startTimeNode == null)
             {
@@ -73,8 +74,9 @@ namespace LeetWars.Builder.Services
                 tests.Add(testData);
             }
 
-            DateTime startTime = DateTime.Parse(startTimeString);
-            DateTime finishTime = DateTime.Parse(finishTimeString);
+            DateTime startTime = DateTime.Parse(startTimeString, CultureInfo.InvariantCulture);
+
+            DateTime finishTime = DateTime.Parse(finishTimeString, CultureInfo.InvariantCulture);
 
             TimeSpan totalTime = finishTime - startTime;
 
