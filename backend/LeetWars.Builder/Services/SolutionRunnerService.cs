@@ -2,7 +2,11 @@
 using Docker.DotNet.Models;
 using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
+using LeetWars.Builder.RunnerDefaults;
+using LeetWars.Builder.RunnerDefaults.CSharp;
+using LeetWars.Builder.RunnerDefaults.JS;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace LeetWars.Builder.Services
 {
@@ -10,26 +14,90 @@ namespace LeetWars.Builder.Services
     {
         private readonly DockerClient _client = new DockerClientConfiguration().CreateClient();
 
-        public async Task<string?> RunCodeInContainerAsync(string imageName, string containerName)
+        private readonly IXmlTestResultParserService _parserService;
+
+        private readonly ITarManagementService _tarManagementService;
+
+        private readonly JsonSerializerSettings _serializerSettings = new() { ContractResolver = new CamelCasePropertyNamesContractResolver() };
+
+        private readonly string _localVolumeName = "LocalVolume";
+
+
+    public SolutionRunnerService(IXmlTestResultParserService parserService, ITarManagementService tarManagementService)
         {
-            //all the data is incoming -- here for testing purposes
-            string experimentClassLibrary = "public class Solution\r\n{\r\n    public bool IsNumPrime(int num)\r\n    {\r\n        return (num % 2 == 0);\r\n    }\r\n}\r\n";
-            string classLibraryName = "Solution.cs";
+            _parserService = parserService;
 
-            string experimentTests = "using NUnit.Framework;\r\n\r\n[TestFixture]\r\npublic class Tests\r\n{\r\n    private Solution? _solutionClass;\r\n\r\n    [SetUp]\r\n    public void Setup()\r\n    {\r\n        _solutionClass = new Solution();\r\n    }\r\n\r\n    [Test]\r\n    public void IsPrime_InputIs1_ReturnFalse()\r\n    {\r\n        var result = _solutionClass.IsNumPrime(2);\r\n\r\n        Assert.IsFalse(result, \"1 should not be prime\");\r\n    }\r\n}";
-            string testFileName = "Tests.cs";
+            _tarManagementService = tarManagementService;
+        }
 
-            var volumeName = "myvolume1";
-            //
+        public async Task<string> RunSolutionTestsAsync(string processName, string language, string code, string tests, string preloaded)
+        {
+            return language switch
+            {
+                "csharp" => JsonConvert.SerializeObject(await RunCSharpSolutionTestsAsync(processName, code, tests, preloaded), _serializerSettings),
 
-            //Actual logic
-            //Create Volume
+                "js" => JsonConvert.SerializeObject(await RunJSSolutionTestsAsync(processName, code, tests, preloaded), _serializerSettings),
+
+                _ => "",
+            };
+        }
+
+        private async Task<TestsOutput> RunCSharpSolutionTestsAsync(string containerName, string csharpCode, string csharpTests, string preloaded = "")
+        {
+            var volumeName = containerName + "-volume";
+
+            var container = await CreateContainerWithVolumeAsync(containerName, volumeName, DefaultRunnerImageNames.CSharpTestImage,_localVolumeName);
+
+            await StringToFileInContainerAsync(csharpCode, DefaultCSharpFileNaming.SolutionFileName, container.ID, $"/{_localVolumeName}/");
+
+            await StringToFileInContainerAsync(csharpTests, DefaultCSharpFileNaming.SolutionTestFileName, container.ID, $"/{_localVolumeName}/");
+
+            await StringToFileInContainerAsync(preloaded, DefaultCSharpFileNaming.SolutionPreloadedFileName, container.ID, $"/{_localVolumeName}/");
+
+            await _client.Containers.StartContainerAsync(container.ID, null);
+
+            await _client.Containers.WaitContainerAsync(container.ID);
+
+            var stringResult = await FileInContainerToStringAsync(container.ID, $"/{_localVolumeName}/{DefaultCSharpFileNaming.TestResultsFileName}");
+
+            await _client.Containers.RemoveContainerAsync(container.ID, new ContainerRemoveParameters { Force = true });
+
+            await _client.Volumes.RemoveAsync(volumeName);
+
+            return _parserService.ParseCSharpTestResult(stringResult);
+
+        }
+
+        private async Task<TestsOutput> RunJSSolutionTestsAsync(string containerName, string jsCode, string jsTests, string preloaded = "")
+        {
+            var volumeName = containerName + "-volume";
+
+            var container = await CreateContainerWithVolumeAsync(containerName, containerName + "-volume",DefaultRunnerImageNames.JSTestImage, _localVolumeName);
+
+            var jsCodeWithTests = preloaded + Environment.NewLine + jsCode + Environment.NewLine + jsTests; 
+
+            await StringToFileInContainerAsync(jsCodeWithTests, DefaultJSFileNaming.SolutionTestFileName, container.ID, $"/{_localVolumeName}/");
+
+            await _client.Containers.StartContainerAsync(container.ID, null);
+
+            await _client.Containers.WaitContainerAsync(container.ID);
+
+            var stringResult = await FileInContainerToStringAsync(container.ID, $"/{_localVolumeName}/{DefaultJSFileNaming.TestResultsFileName}");
+
+            await _client.Containers.RemoveContainerAsync(container.ID, new ContainerRemoveParameters { Force = true });
+
+            await _client.Volumes.RemoveAsync(volumeName);
+
+            return _parserService.ParseJSTestResult(stringResult);
+        }
+
+        private async Task<CreateContainerResponse> CreateContainerWithVolumeAsync(string containerName, string volumeName,string imageName,string volumeNameInContainer)
+        {
             await _client.Volumes.CreateAsync(new VolumesCreateParameters
             {
                 Name = volumeName
             });
 
-            //Create container and bind a volume with data on it
             var containerParams = new CreateContainerParameters
             {
                 Image = imageName,
@@ -38,141 +106,20 @@ namespace LeetWars.Builder.Services
                 {
                     Binds = new List<string>
                     {
-                        $"{volumeName}:/LocalVolume" // Mount the volume to a mountpoint in the container
+                        $"{volumeName}:/{volumeNameInContainer}"
                     },
                 }
             };
 
-            var container = await _client.Containers.CreateContainerAsync(containerParams);
-
-            //Add needed files to a volume
-            await StringToFileInContainerAsync(experimentClassLibrary, classLibraryName, container.ID, "/LocalVolume/");
-
-            await StringToFileInContainerAsync(experimentTests, testFileName, container.ID, "/LocalVolume/");
-
-            //Start action
-            await _client.Containers.StartContainerAsync(container.ID, null);
-
-            await _client.Containers.WaitContainerAsync(container.ID);
-
-            //Manipulate data that container outputted
-            var stringResult = await FileInContainerToStringAsync(container.ID, "/LocalVolume/testresults.trx");
-
-            var testResultOutput = XmlTestResultParserService.ParseCSharpTestResult(stringResult);
-
-            return stringResult;
-        }
-
-        public async Task<BuildResult> RunSolutionBuild(string processName, string code)
-        {
-            return await RunCSharpBuild(processName, code);
-        }
-
-        public async Task<string> RunSolutionTests(string processName, string code, string tests)
-        {
-
-            return JsonConvert.SerializeObject(await RunCSharpSolutionTests(processName, code, tests));
-        }
-
-        public async Task<CSharpTestOutput> RunCSharpSolutionTests(string containerName, string csharpCode, string csharpTests)
-        {
-            //Create volume
-            var volumeName = containerName + "-volume";
-
-            await _client.Volumes.CreateAsync(new VolumesCreateParameters
-            {
-                Name = volumeName
-            });
-
-            //Create container and bind a volume with data on it
-            var containerParams = new CreateContainerParameters
-            {
-                Image = RunnerDefaults.DefaultRunnerImageNames.CSharpTestImage,
-                Name = containerName,
-                HostConfig = new HostConfig
-                {
-                    Binds = new List<string>
-                    {
-                        $"{volumeName}:/LocalVolume"
-                    },
-                }
-            };
-
-            var container = await _client.Containers.CreateContainerAsync(containerParams);
-
-            //Add needed files to a volume
-            await StringToFileInContainerAsync(csharpCode, RunnerDefaults.CSharpFileNaming.SolutionFileName, container.ID, "/LocalVolume/");
-
-            await StringToFileInContainerAsync(csharpTests, RunnerDefaults.CSharpFileNaming.SolutionTestFileName, container.ID, "/LocalVolume/");
-
-            //Start action
-            await _client.Containers.StartContainerAsync(container.ID, null);
-
-            await _client.Containers.WaitContainerAsync(container.ID);
-
-            //Manipulate data that container outputted
-            var stringResult = await FileInContainerToStringAsync(container.ID, $"/LocalVolume/{RunnerDefaults.CSharpFileNaming.TestResultsFileName}");
-
-            return stringResult != null ? XmlTestResultParserService.ParseCSharpTestResult(stringResult) : throw new ArgumentException("Such file does not exist or is named incorrectly");
-
-        }
-
-        public async Task<BuildResult> RunCSharpBuild(string containerName, string csharpCode)
-        {
-            //Create volume
-            var volumeName = containerName + "-volume";
-
-            await _client.Volumes.CreateAsync(new VolumesCreateParameters
-            {
-                Name = volumeName
-            });
-
-            //Create container and bind a volume with data on it
-            var containerParams = new CreateContainerParameters
-            {
-                Image = RunnerDefaults.DefaultRunnerImageNames.CSharpBuildImage,
-                Name = containerName,
-                HostConfig = new HostConfig
-                {
-                    Binds = new List<string>
-                    {
-                        $"{volumeName}:/LocalVolume"
-                    },
-                }
-            };
-
-            var container = await _client.Containers.CreateContainerAsync(containerParams);
-
-            //Add needed files to a volume
-            await StringToFileInContainerAsync(csharpCode, RunnerDefaults.CSharpFileNaming.SolutionFileName, container.ID, "/LocalVolume/");
-
-            //Start action
-            await _client.Containers.StartContainerAsync(container.ID, null);
-
-            var containerResponse = await _client.Containers.WaitContainerAsync(container.ID);
-
-
-            var result = new BuildResult
-            {
-                IsSuccess = containerResponse.StatusCode == 0
-            };
-
-            //Manipulate data that container outputted
-            if(containerResponse.StatusCode == 1)
-            {
-                var errors = await FileInContainerToStringAsync(container.ID, $"/LocalVolume/{RunnerDefaults.CSharpFileNaming.BuildErrorResultsFileName}");
-                result.BuildErrorOutput = errors;
-            }
-
-            return result;
-
+            return await _client.Containers.CreateContainerAsync(containerParams);
         }
 
         private async Task StringToFileInContainerAsync(string input, string newFileNameWithExtenstion, string containerId, string pathInContainer)
         {
-            var bytes = TarManagementService.SingleFileToTarBytes(input, newFileNameWithExtenstion);
+            var bytes = _tarManagementService.SingleFileToTarBytes(input, newFileNameWithExtenstion);
 
-            using var tarStream = new MemoryStream(bytes) ;
+            using var tarStream = new MemoryStream(bytes);
+
             var archivePath = pathInContainer;
 
             var putArchiveParams = new ContainerPathStatParameters
@@ -183,11 +130,11 @@ namespace LeetWars.Builder.Services
             await _client.Containers.ExtractArchiveToContainerAsync(containerId, putArchiveParams, tarStream, default);
         }
 
-        private async Task<string?> FileInContainerToStringAsync(string containerId, string pathToFileInContainer)
+        private async Task<string> FileInContainerToStringAsync(string containerId, string pathToFileInContainer)
         {
-            var data = await _client.Containers.GetArchiveFromContainerAsync(containerId, new GetArchiveFromContainerParameters() { Path = pathToFileInContainer }, false);
+            GetArchiveFromContainerResponse data = await _client.Containers.GetArchiveFromContainerAsync(containerId, new GetArchiveFromContainerParameters() { Path = pathToFileInContainer }, false);
 
-            return await TarManagementService.FromTarSingleFileToStringAsync(data.Stream);
+            return await _tarManagementService.FromTarSingleFileToStringAsync(data.Stream);
         }
 
         public void Dispose()

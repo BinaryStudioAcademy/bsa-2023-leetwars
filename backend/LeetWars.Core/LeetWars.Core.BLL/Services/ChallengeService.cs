@@ -2,6 +2,7 @@
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.Models;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,11 @@ namespace LeetWars.Core.BLL.Services
 {
     public class ChallengeService : BaseService, IChallengeService
     {
-        public ChallengeService(LeetWarsCoreContext context, IMapper mapper) : base(context, mapper) { }
+        private IMessageSenderService _messageSenderService;
+        public ChallengeService(LeetWarsCoreContext context, IMapper mapper, IMessageSenderService messageSenderService) : base(context, mapper) 
+        { 
+            _messageSenderService = messageSenderService;
+        }
 
         public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters)
         {
@@ -83,6 +88,11 @@ namespace LeetWars.Core.BLL.Services
                 .FirstOrDefaultAsync(challenge => challenge.Id == id);
 
             return _mapper.Map<ChallengeFullDto>(challenges);
+        }
+
+        public void SendCodeRunRequest(CodeRunRequest request)
+        {
+            _messageSenderService.SendMessageToRabbitMQ(request);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace LeetWars.Builder.Models
+﻿namespace LeetWars.Notifier.WebAPI.Models
 {
     public class CodeRunResults
     {

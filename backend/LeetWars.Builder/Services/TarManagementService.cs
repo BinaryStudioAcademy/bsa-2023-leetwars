@@ -1,4 +1,5 @@
-﻿using SharpCompress.Archives.Tar;
+﻿using LeetWars.Builder.Interfaces;
+using SharpCompress.Archives.Tar;
 using SharpCompress.Common;
 using SharpCompress.Writers;
 using SharpCompress.Writers.Tar;
@@ -6,9 +7,9 @@ using System.Text;
 
 namespace LeetWars.Builder.Services
 {
-    public static class TarManagementService
+    public class TarManagementService : ITarManagementService
     {
-        public static byte[] SingleFileToTarBytes(string input, string newFileNameWithExtension)
+        public byte[] SingleFileToTarBytes(string input, string newFileNameWithExtension)
         {
             byte[] tarBytes;
 
@@ -17,6 +18,7 @@ namespace LeetWars.Builder.Services
                 using (TarWriter writer = new(ms, new TarWriterOptions(CompressionType.None, false)))
                 {
                     using MemoryStream inputMs = new(Encoding.UTF8.GetBytes(input));
+
                     writer.Write(newFileNameWithExtension, inputMs);
                 }
 
@@ -26,14 +28,16 @@ namespace LeetWars.Builder.Services
             return tarBytes;
         }
 
-        public static async Task<string?> FromTarSingleFileToStringAsync(Stream tarData)
+        public async Task<string> FromTarSingleFileToStringAsync(Stream tarData)
         {
             using var memoryStream = new MemoryStream();
+
             await tarData.CopyToAsync(memoryStream);
 
             memoryStream.Seek(0, SeekOrigin.Begin);
 
             using var archive = TarArchive.Open(memoryStream);
+
             var entry = archive.Entries.FirstOrDefault();
 
             if (entry != null && !entry.IsDirectory)
@@ -46,7 +50,7 @@ namespace LeetWars.Builder.Services
 
                 return fileContent;
             }
-            return null;
+            throw new ArgumentException("Invalid input: an invalid data or a directory was given");
         }
     }
 }

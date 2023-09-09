@@ -1,6 +1,7 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
@@ -27,6 +28,13 @@ namespace LeetWars.Core.WebAPI.Controllers
         {
             var challenges = await _challengeService.GetChallengeByIdAsync(id);
             return Ok(challenges);
+        }
+
+        [HttpPost("test")]
+        public ActionResult GetCode([FromBody] CodeRunRequest codeRunRequest)
+        {
+            _challengeService.SendCodeRunRequest(codeRunRequest);
+            return Ok();
         }
     }
 }

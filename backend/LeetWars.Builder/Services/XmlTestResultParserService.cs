@@ -1,11 +1,12 @@
-﻿using LeetWars.Builder.Models;
+﻿using LeetWars.Builder.Interfaces;
+using LeetWars.Builder.Models;
 using System.Xml;
 
 namespace LeetWars.Builder.Services
 {
-    public static class XmlTestResultParserService
+    public class XmlTestResultParserService : IXmlTestResultParserService
     {
-        public static CSharpTestOutput ParseCSharpTestResult(string xmlTestResult)
+        public TestsOutput ParseCSharpTestResult(string xmlTestResult)
         {
             XmlDocument doc = new();
 
@@ -23,10 +24,11 @@ namespace LeetWars.Builder.Services
 
             XmlNodeList? unitTestResultNodes = doc.SelectNodes("/ns:TestRun/ns:Results/ns:UnitTestResult", nsManager);
 
-            if (countersNode == null || resultSummaryNode == null || startTimeNode == null) throw new ArgumentException("Inappropriate test data input");
+            if (countersNode == null || resultSummaryNode == null || startTimeNode == null)
+            {
+                throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
+            }
 
-
-            // Extract the attributes
             string? passed = countersNode.Attributes?["passed"]?.Value;
 
             string? failed = countersNode.Attributes?["failed"]?.Value;
@@ -37,31 +39,39 @@ namespace LeetWars.Builder.Services
 
             string? finishTimeString = startTimeNode.Attributes?["finish"]?.Value;
 
-            if (passed == null || failed == null || outcome == null || startTimeString == null || finishTimeString == null || unitTestResultNodes == null) throw new ArgumentException("Inappropriate test data input, cannot find needed data");
+            if (passed == null || failed == null || outcome == null || startTimeString == null || finishTimeString == null || unitTestResultNodes == null)
+            {
+                throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
+            }
 
-            ICollection<CSharpTest> tests = new List<CSharpTest>();
+            ICollection<Test> tests = new List<Test>();
 
             foreach (XmlNode node in unitTestResultNodes)
             {
                 string? executionTime = node.Attributes?["duration"]?.Value;
+
                 string? testName = node.Attributes?["testName"]?.Value;
+
                 string? testOutcome = node.Attributes?["outcome"]?.Value;
 
-                if (executionTime == null || testName == null || testOutcome == null) throw new ArgumentException("Inappropriate test data input");
+                if (executionTime == null || testName == null || testOutcome == null)
+                {
+                    throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
+                }
 
-                // Extract the relevant information from the selected nodes and store it for later use.
-                var testData = new CSharpTest(testName, testOutcome, executionTime);
+                var testData = new Test(testName, testOutcome == "Passed", executionTime);
 
                 if (testOutcome == "Failed")
                 {
                     XmlNode? errorMessageNode = node.SelectSingleNode("ns:Output/ns:ErrorInfo/ns:Message", nsManager);
-                    testData.ErrorMessage = errorMessageNode?.InnerText.Trim() ?? string.Empty;
+
+                    XmlNode? errorStackTraceNode = node.SelectSingleNode("ns:Output/ns:ErrorInfo/ns:StackTrace", nsManager);
+
+                    testData.ErrorMessage = (errorMessageNode?.InnerText.Trim() ?? string.Empty) + Environment.NewLine + (errorStackTraceNode?.InnerText.Trim() ?? string.Empty);
                 }
 
                 tests.Add(testData);
             }
-
-            //Calculate total time that was neede tu run all testing procedure
 
             DateTime startTime = DateTime.Parse(startTimeString);
             DateTime finishTime = DateTime.Parse(finishTimeString);
@@ -69,10 +79,70 @@ namespace LeetWars.Builder.Services
             TimeSpan totalTime = finishTime - startTime;
 
 
-            var testResult = new CSharpTestOutput(outcome, totalTime.ToString(), tests, failed, passed);
+            var testResult = new TestsOutput(outcome == "Passed", totalTime.ToString(), tests, int.Parse(failed), int.Parse(passed));
 
             return testResult;
         }
 
+        public TestsOutput ParseJSTestResult(string xmlTestResult)
+        {
+            var xmlDoc = new XmlDocument();
+
+            xmlDoc.LoadXml(xmlTestResult);
+
+            XmlNode? testSuits = xmlDoc.SelectSingleNode("//testsuites") ?? throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
+
+            string? duration = testSuits.Attributes?["time"]?.Value;
+
+            string? testsCount = testSuits.Attributes?["tests"]?.Value;
+
+            string? failed = testSuits.Attributes?["failures"]?.Value;
+
+            if(duration == null || testsCount == null || failed == null) 
+            {
+                throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
+            }
+
+            int passed = int.Parse(testsCount) - int.Parse(failed);
+
+            XmlNodeList? testcaseNodes = xmlDoc.SelectNodes("//testcase") ?? throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
+
+            ICollection<Test> tests = new List<Test>();
+
+            foreach (XmlNode testcaseNode in testcaseNodes) 
+            {
+                string? name = testcaseNode.Attributes?["name"]?.Value;
+
+                string? time = testcaseNode.Attributes?["time"]?.Value;
+
+                if(name == null || time == null) 
+                {
+                    throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
+                }
+
+                XmlNode? failureNode = testcaseNode.SelectSingleNode("failure");
+
+                var testData = new Test(name, failureNode == null, duration);
+
+                if (failureNode != null) 
+                { 
+                    string? failureMessage = failureNode.Attributes?["message"]?.Value;
+
+                    string? failureType = failureNode.Attributes?["type"]?.Value;
+
+                    string cdataSection = failureNode.InnerText;
+
+                    string stackTrace = cdataSection.Trim();
+
+                    testData.ErrorMessage = failureType + ": " + failureMessage + Environment.NewLine + stackTrace;
+                }
+
+                tests.Add(testData);
+            }
+
+            int failedTestCount = int.Parse(failed);
+
+            return new TestsOutput( failedTestCount == 0, duration, tests, failedTestCount, passed);
+        }
     }
 }

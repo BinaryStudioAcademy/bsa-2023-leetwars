@@ -1,7 +1,6 @@
-﻿using Docker.DotNet;
-using LeetWars.Builder.Interfaces;
+﻿using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
-using SharpCompress;
+using LeetWars.Core.Common.Models;
 
 namespace LeetWars.Builder.Services
 {
@@ -14,41 +13,20 @@ namespace LeetWars.Builder.Services
             _solutionRunner = solutionRunner;
         }
 
-        public async Task<CodeRunResults> Run(CodeRunRequest request)
+        public async Task<CodeRunResults> RunCodeAndTestsAsync(CodeRunRequest request)
         {
-            string processNamePrefix = request.UserId + "_" + request.ChallengeVersionId;
+            string processName = request.UserId + "_" + request.ChallengeVersionId + "-testing";
 
-            var result =  await RunCode(request, processNamePrefix);
-
-            if (result.BuildResults.IsSuccess && (request.Tests != null || request.Tests != String.Empty))
-            {
-                result.IsBuilt = true;
-                result.TestRunResults = await RunCodeAndTests(request, processNamePrefix);
-            }
-
-            return result;
-        }
-
-        private async Task<CodeRunResults> RunCode(CodeRunRequest request, string processNamePrefix)
-        {
-            string processName = processNamePrefix + "code-run";
+            string testRunResults = await _solutionRunner.RunSolutionTestsAsync(processName, request.Language, request.UserCode, request.Tests ?? "", request.Preloaded ?? "");
 
             return new CodeRunResults
             {
                 UserId = request.UserId,
                 ChallengeVersionId = request.ChallengeVersionId,
                 Language = request.Language,
-                BuildResults = await _solutionRunner.RunSolutionBuild(processName, request.UserCode)
+                IsBuilt = request.IsBuilt,
+                TestRunResults = testRunResults
             };
-        }
-
-        private async Task<string> RunCodeAndTests(CodeRunRequest request, string processNamePrefix)
-        {
-            string processName = processNamePrefix + "testing";
-
-            string testRunResults = await _solutionRunner.RunSolutionTests(processName, request.UserCode, request.Tests!);
-            
-            return testRunResults;
         }
     }
 }

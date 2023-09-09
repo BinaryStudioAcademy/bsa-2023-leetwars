@@ -16,12 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="RunnerDefaults\CSharp\CSharpRunner\Program.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="RunnerDefaults\CSharp\CSharpCodeBuilder\SolutionBuilder\SolutionBuilder.csproj" />
-    <None Include="RunnerDefaults\CSharp\CSharpRunner\CSharpRunner.csproj" />
     <None Include="RunnerDefaults\CSharp\CSharpTestRunner\SolutionTester.Tests\SolutionTester.Tests.csproj" />
   </ItemGroup>
 
@@ -32,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LeetWars.Core\LeetWars.Core.Common\LeetWars.Core.Common.csproj" />
     <ProjectReference Include="..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
   </ItemGroup>
 
