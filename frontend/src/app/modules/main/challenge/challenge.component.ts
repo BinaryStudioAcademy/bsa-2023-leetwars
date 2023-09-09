@@ -1,4 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { AuthService } from '@core/services/auth.service';
+import { ChallengeService } from '@core/services/challenge.service';
+import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { Star } from '@shared/models/challenge-star/star';
+import { IUser } from '@shared/models/user/user';
+import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
 @Component({
     selector: 'app-challenge',
@@ -6,24 +12,29 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./challenge.component.sass'],
 })
 export class ChallengeComponent {
-    //TODO: Replace every variable started with 'challenge' to real challenge model with @Input decorator
-    @Input() challenge = '';
+    constructor(private challengeService: ChallengeService, private authService: AuthService) {
+        this.authService.getUser().subscribe((user) => {
+            this.user = user;
+        });
+    }
 
-    public challengeLevel = 3;
+    @Input() challenge: IChallengePreview;
 
-    public challengeTitle = 'Replace With Alphabet Position';
+    public challengePositiveFeedbacksPercent = 0;
 
-    public challengeStars = 540;
+    public getLanguageIconUrl = getLanguageIconUrl;
 
-    public challengePositiveFeedbacksPercent = 88;
+    private user: IUser;
 
-    public challengeAuthorName = 'Emerson Saris';
+    public starChange() {
+        const star: Star = {
+            authorId: this.user.id,
+            challenge: this.challenge,
+            isStar: !this.challenge.isStarry,
+        };
 
-    public challengeLanguages = [
-        { imgUrl: '/assets/images/html.png', value: 'HTML, CSS, JS' },
-        { imgUrl: '/assets/images/ruby.png', value: 'Ruby' },
-        { imgUrl: '/assets/images/js.png', value: 'JS' },
-    ];
-
-    public challengeTags = ['Algorithms', 'Strings', 'Data Types', 'Formatting', 'Logic'];
+        this.challengeService.updateStar(star).subscribe((challenge: IChallengePreview) => {
+            this.challenge = challenge;
+        });
+    }
 }

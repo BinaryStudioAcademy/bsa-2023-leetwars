@@ -1,5 +1,8 @@
 <header class="nav-container position-fixed flex-column navbar fixed-top align-items-end justify-content-center"
     [ngClass]="{'scrolled': isScrolled || isNavShown}">
+    <div class="logo-container">
+        <img src="assets/images/logo/logo-sign-up.png" alt="LEETWARS">
+    </div>
     <button class="nav-dropbtn" (click)="updateNavVisibility()" aria-label="menu">
         <fa-icon [icon]="['fas', 'bars']"></fa-icon>
     </button>
@@ -27,7 +30,7 @@
                     Through captivating challenges, you'll refine your programming skills,
                     while achieving each goal becomes a stepping stone toward coding excellence.
                 </p>
-                <a class="green-accent-link" routerLink="auth/register">Get Started</a>
+                <a class="green-accent-link" routerLink="auth/register">GET STARTED</a>
             </div>
         </div>
     </div>
@@ -169,7 +172,7 @@
                 </div>
             </div>
         </div>
-        <a class="green-accent-link" routerLink="auth/register">Get Started</a>
+        <a class="green-accent-link" routerLink="auth/register">GET STARTED</a>
     </div>
 </main>
 
@@ -179,7 +182,7 @@
             Get actionable tips on how to increase sales and
             conversions with design!
         </p>
-        <a class="green-accent-link" routerLink="auth/register">Get Started</a>
+        <a class="green-accent-link" routerLink="auth/register">GET STARTED</a>
     </div>
     <div class="footer-list-container">
         <h4>Services</h4>
@@ -222,7 +225,7 @@
         </ul>
     </div>
     <div class="footer-list-container">
-        <h4>Company</h4>
+        <h4>Resources</h4>
         <ul class="footer-list">
             <li>
                 <a href="">Blog</a>
@@ -255,10 +258,10 @@
                 <fa-icon [icon]="['fab', 'youtube']"></fa-icon>
             </a>
             <a href="" aria-label="facebook">
-                <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+                <fa-icon [icon]="['fab', 'facebook-f']"></fa-icon>
             </a>
             <a href="" aria-label="pinterest">
-                <fa-icon [icon]="['fab', 'pinterest']"></fa-icon>
+                <fa-icon [icon]="['fab', 'pinterest-p']"></fa-icon>
             </a>
             <a href="" aria-label="twitter">
                 <fa-icon [icon]="['fab', 'twitter']"></fa-icon>

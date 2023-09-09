@@ -4,8 +4,6 @@ button
     all: revert
 
 .dropdown
-  width: 100%
-
   &-toggle::after
     display: none !important
 
@@ -24,7 +22,10 @@ button
     &:focus
       background-color: transparent
 
-
+.multi-span
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
 
 label
   font-family: Open Sans
@@ -42,10 +43,7 @@ label
   background-color: $dark-grey
   font-family: Open Sans
   font-weight: 600
-  padding-left: 14px
-  padding-right: 14px
-  padding-top: 0px
-  padding-bottom: 0px
+  padding: 0 14px
 
   fa-icon
     margin-left: auto

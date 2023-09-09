@@ -1,38 +1,42 @@
 <div class="main-info d-flex flex-column">
     <div class="description d-flex flex-column">
-        <div class="title-row d-flex">
-            <span class="level">{{ challengeLevel }} rank</span>
-            <span class="title">{{ challengeTitle }}</span>
+        <div class="title-row d-flex align-items-center position-relative">
+            <span class="level">{{ challenge.levelName }} rank</span>
+            <span class="title text-wrap">{{ challenge.title }}</span>
+            <fa-icon
+                class="star-icon"
+                [icon]="challenge.isStarry ? ['fas', 'star'] : ['far', 'star']"
+                [size]="'2xl'"
+                (click)="starChange()"></fa-icon>
         </div>
         <div class="info-row d-flex">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center info-item">
                 <fa-icon [icon]="['far', 'star']" size="2xs"></fa-icon>
-                <span class="icon icon-border">{{ challengeStars }}</span>
+                <span class="icon icon-border">{{ challenge.starsAmount }}</span>
             </div>
-            <div class="d-flex align-items-center ml-6px">
-                <!-- pro version required for regular chart-simple -->
+            <div class="d-flex align-items-center ml-6px info-item">
                 <fa-icon [icon]="'chart-simple'" size="2xs"></fa-icon>
                 <span class="icon icon-border">{{ challengePositiveFeedbacksPercent }}% positive feedback</span>
             </div>
-            <div class="d-flex align-items-center ml-6px">
+            <div class="d-flex align-items-center ml-6px info-item">
                 <fa-icon [icon]="['far', 'user']" size="2xs"></fa-icon>
                 <span class="icon">
                     <!-- TODO: Add author link -->
-                    created <a class="author" href="#">{{ challengeAuthorName }}</a>
+                    created <a class="author" href="#">{{ challenge.authorName }}</a>
                 </span>
             </div>
         </div>
     </div>
     <div class="languages d-flex flex-wrap gap-2">
-        <div *ngFor="let language of challengeLanguages" class="language-block d-flex align-items-center">
-            <img [src]="language.imgUrl" class="language-logo" alt="language logo" />
-            <span class="language-name">{{ language.value }}</span>
+        <div *ngFor="let language of challenge.languages" class="language-block d-flex align-items-center">
+            <img [src]="getLanguageIconUrl(language.name)" class="language-logo" alt="language logo" />
+            <span class="language-name">{{ language.name }}</span>
         </div>
     </div>
 </div>
 
 <div class="tags d-flex flex-wrap gap-2">
-    <div *ngFor="let tag of challengeTags" class="tag-block d-flex align-items-center justify-content-center">
-        <span>{{ tag }}</span>
+    <div *ngFor="let tag of challenge.tags" class="tag-block d-flex">
+        <span>{{ tag.name }}</span>
     </div>
 </div>

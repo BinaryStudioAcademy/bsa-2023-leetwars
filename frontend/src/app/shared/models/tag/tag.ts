@@ -1,5 +1,5 @@
-import { Entity } from '../common/entity';
+import { Entity } from '@shared/models/common/entity';
 
-export interface Tag extends Entity {
-    name: string;
+export interface ITag extends Entity<number> {
+    name: string,
 }

@@ -43,7 +43,6 @@
         Portugal,
         Qatar,
         Romania,
-        Russia,
         SaudiArabia,
         Serbia,
         Singapore,

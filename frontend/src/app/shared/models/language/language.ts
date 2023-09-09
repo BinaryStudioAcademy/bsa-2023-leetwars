@@ -1,5 +1,5 @@
-import { Entity } from '../common/entity';
+import { Entity } from '@shared/models/common/entity';
 
-export interface Language extends Entity {
-    name: string;
+export interface ILanguage extends Entity<number> {
+    name: string,
 }

@@ -5,33 +5,48 @@
                 [Identifier]="'search'"
                 [Width]="'100%'"
                 [Height]="'100%'"
-                [InputPlaceholder]="'Search'"></app-custom-input>
+                [InputPlaceholder]="'Search'"
+                (InputValueChange)="onSearchTextChange($event)"></app-custom-input>
             <fa-icon [icon]="'search'" size="lg" class="search-filter-icon"></fa-icon>
         </div>
         <app-dropdown-select
             [isMultiSelection]="false"
             [title]="'By language'"
-            [items]="languagesList"
+            [items]="languagesNames"
+            (selectedItemsChanged)="onLanguageChange($event)"
             class="m-0-12px"></app-dropdown-select>
         <app-dropdown-select
             [isMultiSelection]="false"
             [title]="'By status'"
-            [items]="statusesList"
+            [items]="statusesNames"
+            (selectedItemsChanged)="onStatusChange($event)"
             class="m-0-12px"></app-dropdown-select>
         <app-dropdown-select
             [isMultiSelection]="false"
             [title]="'By progress'"
-            [items]="progressesList"
+            [items]="progressesNames"
+            (selectedItemsChanged)="onProgressChange($event)"
             class="m-0-12px"></app-dropdown-select>
         <app-dropdown-select
-            [isMultiSelection]="false"
+            [isMultiSelection]="true"
             [title]="'By tags'"
-            [items]="tagsList"
+            [items]="tagsNames"
+            (selectedItemsChanged)="onTagsChange($event)"
             class="m-0-12px mb-28px"></app-dropdown-select>
     </div>
-    <div class="d-grid justify-content-center gap-2">
-        <div *ngFor="let challenge of challengesList">
+    <div class="challenges d-grid justify-content-center gap-2" infinite-scroll (scrolled)="onScroll()">
+        <div class="d-flex text-center text-white text-opacity-50 mt-3" *ngIf="!challenges.length && !loading">
+            <div>
+                <h4>No available challenge</h4>
+                <p>Please select other variants</p>
+            </div>
+        </div>
+
+        <div *ngFor="let challenge of challenges">
             <app-challenge [challenge]="challenge"></app-challenge>
+        </div>
+        <div *ngIf="loading">
+            <p class="text-center text-white text-opacity-50 mt-3">Loading...</p>
         </div>
     </div>
 </div>

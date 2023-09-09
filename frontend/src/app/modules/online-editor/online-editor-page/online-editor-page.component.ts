@@ -8,7 +8,7 @@ import { Challenge } from '@shared/models/challenge/challenge';
 import { CodeRunRequest } from '@shared/models/code-run-request/code-run-request';
 import { CodeRunResults } from '@shared/models/code-run-results/code-run-results';
 import { TestsOutput } from '@shared/models/tests-output/tests-output';
-// import { CSharpTestOutput } from '@shared/models/csharp-test-output/csharp-test-output';
+import { IChallenge } from '@shared/models/challenge/challenge';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -27,7 +27,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     splitRightMinSize: number = 20;
 
-    challenge: Challenge;
+    challenge: IChallenge;
 
     selectedLanguage: string;
 

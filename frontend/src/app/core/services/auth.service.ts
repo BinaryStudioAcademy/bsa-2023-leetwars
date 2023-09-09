@@ -1,29 +1,38 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { User } from '@shared/models/user/user';
-import { UserLoginDto } from '@shared/models/user/user-login-dto';
-import { UserRegisterDto } from '@shared/models/user/user-register-dto';
+import { Router } from '@angular/router';
+import { IUser } from '@shared/models/user/user';
+import { IUserLogin } from '@shared/models/user/user-login';
+import { IUserRegister } from '@shared/models/user/user-register';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
-import { BehaviorSubject, first, from, Observable, switchMap, tap, throwError } from 'rxjs';
+import { BehaviorSubject, first, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { ToastrNotificationsService } from './toastr-notifications.service';
 import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    private userSubject: BehaviorSubject<User | undefined>;
+    private providerName: string = 'firebase';
 
-    private user: User | undefined;
+    public userSubject: BehaviorSubject<IUser | undefined>;
+
+    private user: IUser | undefined;
 
     private userKeyName = 'userInfo';
 
     private tokenKeyName = 'userToken';
 
-    constructor(private afAuth: AngularFireAuth, private userService: UserService) {
-        this.userSubject = new BehaviorSubject<User | undefined>(this.getUserInfo());
+    constructor(
+        private afAuth: AngularFireAuth,
+        private userService: UserService,
+        private router: Router,
+        private toastrNotification: ToastrNotificationsService,
+    ) {
+        this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
         afAuth.authState.subscribe(async (user) => {
             if (user) {
                 localStorage.setItem(this.tokenKeyName, await user.getIdToken());
@@ -37,7 +46,7 @@ export class AuthService {
         return this.getUserToken() && this.getUserInfo();
     }
 
-    public register(user: UserRegisterDto) {
+    public register(user: IUserRegister) {
         return this.createUser(
             from(this.afAuth.createUserWithEmailAndPassword(user.email, user.password)).pipe(
                 first(),
@@ -48,7 +57,7 @@ export class AuthService {
         );
     }
 
-    public login(userDto: UserLoginDto) {
+    public login(userDto: IUserLogin) {
         return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
             first(),
             catchError((error) => throwError(error.message)),
@@ -69,12 +78,12 @@ export class AuthService {
         return localStorage.getItem(this.tokenKeyName);
     }
 
-    public signInWithGoogle() {
-        return this.createUser(this.signInWithProvider(new GoogleAuthProvider()));
+    public signInWithGoogle(isLogin: boolean = true) {
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider())), isLogin);
     }
 
-    public signInWithGitHub() {
-        return this.createUser(this.signInWithProvider(new GithubAuthProvider()));
+    public signInWithGitHub(isLogin: boolean = true) {
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider())), isLogin);
     }
 
     // TODO: Implemented only firebase part
@@ -109,11 +118,27 @@ export class AuthService {
         return from(this.afAuth.sendPasswordResetEmail(passwordResetEmail)).pipe(first());
     }
 
+    public getUser() {
+        return of(this.getUserInfo()!);
+    }
+
     private signInWithProvider(provider: firebase.auth.AuthProvider) {
         return from(this.afAuth.signInWithPopup(provider)).pipe(
             first(),
             catchError((error) => throwError(error.message)),
         );
+    }
+
+    private signWithProvider(observable: Observable<IUser | undefined>, isLogin: boolean) {
+        return observable.subscribe((user?: IUser) => {
+            if (user) {
+                this.router.navigate(['']);
+                this.toastrNotification.showSuccess(
+                    `${user.userName} was successfully signed ${isLogin ? 'in' : 'up'}`,
+                );
+                // add email sender to user.email
+            }
+        });
     }
 
     private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string | undefined = undefined) {
@@ -127,10 +152,23 @@ export class AuthService {
                     timezone: new Date().getTimezoneOffset() / 60,
                 })),
             tap((user) => this.setUserInfo(user)),
+            catchError((error: string | Error) => {
+                let message = error as string;
+
+                if (typeof error !== 'string') {
+                    message = error.message;
+                }
+
+                if (!message.toLowerCase().includes(this.providerName)) {
+                    this.toastrNotification.showError(message);
+                }
+
+                return of(undefined);
+            }),
         );
     }
 
-    private getUserInfo(): User | undefined {
+    public getUserInfo(): IUser | undefined {
         const userInfo = localStorage.getItem(this.userKeyName);
 
         if (userInfo) {
@@ -140,7 +178,7 @@ export class AuthService {
         return undefined;
     }
 
-    private setUserInfo(user: User) {
+    private setUserInfo(user: IUser) {
         localStorage.setItem(this.userKeyName, JSON.stringify(user));
         this.userSubject.next(user);
         this.user = user;
