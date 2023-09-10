@@ -30,7 +30,7 @@ namespace LeetWars.Builder.Services
 
                 var request = JsonConvert.DeserializeObject<CodeRunRequest>(message);
 
-                var languages = new List<string> { "C#", "javascript" };
+                var languages = new List<string> { "C#", "Javascript" };
 
                 if(languages.Contains(request.Language))
                 {
@@ -43,7 +43,7 @@ namespace LeetWars.Builder.Services
 
                     var jsonString = JsonConvert.SerializeObject(result, settings);
 
-                    _producerService.Send("Hello Mario", ExchangeType.Direct);
+                    _producerService.Send(jsonString, ExchangeType.Direct);
                 }
 
                 _consumerService.SetAcknowledge(args.DeliveryTag, true);

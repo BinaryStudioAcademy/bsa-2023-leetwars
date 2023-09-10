@@ -41,7 +41,7 @@ namespace LeetWars.Builder.Services
                 config = dockerConfig.GetCSharpConfig(projectFileName);
             }
 
-            if(request.Language == "javascript")
+            if(request.Language == "Javascript")
             {
                 dirBuilder.CreateDirectoryJS(dir, request);
 
@@ -112,7 +112,7 @@ namespace LeetWars.Builder.Services
                 reader.BuildResultCSharp(buildLog, result);
             }
 
-            if(request.Language == "javascript")
+            if(request.Language == "Javascript")
             {
                 reader.BuildResultJS(buildLog, result);
             }
