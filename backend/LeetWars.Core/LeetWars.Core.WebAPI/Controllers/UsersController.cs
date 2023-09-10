@@ -31,7 +31,7 @@ public class UsersController : ControllerBase
     [AllowAnonymous]
     public async Task<ActionResult<bool>> CheckEmail([FromQuery] string email)
     {
-        var createdUser = await _userService.CheckIsExistingEmail(email);
+        var createdUser = await _userService.CheckIsExistingEmailAsync(email);
         return Ok(createdUser);
 
     }
@@ -47,22 +47,21 @@ public class UsersController : ControllerBase
     [AllowAnonymous]
     public async Task<ActionResult<bool>> CheckUserName([FromQuery] string username)
     {
-        var isExistingUserName = await _userService.CheckIsExistingUserName(username);
+        var isExistingUserName = await _userService.CheckIsExistingUserNameAsync(username);
         return Ok(isExistingUserName);
     }
 
     [HttpGet("current")]
     public async Task<ActionResult<UserDto>> GetCurrentUser()
     {
-        var uid = _userService.GetCurrentUserUid();
-        var user = await _userService.GetUserByUidAsync(uid);
-        return Ok(user);
+        var currentUser = await _userService.GetCurrentUserAsync();
+        return Ok(currentUser);
     }
 
     [HttpGet("{id}/user-challenges")]
     public async Task<ActionResult<List<UserSolutionsGroupedBySkillLevelDto>>> GetUserChallengesInfoByTags(long id)
     {
-        var challenges =  await _userService.GetUserChallengesInfoByTags(id);
+        var challenges =  await _userService.GetUserChallengesInfoByTagsAsync(id);
         return Ok(challenges);
     }
 

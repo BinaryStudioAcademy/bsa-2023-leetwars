@@ -8,6 +8,7 @@ namespace LeetWars.Core.BLL.MappingProfiles
     {
         public LanguageProfile()
         {
+            CreateMap<Language, LanguageDto>();
             CreateMap<Language, LanguageDto>().ReverseMap();
         }
     }

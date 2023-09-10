@@ -15,14 +15,16 @@ namespace LeetWars.Core.BLL.MappingProfiles
         {
             CreateMap<User,UserDto>();
             CreateMap<UserDto,User>();
+
             CreateMap<NewUserDto, User>();
 
             CreateMap<User, UserFullDto>();        
+            CreateMap<UserFullDto, User>();
+
             CreateMap<Subscription,SubscriptionDto>();
-            CreateMap<Language, LanguageDto>();
+
             CreateMap<UserLanguageLevel, UserLanguageLevelDto>();
             CreateMap<UserSolution, UserSolutionDto>();
-            CreateMap<Challenge, ChallengeDto>();
         }
     }
 }
