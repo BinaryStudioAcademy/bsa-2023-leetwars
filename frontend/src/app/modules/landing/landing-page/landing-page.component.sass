@@ -16,7 +16,6 @@
     &:hover
         box-shadow: $transparent-green 0px 0px 4px 2px, $transparent-green 0px 0px 16px 0px
 
-
 //General
 :host
     font-family: 'Open Sans', sans-serif
@@ -49,6 +48,9 @@ h2
 .span-accent
     color: $green
 
+.logo-container
+    position: absolute
+    left: 20px
 
 //Header -> nav
 .nav-container
@@ -81,6 +83,14 @@ h2
     background-size: cover
     background-image: url("/assets/images/landing-page/unlimited.svg")
     background-position: 50%
+
+.unlimited-hero::before
+    content: ""
+    position: absolute
+    top: -10px
+    width: 100%
+    height: 715px
+    background: $transparent-purple
 
 .unlimited-content-wrapper
     height: 100%
@@ -276,6 +286,11 @@ footer
         padding: 0 36px
         text-align: center
 
+    .logo-container img
+        width: 150px
+        height: auto
+
+
 @media screen and (max-width: 1000px)
     #fun-programming
         padding: 36px
@@ -312,10 +327,10 @@ footer
     .nav-dropdown-container
         display: none
 
+
 @media screen and (max-width: 450px)
     .green-accent-link
         padding: 16px 36px
-
 
 //for DOM manipulation
 .scrolled

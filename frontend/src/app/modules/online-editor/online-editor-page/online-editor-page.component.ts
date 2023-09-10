@@ -1,16 +1,13 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BroadcastHubService } from '@core/hubs/broadcast-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { ApiResponse } from '@shared/models/api-response';
-import { Challenge } from '@shared/models/challenge/challenge';
+import { IChallenge } from '@shared/models/challenge/challenge';
 import { CodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { CodeRunResults } from '@shared/models/code-run/code-run-result';
-import { UserCode } from '@shared/models/user-solution/user-code';
-import { UserSolution } from '@shared/models/user-solution/user-solution';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -29,7 +26,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     splitRightMinSize: number = 20;
 
-    challenge: Challenge;
+    challenge: IChallenge;
 
     selectedLanguage: string;
 
@@ -41,7 +38,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     initialSolution: string | undefined;
 
-    solution: CodeRunRequest
+    solution: CodeRunRequest;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -73,13 +70,11 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         this.signalRService.listenMessages((msg: string) => {
             const codeRunResults: CodeRunResults = JSON.parse(msg) as CodeRunResults;
 
-            if(codeRunResults.buildResults?.isSuccess) {
-                this.toastrNotification.showSuccess(`code was compiled successfully`);
-            } 
-            else {
+            if (codeRunResults.buildResults?.isSuccess) {
+                this.toastrNotification.showSuccess('code was compiled successfully');
+            } else {
                 this.toastrNotification.showError(codeRunResults.buildResults?.buildMessage as string);
             }
-            console.log(`Received message: ${msg}`);
         });
 
         this.challengeService.getChallengeById(challengeId).subscribe({
@@ -105,7 +100,8 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
-        this.selectedLanguage = selectedLang
+
+        this.selectedLanguage = selectedLang;
 
         this.initialSolution = this.getInitialSolutionByLanguage($event as string);
 
@@ -132,25 +128,18 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     sendCode(): void {
-
         this.solution = {
             userId: 1,
             challengeVersionId: this.challenge.id,
             language: this.selectedLanguage,
-            userCode: this.initialSolution as string
-        }
+            userCode: this.initialSolution as string,
+        };
 
-        this.challengeService.postCode(this.solution).subscribe((response: ApiResponse) => {
-            if (response.status === 'Success') {
-              console.log(`Success: ${response.message}`);
-            } else {
-              console.error(`Error: ${response.message}`);
-            }
-          });
+        this.challengeService.postCode(this.solution).subscribe();
     }
 
     ngOnDestroy(): void {
-        this.signalRService.stop()
+        this.signalRService.stop();
         this.destroyed$.next();
         this.destroyed$.complete();
     }

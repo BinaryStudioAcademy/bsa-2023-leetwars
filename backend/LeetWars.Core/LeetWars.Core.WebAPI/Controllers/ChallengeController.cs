@@ -2,8 +2,8 @@
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
-using LeetWars.Core.Common.DTO.UserSolution;
 using LeetWars.Core.DAL.Entities.HelperEntities;
+using LeetWars.Core.Common.DTO.ChallengeStar;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
@@ -23,6 +23,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         public async Task<ActionResult<ChallengePreviewDto>> GetAllAsync([FromQuery] ChallengesFiltersDto filters, [FromQuery] PageSettingsDto page)
         {
             var challenges = await _challengeService.GetChallengesAsync(filters, page);
+
             return Ok(challenges);
         }
 
@@ -36,20 +37,21 @@ namespace LeetWars.Core.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeFullDto>> GetById(long id)
         {
-            var challenges = await _challengeService.GetChallengeByIdAsync(id);
+            var challenges = await _challengeService.GetChallengeFullDtoByIdAsync(id);
             return Ok(challenges);
         }
 
         [HttpPost("{id}/{selectedLanguage}")]
-        public ActionResult<ApiResponse> GetCode(CodeRunRequestDto userCode)
+        public ActionResult GetCode(CodeRunRequestDto userCode)
         {
             _challengeService.ComputeResult(userCode);
-            var response = new ApiResponse
-            {
-                Status = "Success",
-                Message = "Code computed successfully."
-            };
-            return Ok(response);
+            return Ok();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
+        {
+            return Ok(await _challengeService.Update(challengeStarDto));
         }
     }
 }

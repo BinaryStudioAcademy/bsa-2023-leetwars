@@ -1,8 +1,8 @@
-import { DayChartData } from '@shared/models/submission-chart/day-chart-data';
+import { IDayChartData } from '@shared/models/submission-chart/day-chart-data';
 
-export interface MonthChartData {
+export interface IMonthChartData {
     title: string,
     showTitle: boolean,
-    days: DayChartData[],
+    days: IDayChartData[],
     spacers: string[],
 }

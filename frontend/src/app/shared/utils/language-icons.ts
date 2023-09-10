@@ -1,17 +1,23 @@
+const BASE_URL = '/assets/images/programming-languages';
+const DEFAULT_URL = `${BASE_URL}/default_pl.png`;
 const LANGUAGE_ICONS = [
-    { name: 'html', url: '/assets/images/html.png' },
-    { name: 'ruby', url: '/assets/images/ruby.png' },
-    { name: 'javascript', url: '/assets/images/js.png' },
-    { name: 'typescript', url: '/assets/images/js.png' },
+    { name: 'html', url: 'html.png' },
+    { name: 'ruby', url: 'ruby.png' },
+    { name: 'javascript', url: 'js.png' },
+    { name: 'typescript', url: 'ts.png' },
+    { name: 'c#', url: 'csharp.png' },
+    { name: 'python', url: 'python.png' },
 ];
 
-const DEFAULT_URL = '/assets/images/html.png';
+function generateLanguageIconUrl(languageUrl: string) {
+    return `${BASE_URL}/${languageUrl}`;
+}
 
 export function getLanguageIconUrl(languageName: string) {
-    const item = LANGUAGE_ICONS.find(i => i.name === languageName.toLowerCase());
+    const icon = LANGUAGE_ICONS.find(li => li.name.toLowerCase() === languageName.toLowerCase());
 
-    if (item) {
-        return item.url;
+    if (icon) {
+        return generateLanguageIconUrl(icon.url);
     }
 
     return DEFAULT_URL;

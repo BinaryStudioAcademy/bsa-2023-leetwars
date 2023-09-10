@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 
-import { ProfilePageMainInfoComponent } from './profile-page-main-info/profile-page-main-info.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
     {
         path: 'profile',
-        component: ProfilePageMainInfoComponent,
+        component: UserProfileComponent,
         children: [
             {
                 path: '**',

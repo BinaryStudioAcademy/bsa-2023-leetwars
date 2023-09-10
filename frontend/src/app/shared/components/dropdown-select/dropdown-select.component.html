@@ -1,16 +1,16 @@
-<div ngbDropdown class="dropdown d-inline-flex" [autoClose]="isMultiSelection ? 'outside' : true">
-    <div class="button-wrapper d-flex flex-column d-flex flex-grow-1">
+<div ngbDropdown class="w-100 d-inline-flex" [autoClose]="isMultiSelection ? 'outside' : true">
+    <div class="d-flex flex-column d-flex flex-grow-1 w-100">
         <label *ngIf="title" class="title">{{ title }}</label>
         <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
             <fa-icon *ngIf="selectedIcon" [icon]="selectedIcon" class="ms-0 selected-icon"></fa-icon>
-            <span class="float-start">{{ fieldText ? fieldText : selectText }}</span>
+            <span class="float-start" [ngClass]="{'multi-span': isMultiSelection}">{{ fieldText ? fieldText : selectText }}</span>
             <fa-icon [icon]="'chevron-down'" size="xs"></fa-icon>
         </button>
     </div>
 
     <div class="w-100 dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenuButton">
         <ng-container *ngIf="!isMultiSelection; else multiSelect">
-            <a ngbDropdownItem *ngIf="selectText" (click)="selectItem(selectText)">
+            <a ngbDropdownItem *ngIf="isSelectedTextNotDefault()" (click)="selectItem(selectText)">
                 <fa-icon
                     [icon]="'check'"
                     size="xs"

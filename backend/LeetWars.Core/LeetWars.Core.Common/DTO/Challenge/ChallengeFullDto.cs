@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.Common.DTO.ChallengeLevel;
+using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
 using LeetWars.Core.Common.DTO.Tag;
 using LeetWars.Core.Common.DTO.User;
@@ -17,5 +18,6 @@ namespace LeetWars.Core.Common.DTO.Challenge
         public UserDto? Author { get; set; }
         public ICollection<TagDto>? Tags { get; set; }
         public ICollection<ChallengeVersionFullDto>? Versions { get; set; }
+        public ICollection<ChallengeStarDto>? Stars { get; set; }
     }
 }

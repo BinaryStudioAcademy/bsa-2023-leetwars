@@ -1,7 +1,7 @@
 ﻿using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.CodeRunRequest;
+using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.Filters;
-using LeetWars.Core.Common.DTO.UserSolution;
 
 namespace LeetWars.Core.BLL.Interfaces
 {
@@ -12,5 +12,7 @@ namespace LeetWars.Core.BLL.Interfaces
         Task<ChallengeFullDto> GetChallengeByIdAsync(long id);
 
         void ComputeResult(CodeRunRequestDto userCode);
+        Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
+        Task<ChallengePreviewDto> Update(ChallengeStarDto challengeStarDto);
     }
 }
