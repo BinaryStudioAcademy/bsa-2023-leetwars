@@ -2,8 +2,8 @@
 using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.ChallengeStar;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
@@ -228,28 +228,6 @@ namespace LeetWars.Core.BLL.Services
 
                 return randomValue % maxValue;
             }
-        }
-
-        public async Task<ChallengeFullDto> GetChallengeByIdAsync(long id)
-        {
-            var challenges = await _context.Challenges
-                .Include(challenge => challenge.Level)
-                .Include(challenge => challenge.Tags)
-                .Include(challenge => challenge.Author)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Language)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Solutions)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Tests
-                        .Where(test => test.IsPublic))
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.LanguageVersions)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Author)
-                .FirstOrDefaultAsync(challenge => challenge.Id == id);
-
-            return _mapper.Map<ChallengeFullDto>(challenges);
         }
 
         public void ComputeResult(CodeRunRequestDto userCode)

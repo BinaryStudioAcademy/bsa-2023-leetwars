@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BroadcastHubService } from '@core/hubs/broadcast-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { ApiResponse } from '@shared/models/api-response';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { CodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { CodeRunResults } from '@shared/models/code-run/code-run-result';

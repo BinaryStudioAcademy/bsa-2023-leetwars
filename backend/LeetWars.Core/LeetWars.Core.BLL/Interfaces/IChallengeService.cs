@@ -9,7 +9,6 @@ namespace LeetWars.Core.BLL.Interfaces
     {
         Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters, PageSettingsDto? page);
         Task<ChallengePreviewDto> GetChallengeSuggestionAsync(SuggestionSettingsDto settings);
-        Task<ChallengeFullDto> GetChallengeByIdAsync(long id);
 
         void ComputeResult(CodeRunRequestDto userCode);
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
