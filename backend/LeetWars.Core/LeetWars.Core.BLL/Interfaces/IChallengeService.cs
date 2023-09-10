@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.UserSolution;
 
@@ -10,6 +11,6 @@ namespace LeetWars.Core.BLL.Interfaces
         Task<ChallengePreviewDto> GetChallengeSuggestionAsync(SuggestionSettingsDto settings);
         Task<ChallengeFullDto> GetChallengeByIdAsync(long id);
 
-        void ComputeResult(UserCodeDto solution);
+        void ComputeResult(CodeRunRequestDto userCode);
     }
 }

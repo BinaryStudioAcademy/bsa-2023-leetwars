@@ -8,6 +8,5 @@
         public string UserCode { get; set; } = string.Empty;
         public string? Preloaded { get; set; }
         public string? Tests { get; set; }
-
     }
 }

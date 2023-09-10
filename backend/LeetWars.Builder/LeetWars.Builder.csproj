@@ -16,16 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="RunnerDefaults\CSharp\CSharpRunner\Program.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="RunnerDefaults\CSharp\CSharpCodeBuilder\SolutionBuilder\SolutionBuilder.csproj" />
-    <None Include="RunnerDefaults\CSharp\CSharpRunner\CSharpRunner.csproj" />
-    <None Include="RunnerDefaults\CSharp\CSharpTestRunner\SolutionTester.Tests\SolutionTester.Tests.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Docker.DotNet" Version="3.125.15" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
     <PackageReference Include="SharpCompress" Version="0.33.0" />

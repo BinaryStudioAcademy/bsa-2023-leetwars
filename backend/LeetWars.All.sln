@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.RabbitMQ", "LeetWa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Builder", "LeetWars.Builder\LeetWars.Builder.csproj", "{75EF42F7-2F18-449F-ADAD-D665992606E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetWars.Emailer", "LeetWars.Emailer\LeetWars.Emailer.csproj", "{C61186C3-19AC-4771-8047-DAA02B91A888}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Emailer", "LeetWars.Emailer\LeetWars.Emailer.csproj", "{C61186C3-19AC-4771-8047-DAA02B91A888}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-import { HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
 import { ApiResponse } from '@shared/models/api-response';
@@ -6,9 +6,8 @@ import { Challenge } from '@shared/models/challenge/challenge';
 import { ChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
+import { CodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { PageSettings } from '@shared/models/page-settings';
-import { UserCode } from '@shared/models/user-solution/user-code';
-import { UserSolution } from '@shared/models/user-solution/user-solution';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
 
@@ -41,8 +40,10 @@ export class ChallengeService {
         return this.httpService.getRequest<Challenge>(`${this.challengesRoute}/${id}`);
     }
 
-    public postCode(solution: UserCode, id: number, selectedLanguage: string): Observable<ApiResponse> {
+    public postCode(request: CodeRunRequest): Observable<ApiResponse> {
+        const id: number = request.challengeVersionId;
+        const selectedLanguage: string = request.language
 
-        return this.httpService.postRequest<ApiResponse>(`${this.challengesRoute}/${id}/${selectedLanguage}`, solution)
+        return this.httpService.postRequest<ApiResponse>(`${this.challengesRoute}/${id}/${selectedLanguage}`, request)
     }
 }

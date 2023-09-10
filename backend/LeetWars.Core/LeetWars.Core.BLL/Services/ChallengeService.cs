@@ -2,6 +2,7 @@
 using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.UserSolution;
 using LeetWars.Core.DAL.Context;
@@ -194,9 +195,9 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengeFullDto>(challenges);
         }
 
-        public void ComputeResult(UserCodeDto solution)
+        public void ComputeResult(CodeRunRequestDto userCode)
         {
-            _messageSenderService.SendMessageToRabbitMQ(solution.Code);
+            _messageSenderService.SendMessageToRabbitMQ(userCode);
         }
     }
 }

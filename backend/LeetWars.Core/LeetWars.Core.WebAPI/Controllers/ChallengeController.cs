@@ -1,5 +1,6 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.UserSolution;
 using LeetWars.Core.DAL.Entities.HelperEntities;
@@ -40,7 +41,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpPost("{id}/{selectedLanguage}")]
-        public ActionResult<ApiResponse> GetCode(UserCodeDto userCode)
+        public ActionResult<ApiResponse> GetCode(CodeRunRequestDto userCode)
         {
             _challengeService.ComputeResult(userCode);
             var response = new ApiResponse

@@ -7,6 +7,8 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { ApiResponse } from '@shared/models/api-response';
 import { Challenge } from '@shared/models/challenge/challenge';
+import { CodeRunRequest } from '@shared/models/code-run/code-run-request';
+import { CodeRunResults } from '@shared/models/code-run/code-run-result';
 import { UserCode } from '@shared/models/user-solution/user-code';
 import { UserSolution } from '@shared/models/user-solution/user-solution';
 import { Subject, takeUntil } from 'rxjs';
@@ -39,7 +41,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     initialSolution: string | undefined;
 
-    solution: UserCode
+    solution: CodeRunRequest
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -69,8 +71,13 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         this.splitDirection = 'horizontal';
 
         this.signalRService.listenMessages((msg: string) => {
-            if(msg == "Hello Mario") {
+            const codeRunResults: CodeRunResults = JSON.parse(msg) as CodeRunResults;
+
+            if(codeRunResults.buildResults?.isSuccess) {
                 this.toastrNotification.showSuccess(`code was compiled successfully`);
+            } 
+            else {
+                this.toastrNotification.showError(codeRunResults.buildResults?.buildMessage as string);
             }
             console.log(`Received message: ${msg}`);
         });
@@ -98,6 +105,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
+        this.selectedLanguage = selectedLang
 
         this.initialSolution = this.getInitialSolutionByLanguage($event as string);
 
@@ -126,12 +134,13 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     sendCode(): void {
 
         this.solution = {
-            code: this.initialSolution as string,
+            userId: 1,
+            challengeVersionId: this.challenge.id,
             language: this.selectedLanguage,
-            output: "",
+            userCode: this.initialSolution as string
         }
 
-        this.challengeService.postCode(this.solution, this.challenge.id, this.selectedLanguage).subscribe((response: ApiResponse) => {
+        this.challengeService.postCode(this.solution).subscribe((response: ApiResponse) => {
             if (response.status === 'Success') {
               console.log(`Success: ${response.message}`);
             } else {
