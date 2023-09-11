@@ -41,7 +41,7 @@ public class DockerConfigurations
         await client.Images.CreateImageAsync(imagePullParams, null, progress);
     }
 
-    public HostConfig GetHostConfig()
+    public HostConfig GetHostConfig(string path)
     {
         return new HostConfig()
         {
@@ -50,7 +50,7 @@ public class DockerConfigurations
                     new Mount
                     {
                         Type = "bind",
-                        Source = $"{dir}",
+                        Source = $"{path}",
                         Target = "/app",
                     },
                 },

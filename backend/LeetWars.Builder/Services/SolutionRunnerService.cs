@@ -56,7 +56,7 @@ namespace LeetWars.Builder.Services
 
             await readWrite.WriteContentAsync(Path.Combine(dir, solutionFileName), solutionCode);
 
-            var hostConfig = dockerConfig.GetHostConfig();
+            var hostConfig = dockerConfig.GetHostConfig(dir);
 
             var response = await _client.Containers.CreateContainerAsync(new CreateContainerParameters(config)
             {
@@ -68,12 +68,7 @@ namespace LeetWars.Builder.Services
             await _client.Containers.StartContainerAsync(containerId, new ContainerStartParameters());
             await _client.Containers.WaitContainerAsync(containerId);
 
-            string buildLog = ReadContentAsync;
-
-            using (StreamReader buildReader = new StreamReader(Path.Combine(dir, "buildoutput.txt")))
-            {
-                buildLog = await buildReader.ReadToEndAsync();
-            }
+            string buildLog = await readWrite.ReadContentAsync(Path.Combine(dir, "buildoutput.txt"));
 
             await _client.Containers.RemoveContainerAsync(containerId, new ContainerRemoveParameters { Force = true });
 
