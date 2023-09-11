@@ -12,7 +12,7 @@
         <div class="user">
             <img [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'" alt="User Logo" class="user-logo">
             <span class="username" (click)="showMenu = !showMenu">
-                {{ user.firstName || user.lastName ? user.firstName + ' ' + user.lastName : user.userName }}
+                {{ user.firstName && user.lastName ? user.firstName + ' ' + user.lastName : user.userName }}
             </span>
         </div>
         <div class="menu-wraper">
