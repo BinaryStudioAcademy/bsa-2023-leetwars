@@ -50,7 +50,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         [HttpPut]
         public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
         {
-            return Ok(await _challengeService.Update(challengeStarDto));
+            return Ok(await _challengeService.UpdateAsync(challengeStarDto));
         }
     }
 }
