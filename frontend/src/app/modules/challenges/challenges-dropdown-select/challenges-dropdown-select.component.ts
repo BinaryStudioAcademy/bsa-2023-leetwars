@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DropdownItem } from '@shared/models/dropdown-item';
+import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
 @Component({
     selector: 'app-challenges-dropdown-select',
@@ -17,4 +18,6 @@ export class ChallengesDropdownSelectComponent {
         this.selectedItem = item;
         this.selectedItemChanged.emit(this.selectedItem);
     }
+
+    protected readonly getLanguageIconUrl = getLanguageIconUrl;
 }

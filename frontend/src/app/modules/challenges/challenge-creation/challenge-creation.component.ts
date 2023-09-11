@@ -7,17 +7,16 @@ import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import {
-    allStepsAllowed,
-    getDropdownItems,
+    checkAllStepsIsValid,
+    getDropdownItems, getInitStepsData,
     getNewChallenge,
     getNewChallengeVersion,
-    getStep,
-    getStepChecking,
-    getStepIndex,
+    getStepChecking, getStepData,
     prepareChallengeDto,
-    stepAllowed,
-    stepData,
+    showValidationErrorsForAllSteps, showValidationErrorsForRequiredSteps,
+    stepIsAllowed,
 } from '@modules/challenges/challenge-creation/challenge-creation.utils';
+import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { NewChallenge } from '@shared/models/challenge/new-challenge';
 import { ChallengeLevel } from '@shared/models/challenge-level/challenge-level';
@@ -35,7 +34,7 @@ import { takeUntil } from 'rxjs';
 export class ChallengeCreationComponent extends BaseComponent implements OnInit {
     public steps: ChallengeStep[];
 
-    public stepData = stepData;
+    public stepsData: StepData[] = getInitStepsData();
 
     public currentStep: ChallengeStep = ChallengeStep.Question;
 
@@ -55,11 +54,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public editorLanguage = '';
 
-    protected readonly getStepIndex = getStepIndex;
-
     protected readonly ChallengeStep = ChallengeStep;
-
-    protected readonly getStepChecking = getStepChecking;
 
     constructor(
         private challengeService: ChallengeService,
@@ -70,7 +65,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         private router: Router,
     ) {
         super();
-        this.steps = this.stepData.map(s => s.step);
+        this.steps = this.stepsData.map(s => s.step);
         this.challenge = getNewChallenge();
         this.challengeVersion = getNewChallengeVersion();
     }
@@ -82,22 +77,24 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
     }
 
     onStepClick(step: ChallengeStep) {
-        if (!stepAllowed(step)) {
+        this.stepsData = showValidationErrorsForRequiredSteps(this.stepsData, step);
+        if (!stepIsAllowed(this.stepsData, step)) {
             return;
         }
         this.currentStep = step;
     }
 
-    onValidationChange(stepType: ChallengeStep, isValid: boolean) {
-        const step = getStep(stepType);
+    onValidationChange(step: ChallengeStep, isValid: boolean) {
+        const stepData = getStepData(this.stepsData, step);
 
-        if (step) {
-            step.isValid = isValid;
+        if (stepData) {
+            stepData.isValid = isValid;
         }
     }
 
     onBtnCreateClick() {
-        if (allStepsAllowed()) {
+        this.stepsData = showValidationErrorsForAllSteps(this.stepsData);
+        if (checkAllStepsIsValid(this.stepsData)) {
             const newChallenge = prepareChallengeDto(this.challenge);
 
             this.challengeService.createChallenge(newChallenge)
@@ -128,6 +125,10 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
         this.editorLanguage = language.name;
         this.challengeVersion = this.challenge.versions.find(v => v.languageId === language.id)!;
+    }
+
+    public getStepChecking(step: ChallengeStep) {
+        return getStepChecking(this.stepsData, step);
     }
 
     private getLanguages() {

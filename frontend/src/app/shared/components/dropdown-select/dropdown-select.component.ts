@@ -27,11 +27,11 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
 
     public fieldText = '';
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['selectedItem']) {
+    ngOnChanges({ selectedItem, selectedItems }: SimpleChanges): void {
+        if (selectedItem) {
             this.setInitialValue();
         }
-        if (changes['selectedItems']) {
+        if (selectedItems) {
             this.fieldText = this.selectedItems.join(', ');
         }
     }

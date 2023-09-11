@@ -2,7 +2,7 @@
     <div class="button-wrapper d-flex flex-column d-flex flex-grow-1">
         <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
             <div *ngIf="selectedItem" class="float-start d-flex">
-                <fa-icon *ngIf="selectedItem.iconName" [icon]="['fab', selectedItem.iconName]"></fa-icon>
+                <img *ngIf="selectedItem.icon" [src]="selectedItem.icon" class="language-logo" alt="language logo" />
                 <p>{{ selectedItem.content }}</p>
             </div>
             <span class="circle-icon">

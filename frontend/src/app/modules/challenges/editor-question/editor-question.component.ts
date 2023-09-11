@@ -113,9 +113,7 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             return;
         }
 
-        this.challenge.tags = value.map(tagName =>
-            this.allTags.find(item => item.name === tagName))
-            .filter(item => item !== undefined) as Tag[];
+        this.challenge.tags = this.allTags.filter(tag => value.includes(tag.name));
 
         this.inputForm.controls.tags.setValue(value);
         this.validationChange.emit(this.inputForm.valid);

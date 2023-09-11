@@ -1,53 +1,91 @@
+import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { CategoryType } from '@shared/enums/category-type';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { NewChallenge } from '@shared/models/challenge/new-challenge';
 import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { DropdownItem } from '@shared/models/dropdown-item';
+import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
-export const stepData = [
-    { step: ChallengeStep.Question, isValid: false, checkValidation: false },
-    { step: ChallengeStep.Solutions, isValid: false, checkValidation: false },
-    { step: ChallengeStep.Testcases, isValid: false, checkValidation: false },
-];
-
-export function getStepIndex(step: ChallengeStep) {
-    return stepData.findIndex(s => s.step === step);
+export function getInitStepsData(): StepData[] {
+    return [
+        {
+            step: ChallengeStep.Question,
+            isValid: false,
+            checkValidation: false,
+            requiredSteps: [],
+        },
+        {
+            step: ChallengeStep.Solutions,
+            isValid: false,
+            checkValidation: false,
+            requiredSteps: [ChallengeStep.Question],
+        },
+        {
+            step: ChallengeStep.Testcases,
+            isValid: false,
+            checkValidation: false,
+            requiredSteps: [ChallengeStep.Question, ChallengeStep.Solutions],
+        },
+    ];
 }
 
-export function getStep(step: ChallengeStep) {
-    return stepData.find(s => s.step === step);
+export function getStepData(steps: StepData[], stepType: ChallengeStep) {
+    return steps.find(s => s.step === stepType);
 }
 
-export function getStepChecking(stepType: ChallengeStep) {
-    const step = getStep(stepType);
+export function getStepChecking(stepsData: StepData[], step: ChallengeStep) {
+    const stepData = getStepData(stepsData, step);
 
-    if (step) {
-        return step.checkValidation;
+    if (!stepData) {
+        return false;
     }
 
-    return false;
+    return stepData.checkValidation;
 }
 
-export function stepAllowed(step: ChallengeStep) {
-    const stepIndex = getStepIndex(step);
+export function stepIsAllowed(stepsData: StepData[], step: ChallengeStep) {
+    const stepData = getStepData(stepsData, step);
 
-    return stepData.every((value, index) => {
-        if (index < stepIndex) {
-            stepData[index].checkValidation = true;
+    if (!stepData) {
+        return false;
+    }
 
-            return value.isValid;
+    return stepsData.every(checkedStep => {
+        if (stepData.requiredSteps.includes(checkedStep.step)) {
+            return checkedStep.isValid;
         }
 
         return true;
     });
 }
 
-export function allStepsAllowed() {
-    return stepData.every((step, index) => {
-        stepData[index].checkValidation = true;
+export function showValidationErrorsForAllSteps(stepsData: StepData[]) {
+    return stepsData.map(s => ({
+        ...s,
+        checkValidation: true,
+    }));
+}
+export function showValidationErrorsForRequiredSteps(stepsData: StepData[], step: ChallengeStep) {
+    const stepData = getStepData(stepsData, step);
 
-        return step.isValid;
+    if (!stepData) {
+        return stepsData;
+    }
+
+    return stepsData.map(checkedStep => {
+        if (stepData.requiredSteps.includes(checkedStep.step)) {
+            return {
+                ...checkedStep,
+                checkValidation: true,
+            };
+        }
+
+        return { ...checkedStep };
     });
+}
+
+export function checkAllStepsIsValid(stepsData: StepData[]) {
+    return stepsData.every((checkedStep) => checkedStep.isValid);
 }
 
 export function getNewChallenge(): NewChallenge {
@@ -81,18 +119,6 @@ export function prepareChallengeDto(challenge: NewChallenge): NewChallenge {
     };
 }
 
-const DROPDOWN_TEMPLATES: DropdownItem[] = [
-    { content: 'JavaScript', iconName: 'node-js' },
-];
-
 export function getDropdownItems(names: string[]): DropdownItem[] {
-    return names.map<DropdownItem>(itemName => {
-        const template = DROPDOWN_TEMPLATES.find(item => item.content.toLowerCase() === itemName.toLowerCase());
-
-        if (template) {
-            return template;
-        }
-
-        return { content: itemName };
-    });
+    return names.map<DropdownItem>(itemName => ({ content: itemName, icon: getLanguageIconUrl(itemName) }));
 }
