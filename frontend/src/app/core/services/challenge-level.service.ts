@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
-import { ChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 
 @Injectable({
     providedIn: 'root',
@@ -11,6 +11,6 @@ export class ChallengeLevelService {
     constructor(private httpService: HttpInternalService) { }
 
     public getLevels() {
-        return this.httpService.getRequest<ChallengeLevel[]>(this.baseUrl);
+        return this.httpService.getRequest<IChallengeLevel[]>(this.baseUrl);
     }
 }

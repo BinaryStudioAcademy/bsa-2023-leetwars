@@ -1,8 +1,8 @@
 import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { CategoryType } from '@shared/enums/category-type';
 import { ChallengeStep } from '@shared/enums/challenge-step';
-import { NewChallenge } from '@shared/models/challenge/new-challenge';
-import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
+import { INewChallenge } from '@shared/models/challenge/new-challenge';
+import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { IDropdownItem } from '@shared/models/dropdown-item';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
@@ -88,7 +88,7 @@ export function checkAllStepsIsValid(stepsData: StepData[]) {
     return stepsData.every((checkedStep) => checkedStep.isValid);
 }
 
-export function getNewChallenge(): NewChallenge {
+export function getNewChallenge(): INewChallenge {
     return {
         title: '',
         instructions: '',
@@ -99,7 +99,7 @@ export function getNewChallenge(): NewChallenge {
     };
 }
 
-export function getNewChallengeVersion(): NewChallengeVersion {
+export function getNewChallengeVersion(): INewChallengeVersion {
     return {
         languageId: 0,
         initialSolution: '',
@@ -110,7 +110,7 @@ export function getNewChallengeVersion(): NewChallengeVersion {
     };
 }
 
-export function prepareChallengeDto(challenge: NewChallenge): NewChallenge {
+export function prepareChallengeDto(challenge: INewChallenge): INewChallenge {
     return {
         ...challenge,
         levelId: challenge.level?.id ?? 0,

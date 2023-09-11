@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getNewChallenge } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { CategoryType } from '@shared/enums/category-type';
 import { TabType } from '@shared/enums/tab-type';
-import { NewChallenge } from '@shared/models/challenge/new-challenge';
+import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { ITag } from '@shared/models/tag/tag';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
@@ -16,7 +16,7 @@ import { MarkdownService } from 'ngx-markdown';
     styleUrls: ['./editor-question.component.sass'],
 })
 export class EditorQuestionComponent implements OnInit, OnChanges {
-    @Input() challenge: NewChallenge = getNewChallenge();
+    @Input() challenge: INewChallenge = getNewChallenge();
 
     @Input() allTags: ITag[];
 

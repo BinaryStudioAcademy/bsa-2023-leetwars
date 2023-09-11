@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getNewChallengeVersion } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { NavigationTabType } from '@shared/enums/navigation-tab-type';
-import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
+import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { NavigationTab } from '@shared/models/navigation-tab';
 
 import { tabs } from './challenges-test-page.utils';
@@ -13,7 +13,7 @@ import { tabs } from './challenges-test-page.utils';
     styleUrls: ['./challenges-test-page.component.sass'],
 })
 export class ChallengesTestPageComponent implements OnInit, OnChanges {
-    @Input() challengeVersion: NewChallengeVersion = getNewChallengeVersion();
+    @Input() challengeVersion: INewChallengeVersion = getNewChallengeVersion();
 
     @Input() editorLanguage: string;
 

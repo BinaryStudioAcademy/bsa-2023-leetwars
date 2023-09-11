@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getNewChallengeVersion } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { tabs } from '@modules/challenges/solution-page/solution-page.utils';
 import { NavigationTabType } from '@shared/enums/navigation-tab-type';
-import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
+import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { NavigationTab } from '@shared/models/navigation-tab';
 
 @Component({
@@ -20,7 +20,7 @@ import { NavigationTab } from '@shared/models/navigation-tab';
     styleUrls: ['./solution-page.component.sass'],
 })
 export class SolutionPageComponent implements OnInit, OnChanges {
-    @Input() challengeVersion: NewChallengeVersion = getNewChallengeVersion();
+    @Input() challengeVersion: INewChallengeVersion = getNewChallengeVersion();
 
     @Input() editorLanguage: string;
 

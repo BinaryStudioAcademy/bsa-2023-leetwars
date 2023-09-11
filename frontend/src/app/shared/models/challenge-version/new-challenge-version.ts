@@ -1,4 +1,4 @@
-export interface NewChallengeVersion {
+export interface INewChallengeVersion {
     languageId: number;
     initialSolution: string;
     completeSolution: string;

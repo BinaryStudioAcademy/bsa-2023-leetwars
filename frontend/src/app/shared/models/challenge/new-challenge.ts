@@ -1,14 +1,14 @@
 import { CategoryType } from '@shared/enums/category-type';
-import { ChallengeLevel } from '@shared/models/challenge-level/challenge-level';
-import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
-import { Tag } from '@shared/models/tag/tag';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
+import { ITag } from '@shared/models/tag/tag';
 
-export interface NewChallenge {
+export interface INewChallenge {
     title: string;
     instructions: string;
     levelId: number;
-    level?: ChallengeLevel;
+    level?: IChallengeLevel;
     category: CategoryType;
-    tags: Array<Tag>;
-    versions: Array<NewChallengeVersion>;
+    tags: Array<ITag>;
+    versions: Array<INewChallengeVersion>;
 }

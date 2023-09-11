@@ -18,9 +18,9 @@ import {
 } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { ChallengeStep } from '@shared/enums/challenge-step';
-import { NewChallenge } from '@shared/models/challenge/new-challenge';
+import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
-import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
+import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { IDropdownItem } from '@shared/models/dropdown-item';
 import { ILanguage } from '@shared/models/language/language';
 import { ITag } from '@shared/models/tag/tag';
@@ -38,9 +38,9 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public currentStep: ChallengeStep = ChallengeStep.Question;
 
-    public challenge: NewChallenge;
+    public challenge: INewChallenge;
 
-    public challengeVersion: NewChallengeVersion;
+    public challengeVersion: INewChallengeVersion;
 
     public tags: ITag[] = [];
 
