@@ -3,8 +3,10 @@ using Docker.DotNet.Models;
 using LeetWars.Builder.Helpers.BuildResultReader;
 using LeetWars.Builder.Helpers.DirectoryConfigurations;
 using LeetWars.Builder.Helpers.DockerConfigurations;
+using LeetWars.Builder.Helpers.RunnerFileWriterReader;
 using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
+using LeetWars.Builder.Models.HelperModels;
 using Newtonsoft.Json;
 
 namespace LeetWars.Builder.Services
@@ -15,70 +17,46 @@ namespace LeetWars.Builder.Services
 
         public async Task<CodeRunResults> Run(CodeRunRequest request)
         {
-            var reader = new BuildResultReader();
-            var dirBuilder = new DirectoryConfigurations();
+            var buildResultReader = new BuildResultReader();
+            var dirBuilder = new DockerMountDirectoryConfigurations();
             var dockerConfig = new DockerConfigurations();
+            RunnerFileWriterReaderClass readWrite = new RunnerFileWriterReaderClass();
+            dirBuilder.RFW = readWrite;
 
-            var dir = Directory.GetCurrentDirectory();
-            var solutionFileName = "";
+            string dir = Directory.GetCurrentDirectory();
+            Config config;
 
-            var config = new Config();
-
-            if(request.Language == "C#")
+            string? solutionFileName;
+            switch (request.Language)
             {
-                var projectFileName = await dirBuilder.CreateDirectoryCSharp(dir, request);
+                case "C#":
+                    var projectFileName = await dirBuilder.CreateDirectoryCSharp(dir, request);
 
-                var imagePullParams = new ImagesCreateParameters
-                {
-                    FromImage = "mcr.microsoft.com/dotnet/sdk:6.0"
-                };
+                    await dockerConfig.CreateImage(_client, SDKImageNames.CSharpSDK);
 
-                var progress = new Progress<JSONMessage>();
-                await _client.Images.CreateImageAsync(imagePullParams, null, progress);
+                    solutionFileName = SolutionFileNaming.CSharpSolutionName;
+                    config = dockerConfig.GetCSharpConfig(projectFileName);
+                    break;
 
-                solutionFileName = "Solution.cs";
+                case "Javascript":
+                    dirBuilder.CreateDirectoryJS(dir, request);
 
-                config = dockerConfig.GetCSharpConfig(projectFileName);
-            }
+                    await dockerConfig.CreateImage(_client, SDKImageNames.JSSDK);
 
-            if(request.Language == "Javascript")
-            {
-                dirBuilder.CreateDirectoryJS(dir, request);
-
-                var imagePullParams = new ImagesCreateParameters
-                {
-                    FromImage = "node:18"
-                };
-
-                var progress = new Progress<JSONMessage>();
-                await _client.Images.CreateImageAsync(imagePullParams, null, progress);
-
-                solutionFileName = "Solution.js";
-
-                config = dockerConfig.GetJSConfig(solutionFileName);
+                    solutionFileName = SolutionFileNaming.JSSolutionName;
+                    config = dockerConfig.GetJSConfig(solutionFileName);
+                    break;
+                default:
+                    return new CodeRunResults();
             }
 
             dir = dirBuilder.CurrentDirectory;
 
             string solutionCode = request.UserCode;
 
-            using (StreamWriter writer = File.CreateText(Path.Combine(dir, solutionFileName)))
-            {
-                await writer.WriteAsync(solutionCode);
-            }
+            await readWrite.WriteContentAsync(Path.Combine(dir, solutionFileName), solutionCode);
 
-            var hostConfig = new HostConfig()
-            {
-                Mounts = new List<Mount>
-                {
-                    new Mount
-                    {
-                        Type = "bind",
-                        Source = $"{dir}",
-                        Target = "/app",
-                    },
-                },
-            };
+            var hostConfig = dockerConfig.GetHostConfig();
 
             var response = await _client.Containers.CreateContainerAsync(new CreateContainerParameters(config)
             {
@@ -88,10 +66,9 @@ namespace LeetWars.Builder.Services
             var containerId = response.ID;
 
             await _client.Containers.StartContainerAsync(containerId, new ContainerStartParameters());
-
             await _client.Containers.WaitContainerAsync(containerId);
 
-            string buildLog;
+            string buildLog = ReadContentAsync;
 
             using (StreamReader buildReader = new StreamReader(Path.Combine(dir, "buildoutput.txt")))
             {
@@ -107,14 +84,18 @@ namespace LeetWars.Builder.Services
 
             var result = new CodeRunResults();
 
-            if(request.Language == "C#")
+            switch (request.Language)
             {
-                reader.BuildResultCSharp(buildLog, result);
-            }
+                case "C#":
+                    buildResultReader.BuildResultCSharp(buildLog, result);
+                    break;
 
-            if(request.Language == "Javascript")
-            {
-                reader.BuildResultJS(buildLog, result);
+                case "Javascript":
+                    buildResultReader.BuildResultJS(buildLog, result);
+                    break;
+
+                default:
+                    break;
             }
 
             result.ChallengeVersionId = request.ChallengeVersionId;

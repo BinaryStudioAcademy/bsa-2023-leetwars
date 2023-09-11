@@ -1,10 +1,12 @@
-﻿using LeetWars.Builder.Models;
+﻿using LeetWars.Builder.Helpers.RunnerFileWriterReader;
+using LeetWars.Builder.Models;
 
 namespace LeetWars.Builder.Helpers.DirectoryConfigurations;
 
-public class DirectoryConfigurations
+public class DockerMountDirectoryConfigurations
 {
-    public string? CurrentDirectory { get; set; }
+    public string CurrentDirectory { get; set; } = string.Empty;
+    public RunnerFileWriterReaderClass RFW { get; set; }
 
     public async Task<string> CreateDirectoryCSharp(string directoryPath, CodeRunRequest request)
     {
@@ -25,15 +27,8 @@ public class DirectoryConfigurations
         string projectFileContent = "<Project Sdk=\"Microsoft.NET.Sdk\">\r\n\r\n  <PropertyGroup>\r\n    <OutputType>Exe</OutputType>\r\n    <TargetFramework>net6.0</TargetFramework>\r\n    <ImplicitUsings>enable</ImplicitUsings>\r\n    <Nullable>enable</Nullable>\r\n  </PropertyGroup>\r\n\r\n</Project>\r\n";
         string programFileContent = "internal class Program\r\n{\r\n    static void Main(string[] args)\r\n    {\r\n        Console.WriteLine(\"Hello, World!\");\r\n    }\r\n}";
 
-        using (StreamWriter writer = File.CreateText(Path.Combine(CurrentDirectory, projectFileName)))
-        {
-            writer.WriteLine(projectFileContent);
-        }
-
-        using (StreamWriter writer = File.CreateText(Path.Combine(CurrentDirectory, programFileName)))
-        {
-            await writer.WriteAsync(programFileContent);
-        }
+        await RFW.WriteContentAsync(Path.Combine(CurrentDirectory, projectFileName), projectFileContent);
+        await RFW.WriteContentAsync(Path.Combine(CurrentDirectory, programFileName), programFileContent);
 
         return projectFileName;
     }

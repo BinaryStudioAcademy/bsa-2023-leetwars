@@ -66,35 +66,8 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
         this.splitDirection = 'horizontal';
 
-        this.signalRService.listenMessages((msg: string) => {
-            const codeRunResults: CodeRunResults = JSON.parse(msg) as CodeRunResults;
-
-            if (codeRunResults.buildResults?.isSuccess) {
-                this.toastrNotification.showSuccess('code was compiled successfully');
-            } else {
-                this.toastrNotification.showError(codeRunResults.buildResults?.buildMessage as string);
-            }
-        });
-
-        this.challengeService.getChallengeById(challengeId).subscribe({
-            next: (challenge) => {
-                this.languages = challenge.versions.map((v) => v.language.name);
-                this.challenge = challenge;
-                [this.selectedLanguage] = this.languages;
-                this.editorOptions = {
-                    theme: 'custom-theme',
-                    language: this.mapLanguageName(this.selectedLanguage),
-                    minimap: { enabled: false },
-                    automaticLayout: true,
-                    useShadows: false,
-                    wordWrap: 'on',
-                };
-                this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
-            },
-            error: () => {
-                this.router.navigateByUrl('/not-found');
-            },
-        });
+        this.subscribeToMessageQueue();
+        this.loadChallengeAndSetupEditor(challengeId);
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
@@ -135,6 +108,40 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         };
 
         this.challengeService.postCode(this.solution).subscribe();
+    }
+
+    loadChallengeAndSetupEditor(challengeId: number): void {
+        this.challengeService.getChallengeById(challengeId).subscribe({
+            next: (challenge) => {
+                this.languages = challenge.versions.map((v) => v.language.name);
+                this.challenge = challenge;
+                [this.selectedLanguage] = this.languages;
+                this.editorOptions = {
+                    theme: 'custom-theme',
+                    language: this.mapLanguageName(this.selectedLanguage),
+                    minimap: { enabled: false },
+                    automaticLayout: true,
+                    useShadows: false,
+                    wordWrap: 'on',
+                };
+                this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
+            },
+            error: () => {
+                this.router.navigateByUrl('/not-found');
+            },
+        });
+    }
+
+    subscribeToMessageQueue(): void {
+        this.signalRService.listenMessages((msg: string) => {
+            const codeRunResults: CodeRunResults = JSON.parse(msg) as CodeRunResults;
+
+            if (codeRunResults.buildResults?.isSuccess) {
+                this.toastrNotification.showSuccess('code was compiled successfully');
+            } else {
+                this.toastrNotification.showError(codeRunResults.buildResults?.buildMessage as string);
+            }
+        });
     }
 
     ngOnDestroy(): void {

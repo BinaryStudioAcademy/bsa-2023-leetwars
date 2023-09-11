@@ -19,13 +19,11 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddLeetWarsCoreContext(builder.Configuration);
 builder.Services.AddRabbitMqServices(builder.Configuration);
-//builder.Services.RegisterProduceMessagesServices(builder.Configuration);
 builder.Services.RegisterCustomServices(builder.Configuration);
 builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
 builder.Services.AddFirebaseAuthentication(builder.Configuration);
-//builder.Services.AddHostedService<MessageReceiverService>();
 
 builder.Services.AddCors();
 builder.Services.AddHealthChecks();

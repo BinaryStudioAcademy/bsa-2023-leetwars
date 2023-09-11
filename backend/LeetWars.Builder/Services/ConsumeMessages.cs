@@ -30,20 +30,21 @@ namespace LeetWars.Builder.Services
 
                 var request = JsonConvert.DeserializeObject<CodeRunRequest>(message);
 
-                var languages = new List<string> { "C#", "Javascript" };
-
-                if(languages.Contains(request.Language))
+                if(request != null)
                 {
-                    var result = await _codeRunManagerService.Run(request);
-
-                    var settings = new JsonSerializerSettings
+                    if (Models.HelperModels.Languages.AvailableLanguages.Contains(request.Language))
                     {
-                        ContractResolver = new CamelCasePropertyNamesContractResolver()
-                    };
+                        var result = await _codeRunManagerService.Run(request);
 
-                    var jsonString = JsonConvert.SerializeObject(result, settings);
+                        var settings = new JsonSerializerSettings
+                        {
+                            ContractResolver = new CamelCasePropertyNamesContractResolver()
+                        };
 
-                    _producerService.Send(jsonString, ExchangeType.Direct);
+                        var jsonString = JsonConvert.SerializeObject(result, settings);
+
+                        _producerService.Send(jsonString, ExchangeType.Direct);
+                    }
                 }
 
                 _consumerService.SetAcknowledge(args.DeliveryTag, true);
