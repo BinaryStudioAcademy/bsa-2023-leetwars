@@ -6,7 +6,7 @@ namespace LeetWars.Core.DAL.Entities
     {
         public string Title { get; set; }
         public string Instructions { get; set; }
-        public int LevelId { get; set; }
+        public long LevelId { get; set; }
         public ChallengeLevel? Level { get; set; }
         
         public ChallengeCategory Category { get; set; }

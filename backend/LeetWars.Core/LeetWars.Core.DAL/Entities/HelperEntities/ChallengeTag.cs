@@ -3,5 +3,5 @@
 public class ChallengeTag
 {
     public long ChallengeId { get; set; }
-    public int TagId { get; set; }
+    public long TagId { get; set; }
 }

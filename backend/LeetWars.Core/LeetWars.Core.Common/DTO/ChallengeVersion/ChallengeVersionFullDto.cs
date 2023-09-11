@@ -10,7 +10,7 @@ namespace LeetWars.Core.Common.DTO.ChallengeVersion
 {
     public class ChallengeVersionFullDto : AuditEntity<long>
     {
-        public int LanguageId { get; set; }
+        public long LanguageId { get; set; }
         public long ChallengeId { get; set; }
         public string InitialSolution { get; set; } = string.Empty;
         public string CompleteSolution { get; set; } = string.Empty;

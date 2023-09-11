@@ -2,9 +2,9 @@
 
 namespace LeetWars.Core.Common.DTO.LanguageVersion
 {
-    public class LanguageVersionDto : Entity<int>
+    public class LanguageVersionDto : Entity<long>
     {
-        public int LanguageId { get; set; }
+        public long LanguageId { get; set; }
         public string Version { get; set; } = string.Empty;
     }
 }

@@ -4,7 +4,7 @@
     {
         public long UserId { get; set; }
         public string PaymentSubscriptionId { get; set; }
-        public int TypeId { get; set; }
+        public long TypeId { get; set; }
         public decimal Cost { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

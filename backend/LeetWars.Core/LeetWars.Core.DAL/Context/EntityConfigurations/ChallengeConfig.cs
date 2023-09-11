@@ -19,7 +19,8 @@ namespace LeetWars.Core.DAL.Context
             
             builder.HasOne(e => e.Level)
                 .WithMany()
-                .HasForeignKey(e => e.LevelId);
+                .HasForeignKey(e => e.LevelId)
+                .HasConstraintName("FK_Challenge_ChallengeLevel_LevelId");
 
             builder.HasMany(e => e.Versions)
                 .WithOne()
