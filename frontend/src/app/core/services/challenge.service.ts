@@ -1,12 +1,13 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
-import { Challenge } from '@shared/models/challenge/challenge';
-import { ChallengeFilter } from '@shared/models/challenge/challenge-filter';
-import { ChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { NewChallenge } from '@shared/models/challenge/new-challenge';
-import { SuggestionSettings } from '@shared/models/challenge/suggestion-settings';
-import { PageSettings } from '@shared/models/page-settings';
+import { IChallenge } from '@shared/models/challenge/challenge';
+import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
+import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
+import { Star } from '@shared/models/challenge-star/star';
+import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
 
@@ -16,27 +17,31 @@ import { Observable } from 'rxjs';
 export class ChallengeService {
     public challengesRoute = '/challenge';
 
-    constructor(private httpService: HttpInternalService) { }
+    constructor(private httpService: HttpInternalService) {}
 
-    public getChallenges(filter?: ChallengeFilter, page?: PageSettings) {
+    public getChallenges(filter?: IChallengeFilter, page?: IPageSettings) {
         let httpParams = new HttpParams();
 
-        httpParams = setParams<ChallengeFilter>(httpParams, filter);
-        httpParams = setParams<PageSettings>(httpParams, page);
+        httpParams = setParams<IChallengeFilter>(httpParams, filter);
+        httpParams = setParams<IPageSettings>(httpParams, page);
 
-        return this.httpService.getRequest<ChallengePreview[]>(this.challengesRoute, httpParams);
+        return this.httpService.getRequest<IChallengePreview[]>(this.challengesRoute, httpParams);
     }
 
-    public getChallengeSuggestion(settings: SuggestionSettings) {
+    public getChallengeSuggestion(settings: ISuggestionSettings) {
         let httpParams = new HttpParams();
 
-        httpParams = setParams<SuggestionSettings>(httpParams, settings);
+        httpParams = setParams<ISuggestionSettings>(httpParams, settings);
 
-        return this.httpService.getRequest<ChallengePreview>(`${this.challengesRoute}/suggestion`, httpParams);
+        return this.httpService.getRequest<IChallengePreview>(`${this.challengesRoute}/suggestion`, httpParams);
     }
 
-    public getChallengeById(id: number): Observable<Challenge> {
-        return this.httpService.getRequest<Challenge>(`${this.challengesRoute}/${id}`);
+    public getChallengeById(id: number): Observable<IChallenge> {
+        return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/${id}`);
+    }
+
+    public updateStar(star: Star): Observable<IChallengePreview> {
+        return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
     }
 
     public createChallenge(challenge: NewChallenge): Observable<Challenge> {

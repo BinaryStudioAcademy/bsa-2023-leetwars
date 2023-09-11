@@ -1,4 +1,4 @@
-export interface DropdownItem {
+export interface IDropdownItem {
     icon?: string;
     content: string;
 }

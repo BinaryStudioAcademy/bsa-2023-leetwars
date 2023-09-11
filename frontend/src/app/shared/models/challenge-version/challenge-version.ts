@@ -1,13 +1,13 @@
 import { ChallengeStatus } from '@shared/enums/challenge-status';
 
 import { AuditEntity } from '../common/audit-entity/audit-entity';
-import { Language } from '../language/language';
-import { LanguageVersion } from '../language-version/language-version';
-import { Test } from '../test/test';
-import { User } from '../user/user';
-import { UserSolution } from '../user-solution/user-solution';
+import { ILanguage } from '../language/language';
+import { ILanguageVersion } from '../language-version/language-version';
+import { IUserSolution } from '../profile/user-solution';
+import { ITest } from '../test/test';
+import { IUser } from '../user/user';
 
-export interface ChallengeVersion extends AuditEntity {
+export interface IChallengeVersion extends AuditEntity<number> {
     languageId: number;
     challengeId: number;
     initialSolution: string;
@@ -16,9 +16,9 @@ export interface ChallengeVersion extends AuditEntity {
     testCases: string;
     exampleTestCases: string;
     status: ChallengeStatus;
-    languageVersions: Array<LanguageVersion>;
-    solutions: Array<UserSolution>;
-    tests: Array<Test>;
-    language: Language;
-    author: User;
+    languageVersions: Array<ILanguageVersion>;
+    solutions: Array<IUserSolution>;
+    tests: Array<ITest>;
+    language: ILanguage;
+    author: IUser;
 }

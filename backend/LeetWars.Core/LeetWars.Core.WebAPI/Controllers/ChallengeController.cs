@@ -1,5 +1,6 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -11,8 +12,8 @@ namespace LeetWars.Core.WebAPI.Controllers
     public class ChallengeController : ControllerBase
     {
         private readonly IChallengeService _challengeService;
-        
-        public ChallengeController(IChallengeService challengeService) 
+
+        public ChallengeController(IChallengeService challengeService)
         {
             _challengeService = challengeService;
         }
@@ -21,6 +22,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         public async Task<ActionResult<ChallengePreviewDto>> GetAllAsync([FromQuery] ChallengesFiltersDto filters, [FromQuery] PageSettingsDto page)
         {
             var challenges = await _challengeService.GetChallengesAsync(filters, page);
+
             return Ok(challenges);
         }
 
@@ -34,7 +36,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeFullDto>> GetById(long id)
         {
-            var challenges = await _challengeService.GetChallengeByIdAsync(id);
+            var challenges = await _challengeService.GetChallengeFullDtoByIdAsync(id);
             return Ok(challenges);
         }
         
@@ -43,6 +45,11 @@ namespace LeetWars.Core.WebAPI.Controllers
         {
             var challenge = await _challengeService.CreateChallengeAsync(challengeDto);
             return Ok(challenge);
+
+        [HttpPut]
+        public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
+        {
+            return Ok(await _challengeService.Update(challengeStarDto));
         }
     }
 }

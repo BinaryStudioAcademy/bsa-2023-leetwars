@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DropdownItem } from '@shared/models/dropdown-item';
+import { IDropdownItem } from '@shared/models/dropdown-item';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
 @Component({
@@ -7,14 +7,15 @@ import { getLanguageIconUrl } from '@shared/utils/language-icons';
     templateUrl: './challenges-dropdown-select.component.html',
     styleUrls: ['./challenges-dropdown-select.component.sass'],
 })
-export class ChallengesDropdownSelectComponent {
-    @Input() items: DropdownItem[] = [];
 
+export class ChallengesDropdownSelectComponent {
+    @Input() items: IDropdownItem[] = [];
+  
     @Input() selectedItem?: DropdownItem;
 
-    @Output() selectedItemChanged = new EventEmitter<DropdownItem>();
+    @Output() selectedItemsChanged: EventEmitter<IDropdownItem> = new EventEmitter<IDropdownItem>();
 
-    selectItem(item: DropdownItem) {
+    selectItem(item: IDropdownItem) {
         this.selectedItem = item;
         this.selectedItemChanged.emit(this.selectedItem);
     }
