@@ -65,4 +65,10 @@ public class UsersController : ControllerBase
         return Ok(challenges);
     }
 
+    [HttpPut]
+    public async Task<ActionResult<UserFullDto>> UpdateUser(EditUserDto userDto)
+    {
+        var updatedUser = await _userService.UpdateUserAsync(userDto);
+        return Ok(updatedUser);
+    }
 }

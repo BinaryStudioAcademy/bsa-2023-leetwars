@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IEditUser } from '@shared/models/user/edit-user';
 import { INewUser } from '@shared/models/user/new-user';
 import { IUser } from '@shared/models/user/user';
 import { IUserFull } from '@shared/models/user/user-full';
@@ -36,6 +37,10 @@ export class UserService {
     }
 
     public getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {
-        return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(`/users/${id}/user-challenges`);
+        return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(`${this.baseUrl}/${id}/user-challenges`);
+    }
+
+    public updateUser(userDto: IEditUser): Observable<IUserFull> {
+        return this.httpService.putRequest<IUserFull>(`${this.baseUrl}`, userDto);
     }
 }

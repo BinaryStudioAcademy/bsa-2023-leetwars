@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { UserService } from '@core/services/user.service';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
-import { Star } from '@shared/models/challenge-star/star';
+import { IStar } from '@shared/models/challenge-star/star';
 import { IUser } from '@shared/models/user/user';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
@@ -12,7 +13,7 @@ import { getLanguageIconUrl } from '@shared/utils/language-icons';
     styleUrls: ['./challenge.component.sass'],
 })
 export class ChallengeComponent {
-    constructor(private challengeService: ChallengeService, private authService: AuthService) {
+    constructor(private challengeService: ChallengeService, private authService: AuthService, private userService: UserService) {
         this.authService.getUser().subscribe((user) => {
             this.user = user;
         });
@@ -27,7 +28,7 @@ export class ChallengeComponent {
     private user: IUser;
 
     public starChange() {
-        const star: Star = {
+        const star: IStar = {
             authorId: this.user.id,
             challenge: this.challenge,
             isStar: !this.challenge.isStarry,
