@@ -1,53 +1,54 @@
 @import 'src/styles/color-variables'
 @import 'src/styles/fonts'
-    
-.header  
+
+.header
   display: flex
-  justify-content: space-between  
-  align-items: center  
+  justify-content: space-between
+  align-items: center
   background-color: $deep-dark-grey
   color: white
   padding: 0.3rem
   border-radius: 8px
   margin-bottom: 0.5rem
- 
-.logo img  
+
+.logo img
   width: 70px
   cursor: pointer
   padding-left: 20px
- 
+
 .user-menu
-    display: flex  
+    display: flex
 
 .notification
   margin-right: 2rem
   cursor: pointer
   color:$transparent-grey
 
-:host ::ng-deep .change-color 
+:host ::ng-deep .change-color
   background-color: $cornflower
-  
+
 .user
   position: relative
-  align-items: center  
+  align-items: center
   cursor: pointer
-  padding-right: 1rem  
- 
-.user-logo  
+  padding-right: 1rem
+
+.user-logo
   width: 40px
-  height: 40px  
-  border-radius: 50%  
+  height: 40px
+  border-radius: 50%
   margin-right: 0.5rem
 
 .username
-  font-family: open
   color: $transparent-grey
   width: 100%
+  font-family: "Open Sans", sans-serif
+  font-size: 0.9rem
 
 .menu-wraper
   position: relative
 
-.menu 
+.menu
     z-index: 99
     position: absolute
     right: 0.2rem
