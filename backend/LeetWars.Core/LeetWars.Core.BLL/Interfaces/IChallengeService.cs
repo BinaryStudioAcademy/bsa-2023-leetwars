@@ -12,6 +12,6 @@ namespace LeetWars.Core.BLL.Interfaces
 
         void ComputeResult(CodeRunRequestDto userCode);
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
-        Task<ChallengePreviewDto> Update(ChallengeStarDto challengeStarDto);
+        Task<ChallengePreviewDto> UpdateAsync(ChallengeStarDto challengeStarDto);
     }
 }
