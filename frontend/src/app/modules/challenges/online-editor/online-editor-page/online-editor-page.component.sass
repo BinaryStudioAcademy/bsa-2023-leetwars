@@ -6,7 +6,7 @@
 
 .problem-info, .editor
     border-radius: 5px
-    background-color: $charcoal-grey
+    background-color: $vs-dark-theme
     color: $white
     font-family: Inter
     font-size: 11px
@@ -17,7 +17,7 @@
     padding: 16px
 
 .my-code-editor
-    height: calc(100% - 45px)
+    height: 100%
     width: 100%
 
 .editor.h-50
@@ -32,7 +32,6 @@
     height: 42%
 
 :host ::ng-deep .editor-container
-    margin-top: 9px
     width: 100%
 
 :host ::ng-deep .scroll-decoration
@@ -96,7 +95,7 @@ button span
 :host ::ng-deep .as-split-gutter
     background-color: transparent !important
     &-icon
-        display: none
+        background-image: url("/assets/images/ellipsis.png") !important
 
 .centered-icon
     margin-left: 8px

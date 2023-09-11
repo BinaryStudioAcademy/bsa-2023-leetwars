@@ -25,9 +25,6 @@
             </div>
         </as-split-area>
 
-            <fa-icon [icon]="'ellipsis-vertical'" class="centered-icon"></fa-icon>
-
-
         <as-split-area [size]="50" [minSize]="splitRightMinSize">
             <div class="editor h-50">
                 <div class="header">
@@ -48,8 +45,9 @@
                 </div>
                 <app-code-editor
                 class="my-code-editor"
+                [initText]="initialSolution!"
                 [language]="selectedLanguage"
-                [initText]="initialSolution!"  ></app-code-editor>
+                [options]="editorOptions"  ></app-code-editor>
             </div>
 
             <div class="editor test-wrp">

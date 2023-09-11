@@ -1,21 +1,20 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { EditorOptions } from '@shared/models/options/editor-options';
-import { Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-online-editor-page',
     templateUrl: './online-editor-page.component.html',
     styleUrls: ['./online-editor-page.component.sass'],
 })
-export class OnlineEditorPageComponent implements OnDestroy, OnInit {
-    private destroyed$: Subject<void> = new Subject<void>();
-
+export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
     activeTab: string = 'Description';
 
     splitDirection: 'horizontal' | 'vertical';
@@ -44,17 +43,13 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
         private breakpointObserver: BreakpointObserver,
-        private router: Router,
     ) {
+        super();
         breakpointObserver
             .observe(['(max-width: 843px)'])
-            .pipe(takeUntil(this.destroyed$))
+            .pipe(takeUntil(this.unsubscribe$))
             .subscribe((result) => {
-                if (result.matches) {
-                    this.splitDirection = 'vertical';
-                } else {
-                    this.splitDirection = 'horizontal';
-                }
+                this.splitDirection = result.matches ? 'vertical' : 'horizontal';
             });
     }
 
@@ -90,9 +85,6 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
                 this.setupLanguages(challenge);
                 this.setupEditorOptions();
             },
-            () => {
-                this.router.navigateByUrl('/not-found');
-            },
         );
     }
 
@@ -110,8 +102,10 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     private setupEditorOptions() {
+        this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
+        this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0].id);
         this.editorOptions = {
-            theme: 'custom-theme',
+            theme: 'vs-dark',
             language: this.mapLanguageName(this.selectedLanguage),
             minimap: { enabled: false },
             automaticLayout: true,
@@ -119,8 +113,6 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
             wordWrap: 'on',
             lineNumbers: 'on',
         };
-        this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
-        this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0].id);
     }
 
     private getInitialSolutionByLanguage(language: string): string | undefined {
@@ -146,10 +138,5 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
             .filter((version) => this.mapLanguageName(version.language.name) === language)
             .flatMap((version) => version.language.languageVersions
                 .map((languageVersion) => languageVersion.version));
-    }
-
-    ngOnDestroy(): void {
-        this.destroyed$.next();
-        this.destroyed$.complete();
     }
 }
