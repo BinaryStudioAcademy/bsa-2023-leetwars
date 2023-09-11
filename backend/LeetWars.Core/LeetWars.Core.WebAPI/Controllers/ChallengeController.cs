@@ -39,12 +39,13 @@ namespace LeetWars.Core.WebAPI.Controllers
             var challenges = await _challengeService.GetChallengeFullDtoByIdAsync(id);
             return Ok(challenges);
         }
-        
+
         [HttpPost]
         public async Task<ActionResult<ChallengeFullDto>> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
             var challenge = await _challengeService.CreateChallengeAsync(challengeDto);
             return Ok(challenge);
+        }
 
         [HttpPut]
         public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)

@@ -170,7 +170,7 @@ namespace LeetWars.Core.BLL.Services
             
             await _context.SaveChangesAsync();
            
-            return await GetChallengeByIdAsync(challenge.Id);
+            return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
 
         private async Task<Challenge?> GetChallengeByIdAsync(long challengeId)
@@ -183,9 +183,6 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(version => version.Language)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Tests
-                        .Where(test => test.IsPublic))
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.LanguageVersions)
                 .Include(challenge => challenge.Versions)
