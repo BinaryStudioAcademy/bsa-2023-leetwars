@@ -64,7 +64,6 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         this.signalRService.listenMessages((message: string) => {
             const codeRunResults: CodeRunResults = JSON.parse(message);
 
-            console.log(codeRunResults);
             if (codeRunResults.isBuilt && codeRunResults.testRunResults !== null && codeRunResults.testRunResults !== '') {
                 this.showTestResults(codeRunResults.testRunResults);
             }
@@ -148,29 +147,6 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
                     '{\r\n        var result = _solutionClass.IsNumPrime(2);\r\n\r\n        ' +
                     'Assert.IsFalse(result, "1 should not be prime");\r\n    }\r\n}',
         };
-        // const codeRunRequest: CodeRunRequest = {
-        //     userId: 1234,
-        //     challengeVersionId: 1234,
-        //     isBuilt: true,
-        //     language: 'js',
-        //     userCode: `function addNumbers(a, b) {
-        //         return a + b;
-        //       }`,
-        //     preloaded: null,
-        //     tests: `const chai = require('chai');
-        //         const expect = chai.expect;
-        //         describe('Math Functions', function() {
-        //         it('should add two numbers correctly', function() {
-        //           const result = addNumbers(1, 1);
-        //           expect(result).to.equal(2);
-        //         });
-
-        //         it('should add negative numbers correctly', function() {
-        //           const result = addNumbers(-4, -2);
-        //           expect(result).to.equal(-3);
-        //         });
-        //       });`,
-        // };
 
         this.toastrNotification.showInfo('Test run request sent');
         this.challengeService.runTests(codeRunRequest).subscribe();
