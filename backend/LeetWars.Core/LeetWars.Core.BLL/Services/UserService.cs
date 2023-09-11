@@ -1,7 +1,10 @@
+using System.Linq.Expressions;
 using System.Security.Claims;
+using System.Transactions;
 using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
+using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
@@ -26,13 +29,15 @@ public class UserService : BaseService, IUserService
             throw new ArgumentNullException(nameof(userDto));
         }
 
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == userDto.Uid);
-        if (user != null)
+        var user = await _context.Users.SingleOrDefaultAsync(u => u.Uid == userDto.Uid);
+
+        if (user is not null)
         {
             return _mapper.Map<UserDto>(user);
         }
 
         bool isExistingEmail = await CheckIsExistingEmailAsync(userDto.Email);
+
         if (isExistingEmail)
         {
             throw new InvalidOperationException($"A user with email {userDto.Email} is already registered.");
@@ -57,7 +62,7 @@ public class UserService : BaseService, IUserService
         return isExistingUserName;
     }
 
-    public async Task<User?> GetUserByIdAsync(long id)
+    public async Task<User?> GetUserByExpressionAsync(Expression<Func<User, bool>> expression)
     {
         return await _context.Users
             .Include(user => user.Subscriptions)
@@ -66,23 +71,21 @@ public class UserService : BaseService, IUserService
             .Include(user => user.Solutions)
             .Include(user => user.Challenges)
             .Include(user => user.ChallengeVersions)
-            .SingleOrDefaultAsync(user => user.Id == id);
+            .SingleOrDefaultAsync(expression);
     }
 
     public async Task<UserDto> GetCurrentUserAsync()
     {
         var userStringId = _userGetter.CurrentUserId;
 
-        var userLongId = _context.Users.Single(user => user.Uid == userStringId).Id;
-
-        var user = await GetUserByIdAsync(userLongId);
+        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
 
         return _mapper.Map<UserDto>(user);  
     }
 
     public async Task<UserFullDto> GetFullUserAsync(long id)
     {
-        var user = await GetUserByIdAsync(id);
+        var user = await GetUserByExpressionAsync(user => user.Id == id);
 
         if (user is null)
         {
@@ -116,14 +119,39 @@ public class UserService : BaseService, IUserService
         return challenges;
     }
 
-    public async Task<UserFullDto> UpdateUserAsync(UserFullDto userDto)
+    public async Task<UserFullDto> UpdateUserAsync(EditUserDto userDto)
     {
-        var user = _mapper.Map<User>(userDto);
+        if (userDto is null)
+        {
+            throw new ArgumentNullException(nameof(userDto));
+        }
+
+        var user = await GetUserByExpressionAsync(user => user.Uid == userDto.Uid);
+
+        if(user == null) 
+        {
+            throw new ArgumentNullException(nameof(userDto));
+        }
+
+        user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallenge);
 
         _context.Users.Update(user);
 
         await _context.SaveChangesAsync();
 
-        return userDto;
+        return _mapper.Map<UserFullDto>(user);
+    }
+
+    private async Task<int> GetRewardFromChallenge(ChallengeDto challengeDto)
+    {
+        var level = await _context.ChallengeLevels
+            .SingleOrDefaultAsync(level => level.Id == challengeDto.LevelId);
+
+        if(level is null)
+        {
+            throw new ArgumentNullException(nameof(challengeDto));
+        }
+
+        return level.Reward;
     }
 }
