@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
-import { Badge, SlideInfo } from '@shared/models/badge/badge';
+import { Badge } from '@shared/models/badge/badge';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 
 @Component({
@@ -13,39 +13,20 @@ export class BadgeComponent implements OnInit {
 
     @Input() startPosition: number = 0;
 
-    items: SlideInfo[];
+    activeSlides: SlidesOutputData;
 
     customOptions: OwlOptions;
 
     ngOnInit(): void {
-        this.items = this.badges?.map((bdg) => ({
-            badge: bdg,
-            isActive: bdg === this.badges[this.startPosition],
-        }));
-
         this.loadCarouselOptions();
     }
 
     onTranslated(data: SlidesOutputData) {
-        const centeredItem = data.slides?.find((x) => x.center);
-
-        const itemToChange = this.items.findIndex((x) => x.badge.icon === centeredItem?.id);
-
-        this.items.forEach((x) => {
-            x.isActive = false;
-        });
-
-        this.items[itemToChange].isActive = true;
+        this.activeSlides = data;
     }
 
-    replaceFileExtension(srcPath: string, newExtension: string): string {
-        const lastDotIndex = srcPath.lastIndexOf('.');
-
-        const stringBeforeLastDot = srcPath.slice(0, lastDotIndex);
-
-        const newString = stringBeforeLastDot + newExtension;
-
-        return newString;
+    isCentered(item: Badge) {
+        return this.activeSlides.slides?.some((x) => x.center && item.id === +x.id);
     }
 
     loadCarouselOptions(): void {
@@ -71,8 +52,8 @@ export class BadgeComponent implements OnInit {
         };
     }
 
-    getIconUrl(item: SlideInfo): string {
-        const url = item.isActive ? this.replaceFileExtension(item.badge.icon, '.gif') : item.badge.icon;
+    getIconUrl(item: Badge): string {
+        const url = this.isCentered(item) ? item.iconGif : item.icon;
 
         return `${environment.coreUrl}${url}`;
     }

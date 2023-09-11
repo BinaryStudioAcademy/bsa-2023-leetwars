@@ -26,11 +26,9 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<UserLanguageLevel, UserLanguageLevelDto>();
             CreateMap<UserSolution, UserSolutionDto>();
             CreateMap<Challenge, ChallengeDto>();
+            CreateMap<Badge, BadgeDto>();
             CreateMap<UserBadge, BadgeDto>()
-                .ForMember(x => x.Name, opt =>
-                    opt.MapFrom(x => x.Badge!.Name))
-                .ForMember(x => x.Icon, opt =>
-                    opt.MapFrom(x => x.Badge!.Icon));
+                .IncludeMembers(x => x.Badge);
         }
     }
 }
