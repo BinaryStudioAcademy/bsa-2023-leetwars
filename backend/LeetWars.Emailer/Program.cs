@@ -4,7 +4,7 @@ using LeetWars.Emailer.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddRabbitMqServices(builder.Configuration);
+builder.Services.RegisterConsumerServices(builder.Configuration);
 builder.Services.AddCustomServices();
 builder.Services.AddCors();
 

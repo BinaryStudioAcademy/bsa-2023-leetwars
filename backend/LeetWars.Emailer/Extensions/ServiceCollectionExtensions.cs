@@ -17,7 +17,7 @@ namespace LeetWars.Emailer.Extensions
             services.AddScoped<IValidator<MailDto>, MailDtoValidator>();
         }
 
-        public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
+        public static void RegisterConsumerServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
             services.AddSingleton(sp =>
