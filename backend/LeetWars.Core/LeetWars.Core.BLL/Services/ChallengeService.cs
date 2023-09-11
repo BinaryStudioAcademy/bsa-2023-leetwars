@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Linq.Expressions;
+using System.Security.Cryptography;
 using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
@@ -112,11 +113,15 @@ namespace LeetWars.Core.BLL.Services
 
         public async Task<ChallengePreviewDto> UpdateAsync(ChallengeStarDto challengeStarDto)
         {
+            Expression<Func<ChallengeStar, bool>> delegateToCheckChallengeStar = 
+               cs => cs.Author!.Id == challengeStarDto.AuthorId
+            && cs.Challenge!.Id == challengeStarDto.Challenge.Id;
+
             if (!challengeStarDto.IsStar)
             {
                 var challengeStar = _mapper.Map<ChallengeStar>(challengeStarDto);
 
-                if(await GetChallengeStarAsync(challengeStar.Id) is not null)
+                if(await _context.ChallengeStars.AnyAsync(delegateToCheckChallengeStar))
                 {
                     throw new ArgumentNullException(nameof(challengeStarDto));
                 }
@@ -125,12 +130,7 @@ namespace LeetWars.Core.BLL.Services
             }
             else
             {
-                var challengeStar = await _context.ChallengeStars
-                    .Include(cs => cs.Challenge)
-                    .Include(cs => cs.Author)
-                        .ThenInclude(a => a!.Challenges)
-                    .SingleOrDefaultAsync(cs => cs.Author!.Id == challengeStarDto.AuthorId
-                                       && cs.Challenge!.Id == challengeStarDto.Challenge.Id);
+                var challengeStar = await GetChallengeStarAsync(delegateToCheckChallengeStar);
 
                 if (challengeStar is null)
                 {
@@ -169,13 +169,13 @@ namespace LeetWars.Core.BLL.Services
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
         }
 
-        private async Task<ChallengeStar?> GetChallengeStarAsync(long id)
+        private async Task<ChallengeStar?> GetChallengeStarAsync(Expression<Func<ChallengeStar, bool>> condition)
         {
             return await _context.ChallengeStars
                     .Include(challengeStar => challengeStar.Challenge)
                     .Include(challengeStar => challengeStar.Author)
                         .ThenInclude(author => author!.Challenges)
-                    .SingleOrDefaultAsync(cs => cs.Id == id);
+                    .SingleOrDefaultAsync(condition);
         }
 
         private async Task<LanguageLevel> GetUserLevelAsync(int languageId)
