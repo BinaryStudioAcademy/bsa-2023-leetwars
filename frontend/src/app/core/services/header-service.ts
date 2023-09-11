@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root',
 })
 export class HeaderService {
-    private showHeader: boolean = true;
+    private showHeader: boolean = false;
 
     setShowHeader(value: boolean) {
         this.showHeader = value;
