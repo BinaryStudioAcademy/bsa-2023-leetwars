@@ -15,7 +15,10 @@ namespace LeetWars.Builder.Services
 
             XmlNamespaceManager nsManager = new (xmlDoc.NameTable);
 
-            if(xmlDoc.DocumentElement?.NamespaceURI != null) nsManager.AddNamespace("ns", xmlDoc.DocumentElement.NamespaceURI);
+            if (xmlDoc.DocumentElement?.NamespaceURI != null)
+            {
+                nsManager.AddNamespace("ns", xmlDoc.DocumentElement.NamespaceURI);
+            }
 
             XmlNode? countersNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:ResultSummary/ns:Counters", nsManager);
 
