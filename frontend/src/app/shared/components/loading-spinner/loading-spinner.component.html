@@ -1,4 +1,12 @@
-<div *ngIf="spinner.isLoading$ | async">
-    <div class="loader"></div>
-    <p class="loader-text">Loading...</p>
+<div *ngIf="spinnerService.isLoading$ | async">
+    <div
+        [ngStyle]="{
+            'font-size': size,
+            margin: margin,
+            top: top,
+            left: left,
+            position: position
+        }"
+        class="loader"
+    ></div>
 </div>
