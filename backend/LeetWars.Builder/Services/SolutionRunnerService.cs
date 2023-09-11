@@ -29,7 +29,7 @@ namespace LeetWars.Builder.Services
             string? solutionFileName;
             switch (request.Language)
             {
-                case "C#":
+                case Languages.csharp:
                     var projectFileName = await dirBuilder.CreateDirectoryCSharp(dir, request);
 
                     await dockerConfig.CreateImage(_client, SDKImageNames.CSharpSDK);
@@ -38,7 +38,7 @@ namespace LeetWars.Builder.Services
                     config = dockerConfig.GetCSharpConfig(projectFileName);
                     break;
 
-                case "Javascript":
+                case Languages.javascript:
                     dirBuilder.CreateDirectoryJS(dir, request);
 
                     await dockerConfig.CreateImage(_client, SDKImageNames.JSSDK);
@@ -81,11 +81,11 @@ namespace LeetWars.Builder.Services
 
             switch (request.Language)
             {
-                case "C#":
+                case Languages.csharp:
                     buildResultReader.BuildResultCSharp(buildLog, result);
                     break;
 
-                case "Javascript":
+                case Languages.javascript:
                     buildResultReader.BuildResultJS(buildLog, result);
                     break;
 

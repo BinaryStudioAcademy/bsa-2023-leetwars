@@ -60,8 +60,6 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit() {
-        this.signalRService.start();
-
         const challengeId = this.activatedRoute.snapshot.params['id'];
 
         this.splitDirection = 'horizontal';
@@ -133,6 +131,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     subscribeToMessageQueue(): void {
+        this.signalRService.start();
         this.signalRService.listenMessages((msg: string) => {
             const codeRunResults: CodeRunResults = JSON.parse(msg) as CodeRunResults;
 
