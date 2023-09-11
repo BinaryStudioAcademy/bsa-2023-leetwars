@@ -1,4 +1,5 @@
 using LeetWars.Core.Common.DTO;
+using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.User;
 
 namespace LeetWars.Core.BLL.Services;
@@ -13,4 +14,6 @@ public interface IUserService
     public Task<UserFullDto> GetFullUserAsync(int id);
 
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTags(long currentUserId);
+
+    public Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page);
 }

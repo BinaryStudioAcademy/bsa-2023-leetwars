@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using AutoMapper;
 using LeetWars.Core.Common.DTO;
+using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
@@ -106,5 +107,17 @@ public class UserService : BaseService, IUserService
 
         return challenges;
 
+    }
+
+    public async Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page)
+    {
+        var users = _context.Users.OrderByDescending(u => u.TotalScore).AsQueryable();
+        if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
+        {
+            users = users.Skip(page.PageSize * (page.PageNumber - 1))
+                .Take(page.PageSize);
+        }
+
+        return _mapper.Map<List<UserDto>>(await users.ToListAsync());
     }
 }

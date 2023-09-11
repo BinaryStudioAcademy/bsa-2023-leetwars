@@ -1,8 +1,11 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IPageSettings } from '@shared/models/page-settings';
 import { IUserFull } from '@shared/models/profile/user-full';
 import { INewUser } from '@shared/models/user/new-user';
 import { IUser } from '@shared/models/user/user';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
+import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
 
 import { HttpInternalService } from './http-internal.service';
@@ -37,5 +40,13 @@ export class UserService {
 
     public getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {
         return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(`/users/${id}/user-challenges`);
+    }
+
+    public getLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
+        let httpParams = new HttpParams();
+
+        httpParams = setParams<IPageSettings>(httpParams, page);
+
+        return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/leader-board`, httpParams);
     }
 }

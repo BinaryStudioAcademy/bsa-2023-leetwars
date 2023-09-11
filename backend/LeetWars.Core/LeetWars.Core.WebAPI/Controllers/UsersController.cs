@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using LeetWars.Core.BLL.Services;
 using LeetWars.Core.Common.DTO;
+using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -64,6 +65,13 @@ public class UsersController : ControllerBase
     {
         var challenges =  await _userService.GetUserChallengesInfoByTags(id);
         return Ok(challenges);
+    }
+
+    [HttpGet("leader-board")]
+    public async Task<ActionResult<List<UserDto>>> GetLeaderBoardAsync([FromQuery] PageSettingsDto page)
+    {
+        var users = await _userService.GetLeaderBoardAsync(page);
+        return Ok(users);
     }
 
 }
