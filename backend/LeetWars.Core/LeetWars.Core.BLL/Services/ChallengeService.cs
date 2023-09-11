@@ -100,7 +100,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
 
-        private async Task<LanguageLevel> GetUserLevelAsync(int languageId)
+        private async Task<LanguageLevel> GetUserLevelAsync(long languageId)
         {
             var userId = _userGetter.CurrentUserId;
             var userLevel = await _context
@@ -197,38 +197,30 @@ namespace LeetWars.Core.BLL.Services
             _context.Challenges.Add(challenge);
             
             await _context.SaveChangesAsync();
-            
-            if ((challengeDto.Tags?.Count ?? 0) > 0)
-            {
-                foreach (var tagDto in challengeDto.Tags!)
-                {
-                    var tag = _mapper.Map<Tag>(tagDto);
-                    challenge.ChallengeTags.Add(new ChallengeTag()
-                    {
-                        ChallengeId = challenge.Id,
-                        TagId = tag.Id,
-                    });
-                }
-                
-                await _context.SaveChangesAsync();
-            }
 
-            if ((challengeDto.Versions?.Count ?? 0) > 0)
-            {
-                foreach (var challengeVersionDto in challengeDto.Versions!)
+            var challengeTags = _mapper.Map<ICollection<Tag>>(challengeDto.Tags)
+                .Select(tag => new ChallengeTag()
                 {
-                    var challengeVersion = _mapper.Map<ChallengeVersion>(challengeVersionDto);
-                    challengeVersion.ChallengeId = challenge.Id;
-                    challengeVersion.CreatedAt = DateTime.UtcNow;
-                    challengeVersion.CreatedBy = currentUser.Id;
-                    _context.ChallengeVersions.Add(challengeVersion);
-                }
-                
-                await _context.SaveChangesAsync();
-            }
+                    ChallengeId = challenge.Id,
+                    TagId = tag.Id,
+                }).ToList();
             
+            _context.ChallengeTags.AddRange(challengeTags);
+
+            var challengeVersions = _mapper.Map<ICollection<ChallengeVersion>>(challengeDto.Versions)
+                .Select(version =>
+                {
+                    version.ChallengeId = challenge.Id;
+                    version.CreatedAt = DateTime.UtcNow;
+                    version.CreatedBy = currentUser.Id;
+                    return version;
+                }).ToList();
+            
+            _context.ChallengeVersions.AddRange(challengeVersions);
+            
+            await _context.SaveChangesAsync();
+           
             return await GetChallengeByIdAsync(challenge.Id);
         }
-
     }
 }
