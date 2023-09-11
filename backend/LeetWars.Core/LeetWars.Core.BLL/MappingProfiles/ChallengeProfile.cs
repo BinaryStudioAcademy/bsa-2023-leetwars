@@ -37,6 +37,9 @@ namespace LeetWars.Core.BLL.MappingProfiles
 
             CreateMap<Challenge, ChallengeDto>();
 
+            CreateMap<ChallengeStar, ChallengeStarDto>()
+                .ForMember(dest => dest.IsStar, opt => opt.MapFrom(src => true));
+
             CreateMap<ChallengeStarDto, ChallengeStar>()
                 .ForMember(dest => dest.ChallengeId, opt => opt.MapFrom(src => src.Challenge.Id))
                 .ForMember(dest => dest.Challenge, opt => opt.Ignore());
