@@ -1,4 +1,4 @@
-export interface DayChartData {
+export interface IDayChartData {
     fill: boolean,
     date: Date,
     value: number
