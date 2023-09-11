@@ -76,7 +76,7 @@ export class SignUpComponent {
             })
             .subscribe(
                 () => {
-                    this.authHelper.handleAuthSuccess(this.registrationForm.value.username!, this.registrationForm.value.email!, false);
+                    this.authHelper.handleAuthSuccess(this.registrationForm.value.username!, false);
                 },
                 () => {
                     this.authHelper.handleAuthError(this.registrationForm);

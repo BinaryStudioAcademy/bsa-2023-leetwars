@@ -132,7 +132,7 @@ export class AuthService {
     private signWithProvider(observable: Observable<IUser | undefined>, isLogin: boolean) {
         return observable.subscribe((user?: IUser) => {
             if (user) {
-                this.authHelper.handleAuthSuccess(user.userName!, user.email!, isLogin);
+                this.authHelper.handleAuthSuccess(user.userName!, isLogin);
             }
         });
     }

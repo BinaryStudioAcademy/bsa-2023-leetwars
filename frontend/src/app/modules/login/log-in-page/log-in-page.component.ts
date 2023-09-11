@@ -50,7 +50,7 @@ export class LogInPageComponent {
             )
             .subscribe(
                 ({ userName, firstName }: IUser) => {
-                    this.authHelper.handleAuthSuccess(userName || (firstName!), '', true);
+                    this.authHelper.handleAuthSuccess(userName || (firstName!), true);
                 },
                 () => {
                     this.isSignInError = true;
