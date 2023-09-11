@@ -4,8 +4,8 @@ namespace LeetWars.Core.Common.DTO.User
 {
     public class EditUserDto
     {
-        public string Uid { get; set; } = string.Empty;
+        public long Id { get; set; }
 
-        public ChallengeDto CompletedChallenge { get; set; } = null!;
+        public long CompletedChallengeId { get; set; }
     }
 }

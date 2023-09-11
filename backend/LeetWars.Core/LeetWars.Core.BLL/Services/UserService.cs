@@ -127,14 +127,14 @@ public class UserService : BaseService, IUserService
             throw new ArgumentNullException(nameof(userDto));
         }
 
-        var user = await GetUserByExpressionAsync(user => user.Uid == userDto.Uid);
+        var user = await GetUserByExpressionAsync(user => user.Id == userDto.Id);
 
         if(user == null) 
         {
             throw new ArgumentNullException(nameof(userDto));
         }
 
-        user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallenge);
+        user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallengeId);
         user.Reputation = user.TotalScore / REPUTATION_DIVIDER;
 
         _context.Users.Update(user);
@@ -144,14 +144,22 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserFullDto>(user);
     }
 
-    private async Task<int> GetRewardFromChallenge(ChallengeDto challengeDto)
+    private async Task<int> GetRewardFromChallenge(long challengeId)
     {
+        var challenge = await _context.Challenges
+            .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+
+        if(challenge is null)
+        {
+            throw new ArgumentNullException(nameof(challengeId));
+        }
+
         var level = await _context.ChallengeLevels
-            .SingleOrDefaultAsync(level => level.Id == challengeDto.LevelId);
+            .SingleOrDefaultAsync(level => level.Id == challenge.LevelId);
 
         if(level is null)
         {
-            throw new ArgumentNullException(nameof(challengeDto));
+            throw new ArgumentNullException(nameof(challengeId));
         }
 
         return level.Reward;
