@@ -1,13 +1,11 @@
-using FluentValidation;
 using LeetWars.Core.Common.DTO.Mail;
+using LeetWars.Emailer.Extensions;
 using LeetWars.Emailer.Interfaces;
-using LeetWars.Emailer.Services;
-using LeetWars.Emailer.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IMailService, MailService>();
-builder.Services.AddScoped<IValidator<MailDto>, MailDtoValidator>();
+builder.Services.AddRabbitMqServices(builder.Configuration);
+builder.Services.AddCustomServices();
 builder.Services.AddCors();
 
 var app = builder.Build();

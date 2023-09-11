@@ -11,11 +11,13 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
     <PackageReference Include="SendGrid" Version="9.28.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LeetWars.Core\LeetWars.Core.Common\LeetWars.Core.Common.csproj" />
+    <ProjectReference Include="..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>

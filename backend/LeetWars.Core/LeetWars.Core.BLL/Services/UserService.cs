@@ -1,5 +1,7 @@
 using System.Security.Claims;
 using AutoMapper;
+using LeetWars.Core.BLL.Helpers.Email;
+using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
@@ -12,9 +14,15 @@ namespace LeetWars.Core.BLL.Services;
 public class UserService : BaseService, IUserService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
-    public UserService(LeetWarsCoreContext context, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(context, mapper)
+    private readonly IMessageSenderService _messageSenderService;
+
+    public UserService(LeetWarsCoreContext context, 
+                       IMapper mapper, 
+                       IHttpContextAccessor httpContextAccessor, 
+                       IMessageSenderService messageSenderService) : base(context, mapper)
     {
         _httpContextAccessor = httpContextAccessor;
+        _messageSenderService = messageSenderService;
     }
 
     public async Task<UserDto> CreateUserAsync(NewUserDto userDto)
@@ -39,6 +47,9 @@ public class UserService : BaseService, IUserService
         var newUser = _mapper.Map<NewUserDto, User>(userDto);
         var createdUser = _context.Users.Add(newUser).Entity;
         await _context.SaveChangesAsync();
+
+        var welcomeEmail = EmailGenerator.GenerateWelcomeEmail(createdUser.UserName, createdUser.Email);
+        _messageSenderService.SendMessageToRabbitMQ(welcomeEmail);
 
         return _mapper.Map<UserDto>(createdUser);
     }
