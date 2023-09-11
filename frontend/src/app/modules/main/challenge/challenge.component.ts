@@ -22,19 +22,24 @@ export class ChallengeComponent {
 
     public challengePositiveFeedbacksPercent = 0;
 
+    public isChallengeUpdated = true;
+
     public getLanguageIconUrl = getLanguageIconUrl;
 
     private user: IUser;
 
     public starChange() {
+        this.isChallengeUpdated = false;
+
         const star: IStar = {
             authorId: this.user.id,
             challenge: this.challenge,
-            isStar: !this.challenge.isStarry,
+            isStar: this.challenge.isStarry,
         };
 
         this.challengeService.updateStar(star).subscribe((challenge: IChallengePreview) => {
             this.challenge = challenge;
+            this.isChallengeUpdated = true;
         });
     }
 }
