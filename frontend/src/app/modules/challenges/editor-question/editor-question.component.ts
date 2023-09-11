@@ -4,8 +4,8 @@ import { getNewChallenge } from '@modules/challenges/challenge-creation/challeng
 import { CategoryType } from '@shared/enums/category-type';
 import { TabType } from '@shared/enums/tab-type';
 import { NewChallenge } from '@shared/models/challenge/new-challenge';
-import { ChallengeLevel } from '@shared/models/challenge-level/challenge-level';
-import { Tag } from '@shared/models/tag/tag';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { ITag } from '@shared/models/tag/tag';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { EditorInstance, EditorOption } from 'angular-markdown-editor';
 import { MarkdownService } from 'ngx-markdown';
@@ -18,9 +18,9 @@ import { MarkdownService } from 'ngx-markdown';
 export class EditorQuestionComponent implements OnInit, OnChanges {
     @Input() challenge: NewChallenge = getNewChallenge();
 
-    @Input() allTags: Tag[];
+    @Input() allTags: ITag[];
 
-    @Input() allLevels: ChallengeLevel[];
+    @Input() allLevels: IChallengeLevel[];
 
     @Input() checkValidation = false;
 

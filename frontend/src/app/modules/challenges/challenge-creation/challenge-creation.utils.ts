@@ -3,7 +3,7 @@ import { CategoryType } from '@shared/enums/category-type';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { NewChallenge } from '@shared/models/challenge/new-challenge';
 import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
-import { DropdownItem } from '@shared/models/dropdown-item';
+import { IDropdownItem } from '@shared/models/dropdown-item';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
 export function getInitStepsData(): StepData[] {
@@ -119,6 +119,6 @@ export function prepareChallengeDto(challenge: NewChallenge): NewChallenge {
     };
 }
 
-export function getDropdownItems(names: string[]): DropdownItem[] {
-    return names.map<DropdownItem>(itemName => ({ content: itemName, icon: getLanguageIconUrl(itemName) }));
+export function getDropdownItems(names: string[]): IDropdownItem[] {
+    return names.map<IDropdownItem>(itemName => ({ content: itemName, icon: getLanguageIconUrl(itemName) }));
 }

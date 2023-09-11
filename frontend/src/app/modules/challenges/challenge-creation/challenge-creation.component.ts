@@ -19,11 +19,11 @@ import {
 import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { NewChallenge } from '@shared/models/challenge/new-challenge';
-import { ChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { NewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
-import { DropdownItem } from '@shared/models/dropdown-item';
-import { Language } from '@shared/models/language/language';
-import { Tag } from '@shared/models/tag/tag';
+import { IDropdownItem } from '@shared/models/dropdown-item';
+import { ILanguage } from '@shared/models/language/language';
+import { ITag } from '@shared/models/tag/tag';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -42,15 +42,15 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public challengeVersion: NewChallengeVersion;
 
-    public tags: Tag[] = [];
+    public tags: ITag[] = [];
 
-    public challengeLevels: ChallengeLevel[] = [];
+    public challengeLevels: IChallengeLevel[] = [];
 
-    public languages: Language[] = [];
+    public languages: ILanguage[] = [];
 
-    public languageDropdownItems: DropdownItem[] = [];
+    public languageDropdownItems: IDropdownItem[] = [];
 
-    public currentLanguage?: DropdownItem;
+    public currentLanguage?: IDropdownItem;
 
     public editorLanguage = '';
 
@@ -115,7 +115,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.router.navigate(['/']);
     }
 
-    onLanguageChanged(selectedItem: DropdownItem) {
+    onLanguageChanged(selectedItem: IDropdownItem) {
         this.currentLanguage = selectedItem;
         const language = this.languages.find(l => l.name === selectedItem.content);
 
