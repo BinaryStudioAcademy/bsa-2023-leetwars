@@ -5,21 +5,21 @@
                 <div class="text-label-1">Badges</div>
                 <div class="text-label-2">{{ items.length }}</div>
             </div>
-            <fa-icon [icon]="'arrow-right'" size="xl"></fa-icon>
+            <fa-icon *ngIf="items?.length" [icon]="'arrow-right'" size="xl"></fa-icon>
         </div>
 
-        <div class="carousel-container">
-            <owl-carousel-o [options]="customOptions" (translated)="onTranslated($event)">
-                <ng-template carouselSlide *ngFor="let item of items; let i = index" [id]="item.badge.src">
-                    <div class="badge" [ngClass]="{ 'active-badge': item.isActive }">
-                        <img
-                            alt="Apr LeetCoding Challenge"
-                            [src]="item.isActive ? replaceFileExtension(item.badge.src, '.gif') : item.badge.src" />
-                    </div>
-                </ng-template>
-            </owl-carousel-o>
-        </div>
-        <div class="text-label-1">Most Recent Badge</div>
-        <div>{{ items[startPosition].badge.name }}</div>
+        <ng-container *ngIf="items?.length">
+            <div class="carousel-container">
+                <owl-carousel-o [options]="customOptions" (translated)="onTranslated($event)">
+                    <ng-template carouselSlide *ngFor="let item of items" [id]="item.badge.icon">
+                        <div class="badge" [ngClass]="{ 'active-badge': item.isActive }">
+                            <img [alt]="item.badge.name" [src]="getIconUrl(item)" />
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+            <div class="text-label-1">Most Recent Badge</div>
+            <div>{{ items[startPosition].badge.name }}</div>
+        </ng-container>
     </div>
 </div>

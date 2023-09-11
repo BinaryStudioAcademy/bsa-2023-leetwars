@@ -26,6 +26,7 @@ namespace LeetWars.Core.DAL.Entities
         public ICollection<UserSolution> Solutions { get; } = new List<UserSolution>();
         public ICollection<Challenge> Challenges { get; } = new List<Challenge>();
         public ICollection<ChallengeVersion> ChallengeVersions { get; } = new List<ChallengeVersion>();
+        public ICollection<UserBadge> UserBadges { get; } = new List<UserBadge>();
 
         public User() {}
 

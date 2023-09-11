@@ -75,6 +75,8 @@ public class UserService : BaseService, IUserService
             .Include(user => user.PreferredLanguages)
             .Include(user => user.Solutions)
             .Include(user => user.Challenges)
+            .Include(user => user.UserBadges)
+            .ThenInclude(badge => badge.Badge)
             .FirstOrDefaultAsync();
         if (user is null)
         {

@@ -49,6 +49,22 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
             new Language("Python"){Id = 3},
             new Language("Javascript"){Id = 4}
         });
+        
+        public static readonly ImmutableArray<Badge> Badges = ImmutableArray.CreateRange(new Badge[]
+        {
+            new Badge("Jan LeetWars Challenge Badge", "/static/images/badges/2023-01.png"){Id = 1},
+            new Badge("Feb LeetWars Challenge Badge", "/static/images/badges/2023-02.png"){Id = 2},
+            new Badge("Mar LeetWars Challenge Badge", "/static/images/badges/2023-03.png"){Id = 3},
+            new Badge("Apr LeetWars Challenge Badge", "/static/images/badges/2023-04.png"){Id = 4},
+            new Badge("May LeetWars Challenge Badge", "/static/images/badges/2023-05.png"){Id = 5},
+            new Badge("Jun LeetWars Challenge Badge", "/static/images/badges/2023-06.png"){Id = 6},
+            new Badge("Jul LeetWars Challenge Badge", "/static/images/badges/2023-07.png"){Id = 7},
+            new Badge("Aug LeetWars Challenge Badge", "/static/images/badges/2023-08.png"){Id = 8},
+            new Badge("Sep LeetWars Challenge Badge", "/static/images/badges/2023-09.png"){Id = 9},
+            new Badge("Oct LeetWars Challenge Badge", "/static/images/badges/2023-10.png"){Id = 10},
+            new Badge("Nov LeetWars Challenge Badge", "/static/images/badges/2023-11.png"){Id = 11},
+            new Badge("Dec LeetWars Challenge Badge", "/static/images/badges/2023-12.png"){Id = 12},
+        });
 
     }
 }

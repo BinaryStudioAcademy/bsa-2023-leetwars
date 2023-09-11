@@ -50,11 +50,7 @@
                             "src/assets",
                             { "glob": "**/*", "input": "node_modules/monaco-editor", "output": "/assets/monaco/" }
                         ],
-                        "styles": [
-                            "src/styles/index.sass",
-                            "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
-                            "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
-                        ],
+                        "styles": ["src/styles/index.sass"],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.js",
                             "node_modules/bootstrap-markdown/js/bootstrap-markdown.js"

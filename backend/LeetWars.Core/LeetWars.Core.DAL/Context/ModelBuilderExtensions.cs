@@ -22,6 +22,7 @@ namespace LeetWars.Core.DAL.Context
             modelBuilder.Entity<Tag>().HasData(SeedDefaults.Tags);
             modelBuilder.Entity<ChallengeLevel>().HasData(SeedDefaults.ChallengeLevels);
             modelBuilder.Entity<Language>().HasData(SeedDefaults.Languages);
+            modelBuilder.Entity<Badge>().HasData(SeedDefaults.Badges);
 
             var userEntities = GenerateUsers();
             modelBuilder.Entity<User>().HasData(userEntities);
@@ -46,6 +47,9 @@ namespace LeetWars.Core.DAL.Context
 
             var userSolutionEntities = GenerateUserSolutions(userEntities, challengeVersionEntities);
             modelBuilder.Entity<UserSolution>().HasData(userSolutionEntities);
+
+            var userBadges = GenerateUserBadges(userEntities);
+            modelBuilder.Entity<UserBadge>().HasData(userBadges);
         }
 
         private static ICollection<Challenge> GenerateChallenges(ICollection<User> users, int count = 70)
@@ -185,6 +189,16 @@ namespace LeetWars.Core.DAL.Context
                 {
                     return f.Date.Between(e.CreatedAt, DateTime.Now).OrNull(f, 0.1f);
                 })
+                .Generate(count);
+        }
+        
+        private static ICollection<UserBadge> GenerateUserBadges(ICollection<User> users, int count = 80)
+        {
+            Faker.GlobalUniqueIndex = 0;
+
+            return new Faker<UserBadge>()
+                .CustomInstantiator(f => new UserBadge(f.PickRandom(users).Id, f.PickRandom(SeedDefaults.Badges.AsEnumerable()).Id))
+                .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .Generate(count);
         }
 

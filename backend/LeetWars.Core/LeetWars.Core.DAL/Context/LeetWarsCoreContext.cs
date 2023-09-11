@@ -18,6 +18,8 @@ namespace LeetWars.Core.DAL.Context
         public DbSet<User> Users => Set<User>();
         public DbSet<UserLanguageLevel> UserLanguageLevels => Set<UserLanguageLevel>();
         public DbSet<UserSolution> UserSolutions => Set<UserSolution>();
+        public DbSet<Badge> Badges => Set<Badge>();
+        public DbSet<UserBadge> UserBadges => Set<UserBadge>();
 
         public LeetWarsCoreContext(DbContextOptions<LeetWarsCoreContext> options) : base(options)
         {

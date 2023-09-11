@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from '@env/environment';
 import { Badge, SlideInfo } from '@shared/models/badge/badge';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 
@@ -17,11 +18,37 @@ export class BadgeComponent implements OnInit {
     customOptions: OwlOptions;
 
     ngOnInit(): void {
-        this.items = this.badges.map((bdg, index) => ({
+        this.items = this.badges?.map((bdg) => ({
             badge: bdg,
-            isActive: index === this.startPosition,
+            isActive: bdg === this.badges[this.startPosition],
         }));
 
+        this.loadCarouselOptions();
+    }
+
+    onTranslated(data: SlidesOutputData) {
+        const centeredItem = data.slides?.find((x) => x.center);
+
+        const itemToChange = this.items.findIndex((x) => x.badge.icon === centeredItem?.id);
+
+        this.items.forEach((x) => {
+            x.isActive = false;
+        });
+
+        this.items[itemToChange].isActive = true;
+    }
+
+    replaceFileExtension(srcPath: string, newExtension: string): string {
+        const lastDotIndex = srcPath.lastIndexOf('.');
+
+        const stringBeforeLastDot = srcPath.slice(0, lastDotIndex);
+
+        const newString = stringBeforeLastDot + newExtension;
+
+        return newString;
+    }
+
+    loadCarouselOptions(): void {
         this.customOptions = {
             loop: true,
             mouseDrag: true,
@@ -44,25 +71,9 @@ export class BadgeComponent implements OnInit {
         };
     }
 
-    onTranslated(data: SlidesOutputData) {
-        const centeredItem = data.slides?.find((x) => x.center);
+    getIconUrl(item: SlideInfo): string {
+        const url = item.isActive ? this.replaceFileExtension(item.badge.icon, '.gif') : item.badge.icon;
 
-        const itemToChange = this.items.findIndex((x) => x.badge.src === centeredItem?.id);
-
-        this.items.forEach((x) => {
-            x.isActive = false;
-        });
-
-        this.items[itemToChange].isActive = true;
-    }
-
-    replaceFileExtension(srcPath: string, newExtension: string): string {
-        const lastDotIndex = srcPath.lastIndexOf('.');
-
-        const stringBeforeLastDot = srcPath.slice(0, lastDotIndex);
-
-        const newString = stringBeforeLastDot + newExtension;
-
-        return newString;
+        return `${environment.coreUrl}${url}`;
     }
 }

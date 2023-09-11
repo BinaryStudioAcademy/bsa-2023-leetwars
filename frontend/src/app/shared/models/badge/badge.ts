@@ -1,6 +1,8 @@
-export interface Badge {
+import { AuditEntity } from '../common/audit-entity/audit-entity';
+
+export interface Badge extends AuditEntity<number> {
     name: string;
-    src: string;
+    icon: string;
 }
 
 export type SlideInfo = {

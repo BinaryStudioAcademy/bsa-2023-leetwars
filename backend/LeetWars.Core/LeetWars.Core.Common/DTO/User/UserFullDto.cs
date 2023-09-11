@@ -1,4 +1,5 @@
-﻿using LeetWars.Core.Common.DTO.Challenge;
+﻿using LeetWars.Core.Common.DTO.Badge;
+using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Language;
 using LeetWars.Core.Common.DTO.Subscription;
 using LeetWars.Core.Common.DTO.UserLanguageLevel;
@@ -30,5 +31,6 @@ namespace LeetWars.Core.Common.DTO.User
         public ICollection<UserLanguageLevelDto>? LanguagesWithLevels { get; set; }
         public ICollection<UserSolutionDto>? Solutions { get; set; }
         public ICollection<ChallengeDto>? Challenges { get; set; }
+        public ICollection<BadgeDto>? Badges { get; set; }
     }
 }
