@@ -20,12 +20,13 @@ namespace LeetWars.Emailer.Extensions
         public static void RegisterConsumerServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
-            services.AddSingleton(sp =>
+
+            services.AddSingleton(cf => new ConnectionFactory()
             {
-                var rabbitUri = new Uri(configuration["Rabbit"]);
-                var factory = new ConnectionFactory { Uri = rabbitUri };
-                return factory.CreateConnection();
-            });
+                Uri = new Uri(configuration["Rabbit"])
+            }
+            .CreateConnection());
+
             services.AddSingleton(sp => sp.GetRequiredService<IOptions<ConsumerSettings>>().Value);
             services.AddSingleton<IConsumerService, ConsumerService>();
             services.AddHostedService<MessageConsumerService>();
