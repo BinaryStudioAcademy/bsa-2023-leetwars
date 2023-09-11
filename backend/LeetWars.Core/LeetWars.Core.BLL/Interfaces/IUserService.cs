@@ -11,6 +11,5 @@ public interface IUserService
     public Task<UserDto> GetUserByUidAsync(string uid);
     public string GetCurrentUserUid();
     public Task<UserFullDto> GetFullUserAsync(int id);
-
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTags(long currentUserId);
 }
