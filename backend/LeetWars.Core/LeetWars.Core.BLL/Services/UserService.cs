@@ -15,6 +15,7 @@ namespace LeetWars.Core.BLL.Services;
 
 public class UserService : BaseService, IUserService
 {
+    private const int REPUTATION_DIVIDER = 10;
     private readonly IUserIdGetter _userGetter;
 
     public UserService(LeetWarsCoreContext context, IMapper mapper, IUserIdGetter userGetter) : base(context, mapper)
@@ -134,6 +135,7 @@ public class UserService : BaseService, IUserService
         }
 
         user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallenge);
+        user.Reputation = user.TotalScore / REPUTATION_DIVIDER;
 
         _context.Users.Update(user);
 

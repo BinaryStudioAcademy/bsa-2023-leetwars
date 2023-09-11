@@ -195,21 +195,22 @@ namespace LeetWars.Core.DAL.Context
             int uniqueIntForUserId = 0;
 
             return new Faker<User>()
-                .CustomInstantiator(f => new User(f.Name.FirstName().LimitLength(EntitySettings.MaxGeneralNameLength), 
-                        f.Name.LastName().LimitLength(EntitySettings.MaxGeneralNameLength), 
+                .CustomInstantiator(f => new User(f.Name.FirstName().LimitLength(EntitySettings.MaxGeneralNameLength),
+                        f.Name.LastName().LimitLength(EntitySettings.MaxGeneralNameLength),
                         f.Internet.UserName().LimitLength(EntitySettings.MaxUserNameLength - 3) + (uniqueIntForUserId++),
-                        f.Internet.Email().LimitLength(EntitySettings.MaxEmailLength), 
-                        f.Random.String2(30) + ".jpg", 
+                        f.Internet.Email().LimitLength(EntitySettings.MaxEmailLength),
+                        f.Random.String2(30) + ".jpg",
                         f.Random.AlphaNumeric(32)))
                 .UseSeed(SeedDefaults.UserSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e=>e.Uid, f=> f.Random.AlphaNumeric(28))
+                .RuleFor(e => e.Uid, f => f.Random.AlphaNumeric(28))
                 .RuleFor(e => e.Country, f => f.PickRandom<Country>())
                 .RuleFor(e => e.Sex, f => f.PickRandom<Sex>())
                 .RuleFor(e => e.Status, f => f.PickRandom<UserStatus>())
                 .RuleFor(e => e.Timezone, f => f.Random.Int(-12, 12))
                 .RuleFor(e => e.BirthDate, f => f.Date.Between(new DateTime(1980, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(2000, 12, 31, 0, 0, 0, DateTimeKind.Utc)))
                 .RuleFor(e => e.TotalScore, f => f.Random.Long(0, 100000))
+                .RuleFor(e => e.Reputation, (f, e) => e.TotalScore / 10)
                 .RuleFor(e => e.IsBanned, f => f.Random.Bool(0.05f))
                 .RuleFor(e => e.IsSubscribed, f => f.Random.Bool(0.8f))
                 .RuleFor(p => p.RegisteredAt, f => f.Date.Between(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc), DateTime.Now))

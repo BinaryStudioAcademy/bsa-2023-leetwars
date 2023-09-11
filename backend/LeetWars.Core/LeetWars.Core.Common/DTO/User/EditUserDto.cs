@@ -1,5 +1,4 @@
 ﻿using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.UserSolution;
 
 namespace LeetWars.Core.Common.DTO.User
 {

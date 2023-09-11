@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IUserFull } from '@shared/models/profile/user-full';
 import { INewUser } from '@shared/models/user/new-user';
 import { IUser } from '@shared/models/user/user';
+import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 import { Observable } from 'rxjs';
 
