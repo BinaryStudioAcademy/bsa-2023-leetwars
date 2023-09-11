@@ -13,13 +13,11 @@ namespace LeetWars.Core.BLL.MappingProfiles
     {
         public UserProfile()
         {
-            CreateMap<User,UserDto>();
-            CreateMap<UserDto,User>();
+            CreateMap<User, UserDto>().ReverseMap();
 
             CreateMap<NewUserDto, User>();
 
-            CreateMap<User, UserFullDto>();        
-            CreateMap<UserFullDto, User>();
+            CreateMap<User, UserFullDto>().ReverseMap();
 
             CreateMap<Subscription,SubscriptionDto>();
 

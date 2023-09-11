@@ -122,17 +122,8 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserFullDto> UpdateUserAsync(EditUserDto userDto)
     {
-        if (userDto is null)
-        {
-            throw new ArgumentNullException(nameof(userDto));
-        }
-
-        var user = await GetUserByExpressionAsync(user => user.Id == userDto.Id);
-
-        if(user == null) 
-        {
-            throw new ArgumentNullException(nameof(userDto));
-        }
+        var user = await GetUserByExpressionAsync(user => user.Id == userDto.Id)
+            ?? throw new ArgumentNullException(nameof(userDto));
 
         user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallengeId);
         user.Reputation = user.TotalScore / REPUTATION_DIVIDER;
@@ -147,21 +138,10 @@ public class UserService : BaseService, IUserService
     private async Task<int> GetRewardFromChallenge(long challengeId)
     {
         var challenge = await _context.Challenges
+            .Include(challenge => challenge.Level)
             .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
 
-        if(challenge is null)
-        {
-            throw new ArgumentNullException(nameof(challengeId));
-        }
-
-        var level = await _context.ChallengeLevels
-            .SingleOrDefaultAsync(level => level.Id == challenge.LevelId);
-
-        if(level is null)
-        {
-            throw new ArgumentNullException(nameof(challengeId));
-        }
-
-        return level.Reward;
+        return challenge?.Level?.Reward 
+            ?? throw new ArgumentNullException(nameof(challengeId));
     }
 }
