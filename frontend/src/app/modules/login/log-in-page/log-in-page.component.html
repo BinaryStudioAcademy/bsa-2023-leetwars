@@ -20,11 +20,6 @@
                         formControlName="email"
                         (InputValueChange)="logInForm.controls['email'].setValue($event)">
                     </app-custom-input>
-                    <div
-                        class="invalid-feedback d-block"
-                        *ngIf="!isExistingEmail && logInForm.controls['email'].untouched">
-                        The user is not exist. Please <a [routerLink]="['/auth/register']">Sign Up</a>
-                    </div>
                 </div>
                 <div class="mb-2 form-group">
                     <app-custom-input

@@ -2,8 +2,10 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUserFull } from '@shared/models/profile/user-full';
+import { IEditUser } from '@shared/models/user/edit-user';
 import { INewUser } from '@shared/models/user/new-user';
 import { IUser } from '@shared/models/user/user';
+import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
@@ -39,7 +41,9 @@ export class UserService {
     }
 
     public getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {
-        return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(`/users/${id}/user-challenges`);
+        return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(
+            `${this.baseUrl}/${id}/user-challenges`,
+        );
     }
 
     public getLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
@@ -48,5 +52,9 @@ export class UserService {
         httpParams = setParams<IPageSettings>(httpParams, page);
 
         return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/leader-board`, httpParams);
+    }
+
+    public updateUserRank(userDto: IEditUser): Observable<IUserFull> {
+        return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
     }
 }

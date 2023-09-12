@@ -14,7 +14,9 @@ import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
+import { BadgeComponent } from './components/badge/badge.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
@@ -32,6 +34,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+        CarouselModule,
         RouterModule,
         FontAwesomeModule,
         NgbModule,
@@ -53,6 +56,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         PieChartComponent,
         ProgressBarComponent,
         HeaderComponent,
+        BadgeComponent,
     ],
     exports: [
         CommonModule,
@@ -69,6 +73,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         DropdownSelectComponent,
         CustomInputComponent,
         PieChartComponent,
+        BadgeComponent,
         ProgressBarComponent,
         HeaderComponent,
         NgbModule,

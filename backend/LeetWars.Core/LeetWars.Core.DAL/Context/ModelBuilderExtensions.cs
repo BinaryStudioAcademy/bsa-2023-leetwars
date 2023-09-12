@@ -5,6 +5,7 @@ using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
+using LeetWars.Core.DAL.Migrations;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.DAL.Context
@@ -22,6 +23,7 @@ namespace LeetWars.Core.DAL.Context
             modelBuilder.Entity<Tag>().HasData(SeedDefaults.Tags);
             modelBuilder.Entity<ChallengeLevel>().HasData(SeedDefaults.ChallengeLevels);
             modelBuilder.Entity<Language>().HasData(SeedDefaults.Languages);
+            modelBuilder.Entity<Badge>().HasData(SeedDefaults.Badges);
 
             var userEntities = GenerateUsers();
             modelBuilder.Entity<User>().HasData(userEntities);
@@ -41,11 +43,17 @@ namespace LeetWars.Core.DAL.Context
             var challengeVersionEntities = GenerateChallengeVersions(userEntities, challengeEntities);
             modelBuilder.Entity<ChallengeVersion>().HasData(challengeVersionEntities);
 
+            var challengeTagEntities = GenerateChallengeTags(challengeEntities);
+            modelBuilder.Entity<ChallengeTag>().HasData(challengeTagEntities);
+
             var testEntities = GenerateTests(userEntities, challengeVersionEntities);
             modelBuilder.Entity<Test>().HasData(testEntities);
 
             var userSolutionEntities = GenerateUserSolutions(userEntities, challengeVersionEntities);
             modelBuilder.Entity<UserSolution>().HasData(userSolutionEntities);
+
+            var userBadges = GenerateUserBadges(userEntities);
+            modelBuilder.Entity<UserBadge>().HasData(userBadges);
         }
 
         private static ICollection<Challenge> GenerateChallenges(ICollection<User> users, int count = 70)
@@ -71,7 +79,7 @@ namespace LeetWars.Core.DAL.Context
             Faker.GlobalUniqueIndex = 0;
 
             return new Faker<ChallengeVersion>()
-                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text()))
+                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text(),"", f.Lorem.Text(), f.Lorem.Text()))
                 .UseSeed(SeedDefaults.ChallengeVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
@@ -84,6 +92,21 @@ namespace LeetWars.Core.DAL.Context
                     return f.Date.Between(challenge?.CreatedAt ?? DateTime.Now, DateTime.Now);
                 })
                 .Generate(count);
+        }
+        
+        private static ICollection<ChallengeTag> GenerateChallengeTags(ICollection<Challenge> challenges)
+        {
+            int count = challenges.Count * 3;
+            Faker.GlobalUniqueIndex = 0;
+
+            var challengeTags = new Faker<ChallengeTag>()
+                .CustomInstantiator(f => new ChallengeTag())
+                .UseSeed(SeedDefaults.ChallengeTagSeed)
+                .RuleFor(e => e.ChallengeId, f => f.PickRandom(challenges).Id)
+                .RuleFor(e => e.TagId, f => f.PickRandom(SeedDefaults.Tags.AsEnumerable()).Id)
+                .Generate(count);
+
+            return challengeTags.DistinctBy(ct => new { ct.ChallengeId, ct.TagId }).ToList();
         }
 
         private static ICollection<LanguageVersion> GenerateLanguageVersions(int count = 9)
@@ -187,6 +210,16 @@ namespace LeetWars.Core.DAL.Context
                 })
                 .Generate(count);
         }
+        
+        private static ICollection<UserBadge> GenerateUserBadges(ICollection<User> users, int count = 80)
+        {
+            Faker.GlobalUniqueIndex = 0;
+
+            return new Faker<UserBadge>()
+                .CustomInstantiator(f => new UserBadge(f.PickRandom(users).Id, f.PickRandom(SeedDefaults.Badges.AsEnumerable()).Id))
+                .RuleFor(e => e.Id, f => f.IndexGlobal)
+                .Generate(count);
+        }
 
         private static ICollection<User> GenerateUsers(int count = 40)
         {
@@ -195,21 +228,22 @@ namespace LeetWars.Core.DAL.Context
             int uniqueIntForUserId = 0;
 
             return new Faker<User>()
-                .CustomInstantiator(f => new User(f.Name.FirstName().LimitLength(EntitySettings.MaxGeneralNameLength), 
-                        f.Name.LastName().LimitLength(EntitySettings.MaxGeneralNameLength), 
+                .CustomInstantiator(f => new User(f.Name.FirstName().LimitLength(EntitySettings.MaxGeneralNameLength),
+                        f.Name.LastName().LimitLength(EntitySettings.MaxGeneralNameLength),
                         f.Internet.UserName().LimitLength(EntitySettings.MaxUserNameLength - 3) + (uniqueIntForUserId++),
-                        f.Internet.Email().LimitLength(EntitySettings.MaxEmailLength), 
-                        f.Random.String2(30) + ".jpg", 
+                        f.Internet.Email().LimitLength(EntitySettings.MaxEmailLength),
+                        f.Random.String2(30) + ".jpg",
                         f.Random.AlphaNumeric(32)))
                 .UseSeed(SeedDefaults.UserSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e=>e.Uid, f=> f.Random.AlphaNumeric(28))
+                .RuleFor(e => e.Uid, f => f.Random.AlphaNumeric(28))
                 .RuleFor(e => e.Country, f => f.PickRandom<Country>())
                 .RuleFor(e => e.Sex, f => f.PickRandom<Sex>())
                 .RuleFor(e => e.Status, f => f.PickRandom<UserStatus>())
                 .RuleFor(e => e.Timezone, f => f.Random.Int(-12, 12))
                 .RuleFor(e => e.BirthDate, f => f.Date.Between(new DateTime(1980, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(2000, 12, 31, 0, 0, 0, DateTimeKind.Utc)))
                 .RuleFor(e => e.TotalScore, f => f.Random.Long(0, 100000))
+                .RuleFor(e => e.Reputation, (f, e) => e.TotalScore / 10)
                 .RuleFor(e => e.IsBanned, f => f.Random.Bool(0.05f))
                 .RuleFor(e => e.IsSubscribed, f => f.Random.Bool(0.8f))
                 .RuleFor(p => p.RegisteredAt, f => f.Date.Between(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc), DateTime.Now))

@@ -1,104 +1,140 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { IDropdownItem } from '@shared/models/dropdown-item';
-
-import { Tab } from './tab';
+import {
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    SimpleChanges,
+} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { getNewChallengeVersion } from '@modules/challenges/challenge-creation/challenge-creation.utils';
+import { tabs } from '@modules/challenges/solution-page/solution-page.utils';
+import { NavigationTabType } from '@shared/enums/navigation-tab-type';
+import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
+import { NavigationTab } from '@shared/models/navigation-tab';
+import { EditorOptions } from '@shared/models/options/editor-options';
 
 @Component({
     selector: 'app-solution-page',
     templateUrl: './solution-page.component.html',
     styleUrls: ['./solution-page.component.sass'],
 })
-export class SolutionPageComponent implements OnInit {
-    tabName: string = 'Complete solution';
+export class SolutionPageComponent implements OnInit, OnChanges {
+    @Input() challengeVersion: INewChallengeVersion = getNewChallengeVersion();
 
-    selectedLanguage: string = 'javascript';
+    @Input() editorOptions: EditorOptions;
 
-    content: string;
+    @Input() checkValidation = false;
 
-    constructor(private changeDetector: ChangeDetectorRef) {}
+    @Output() validationChange = new EventEmitter<boolean>();
 
-    @Input() initialContent: string;
+    public editorContent: string;
 
-    @Input() preloadedContent: string;
+    public tabs = tabs;
 
-    @Input() completedContent: string;
+    public currentTab = tabs[0];
 
-    languageItems: IDropdownItem[] = [{ content: 'JavaScript', iconName: 'node-js' }, { content: 'C#' }];
+    public inputForm = new FormGroup({
+        completeSolution: new FormControl('', [
+            Validators.required,
+        ]),
+        initialSolution: new FormControl('', [
+            Validators.required,
+        ]),
+    });
 
-    languageVersionItems: IDropdownItem[] = [{ content: 'Node v18.x' }, { content: 'Node v17.x' }];
-
-    tabs: Tab[] = [
-        {
-            title: 'Complete solution',
-            active: true,
-            disabled: false,
-            customClass: 'customClass',
-        },
-        {
-            title: 'Initial solution',
-            active: false,
-            disabled: false,
-            customClass: 'customClass',
-        },
-        {
-            title: 'Preloaded',
-            active: false,
-            disabled: false,
-            customClass: 'customClass',
-        },
-    ];
-
-    ngOnInit(): void {
-        this.selectedLanguage = this.mapLanguageName(this.languageItems[0].content);
-        this.content = this.completedContent;
-    }
-
-    languageChanged(item: IDropdownItem): void {
-        this.selectedLanguage = this.mapLanguageName(item.content);
-        this.changeDetector.detectChanges();
+    public ngOnInit(): void {
+        this.editorContent = this.challengeVersion.completeSolution;
     }
 
     public onCodeChange(code: string) {
-        this.content = code;
+        this.editorContent = code;
 
-        switch (this.tabName) {
-            case 'Complete solution':
-                this.completedContent = code;
+        switch (this.currentTab.type) {
+            case NavigationTabType.Complete:
+                this.challengeVersion.completeSolution = code;
+
+                this.inputForm.controls.completeSolution.setValue(code);
+                this.validationChange.emit(this.inputForm.valid);
+
                 break;
-            case 'Initial solution':
-                this.initialContent = code;
+            case NavigationTabType.Initial:
+                this.challengeVersion.initialSolution = code;
+
+                this.inputForm.controls.initialSolution.setValue(code);
+                this.validationChange.emit(this.inputForm.valid);
+
                 break;
-            case 'Preloaded':
-                this.preloadedContent = code;
+            case NavigationTabType.Preloaded:
+                this.challengeVersion.preloadedCode = code;
                 break;
             default:
                 break;
         }
     }
 
-    switchTab(tabName: string): void {
-        this.tabName = tabName;
+    switchTab(tab: NavigationTab): void {
+        this.currentTab = tab;
+        this.updateEditorContent();
+    }
 
-        switch (tabName) {
-            case 'Complete solution':
-                this.content = this.completedContent;
+    public updateEditorContent() {
+        switch (this.currentTab.type) {
+            case NavigationTabType.Complete:
+                this.editorContent = this.challengeVersion.completeSolution;
                 break;
-            case 'Initial solution':
-                this.content = this.initialContent;
+            case NavigationTabType.Initial:
+                this.editorContent = this.challengeVersion.initialSolution;
                 break;
-            case 'Preloaded':
-                this.content = this.preloadedContent;
+            case NavigationTabType.Preloaded:
+                this.editorContent = this.challengeVersion.preloadedCode;
                 break;
             default:
                 break;
         }
     }
 
-    private languageNameMapping: { [key: string]: string } = {
-        'C#': 'csharp',
-    };
+    ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
+        if (checkValidation && checkValidation.currentValue) {
+            this.inputForm.markAllAsTouched();
+        }
 
-    private mapLanguageName(language: string): string {
-        return this.languageNameMapping[language] || language.toLowerCase();
+        if (challengeVersion) {
+            this.inputForm.controls.completeSolution.setValue(this.challengeVersion.completeSolution);
+            this.inputForm.controls.initialSolution.setValue(this.challengeVersion.initialSolution);
+        }
+
+        this.updateEditorContent();
+    }
+
+    getTabClass(tab: NavigationTab) {
+        let inputError = false;
+
+        switch (tab.type) {
+            case NavigationTabType.Complete:
+                inputError = this.inputForm.controls.completeSolution.touched && this.inputForm.controls.completeSolution.invalid;
+                break;
+            case NavigationTabType.Initial:
+                inputError = this.inputForm.controls.initialSolution.touched && this.inputForm.controls.initialSolution.invalid;
+                break;
+            default:
+                break;
+        }
+
+        return inputError ? 'input-error' : '';
+    }
+
+    editorFocusOut() {
+        switch (this.currentTab.type) {
+            case NavigationTabType.Complete:
+                this.inputForm.controls.completeSolution.markAsTouched();
+                break;
+            case NavigationTabType.Initial:
+                this.inputForm.controls.initialSolution.markAsTouched();
+                break;
+            default:
+                break;
+        }
     }
 }

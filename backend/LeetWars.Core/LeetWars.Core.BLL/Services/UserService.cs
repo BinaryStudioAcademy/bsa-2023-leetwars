@@ -1,7 +1,13 @@
+using System.Linq.Expressions;
 using System.Security.Claims;
+using System.Transactions;
 using AutoMapper;
+using LeetWars.Core.BLL.Helpers.Email;
+using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
@@ -12,10 +18,17 @@ namespace LeetWars.Core.BLL.Services;
 
 public class UserService : BaseService, IUserService
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    public UserService(LeetWarsCoreContext context, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(context, mapper)
+    private readonly IUserGetter _userGetter;
+    private readonly IMessageSenderService _messageSenderService;
+    private const int REPUTATION_DIVIDER = 10;
+  
+    public UserService(LeetWarsCoreContext context, 
+                       IMapper mapper, 
+                       IUserGetter userGetter, 
+                       IMessageSenderService messageSenderService) : base(context, mapper)
     {
-        _httpContextAccessor = httpContextAccessor;
+        _userGetter = userGetter;
+        _messageSenderService = messageSenderService;
     }
 
     public async Task<UserDto> CreateUserAsync(NewUserDto userDto)
@@ -25,13 +38,15 @@ public class UserService : BaseService, IUserService
             throw new ArgumentNullException(nameof(userDto));
         }
 
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == userDto.Uid);
-        if (user != null)
+        var user = await _context.Users.SingleOrDefaultAsync(u => u.Uid == userDto.Uid);
+
+        if (user is not null)
         {
             return _mapper.Map<UserDto>(user);
         }
 
-        bool isExistingEmail = await CheckIsExistingEmail(userDto.Email);
+        bool isExistingEmail = await CheckIsExistingEmailAsync(userDto.Email);
+
         if (isExistingEmail)
         {
             throw new InvalidOperationException($"A user with email {userDto.Email} is already registered.");
@@ -41,51 +56,61 @@ public class UserService : BaseService, IUserService
         var createdUser = _context.Users.Add(newUser).Entity;
         await _context.SaveChangesAsync();
 
+        var welcomeEmail = EmailGenerator.GenerateWelcomeEmail(createdUser.UserName, createdUser.Email);
+        _messageSenderService.SendMessageToRabbitMQ(welcomeEmail);
+
         return _mapper.Map<UserDto>(createdUser);
     }
 
-    public async Task<bool> CheckIsExistingEmail(string email)
+    public async Task<bool> CheckIsExistingEmailAsync(string email)
     {
         bool isExistingEmail = await _context.Users.AnyAsync(u => u.Email.ToLower() == email.ToLower());
         return isExistingEmail;
     }
 
-    public async Task<bool> CheckIsExistingUserName(string userName)
+    public async Task<bool> CheckIsExistingUserNameAsync(string userName)
     {
         bool isExistingUserName = await _context.Users.AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
         return isExistingUserName;
     }
 
-    public async Task<UserDto> GetUserByUidAsync(string uid)
+    public async Task<User?> GetUserByExpressionAsync(Expression<Func<User, bool>> expression)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == uid)
-            ?? throw new InvalidOperationException($"A user with uid {uid} is not found.");
-
-        return _mapper.Map<UserDto>(user);
-    }
-
-    public string GetCurrentUserUid()
-    {
-        return _httpContextAccessor.HttpContext?.User.Claims.First(i => i.Type == ClaimTypes.NameIdentifier).Value!;
-    }
-
-    public async Task<UserFullDto> GetFullUserAsync(int id)
-    {
-        var user = await _context.Users.Where(u => u.Id == id)
-            .Include(user => user.LanguagesWithLevels)
+        return await _context.Users
+            .Include(user => user.Subscriptions)
             .Include(user => user.PreferredLanguages)
+            .Include(user => user.LanguagesWithLevels)
             .Include(user => user.Solutions)
             .Include(user => user.Challenges)
-            .FirstOrDefaultAsync();
+            .Include(user => user.UserBadges)
+            .ThenInclude(badge => badge.Badge)
+            .Include(user => user.ChallengeVersions)
+            .SingleOrDefaultAsync(expression);
+    }
+
+    public async Task<UserDto> GetCurrentUserAsync()
+    {
+        var userStringId = _userGetter.CurrentUserId;
+
+        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
+
+        return _mapper.Map<UserDto>(user);  
+    }
+
+    public async Task<UserFullDto> GetFullUserAsync(long id)
+    {
+        var user = await GetUserByExpressionAsync(user => user.Id == id);
+
         if (user is null)
         {
             throw new ArgumentNullException("Not Found", new Exception("User was not found"));
         }
+
         return _mapper.Map<User, UserFullDto>(user);
     }
-    public async Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTags(long currentUserId)
-    {
 
+    public async Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId)
+    {
         var challenges = await _context.Challenges
             .Include(x => x.Level)
             .Include(x => x.Tags)
@@ -106,7 +131,21 @@ public class UserService : BaseService, IUserService
             .ToListAsync();
 
         return challenges;
+    }
 
+    public async Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto)
+    {
+        var user = await GetUserByExpressionAsync(user => user.Id == userDto.Id)
+            ?? throw new ArgumentNullException(nameof(userDto));
+
+        user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallengeId);
+        user.Reputation = user.TotalScore / REPUTATION_DIVIDER;
+
+        _context.Users.Update(user);
+
+        await _context.SaveChangesAsync();
+
+        return _mapper.Map<UserFullDto>(user);
     }
 
     public async Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page)
@@ -119,5 +158,19 @@ public class UserService : BaseService, IUserService
         }
 
         return _mapper.Map<List<UserDto>>(await users.ToListAsync());
+    }
+
+    private async Task<int> GetRewardFromChallenge(long challengeId)
+    {
+        var challengeLevel = await _context.Challenges
+            .Select(challenge => new ChallengeRewardDto
+            {
+                ChallengeId = challenge.Id,
+                Reward = challenge.Level != null ? challenge.Level.Reward : 0,
+            })
+            .SingleOrDefaultAsync(level => level.ChallengeId == challengeId);
+
+        return challengeLevel?.Reward 
+            ?? throw new ArgumentNullException(nameof(challengeId));
     }
 }

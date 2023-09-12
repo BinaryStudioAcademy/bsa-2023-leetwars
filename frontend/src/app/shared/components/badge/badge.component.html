@@ -1,0 +1,28 @@
+<div class="badges-container">
+    <div>
+        <div class="d-flex align-items-start justify-content-between">
+            <div>
+                <div class="text-label-1">Badges</div>
+                <div class="text-label-2">{{ badges.length }}</div>
+            </div>
+            <fa-icon *ngIf="badges?.length" [icon]="'arrow-right'" size="xl"></fa-icon>
+        </div>
+
+        <ng-container *ngIf="badges?.length">
+            <div class="carousel-container">
+                <owl-carousel-o
+                    [options]="customOptions"
+                    (translated)="onTranslated($event)"
+                    (initialized)="onTranslated($event)">
+                    <ng-template carouselSlide *ngFor="let item of badges" [id]="item.id.toString()">
+                        <div class="badge" [ngClass]="{ 'active-badge': isCentered(item) }">
+                            <img [alt]="item.name" [src]="getIconUrl(item)" />
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+            <div class="text-label-1">Most Recent Badge</div>
+            <div>{{ badges[startPosition].name }}</div>
+        </ng-container>
+    </div>
+</div>

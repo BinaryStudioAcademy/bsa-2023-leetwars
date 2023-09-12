@@ -2,7 +2,7 @@
 
 namespace LeetWars.Core.DAL.Entities
 {
-    public class SubscriptionType : Entity<int>
+    public class SubscriptionType : Entity<long>
     {
         public string Name { get; set; }
         public string Description { get; set; }

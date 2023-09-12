@@ -1,5 +1,6 @@
 using LeetWars.Core.WebAPI.Extentions;
 using LeetWars.Core.WebAPI.Middlewares;
+using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Converters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,13 +50,19 @@ app.UseCors(opt => opt
 
 app.UseHttpsRedirection();
 
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Static")),
+    RequestPath = new PathString("/static")
+});
+
 app.UseRouting();
 
 app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.UseMiddleware<UserIdSaverMiddleware>();
+app.UseMiddleware<UserSaverMiddleware>();
 
 app.UseEndpoints(endpoinds =>
 {

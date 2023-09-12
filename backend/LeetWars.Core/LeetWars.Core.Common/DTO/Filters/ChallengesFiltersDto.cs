@@ -6,8 +6,8 @@ namespace LeetWars.Core.Common.DTO.Filters
     {
         public string? Title { get; set; }
         public ChallengeStatus? ChallengeStatus { get; set; }
-        public int? LanguageId { get; set; }
-        public ICollection<int>? TagsIds { get; set; }
+        public long? LanguageId { get; set; }
+        public ICollection<long>? TagsIds { get; set; }
         public ChallengesProgress? Progress { get; set; }
     }
 }

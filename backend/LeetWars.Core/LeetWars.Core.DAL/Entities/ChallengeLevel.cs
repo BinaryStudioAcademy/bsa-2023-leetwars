@@ -2,7 +2,7 @@
 
 namespace LeetWars.Core.DAL.Entities
 {
-    public class ChallengeLevel : Entity<int>
+    public class ChallengeLevel : Entity<long>
     {
         public string Name { get; set; }
         public int Reward { get; set; }

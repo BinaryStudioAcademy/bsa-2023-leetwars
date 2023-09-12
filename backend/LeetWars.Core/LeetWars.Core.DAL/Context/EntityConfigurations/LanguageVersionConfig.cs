@@ -11,6 +11,8 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
         {
             builder.Property(e => e.Version)
                 .HasMaxLength(EntitySettings.MaxShortNameLength);
+
+            builder.HasKey(l => l.Id).HasName("PK_LanguageVersion");
         }
     }
 }

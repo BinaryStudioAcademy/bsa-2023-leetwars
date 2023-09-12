@@ -14,10 +14,14 @@ namespace LeetWars.Core.DAL.Context
         public DbSet<Subscription> Subscriptions => Set<Subscription>();
         public DbSet<SubscriptionType> SubscriptionTypes => Set<SubscriptionType>();
         public DbSet<Tag> Tags => Set<Tag>();
+        public DbSet<ChallengeTag> ChallengeTags => Set<ChallengeTag>();
+        public DbSet<UserPreferredLanguage> UserPreferredLanguage => Set<UserPreferredLanguage>();
         public DbSet<Test> Tests => Set<Test>();
         public DbSet<User> Users => Set<User>();
         public DbSet<UserLanguageLevel> UserLanguageLevels => Set<UserLanguageLevel>();
         public DbSet<UserSolution> UserSolutions => Set<UserSolution>();
+        public DbSet<Badge> Badges => Set<Badge>();
+        public DbSet<UserBadge> UserBadges => Set<UserBadge>();
 
         public LeetWarsCoreContext(DbContextOptions<LeetWarsCoreContext> options) : base(options)
         {

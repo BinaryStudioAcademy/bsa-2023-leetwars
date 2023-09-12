@@ -1,14 +1,20 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Input } from '@angular/core';
+import {
+    AfterViewInit, ChangeDetectorRef, Component, ElementRef,
+    EventEmitter, HostListener, Input, OnChanges, Output,
+} from '@angular/core';
+import { ChallengeStep } from '@shared/enums/challenge-step';
 
 @Component({
     selector: 'app-steps-of-progress',
     templateUrl: './steps-of-progress.component.html',
     styleUrls: ['./steps-of-progress.component.sass'],
 })
-export class StepsOfProgressComponent implements AfterViewInit {
-    @Input() public steps: string[] = [];
+export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
+    @Input() public steps: ChallengeStep[] = [];
 
-    @Input() public activeStepIndex = 0;
+    @Input() public currentStep: ChallengeStep;
+
+    @Output() stepClick = new EventEmitter<ChallengeStep>();
 
     public progressWidth = 0;
 
@@ -32,7 +38,9 @@ export class StepsOfProgressComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        if (this.activeStepIndex >= this.steps.length) {
+        const currentIndex = this.getCurrentStepIndex();
+
+        if (currentIndex >= this.steps.length) {
             this.progressWidth = this.maxProgressWidth;
             this.cdr.detectChanges();
 
@@ -40,14 +48,29 @@ export class StepsOfProgressComponent implements AfterViewInit {
         }
 
         this.progressBarLine = this.el.nativeElement.querySelector('.progress-bar-line');
-        this.activeStepIndicator = this.el.nativeElement.querySelectorAll('.step-indicator')[this.activeStepIndex];
         this.updateProgressBarWidth();
+    }
+
+    ngOnChanges(): void {
+        this.updateProgressBarWidth();
+    }
+
+    public onClick(step: ChallengeStep) {
+        this.stepClick.emit(step);
+    }
+
+    private getCurrentStepIndex() {
+        return this.steps.findIndex(s => s === this.currentStep);
     }
 
     private updateProgressBarWidth() {
         if (!this.isActiveStepValid()) {
             return;
         }
+
+        const currentIndex = this.getCurrentStepIndex();
+
+        this.activeStepIndicator = this.el.nativeElement.querySelectorAll('.step-indicator')[currentIndex];
 
         const progressBarWidth = this.progressBarLine?.clientWidth ?? 1; // Ensure non-zero width
         const activeStepLeft =
@@ -63,6 +86,8 @@ export class StepsOfProgressComponent implements AfterViewInit {
     }
 
     private isActiveStepValid(): boolean {
-        return this.activeStepIndex >= 0 && this.activeStepIndex < this.steps.length;
+        const currentIndex = this.getCurrentStepIndex();
+
+        return currentIndex >= 0 && currentIndex < this.steps.length;
     }
 }
