@@ -37,10 +37,12 @@ export class UserService {
     }
 
     public getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {
-        return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(`${this.baseUrl}/${id}/user-challenges`);
+        return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(
+            `${this.baseUrl}/${id}/user-challenges`,
+        );
     }
 
-    public updateUser(userDto: IEditUser): Observable<IUserFull> {
-        return this.httpService.putRequest<IUserFull>(`${this.baseUrl}`, userDto);
+    public updateUserRank(userDto: IEditUser): Observable<IUserFull> {
+        return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
     }
 }

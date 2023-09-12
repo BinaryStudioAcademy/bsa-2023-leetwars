@@ -5,6 +5,7 @@ using AutoMapper;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
@@ -120,7 +121,7 @@ public class UserService : BaseService, IUserService
         return challenges;
     }
 
-    public async Task<UserFullDto> UpdateUserAsync(EditUserDto userDto)
+    public async Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == userDto.Id)
             ?? throw new ArgumentNullException(nameof(userDto));
@@ -137,11 +138,15 @@ public class UserService : BaseService, IUserService
 
     private async Task<int> GetRewardFromChallenge(long challengeId)
     {
-        var challenge = await _context.Challenges
-            .Include(challenge => challenge.Level)
-            .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+        var challengeLevel = await _context.Challenges
+            .Select(challenge => new ChallengeRewardDto
+            {
+                ChallengeId = challenge.Id,
+                Reward = challenge.Level != null ? challenge.Level.Reward : 0,
+            })
+            .SingleOrDefaultAsync(level => level.ChallengeId == challengeId);
 
-        return challenge?.Level?.Reward 
+        return challengeLevel?.Reward 
             ?? throw new ArgumentNullException(nameof(challengeId));
     }
 }

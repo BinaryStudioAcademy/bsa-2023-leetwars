@@ -66,9 +66,10 @@ public class UsersController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<ActionResult<UserFullDto>> UpdateUser(EditUserDto userDto)
+    [Route("rank")]
+    public async Task<ActionResult<UserFullDto>> UpdateUserRank([FromBody] EditUserDto userDto)
     {
-        var updatedUser = await _userService.UpdateUserAsync(userDto);
+        var updatedUser = await _userService.UpdateUserRankAsync(userDto);
         return Ok(updatedUser);
     }
 }
