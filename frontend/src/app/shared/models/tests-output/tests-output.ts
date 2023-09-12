@@ -1,9 +1,9 @@
-import { Test } from './test';
+import { ITest } from './test';
 
-export interface TestsOutput {
+export interface ITestsOutput {
     isSuccess: boolean;
     failedCount: number;
     passedCount: number;
     overallDuration: string;
-    testsWithData: Test[]
+    testsWithData: ITest[]
 }

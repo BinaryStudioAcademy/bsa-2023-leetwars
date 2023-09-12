@@ -7,7 +7,7 @@
         public string Language { get; set; } = string.Empty;
         public bool IsBuilt { get; set; }
         public string? BuildResults { get; set; }
-        public string? TestRunResults { get; set; }
+        public TestsOutput? TestRunResults { get; set; }
 
     }
 }

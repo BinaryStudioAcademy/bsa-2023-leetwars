@@ -5,9 +5,9 @@ import { BroadcastHubService } from '@core/hubs/broadcast-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { IChallenge } from '@shared/models/challenge/challenge';
-import { CodeRunRequest } from '@shared/models/code-run-request/code-run-request';
-import { CodeRunResults } from '@shared/models/code-run-results/code-run-results';
-import { TestsOutput } from '@shared/models/tests-output/tests-output';
+import { ICodeRunRequest } from '@shared/models/code-run-request/code-run-request';
+import { ICodeRunResults } from '@shared/models/code-run-results/code-run-results';
+import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -62,9 +62,9 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         this.signalRService.start();
 
         this.signalRService.listenMessages((message: string) => {
-            const codeRunResults: CodeRunResults = JSON.parse(message);
+            const codeRunResults: ICodeRunResults = JSON.parse(message);
 
-            if (codeRunResults.isBuilt && codeRunResults.testRunResults !== null && codeRunResults.testRunResults !== '') {
+            if (codeRunResults.isBuilt && codeRunResults.testRunResults) {
                 this.showTestResults(codeRunResults.testRunResults);
             }
         });
@@ -103,12 +103,10 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         (<any>window).monaco.editor.setModelLanguage((<any>window).monaco.editor.getModels()[0], selectedLang);
     }
 
-    showTestResults(testOutput: string) {
-        const testResults: TestsOutput = JSON.parse(testOutput);
-
+    showTestResults(testResults: ITestsOutput) {
         if (testResults.isSuccess) {
             this.toastrNotification.showSuccess('Tests were successful!');
-        } else if (!testResults.isSuccess) {
+        } else {
             this.toastrNotification.showError('Tests failed');
         }
     }
@@ -132,14 +130,14 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
     }
 
     public runTests() {
-        const codeRunRequest: CodeRunRequest = {
+        const codeRunRequest: ICodeRunRequest = {
             userId: 1234,
             challengeVersionId: 1234,
             isBuilt: true,
             language: 'csharp',
             userCode: 'public class Solution\r\n{\r\n    public bool IsNumPrime(int num)\r\n    ' +
                         '{\r\n        throw new Exception("Exception!!!");\r\n    }\r\n}\r\n',
-            preloaded: null,
+            preloaded: undefined,
             tests: 'using NUnit.Framework;\r\n\r\n[TestFixture]\r\npublic class Tests\r\n{\r\n    ' +
                     'private Solution? _solutionClass;\r\n\r\n    [SetUp]\r\n    ' +
                     'public void Setup()\r\n    {\r\n        _solutionClass = new Solution();\r\n    }\r\n\r\n    ' +

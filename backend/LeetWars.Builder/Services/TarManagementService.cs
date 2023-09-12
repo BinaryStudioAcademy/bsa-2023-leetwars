@@ -13,17 +13,15 @@ namespace LeetWars.Builder.Services
         {
             byte[] tarBytes;
 
-            using (MemoryStream ms = new())
-            {
-                using (TarWriter writer = new(ms, new TarWriterOptions(CompressionType.None, false)))
-                {
-                    using MemoryStream inputMs = new(Encoding.UTF8.GetBytes(input));
+            using MemoryStream ms = new();
 
-                    writer.Write(newFileNameWithExtension, inputMs);
-                }
+            using TarWriter writer = new(ms, new TarWriterOptions(CompressionType.None, false));
 
-                tarBytes = ms.ToArray();
-            }
+            using MemoryStream inputMs = new(Encoding.UTF8.GetBytes(input));
+
+            writer.Write(newFileNameWithExtension, inputMs);
+
+            tarBytes = ms.ToArray();
 
             return tarBytes;
         }

@@ -1,6 +1,6 @@
-export interface Test {
+export interface ITest {
     testName: string;
     isSuccess: boolean;
-    errorMessage: string | null;
+    errorMessage?: string;
     duration: string;
 }

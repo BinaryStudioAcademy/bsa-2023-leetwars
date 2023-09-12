@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.Razor;
+﻿using LeetWars.Builder.DTO;
+using LeetWars.Builder.Models;
 
 namespace LeetWars.Builder.Interfaces
 {
     public interface ISolutionRunnerService
     {
-        Task<string> RunSolutionTestsAsync(string processName, string language, string code, string tests, string preloaded);
+        Task<TestsOutput?> RunSolutionTestsAsync(TestingContainerDataDto testingContainerDataDto);
     }
 }

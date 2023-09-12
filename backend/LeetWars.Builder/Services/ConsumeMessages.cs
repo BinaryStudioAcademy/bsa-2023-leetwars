@@ -3,6 +3,7 @@ using LeetWars.Builder.Models;
 using LeetWars.Core.Common.Models;
 using LeetWars.RabbitMQ;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
@@ -37,14 +38,23 @@ namespace LeetWars.Builder.Services
 
                 var results = new CodeRunResults();
 
-                if (request != null && request.IsBuilt && (request.Tests != null || request.Tests != string.Empty))
+                if (request != null && request.IsBuilt && !string.IsNullOrEmpty(request.Tests))
                 {
                     results = await _codeRunManagerService.RunCodeAndTestsAsync(request);
                 }
 
+                string jsonObj = JsonConvert.SerializeObject(
+                    results,
+                    new JsonSerializerSettings
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    }
+                );
+
+
                 _consumerService.SetAcknowledge(args.DeliveryTag, true);
 
-                _producerService.Send(results, ExchangeType.Direct);
+                _producerService.Send(jsonObj, ExchangeType.Direct);
 
             });
 

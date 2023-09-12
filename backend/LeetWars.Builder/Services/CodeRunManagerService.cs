@@ -1,4 +1,5 @@
-﻿using LeetWars.Builder.Interfaces;
+﻿using LeetWars.Builder.DTO;
+using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
 using LeetWars.Core.Common.Models;
 
@@ -17,7 +18,7 @@ namespace LeetWars.Builder.Services
         {
             string processName = request.UserId + "_" + request.ChallengeVersionId + "-testing";
 
-            string testRunResults = await _solutionRunner.RunSolutionTestsAsync(processName, request.Language, request.UserCode, request.Tests ?? "", request.Preloaded ?? "");
+            var testRunResults = await _solutionRunner.RunSolutionTestsAsync(new TestingContainerDataDto(processName, request.Language, request.UserCode, request.Tests ?? "", request.Preloaded ?? ""));
 
             return new CodeRunResults
             {

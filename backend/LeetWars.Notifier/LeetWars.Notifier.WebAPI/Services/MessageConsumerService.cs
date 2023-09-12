@@ -4,9 +4,6 @@ using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client.Events;
 using System.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using LeetWars.Notifier.WebAPI.Models;
 
 namespace LeetWars.Notifier.WebAPI.Services
 {
@@ -30,17 +27,7 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 var message = Encoding.UTF8.GetString(body);
 
-                var messageObj = JsonConvert.DeserializeObject<CodeRunResults>(message);
-
-                string jsonMessage = JsonConvert.SerializeObject(
-                    messageObj,
-                    new JsonSerializerSettings
-                    {
-                        ContractResolver = new CamelCasePropertyNamesContractResolver()
-                    }
-                );
-
-                _hubContext.Clients.All.BroadcastMessage(jsonMessage);
+                _hubContext.Clients.All.BroadcastMessage(message);
 
                 _consumerService.SetAcknowledge(args.DeliveryTag, true);
             });

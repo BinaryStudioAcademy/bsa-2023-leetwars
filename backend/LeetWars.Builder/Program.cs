@@ -10,15 +10,7 @@ builder.Services.AddRabbitMqServices(builder.Configuration);
 
 builder.Services.AddHostedService<ConsumeMessages>();
 
-builder.Services.AddSingleton<IMessageSenderService, MessageSenderService>();
-
-builder.Services.AddTransient<ISolutionRunnerService, SolutionRunnerService>();
-
-builder.Services.AddTransient<ICodeRunManagerService, CodeRunManagerService>();
-
-builder.Services.AddSingleton<ITarManagementService, TarManagementService>();
-
-builder.Services.AddSingleton<IXmlTestResultParserService, XmlTestResultParserService>();
+builder.Services.RegisterTestRunnerServices(builder.Configuration);
 
 var app = builder.Build();
 

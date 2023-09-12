@@ -1,4 +1,5 @@
-﻿using LeetWars.Builder.Interfaces;
+﻿using LeetWars.Builder.DTO;
+using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
 using System.Globalization;
 using System.Xml;
@@ -9,60 +10,35 @@ namespace LeetWars.Builder.Services
     {
         public TestsOutput ParseCSharpTestResult(string xmlTestResult)
         {
-            XmlDocument xmlDoc = new();
+            var xmlDoc = new XmlDocument();
 
             xmlDoc.LoadXml(xmlTestResult);
 
-            XmlNamespaceManager nsManager = new (xmlDoc.NameTable);
+            var nsManager = new XmlNamespaceManager(xmlDoc.NameTable);
 
             if (xmlDoc.DocumentElement?.NamespaceURI != null)
             {
                 nsManager.AddNamespace("ns", xmlDoc.DocumentElement.NamespaceURI);
             }
 
-            XmlNode? countersNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:ResultSummary/ns:Counters", nsManager);
+            var mainNodes = GetMainNUnitNodes(xmlDoc, nsManager);
 
-            XmlNode? resultSummaryNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:ResultSummary", nsManager);
+            CheckForNoNulls(mainNodes);
 
-            XmlNode? startTimeNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:Times", nsManager);
+            var overallResultsAsStrings = GetOverallNUnitTestResult(mainNodes);
 
-            XmlNodeList? unitTestResultNodes = xmlDoc.SelectNodes("/ns:TestRun/ns:Results/ns:UnitTestResult", nsManager);
-
-            if (countersNode == null || resultSummaryNode == null || startTimeNode == null)
-            {
-                throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
-            }
-
-            string? passed = countersNode.Attributes?["passed"]?.Value;
-
-            string? failed = countersNode.Attributes?["failed"]?.Value;
-
-            string? outcome = resultSummaryNode.Attributes?["outcome"]?.Value;
-
-            string? startTimeString = startTimeNode.Attributes?["start"]?.Value;
-
-            string? finishTimeString = startTimeNode.Attributes?["finish"]?.Value;
-
-            if (passed == null || failed == null || outcome == null || startTimeString == null || finishTimeString == null || unitTestResultNodes == null)
-            {
-                throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
-            }
+            CheckForNoNulls(overallResultsAsStrings);
 
             ICollection<Test> tests = new List<Test>();
 
-            foreach (XmlNode testNode in unitTestResultNodes)
-            {     
+            foreach (XmlNode testNode in mainNodes.UnitTestResultNodes!)
+            {
                 tests.Add(ParseSingleCSharpTest(testNode, nsManager));
             }
 
-            DateTime startTime = DateTime.Parse(startTimeString, CultureInfo.InvariantCulture);
+            var totalTimeString = CountExecutionTime(overallResultsAsStrings.StartTime!, overallResultsAsStrings.FinishTime!);
 
-            DateTime finishTime = DateTime.Parse(finishTimeString, CultureInfo.InvariantCulture);
-
-            TimeSpan totalTime = finishTime - startTime;
-
-
-            var testResult = new TestsOutput(outcome == "Passed", totalTime.ToString(), tests, int.Parse(failed), int.Parse(passed));
+            var testResult = new TestsOutput(overallResultsAsStrings.Outcome == "Passed", totalTimeString, tests, int.Parse(overallResultsAsStrings.FailedCount!), int.Parse(overallResultsAsStrings.PassedCount!));
 
             return testResult;
         }
@@ -75,31 +51,24 @@ namespace LeetWars.Builder.Services
 
             XmlNode? testSuits = xmlDoc.SelectSingleNode("//testsuites") ?? throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
 
-            string? duration = testSuits.Attributes?["time"]?.Value;
+            var overallResultsAsStrings = GetOverallMochaResults(testSuits);
 
-            string? testsCount = testSuits.Attributes?["tests"]?.Value;
+            CheckForNoNulls(overallResultsAsStrings);
 
-            string? failed = testSuits.Attributes?["failures"]?.Value;
+            int failedTestCount = int.Parse(overallResultsAsStrings.FailedCount!);
 
-            if(duration == null || testsCount == null || failed == null) 
-            {
-                throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
-            }
-
-            int passed = int.Parse(testsCount) - int.Parse(failed);
+            int passed = int.Parse(overallResultsAsStrings.TestsCount!) - failedTestCount;
 
             XmlNodeList? testNodes = xmlDoc.SelectNodes("//testcase") ?? throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
 
             ICollection<Test> tests = new List<Test>();
 
-            foreach (XmlNode testNode in testNodes) 
+            foreach (XmlNode testNode in testNodes)
             {
                 tests.Add(ParseSingleJSTest(testNode));
             }
 
-            int failedTestCount = int.Parse(failed);
-
-            return new TestsOutput( failedTestCount == 0, duration, tests, failedTestCount, passed);
+            return new TestsOutput(failedTestCount == 0, overallResultsAsStrings.Duration!, tests, failedTestCount, passed);
         }
 
         private static Test ParseSingleCSharpTest(XmlNode testNode, XmlNamespaceManager nsManager)
@@ -159,6 +128,83 @@ namespace LeetWars.Builder.Services
             }
 
             return testData;
+        }
+
+        private static NUnitMainNodesDto GetMainNUnitNodes(XmlDocument xmlDoc, XmlNamespaceManager nsManager)
+        {
+            XmlNode? countersNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:ResultSummary/ns:Counters", nsManager);
+
+            XmlNode? resultSummaryNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:ResultSummary", nsManager);
+
+            XmlNode? timeNode = xmlDoc.SelectSingleNode("/ns:TestRun/ns:Times", nsManager);
+
+            XmlNodeList? unitTestResultNodes = xmlDoc.SelectNodes("/ns:TestRun/ns:Results/ns:UnitTestResult", nsManager);
+
+
+            return new NUnitMainNodesDto
+            {
+                Counters = countersNode,
+                ResultSummary = resultSummaryNode,
+                Times = timeNode,
+                UnitTestResultNodes = unitTestResultNodes
+            };
+        }
+
+        private static NUnitOverallResultsDto GetOverallNUnitTestResult(NUnitMainNodesDto mainNodes)
+        {
+            string? passed = mainNodes.Counters?.Attributes?["passed"]?.Value;
+
+            string? failed = mainNodes.Counters?.Attributes?["failed"]?.Value;
+
+            string? outcome = mainNodes.ResultSummary?.Attributes?["outcome"]?.Value;
+
+            string? startTimeString = mainNodes.Times?.Attributes?["start"]?.Value;
+
+            string? finishTimeString = mainNodes.Times?.Attributes?["finish"]?.Value;
+
+            return new NUnitOverallResultsDto
+            {
+                Outcome = outcome,
+                FailedCount = failed,
+                PassedCount = passed,
+                StartTime = startTimeString,
+                FinishTime = finishTimeString
+            };
+        }
+
+        private static MochaOverallResultsDto GetOverallMochaResults(XmlNode? testSuits)
+        {
+            string? duration = testSuits?.Attributes?["time"]?.Value;
+
+            string? testsCount = testSuits?.Attributes?["tests"]?.Value;
+
+            string? failed = testSuits?.Attributes?["failures"]?.Value;
+
+            return new MochaOverallResultsDto
+            {
+                Duration = duration,
+                TestsCount = testsCount,
+                FailedCount = failed
+            };
+        }
+
+        private static string CountExecutionTime(string startTimeString, string finishTimeString)
+        {
+            DateTime startTime = DateTime.Parse(startTimeString, CultureInfo.InvariantCulture);
+
+            DateTime finishTime = DateTime.Parse(finishTimeString, CultureInfo.InvariantCulture);
+
+            TimeSpan totalTime = finishTime - startTime;
+
+            return totalTime.ToString();
+        }
+
+        private static void CheckForNoNulls(object obj)
+        {
+            if (!obj.GetType().GetProperties().All(p => p != null))
+            {
+                throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
+            }
         }
     }
 }
