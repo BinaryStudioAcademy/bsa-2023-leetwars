@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import * as utils from '@modules/user/profile-page-main-info/profile-page-main.utils';
-import { IUserFull } from '@shared/models/profile/user-full';
+import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 
 @Component({
@@ -25,11 +25,9 @@ export class ProfilePageMainInfoComponent implements OnChanges {
 
     public communityLastWeekDiscuss = 0;
 
-    public communityReputation = 0;
-
     public communityLastWeekReputation = 0;
 
-    ngOnChanges(): void {
+    public ngOnChanges() {
         this.updateSolutions();
     }
 

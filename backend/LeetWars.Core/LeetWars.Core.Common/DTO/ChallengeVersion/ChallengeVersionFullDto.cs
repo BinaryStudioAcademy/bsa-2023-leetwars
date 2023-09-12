@@ -20,7 +20,7 @@ namespace LeetWars.Core.Common.DTO.ChallengeVersion
         public ChallengeStatus Status { get; set; }
         public ICollection<LanguageVersionDto>? LanguageVersions { get; set; }
         public ICollection<UserSolutionDto>? Solutions { get; set; }
-        public LanguageDto? Language { get; set; }
+        public LanguageFullDto? Language { get; set; }
         public UserDto? Author { get; set; }
     }
 }

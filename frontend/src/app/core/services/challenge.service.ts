@@ -6,7 +6,7 @@ import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
-import { Star } from '@shared/models/challenge-star/star';
+import { IStar } from '@shared/models/challenge-star/star';
 import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
@@ -40,7 +40,7 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/${id}`);
     }
 
-    public updateStar(star: Star): Observable<IChallengePreview> {
+    public updateStar(star: IStar): Observable<IChallengePreview> {
         return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
     }
 

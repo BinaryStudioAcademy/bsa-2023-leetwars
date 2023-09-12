@@ -12,8 +12,6 @@ using Microsoft.IdentityModel.Tokens;
 using LeetWars.RabbitMQ;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {

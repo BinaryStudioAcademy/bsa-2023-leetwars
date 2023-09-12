@@ -1,0 +1,158 @@
+@import 'src/styles/color-variables'
+
+.page-container
+    padding: 8px
+    height: 90%
+
+.problem-info, .editor
+    border-radius: 5px
+    background-color: $vs-dark-theme
+    color: $white
+    font-family: Inter
+    font-size: 11px
+    font-weight: 500
+    letter-spacing: 0em
+
+.content
+    padding: 16px
+
+.my-code-editor
+    height: 100%
+    width: 100%
+
+.editor.h-50
+    overflow: hidden
+
+.editor-test
+    height: calc(100% - 45px)
+    width: 100%
+
+.test-wrp
+    margin-top: 10px
+    height: 42%
+
+:host ::ng-deep .editor-container
+    width: 100%
+
+:host ::ng-deep .scroll-decoration
+    box-shadow: none !important
+
+.header, .problem-info ul
+    height: 36px
+    display: flex
+    gap: 12px
+    align-items: center
+    background-color: $charcoal
+    border-radius: 5px 5px 0px 0px
+    border-bottom: 1px solid $extra-light-gray
+
+.language-selection
+    height: 100%
+    display: flex
+    align-items: center
+
+.language-selection
+    width: fit-content
+    padding-left: 22px
+
+.language-selection app-dropdown-select
+    margin-right: 10px
+
+:host ::ng-deep .language-selection .btn
+    border: none !important
+    background-color: transparent !important
+    height: auto !important
+    color: $transparent-light-grey
+    padding-left: 4px !important
+    padding-right: 0px !important
+    gap: 8px !important
+    font-family: Inter
+    font-size: 10px
+    font-weight: 500
+
+:host ::ng-deep .dropdown-item
+    font-family: Inter
+    font-size: 10px
+    font-weight: 500
+
+:host ::ng-deep .language-selection .btn span
+    color: $transparent-light-grey
+
+:host ::ng-deep .language-selection fa-icon
+    color: $transparent-light-grey !important
+
+:host ::ng-deep .language-selection .dropdown-item
+    color: $transparent-light-grey !important
+
+.vertical-divider
+    width: 1px
+    height: 12px
+    background-color: $soft-celestial
+
+button span
+    color: $semi-transparent-white
+
+:host ::ng-deep .as-split-gutter
+    background-color: transparent !important
+    &-icon
+        background-image: url("/assets/images/ellipsis.png") !important
+
+.centered-icon
+    margin-left: 8px
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100%
+
+
+:host ::ng-deep pre
+    white-space: pre-wrap
+
+:host ::ng-deep .tab-content
+    height: calc(100% - 36px)
+    overflow: auto
+    font-size: 13px
+    font-weight: 400
+
+.selectedTab
+    height: 100%
+    display: flex
+    align-items: center
+    color: $white
+    position: relative
+
+:host ::ng-deep .selectedTab::after
+    content: ""
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    height: 2px
+    background-color: $slate-gray
+
+.problem-info ul
+    padding-left: 16px
+    color: $transparent-light-grey
+
+.challenge-title
+    font-size: 16px
+    padding-bottom: 16px
+
+.actions
+    margin-top: 15px
+    display: flex
+    justify-content: flex-end
+    gap: 10px
+    padding: 4px
+
+.actions button
+    padding: 3px 6px
+    border-radius: 5px
+    color: $white
+
+button.sumbit
+    background-color: $green
+
+button.run-test
+    background-color: $charcoal-grey
+
