@@ -31,11 +31,6 @@ const routes: Routes = [
         loadChildren: () => import('./modules/challenges/challenges.module').then((m) => m.ChallengesModule),
         canActivate: [AuthorizedGuard, HeaderGuard],
     },
-    {
-        path: 'challenges/:id',
-        loadChildren: () => import('./modules/online-editor/online-editor.module').then((m) => m.OnlineEditorModule),
-        canActivate: [AuthorizedGuard, HeaderGuard],
-    },
     { path: '**', component: NotFoundComponent, pathMatch: 'full', canActivate: [HeaderGuard] },
 ];
 

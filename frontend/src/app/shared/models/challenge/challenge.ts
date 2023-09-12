@@ -6,6 +6,7 @@ import { ITag } from '../tag/tag';
 import { IUser } from '../user/user';
 
 export interface IChallenge extends AuditEntity<number> {
+    id: number;
     title: string;
     instructions: string;
     levelId: number;

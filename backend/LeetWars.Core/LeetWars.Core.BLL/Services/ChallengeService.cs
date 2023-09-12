@@ -147,6 +147,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengePreviewDto>(challenge);
         }
 
+
         private async Task<Challenge?> GetChallengeByIdAsync(long challengeId)
         {
             return await _context.Challenges
@@ -154,7 +155,8 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
                 .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Language)
+                    .ThenInclude(version => version.Language!)
+                    .ThenInclude(language => language.LanguageVersions)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
                 .Include(challenge => challenge.Versions)
@@ -240,7 +242,7 @@ namespace LeetWars.Core.BLL.Services
                 var data = new byte[4];
                 generator.GetBytes(data);
                 var randomValue = Math.Abs(BitConverter.ToInt32(data, 0));
-
+                
                 return randomValue % maxValue;
             }
         }
