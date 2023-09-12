@@ -5,11 +5,11 @@ import { HeaderService } from '@core/services/header-service';
 @Injectable({
     providedIn: 'root',
 })
-export class HideHeaderGuard implements CanActivate {
+export class HeaderGuard implements CanActivate {
     constructor(private headerService: HeaderService) {}
 
-    canActivate(): boolean {
-        this.headerService.setShowHeader(false);
+    public canActivate(): boolean {
+        this.headerService.setShowHeader(true);
 
         return true;
     }
