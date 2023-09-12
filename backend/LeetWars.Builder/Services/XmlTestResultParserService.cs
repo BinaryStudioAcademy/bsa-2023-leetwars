@@ -201,7 +201,7 @@ namespace LeetWars.Builder.Services
 
         private static void CheckForNoNulls(object obj)
         {
-            if (!obj.GetType().GetProperties().All(p => p != null))
+            if (!obj.GetType().GetProperties().ToList().TrueForAll(p => p != null))
             {
                 throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
             }
