@@ -4,6 +4,7 @@ import { SpinnerService } from '@core/services/spinner.service';
 @Component({
     selector: 'app-loading-spinner',
     templateUrl: './loading-spinner.component.html',
+    styleUrls: ['./loading-spinner.component.sass'],
 })
 export class LoadingSpinnerComponent {
     constructor(public spinnerService: SpinnerService) {}
@@ -12,11 +13,11 @@ export class LoadingSpinnerComponent {
 
     @Input() size = '20px';
 
-    @Input() top = '30%';
+    @Input() top = '50%';
 
-    @Input() left = '49%';
+    @Input() left = '50%';
 
-    @Input() position = 'absolute';
+    @Input() position = 'fixed';
 
-    @Input() margin = '100px auto';
+    @Input() margin = 'auto';
 }
