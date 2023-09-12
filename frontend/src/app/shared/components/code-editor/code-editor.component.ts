@@ -7,8 +7,6 @@ import { EditorOptions } from '@shared/models/options/editor-options';
     styleUrls: ['./code-editor.component.sass'],
 })
 export class CodeEditorComponent implements OnChanges, AfterViewInit, OnInit {
-    languageNameMap: Map<string, string> = new Map<string, string>([['C#', 'csharp']]);
-
     @Input() language: string;
 
     @Input() initText: string = '';
