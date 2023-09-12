@@ -2,7 +2,7 @@
     <div class="logo">
         <img src="assets/images/logo/logo.png" alt="LEETWARS">
     </div>
-    <div class="user-menu">
+    <div class="user-menu align-items-center">
         <div class="notification">
             <fa-layers size="2x">
                 <fa-icon [icon]="['far', 'bell']"></fa-icon>
@@ -10,8 +10,10 @@
             </fa-layers>
         </div>
         <div class="user">
-            <img src=".\assets\images\default-profile-img.jpg" alt="User Logo" class="user-logo">
-            <span class="username" (click)="showMenu = !showMenu">John Drake</span>
+            <img [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'" alt="User Logo" class="user-logo">
+            <span class="username" (click)="showMenu = !showMenu">
+                {{ user.firstName && user.lastName ? user.firstName + ' ' + user.lastName : user.userName }}
+            </span>
         </div>
         <div class="menu-wraper">
             <div class="menu" *ngIf="showMenu">
