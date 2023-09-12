@@ -70,9 +70,9 @@ export class SignUpComponent {
     public signUp() {
         this.authService
             .register({
-                userName: this.registrationForm.value.username!.trim(),
-                email: this.registrationForm.value.email!.trim(),
-                password: this.registrationForm.value.password!.trim(),
+                userName: this.registrationForm.value.username!,
+                email: this.registrationForm.value.email!,
+                password: this.registrationForm.value.password!,
             })
             .subscribe(
                 () => {
