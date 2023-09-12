@@ -14,7 +14,7 @@ import { takeUntil } from 'rxjs';
 export class LeaderBoardComponent extends BaseComponent implements OnInit {
     public users: IUser[] = [];
 
-    public isLastPage: boolean = false;
+    public isLastPage = false;
 
     public loading = false;
 
