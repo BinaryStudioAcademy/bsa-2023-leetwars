@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { IUserFull } from '@shared/models/profile/user-full';
 import { IUser } from '@shared/models/user/user';
+import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 import { Subject, takeUntil } from 'rxjs';
 
