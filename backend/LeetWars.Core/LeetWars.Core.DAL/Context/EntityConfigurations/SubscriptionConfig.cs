@@ -15,7 +15,8 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
             //Connections
             builder.HasOne(e => e.SubscriptionType)
                 .WithMany()
-                .HasForeignKey(e => e.TypeId);
+                .HasForeignKey(e => e.TypeId)
+                .HasConstraintName("FK_Subscription_SubscriptionTypes_TypeId");
         }
     }
 }

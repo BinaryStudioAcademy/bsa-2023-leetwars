@@ -12,6 +12,9 @@ export interface IChallengeVersion extends AuditEntity<number> {
     challengeId: number;
     initialSolution: string;
     completeSolution: string;
+    preloadedCode: string;
+    testCases: string;
+    exampleTestCases: string;
     status: ChallengeStatus;
     languageVersions: Array<ILanguageVersion>;
     solutions: Array<IUserSolution>;

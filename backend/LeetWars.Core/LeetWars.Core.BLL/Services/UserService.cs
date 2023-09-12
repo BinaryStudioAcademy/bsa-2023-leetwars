@@ -17,13 +17,13 @@ namespace LeetWars.Core.BLL.Services;
 
 public class UserService : BaseService, IUserService
 {
-    private readonly IUserIdGetter _userGetter;
+    private readonly IUserGetter _userGetter;
     private readonly IMessageSenderService _messageSenderService;
     private const int REPUTATION_DIVIDER = 10;
   
     public UserService(LeetWarsCoreContext context, 
                        IMapper mapper, 
-                       IUserIdGetter userGetter, 
+                       IUserGetter userGetter, 
                        IMessageSenderService messageSenderService) : base(context, mapper)
     {
         _userGetter = userGetter;

@@ -12,7 +12,7 @@ namespace LeetWars.Core.Common.DTO.Challenge
     {
         public string Title { get; set; } = string.Empty;
         public string Instructions { get; set; } = string.Empty;
-        public int LevelId { get; set; }
+        public long LevelId { get; set; }
         public ChallengeCategory Category { get; set; }
         public ChallengeLevelDto? Level { get; set; }
         public UserDto? Author { get; set; }

@@ -1,0 +1,58 @@
+<div class="d-flex gap-4 pt-4 ps-3">
+    <button
+        [disabled]="currentStep !== ChallengeStep.Testcases"
+        class="custom-button accent"
+        (click)="onBtnCreateClick()"
+    >Create challenge</button>
+    <button
+        class="custom-button"
+        (click)="onBtnCancelClick()"
+    >Cancel</button>
+
+</div>
+
+<app-steps-of-progress
+    [steps]="steps"
+    [currentStep]="currentStep"
+    (stepClick)="onStepClick($event)"
+></app-steps-of-progress>
+
+<div class="step-container">
+    <div *ngIf="currentStep !== ChallengeStep.Question" class="language-block flex-grow-1 mb-2">
+        <div class="language-info mb-2">
+            <span>Languages</span>
+            <fa-icon [icon]="'circle-info'" ngbTooltip="Select the required language and version"
+                     placement="right"></fa-icon>
+        </div>
+        <div class="d-flex gap-3 mb-2">
+            <app-challenges-dropdown-select [items]="languageDropdownItems"
+                                            [selectedItem]="currentLanguage"
+                                            (selectedItemChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
+        </div>
+    </div>
+
+    <app-editor-question
+        *ngIf="currentStep === ChallengeStep.Question"
+        [challenge]="challenge"
+        [allTags]="tags"
+        [allLevels]="challengeLevels"
+        [checkValidation]="getStepChecking(ChallengeStep.Question)"
+        (validationChange)="onValidationChange(ChallengeStep.Question, $event)"
+    ></app-editor-question>
+
+    <app-solution-page
+        *ngIf="currentStep === ChallengeStep.Solutions"
+        [challengeVersion]="challengeVersion"
+        [editorLanguage]="editorLanguage"
+        [checkValidation]="getStepChecking(ChallengeStep.Solutions)"
+        (validationChange)="onValidationChange(ChallengeStep.Solutions, $event)"
+    ></app-solution-page>
+
+    <app-challenges-test-page
+        *ngIf="currentStep === ChallengeStep.Testcases"
+        [challengeVersion]="challengeVersion"
+        [editorLanguage]="editorLanguage"
+        [checkValidation]="getStepChecking(ChallengeStep.Testcases)"
+        (validationChange)="onValidationChange(ChallengeStep.Testcases, $event)"
+    ></app-challenges-test-page>
+</div>

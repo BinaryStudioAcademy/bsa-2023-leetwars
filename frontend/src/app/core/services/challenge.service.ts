@@ -4,6 +4,7 @@ import { HttpInternalService } from '@core/services/http-internal.service';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { IStar } from '@shared/models/challenge-star/star';
 import { IPageSettings } from '@shared/models/page-settings';
@@ -41,5 +42,9 @@ export class ChallengeService {
 
     public updateStar(star: IStar): Observable<IChallengePreview> {
         return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
+    }
+
+    public createChallenge(challenge: INewChallenge): Observable<IChallenge> {
+        return this.httpService.postRequest<IChallenge>(`${this.challengesRoute}`, challenge);
     }
 }

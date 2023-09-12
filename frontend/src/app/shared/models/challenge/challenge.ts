@@ -10,7 +10,7 @@ export interface IChallenge extends AuditEntity<number> {
     title: string;
     instructions: string;
     levelId: number;
-    level: IChallengeLevel;
+    level?: IChallengeLevel;
     author: IUser;
     tags: Array<ITag>;
     versions: Array<IChallengeVersion>;

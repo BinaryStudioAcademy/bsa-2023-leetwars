@@ -1,8 +1,8 @@
 ﻿namespace LeetWars.Core.DAL.Entities
 {
-    public class LanguageVersion : Entity<int>
+    public class LanguageVersion : Entity<long>
     {
-        public int LanguageId { get; set; }
+        public long LanguageId { get; set; }
         public string Version { get; set; }
         public ICollection<ChallengeVersion> ChallengeVersions { get; } = new List<ChallengeVersion>();
 

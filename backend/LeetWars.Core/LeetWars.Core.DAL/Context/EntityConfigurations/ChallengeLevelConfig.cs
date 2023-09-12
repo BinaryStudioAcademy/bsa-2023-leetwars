@@ -11,6 +11,8 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
         {
             builder.Property(e => e.Name)
                 .HasMaxLength(EntitySettings.MaxGeneralNameLength);
+            
+            builder.HasKey(t => t.Id).HasName("PK_ChallengeLevel");
         }
     }
 }

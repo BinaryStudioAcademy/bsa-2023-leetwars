@@ -5,6 +5,7 @@ using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
+using LeetWars.Core.DAL.Migrations;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.DAL.Context
@@ -41,6 +42,9 @@ namespace LeetWars.Core.DAL.Context
             var challengeVersionEntities = GenerateChallengeVersions(userEntities, challengeEntities);
             modelBuilder.Entity<ChallengeVersion>().HasData(challengeVersionEntities);
 
+            var challengeTagEntities = GenerateChallengeTags(challengeEntities);
+            modelBuilder.Entity<ChallengeTag>().HasData(challengeTagEntities);
+
             var testEntities = GenerateTests(userEntities, challengeVersionEntities);
             modelBuilder.Entity<Test>().HasData(testEntities);
 
@@ -71,7 +75,7 @@ namespace LeetWars.Core.DAL.Context
             Faker.GlobalUniqueIndex = 0;
 
             return new Faker<ChallengeVersion>()
-                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text()))
+                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text(),"", f.Lorem.Text(), f.Lorem.Text()))
                 .UseSeed(SeedDefaults.ChallengeVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
@@ -84,6 +88,21 @@ namespace LeetWars.Core.DAL.Context
                     return f.Date.Between(challenge?.CreatedAt ?? DateTime.Now, DateTime.Now);
                 })
                 .Generate(count);
+        }
+        
+        private static ICollection<ChallengeTag> GenerateChallengeTags(ICollection<Challenge> challenges)
+        {
+            int count = challenges.Count * 3;
+            Faker.GlobalUniqueIndex = 0;
+
+            var challengeTags = new Faker<ChallengeTag>()
+                .CustomInstantiator(f => new ChallengeTag())
+                .UseSeed(SeedDefaults.ChallengeTagSeed)
+                .RuleFor(e => e.ChallengeId, f => f.PickRandom(challenges).Id)
+                .RuleFor(e => e.TagId, f => f.PickRandom(SeedDefaults.Tags.AsEnumerable()).Id)
+                .Generate(count);
+
+            return challengeTags.DistinctBy(ct => new { ct.ChallengeId, ct.TagId }).ToList();
         }
 
         private static ICollection<LanguageVersion> GenerateLanguageVersions(int count = 9)
