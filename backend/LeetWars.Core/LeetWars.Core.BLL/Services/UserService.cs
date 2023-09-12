@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Transactions;
 using AutoMapper;
+using LeetWars.Core.BLL.Helpers.Email;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Challenge;
@@ -16,12 +17,17 @@ namespace LeetWars.Core.BLL.Services;
 
 public class UserService : BaseService, IUserService
 {
-    private const int REPUTATION_DIVIDER = 10;
     private readonly IUserIdGetter _userGetter;
-
-    public UserService(LeetWarsCoreContext context, IMapper mapper, IUserIdGetter userGetter) : base(context, mapper)
+    private readonly IMessageSenderService _messageSenderService;
+    private const int REPUTATION_DIVIDER = 10;
+  
+    public UserService(LeetWarsCoreContext context, 
+                       IMapper mapper, 
+                       IUserIdGetter userGetter, 
+                       IMessageSenderService messageSenderService) : base(context, mapper)
     {
         _userGetter = userGetter;
+        _messageSenderService = messageSenderService;
     }
 
     public async Task<UserDto> CreateUserAsync(NewUserDto userDto)
@@ -48,6 +54,9 @@ public class UserService : BaseService, IUserService
         var newUser = _mapper.Map<NewUserDto, User>(userDto);
         var createdUser = _context.Users.Add(newUser).Entity;
         await _context.SaveChangesAsync();
+
+        var welcomeEmail = EmailGenerator.GenerateWelcomeEmail(createdUser.UserName, createdUser.Email);
+        _messageSenderService.SendMessageToRabbitMQ(welcomeEmail);
 
         return _mapper.Map<UserDto>(createdUser);
     }
