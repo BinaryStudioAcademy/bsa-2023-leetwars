@@ -15,9 +15,9 @@
         </nav>
     </div>
     <nav class="nav-main">
-        <a href="#reliable-platform">Cases</a>
-        <a href="#fun-programming">Features</a>
-        <a href="#how-it-works">Our Work</a>
+        <a appScrollTo scrollToId="#reliable-platform" [scrollOffset]="100">Cases</a>
+        <a appScrollTo scrollToId="#fun-programming" [scrollOffset]="70">Features</a>
+        <a appScrollTo scrollToId="#how-it-works" [scrollOffset]="70">Our Work</a>
         <a class="green-accent-link" routerLink="auth/login">Sign In</a>
     </nav>
 </header>
