@@ -4,12 +4,12 @@ import { IPageSettings } from '@shared/models/page-settings';
 import { IEditUser } from '@shared/models/user/edit-user';
 import { INewUser } from '@shared/models/user/new-user';
 import { IUser } from '@shared/models/user/user';
+import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
 
 import { HttpInternalService } from './http-internal.service';
-import { IUserFull } from '@shared/models/user/user-full';
 
 @Injectable({
     providedIn: 'root',
