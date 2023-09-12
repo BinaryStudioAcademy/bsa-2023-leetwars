@@ -13,6 +13,7 @@ import { tabs } from '@modules/challenges/solution-page/solution-page.utils';
 import { NavigationTabType } from '@shared/enums/navigation-tab-type';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { NavigationTab } from '@shared/models/navigation-tab';
+import { EditorOptions } from '@shared/models/options/editor-options';
 
 @Component({
     selector: 'app-solution-page',
@@ -22,7 +23,7 @@ import { NavigationTab } from '@shared/models/navigation-tab';
 export class SolutionPageComponent implements OnInit, OnChanges {
     @Input() challengeVersion: INewChallengeVersion = getNewChallengeVersion();
 
-    @Input() editorLanguage: string;
+    @Input() editorOptions: EditorOptions;
 
     @Input() checkValidation = false;
 
