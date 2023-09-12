@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
 import { IUser } from '@shared/models/user/user';
 import { IUserLogin } from '@shared/models/user/user-login';
 import { IUserRegister } from '@shared/models/user/user-register';
+import { AuthHelper } from '@shared/utils/auth.helper';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
 import { BehaviorSubject, first, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
@@ -29,8 +29,8 @@ export class AuthService {
     constructor(
         private afAuth: AngularFireAuth,
         private userService: UserService,
-        private router: Router,
         private toastrNotification: ToastrNotificationsService,
+        private authHelper: AuthHelper,
     ) {
         this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
         afAuth.authState.subscribe(async (user) => {
@@ -132,11 +132,7 @@ export class AuthService {
     private signWithProvider(observable: Observable<IUser | undefined>, isLogin: boolean) {
         return observable.subscribe((user?: IUser) => {
             if (user) {
-                this.router.navigate(['']);
-                this.toastrNotification.showSuccess(
-                    `${user.userName} was successfully signed ${isLogin ? 'in' : 'up'}`,
-                );
-                // add email sender to user.email
+                this.authHelper.handleAuthSuccess(user.userName!, isLogin);
             }
         });
     }

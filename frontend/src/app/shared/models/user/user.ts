@@ -15,6 +15,7 @@ export interface IUser {
     firstName?: string;
     lastName?: string;
     totalScore: number;
+    reputation: number;
     registeredAt: Date;
     isSubscribed: boolean;
     isBanned: boolean;
