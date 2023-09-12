@@ -1,0 +1,75 @@
+<div class="page-container">
+    <as-split [direction]="splitDirection" [gutterSize]="8">
+        <as-split-area [size]="50" [minSize]="splitLeftMinSize">
+            <div class="problem-info h-100">
+                <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
+                    <li [ngbNavItem]="'Description'" [class.selectedTab]="isSelected('Description')">
+                        <button ngbNavLink (click)="selectTab('Description')">Description</button>
+                        <ng-template ngbNavContent>
+                            <p class="challenge-title">{{ challenge.id }}. {{ challenge.title }}</p>
+                            <markdown [data]="challenge.instructions"></markdown>
+                        </ng-template>
+                    </li>
+
+                    <li [ngbNavItem]="'Submissions'" [class.selectedTab]="isSelected('Submissions')">
+                        <button ngbNavLink (click)="selectTab('Submissions')">Submissions</button>
+                        <ng-template ngbNavContent>Submissions here</ng-template>
+                    </li>
+
+                    <li [ngbNavItem]="'Output'" [class.selectedTab]="isSelected('Output')">
+                        <button ngbNavLink (click)="selectTab('Output')">Output</button>
+                        <ng-template ngbNavContent>Output here</ng-template>
+                    </li>
+                </ul>
+                <div class="content" [ngbNavOutlet]="nav"></div>
+            </div>
+        </as-split-area>
+
+        <as-split-area [size]="50" [minSize]="splitRightMinSize">
+            <div class="editor h-50">
+                <div class="header">
+                    <div class="language-selection">
+                        <fa-icon [icon]="'info'" size="sm"></fa-icon>
+                        <app-dropdown-select
+                            [isMultiSelection]="false"
+                            [items]="languages"
+                            [selectedItem]="selectedLanguage"
+                            (selectedItemsChanged)="onSelectedLanguageChanged($event)">
+                        </app-dropdown-select>
+                        <app-dropdown-select
+                            [isMultiSelection]="false"
+                            [items]="languageVersions"
+                            [selectedItem]="selectedLanguageVersion">
+                        </app-dropdown-select>
+                    </div>
+                </div>
+                <app-code-editor
+                class="my-code-editor"
+                [initText]="initialSolution!"
+                [language]="selectedLanguage"
+                [options]="editorOptions"  ></app-code-editor>
+            </div>
+
+            <div class="editor test-wrp">
+                <div class="header">
+                    <div class="language-selection">
+                        Sample test
+                    </div>
+                </div>
+                <div class="editor-test">
+                    <app-code-editor
+                    class="my-code-editor"
+                    [options]="editorOptions"
+                    [language]="selectedLanguage"
+                    [initText]="testCode!"  ></app-code-editor>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="run-test" (click)="runTests()">Run sample tests</button>
+                <button class="sumbit">Submit</button>
+            </div>
+
+        </as-split-area>
+    </as-split>
+</div>

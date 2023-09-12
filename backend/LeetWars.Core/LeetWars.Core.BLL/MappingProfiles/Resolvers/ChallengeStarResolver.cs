@@ -7,16 +7,16 @@ namespace LeetWars.Core.BLL.MappingProfiles.Resolvers
 {
     public class ChallengeStarResolver : IValueResolver<Challenge, ChallengePreviewDto, bool>
     {
-        private readonly IUserIdGetter _userIdGetter;
+        private readonly IUserGetter _userGetter;
 
-        public ChallengeStarResolver(IUserIdGetter userIdGetter)
+        public ChallengeStarResolver(IUserGetter userGetter)
         {
-            _userIdGetter = userIdGetter;
+            _userGetter = userGetter;
         }
 
         public bool Resolve(Challenge src, ChallengePreviewDto dest, bool destMember, ResolutionContext context)
         {
-            return src.Stars.Any(star => star.ChallengeId == src.Id && star.Author is not null ? star.Author.Uid == _userIdGetter.CurrentUserId : default);
+            return src.Stars.Any(star => star.ChallengeId == src.Id && star.Author is not null ? star.Author == _userGetter.CurrentUser : default);
         }
     }
 }

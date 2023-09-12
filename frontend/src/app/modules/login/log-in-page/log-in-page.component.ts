@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
-import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { IUser } from '@shared/models/user/user';
+import { AuthHelper } from '@shared/utils/auth.helper';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { switchMap } from 'rxjs';
 
@@ -18,16 +18,13 @@ export class LogInPageComponent {
         password: new FormControl('', [Validators.required]),
     });
 
-    public isExistingEmail = true;
-
     public isSignInError = false;
 
     constructor(
         private authService: AuthService,
-        private router: Router,
         private userService: UserService,
-        private toastrNotification: ToastrNotificationsService,
-    ) {}
+        private authHelper: AuthHelper,
+    ) { }
 
     public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.logInForm);
@@ -39,25 +36,22 @@ export class LogInPageComponent {
             .pipe(
                 switchMap((result) => {
                     if (!result) {
-                        this.isExistingEmail = false;
                         this.logInForm.markAsUntouched();
                     }
 
                     return this.authService.login({
-                        email: this.logInForm.value.email!.trim(),
-                        password: this.logInForm.value.password!.trim(),
+                        email: this.logInForm.value.email!,
+                        password: this.logInForm.value.password!,
                     });
                 }),
             )
             .subscribe(
-                () => {
-                    this.router.navigate(['']);
+                ({ userName, firstName }: IUser) => {
+                    this.authHelper.handleAuthSuccess(userName || (firstName!), true);
                 },
-                (error) => {
-                    this.toastrNotification.showError('Something went wrong');
+                () => {
                     this.isSignInError = true;
-                    this.logInForm.markAsUntouched();
-                    console.error('Error :', error);
+                    this.authHelper.handleAuthError(this.logInForm);
                 },
             );
     }

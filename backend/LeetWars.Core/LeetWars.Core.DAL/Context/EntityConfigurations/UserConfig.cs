@@ -2,7 +2,6 @@
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.ComponentModel.DataAnnotations;
 
 namespace LeetWars.Core.DAL.Context.EntityConfigurations
 {
@@ -34,7 +33,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
 
             builder.HasMany(e => e.PreferredLanguages)
                 .WithMany(l => l.Users)
-                .UsingEntity("PreferredLanguages");
+                .UsingEntity<UserPreferredLanguage>();
 
             builder.HasMany(e => e.LanguagesWithLevels)
                 .WithOne(e => e.User)

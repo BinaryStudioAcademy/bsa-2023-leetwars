@@ -13,6 +13,8 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
 
         public static readonly int ChallengeVersionSeed = 4567;
 
+        public static readonly int ChallengeTagSeed = 5476;
+
         public static readonly int SubscriptionSeed = 5678;
 
         public static readonly int SubscriptionTypeSeed = 6789;
@@ -44,10 +46,8 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
 
         public static readonly ImmutableArray<Language> Languages = ImmutableArray.CreateRange(new Language[]
         {
-            new Language("C#"){Id = 1},
-            new Language("Typescript"){Id = 2},
-            new Language("Python"){Id = 3},
-            new Language("Javascript"){Id = 4}
+            new Language("Javascript"){Id = 1},
+            new Language("C#"){Id = 2}
         });
 
     }

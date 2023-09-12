@@ -26,3 +26,17 @@ export const passwordValidationErrorMessages: ControlErrorMessages = {
     maxlength: `Password must not exceed ${passwordMaxLength} characters`,
     pattern: 'Password must contain at least one uppercase letter, one lowercase letter, and one number',
 };
+
+export const challengeNameValidationErrorMessages: ControlErrorMessages = {
+    required: 'Please enter challenge name',
+};
+
+export const challengeDescriptionValidationErrorMessages: ControlErrorMessages = {
+    required: 'Please enter challenge description',
+};
+export const challengeLevelValidationErrorMessages: ControlErrorMessages = {
+    required: 'Please enter challenge level',
+};
+export const challengeTagsValidationErrorMessages: ControlErrorMessages = {
+    required: 'Please enter challenge tags',
+};

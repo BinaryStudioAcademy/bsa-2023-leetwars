@@ -1,5 +1,7 @@
 import { FormGroup } from '@angular/forms';
 import {
+    challengeDescriptionValidationErrorMessages, challengeLevelValidationErrorMessages,
+    challengeNameValidationErrorMessages, challengeTagsValidationErrorMessages,
     emailValidationErrorMessages,
     passwordValidationErrorMessages,
     usernameValidationErrorMessages,
@@ -10,6 +12,10 @@ const controlErrorMessagesMap: { [key: string]: ControlErrorMessages } = {
     email: emailValidationErrorMessages,
     username: usernameValidationErrorMessages,
     password: passwordValidationErrorMessages,
+    name: challengeNameValidationErrorMessages,
+    description: challengeDescriptionValidationErrorMessages,
+    level: challengeLevelValidationErrorMessages,
+    tags: challengeTagsValidationErrorMessages,
 };
 
 export function getErrorMessage(formControlName: string, form: FormGroup): string | null {

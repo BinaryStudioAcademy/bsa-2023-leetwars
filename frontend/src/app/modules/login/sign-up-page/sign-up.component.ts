@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
-import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { AuthHelper } from '@shared/utils/auth.helper';
 import { emailExistsValidator } from '@shared/utils/validation/email-exists.validator';
 import {
     emailMaxLength,
@@ -56,10 +55,9 @@ export class SignUpComponent {
 
     constructor(
         private authService: AuthService,
-        private router: Router,
         private userService: UserService,
-        private toastrNotification: ToastrNotificationsService,
-    ) {}
+        private authHelper: AuthHelper,
+    ) { }
 
     public signUpGitHub() {
         this.authService.signInWithGitHub(false);
@@ -72,18 +70,16 @@ export class SignUpComponent {
     public signUp() {
         this.authService
             .register({
-                userName: this.registrationForm.value.username!.trim(),
-                email: this.registrationForm.value.email!.trim(),
-                password: this.registrationForm.value.password!.trim(),
+                userName: this.registrationForm.value.username!,
+                email: this.registrationForm.value.email!,
+                password: this.registrationForm.value.password!,
             })
             .subscribe(
                 () => {
-                    this.router.navigate(['']);
-                    this.toastrNotification.showSuccess('You have successfully registered.');
+                    this.authHelper.handleAuthSuccess(this.registrationForm.value.username!, false);
                 },
-                (error) => {
-                    this.toastrNotification.showError('Something went wrong');
-                    console.error('Error :', error);
+                () => {
+                    this.authHelper.handleAuthError(this.registrationForm);
                 },
             );
     }

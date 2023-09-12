@@ -46,13 +46,19 @@ namespace LeetWars.Core.WebAPI.Controllers
         {
             _challengeService.SendCodeRunRequest(codeRunRequest);
             return Ok();
+        }
 
+        [HttpPost]
+        public async Task<ActionResult<ChallengeFullDto>> CreateChallengeAsync(NewChallengeDto challengeDto)
+        {
+            var challenge = await _challengeService.CreateChallengeAsync(challengeDto);
+            return Ok(challenge);
         }
 
         [HttpPut]
         public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
         {
-            return Ok(await _challengeService.Update(challengeStarDto));
+            return Ok(await _challengeService.UpdateAsync(challengeStarDto));
         }
 
     }
