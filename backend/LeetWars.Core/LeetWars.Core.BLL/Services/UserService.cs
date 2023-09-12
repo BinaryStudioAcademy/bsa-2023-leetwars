@@ -151,7 +151,7 @@ public class UserService : BaseService, IUserService
     public async Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page)
     {
         var users = _context.Users.OrderByDescending(u => u.TotalScore).AsQueryable();
-        if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
+        if (page is not null)
         {
             users = users.Skip(page.PageSize * (page.PageNumber - 1))
                 .Take(page.PageSize);
