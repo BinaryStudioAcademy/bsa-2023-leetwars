@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { BaseComponent } from '@core/base/base.component';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
-import { Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-leader-board',
     templateUrl: './leader-board.component.html',
     styleUrls: ['./leader-board.component.sass'],
 })
-export class LeaderBoardComponent implements OnInit {
+export class LeaderBoardComponent extends BaseComponent implements OnInit {
     public users: IUser[] = [];
 
     public isLastPage: boolean = false;
@@ -22,9 +23,9 @@ export class LeaderBoardComponent implements OnInit {
         pageSize: 30,
     };
 
-    private unsubscribe$ = new Subject<void>();
-
-    constructor(private userService: UserService, private toastrNotification: ToastrNotificationsService) {}
+    constructor(private userService: UserService, private toastrNotification: ToastrNotificationsService) {
+        super();
+    }
 
     ngOnInit(): void {
         this.getUsers();
