@@ -12,8 +12,6 @@ using Microsoft.IdentityModel.Tokens;
 using LeetWars.RabbitMQ;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -27,13 +25,15 @@ namespace LeetWars.Core.WebAPI.Extentions
 
             services.AddScoped<IMessageSenderService, MessageSenderService>();
             services.AddTransient<IChallengeService, ChallengeService>();
+            services.AddTransient<IChallengeLevelService, ChallengeLevelService>();
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddScoped<IUserService, UserService>();
             
-            services.AddScoped<UserIdStorage>();
-            services.AddTransient<IUserIdSetter>(s => s.GetService<UserIdStorage>()!);
-            services.AddTransient<IUserIdGetter>(s => s.GetService<UserIdStorage>()!);
+            services.AddScoped<UserStorage>();
+            services.AddTransient<IUserSetter>(s => s.GetService<UserStorage>()!);
+            services.AddTransient<IUserGetter>(s => s.GetService<UserStorage>()!);
+
         }
 
         public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)

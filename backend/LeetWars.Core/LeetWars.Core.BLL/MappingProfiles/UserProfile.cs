@@ -14,15 +14,15 @@ namespace LeetWars.Core.BLL.MappingProfiles
     {
         public UserProfile()
         {
-            CreateMap<User,UserDto>();
-            CreateMap<UserDto,User>();
+            CreateMap<User, UserDto>().ReverseMap();
+
             CreateMap<NewUserDto, User>();
 
             CreateMap<User, UserFullDto>()
                 .ForMember(x => x.Badges, opt =>
-                    opt.MapFrom(x => x.UserBadges));
+                    opt.MapFrom(x => x.UserBadges)).ReverseMap();
             CreateMap<Subscription,SubscriptionDto>();
-            CreateMap<Language, LanguageDto>();
+
             CreateMap<UserLanguageLevel, UserLanguageLevelDto>();
             CreateMap<UserSolution, UserSolutionDto>();
             CreateMap<Challenge, ChallengeDto>();

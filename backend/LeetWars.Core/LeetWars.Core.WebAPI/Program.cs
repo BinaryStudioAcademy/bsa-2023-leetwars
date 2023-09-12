@@ -62,7 +62,7 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.UseMiddleware<UserIdSaverMiddleware>();
+app.UseMiddleware<UserSaverMiddleware>();
 
 app.UseEndpoints(endpoinds =>
 {

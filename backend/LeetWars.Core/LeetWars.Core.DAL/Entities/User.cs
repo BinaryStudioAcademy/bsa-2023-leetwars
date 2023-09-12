@@ -16,6 +16,7 @@ namespace LeetWars.Core.DAL.Entities
         public string Email { get; set; }  = string.Empty;
         public string? ImagePath { get; set; }
         public long TotalScore { get; set; }
+        public long Reputation { get; set; }
         public DateTime RegisteredAt { get; set; }
         public string? OAuthToken { get; set; }
         public bool IsSubscribed { get; set; }

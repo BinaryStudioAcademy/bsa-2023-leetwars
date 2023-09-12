@@ -1,6 +1,6 @@
 import { IChallengePreview } from '../challenge/challenge-preview';
 
-export interface Star {
+export interface IStar {
     challenge: IChallengePreview;
     authorId: number;
     isStar: boolean;

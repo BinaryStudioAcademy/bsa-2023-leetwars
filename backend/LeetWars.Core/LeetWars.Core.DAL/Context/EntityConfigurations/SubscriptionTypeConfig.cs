@@ -17,6 +17,9 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
 
             builder.Property(e => e.Cost)
                 .HasColumnType($"decimal(18,{EntitySettings.DecimalPartLength})");
+            
+            builder.HasKey(s => s.Id).HasName("PK_SubscriptionType");
+
         }
     }
 }

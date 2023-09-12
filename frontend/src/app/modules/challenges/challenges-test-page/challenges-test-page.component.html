@@ -1,33 +1,25 @@
-<div class="wrapper d-flex flex-column" [class.maximized]="isMaximized">
-    <div class="language-info d-flex" *ngIf="!isMaximized">
-        <span class="language-tooltiptext">Aliquip exercitation est aute dolor magna.</span>
-        <span>Languages</span>
-        <fa-icon [icon]="'circle-info'"></fa-icon>
-    </div>
-    <div class="language-settings d-flex" *ngIf="!isMaximized">
-        <app-challenges-dropdown-select
-            [items]="languagesList"
-            (selectedItemsChanged)="onSelectedItemChanged($event)"></app-challenges-dropdown-select>
-        <app-challenges-dropdown-select [items]="languageVersionsList"></app-challenges-dropdown-select>
-    </div>
-    <div class="editor-container d-flex flex-column">
-        <div class="actions d-flex">
+<div class="component-container" [class.maximized]="isMaximized">
+    <div class="actions d-flex">
+        <div class="d-flex">
             <tabset>
-                <tab
-                    *ngFor="let tabz of tabs"
-                    [heading]="tabz.title"
-                    [active]="tabz.active"
-                    (selectTab)="tabz.active = true"
-                    (deselect)="tabz.active = false">
-                    {{ tabz?.content }}
+                <tab *ngFor="let tab of tabs" [heading]="tab.type.toString()" [active]="tab.active"
+                     (selectTab)="switchTab(tab)" [disabled]="tab.disabled" [customClass]="getTabClass(tab)">
                 </tab>
             </tabset>
-            <button class="maximize-btn" (click)="toggleMaximize()">
-                <fa-icon [icon]="isMaximized ? ['fas', 'compress'] : ['fas', 'maximize']"></fa-icon>
-            </button>
+            <div class="tab-help">
+                <fa-icon [icon]="'question-circle'" ngbTooltip="Help message" placement="top"></fa-icon>
+                <div class="tab-text">Help</div>
+            </div>
         </div>
-        <div class="editor-content" *ngIf="tabs[0].active">
-            <app-code-editor [language]="selectedLanguage" class="editor"></app-code-editor>
-        </div>
+        <button class="maximize-btn" (click)="toggleMaximize()">
+            <fa-icon [icon]="isMaximized ? ['fas', 'compress'] : ['fas', 'maximize']"></fa-icon>
+        </button>
+    </div>
+    <div class="editor">
+        <app-code-editor
+            [language]="editorLanguage"
+            [initText]="editorContent"
+            (focusout)=editorFocusOut()
+            (codeChanged)="onCodeChange($event)"></app-code-editor>
     </div>
 </div>
