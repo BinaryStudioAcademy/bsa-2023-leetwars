@@ -10,7 +10,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { ChallengesDropdownSelectComponent } from './challenges-dropdown-select/challenges-dropdown-select.component';
 import { ChallengesTestPageComponent } from './challenges-test-page/challenges-test-page.component';
 import { EditorQuestionComponent } from './editor-question/editor-question.component';
-import { OnlineEditorPageComponent } from './online-editor/online-editor-page/online-editor-page.component';
+import { OnlineEditorPageComponent } from './online-editor-page/online-editor-page.component';
 import { SolutionPageComponent } from './solution-page/solution-page.component';
 import { StepsOfProgressComponent } from './steps-of-progress/steps-of-progress.component';
 import { ChallengesRoutingModule } from './challenges-routing.module';
