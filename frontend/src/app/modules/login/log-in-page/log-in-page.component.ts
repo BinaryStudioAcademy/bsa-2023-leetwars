@@ -18,8 +18,6 @@ export class LogInPageComponent {
         password: new FormControl('', [Validators.required]),
     });
 
-    public isExistingEmail = true;
-
     public isSignInError = false;
 
     constructor(
@@ -39,13 +37,12 @@ export class LogInPageComponent {
             .pipe(
                 switchMap((result) => {
                     if (!result) {
-                        this.isExistingEmail = false;
                         this.logInForm.markAsUntouched();
                     }
 
                     return this.authService.login({
-                        email: this.logInForm.value.email!.trim(),
-                        password: this.logInForm.value.password!.trim(),
+                        email: this.logInForm.value.email!,
+                        password: this.logInForm.value.password!,
                     });
                 }),
             )
@@ -53,11 +50,9 @@ export class LogInPageComponent {
                 () => {
                     this.router.navigate(['']);
                 },
-                (error) => {
-                    this.toastrNotification.showError('Something went wrong');
+                () => {
                     this.isSignInError = true;
                     this.logInForm.markAsUntouched();
-                    console.error('Error :', error);
                 },
             );
     }
