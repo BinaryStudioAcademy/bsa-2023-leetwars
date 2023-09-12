@@ -18,11 +18,13 @@ import {
 } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { ChallengeStep } from '@shared/enums/challenge-step';
+import { languageNameMap } from '@shared/mappings/language-map';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { IDropdownItem } from '@shared/models/dropdown-item';
 import { ILanguage } from '@shared/models/language/language';
+import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITag } from '@shared/models/tag/tag';
 import { takeUntil } from 'rxjs';
 
@@ -52,7 +54,15 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public currentLanguage?: IDropdownItem;
 
-    public editorLanguage = '';
+    public editorOptions: EditorOptions = {
+        theme: 'vs-dark',
+        language: '',
+        minimap: { enabled: false },
+        automaticLayout: true,
+        useShadows: false,
+        wordWrap: 'on',
+        lineNumbers: 'on',
+    };
 
     protected readonly ChallengeStep = ChallengeStep;
 
@@ -123,12 +133,16 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
             return;
         }
 
-        this.editorLanguage = language.name;
+        this.editorOptions.language = this.mapLanguageName(language.name);
         this.challengeVersion = this.challenge.versions.find(v => v.languageId === language.id)!;
     }
 
     public getStepChecking(step: ChallengeStep) {
         return getStepChecking(this.stepsData, step);
+    }
+
+    private mapLanguageName(language: string): string {
+        return languageNameMap.get(language) || language.toLowerCase();
     }
 
     private getLanguages() {

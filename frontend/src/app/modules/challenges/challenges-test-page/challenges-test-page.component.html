@@ -17,7 +17,8 @@
     </div>
     <div class="editor">
         <app-code-editor
-            [language]="editorLanguage"
+            [language]="editorOptions.language"
+            [options]="editorOptions"
             [initText]="editorContent"
             (focusout)=editorFocusOut()
             (codeChanged)="onCodeChange($event)"></app-code-editor>
