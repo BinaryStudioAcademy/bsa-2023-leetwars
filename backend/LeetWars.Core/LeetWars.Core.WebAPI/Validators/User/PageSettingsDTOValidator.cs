@@ -4,9 +4,9 @@ using LeetWars.Core.Common.DTO.User;
 
 namespace LeetWars.Core.WebAPI.Validators.User
 {
-    public class PageSettingsDTOValidator : AbstractValidator<PageSettingsDto>
+    public class PageSettingsDtoValidator : AbstractValidator<PageSettingsDto>
     {
-        public PageSettingsDTOValidator()
+        public PageSettingsDtoValidator()
         {
             RuleFor(p => p.PageNumber).GreaterThan(0).WithMessage("Page number must be greated than 0");
 
