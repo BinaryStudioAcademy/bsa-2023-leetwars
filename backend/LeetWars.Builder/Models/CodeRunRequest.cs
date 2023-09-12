@@ -1,4 +1,4 @@
-﻿namespace LeetWars.Core.Common.Models
+﻿namespace LeetWars.Builder.Models
 {
     public class CodeRunRequest
     {

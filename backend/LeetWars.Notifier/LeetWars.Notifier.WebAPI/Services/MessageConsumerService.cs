@@ -4,6 +4,9 @@ using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client.Events;
 using System.Text;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using LeetWars.Notifier.WebAPI.DTO;
 
 namespace LeetWars.Notifier.WebAPI.Services
 {
@@ -21,13 +24,18 @@ namespace LeetWars.Notifier.WebAPI.Services
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
 
-            var handler = new EventHandler<BasicDeliverEventArgs>((model, args) =>
+            var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
                 var body = args.Body.ToArray();
 
                 var message = Encoding.UTF8.GetString(body);
 
-                _hubContext.Clients.All.BroadcastMessage(message);
+                var dataToSend = JsonConvert.DeserializeObject<SignalRDto>(message);
+
+                if(dataToSend != null)
+                {
+                    await _hubContext.Clients.Client(dataToSend.ConnectionID).BroadcastMessage(dataToSend.JsonEntityToSend);
+                }
 
                 _consumerService.SetAcknowledge(args.DeliveryTag, true);
             });

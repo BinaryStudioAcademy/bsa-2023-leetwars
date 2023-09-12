@@ -1,4 +1,5 @@
 export interface ICodeRunRequest {
+    userConnectionId: string;
     userId: number;
     challengeVersionId: number;
     isBuilt: boolean;

@@ -73,20 +73,13 @@ namespace LeetWars.Builder.Services
 
         private static Test ParseSingleCSharpTest(XmlNode testNode, XmlNamespaceManager nsManager)
         {
-            string? executionTime = testNode.Attributes?["duration"]?.Value;
+            var singleTestResult = GetSingleNUnitTestResult(testNode);
 
-            string? testName = testNode.Attributes?["testName"]?.Value;
+            CheckForNoNulls(singleTestResult);
 
-            string? testOutcome = testNode.Attributes?["outcome"]?.Value;
+            var testData = new Test(singleTestResult.TestName!, singleTestResult.Outcome == "Passed", singleTestResult.Duration!);
 
-            if (executionTime == null || testName == null || testOutcome == null)
-            {
-                throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
-            }
-
-            var testData = new Test(testName, testOutcome == "Passed", executionTime);
-
-            if (testOutcome == "Failed")
+            if (singleTestResult.Outcome == "Failed")
             {
                 XmlNode? errorMessageNode = testNode.SelectSingleNode("ns:Output/ns:ErrorInfo/ns:Message", nsManager);
 
@@ -99,20 +92,31 @@ namespace LeetWars.Builder.Services
 
         }
 
+        private static NUnitTestResultsDto GetSingleNUnitTestResult(XmlNode testNode)
+        {
+            string? executionTime = testNode.Attributes?["duration"]?.Value;
+
+            string? testName = testNode.Attributes?["testName"]?.Value;
+
+            string? testOutcome = testNode.Attributes?["outcome"]?.Value;
+
+            return new NUnitTestResultsDto
+            {
+                Duration = executionTime,
+                TestName = testName,
+                Outcome = testOutcome
+            };
+        }
+
         private static Test ParseSingleJSTest(XmlNode testNode)
         {
-            string? name = testNode.Attributes?["name"]?.Value;
+            var singleTestResult = GetSingleMochsTestResult(testNode);
 
-            string? time = testNode.Attributes?["time"]?.Value;
-
-            if (name == null || time == null)
-            {
-                throw new ArgumentException("Incorrect xml test file supplied, cannot find needed data");
-            }
+            CheckForNoNulls(singleTestResult);
 
             XmlNode? failureNode = testNode.SelectSingleNode("failure");
 
-            var testData = new Test(name, failureNode == null, time);
+            var testData = new Test(singleTestResult.Name!, failureNode == null, singleTestResult.Time!);
 
             if (failureNode != null)
             {
@@ -128,6 +132,19 @@ namespace LeetWars.Builder.Services
             }
 
             return testData;
+        }
+
+        private static MochaTestResultsDto GetSingleMochsTestResult(XmlNode testNode)
+        {
+            string? name = testNode.Attributes?["name"]?.Value;
+
+            string? time = testNode.Attributes?["time"]?.Value;
+
+            return new MochaTestResultsDto
+            {
+                Name = name,
+                Time = time
+            };
         }
 
         private static NUnitMainNodesDto GetMainNUnitNodes(XmlDocument xmlDoc, XmlNamespaceManager nsManager)

@@ -1,5 +1,4 @@
 ﻿using LeetWars.Builder.Models;
-using LeetWars.Core.Common.Models;
 
 namespace LeetWars.Builder.Interfaces
 {

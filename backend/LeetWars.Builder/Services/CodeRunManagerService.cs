@@ -1,7 +1,6 @@
 ﻿using LeetWars.Builder.DTO;
 using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
-using LeetWars.Core.Common.Models;
 
 namespace LeetWars.Builder.Services
 {
@@ -22,7 +21,6 @@ namespace LeetWars.Builder.Services
 
             return new CodeRunResults
             {
-                UserId = request.UserId,
                 ChallengeVersionId = request.ChallengeVersionId,
                 Language = request.Language,
                 IsBuilt = request.IsBuilt,

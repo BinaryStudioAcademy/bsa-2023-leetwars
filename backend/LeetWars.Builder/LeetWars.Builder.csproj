@@ -26,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LeetWars.Core\LeetWars.Core.Common\LeetWars.Core.Common.csproj" />
     <ProjectReference Include="..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
   </ItemGroup>
 

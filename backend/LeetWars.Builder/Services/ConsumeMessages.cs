@@ -1,6 +1,6 @@
-﻿using LeetWars.Builder.Interfaces;
+﻿using LeetWars.Builder.DTO;
+using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
-using LeetWars.Core.Common.Models;
 using LeetWars.RabbitMQ;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -36,25 +36,31 @@ namespace LeetWars.Builder.Services
 
                 var request = JsonConvert.DeserializeObject<CodeRunRequest>(message);
 
-                var results = new CodeRunResults();
-
-                if (request != null && request.IsBuilt && !string.IsNullOrEmpty(request.Tests))
+                if (request != null)
                 {
-                    results = await _codeRunManagerService.RunCodeAndTestsAsync(request);
-                }
+                    var results = new CodeRunResults();
 
-                string jsonObj = JsonConvert.SerializeObject(
+                    if (request.IsBuilt && !string.IsNullOrEmpty(request.Tests)){
+                        results = await _codeRunManagerService.RunCodeAndTestsAsync(request);
+                    }
+
+                    string jsonObj = JsonConvert.SerializeObject(
                     results,
                     new JsonSerializerSettings
                     {
                         ContractResolver = new CamelCasePropertyNamesContractResolver()
-                    }
-                );
+                    });
 
+                    var jsonWithConnectionID = JsonConvert.SerializeObject(new SignalRDto
+                    {
+                        ConnectionID = request.UserConnectionId,
+                        JsonEntityToSend = jsonObj
+                    });
+
+                    _producerService.Send(jsonWithConnectionID, ExchangeType.Direct);
+                }
 
                 _consumerService.SetAcknowledge(args.DeliveryTag, true);
-
-                _producerService.Send(jsonObj, ExchangeType.Direct);
 
             });
 
