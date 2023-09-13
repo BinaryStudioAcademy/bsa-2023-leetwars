@@ -4,9 +4,6 @@ using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client.Events;
 using System.Text;
-using Newtonsoft.Json;
-using LeetWars.Core.Common.DTO.Notifications;
-using Microsoft.Extensions.Logging;
 
 namespace LeetWars.Notifier.WebAPI.Services
 {
@@ -26,9 +23,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             {
                 var body = args.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
-
-                var parsedMessage = JsonConvert.DeserializeObject<NewNotificationDtoSample>(message);
-
+              
                 await _hubContext.Clients.All.BroadcastMessage(message);
 
                 _consumerService.SetAcknowledge(args.DeliveryTag, false);
