@@ -3,8 +3,9 @@
     public static class OpenAiCompletionSettings
     {
         public static int MaxTokens = 4000;
-        public static decimal Temperature = 0.5M;
-        public static decimal PresenecePenalty = 0.1M;
-        public static decimal FrequencyPenalty = 0.1M;
+        public static double Temperature = 0.5;
+        public static double PresencePenalty = 0.1;
+        public static double FrequencyPenalty = 0.1;
+        public static string ApiVersion = "2023-03-15-preview";
     }
 }

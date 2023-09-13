@@ -80,6 +80,7 @@ services:
       - back
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
 
   leetwars_client:
     depends_on:

@@ -1,4 +1,4 @@
-﻿namespace LeetWars.CodeAnalyzer.OpenAISettings.Interfaces
+﻿namespace LeetWars.CodeAnalyzer.Interfaces
 {
     public interface IOpenAiSettings
     {

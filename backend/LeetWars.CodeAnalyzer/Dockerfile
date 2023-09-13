@@ -6,6 +6,7 @@ EXPOSE $PROJECT_PORT
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
 COPY ["LeetWars.CodeAnalyzer/LeetWars.CodeAnalyzer.csproj", "LeetWars.CodeAnalyzer/"]
+COPY ["LeetWars.Core/LeetWars.Core.Common/LeetWars.Core.Common.csproj", "LeetWars.Core/LeetWars.Core.Common/"]
 
 RUN dotnet restore "LeetWars.CodeAnalyzer/LeetWars.CodeAnalyzer.csproj"
 COPY . .
