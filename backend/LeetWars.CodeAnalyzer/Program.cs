@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.RegisterOpenAI(builder.Configuration);
+builder.Services.RegisterOpenAI();
 
 var app = builder.Build();
 
