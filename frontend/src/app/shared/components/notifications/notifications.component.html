@@ -1,0 +1,7 @@
+<div class="notifications-container">
+    <div *ngIf="notifications.length === 0">You do not have notifications</div>
+    <div *ngFor="let notification of notifications" class="notification">
+        <div *ngIf="notification.TypeNotification === typeNotification.NewEntity "></div>
+        <p>{{ notification.Message }}</p>
+    </div>
+</div>

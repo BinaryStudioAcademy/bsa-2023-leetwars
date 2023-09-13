@@ -5,6 +5,7 @@ using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
@@ -16,13 +17,16 @@ namespace LeetWars.Core.BLL.Services
     public class ChallengeService : BaseService, IChallengeService
     {
         private readonly IUserGetter _userGetter;
+        private readonly IMessageSenderService _messageSenderService;
 
         public ChallengeService(
+            IMessageSenderService messageSenderService,
             LeetWarsCoreContext context,
             IMapper mapper,
             IUserGetter userGetter
         ) : base(context, mapper)
         {
+            _messageSenderService = messageSenderService;
             _userGetter = userGetter;
         }
 
@@ -179,7 +183,15 @@ namespace LeetWars.Core.BLL.Services
             _context.ChallengeVersions.AddRange(challengeVersions);
             
             await _context.SaveChangesAsync();
-           
+
+            var newNotification = new NewNotificationDtoSample()
+            {
+                TypeNotification = TypeNotifications.NewEntity,
+                Message = "New challenge!",
+            };
+
+            _messageSenderService.SendMessageToRabbitMQ(newNotification);
+
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
 
