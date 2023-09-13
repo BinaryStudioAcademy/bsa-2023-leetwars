@@ -18,10 +18,10 @@ namespace LeetWars.CodeAnalyzer.Services
         {
             string prompt = _openAiSettings.GetCodeAnalysisPrompt(requestDto.LanguageName, requestDto.CodeListing);
 
-            var completionResponse = await _completionService.CreateCompletionAsync(prompt)
+            var chatResponse = await _completionService.CreateCompletionAsync(prompt)
                 ?? throw new ArgumentException(nameof(requestDto));
 
-            string response = completionResponse.ToString();
+            string response = chatResponse.ToString();
 
             if(string.IsNullOrWhiteSpace(response))
             {

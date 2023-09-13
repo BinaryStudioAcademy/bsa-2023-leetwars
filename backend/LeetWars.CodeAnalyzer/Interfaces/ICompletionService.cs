@@ -1,4 +1,4 @@
-﻿using OpenAI_API.Completions;
+﻿using OpenAI_API.Chat;
 
 namespace LeetWars.CodeAnalyzer.Interfaces
 {
@@ -9,6 +9,6 @@ namespace LeetWars.CodeAnalyzer.Interfaces
         /// </summary>
         /// <param name="prompt">Request text</param>
         /// <returns>Response from chatGPT</returns>
-        Task<CompletionResult> CreateCompletionAsync(string prompt);
+        Task<ChatResult> CreateCompletionAsync(string prompt);
     }
 }
