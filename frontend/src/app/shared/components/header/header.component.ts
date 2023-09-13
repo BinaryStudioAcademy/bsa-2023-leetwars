@@ -31,7 +31,7 @@ export class HeaderComponent {
     }
 
     onLogOut() {
-        const modalRef = this.modalService.open(ConfirmationModalComponent);
+        const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'log-out-modal' });
 
         modalRef.componentInstance.titleText = 'Do you really wish to log out?';
         modalRef.componentInstance.bodyText = `After confirmation you will be logged out of system,
