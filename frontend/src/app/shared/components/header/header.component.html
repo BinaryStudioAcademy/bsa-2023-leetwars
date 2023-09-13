@@ -2,6 +2,15 @@
     <div class="logo">
         <img src="assets/images/logo/logo.png" alt="LEETWARS">
     </div>
+    <tabset>
+        <tab *ngFor="let tabz of tabs"
+             [heading]="tabz.title"
+             [active]="tabz.active"
+             (selectTab)="onTabClick(tabz)"
+             [disabled]="tabz.disabled"
+             >
+        </tab>
+      </tabset>
     <div class="user-menu align-items-center">
         <div class="notification">
             <fa-layers size="2x">

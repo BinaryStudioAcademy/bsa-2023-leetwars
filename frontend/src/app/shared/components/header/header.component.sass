@@ -7,7 +7,7 @@
   align-items: center
   background-color: $deep-dark-grey
   color: white
-  padding: 0.3rem
+  padding: 0.3rem 0.3rem 0 0.3rem
   border-radius: 8px
   margin-bottom: 0.5rem
 
@@ -59,3 +59,38 @@
     display: grid
     justify-content: flex-start
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+
+:host ::ng-deep tabset ul
+    border-bottom: none
+    color: $white
+
+:host ::ng-deep tabset li
+    padding: 0
+    color: $white
+
+:host ::ng-deep tabset li.nav-item.active a.nav-link.active
+  color: #325602 
+  border-bottom: 2px solid #325602
+
+:host ::ng-deep tabset li.nav-item a
+    display: inline-block
+    font-size: 13px
+    line-height: 40px
+    color: $white
+    cursor: pointer
+    border: none
+    padding: 13px 13px
+    transition: background-color 0.2s ease
+    user-select: none
+    &:hover
+        background-color: transparent !important
+        color: #325602
+    &:focus
+      color: #325602
+      border-bottom: 2px solid #325602
+        
+  
+:host ::ng-deep tabset li a.active
+    background-color: transparent !important
+    color: #325602  
+       
