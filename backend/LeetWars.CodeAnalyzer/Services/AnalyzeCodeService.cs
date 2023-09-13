@@ -14,7 +14,7 @@ namespace LeetWars.CodeAnalyzer.Services
             _completionService = completionService;
         }
 
-        public async Task<CodeResponseAnalysisDto> RunCodeAnalysis(CodeRequestAnalysisDto requestDto)
+        public async Task<CodeResponseAnalysisDto> RunCodeAnalysisAsync(CodeRequestAnalysisDto requestDto)
         {
             string prompt = _openAiSettings.GetCodeAnalysisPrompt(requestDto.LanguageName, requestDto.CodeListing);
 
