@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.Reflection;
-
-namespace LeetWars.Core.Common.DTO.CodeAnalysis
+﻿namespace LeetWars.Core.Common.DTO.CodeAnalysis
 {
     public class CodeRequestAnalysisDto
     {

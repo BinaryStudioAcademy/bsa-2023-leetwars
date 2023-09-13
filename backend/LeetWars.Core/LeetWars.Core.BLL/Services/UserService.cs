@@ -1,16 +1,12 @@
 using System.Linq.Expressions;
-using System.Security.Claims;
-using System.Transactions;
 using AutoMapper;
 using LeetWars.Core.BLL.Helpers.Email;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.BLL.Services;
