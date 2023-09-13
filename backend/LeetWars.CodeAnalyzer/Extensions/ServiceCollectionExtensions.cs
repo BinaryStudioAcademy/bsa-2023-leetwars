@@ -24,6 +24,7 @@ namespace LeetWars.CodeAnalyzer.Extensions
 
             services.AddScoped<IOpenAiSettings, OpenAiSettings>();
             services.AddScoped<ICompletionService, CompletionService>();
+            services.AddScoped<IAnalyzeCodeService, AnalyzeCodeService>();
         }
     }
 }
