@@ -24,14 +24,14 @@ Frontend:
 
 By default, apps run on the following ports:
 
-| Application           | Port |
-| --------------------- | ---- |
-| LeetWars.**Core**     | 5050 |
-| LeetWars.**Notifier** | 5070 |
-| LeetWars.**Emailer**  | 5080 |
-| LeetWars.**Builder**  | 5090 |
-| LeetWars.**Builder**  | 5100 |
-| RabbitMQ              | 5672 |
+| Application               | Port |
+| ------------------------- | ---- |
+| LeetWars.**Core**         | 5050 |
+| LeetWars.**Notifier**     | 5070 |
+| LeetWars.**Emailer**      | 5080 |
+| LeetWars.**Builder**      | 5090 |
+| LeetWars.**CodeAnalyzer** | 5100 |
+| RabbitMQ                  | 5672 |
 
 _Tip: If you want to connect to the specific service outside of docker, then use "localhost" as a service name, but if both services are inside docker, use service_name from a "docker-compose" file instead._
 
