@@ -8,10 +8,10 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
-import { ICodeRunRequest } from '@shared/models/code-run-request/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run-results/code-run-results';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
+import { generateFakeCodeRunRequest } from '@shared/utils/code-run-request-example';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -93,24 +93,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
         if (connectionId) {
             this.toastrNotification.showInfo('Test run request sent');
 
-            const exampleCodeRunRequest: ICodeRunRequest = {
-                userConnectionId: connectionId,
-                userId: 1234,
-                challengeVersionId: 1234,
-                isBuilt: true,
-                language: 'csharp',
-                userCode: 'public class Solution\r\n{\r\n    public bool IsNumPrime(int num)\r\n    ' +
-                        '{\r\n        throw new Exception("Exception!!!");\r\n    }\r\n}\r\n',
-                preloaded: undefined,
-                tests: 'using NUnit.Framework;\r\n\r\n[TestFixture]\r\npublic class Tests\r\n{\r\n    ' +
-                    'private Solution? _solutionClass;\r\n\r\n    [SetUp]\r\n    ' +
-                    'public void Setup()\r\n    {\r\n        _solutionClass = new Solution();\r\n    }\r\n\r\n    ' +
-                    '[Test]\r\n    public void IsPrime_InputIs1_ReturnFalse()\r\n    ' +
-                    '{\r\n        var result = _solutionClass.IsNumPrime(2);\r\n\r\n        ' +
-                    'Assert.IsFalse(result, "1 should not be prime");\r\n    }\r\n}',
-            };
-
-            this.challengeService.runTests(exampleCodeRunRequest).subscribe();
+            this.challengeService.runTests(generateFakeCodeRunRequest(connectionId)).subscribe();
         } else {
             this.toastrNotification.showError('Server Connection Error!');
         }
