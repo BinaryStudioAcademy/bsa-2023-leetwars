@@ -19,13 +19,13 @@ namespace LeetWars.CodeAnalyzer.Services
             string prompt = _openAiSettings.GetCodeAnalysisPrompt(requestDto.LanguageName, requestDto.CodeListing);
 
             var chatResponse = await _completionService.CreateCompletionAsync(prompt)
-                ?? throw new ArgumentException(nameof(requestDto));
+                ?? throw new ArgumentNullException(nameof(requestDto));
 
             string response = chatResponse.ToString();
 
             if(string.IsNullOrWhiteSpace(response))
             {
-                throw new ArgumentException(nameof(requestDto));
+                throw new ArgumentNullException(nameof(requestDto));
             }
 
             int qualityMark = int.Parse(response);

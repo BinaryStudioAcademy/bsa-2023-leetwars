@@ -9,10 +9,12 @@ namespace LeetWars.CodeAnalyzer.Services
     public class CompletionService : ICompletionService
     {
         private readonly OpenAIAPI _openAiApi;
+        private readonly IConfiguration _configuration;
 
-        public CompletionService(OpenAIAPI api)
+        public CompletionService(OpenAIAPI api, IConfiguration configuration)
         {
             _openAiApi = api;
+            _configuration = configuration;
         }
 
         public async Task<ChatResult> CreateCompletionAsync(string prompt)
@@ -20,10 +22,10 @@ namespace LeetWars.CodeAnalyzer.Services
             var request = new ChatRequest()
             {
                 Model = Model.ChatGPTTurbo,
-                MaxTokens = OpenAiCompletionSettings.MaxTokens,
-                Temperature = OpenAiCompletionSettings.Temperature,
-                PresencePenalty = OpenAiCompletionSettings.PresencePenalty,
-                FrequencyPenalty = OpenAiCompletionSettings.FrequencyPenalty,
+                MaxTokens = int.Parse(_configuration["OpenAPISettings:MaxTokens"]),
+                Temperature = double.Parse(_configuration["OpenAPISettings:Temperature"]),
+                PresencePenalty = double.Parse(_configuration["OpenAPISettings:PresencePenalty"]),
+                FrequencyPenalty = double.Parse(_configuration["OpenAPISettings:FrequencyPenalty"]),
                 Messages = new ChatMessage[]
                 {
                     new ChatMessage(ChatMessageRole.User, prompt)
