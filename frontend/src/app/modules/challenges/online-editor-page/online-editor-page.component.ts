@@ -1,24 +1,24 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
+import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
+import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
+import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { takeUntil } from 'rxjs';
-import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
-import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
-import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 
 @Component({
     selector: 'app-online-editor-page',
     templateUrl: './online-editor-page.component.html',
     styleUrls: ['./online-editor-page.component.sass'],
 })
-export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
+export class OnlineEditorPageComponent extends BaseComponent implements OnDestroy, OnInit {
     activeTab: string = 'Description';
 
     splitDirection: 'horizontal' | 'vertical';
@@ -82,7 +82,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
     onCodeChanged(newCode: string) {
         this.initialSolution = newCode;
-        console.log('Editor content changed:', newCode);
     }
 
     selectTab(title: string): void {
@@ -181,5 +180,5 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
     override ngOnDestroy() {
         this.signalRService.stop();
         super.ngOnDestroy();
-      }
+    }
 }

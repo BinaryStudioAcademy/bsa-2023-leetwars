@@ -48,13 +48,11 @@ export class CodeDisplayingHubService {
 
     public getConnectionId = async () => {
         try {
-          console.log("I am here!");
-          const connectionId = await this.hubConnection.invoke('GetConnectionId');
-          this.connectionId = connectionId;
-          console.log('Connection ID:', connectionId);
+            const connectionId = await this.hubConnection.invoke('GetConnectionId');
+
+            this.connectionId = connectionId;
         } catch (error) {
-          console.error('Error getting connection ID:', error);
-          // Handle the error as needed (e.g., show an error message, retry, etc.)
+            console.error('Error getting connection ID:', error);
         }
-      }
+    };
 }

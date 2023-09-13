@@ -8,10 +8,10 @@ import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { IStar } from '@shared/models/challenge-star/star';
+import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
-import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 
 @Injectable({
     providedIn: 'root',
@@ -52,7 +52,7 @@ export class ChallengeService {
 
         return this.httpService.postRequest<ApiResponse>(`${this.challengesRoute}/${id}/${selectedLanguage}`, request);
     }
-    
+
     public createChallenge(challenge: INewChallenge): Observable<IChallenge> {
         return this.httpService.postRequest<IChallenge>(`${this.challengesRoute}`, challenge);
     }
