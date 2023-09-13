@@ -12,7 +12,7 @@ export class BroadcastHubService {
 
     private hubConnection: HubConnection;
 
-    private hubConnectionId: string | null;
+    private hubConnectionId: string;
 
     readonly messages = new Subject<string>();
 
@@ -22,8 +22,6 @@ export class BroadcastHubService {
 
     async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
-
-        this.hubConnectionId = this.hubConnection.connectionId;
 
         await this.init();
     }

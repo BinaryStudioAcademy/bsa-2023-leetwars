@@ -1,8 +1,8 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.Filters;
-using LeetWars.Core.Common.Models;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,7 +42,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpPost("test")]
-        public ActionResult GetCode([FromBody] CodeRunRequest codeRunRequest)
+        public ActionResult GetCode([FromBody] CodeRunRequestDto codeRunRequest)
         {
             _challengeService.SendCodeRunRequest(codeRunRequest);
             return Ok();

@@ -1,6 +1,6 @@
-﻿namespace LeetWars.Core.Common.Models
+﻿namespace LeetWars.Core.Common.DTO.CodeRunRequest
 {
-    public class CodeRunRequest
+    public class CodeRunRequestDto
     {
         public string UserConnectionId { get; set; } = string.Empty;
         public long UserId { get; set; }

@@ -5,7 +5,7 @@ using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.Filters;
-using LeetWars.Core.Common.Models;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
@@ -287,7 +287,7 @@ namespace LeetWars.Core.BLL.Services
             }
         }
 
-        public void SendCodeRunRequest(CodeRunRequest request)
+        public void SendCodeRunRequest(CodeRunRequestDto request)
         {
             _messageSenderService.SendMessageToRabbitMQ(request);
         }
