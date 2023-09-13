@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div *ngFor="let challenge of challenges" style="width: 100%">
+        <div *ngFor="let challenge of challenges" class="challenges-list">
             <app-challenge [challenge]="challenge"></app-challenge>
         </div>
         <div *ngIf="loading">
