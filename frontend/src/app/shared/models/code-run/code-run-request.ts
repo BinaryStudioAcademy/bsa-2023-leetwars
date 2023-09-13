@@ -1,5 +1,5 @@
-export interface CodeRunRequest {
-    userId: number;
+export interface ICodeRunRequest {
+    userConnectionId: string;
     challengeVersionId: number;
     language: string;
     userCode: string;

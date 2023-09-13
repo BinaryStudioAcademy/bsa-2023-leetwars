@@ -11,19 +11,12 @@ public class DockerMountDirectoryConfigurations
 
     public async Task<string> CreateDirectoryCSharp(string directoryPath, CodeRunRequest request)
     {
-        CurrentDirectory = Path.Combine(directoryPath, $"RunnerDefaults/CSharp/{request.Language}-{request.ChallengeVersionId}-{request.UserId}");
+        CurrentDirectory = Path.Combine(directoryPath, $"RunnerDefaults/CSharp/{request.Language}-{request.ChallengeVersionId}-{request.UserConnectionId}");
 
-        string programFileName = "Program.cs";
-        string projectFileName = $"CSharpRunner-{request.Language}-{request.ChallengeVersionId}-{request.UserId}.csproj";
+        string programFileName = ProjectFileNaming.CSharpProjectName;
+        string projectFileName = $"CSharpRunner-{request.Language}-{request.ChallengeVersionId}-{request.UserConnectionId}.csproj";
 
-        if (!Directory.Exists(CurrentDirectory))
-        {
-            Directory.CreateDirectory(CurrentDirectory);
-        }
-        else
-        {
-            Directory.Delete(CurrentDirectory, true);
-        }
+        CheckDirectory(CurrentDirectory);
 
         await RFW.WriteContentAsync(Path.Combine(CurrentDirectory, projectFileName), ProjectFileContents.CSharpProjectContent);
         await RFW.WriteContentAsync(Path.Combine(CurrentDirectory, programFileName), ProjectFileContents.CSharpProgramContent);
@@ -33,15 +26,20 @@ public class DockerMountDirectoryConfigurations
 
     public void CreateDirectoryJS(string directoryPath, CodeRunRequest request) 
     {
-        CurrentDirectory = Path.Combine(directoryPath, $"RunnerDefaults/JS/{request.Language}-{request.ChallengeVersionId}-{request.UserId}");
+        CurrentDirectory = Path.Combine(directoryPath, $"RunnerDefaults/JS/{request.Language}-{request.ChallengeVersionId}-{request.UserConnectionId}");
 
-        if (!Directory.Exists(CurrentDirectory))
+        CheckDirectory(CurrentDirectory);
+    }
+
+    private static void CheckDirectory(string path)
+    {
+        if (!Directory.Exists(path))
         {
-            Directory.CreateDirectory(CurrentDirectory);
+            Directory.CreateDirectory(path);
         }
         else
         {
-            Directory.Delete(CurrentDirectory, true);
+            Directory.Delete(path, true);
         }
     }
 }

@@ -1,9 +1,9 @@
-import { BuildResult } from './build-result';
+import { IBuildResult } from './build-result';
 
-export interface CodeRunResults {
-    userId: number;
+export interface ICodeRunResults {
+    userConnectionId: string;
     challengeVersionId: number;
     language: string;
-    buildResults?: BuildResult | null;
+    buildResults?: IBuildResult | null;
     testRunResults?: string | null;
 }

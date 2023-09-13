@@ -1,12 +1,12 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BroadcastHubService } from '@core/hubs/broadcast-hub.service';
+import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { IChallenge } from '@shared/models/challenge/challenge';
-import { CodeRunRequest } from '@shared/models/code-run/code-run-request';
-import { CodeRunResults } from '@shared/models/code-run/code-run-result';
+import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
+import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -37,14 +37,14 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     initialSolution: string | undefined;
 
-    solution: CodeRunRequest;
+    solution: ICodeRunRequest;
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
         breakpointObserver: BreakpointObserver,
         private router: Router,
-        private signalRService: BroadcastHubService,
+        private signalRService: CodeDisplayingHubService,
         private toastrNotification: ToastrNotificationsService,
     ) {
         breakpointObserver
@@ -65,7 +65,8 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         this.splitDirection = 'horizontal';
 
         this.subscribeToMessageQueue();
-        this.loadChallengeAndSetupEditor(challengeId);
+        this.loadChallenge(challengeId);
+
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
@@ -99,7 +100,7 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
 
     sendCode(): void {
         this.solution = {
-            userId: 1,
+            userConnectionId: this.signalRService.connectionId,
             challengeVersionId: this.challenge.id,
             language: this.selectedLanguage,
             userCode: this.initialSolution as string,
@@ -108,21 +109,11 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         this.challengeService.postCode(this.solution).subscribe();
     }
 
-    loadChallengeAndSetupEditor(challengeId: number): void {
+    loadChallenge(challengeId: number): void {
         this.challengeService.getChallengeById(challengeId).subscribe({
             next: (challenge) => {
-                this.languages = challenge.versions.map((v) => v.language.name);
                 this.challenge = challenge;
-                [this.selectedLanguage] = this.languages;
-                this.editorOptions = {
-                    theme: 'custom-theme',
-                    language: this.mapLanguageName(this.selectedLanguage),
-                    minimap: { enabled: false },
-                    automaticLayout: true,
-                    useShadows: false,
-                    wordWrap: 'on',
-                };
-                this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
+                this.setupEditor(this.challenge);
             },
             error: () => {
                 this.router.navigateByUrl('/not-found');
@@ -130,10 +121,24 @@ export class OnlineEditorPageComponent implements OnDestroy, OnInit {
         });
     }
 
+    setupEditor(challenge: IChallenge): void {
+        this.languages = challenge.versions.map((v) => v.language.name);
+        [this.selectedLanguage] = this.languages;
+        this.editorOptions = {
+            theme: 'custom-theme',
+            language: this.mapLanguageName(this.selectedLanguage),
+            minimap: { enabled: false },
+            automaticLayout: true,
+            useShadows: false,
+            wordWrap: 'on',
+        };
+        this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
+    }
+
     subscribeToMessageQueue(): void {
         this.signalRService.start();
         this.signalRService.listenMessages((msg: string) => {
-            const codeRunResults: CodeRunResults = JSON.parse(msg) as CodeRunResults;
+            const codeRunResults: ICodeRunResults = JSON.parse(msg) as ICodeRunResults;
 
             if (codeRunResults.buildResults?.isSuccess) {
                 this.toastrNotification.showSuccess('code was compiled successfully');

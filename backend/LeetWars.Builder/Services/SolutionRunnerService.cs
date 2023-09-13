@@ -1,4 +1,6 @@
-﻿using Docker.DotNet;
+﻿using System.IO;
+using System;
+using Docker.DotNet;
 using Docker.DotNet.Models;
 using LeetWars.Builder.Helpers.BuildResultReader;
 using LeetWars.Builder.Helpers.DirectoryConfigurations;
@@ -18,39 +20,25 @@ namespace LeetWars.Builder.Services
         public async Task<CodeRunResults> Run(CodeRunRequest request)
         {
             var buildResultReader = new BuildResultReader();
-            var dirBuilder = new DockerMountDirectoryConfigurations();
             var dockerConfig = new DockerConfigurations();
             RunnerFileWriterReaderClass readWrite = new RunnerFileWriterReaderClass();
-            dirBuilder.RFW = readWrite;
+            var dirBuilder = new DockerMountDirectoryConfigurations();
 
             string dir = Directory.GetCurrentDirectory();
-            Config config;
 
-            string? solutionFileName;
-            switch (request.Language)
-            {
-                case Languages.csharp:
-                    var projectFileName = await dirBuilder.CreateDirectoryCSharp(dir, request);
+            var configurationResults = await dockerConfig.GetConfigurations(
+                request.Language,
+                dir,
+                request,
+                _client,
+                dockerConfig
+                );
 
-                    await dockerConfig.CreateImage(_client, SDKImageNames.CSharpSDK);
+            string? solutionFileName = configurationResults.Item1;
 
-                    solutionFileName = SolutionFileNaming.CSharpSolutionName;
-                    config = dockerConfig.GetCSharpConfig(projectFileName);
-                    break;
+            dir = configurationResults.Item2;
 
-                case Languages.javascript:
-                    dirBuilder.CreateDirectoryJS(dir, request);
-
-                    await dockerConfig.CreateImage(_client, SDKImageNames.JSSDK);
-
-                    solutionFileName = SolutionFileNaming.JSSolutionName;
-                    config = dockerConfig.GetJSConfig(solutionFileName);
-                    break;
-                default:
-                    return new CodeRunResults();
-            }
-
-            dir = dirBuilder.CurrentDirectory;
+            Config config = configurationResults.Item3;
 
             string solutionCode = request.UserCode;
 
@@ -79,22 +67,10 @@ namespace LeetWars.Builder.Services
 
             var result = new CodeRunResults();
 
-            switch (request.Language)
-            {
-                case Languages.csharp:
-                    buildResultReader.BuildResultCSharp(buildLog, result);
-                    break;
-
-                case Languages.javascript:
-                    buildResultReader.BuildResultJS(buildLog, result);
-                    break;
-
-                default:
-                    break;
-            }
+            buildResultReader.BuildResults(buildLog, result, request.Language);
 
             result.ChallengeVersionId = request.ChallengeVersionId;
-            result.UserId = request.UserId;
+            result.UserConnectionId = request.UserConnectionId;
             result.Language = request.Language;
 
             return result;

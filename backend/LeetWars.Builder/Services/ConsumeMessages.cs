@@ -30,19 +30,22 @@ namespace LeetWars.Builder.Services
 
                 var request = JsonConvert.DeserializeObject<CodeRunRequest>(message);
 
-                 if (request != null && Models.HelperModels.Languages.AvailableLanguages.Contains(request.Language))
-                 {
-                     var result = await _codeRunManagerService.Run(request);
+                if (request != null && Models.HelperModels.Languages.AvailableLanguages.Contains(request.Language))
+                {
+                    var result = await _codeRunManagerService.Run(request);
 
-                     var settings = new JsonSerializerSettings
-                     {
-                         ContractResolver = new CamelCasePropertyNamesContractResolver()
-                     };
+                    var settings = new JsonSerializerSettings
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    };
 
-                     var jsonString = JsonConvert.SerializeObject(result, settings);
+                    var codeRunResultJson = JsonConvert.SerializeObject(result, settings);
 
-                    _producerService.Send(jsonString, ExchangeType.Direct);
-                 }
+                    var notifierMessage = new NotifierMessage() { HubName= "codeDisplayingHub", Message = codeRunResultJson };
+
+                    var notifierJson = JsonConvert.SerializeObject(notifierMessage);
+                    _producerService.Send(notifierJson, ExchangeType.Direct);
+                }
 
                 _consumerService.SetAcknowledge(args.DeliveryTag, true);
             });

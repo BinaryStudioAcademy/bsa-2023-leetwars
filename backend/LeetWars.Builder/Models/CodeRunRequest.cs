@@ -2,7 +2,7 @@
 {
     public class CodeRunRequest
     {
-        public long UserId { get; set; }
+        public string UserConnectionId { get; set; } = string.Empty;
         public long ChallengeVersionId { get; set;}
         public string Language { get; set; } = string.Empty;
         public string UserCode { get; set; } = string.Empty;

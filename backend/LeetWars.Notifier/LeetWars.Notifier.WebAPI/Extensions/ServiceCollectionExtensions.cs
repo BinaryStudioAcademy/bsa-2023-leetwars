@@ -1,4 +1,6 @@
-﻿using LeetWars.Notifier.WebAPI.Services;
+﻿using LeetWars.Notifier.WebAPI.Helpers;
+using LeetWars.Notifier.WebAPI.Interfaces;
+using LeetWars.Notifier.WebAPI.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
@@ -19,6 +21,11 @@ namespace LeetWars.RabbitMQ.Extensions
             services.AddSingleton(sp => sp.GetRequiredService<IOptions<ConsumerSettings>>().Value);
             services.AddSingleton<IConsumerService, ConsumerService>();
             services.AddHostedService<MessageConsumerService>();
+        }
+
+        public static void AddHubManagerHelperService(this IServiceCollection services)
+        {
+            services.AddSingleton<IHubManagerHelperService, HubManagerHelperService>();
         }
     }
 }

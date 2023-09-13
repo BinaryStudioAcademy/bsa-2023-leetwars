@@ -1,10 +1,11 @@
 ﻿using LeetWars.Builder.Models;
+using LeetWars.Builder.Models.HelperModels;
 
 namespace LeetWars.Builder.Helpers.BuildResultReader;
 
 public class BuildResultReader
 {
-    public void BuildResultCSharp(string buildlog, CodeRunResults result)
+    private static void BuildResultCSharp(string buildlog, CodeRunResults result)
     {
         if(buildlog.Contains("Build FAILED"))
         {
@@ -16,7 +17,7 @@ public class BuildResultReader
         }
     }
 
-    public void BuildResultJS(string buildlog, CodeRunResults result)
+    private static void BuildResultJS(string buildlog, CodeRunResults result)
     {
         if (buildlog.Contains("Error"))
         {
@@ -25,6 +26,23 @@ public class BuildResultReader
         else
         {
             result.BuildResults = new BuildResult { IsSuccess = true, BuildMessage = "Build was successful" };
+        }
+    }
+
+    public void BuildResults(string buildlog, CodeRunResults result, string language)
+    {
+        switch (language)
+        {
+            case Languages.csharp:
+                BuildResultCSharp(buildlog, result);
+                break;
+
+            case Languages.javascript:
+                BuildResultJS(buildlog, result);
+                break;
+
+            default:
+                break;
         }
     }
 }
