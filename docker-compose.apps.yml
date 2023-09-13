@@ -64,6 +64,7 @@ services:
             - back
         environment:
             ASPNETCORE_ENVIRONMENT: 'Development'
+            SENDGRID_API_KEY: ${SENDGRID_API_KEY}
 
     leetwars_client:
         depends_on:

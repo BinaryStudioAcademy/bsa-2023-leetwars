@@ -1,4 +1,5 @@
-﻿using LeetWars.Core.Common.DTO.Challenge;
+﻿using LeetWars.Core.Common.DTO.Badge;
+using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Language;
 using LeetWars.Core.Common.DTO.Subscription;
 using LeetWars.Core.Common.DTO.UserLanguageLevel;
@@ -21,6 +22,7 @@ namespace LeetWars.Core.Common.DTO.User
         public string Email { get; set; } = string.Empty;
         public string ImagePath { get; set; } = string.Empty;
         public long TotalScore { get; set; }
+        public long Reputation { get; set; }
         public DateTime RegisteredAt { get; set; }
         public string OAuthToken { get; set; } = string.Empty;
         public bool IsSubscribed { get; set; }
@@ -30,5 +32,6 @@ namespace LeetWars.Core.Common.DTO.User
         public ICollection<UserLanguageLevelDto>? LanguagesWithLevels { get; set; }
         public ICollection<UserSolutionDto>? Solutions { get; set; }
         public ICollection<ChallengeDto>? Challenges { get; set; }
+        public ICollection<BadgeDto>? Badges { get; set; }
     }
 }

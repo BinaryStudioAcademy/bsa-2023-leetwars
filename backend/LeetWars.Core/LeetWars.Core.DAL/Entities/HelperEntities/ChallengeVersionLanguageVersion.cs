@@ -3,6 +3,6 @@
     public class ChallengeVersionLanguageVersion
     {
         public long ChallengeVersionId { get; set; }
-        public int LanguageVersionId { get; set; }
+        public long LanguageVersionId { get; set; }
     }
 }

@@ -6822,17 +6822,17 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngx-infinite-scroll@14.0.0:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-infinite-scroll/-/ngx-infinite-scroll-14.0.0.tgz#395b15be5f451c3e3d2ad7ce2aeb66f8c66aba5d"
-  integrity sha512-YZB5PBPXSERNtCGQRZTVflbgkh5asp01NPfC8KPItemmQik1Ip8ZCCbcyHA77TDTdilmaiu8TbguA3geg/LMWw==
-  dependencies:
-    tslib "^2.3.0"
-    
 ngx-bootstrap@9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-9.0.0.tgz#8524958cdd479aefcc9549788694fe08789f2f52"
   integrity sha512-wVwKs1jIASzJrKSPUhOcHY8f39MKyG31SruJdVQ3S/v/PdBVmVuFUJL86Awc8F60di2xD9C4DzzGObkvsHbirw==
+  dependencies:
+    tslib "^2.3.0"
+
+ngx-infinite-scroll@14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-infinite-scroll/-/ngx-infinite-scroll-14.0.0.tgz#395b15be5f451c3e3d2ad7ce2aeb66f8c66aba5d"
+  integrity sha512-YZB5PBPXSERNtCGQRZTVflbgkh5asp01NPfC8KPItemmQik1Ip8ZCCbcyHA77TDTdilmaiu8TbguA3geg/LMWw==
   dependencies:
     tslib "^2.3.0"
 
@@ -6856,6 +6856,13 @@ ngx-monaco-editor-v2@14.x.x:
   integrity sha512-l1r5i6Xsn3OZed2DoUsYRgjHM1TvrOZId7JRNRGzCs7fjE8zvv1Kz/KimH2Ef9rF+ItUD4FUI29u9u6/NOf+fQ==
   dependencies:
     tslib "^2.1.0"
+
+ngx-owl-carousel-o@14.0.1:
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-owl-carousel-o/-/ngx-owl-carousel-o-14.0.1.tgz#fa1755b850a3f322313418ce2767bfc860c9ad3f"
+  integrity sha512-U0UNhaXfGhWjcGDxmvgvpOpig/3Cs33sQjtH7iahEEjBXmwCccSwZkmLC3HPattFhfUyH8OGFzH9ZlcA0R0gFQ==
+  dependencies:
+    tslib "^2.3.0"
 
 ngx-toastr@15.2.2:
   version "15.2.2"

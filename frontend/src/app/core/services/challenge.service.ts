@@ -5,12 +5,13 @@ import { ApiResponse } from '@shared/models/api-response';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
-import { Star } from '@shared/models/challenge-star/star';
-import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
+import { IStar } from '@shared/models/challenge-star/star';
 import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
+import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 
 @Injectable({
     providedIn: 'root',
@@ -41,7 +42,7 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/${id}`);
     }
 
-    public updateStar(star: Star): Observable<IChallengePreview> {
+    public updateStar(star: IStar): Observable<IChallengePreview> {
         return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
     }
 
@@ -50,5 +51,9 @@ export class ChallengeService {
         const selectedLanguage: string = request.language;
 
         return this.httpService.postRequest<ApiResponse>(`${this.challengesRoute}/${id}/${selectedLanguage}`, request);
+    }
+    
+    public createChallenge(challenge: INewChallenge): Observable<IChallenge> {
+        return this.httpService.postRequest<IChallenge>(`${this.challengesRoute}`, challenge);
     }
 }
