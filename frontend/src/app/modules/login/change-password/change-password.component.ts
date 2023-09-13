@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserManagementActions } from '@shared/constants/user-management-constants';
 import { createCompareValidator } from '@shared/utils/validation/compare.validator';
 import { passwordMaxLength, passwordMinLength } from '@shared/utils/validation/form-control-validator-options';
@@ -29,7 +30,12 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
 
     oobCode: string;
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {
+    constructor(
+        private router: Router,
+        private activatedRoute: ActivatedRoute,
+        private authService: AuthService,
+        private toastrService: ToastrNotificationsService,
+    ) {
         this.addValidators();
     }
 
@@ -44,12 +50,13 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
         });
     }
 
-    changePassword() {
+    public changePassword() {
         this.authService
             .confirmPasswordReset(this.oobCode, this.resetPasswordForm.value.password!)
             .pipe(catchError(() => this.router.navigate([''])))
             .subscribe(() => {
                 this.router.navigate(['auth/login']);
+                this.toastrService.showSuccess('Password has been changed');
             });
     }
 
