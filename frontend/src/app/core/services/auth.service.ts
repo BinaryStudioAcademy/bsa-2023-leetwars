@@ -130,7 +130,7 @@ export class AuthService {
     }
 
     private signWithProvider(observable: Observable<IUser | undefined>, isLogin: boolean) {
-        return observable.subscribe((user?: IUser) => {
+        return this.catchAuthWithProviderError(observable).subscribe((user?: IUser) => {
             if (user) {
                 this.authHelper.handleAuthSuccess(user.userName!, isLogin);
             }
@@ -148,6 +148,21 @@ export class AuthService {
                     timezone: new Date().getTimezoneOffset() / 60,
                 })),
             tap((user) => this.setUserInfo(user)),
+        );
+    }
+
+    public getUserInfo(): IUser | undefined {
+        const userInfo = localStorage.getItem(this.userKeyName);
+
+        if (userInfo) {
+            return JSON.parse(userInfo);
+        }
+
+        return undefined;
+    }
+
+    private catchAuthWithProviderError(auth: Observable<IUser | undefined>): Observable<IUser | undefined> {
+        return auth.pipe(
             catchError((error: string | Error) => {
                 let message = error as string;
 
@@ -162,16 +177,6 @@ export class AuthService {
                 return of(undefined);
             }),
         );
-    }
-
-    public getUserInfo(): IUser | undefined {
-        const userInfo = localStorage.getItem(this.userKeyName);
-
-        if (userInfo) {
-            return JSON.parse(userInfo);
-        }
-
-        return undefined;
     }
 
     private setUserInfo(user: IUser) {
