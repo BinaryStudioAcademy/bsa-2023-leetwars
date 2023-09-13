@@ -27,6 +27,19 @@
 :host ::ng-deep .change-color
   background-color: $cornflower
 
+::ng-deep .modal-content
+    background-color: $charcoal-grey
+    .modal-header
+        color: $green
+        .btn-close
+            background-color: $green
+    .modal-body, .modal-footer
+        color: $white
+    button
+        color: $white
+
+
+
 .user
   position: relative
   align-items: center
@@ -54,8 +67,15 @@
     right: 0.2rem
     top: 40px
     padding: .8rem
-    background-color: $white
+    background-color: $charcoal-grey
+    min-width: 200px
     border-radius: 8px
-    display: grid
+    display: flex
     justify-content: flex-start
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+    button
+        white-space: nowrap
+        display: inline-block
+        width: 100%
+        &:hover
+            color: $green
