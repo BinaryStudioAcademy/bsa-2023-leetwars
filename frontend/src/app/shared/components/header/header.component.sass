@@ -49,13 +49,21 @@
   position: relative
 
 .menu
-    z-index: 99
-    position: absolute
-    right: 0.2rem
-    top: 40px
+  background-color: $charcoal-grey
+  min-width: 200px
+  z-index: 99
+  position: absolute
+  right: 0.2rem
+  top: 40px
+  border-radius: 8px
+  display: flex
+  justify-content: flex-start
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+  overflow: hidden
+  button
+    white-space: nowrap
+    display: inline-block
+    width: 100%
     padding: .8rem
-    background-color: $white
-    border-radius: 8px
-    display: grid
-    justify-content: flex-start
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+    &:hover
+      background-color: $green

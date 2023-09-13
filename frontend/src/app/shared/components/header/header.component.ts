@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { IUser } from '@shared/models/user/user';
 
@@ -8,13 +9,18 @@ import { IUser } from '@shared/models/user/user';
     styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent {
-    showMenu: boolean = false;
+    public showMenu: boolean = false;
 
-    user: IUser;
+    public user: IUser;
 
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService, private router: Router) {
         this.authService.getUser().subscribe((user) => {
             this.user = user;
         });
+    }
+
+    public goToProfile() {
+        this.showMenu = false;
+        this.router.navigate(['/user/profile']);
     }
 }
