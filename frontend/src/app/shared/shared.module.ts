@@ -44,8 +44,6 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         ProgressbarModule,
         MarkdownModule.forRoot(),
         AngularMarkdownEditorModule.forRoot({ iconlibrary: 'fa' }),
-        TabsModule,
-
     ],
     declarations: [
         LoadingSpinnerComponent,
