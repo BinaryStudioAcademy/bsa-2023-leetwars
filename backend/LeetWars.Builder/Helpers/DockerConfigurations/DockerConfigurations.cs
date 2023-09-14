@@ -16,7 +16,7 @@ public class DockerConfigurations
 
         return new Config
         {
-            Image = "mcr.microsoft.com/dotnet/sdk:6.0",
+            Image = SDKImageNames.CSharpSDK,
             AttachStdout = true,
             AttachStderr = true,
             Cmd = new[] { "sh", "-c", $"dotnet build /app/{projectName} 2>&1 |tee /app/buildoutput.txt" },
@@ -28,7 +28,7 @@ public class DockerConfigurations
     {
         return new Config()
         {
-            Image = "node:18",
+            Image = SDKImageNames.JSSDK,
             AttachStdout = true,
             AttachStderr = true,
             Cmd = new[] { "sh", "-c", $"node /app/{programName} 2>&1 |tee /app/buildoutput.txt" },
