@@ -27,6 +27,11 @@ const routes: Routes = [
         canActivate: [AuthorizedGuard, HeaderGuard],
     },
     {
+        path: 'leader',
+        loadChildren: () => import('./modules/leader/leader.module').then((m) => m.LeaderModule),
+        canActivate: [AuthorizedGuard],
+    },
+    {
         path: 'challenges',
         loadChildren: () => import('./modules/challenges/challenges.module').then((m) => m.ChallengesModule),
         canActivate: [AuthorizedGuard, HeaderGuard],
