@@ -1,9 +1,9 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace LeetWars.RabbitMQ
+namespace LeetWars.RabbitMQ.Services
 {
-    public static class ConsumerSetupHelper
+    public static class ConsumerSetupHelperService
     {
         public static void ListenSetup(EventHandler<BasicDeliverEventArgs> messageReceivedHandler, IModel channel, ConsumerSettings settings)
         {

@@ -1,3 +1,4 @@
+using LeetWars.RabbitMQ.Services;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -18,17 +19,17 @@ public class ConsumerService : IConsumerService
 
     public void Listen(EventHandler<BasicDeliverEventArgs> messageReceivedHandler)
     {
-        ConsumerSetupHelper.ListenSetup(messageReceivedHandler, _channel, _settings);
+        ConsumerSetupHelperService.ListenSetup(messageReceivedHandler, _channel, _settings);
     }
 
     public void ListenAsync(AsyncEventHandler<BasicDeliverEventArgs> messageReceivedHandler)
     {
-        ConsumerSetupHelper.ListenAsyncSetup(messageReceivedHandler, _channel, _settings);
+        ConsumerSetupHelperService.ListenAsyncSetup(messageReceivedHandler, _channel, _settings);
     }
 
     public void SetAcknowledge(ulong deliveryTag, bool processed)
     {
-        ConsumerSetupHelper.SetAcknowledgeSetup(deliveryTag, processed, _channel);
+        ConsumerSetupHelperService.SetAcknowledgeSetup(deliveryTag, processed, _channel);
     }
 
     protected virtual void Dispose(bool disposing)
