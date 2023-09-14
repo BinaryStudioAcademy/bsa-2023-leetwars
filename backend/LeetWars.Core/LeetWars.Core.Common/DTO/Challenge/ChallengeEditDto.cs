@@ -5,8 +5,9 @@ using LeetWars.Core.DAL.Enums;
 
 namespace LeetWars.Core.Common.DTO.Challenge
 {
-    public class ChallengeEditDto : Entity<int>
+    public class ChallengeEditDto : Entity<long>
     {
+        public long CreatedBy { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Instructions { get; set; } = string.Empty;
         public long LevelId { get; set; }

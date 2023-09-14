@@ -3,7 +3,7 @@ using LeetWars.Core.DAL.Enums;
 
 namespace LeetWars.Core.Common.DTO.ChallengeVersion
 {
-    public class EditChallengeVersionDto : Entity<int>
+    public class EditChallengeVersionDto : Entity<long>
     {
         public DateTime CreatedAt { get; set; }
         public long LanguageId { get; set; }

@@ -188,6 +188,10 @@ namespace LeetWars.Core.BLL.Services
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
+            if (currentUser.Id != challengeEditDto.CreatedBy)
+            {
+                throw new InvalidOperationException("The user cannot modify this challenge");
+            }
 
             var challenge = await GetChallengeByIdAsync(challengeEditDto.Id);
             if (challenge is null)

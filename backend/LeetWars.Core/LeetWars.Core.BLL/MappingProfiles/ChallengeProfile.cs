@@ -17,6 +17,7 @@ namespace LeetWars.Core.BLL.MappingProfiles
         {
             CreateMap<Challenge, ChallengePreviewDto>()
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author != null ? $"{src.Author.UserName}" : null))
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
                 .ForMember(dest => dest.LevelName, opt => opt.MapFrom(src => src.Level != null ? src.Level.Name : null))
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
@@ -26,13 +27,13 @@ namespace LeetWars.Core.BLL.MappingProfiles
                 .ForMember(dest => dest.StarsAmount, opt => opt.MapFrom(src => src.Stars.Count));
 
             CreateMap<ChallengeVersion, ChallengeVersionFullDto>();
-            
+
             CreateMap<UserSolution, UserSolutionDto>();
-            
+
             CreateMap<Test, TestDto>();
-            
+
             CreateMap<ChallengeLevel, ChallengeLevelDto>();
-            
+
             CreateMap<Challenge, ChallengeFullDto>();
 
             CreateMap<NewChallengeDto, Challenge>()
@@ -47,7 +48,7 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<EditChallengeVersionDto, ChallengeVersion>();
 
             CreateMap<Challenge, ChallengeDto>();
-            
+
             CreateMap<ChallengeStar, ChallengeStarDto>()
                 .ForMember(dest => dest.IsStar, opt => opt.MapFrom(src => true))
                 .ForMember(dest => dest.Challenge, opt => opt.MapFrom(src => src.Challenge))
