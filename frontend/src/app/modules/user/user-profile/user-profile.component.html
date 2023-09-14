@@ -3,7 +3,7 @@
         <div class="user_profile">
             <app-profile-page-main-info [user]="fullUser" [userSolutions]="userSolutions"></app-profile-page-main-info>
         </div>
-        <div class="solved">
+        <div class="solved" *ngIf="bars?.length">
             <app-solved-problem [bars]="bars"></app-solved-problem>
         </div>
         <div class="badges">

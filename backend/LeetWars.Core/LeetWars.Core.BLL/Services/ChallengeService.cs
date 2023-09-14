@@ -316,7 +316,7 @@ namespace LeetWars.Core.BLL.Services
                 _ => challenges
             };
         }
-        private IOrderedQueryable<Challenge> SortByProperty(IQueryable<Challenge> challenges, SortingModel? sortingModel)
+        private static IOrderedQueryable<Challenge> SortByProperty(IQueryable<Challenge> challenges, SortingModel? sortingModel)
         {
             return sortingModel switch
             {
@@ -329,7 +329,7 @@ namespace LeetWars.Core.BLL.Services
                 { Property: SortingProperty.CreatedAt, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.CreatedAt),
                 { Property: SortingProperty.CreatedAt, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.CreatedAt),
 
-                _ => throw new ArgumentException()
+                _ => throw new ArgumentException("Unsuporting sorting type")
             };
         }
 
