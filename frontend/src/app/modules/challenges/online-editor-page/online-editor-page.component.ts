@@ -134,7 +134,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
     private getInitialSolutionByLanguage(language: string): string {
         const version = this.challenge.versions?.find((v) => v.language.name === language);
 
-        return (version && version.initialSolution?.length)
+        return (version && version.initialSolution)
             ? version?.initialSolution
             : 'No solutions available';
     }
@@ -142,7 +142,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
     private getInitialTestByChallengeVersionId(id: number) {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
-        return (selectedVersion && selectedVersion.exampleTestCases?.length)
+        return (selectedVersion && selectedVersion.exampleTestCases)
             ? selectedVersion?.exampleTestCases
             : 'No tests available';
     }
