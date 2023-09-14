@@ -192,9 +192,7 @@ public class UserService : BaseService, IUserService
     {
         string newUserName = email.GetUserNameFromEmail();
 
-        bool isUserNameStillExist = await CheckIsExistingUserNameAsync(newUserName);
-
-        if (isUserNameStillExist)
+        while (await CheckIsExistingUserNameAsync(newUserName))
         {
             newUserName = new Faker<string>()
                 .CustomInstantiator(f => f.Internet.UserName().LimitLength(EntitySettings.MaxUserNameLength - 3));
