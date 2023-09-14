@@ -31,9 +31,7 @@ services:
   leetwars_builder:
     image: tatihutii/leetwars_builder:latest
     volumes:
-      - type: bind
-        source: /var/run/docker.sock
-        target: /var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
     container_name: "leetwars_builder"
     restart: on-failure
     networks:
