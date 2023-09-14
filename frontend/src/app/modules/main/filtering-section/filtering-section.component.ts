@@ -77,7 +77,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     }
 
     public onSearchTextChange(value: string) {
-        this.filter.title = value;
+        this.filter.title = value.trim();
         this.resetChallengesData();
     }
 

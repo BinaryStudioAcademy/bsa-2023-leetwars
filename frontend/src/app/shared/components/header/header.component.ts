@@ -17,14 +17,14 @@ interface ITab {
     styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent implements OnInit {
-    showMenu: boolean = false;
+    public showMenu: boolean = false;
 
     tabs: ITab[] = [
         { title: 'Challenges', active: false, disabled: false, route: '' },
         { title: 'LeaderBoard', active: false, disabled: false, route: 'leader/board' },
     ];
 
-    user: IUser;
+    public user: IUser;
 
     constructor(private authService: AuthService, private router: Router, private tabService: TabService) {
         this.authService.getUser().subscribe((user) => {
@@ -52,5 +52,10 @@ export class HeaderComponent implements OnInit {
     onTabClick(tab: ITab) {
         this.tabService.setActiveTab(tab.route);
         this.router.navigate([tab.route]);
+    }
+
+    public goToProfile() {
+        this.showMenu = false;
+        this.router.navigate(['/user/profile']);
     }
 }
