@@ -85,6 +85,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
     ngOnInit(): void {
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const challengeId = +params.get('id')!;
+
             this.isEditMode = !!challengeId;
 
             this.stepsData = getInitStepsData(this.isEditMode);
@@ -218,8 +219,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     private loadActualLanguages() {
         const challengeVersionLanguages = this.languages.filter((lang) =>
-            this.challenge.versions.some((version) => version.languageId === lang.id),
-        );
+            this.challenge.versions.some((version) => version.languageId === lang.id));
 
         this.languageDropdownItems = getDropdownItems(challengeVersionLanguages.map((lang) => lang.name));
         [this.currentLanguage] = this.languageDropdownItems;
