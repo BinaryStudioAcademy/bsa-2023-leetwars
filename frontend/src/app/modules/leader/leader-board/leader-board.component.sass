@@ -14,26 +14,27 @@
     display: flex
     background-color: $midnight-gray
     margin: auto
+    padding: 35px
+    border-radius: 15px
+    width: 40%
+    min-width: 600px
     
-
 .header
     gap: 16px
-    margin-left: 8px
+    border-bottom: 2px solid $green
+    font-size: 38px
     div
         padding-bottom: 11px
         padding-top: 11px
         color: $light-blue-grey
         font-family: Inter
-        font-size: 12px
+        font-size: 17px
         line-height: 21px
-          
-.name
-    min-width: 699px
-    margin-left: 25px
-
-.score
-    margin-left: 5px 
-
+ 
+.position
+    min-width: 100px
+    &.position-item
+        padding-left: 15px
 .user
     gap: 16px
     color: $white
@@ -44,17 +45,12 @@
         padding-top: 11px
         padding-bottom: 11px
 
-.place
-    margin-left: 8px
-    min-width: 69.5px
-    padding-right: 44.5px
-
 .user-name
-    min-width: 704px
-    padding-right: 184px
+    width: 75%
     
 .total-score
-    min-width: 49px
+    width: 15%
+    min-width: 50px
     
 .user:nth-child(even) 
   background-color: $transparent-yellow
