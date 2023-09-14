@@ -124,7 +124,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
     private getInitialTestByChallengeVersionId(id: number) {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
-        return (selectedVersion && selectedVersion.tests.length)
+        return (selectedVersion && selectedVersion.tests?.length)
             ? selectedVersion.tests[0].code
             : 'No tests available';
     }
