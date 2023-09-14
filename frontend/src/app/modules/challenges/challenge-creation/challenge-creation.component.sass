@@ -1,4 +1,11 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
+
+.creation-wrapper
+    margin: 20px
+    background-color: $deep-dark-grey
+    border-radius: 32px
+    min-height: 100%
 
 .step-container
     color: $white-grey
@@ -22,13 +29,38 @@
     transition: all 0.1s ease-in-out
     &:active
         transform: scale(98%)
+    &:hover
+        background-color: $transient-grey
     &.accent
         color: $white-grey
         background-color: $green
         border: 1px solid $green
         text-shadow: $dark-grey 1px 1px 1px
+        &:hover
+            background-color: $dark-green
     &:disabled
         pointer-events: none
         color: $silver
         text-shadow: none
 
+.empty-container
+    height: 20px
+
+@media (max-width: $small-challenge)
+  .buttons
+    flex-direction: column
+    align-items: center
+    padding-right: 0 !important
+    & .custom-button
+        width: 50%
+
+  .language-block
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 12px
+    &-dropdown
+      justify-content: center
+      width: 100%
+      & app-challenges-dropdown-select
+        width: 80%

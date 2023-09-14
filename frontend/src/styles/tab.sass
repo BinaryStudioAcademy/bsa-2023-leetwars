@@ -4,10 +4,16 @@
 :host ::ng-deep tabset ul
     border-bottom: none
     gap: 5px
-    @media screen and (max-width: $small)
+    @media screen and (max-width: $small-challenge)
+        flex-direction: column
         gap: 5px
     @media screen and (max-width: $small-mobile)
         flex-direction: column
+
+:host ::ng-deep tabset ul a
+    @media screen and (max-width: $small-challenge)
+        width: 100%
+        text-align: center
 
 :host ::ng-deep tabset li
     padding: 0

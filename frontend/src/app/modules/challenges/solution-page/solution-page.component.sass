@@ -1,6 +1,7 @@
 @import '../styles/challenge-creation-code-editor'
 @import 'color-variables'
 @import 'tab'
+@import 'screen-sizes-variables'
 
 .label
   background-color: transparent
@@ -47,7 +48,17 @@
   gap: 5px
   margin-left: 20px
   color: $transient-grey
+  @media screen and (max-width: $small-challenge)
+    margin: 0 0 10px 0
+    width: 100%
 
 .tab-help fa-icon
   font-size: 12px
   color: $transient-grey
+
+
+@media (max-width: $small-challenge)
+  .tabs-container
+    flex-direction: column
+  :ng-deep tabset ul
+    flex-direction: column
