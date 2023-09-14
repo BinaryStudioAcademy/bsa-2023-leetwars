@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as utils from '@modules/user/profile-page-main-info/profile-page-main.utils';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
@@ -11,7 +11,7 @@ import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solu
 export class ProfilePageMainInfoComponent implements OnChanges {
     @Input() user: IUserFull = <IUserFull>{};
 
-    @Input() userSolutions: IUserSolutionsGroupedBySkillLevel [] = [];
+    @Input() userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
 
     public communityViews = 0;
 
@@ -27,8 +27,10 @@ export class ProfilePageMainInfoComponent implements OnChanges {
 
     public communityLastWeekReputation = 0;
 
-    public ngOnChanges() {
-        this.updateSolutions();
+    public ngOnChanges({ user }: SimpleChanges) {
+        if (user && this.user) {
+            this.updateSolutions();
+        }
     }
 
     private updateSolutions() {
