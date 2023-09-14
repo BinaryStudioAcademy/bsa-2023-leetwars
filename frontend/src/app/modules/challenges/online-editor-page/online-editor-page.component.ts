@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
@@ -39,6 +39,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
     editorOptions: EditorOptions;
 
+    private isFullscreen = false;
+
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
@@ -51,6 +53,20 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
             .subscribe((result) => {
                 this.splitDirection = result.matches ? 'vertical' : 'horizontal';
             });
+    }
+
+    @ViewChild('editorContainer') editorContainer: ElementRef;
+
+    toggleFullScreen() {
+        const element = this.editorContainer.nativeElement;
+
+        if (!this.isFullscreen) {
+            element.requestFullscreen();
+            this.isFullscreen = true;
+        } else {
+            document.exitFullscreen();
+            this.isFullscreen = false;
+        }
     }
 
     ngOnInit() {
