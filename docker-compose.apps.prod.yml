@@ -1,83 +1,96 @@
-version: '3.1'
+version: "3.1"
 services:
+  leetwars_core:
+    image: tatihutii/leetwars_core:latest
+    container_name: "leetwars_core"
+    restart: on-failure
+    networks:
+      - back
+    ports:
+      - "5050:5050"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    env_file:
+      - /etc/environment
+    volumes:
+      - ./resources:/app/Resources
 
-    leetwars_core:
-        image: tatihutii/leetwars_core:latest
-        container_name: 'leetwars_core'
-        restart: on-failure
-        networks:
-            - back
-        ports:
-            - "5050:5050"
-        environment:
-            - ASPNETCORE_ENVIRONMENT=Production
-        env_file:
-            - /etc/environment
-        volumes:
-           - ./resources:/app/Resources
+  leetwars_notifier:
+    image: tatihutii/leetwars_notifier:latest
+    container_name: "leetwars_notifier"
+    restart: on-failure
+    networks:
+      - back
+    ports:
+      - "5070:5070"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+    env_file:
+      - /etc/environment
 
-    leetwars_notifier:
-        image: tatihutii/leetwars_notifier:latest
-        container_name: 'leetwars_notifier'
-        restart: on-failure
-        networks:
-            - back
-        ports:
-            - "5070:5070"
-        environment:
-            ASPNETCORE_ENVIRONMENT: 'Production'
-        env_file:
-            - /etc/environment
+  leetwars_builder:
+    image: tatihutii/leetwars_builder:latest
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    container_name: "leetwars_builder"
+    restart: on-failure
+    networks:
+      - back
+    ports:
+      - "5090:5090"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+    env_file:
+      - /etc/environment
 
-    leetwars_builder:
-        image: tatihutii/leetwars_builder:latest
-        volumes:
-            - type: bind
-              source: /var/run/docker.sock
-              target: /var/run/docker.sock
-        container_name: 'leetwars_builder'
-        restart: on-failure
-        networks:
-            - back
-        ports:
-            - "5090:5090"
-        environment:
-            ASPNETCORE_ENVIRONMENT: 'Production'
-        env_file:
-            - /etc/environment
+  leetwars_emailer:
+    image: tatihutii/leetwars_emailer:latest
+    container_name: "leetwars_emailer"
+    restart: on-failure
+    networks:
+      - back
+    ports:
+      - "5080:5080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+    env_file:
+      - /etc/environment
 
-    leetwars_emailer:
-        image: tatihutii/leetwars_emailer:latest
-        container_name: 'leetwars_emailer'
-        restart: on-failure
-        networks:
-            - back
-        ports:
-            - "5080:5080"
-        environment:
-            ASPNETCORE_ENVIRONMENT: 'Production'
-        env_file:
-            - /etc/environment
+  leetwars_codeanalyzer:
+    image: tatihutii/leetwars_codeanalyzer:latest
+    container_name: "leetwars_codeanalyzer"
+    restart: on-failure
+    networks:
+      - back
+    ports:
+      - "5100:5100"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+    env_file:
+      - /etc/environment
 
-    leetwars_frontend:
-        depends_on:
-            - leetwars_core
-            - leetwars_notifier
-            - leetwars_builder
-            - leetwars_emailer
-        image: tatihutii/leetwars_frontend:latest
-        container_name: 'leetwars_frontend'
-        restart: on-failure
-        networks:
-            - back
-            - front
-        ports:
-            - "80:80"
-            - "443:443"
-        volumes:
-            - /etc/letsencrypt:/etc/letsencrypt
+  leetwars_frontend:
+    depends_on:
+      - leetwars_core
+      - leetwars_notifier
+      - leetwars_builder
+      - leetwars_emailer
+      - leetwars_codeanalyzer
+    image: tatihutii/leetwars_frontend:latest
+    container_name: "leetwars_frontend"
+    restart: on-failure
+    networks:
+      - back
+      - front
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
 networks:
-    back:
-        driver: bridge
-    front:
-        driver: bridge
+  back:
+    driver: bridge
+  front:
+    driver: bridge

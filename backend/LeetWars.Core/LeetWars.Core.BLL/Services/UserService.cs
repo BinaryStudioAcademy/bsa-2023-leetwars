@@ -1,18 +1,18 @@
 using System.Linq.Expressions;
-using System.Security.Claims;
-using System.Transactions;
 using AutoMapper;
 using LeetWars.Core.BLL.Helpers.Email;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using LeetWars.Core.BLL.Extensions;
+using Bogus;
+using LeetWars.Core.DAL.Entities.HelperEntities;
+using LeetWars.Core.DAL.Extensions;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -21,10 +21,10 @@ public class UserService : BaseService, IUserService
     private readonly IUserGetter _userGetter;
     private readonly IMessageSenderService _messageSenderService;
     private const int REPUTATION_DIVIDER = 10;
-  
-    public UserService(LeetWarsCoreContext context, 
-                       IMapper mapper, 
-                       IUserGetter userGetter, 
+
+    public UserService(LeetWarsCoreContext context,
+                       IMapper mapper,
+                       IUserGetter userGetter,
                        IMessageSenderService messageSenderService) : base(context, mapper)
     {
         _userGetter = userGetter;
@@ -52,7 +52,17 @@ public class UserService : BaseService, IUserService
             throw new InvalidOperationException($"A user with email {userDto.Email} is already registered.");
         }
 
+        bool isExistingUserName = await CheckIsExistingUserNameAsync(userDto.UserName);
+
+        if (isExistingUserName)
+        {
+            userDto.UserName = await GenerateUniqueUsername(userDto.Email);
+        }
+
         var newUser = _mapper.Map<NewUserDto, User>(userDto);
+
+        newUser.RegisteredAt = DateTime.UtcNow;
+
         var createdUser = _context.Users.Add(newUser).Entity;
         await _context.SaveChangesAsync();
 
@@ -94,7 +104,7 @@ public class UserService : BaseService, IUserService
 
         var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
 
-        return _mapper.Map<UserDto>(user);  
+        return _mapper.Map<UserDto>(user);
     }
 
     public async Task<UserFullDto> GetFullUserAsync(long id)
@@ -170,7 +180,20 @@ public class UserService : BaseService, IUserService
             })
             .SingleOrDefaultAsync(level => level.ChallengeId == challengeId);
 
-        return challengeLevel?.Reward 
+        return challengeLevel?.Reward
             ?? throw new ArgumentNullException(nameof(challengeId));
+    }
+
+    private async Task<string> GenerateUniqueUsername(string email)
+    {
+        string newUserName = email.GetUserNameFromEmail();
+
+        while (await CheckIsExistingUserNameAsync(newUserName))
+        {
+            newUserName = new Faker<string>()
+                .CustomInstantiator(f => f.Internet.UserName().LimitLength(EntitySettings.MaxUserNameLength - 3));
+        }
+
+        return newUserName;
     }
 }

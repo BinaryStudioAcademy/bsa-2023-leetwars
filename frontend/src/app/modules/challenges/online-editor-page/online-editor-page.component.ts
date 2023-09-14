@@ -106,7 +106,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
     private setupLanguages(challenge: IChallenge) {
         this.challenge = challenge;
-        this.languages = challenge.versions.map((v) => v.language.name);
+        this.languages = challenge.versions?.map((v) => v.language?.name);
         this.languageVersions = this.extractLanguageVersions(challenge.versions);
         [this.selectedLanguage] = this.languages;
         [this.selectedLanguageVersion] = this.languageVersions;
@@ -119,7 +119,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
     private setupEditorOptions() {
         this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
-        this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0].id);
+        this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
         this.editorOptions = {
             theme: 'vs-dark',
             language: this.mapLanguageName(this.selectedLanguage),
@@ -131,22 +131,26 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
         };
     }
 
-    private getInitialSolutionByLanguage(language: string): string | undefined {
-        const version = this.challenge.versions.find((v) => v.language.name === language);
+    private getInitialSolutionByLanguage(language: string): string {
+        const version = this.challenge.versions?.find((v) => v.language.name === language);
 
-        return version?.initialSolution;
+        return (version && version.initialSolution)
+            ? version.initialSolution
+            : 'No solutions available';
     }
 
     private getInitialTestByChallengeVersionId(id: number) {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
-        return (selectedVersion && selectedVersion.tests?.length)
-            ? selectedVersion.tests[0].code
+        return (selectedVersion && selectedVersion.exampleTestCases)
+            ? selectedVersion.exampleTestCases
             : 'No tests available';
     }
 
-    private mapLanguageName(language: string): string {
-        return languageNameMap.get(language) || language.toLowerCase();
+    private mapLanguageName(language?: string): string {
+        return (language)
+            ? languageNameMap.get(language) || language.toLowerCase()
+            : 'No language available';
     }
 
     private getLanguageVersionsByLanguage(language: string) {

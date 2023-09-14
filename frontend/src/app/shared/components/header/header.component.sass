@@ -27,6 +27,18 @@
 :host ::ng-deep .change-color
   background-color: $cornflower
 
+::ng-deep .log-out-modal
+    .modal-content
+        background-color: $charcoal-grey
+    .modal-header
+        color: $green
+        .btn-close
+            background-color: $green
+    .modal-body, .modal-footer, button
+        color: $white
+
+
+
 .user
   position: relative
   align-items: center
@@ -57,6 +69,7 @@
   top: 40px
   border-radius: 8px
   display: flex
+  flex-direction: column
   justify-content: flex-start
   box-shadow: 0 0 5px $medium-black
   overflow: hidden
