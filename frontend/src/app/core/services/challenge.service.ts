@@ -6,6 +6,7 @@ import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
+import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { IStar } from '@shared/models/challenge-star/star';
 import { IPageSettings } from '@shared/models/page-settings';
@@ -20,11 +21,12 @@ export class ChallengeService {
 
     constructor(private httpService: HttpInternalService) {}
 
-    public getChallenges(filter?: IChallengeFilter, page?: IPageSettings) {
+    public getChallenges(filter?: IChallengeFilter, page?: IPageSettings, sortingModel?: ISortedModel) {
         let httpParams = new HttpParams();
 
         httpParams = setParams<IChallengeFilter>(httpParams, filter);
         httpParams = setParams<IPageSettings>(httpParams, page);
+        httpParams = setParams<ISortedModel>(httpParams, sortingModel);
 
         return this.httpService.getRequest<IChallengePreview[]>(this.challengesRoute, httpParams);
     }
