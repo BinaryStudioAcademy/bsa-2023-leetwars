@@ -1,4 +1,4 @@
-import { ICodeRunRequest } from "@shared/models/code-run/code-run-request";
+import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 
 export function generateFakeCodeRunRequest(connectionId: string) {
     const exampleCodeRunRequest: ICodeRunRequest = {

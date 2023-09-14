@@ -1,11 +1,12 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
-import { ApiResponse } from '@shared/models/api-response';
 import { HttpResponse } from '@microsoft/signalr';
+import { ApiResponse } from '@shared/models/api-response';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { IStar } from '@shared/models/challenge-star/star';
@@ -53,9 +54,13 @@ export class ChallengeService {
 
         return this.httpService.postRequest<ApiResponse>(`${this.challengesRoute}/${id}/${selectedLanguage}`, request);
     }
-    
+
     public runTests(request: ICodeRunRequest): Observable<HttpResponse> {
         return this.httpService.postRequest<HttpResponse>(`${this.challengesRoute}/test`, request);
+    }
+
+    public updateChallenge(challenge: IEditChallenge): Observable<IChallenge> {
+        return this.httpService.putRequest<IChallenge>(`${this.challengesRoute}/edit`, challenge);
     }
 
     public createChallenge(challenge: INewChallenge): Observable<IChallenge> {

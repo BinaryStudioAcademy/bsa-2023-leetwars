@@ -4,7 +4,8 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import {
-    findItemIdByName, findSuggestionTypeByName,
+    findItemIdByName,
+    findSuggestionTypeByName,
     ICONS,
     SUGGESTION_TYPE_NAMES,
 } from '@modules/main/suggested-challenge/suggested-challenge.utils';
@@ -41,12 +42,14 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         private challengeService: ChallengeService,
         private languageService: LanguageService,
         private toastrService: ToastrNotificationsService,
-    ) { super(); }
+    ) {
+        super();
+    }
 
     public ngOnInit(): void {
         this.getLanguages();
 
-        this.suggestionTypesNames = this.suggestionTypes.map(item => item.name);
+        this.suggestionTypesNames = this.suggestionTypes.map((item) => item.name);
     }
 
     public onLanguageChanged(value: string | string[]) {
@@ -75,10 +78,11 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
     }
 
     public getChallenge() {
-        this.challengeService.getChallengeSuggestion(this.suggestionSettings)
+        this.challengeService
+            .getChallengeSuggestion(this.suggestionSettings)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: data => {
+                next: (data) => {
                     this.challenge = data;
                 },
                 error: () => {
@@ -88,12 +92,13 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
     }
 
     private getLanguages() {
-        this.languageService.getLanguages()
+        this.languageService
+            .getLanguages()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: data => {
+                next: (data) => {
                     this.languages = data;
-                    this.languagesNames = data.map(i => i.name);
+                    this.languagesNames = data.map((i) => i.name);
                     this.suggestionSettings.languageId = data[0].id;
                     this.getChallenge();
                 },

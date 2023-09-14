@@ -5,15 +5,15 @@ import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
+import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { generateFakeCodeRunRequest } from '@shared/utils/code-run-request-example';
 import { takeUntil } from 'rxjs';
-import { EditorOptions } from '@shared/models/options/editor-options';
-import { languageNameMap } from '@shared/mappings/language-map';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -46,6 +46,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     editorOptions: EditorOptions;
 
     solution: ICodeRunRequest;
+
     private isFullscreen = false;
 
     constructor(
@@ -90,14 +91,14 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     showTestResults(testResults: ITestsOutput) {
         if (testResults.isSuccess) {
-            this.toastrNotification.showSuccess('Tests were successful!');
+            this.toastrNotification.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
         } else {
-            this.toastrNotification.showError('Tests failed');
+            this.toastrNotification.showError(`Tests failed \n Tests failed: ${testResults.failedCount} out of ${testResults.passedCount + testResults.failedCount}`);
         }
     }
 
     public runTests() {
-        const connectionId = this.signalRService.connectionId;
+        const { connectionId } = this.signalRService;
 
         if (connectionId) {
             this.toastrNotification.showInfo('Test run request sent');
@@ -140,7 +141,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
             challengeVersionId: this.challenge.id,
             language: this.selectedLanguage,
             userCode: this.initialSolution as string,
-            tests: this.testCode
+            tests: this.testCode,
         };
 
         this.challengeService.postCode(this.solution).subscribe();
@@ -173,7 +174,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     private setupLanguages(challenge: IChallenge) {
         this.challenge = challenge;
-        this.languages = challenge.versions.map((v) => v.language.name);
+        this.languages = challenge.versions?.map((v) => v.language?.name);
         this.languageVersions = this.extractLanguageVersions(challenge.versions);
         [this.selectedLanguage] = this.languages;
         [this.selectedLanguageVersion] = this.languageVersions;
@@ -186,7 +187,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     private setupEditorOptions() {
         this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
-        this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0].id);
+        this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
         this.editorOptions = {
             theme: 'vs-dark',
             language: this.mapLanguageName(this.selectedLanguage),
@@ -198,22 +199,26 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         };
     }
 
-    private getInitialSolutionByLanguage(language: string): string | undefined {
-        const version = this.challenge.versions.find((v) => v.language.name === language);
+    private getInitialSolutionByLanguage(language: string): string {
+        const version = this.challenge.versions?.find((v) => v.language.name === language);
 
-        return version?.initialSolution;
+        return (version && version.initialSolution)
+            ? version.initialSolution
+            : 'No solutions available';
     }
 
     private getInitialTestByChallengeVersionId(id: number) {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
-        return (selectedVersion && selectedVersion.tests?.length)
-            ? selectedVersion.tests[0].code
+        return (selectedVersion && selectedVersion.exampleTestCases)
+            ? selectedVersion.exampleTestCases
             : 'No tests available';
     }
 
-    private mapLanguageName(language: string): string {
-        return languageNameMap.get(language) || language.toLowerCase();
+    private mapLanguageName(language?: string): string {
+        return (language)
+            ? languageNameMap.get(language) || language.toLowerCase()
+            : 'No language available';
     }
 
     private getLanguageVersionsByLanguage(language: string) {

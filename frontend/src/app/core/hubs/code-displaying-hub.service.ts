@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HubConnection } from '@microsoft/signalr';
-import { Subject, Subscription, map } from 'rxjs';
+import { map, Subject, Subscription } from 'rxjs';
 
 import { SignalRHubFactoryService } from './signalr-hub-factory.service';
 
@@ -28,11 +28,12 @@ export class CodeDisplayingHubService {
     listenMessages(action: (msg: string) => void) {
         const mappedObservable = this.messages.pipe(
             map((message: string) => {
-              action(message);
-              return message;
-            })
-          );
-        
+                action(message);
+
+                return message;
+            }),
+        );
+
         this.subscriptions.push(mappedObservable.subscribe());
     }
 
