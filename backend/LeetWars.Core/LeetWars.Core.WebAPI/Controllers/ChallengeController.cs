@@ -3,6 +3,7 @@ using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.ChallengeStar;
+using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,9 +21,9 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ChallengePreviewDto>> GetAllAsync([FromQuery] ChallengesFiltersDto filters, [FromQuery] PageSettingsDto page)
+        public async Task<ActionResult<ChallengePreviewDto>> GetAllAsync([FromQuery] ChallengesFiltersDto filters, [FromQuery] PageSettingsDto page, [FromQuery] SortingModel sortingModel)
         {
-            var challenges = await _challengeService.GetChallengesAsync(filters, page);
+            var challenges = await _challengeService.GetChallengesAsync(filters, page, sortingModel);
 
             return Ok(challenges);
         }

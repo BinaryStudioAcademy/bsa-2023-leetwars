@@ -1,6 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
@@ -54,7 +54,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private challengeService: ChallengeService,
         private breakpointObserver: BreakpointObserver,
         private signalRService: CodeDisplayingHubService,
-        private toastrNotification: ToastrNotificationsService,
+        private toastrService: ToastrNotificationsService,
+        private router: Router,
     ) {
         super();
         breakpointObserver
@@ -91,9 +92,9 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     showTestResults(testResults: ITestsOutput) {
         if (testResults.isSuccess) {
-            this.toastrNotification.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
+            this.toastrService.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
         } else {
-            this.toastrNotification.showError(`Tests failed \n Tests failed: ${testResults.failedCount}
+            this.toastrService.showError(`Tests failed \n Tests failed: ${testResults.failedCount}
             out of ${testResults.passedCount + testResults.failedCount}`);
         }
     }
@@ -102,11 +103,11 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         const { connectionId } = this.signalRService;
 
         if (connectionId) {
-            this.toastrNotification.showInfo('Test run request sent');
+            this.toastrService.showInfo('Test run request sent');
 
             this.challengeService.runTests(generateFakeCodeRunRequest(connectionId)).subscribe();
         } else {
-            this.toastrNotification.showError('Server Connection Error!');
+            this.toastrService.showError('Server Connection Error!');
         }
     }
 
@@ -154,23 +155,30 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
             const codeRunResults: ICodeRunResults = JSON.parse(msg) as ICodeRunResults;
 
             if (codeRunResults.buildResults?.isSuccess) {
-                this.toastrNotification.showSuccess('code was compiled successfully');
+                this.toastrService.showSuccess('code was compiled successfully');
                 if (codeRunResults.testRunResults) {
                     this.showTestResults(codeRunResults.testRunResults);
                 }
             } else {
-                this.toastrNotification.showError(codeRunResults.buildResults?.buildMessage as string);
+                this.toastrService.showError(codeRunResults.buildResults?.buildMessage as string);
             }
         });
     }
 
     private loadChallenge(challengeId: number) {
-        this.challengeService.getChallengeById(challengeId).subscribe(
-            (challenge) => {
-                this.setupLanguages(challenge);
-                this.setupEditorOptions();
-            },
-        );
+        this.challengeService
+            .getChallengeById(challengeId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (challenge) => {
+                    this.setupLanguages(challenge);
+                    this.setupEditorOptions();
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                    this.router.navigate(['/']);
+                },
+            });
     }
 
     private setupLanguages(challenge: IChallenge) {
@@ -203,30 +211,25 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private getInitialSolutionByLanguage(language: string): string {
         const version = this.challenge.versions?.find((v) => v.language.name === language);
 
-        return (version && version.initialSolution)
-            ? version.initialSolution
-            : 'No solutions available';
+        return version && version.initialSolution ? version.initialSolution : 'No solutions available';
     }
 
     private getInitialTestByChallengeVersionId(id: number) {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
-        return (selectedVersion && selectedVersion.exampleTestCases)
+        return selectedVersion && selectedVersion.exampleTestCases
             ? selectedVersion.exampleTestCases
             : 'No tests available';
     }
 
     private mapLanguageName(language?: string): string {
-        return (language)
-            ? languageNameMap.get(language) || language.toLowerCase()
-            : 'No language available';
+        return language ? languageNameMap.get(language) || language.toLowerCase() : 'No language available';
     }
 
     private getLanguageVersionsByLanguage(language: string) {
         return this.challenge.versions
             .filter((version) => this.mapLanguageName(version.language.name) === language)
-            .flatMap((version) => version.language.languageVersions
-                .map((languageVersion) => languageVersion.version));
+            .flatMap((version) => version.language.languageVersions.map((languageVersion) => languageVersion.version));
     }
 
     override ngOnDestroy() {

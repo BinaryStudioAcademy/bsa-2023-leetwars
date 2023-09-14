@@ -29,14 +29,14 @@ const routes: Routes = [
     {
         path: 'leader',
         loadChildren: () => import('./modules/leader/leader.module').then((m) => m.LeaderModule),
-        canActivate: [AuthorizedGuard],
+        canActivate: [AuthorizedGuard, HeaderGuard],
     },
     {
         path: 'challenges',
         loadChildren: () => import('./modules/challenges/challenges.module').then((m) => m.ChallengesModule),
         canActivate: [AuthorizedGuard, HeaderGuard],
     },
-    { path: '**', component: NotFoundComponent, pathMatch: 'full', canActivate: [HeaderGuard] },
+    { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
