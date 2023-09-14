@@ -31,7 +31,7 @@ export class ChallengeComponent implements OnInit {
     private user: IUser;
 
     ngOnInit(): void {
-        this.canEdit = this.challenge.createdBy == this.user.id;
+        this.canEdit = this.challenge.createdBy === this.user.id;
     }
 
     public starChange() {
