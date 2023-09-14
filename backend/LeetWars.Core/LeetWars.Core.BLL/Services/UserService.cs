@@ -1,16 +1,13 @@
 using System.Linq.Expressions;
-using System.Security.Claims;
-using System.Transactions;
 using AutoMapper;
 using LeetWars.Core.BLL.Helpers.Email;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
+using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.BLL.Services;
@@ -145,6 +142,18 @@ public class UserService : BaseService, IUserService
         await _context.SaveChangesAsync();
 
         return _mapper.Map<UserFullDto>(user);
+    }
+
+    public async Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page)
+    {
+        var users = _context.Users.OrderByDescending(u => u.TotalScore).AsQueryable();
+        if (page is not null)
+        {
+            users = users.Skip(page.PageSize * (page.PageNumber - 1))
+                .Take(page.PageSize);
+        }
+
+        return _mapper.Map<List<UserDto>>(await users.ToListAsync());
     }
 
     private async Task<int> GetRewardFromChallenge(long challengeId)

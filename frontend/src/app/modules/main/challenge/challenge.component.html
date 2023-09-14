@@ -1,7 +1,7 @@
 <div class="main-info d-flex flex-column">
     <div class="description d-flex flex-column">
-        <div class="title-row d-flex align-items-center position-relative" >
-            <span class="level">{{ challenge.levelName }} rank</span>
+        <div class="title-row d-flex align-items-center position-relative">
+            <span class="level">{{ challenge.levelName }}</span>
             <span class="title text-wrap" routerLink="/challenges/{{challenge.id}}">{{ challenge.title }}</span>
             <fa-icon
                 *ngIf="canEdit"
