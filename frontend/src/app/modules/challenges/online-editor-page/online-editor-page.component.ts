@@ -4,8 +4,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { languageNameMap } from '@shared/mappings/language-map';
-import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { IChallenge } from '@shared/models/challenge/challenge';
+import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { takeUntil } from 'rxjs';
 
