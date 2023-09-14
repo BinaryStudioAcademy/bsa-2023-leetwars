@@ -16,4 +16,6 @@ public interface IUserService
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId);
     public Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto);
 
+    public Task<BriefUserInfoDto> GetBriefUserInfoById(long id);
+
 }

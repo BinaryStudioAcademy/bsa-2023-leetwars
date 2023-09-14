@@ -2,7 +2,7 @@
 {
     public enum TypeNotifications
     {
-        Like,
-        NewEntity
+        LikeChallenge,
+        NewChallenge
     }
 }

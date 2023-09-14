@@ -1,4 +1,4 @@
 export enum TypeNotification {
-    Like = 'Like',
-    NewEntity = 'NewEntity'
+    LikeChallenge,
+    NewChallenge
 }

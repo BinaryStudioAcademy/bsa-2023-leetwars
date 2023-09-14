@@ -1,7 +1,12 @@
 import { TypeNotification } from '@shared/enums/type-notification';
 
-export interface NotificationModel {
-    TypeNotification: TypeNotification,
-    Message: string,
-    DateSending: Date
+import { IBriefChallengeInfo } from '../challenge/brief-challenge';
+import { IBriefUserInfo } from '../user/brief-user';
+
+export interface INotificationModel {
+    typeNotification: TypeNotification,
+    author: IBriefUserInfo,
+    challenge: IBriefChallengeInfo
+    message: string,
+    dateSending: Date
 }

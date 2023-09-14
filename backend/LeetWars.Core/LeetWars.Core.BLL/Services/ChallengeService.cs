@@ -18,14 +18,17 @@ namespace LeetWars.Core.BLL.Services
     {
         private readonly IUserGetter _userGetter;
         private readonly IMessageSenderService _messageSenderService;
+        private readonly IUserService _userService;
 
         public ChallengeService(
             IMessageSenderService messageSenderService,
             LeetWarsCoreContext context,
             IMapper mapper,
-            IUserGetter userGetter
+            IUserGetter userGetter,
+            IUserService userService
         ) : base(context, mapper)
         {
+            _userService = userService;
             _messageSenderService = messageSenderService;
             _userGetter = userGetter;
         }
@@ -130,6 +133,16 @@ namespace LeetWars.Core.BLL.Services
                     throw new ArgumentNullException(nameof(challengeStarDto));
                 }
 
+                var newNotification = new NewNotificationDto()
+                {
+                    ReceiverId = _userGetter.CurrentUserId,
+                    Author = await _userService.GetBriefUserInfoById(challengeStar.AuthorId),
+                    TypeNotification = TypeNotifications.LikeChallenge,
+                    Challenge = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id)
+                };
+
+                _messageSenderService.SendMessageToRabbitMQ(newNotification);
+
                 await _context.ChallengeStars.AddAsync(challengeStar);
             }
             else
@@ -184,9 +197,9 @@ namespace LeetWars.Core.BLL.Services
             
             await _context.SaveChangesAsync();
 
-            var newNotification = new NewNotificationDtoSample()
+            var newNotification = new NewNotificationDto()
             {
-                TypeNotification = TypeNotifications.NewEntity,
+                TypeNotification = TypeNotifications.NewChallenge,
                 Message = "New challenge!",
             };
 
@@ -195,6 +208,13 @@ namespace LeetWars.Core.BLL.Services
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
 
+        private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
+        {
+            var challenge = await _context.Challenges
+                .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+
+            return _mapper.Map<BriefChallengeInfoDto>(challenge);
+        }
 
         private async Task<Challenge?> GetChallengeByIdAsync(long challengeId)
         {
@@ -215,7 +235,6 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(star => star.Author)
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
         }
-
 
         private async Task<ChallengeStar?> GetChallengeStarAsync(Expression<Func<ChallengeStar, bool>> condition)
         {

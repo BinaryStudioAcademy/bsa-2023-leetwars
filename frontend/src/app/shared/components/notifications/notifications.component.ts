@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TypeNotification } from '@shared/enums/type-notification';
-import { NotificationModel } from '@shared/models/notifications/notifications';
+import { INotificationModel } from '@shared/models/notifications/notifications';
 
 @Component({
     selector: 'app-notifications',
@@ -8,7 +8,7 @@ import { NotificationModel } from '@shared/models/notifications/notifications';
     styleUrls: ['./notifications.component.sass'],
 })
 export class NotificationsComponent {
-    @Input() notifications: NotificationModel[];
+    @Input() notifications: INotificationModel[];
 
     typeNotification = TypeNotification;
 }
