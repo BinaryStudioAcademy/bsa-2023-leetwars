@@ -7,7 +7,7 @@
   align-items: center
   background-color: $deep-dark-grey
   color: white
-  padding: 0.3rem
+  padding: 0.3rem 0.3rem 0 0.3rem
   border-radius: 8px
   margin-bottom: 0.5rem
 
@@ -80,3 +80,38 @@
     padding: .8rem
     &:hover
       background-color: $green
+
+.navbar-nav
+  flex-direction: row 
+
+.navbar 
+    color: $white
+  
+.nav.navbar-nav.tabset 
+    list-style-type: none
+    padding: 0
+    color: $white
+    gap: 10px
+  
+.nav.navbar-nav.tabset li 
+    display: inline-block
+    
+.nav.navbar-nav.tabset li.active a 
+    color: $green
+    border-bottom: 2px solid $green
+
+.nav.navbar-nav.tabset li a 
+    font-size: 13px
+    color: $white
+    text-decoration: none
+    padding: 21px 13px
+    cursor: pointer
+    transition: background-color 0.2s ease
+    &:hover
+        background-color: transparent !important
+        color: $green
+    &:focus
+      color: $green
+      border-bottom: 2px solid $green
+  
+      

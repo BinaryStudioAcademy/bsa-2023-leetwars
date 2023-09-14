@@ -29,7 +29,7 @@ const routes: Routes = [
     {
         path: 'leader',
         loadChildren: () => import('./modules/leader/leader.module').then((m) => m.LeaderModule),
-        canActivate: [AuthorizedGuard],
+        canActivate: [AuthorizedGuard, HeaderGuard],
     },
     {
         path: 'challenges',
