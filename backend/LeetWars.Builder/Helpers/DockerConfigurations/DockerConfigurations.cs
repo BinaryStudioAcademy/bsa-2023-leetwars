@@ -16,7 +16,7 @@ public class DockerConfigurations
 
         return new Config
         {
-            Image = SDKImageNames.CSharpSDK,
+            Image = SdkImageNames.CSharpSDK,
             AttachStdout = true,
             AttachStderr = true,
             Cmd = new[] { "sh", "-c", $"dotnet build /app/{projectName} 2>&1 |tee /app/buildoutput.txt" },
@@ -28,7 +28,7 @@ public class DockerConfigurations
     {
         return new Config()
         {
-            Image = SDKImageNames.JSSDK,
+            Image = SdkImageNames.JSSDK,
             AttachStdout = true,
             AttachStderr = true,
             Cmd = new[] { "sh", "-c", $"node /app/{programName} 2>&1 |tee /app/buildoutput.txt" },
@@ -52,7 +52,7 @@ public class DockerConfigurations
             case Languages.csharp:
                 var projectFileName = await dirBuilder.CreateDirectoryCSharp(path, request);
 
-                await dockerConfig.CreateImage(client, SDKImageNames.CSharpSDK);
+                await dockerConfig.CreateImage(client, SdkImageNames.CSharpSDK);
 
                 solutionFileName = SolutionFileNaming.CSharpSolutionName;
                 config = dockerConfig.GetCSharpConfig(projectFileName);
@@ -61,7 +61,7 @@ public class DockerConfigurations
             case Languages.javascript:
                 dirBuilder.CreateDirectoryJS(path, request);
 
-                await dockerConfig.CreateImage(client, SDKImageNames.JSSDK);
+                await dockerConfig.CreateImage(client, SdkImageNames.JSSDK);
 
                 solutionFileName = SolutionFileNaming.JSSolutionName;
                 config = dockerConfig.GetJSConfig(solutionFileName);

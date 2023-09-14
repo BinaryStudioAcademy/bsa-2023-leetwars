@@ -49,10 +49,6 @@ namespace LeetWars.Builder.Services
                     };
 
                     var codeRunResultJson = JsonConvert.SerializeObject(buildResult, settings);
-
-                    var notifierMessage = new NotifierMessage() { HubName = "codeDisplayingHub", Message = codeRunResultJson };
-
-                    var notifierJson = JsonConvert.SerializeObject(notifierMessage);
                     _producerService.Send(codeRunResultJson, ExchangeType.Direct);
                 }
 
