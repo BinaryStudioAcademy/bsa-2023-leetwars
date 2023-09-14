@@ -1,6 +1,6 @@
 <header class="header">
     <div class="logo">
-        <img src="assets/images/logo/logo.png" alt="LEETWARS">
+        <img src="assets/images/logo/logo.png" alt="LEETWARS" />
     </div>
     <div class="user-menu align-items-center">
         <div class="notification">
@@ -10,7 +10,10 @@
             </fa-layers>
         </div>
         <div class="user">
-            <img [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'" alt="User Logo" class="user-logo">
+            <img
+                [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'"
+                alt="User Logo"
+                class="user-logo" />
             <span class="username" (click)="showMenu = !showMenu">
                 {{ user.firstName && user.lastName ? user.firstName + ' ' + user.lastName : user.userName }}
             </span>
@@ -18,6 +21,7 @@
         <div class="menu-wraper">
             <div class="menu" *ngIf="showMenu">
                 <button (click)="onLogOut()">Log Out</button>
+                <button (click)="goToProfile()">Go to profile page</button>
             </div>
         </div>
     </div>

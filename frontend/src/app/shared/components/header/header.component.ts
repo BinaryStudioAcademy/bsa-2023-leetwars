@@ -14,9 +14,9 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
     styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent {
-    showMenu: boolean = false;
+    public showMenu: boolean = false;
 
-    user: IUser;
+    public user: IUser;
 
     constructor(
         private authService: AuthService,
@@ -55,5 +55,10 @@ export class HeaderComponent {
                 },
             },
         ];
+    }
+
+    public goToProfile() {
+        this.showMenu = false;
+        this.router.navigate(['/user/profile']);
     }
 }

@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <div class="board-wrapper">
+        <div class="board">
+            <div class="header d-flex">
+                <div class="position">Position</div>
+                <div class="name">User Name</div>
+                <div class="score">Score</div>
+            </div>
+            <div class="scrollable" infinite-scroll (scrolled)="onScroll()">
+                <div class="user d-flex" *ngFor="let user of users; let i = index">
+                    <div class="place">#{{ i + 1 }}</div>
+                    <div class="user-name">{{user.userName}}</div>
+                    <div class="total-score">{{user.totalScore}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
