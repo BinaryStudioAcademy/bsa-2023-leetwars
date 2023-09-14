@@ -11,6 +11,9 @@
 .mt-12px
   margin-top: 12px
 
+.mr-24px
+  margin-right: 24px
+
 .header
   font-size: 26px
   opacity: 0.65
@@ -51,8 +54,7 @@
     font-size: 12px
 
 .input-wrapper
-  max-width: max(85%,1117px)
-
+  max-width: 85%
 
 .tabs-list
   background-color: $double-weak-white
@@ -75,8 +77,7 @@
   padding: 10px
 
 .input-column
-  flex: 0 1 550px
-  flex-wrap: wrap
+  width: calc(50% - 12px)
 
 :host ::ng-deep app-dropdown-select
   label
@@ -103,7 +104,11 @@
   width: 100%
   max-height: 260px
 
-@media (max-width: 610px)
+@media (max-width: $large)
+  .input-wrapper
+    max-width: 100%
+
+@media (max-width: $small-challenge)
   .header, .tip
     text-align: center
   .categories
@@ -111,7 +116,11 @@
     &-list
       justify-content: center
 
-@media (max-width: 410px)
+@media (max-width: $small-mobile)
+  .input-wrapper
+    flex-direction: column
+  .input-column
+    width: 100%
   .tabs-list
     flex-direction: column
     text-align: center
