@@ -15,16 +15,18 @@
                 (selectedItemsChanged)="onSuggestionTypeChanged($event)"></app-dropdown-select>
         </div>
         <div class="button-group d-flex">
-            <button class="suggested-button skip" (click)="getChallenge()">
-                Skip
-            </button>
-            <button class="suggested-button train" routerLink="/challenges/{{challenge!.id}}">
+            <button class="suggested-button skip" (click)="getChallenge()">Skip</button>
+            <button
+                [disabled]="!challenge"
+                class="suggested-button train"
+                [routerLink]="'/challenges/' + challenge?.id">
                 Train
             </button>
         </div>
     </div>
 
-    <div class="description d-flex justify-content-center align-items-center text-center text-white text-opacity-50"
+    <div
+        class="description d-flex justify-content-center align-items-center text-center text-white text-opacity-50"
         *ngIf="!challenge">
         <div>
             <h4>No suggestions</h4>
