@@ -93,7 +93,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         if (testResults.isSuccess) {
             this.toastrNotification.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
         } else {
-            this.toastrNotification.showError(`Tests failed \n Tests failed: ${testResults.failedCount} out of ${testResults.passedCount + testResults.failedCount}`);
+            this.toastrNotification.showError(`Tests failed \n Tests failed: ${testResults.failedCount}
+            out of ${testResults.passedCount + testResults.failedCount}`);
         }
     }
 
