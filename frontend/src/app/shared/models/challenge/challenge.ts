@@ -1,3 +1,5 @@
+import { CategoryType } from '@shared/enums/category-type';
+
 import { IChallengeLevel } from '../challenge-level/challenge-level';
 import { IStar } from '../challenge-star/star';
 import { IChallengeVersion } from '../challenge-version/challenge-version';
@@ -11,6 +13,7 @@ export interface IChallenge extends AuditEntity<number> {
     instructions: string;
     levelId: number;
     level?: IChallengeLevel;
+    category: CategoryType;
     author: IUser;
     tags: Array<ITag>;
     versions: Array<IChallengeVersion>;

@@ -4,6 +4,7 @@ import { HttpInternalService } from '@core/services/http-internal.service';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
@@ -44,6 +45,10 @@ export class ChallengeService {
 
     public updateStar(star: IStar): Observable<IChallengePreview> {
         return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
+    }
+
+    public updateChallenge(challenge: IEditChallenge): Observable<IChallenge> {
+        return this.httpService.putRequest<IChallenge>(`${this.challengesRoute}/edit`, challenge);
     }
 
     public createChallenge(challenge: INewChallenge): Observable<IChallenge> {

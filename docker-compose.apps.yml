@@ -33,9 +33,7 @@ services:
 
   leetwars_builder:
     volumes:
-      - type: bind
-        source: /var/run/docker.sock
-        target: /var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
     build:
       context: ./backend
       dockerfile: /LeetWars.Builder/Dockerfile

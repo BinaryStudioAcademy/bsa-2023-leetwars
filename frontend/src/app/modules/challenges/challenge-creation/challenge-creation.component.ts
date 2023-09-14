@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ChallengeLevelService } from '@core/services/challenge-level.service';
@@ -8,23 +8,28 @@ import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import {
     checkAllStepsIsValid,
-    getDropdownItems, getInitStepsData,
+    editorOptions,
+    getDropdownItems,
+    getInitStepsData,
     getNewChallenge,
     getNewChallengeVersion,
-    getStepChecking, getStepData,
+    getStepChecking,
+    getStepData,
+    mapLanguageName,
     prepareChallengeDto,
-    showValidationErrorsForAllSteps, showValidationErrorsForRequiredSteps,
+    showValidationErrorsForAllSteps,
+    showValidationErrorsForRequiredSteps,
     stepIsAllowed,
 } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { ChallengeStep } from '@shared/enums/challenge-step';
-import { languageNameMap } from '@shared/mappings/language-map';
+import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { IEditChallengeVersion } from '@shared/models/challenge-version/edit-challenge-version';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { IDropdownItem } from '@shared/models/dropdown-item';
 import { ILanguage } from '@shared/models/language/language';
-import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITag } from '@shared/models/tag/tag';
 import { takeUntil } from 'rxjs';
 
@@ -40,9 +45,9 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public currentStep: ChallengeStep = ChallengeStep.Question;
 
-    public challenge: INewChallenge;
+    public challenge: INewChallenge | IEditChallenge;
 
-    public challengeVersion: INewChallengeVersion;
+    public challengeVersion: INewChallengeVersion | IEditChallengeVersion;
 
     public tags: ITag[] = [];
 
@@ -54,15 +59,11 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public currentLanguage?: IDropdownItem;
 
-    public editorOptions: EditorOptions = {
-        theme: 'vs-dark',
-        language: '',
-        minimap: { enabled: false },
-        automaticLayout: true,
-        useShadows: false,
-        wordWrap: 'on',
-        lineNumbers: 'on',
-    };
+    public editorOptions = editorOptions;
+
+    public isEditMode: boolean = false;
+
+    public canOpenDropdown = true;
 
     protected readonly ChallengeStep = ChallengeStep;
 
@@ -73,20 +74,49 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         private tagService: TagService,
         private toastrService: ToastrNotificationsService,
         private router: Router,
+        private activatedRoute: ActivatedRoute,
     ) {
         super();
-        this.steps = this.stepsData.map(s => s.step);
+        this.steps = this.stepsData.map((s) => s.step);
         this.challenge = getNewChallenge();
         this.challengeVersion = getNewChallengeVersion();
     }
 
     ngOnInit(): void {
-        this.getLanguages();
-        this.getTags();
-        this.getChallengeLevels();
+        this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+            const challengeId = +params.get('id')!;
+
+            this.isEditMode = !!challengeId;
+
+            this.stepsData = getInitStepsData(this.isEditMode);
+
+            this.getTags();
+            this.getChallengeLevels();
+            this.getLanguages();
+
+            if (this.isEditMode) {
+                this.loadChallenge(challengeId);
+            }
+        });
     }
 
-    onStepClick(step: ChallengeStep) {
+    private loadChallenge(challengeId: number) {
+        this.challengeService
+            .getChallengeById(challengeId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (challenge) => {
+                    this.challenge = { ...challenge };
+                    [this.challengeVersion] = this.challenge.versions;
+                    this.loadActualLanguages();
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
+    }
+
+    public onStepClick(step: ChallengeStep) {
         this.stepsData = showValidationErrorsForRequiredSteps(this.stepsData, step);
         if (!stepIsAllowed(this.stepsData, step)) {
             return;
@@ -94,20 +124,22 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.currentStep = step;
     }
 
-    onValidationChange(step: ChallengeStep, isValid: boolean) {
+    public onValidationChange(step: ChallengeStep, isValid: boolean) {
         const stepData = getStepData(this.stepsData, step);
 
         if (stepData) {
             stepData.isValid = isValid;
+            this.canOpenDropdown = isValid;
         }
     }
 
-    onBtnCreateClick() {
+    public onBtnCreateClick() {
         this.stepsData = showValidationErrorsForAllSteps(this.stepsData);
         if (checkAllStepsIsValid(this.stepsData)) {
             const newChallenge = prepareChallengeDto(this.challenge);
 
-            this.challengeService.createChallenge(newChallenge)
+            this.challengeService
+                .createChallenge(newChallenge)
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
                     next: () => {
@@ -121,42 +153,51 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         }
     }
 
-    onBtnCancelClick() {
+    public onBtnEditClick() {
+        this.stepsData = showValidationErrorsForAllSteps(this.stepsData);
+        if (checkAllStepsIsValid(this.stepsData)) {
+            this.challengeService
+                .updateChallenge(this.challenge as IEditChallenge)
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    next: () => {
+                        this.toastrService.showSuccess('Challenge was successfully edited');
+                        this.router.navigate(['/']);
+                    },
+                    error: () => {
+                        this.toastrService.showError('Server connection error');
+                    },
+                });
+        }
+    }
+
+    public onBtnCancelClick() {
         this.router.navigate(['/']);
     }
 
-    onLanguageChanged(selectedItem: IDropdownItem) {
+    public onLanguageChanged(selectedItem: IDropdownItem) {
         this.currentLanguage = selectedItem;
-        const language = this.languages.find(l => l.name === selectedItem.content);
+        const language = this.languages.find((l) => l.name === selectedItem.content);
 
         if (!language) {
             return;
         }
 
-        this.editorOptions.language = this.mapLanguageName(language.name);
-        this.challengeVersion = this.challenge.versions.find(v => v.languageId === language.id)!;
+        this.editorOptions.language = mapLanguageName(language.name);
+        this.challengeVersion = this.challenge.versions.find((v) => v.languageId === language.id)!;
     }
 
     public getStepChecking(step: ChallengeStep) {
         return getStepChecking(this.stepsData, step);
     }
 
-    private mapLanguageName(language: string): string {
-        return languageNameMap.get(language) || language.toLowerCase();
-    }
-
     private getLanguages() {
-        this.languageService.getLanguages()
+        this.languageService
+            .getLanguages()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: data => {
-                    this.languages = data;
-                    this.languageDropdownItems = getDropdownItems(data.map(item => item.name));
-                    this.challenge.versions = data.map(lang => ({
-                        ...getNewChallengeVersion(),
-                        languageId: lang.id,
-                    }));
-                    this.onLanguageChanged(this.languageDropdownItems[0]);
+                next: (data) => {
+                    this.handleLanguageData(data);
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
@@ -164,11 +205,32 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
             });
     }
 
+    private handleLanguageData(data: ILanguage[]) {
+        this.languages = data;
+        this.languageDropdownItems = getDropdownItems(data.map((item) => item.name));
+
+        this.challenge.versions = data.map((lang) => ({
+            ...getNewChallengeVersion(),
+            languageId: lang.id,
+        }));
+
+        this.onLanguageChanged(this.languageDropdownItems[0]);
+    }
+
+    private loadActualLanguages() {
+        const challengeVersionLanguages = this.languages.filter((lang) =>
+            this.challenge.versions.some((version) => version.languageId === lang.id));
+
+        this.languageDropdownItems = getDropdownItems(challengeVersionLanguages.map((lang) => lang.name));
+        [this.currentLanguage] = this.languageDropdownItems;
+    }
+
     private getTags() {
-        this.tagService.getTags()
+        this.tagService
+            .getTags()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: data => {
+                next: (data) => {
                     this.tags = data;
                 },
                 error: () => {
@@ -178,10 +240,11 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
     }
 
     private getChallengeLevels() {
-        this.challengeLevelService.getLevels()
+        this.challengeLevelService
+            .getLevels()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: data => {
+                next: (data) => {
                     this.challengeLevels = data;
                 },
                 error: () => {
