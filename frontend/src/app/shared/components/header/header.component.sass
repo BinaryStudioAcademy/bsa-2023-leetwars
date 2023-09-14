@@ -68,37 +68,37 @@
     &:hover
       background-color: $green
 
-:host ::ng-deep tabset ul
-    border-bottom: none
-    color: $white
+.navbar-nav
+  flex-direction: row 
 
-:host ::ng-deep tabset li
+.navbar 
+    color: $white
+  
+.nav.navbar-nav.tabset 
+    list-style-type: none
     padding: 0
     color: $white
-
-:host ::ng-deep tabset li.nav-item.active a.nav-link.active
-  color: $green
-  border-bottom: 2px solid $green
-
-:host ::ng-deep tabset li.nav-item a
+    gap: 10px
+  
+.nav.navbar-nav.tabset li 
     display: inline-block
+    
+.nav.navbar-nav.tabset li.active a 
+    color: $green
+    border-bottom: 2px solid $green
+
+.nav.navbar-nav.tabset li a 
     font-size: 13px
-    line-height: 40px
     color: $white
+    text-decoration: none
+    padding: 21px 13px
     cursor: pointer
-    border: none
-    padding: 13px 13px
     transition: background-color 0.2s ease
-    user-select: none
     &:hover
         background-color: transparent !important
         color: $green
     &:focus
       color: $green
       border-bottom: 2px solid $green
-        
   
-:host ::ng-deep tabset li a.active
-    background-color: transparent !important
-    color: $green 
-       
+      
