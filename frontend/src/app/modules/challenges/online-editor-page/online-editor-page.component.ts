@@ -1,5 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
+<<<<<<< HEAD
 import { Component, OnDestroy, OnInit } from '@angular/core';
+=======
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+>>>>>>> dev
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
@@ -44,6 +48,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     editorOptions: EditorOptions;
 
     solution: ICodeRunRequest;
+    private isFullscreen = false;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -59,6 +64,20 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
             .subscribe((result) => {
                 this.splitDirection = result.matches ? 'vertical' : 'horizontal';
             });
+    }
+
+    @ViewChild('editorContainer') editorContainer: ElementRef;
+
+    toggleFullScreen() {
+        const element = this.editorContainer.nativeElement;
+
+        if (!this.isFullscreen) {
+            element.requestFullscreen();
+            this.isFullscreen = true;
+        } else {
+            document.exitFullscreen();
+            this.isFullscreen = false;
+        }
     }
 
     ngOnInit() {
@@ -161,7 +180,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private getInitialTestByChallengeVersionId(id: number) {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
-        return (selectedVersion && selectedVersion.tests.length)
+        return (selectedVersion && selectedVersion.tests?.length)
             ? selectedVersion.tests[0].code
             : 'No tests available';
     }
