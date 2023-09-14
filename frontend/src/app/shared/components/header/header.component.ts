@@ -1,16 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
+import { HeaderService } from '@core/services/header-service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IUser } from '@shared/models/user/user';
 
-import { NotificationsComponent } from '../notifications/notifications.component';
-import { Router } from '@angular/router';
-import { HeaderService } from '@core/services/header-service';
-import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { NotificationsComponent } from '../notifications/notifications.component';
 
 @Component({
     selector: 'app-header',
@@ -18,25 +17,22 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
     styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-   constructor(
+    constructor(
         private authService: AuthService,
         private modalService: NgbModal,
         private router: Router,
         private headerService: HeaderService,
         private toastrService: ToastrNotificationsService,
-        private notificationHub: NotificationHubService
+        private notificationHub: NotificationHubService,
     ) {
         this.authService.getUser().subscribe((user) => {
             this.user = user;
         });
     }
 
-export class HeaderComponent implements OnInit, OnDestroy {
     public showMenu: boolean = false;
 
     public user: IUser;
-
-    showMenu: boolean = false;
 
     private notifications: INotificationModel[] = [];
 
@@ -89,10 +85,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
-
     }
-  
-   private listeningHub() {
+
+    private listeningHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
             this.notifications.push(msg);
         });
@@ -100,4 +95,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.notificationHub.stop();
+    }
 }
