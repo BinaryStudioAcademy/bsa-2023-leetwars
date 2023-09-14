@@ -2,7 +2,12 @@
     <div class="description d-flex flex-column">
         <div class="title-row d-flex align-items-center position-relative" >
             <span class="level">{{ challenge.levelName }} rank</span>
-            <span class="title text-wrap"  routerLink="/challenges/{{ challenge.id}}">{{ challenge.title }}</span>
+            <span class="title text-wrap" routerLink="/challenges/{{challenge.id}}">{{ challenge.title }}</span>
+            <fa-icon
+                *ngIf="canEdit"
+                class="edit-icon"
+                [icon]="['far', 'pen-to-square']"
+                routerLink="/challenges/edit/{{challenge.id}}"></fa-icon>
             <fa-icon
                 class="star-icon"
                 [icon]="challenge.isStarry ? ['fas', 'star'] : ['far', 'star']"

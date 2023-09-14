@@ -6,6 +6,7 @@ import { Entity } from '../common/entity';
 
 export interface IChallengePreview extends Entity<number> {
     authorName: string;
+    createdBy: number;
     levelName: string;
     title: string;
     instructions: string;

@@ -1,14 +1,16 @@
-<div class="d-flex gap-4 pt-4 ps-3">
-    <button
+<div class="d-flex gap-4 pt-4 buttons">
+    <button 
+        *ngIf="!isEditMode"
         [disabled]="currentStep !== ChallengeStep.Testcases"
         class="custom-button accent"
         (click)="onBtnCreateClick()"
     >Create challenge</button>
     <button
-        class="custom-button"
-        (click)="onBtnCancelClick()"
-    >Cancel</button>
-
+        *ngIf="isEditMode"
+        class="custom-button accent"
+        (click)="onBtnEditClick()"
+    >Edit challenge</button>
+    <button class="custom-button cancel-btn" (click)="onBtnCancelClick()">Cancel</button>
 </div>
 
 <app-steps-of-progress
@@ -21,13 +23,17 @@
     <div *ngIf="currentStep !== ChallengeStep.Question" class="language-block flex-grow-1 mb-2">
         <div class="language-info mb-2">
             <span>Languages</span>
-            <fa-icon [icon]="'circle-info'" ngbTooltip="Select the required language and version"
-                     placement="right"></fa-icon>
+            <fa-icon 
+                [icon]="'circle-info'" 
+                ngbTooltip="Select the required language and version"
+                placement="right"></fa-icon>
         </div>
         <div class="d-flex gap-3 mb-2">
-            <app-challenges-dropdown-select [items]="languageDropdownItems"
-                                            [selectedItem]="currentLanguage"
-                                            (selectedItemChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
+            <app-challenges-dropdown-select 
+                [canOpen]="canOpenDropdown"
+                [items]="languageDropdownItems"
+                [selectedItem]="currentLanguage"
+                (selectedItemChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
         </div>
     </div>
 
