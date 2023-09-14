@@ -3,12 +3,12 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { takeUntil } from 'rxjs';
-import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -124,8 +124,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
     private extractLanguageVersions(versions: IChallengeVersion[]) {
         return versions.flatMap((version) =>
-            version.language.languageVersions.map((languageVersion) => languageVersion.version),
-        );
+            version.language.languageVersions.map((languageVersion) => languageVersion.version));
     }
 
     private setupEditorOptions() {
