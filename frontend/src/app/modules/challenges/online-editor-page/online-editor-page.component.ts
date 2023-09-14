@@ -1,9 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-<<<<<<< HEAD
-import { Component, OnDestroy, OnInit } from '@angular/core';
-=======
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
->>>>>>> dev
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
