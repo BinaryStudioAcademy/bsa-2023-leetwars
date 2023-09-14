@@ -22,10 +22,22 @@
 .notification
   margin-right: 2rem
   cursor: pointer
-  color:$transparent-grey
+  color: $transparent-grey
 
 :host ::ng-deep .change-color
   background-color: $cornflower
+
+::ng-deep .log-out-modal
+    .modal-content
+        background-color: $charcoal-grey
+    .modal-header
+        color: $green
+        .btn-close
+            background-color: $green
+    .modal-body, .modal-footer, button
+        color: $white
+
+
 
 .user
   position: relative
@@ -49,13 +61,22 @@
   position: relative
 
 .menu
-    z-index: 99
-    position: absolute
-    right: 0.2rem
-    top: 40px
+  background-color: $charcoal-grey
+  min-width: 200px
+  z-index: 99
+  position: absolute
+  right: 0.2rem
+  top: 40px
+  border-radius: 8px
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  box-shadow: 0 0 5px $medium-black
+  overflow: hidden
+  button
+    white-space: nowrap
+    display: inline-block
+    width: 100%
     padding: .8rem
-    background-color: $white
-    border-radius: 8px
-    display: grid
-    justify-content: flex-start
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+    &:hover
+      background-color: $green
