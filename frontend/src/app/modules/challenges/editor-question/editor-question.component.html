@@ -48,8 +48,8 @@
         </div>
     </div>
 
-    <div class="d-flex gap-3">
-        <div class="input-column">
+    <div class="input-wrapper d-flex">
+        <div class="input-column mr-24px">
             <app-dropdown-select
                 [title]="'Level *'"
                 [items]="allLevelsNames"
@@ -57,7 +57,9 @@
                 (selectedItemsChanged)="onLevelChange($event)"
                 [class.input-error]="inputForm.controls.level.touched && inputForm.controls.level.invalid"
                 class="d-block mt-3"></app-dropdown-select>
-            <div class="validation-error-message" *ngIf="inputForm.controls.level.touched && inputForm.controls.level.invalid">
+            <div
+                class="validation-error-message"
+                *ngIf="inputForm.controls.level.touched && inputForm.controls.level.invalid">
                 {{ getErrorMessage('level') }}
             </div>
         </div>
@@ -70,7 +72,9 @@
                 (selectedItemsChanged)="onTagsChange($event)"
                 [class.input-error]="inputForm.controls.tags.touched && inputForm.controls.tags.invalid"
                 class="d-block mt-3"></app-dropdown-select>
-            <div class="validation-error-message" *ngIf="inputForm.controls.tags.touched && inputForm.controls.tags.invalid">
+            <div
+                class="validation-error-message"
+                *ngIf="inputForm.controls.tags.touched && inputForm.controls.tags.invalid">
                 {{ getErrorMessage('tags') }}
             </div>
         </div>
@@ -104,7 +108,9 @@
             <span>Help</span>
         </div>
     </div>
-    <div class="validation-error-message" *ngIf="inputForm.controls.description.touched && inputForm.controls.description.invalid">
+    <div
+        class="validation-error-message"
+        *ngIf="inputForm.controls.description.touched && inputForm.controls.description.invalid">
         {{ getErrorMessage('description') }}
     </div>
     <div class="mt-12px">
