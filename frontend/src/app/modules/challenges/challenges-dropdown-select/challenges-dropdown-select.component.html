@@ -1,6 +1,6 @@
 <div ngbDropdown class="dropdown d-inline-flex" [autoClose]="true">
     <div class="button-wrapper d-flex flex-column d-flex flex-grow-1">
-        <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle>
+        <button class="btn d-flex" id="dropdownMenuButton" ngbDropdownToggle [disabled]="!canOpen">
             <div *ngIf="selectedItem" class="float-start d-flex">
                 <img *ngIf="selectedItem.icon" [src]="selectedItem.icon" class="language-logo" alt="language logo" />
                 <p>{{ selectedItem.content }}</p>

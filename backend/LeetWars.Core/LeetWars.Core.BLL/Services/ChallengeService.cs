@@ -1,10 +1,13 @@
 ﻿using System.Linq.Expressions;
 using System.Security.Cryptography;
 using AutoMapper;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
+using LeetWars.Core.Common.DTO.ChallengeVersion;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Tag;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
@@ -67,9 +70,9 @@ namespace LeetWars.Core.BLL.Services
 
             if (filters.TagsIds is not null)
             {
-                var filterTags = _context.Tags.Where(tag => 
+                var filterTags = _context.Tags.Where(tag =>
                     filters.TagsIds.Contains(tag.Id));
-                
+
                 challenges = challenges.Where(challenge =>
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
@@ -100,20 +103,19 @@ namespace LeetWars.Core.BLL.Services
             challenges = await FilterChallengesBySuggestionTypeAsync(challenges, settings);
 
             var randomPosition = GetRandomInt(challenges.Count());
-            
+
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
 
         public async Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id)
         {
             var challenge = await GetChallengeByIdAsync(id);
-
             return _mapper.Map<ChallengeFullDto>(challenge);
         }
 
-        public async Task<ChallengePreviewDto> UpdateAsync(ChallengeStarDto challengeStarDto)
+        public async Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto)
         {
-            Expression<Func<ChallengeStar, bool>> delegateToCheckChallengeStar = 
+            Expression<Func<ChallengeStar, bool>> delegateToCheckChallengeStar =
                cs => cs.Author!.Id == challengeStarDto.AuthorId
             && cs.Challenge!.Id == challengeStarDto.Challenge.Id;
 
@@ -121,7 +123,7 @@ namespace LeetWars.Core.BLL.Services
             {
                 var challengeStar = _mapper.Map<ChallengeStar>(challengeStarDto);
 
-                if(await _context.ChallengeStars.AnyAsync(delegateToCheckChallengeStar))
+                if (await _context.ChallengeStars.AnyAsync(delegateToCheckChallengeStar))
                 {
                     throw new ArgumentNullException(nameof(challengeStarDto));
                 }
@@ -146,7 +148,7 @@ namespace LeetWars.Core.BLL.Services
 
             return _mapper.Map<ChallengePreviewDto>(challenge);
         }
-        
+
         public async Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
@@ -155,7 +157,7 @@ namespace LeetWars.Core.BLL.Services
             challenge.CreatedAt = DateTime.UtcNow;
             challenge.CreatedBy = currentUser.Id;
             _context.Challenges.Add(challenge);
-            
+
             await _context.SaveChangesAsync();
 
             var challengeTags = _mapper.Map<ICollection<Tag>>(challengeDto.Tags)
@@ -164,7 +166,7 @@ namespace LeetWars.Core.BLL.Services
                     ChallengeId = challenge.Id,
                     TagId = tag.Id,
                 }).ToList();
-            
+
             _context.ChallengeTags.AddRange(challengeTags);
 
             var challengeVersions = _mapper.Map<ICollection<ChallengeVersion>>(challengeDto.Versions)
@@ -175,14 +177,62 @@ namespace LeetWars.Core.BLL.Services
                     version.CreatedBy = currentUser.Id;
                     return version;
                 }).ToList();
-            
+
             _context.ChallengeVersions.AddRange(challengeVersions);
-            
+
             await _context.SaveChangesAsync();
-           
+
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
 
+        public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
+        {
+            var currentUser = _userGetter.GetCurrentUserOrThrow();
+            if (currentUser.Id != challengeEditDto.CreatedBy)
+            {
+                throw new InvalidOperationException("The user cannot modify this challenge");
+            }
+
+            var challenge = await GetChallengeByIdAsync(challengeEditDto.Id) 
+                ?? throw new NotFoundException(nameof(Challenge));
+
+            _mapper.Map(challengeEditDto, challenge);
+            UpdateChallengeVersions(challenge, challengeEditDto.Versions!, currentUser.Id);
+            UpdateChallengeTags(challenge, challengeEditDto.Tags!);
+
+            await _context.SaveChangesAsync();
+            return await GetChallengeFullDtoByIdAsync(challenge.Id);
+        }
+
+        private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)
+        {
+            _context.ChallengeVersions.RemoveRange(challenge.Versions);
+
+            var challengeVersions = _mapper.Map<ICollection<ChallengeVersion>>(versions)
+                .Select(version =>
+                {
+                    version.ChallengeId = challenge.Id;
+                    version.CreatedBy = currentUserId;
+                    return version;
+                }).ToList();
+
+            _context.ChallengeVersions.AddRange(challengeVersions);
+        }
+
+        private void UpdateChallengeTags(Challenge challenge, ICollection<TagDto> tags)
+        {
+            var challengeTags = _context.ChallengeTags.Where(tag => tag.ChallengeId == challenge.Id);
+            _context.ChallengeTags.RemoveRange(challengeTags);
+
+            var editedChallengeTags = _mapper.Map<ICollection<Tag>>(tags)
+                .Select(tag => new ChallengeTag()
+                {
+                    ChallengeId = challenge.Id,
+                    TagId = tag.Id,
+                }).ToList();
+
+            _context.ChallengeTags.AddRange(editedChallengeTags);
+        }
 
         private async Task<Challenge?> GetChallengeByIdAsync(long challengeId)
         {
@@ -203,7 +253,6 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(star => star.Author)
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
         }
-
 
         private async Task<ChallengeStar?> GetChallengeStarAsync(Expression<Func<ChallengeStar, bool>> condition)
         {
@@ -277,7 +326,7 @@ namespace LeetWars.Core.BLL.Services
                 var data = new byte[4];
                 generator.GetBytes(data);
                 var randomValue = Math.Abs(BitConverter.ToInt32(data, 0));
-                
+
                 return randomValue % maxValue;
             }
         }

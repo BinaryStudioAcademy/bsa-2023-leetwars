@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
@@ -11,12 +11,8 @@ import { getLanguageIconUrl } from '@shared/utils/language-icons';
     templateUrl: './challenge.component.html',
     styleUrls: ['./challenge.component.sass'],
 })
-export class ChallengeComponent {
-    constructor(private challengeService: ChallengeService, private authService: AuthService) {
-        this.authService.getUser().subscribe((user) => {
-            this.user = user;
-        });
-    }
+export class ChallengeComponent implements OnInit {
+    constructor(private challengeService: ChallengeService, private authService: AuthService) {}
 
     @Input() challenge: IChallengePreview;
 
@@ -26,7 +22,16 @@ export class ChallengeComponent {
 
     public getLanguageIconUrl = getLanguageIconUrl;
 
+    public canEdit: boolean;
+
     private user: IUser;
+
+    ngOnInit(): void {
+        this.authService.getUser().subscribe((user) => {
+            this.user = user;
+            this.canEdit = this.challenge.createdBy === this.user.id;
+        });
+    }
 
     public starChange() {
         this.isChallengeUpdated = false;

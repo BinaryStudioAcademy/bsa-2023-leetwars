@@ -1,16 +1,8 @@
-import {
-    Component,
-    EventEmitter,
-    Input,
-    OnChanges,
-    OnInit,
-    Output,
-    SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { getNewChallengeVersion } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { tabs } from '@modules/challenges/solution-page/solution-page.utils';
 import { NavigationTabType } from '@shared/enums/navigation-tab-type';
+import { IEditChallengeVersion } from '@shared/models/challenge-version/edit-challenge-version';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { NavigationTab } from '@shared/models/navigation-tab';
 import { EditorOptions } from '@shared/models/options/editor-options';
@@ -21,7 +13,7 @@ import { EditorOptions } from '@shared/models/options/editor-options';
     styleUrls: ['./solution-page.component.sass'],
 })
 export class SolutionPageComponent implements OnInit, OnChanges {
-    @Input() challengeVersion: INewChallengeVersion = getNewChallengeVersion();
+    @Input() challengeVersion: INewChallengeVersion | IEditChallengeVersion;
 
     @Input() editorOptions: EditorOptions;
 
@@ -36,12 +28,8 @@ export class SolutionPageComponent implements OnInit, OnChanges {
     public currentTab = tabs[0];
 
     public inputForm = new FormGroup({
-        completeSolution: new FormControl('', [
-            Validators.required,
-        ]),
-        initialSolution: new FormControl('', [
-            Validators.required,
-        ]),
+        completeSolution: new FormControl('', [Validators.required]),
+        initialSolution: new FormControl('', [Validators.required]),
     });
 
     public ngOnInit(): void {
@@ -113,10 +101,13 @@ export class SolutionPageComponent implements OnInit, OnChanges {
 
         switch (tab.type) {
             case NavigationTabType.Complete:
-                inputError = this.inputForm.controls.completeSolution.touched && this.inputForm.controls.completeSolution.invalid;
+                inputError =
+                    this.inputForm.controls.completeSolution.touched &&
+                    this.inputForm.controls.completeSolution.invalid;
                 break;
             case NavigationTabType.Initial:
-                inputError = this.inputForm.controls.initialSolution.touched && this.inputForm.controls.initialSolution.invalid;
+                inputError =
+                    this.inputForm.controls.initialSolution.touched && this.inputForm.controls.initialSolution.invalid;
                 break;
             default:
                 break;
