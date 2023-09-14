@@ -9,8 +9,10 @@
             [isMultiSelection]="false"
             [title]="'Sort By'"
             [items]="sortingLabels"
-            class="m-0-12px"></app-dropdown-select>
             (selectedItemsChanged)="onSortChange($event)"
+            class="m-0-12px">
+            >
+        </app-dropdown-select>
         <app-dropdown-select [isMultiSelection]="false" [title]="'By language'" [items]="languagesNames"
             (selectedItemsChanged)="onLanguageChange($event)" class="m-0-12px"></app-dropdown-select>
         <app-dropdown-select [isMultiSelection]="false" [title]="'By status'" [items]="statusesNames"
