@@ -135,7 +135,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
         const version = this.challenge.versions?.find((v) => v.language.name === language);
 
         return (version && version.initialSolution)
-            ? version?.initialSolution
+            ? version.initialSolution
             : 'No solutions available';
     }
 
@@ -143,7 +143,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
         return (selectedVersion && selectedVersion.exampleTestCases)
-            ? selectedVersion?.exampleTestCases
+            ? selectedVersion.exampleTestCases
             : 'No tests available';
     }
 
