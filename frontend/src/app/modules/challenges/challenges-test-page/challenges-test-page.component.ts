@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getNewChallengeVersion } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { NavigationTabType } from '@shared/enums/navigation-tab-type';
+import { IEditChallengeVersion } from '@shared/models/challenge-version/edit-challenge-version';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { NavigationTab } from '@shared/models/navigation-tab';
 import { EditorOptions } from '@shared/models/options/editor-options';
@@ -14,7 +15,7 @@ import { tabs } from './challenges-test-page.utils';
     styleUrls: ['./challenges-test-page.component.sass'],
 })
 export class ChallengesTestPageComponent implements OnInit, OnChanges {
-    @Input() challengeVersion: INewChallengeVersion = getNewChallengeVersion();
+    @Input() challengeVersion: INewChallengeVersion | IEditChallengeVersion = getNewChallengeVersion();
 
     @Input() editorOptions: EditorOptions;
 
@@ -31,12 +32,8 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
     public isMaximized: boolean = false;
 
     public inputForm = new FormGroup({
-        testCases: new FormControl('', [
-            Validators.required,
-        ]),
-        exampleTestCases: new FormControl('', [
-            Validators.required,
-        ]),
+        testCases: new FormControl('', [Validators.required]),
+        exampleTestCases: new FormControl('', [Validators.required]),
     });
 
     ngOnInit(): void {
@@ -102,7 +99,9 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
                 inputError = this.inputForm.controls.testCases.touched && this.inputForm.controls.testCases.invalid;
                 break;
             case NavigationTabType.ExampleTestCases:
-                inputError = this.inputForm.controls.exampleTestCases.touched && this.inputForm.controls.exampleTestCases.invalid;
+                inputError =
+                    this.inputForm.controls.exampleTestCases.touched &&
+                    this.inputForm.controls.exampleTestCases.invalid;
                 break;
             default:
                 break;

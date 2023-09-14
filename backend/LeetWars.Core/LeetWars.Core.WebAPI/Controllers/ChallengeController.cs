@@ -3,6 +3,7 @@ using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
@@ -47,10 +48,16 @@ namespace LeetWars.Core.WebAPI.Controllers
             return Ok(challenge);
         }
 
+        [HttpPut("edit")]
+        public async Task<ActionResult<ChallengePreviewDto>> EditChallenge([FromBody] ChallengeEditDto challengeEditDto)
+        {
+            return Ok(await _challengeService.EditChallengeAsync(challengeEditDto));
+        }
+
         [HttpPut]
         public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
         {
-            return Ok(await _challengeService.UpdateAsync(challengeStarDto));
+            return Ok(await _challengeService.UpdateStarAsync(challengeStarDto));
         }
     }
 }

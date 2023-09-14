@@ -70,11 +70,12 @@ h5
     background-color: $green
     border: none
     margin-right: 10%
+    &:hover, &:disabled
+        background-color: $dark-green
+    &:disabled
+        cursor: default
     @media screen and (max-width: $small-mobile)
         margin-right: 0
-
-.train:hover
-    background-color: $dark-green
 
 .skip
     border: none
@@ -139,7 +140,7 @@ h5
 .description-text::-webkit-scrollbar
     width: 6px
 
-.description-text::-webkit-scrollbar-thumb 
+.description-text::-webkit-scrollbar-thumb
     border-radius: 6px
     background-color: $strong-black
 

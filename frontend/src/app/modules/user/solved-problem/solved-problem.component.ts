@@ -18,9 +18,9 @@ export class SolvedProblemComponent implements OnChanges {
 
     @Input() bars: IBar[] = [];
 
-    totalTasks: number = 0;
+    totalTasks: number;
 
-    totalTasksCompleted: number = 0;
+    totalTasksCompleted: number;
 
     ngOnChanges({ bars }: SimpleChanges) {
         if (bars) {
