@@ -12,11 +12,7 @@ import { getLanguageIconUrl } from '@shared/utils/language-icons';
     styleUrls: ['./challenge.component.sass'],
 })
 export class ChallengeComponent implements OnInit {
-    constructor(private challengeService: ChallengeService, private authService: AuthService) {
-        this.authService.getUser().subscribe((user) => {
-            this.user = user;
-        });
-    }
+    constructor(private challengeService: ChallengeService, private authService: AuthService) {}
 
     @Input() challenge: IChallengePreview;
 
@@ -31,7 +27,10 @@ export class ChallengeComponent implements OnInit {
     private user: IUser;
 
     ngOnInit(): void {
-        this.canEdit = this.challenge.createdBy === this.user.id;
+        this.authService.getUser().subscribe((user) => {
+            this.user = user;
+            this.canEdit = this.challenge.createdBy === this.user.id;
+        });
     }
 
     public starChange() {

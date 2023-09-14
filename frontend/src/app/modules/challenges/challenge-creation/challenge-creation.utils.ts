@@ -2,8 +2,6 @@ import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { CategoryType } from '@shared/enums/category-type';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { languageNameMap } from '@shared/mappings/language-map';
-import { IChallenge } from '@shared/models/challenge/challenge';
-import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
 import { IDropdownItem } from '@shared/models/dropdown-item';
@@ -142,26 +140,3 @@ export const editorOptions: EditorOptions = {
     wordWrap: 'on',
     lineNumbers: 'on',
 };
-
-export function mapChallengeToEditChallenge(challenge: IChallenge): IEditChallenge {
-    return {
-        id: challenge.id,
-        createdBy: challenge.createdBy!,
-        title: challenge.title,
-        instructions: challenge.instructions,
-        levelId: challenge.levelId,
-        level: challenge.level,
-        category: challenge.category,
-        tags: challenge.tags,
-        versions: challenge.versions.map((version) => ({
-            id: version.id,
-            createdAt: version.createdAt.toString(),
-            languageId: version.languageId,
-            initialSolution: version.initialSolution,
-            completeSolution: version.completeSolution,
-            preloadedCode: version.preloadedCode,
-            testCases: version.testCases,
-            exampleTestCases: version.exampleTestCases,
-        })),
-    };
-}

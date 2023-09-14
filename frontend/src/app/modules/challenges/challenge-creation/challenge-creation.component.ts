@@ -15,7 +15,6 @@ import {
     getNewChallengeVersion,
     getStepChecking,
     getStepData,
-    mapChallengeToEditChallenge,
     mapLanguageName,
     prepareChallengeDto,
     showValidationErrorsForAllSteps,
@@ -85,9 +84,9 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     ngOnInit(): void {
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-            const challengeId = params.get('id')!;
+            const challengeId = +params.get('id')!;
+            this.isEditMode = !!challengeId;
 
-            this.isEditMode = challengeId !== null;
             this.stepsData = getInitStepsData(this.isEditMode);
 
             this.getTags();
@@ -95,7 +94,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
             this.getLanguages();
 
             if (this.isEditMode) {
-                this.loadChallenge(Number.parseInt(challengeId, 10));
+                this.loadChallenge(challengeId);
             }
         });
     }
@@ -106,7 +105,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (challenge) => {
-                    this.challenge = mapChallengeToEditChallenge(challenge);
+                    this.challenge = { ...challenge };
                     [this.challengeVersion] = this.challenge.versions;
                     this.loadActualLanguages();
                 },
@@ -219,7 +218,8 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     private loadActualLanguages() {
         const challengeVersionLanguages = this.languages.filter((lang) =>
-            this.challenge.versions.some((version) => version.languageId === lang.id));
+            this.challenge.versions.some((version) => version.languageId === lang.id),
+        );
 
         this.languageDropdownItems = getDropdownItems(challengeVersionLanguages.map((lang) => lang.name));
         [this.currentLanguage] = this.languageDropdownItems;

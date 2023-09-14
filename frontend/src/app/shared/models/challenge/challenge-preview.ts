@@ -2,11 +2,10 @@ import { ChallengeStatus } from '@shared/enums/challenge-status';
 import { ILanguage } from '@shared/models/language/language';
 import { ITag } from '@shared/models/tag/tag';
 
-import { Entity } from '../common/entity';
+import { AuditEntity } from '../common/audit-entity/audit-entity';
 
-export interface IChallengePreview extends Entity<number> {
+export interface IChallengePreview extends AuditEntity<number> {
     authorName: string;
-    createdBy: number;
     levelName: string;
     title: string;
     instructions: string;

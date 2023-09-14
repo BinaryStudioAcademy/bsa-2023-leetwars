@@ -1,6 +1,6 @@
-export interface IEditChallengeVersion {
-    id: number;
-    createdAt: string;
+import { AuditEntity } from '../common/audit-entity/audit-entity';
+
+export interface IEditChallengeVersion extends AuditEntity<number> {
     languageId: number;
     initialSolution: string;
     completeSolution: string;

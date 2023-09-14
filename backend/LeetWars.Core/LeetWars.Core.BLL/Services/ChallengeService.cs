@@ -193,26 +193,15 @@ namespace LeetWars.Core.BLL.Services
                 throw new InvalidOperationException("The user cannot modify this challenge");
             }
 
-            var challenge = await GetChallengeByIdAsync(challengeEditDto.Id);
-            if (challenge is null)
-            {
-                throw new NotFoundException(nameof(Challenge));
-            }
+            var challenge = await GetChallengeByIdAsync(challengeEditDto.Id) 
+                ?? throw new NotFoundException(nameof(Challenge));
 
-            UpdateChallengeProperties(challenge, challengeEditDto);
+            _mapper.Map(challengeEditDto, challenge);
             UpdateChallengeVersions(challenge, challengeEditDto.Versions!, currentUser.Id);
             UpdateChallengeTags(challenge, challengeEditDto.Tags!);
 
             await _context.SaveChangesAsync();
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
-        }
-
-        private void UpdateChallengeProperties(Challenge challenge, ChallengeEditDto challengeEditDto)
-        {
-            challenge.Title = challengeEditDto.Title;
-            challenge.LevelId = challengeEditDto.LevelId;
-            challenge.Instructions = challengeEditDto.Instructions;
-            challenge.Category = challengeEditDto.Category;
         }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)

@@ -117,6 +117,7 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
         }
 
         this.challenge.level = this.allLevels.find((item) => item.name === value);
+        this.challenge.levelId = this.challenge.level?.id!;
 
         this.inputForm.controls.level.setValue(this.challenge.level?.name ?? '');
         this.validationChange.emit(this.inputForm.valid);

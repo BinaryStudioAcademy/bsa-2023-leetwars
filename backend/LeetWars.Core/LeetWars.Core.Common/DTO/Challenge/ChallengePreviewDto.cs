@@ -5,9 +5,8 @@ using LeetWars.Core.DAL.Enums;
 
 namespace LeetWars.Core.Common.DTO.Challenge
 {
-    public class ChallengePreviewDto : Entity<long>
+    public class ChallengePreviewDto : AuditEntity<long>
     {
-        public long CreatedBy { get; set; }
         public string AuthorName { get; set; } = string.Empty;
         public string LevelName { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;        
