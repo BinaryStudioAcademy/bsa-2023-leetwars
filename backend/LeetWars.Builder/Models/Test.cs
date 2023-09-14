@@ -1,18 +1,17 @@
 ﻿namespace LeetWars.Builder.Models
 {
-    public class CSharpTest
+    public class Test
     {
         public string TestName { get; set; }
-        public string Outcome { get; set; }
+        public bool IsSuccess { get; set; }
         public string? ErrorMessage { get; set; }
         public string Duration { get; set; }
 
-        public CSharpTest(string testName, string outcome, string duration)
+        public Test(string testName, bool isSuccess, string duration)
         {
             TestName = testName;
-            Outcome = outcome;
+            IsSuccess = isSuccess;
             Duration = duration;
         }
     }
-
 }

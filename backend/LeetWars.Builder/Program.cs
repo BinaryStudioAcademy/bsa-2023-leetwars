@@ -9,6 +9,8 @@ builder.Services.AddHostedService<ConsumeMessages>();
 builder.Services.AddSingleton<ISolutionRunnerService, SolutionRunnerService>();
 builder.Services.AddTransient<ICodeRunManagerService, CodeRunManagerService>();
 
+builder.Services.RegisterTestRunnerServices(builder.Configuration);
+
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello, world!");

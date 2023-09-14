@@ -5,13 +5,15 @@ import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
-import { EditorOptions } from '@shared/models/options/editor-options';
+import { ITestsOutput } from '@shared/models/tests-output/tests-output';
+import { generateFakeCodeRunRequest } from '@shared/utils/code-run-request-example';
 import { takeUntil } from 'rxjs';
+import { EditorOptions } from '@shared/models/options/editor-options';
+import { languageNameMap } from '@shared/mappings/language-map';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -86,6 +88,26 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.subscribeToMessageQueue();
     }
 
+    showTestResults(testResults: ITestsOutput) {
+        if (testResults.isSuccess) {
+            this.toastrNotification.showSuccess('Tests were successful!');
+        } else {
+            this.toastrNotification.showError('Tests failed');
+        }
+    }
+
+    public runTests() {
+        const connectionId = this.signalRService.connectionId;
+
+        if (connectionId) {
+            this.toastrNotification.showInfo('Test run request sent');
+
+            this.challengeService.runTests(generateFakeCodeRunRequest(connectionId)).subscribe();
+        } else {
+            this.toastrNotification.showError('Server Connection Error!');
+        }
+    }
+
     onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
 
@@ -99,6 +121,10 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.initialSolution = newCode;
     }
 
+    onTestChanged(newTests: string) {
+        this.testCode = newTests;
+    }
+
     selectTab(title: string): void {
         this.activeTab = title;
     }
@@ -109,10 +135,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     sendCode(): void {
         this.solution = {
+            userId: 1,
             userConnectionId: this.signalRService.connectionId,
             challengeVersionId: this.challenge.id,
             language: this.selectedLanguage,
             userCode: this.initialSolution as string,
+            tests: this.testCode
         };
 
         this.challengeService.postCode(this.solution).subscribe();
@@ -125,6 +153,9 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
             if (codeRunResults.buildResults?.isSuccess) {
                 this.toastrNotification.showSuccess('code was compiled successfully');
+                if (codeRunResults.testRunResults) {
+                    this.showTestResults(codeRunResults.testRunResults);
+                }
             } else {
                 this.toastrNotification.showError(codeRunResults.buildResults?.buildMessage as string);
             }

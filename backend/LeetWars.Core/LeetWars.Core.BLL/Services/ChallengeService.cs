@@ -283,10 +283,13 @@ namespace LeetWars.Core.BLL.Services
                 return randomValue % maxValue;
             }
         }
-
         public void ComputeResult(CodeRunRequestDto userCode)
         {
             _messageSenderService.SendMessageToRabbitMQ(userCode);
+        }
+        public void SendCodeRunRequest(CodeRunRequestDto request)
+        {
+            _messageSenderService.SendMessageToRabbitMQ(request);
         }
     }
 }

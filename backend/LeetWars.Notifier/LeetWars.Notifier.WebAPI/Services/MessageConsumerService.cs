@@ -1,47 +1,51 @@
-﻿using LeetWars.Notifier.Hubs.Interfaces;
-using LeetWars.Notifier.Hubs;
-using LeetWars.RabbitMQ;
-using Microsoft.AspNetCore.SignalR;
+﻿using LeetWars.RabbitMQ;
 using RabbitMQ.Client.Events;
 using System.Text;
-using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
-using LeetWars.Notifier.WebAPI.Hubs;
 using Newtonsoft.Json;
 using LeetWars.Notifier.WebAPI.Models;
 using LeetWars.Notifier.WebAPI.Interfaces;
+using LeetWars.Notifier.WebAPI.Models.Helpers;
+using Microsoft.AspNetCore.Rewrite;
+using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
+using LeetWars.Notifier.WebAPI.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace LeetWars.Notifier.WebAPI.Services
 {
     public class MessageConsumerService : BackgroundService
     {
-        private readonly IConsumerService _consumerService;
-        private readonly IHubManagerHelperService _hubManagerHelperService;
+        private readonly IConsumerServiceFactory _consumerServiceFactory;
+        private readonly IHubContext<CodeDisplayingHub, ICodeDisplayingHubClient> _codeDisplayingHubContext;
 
         public MessageConsumerService(
-            IConsumerService consumerService,
-            IHubManagerHelperService hubManagerHelperService)
+            IConsumerServiceFactory consumerServiceFactory,
+            IHubContext<CodeDisplayingHub, ICodeDisplayingHubClient> codeDisplayingHubContext)
         {
-            _consumerService = consumerService;
-            _hubManagerHelperService = hubManagerHelperService;
+            _consumerServiceFactory = consumerServiceFactory;
+            _codeDisplayingHubContext = codeDisplayingHubContext;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            var codeConsumerService = _consumerServiceFactory.GetInstance(ConsumerNames.codeResultConsumer);
+
             var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
                 var body = args.Body.ToArray();
+
                 var message = Encoding.UTF8.GetString(body);
-                var request = JsonConvert.DeserializeObject<NotifierMessage>(message);
+                var request = JsonConvert.DeserializeObject<CodeRunResults>(message);
 
                 if(request != null) 
                 {
-                    await _hubManagerHelperService.SendMessage(request);
+                    await _codeDisplayingHubContext.Clients.Client(request.UserConnectionId).BroadcastMessage(message);
                 }
 
-                _consumerService.SetAcknowledge(args.DeliveryTag, true);
+                codeConsumerService.SetAcknowledge(args.DeliveryTag, true);
             });
 
-            _consumerService.Listen(handler);
+            codeConsumerService.Listen(handler);
+
             return Task.CompletedTask;
         }
     }

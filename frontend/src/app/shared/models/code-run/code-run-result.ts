@@ -1,3 +1,4 @@
+import { ITestsOutput } from '../tests-output/tests-output';
 import { IBuildResult } from './build-result';
 
 export interface ICodeRunResults {
@@ -5,5 +6,5 @@ export interface ICodeRunResults {
     challengeVersionId: number;
     language: string;
     buildResults?: IBuildResult | null;
-    testRunResults?: string | null;
+    testRunResults?: ITestsOutput | null;
 }

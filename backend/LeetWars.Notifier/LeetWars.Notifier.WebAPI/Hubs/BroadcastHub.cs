@@ -5,5 +5,9 @@ namespace LeetWars.Notifier.Hubs
 {
     public class BroadcastHub : Hub<IBroadcastHubClient>
     {
+        public string GetConnectionId()
+        {
+            return Context.ConnectionId;
+        }
     }
 }

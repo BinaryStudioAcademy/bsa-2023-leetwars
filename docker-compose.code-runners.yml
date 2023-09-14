@@ -1,10 +1,10 @@
 version: '3.1'
 services:
-  csharpcoderunner:
-    build: ./backend/LeetWars.Builder/RunnerDefaults/CSharp
-    image: csharpcoderunner
+  csharptestrunner:
+    build: ./backend/LeetWars.Builder/RunnerDefaults/CSharp/CSharpTestRunner
+    image: csharptestrunner
     
-  jscoderunner:
-    build: ./backend/LeetWars.Builder/RunnerDefaults/JS
-    image: jscoderunner
+  jstestrunner:
+    build: ./backend/LeetWars.Builder/RunnerDefaults/JS/JSTestRunner
+    image: jstestrunner
 

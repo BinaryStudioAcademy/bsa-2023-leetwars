@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
 import { ApiResponse } from '@shared/models/api-response';
+import { HttpResponse } from '@microsoft/signalr';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
@@ -51,6 +52,10 @@ export class ChallengeService {
         const selectedLanguage: string = request.language;
 
         return this.httpService.postRequest<ApiResponse>(`${this.challengesRoute}/${id}/${selectedLanguage}`, request);
+    }
+    
+    public runTests(request: ICodeRunRequest): Observable<HttpResponse> {
+        return this.httpService.postRequest<HttpResponse>(`${this.challengesRoute}/test`, request);
     }
 
     public createChallenge(challenge: INewChallenge): Observable<IChallenge> {

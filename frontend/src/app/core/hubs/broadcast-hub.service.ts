@@ -12,6 +12,8 @@ export class BroadcastHubService {
 
     private hubConnection: HubConnection;
 
+    private hubConnectionId: string;
+
     readonly messages = new Subject<string>();
 
     private subscriptions: Subscription[] = [];
@@ -20,7 +22,12 @@ export class BroadcastHubService {
 
     async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
+
         await this.init();
+    }
+
+    public getConnectionId() {
+        return this.hubConnectionId;
     }
 
     listenMessages(action: (msg: string) => void) {
@@ -41,5 +48,13 @@ export class BroadcastHubService {
         this.hubConnection.on('BroadcastMessage', (msg: string) => {
             this.messages.next(msg);
         });
+
+        this.hubConnection.invoke('GetConnectionId')
+            .then((id) => {
+                this.hubConnectionId = id;
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 }
