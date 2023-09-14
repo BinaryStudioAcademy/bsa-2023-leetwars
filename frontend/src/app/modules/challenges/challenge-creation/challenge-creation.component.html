@@ -43,7 +43,7 @@
     <app-solution-page
         *ngIf="currentStep === ChallengeStep.Solutions"
         [challengeVersion]="challengeVersion"
-        [editorLanguage]="editorLanguage"
+        [editorOptions]="editorOptions"
         [checkValidation]="getStepChecking(ChallengeStep.Solutions)"
         (validationChange)="onValidationChange(ChallengeStep.Solutions, $event)"
     ></app-solution-page>
@@ -51,7 +51,7 @@
     <app-challenges-test-page
         *ngIf="currentStep === ChallengeStep.Testcases"
         [challengeVersion]="challengeVersion"
-        [editorLanguage]="editorLanguage"
+        [editorOptions]="editorOptions"
         [checkValidation]="getStepChecking(ChallengeStep.Testcases)"
         (validationChange)="onValidationChange(ChallengeStep.Testcases, $event)"
     ></app-challenges-test-page>

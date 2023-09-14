@@ -26,7 +26,7 @@
         </as-split-area>
 
         <as-split-area [size]="50" [minSize]="splitRightMinSize">
-            <div class="editor h-50">
+            <div class="editor h-50" #editorContainer>
                 <div class="header">
                     <div class="language-selection">
                         <fa-icon [icon]="'info'" size="sm"></fa-icon>
@@ -42,8 +42,11 @@
                             [selectedItem]="selectedLanguageVersion">
                         </app-dropdown-select>
                     </div>
+                    <fa-icon (click)="toggleFullScreen()"
+                        class="fullscreen-button"
+                        [icon]="'maximize'"></fa-icon>
                 </div>
-                <app-code-editor
+                    <app-code-editor
                 class="my-code-editor"
                 [initText]="initialSolution!"
                 [language]="selectedLanguage"
@@ -55,8 +58,11 @@
                     <div class="language-selection">
                         Sample test
                     </div>
-                </div>
-                <div class="editor-test">
+                    <fa-icon (click)="toggleFullScreen()"
+                    class="fullscreen-button"
+                    [icon]="'maximize'"></fa-icon>
+                    </div>
+                <div class="editor-test" #editorContainer>
                     <app-code-editor
                     class="my-code-editor"
                     [options]="editorOptions"
