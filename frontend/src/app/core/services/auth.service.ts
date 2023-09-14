@@ -118,6 +118,14 @@ export class AuthService {
         return from(this.afAuth.sendPasswordResetEmail(passwordResetEmail)).pipe(first());
     }
 
+    public verifyPasswordResetCode(code: string): Observable<string | void> {
+        return from(this.afAuth.verifyPasswordResetCode(code)).pipe(first());
+    }
+
+    public confirmPasswordReset(code: string, newPassword: string): Observable<void> {
+        return from(this.afAuth.confirmPasswordReset(code, newPassword)).pipe(first());
+    }
+
     public getUser() {
         return of(this.getUserInfo()!);
     }
