@@ -1,9 +1,14 @@
 <div class="component-container" [class.maximized]="isMaximized">
     <div class="actions d-flex">
-        <div class="d-flex">
+        <div class="actions-tabs d-flex">
             <tabset>
-                <tab *ngFor="let tab of tabs" [heading]="tab.type.toString()" [active]="tab.active"
-                     (selectTab)="switchTab(tab)" [disabled]="tab.disabled" [customClass]="getTabClass(tab)">
+                <tab
+                    *ngFor="let tab of tabs"
+                    [heading]="tab.type.toString()"
+                    [active]="tab.active"
+                    (selectTab)="switchTab(tab)"
+                    [disabled]="tab.disabled"
+                    [customClass]="getTabClass(tab)">
                 </tab>
             </tabset>
             <div class="tab-help">
@@ -20,7 +25,7 @@
             [language]="editorOptions.language"
             [options]="editorOptions"
             [initText]="editorContent"
-            (focusout)=editorFocusOut()
+            (focusout)="editorFocusOut()"
             (codeChanged)="onCodeChange($event)"></app-code-editor>
     </div>
 </div>

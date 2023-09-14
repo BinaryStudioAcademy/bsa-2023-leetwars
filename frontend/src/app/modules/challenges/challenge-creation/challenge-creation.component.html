@@ -1,3 +1,5 @@
+
+<div class="creation-wrapper">
 <div class="d-flex gap-4 pt-4 buttons">
     <button 
         *ngIf="!isEditMode"
@@ -13,12 +15,10 @@
     <button class="custom-button cancel-btn" (click)="onBtnCancelClick()">Cancel</button>
 </div>
 
-<app-steps-of-progress
-    [steps]="steps"
-    [currentStep]="currentStep"
-    (stepClick)="onStepClick($event)"
-></app-steps-of-progress>
-
+    <app-steps-of-progress
+        [steps]="steps"
+        [currentStep]="currentStep"
+        (stepClick)="onStepClick($event)"></app-steps-of-progress>
 <div class="step-container">
     <div *ngIf="currentStep !== ChallengeStep.Question" class="language-block flex-grow-1 mb-2">
         <div class="language-info mb-2">
@@ -36,29 +36,27 @@
                 (selectedItemChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
         </div>
     </div>
+        <app-editor-question
+            *ngIf="currentStep === ChallengeStep.Question"
+            [challenge]="challenge"
+            [allTags]="tags"
+            [allLevels]="challengeLevels"
+            [checkValidation]="getStepChecking(ChallengeStep.Question)"
+            (validationChange)="onValidationChange(ChallengeStep.Question, $event)"></app-editor-question>
 
-    <app-editor-question
-        *ngIf="currentStep === ChallengeStep.Question"
-        [challenge]="challenge"
-        [allTags]="tags"
-        [allLevels]="challengeLevels"
-        [checkValidation]="getStepChecking(ChallengeStep.Question)"
-        (validationChange)="onValidationChange(ChallengeStep.Question, $event)"
-    ></app-editor-question>
+        <app-solution-page
+            *ngIf="currentStep === ChallengeStep.Solutions"
+            [challengeVersion]="challengeVersion"
+            [editorOptions]="editorOptions"
+            [checkValidation]="getStepChecking(ChallengeStep.Solutions)"
+            (validationChange)="onValidationChange(ChallengeStep.Solutions, $event)"></app-solution-page>
 
-    <app-solution-page
-        *ngIf="currentStep === ChallengeStep.Solutions"
-        [challengeVersion]="challengeVersion"
-        [editorOptions]="editorOptions"
-        [checkValidation]="getStepChecking(ChallengeStep.Solutions)"
-        (validationChange)="onValidationChange(ChallengeStep.Solutions, $event)"
-    ></app-solution-page>
-
-    <app-challenges-test-page
-        *ngIf="currentStep === ChallengeStep.Testcases"
-        [challengeVersion]="challengeVersion"
-        [editorOptions]="editorOptions"
-        [checkValidation]="getStepChecking(ChallengeStep.Testcases)"
-        (validationChange)="onValidationChange(ChallengeStep.Testcases, $event)"
-    ></app-challenges-test-page>
+        <app-challenges-test-page
+            *ngIf="currentStep === ChallengeStep.Testcases"
+            [challengeVersion]="challengeVersion"
+            [editorOptions]="editorOptions"
+            [checkValidation]="getStepChecking(ChallengeStep.Testcases)"
+            (validationChange)="onValidationChange(ChallengeStep.Testcases, $event)"></app-challenges-test-page>
+    </div>
 </div>
+<div class="empty-container"></div>
