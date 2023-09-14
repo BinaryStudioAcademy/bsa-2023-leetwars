@@ -36,7 +36,7 @@ const routes: Routes = [
         loadChildren: () => import('./modules/challenges/challenges.module').then((m) => m.ChallengesModule),
         canActivate: [AuthorizedGuard, HeaderGuard],
     },
-    { path: '**', component: NotFoundComponent, pathMatch: 'full', canActivate: [HeaderGuard] },
+    { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

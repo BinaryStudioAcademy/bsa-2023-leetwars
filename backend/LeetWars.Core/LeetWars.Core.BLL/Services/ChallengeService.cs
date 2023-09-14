@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System.Security.Cryptography;
 using AutoMapper;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
@@ -107,7 +108,7 @@ namespace LeetWars.Core.BLL.Services
         public async Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id)
         {
             var challenge = await GetChallengeByIdAsync(id);
-
+    
             return _mapper.Map<ChallengeFullDto>(challenge);
         }
 
@@ -184,9 +185,9 @@ namespace LeetWars.Core.BLL.Services
         }
 
 
-        private async Task<Challenge?> GetChallengeByIdAsync(long challengeId)
+        private async Task<Challenge> GetChallengeByIdAsync(long challengeId)
         {
-            return await _context.Challenges
+            var challenge = await _context.Challenges
                 .Include(challenge => challenge.Level)
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
@@ -202,6 +203,8 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Stars)
                     .ThenInclude(star => star.Author)
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+
+            return challenge ?? throw new NotFoundException(nameof(Challenge));
         }
 
 
