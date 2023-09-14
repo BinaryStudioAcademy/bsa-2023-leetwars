@@ -193,8 +193,7 @@ namespace LeetWars.Core.BLL.Services
                 throw new InvalidOperationException("The user cannot modify this challenge");
             }
 
-            var challenge = await GetChallengeByIdAsync(challengeEditDto.Id) 
-                ?? throw new NotFoundException(nameof(Challenge));
+            var challenge = await GetChallengeByIdAsync(challengeEditDto.Id);
 
             _mapper.Map(challengeEditDto, challenge);
             UpdateChallengeVersions(challenge, challengeEditDto.Versions!, currentUser.Id);
@@ -234,9 +233,9 @@ namespace LeetWars.Core.BLL.Services
             _context.ChallengeTags.AddRange(editedChallengeTags);
         }
 
-        private async Task<Challenge?> GetChallengeByIdAsync(long challengeId)
+        private async Task<Challenge> GetChallengeByIdAsync(long challengeId)
         {
-            return await _context.Challenges
+            var challenge = await _context.Challenges
                 .Include(challenge => challenge.Level)
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
@@ -252,6 +251,8 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Stars)
                     .ThenInclude(star => star.Author)
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+
+            return challenge ?? throw new NotFoundException(nameof(Challenge));
         }
 
         private async Task<ChallengeStar?> GetChallengeStarAsync(Expression<Func<ChallengeStar, bool>> condition)

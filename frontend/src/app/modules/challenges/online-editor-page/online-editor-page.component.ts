@@ -1,8 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
@@ -45,6 +46,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
         private breakpointObserver: BreakpointObserver,
+        private toastrService: ToastrNotificationsService,
+        private router: Router,
     ) {
         super();
         breakpointObserver
@@ -96,12 +99,19 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
     }
 
     private loadChallenge(challengeId: number) {
-        this.challengeService.getChallengeById(challengeId).subscribe(
-            (challenge) => {
-                this.setupLanguages(challenge);
-                this.setupEditorOptions();
-            },
-        );
+        this.challengeService
+            .getChallengeById(challengeId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (challenge) => {
+                    this.setupLanguages(challenge);
+                    this.setupEditorOptions();
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                    this.router.navigate(['/']);
+                },
+            });
     }
 
     private setupLanguages(challenge: IChallenge) {
@@ -134,29 +144,24 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
     private getInitialSolutionByLanguage(language: string): string {
         const version = this.challenge.versions?.find((v) => v.language.name === language);
 
-        return (version && version.initialSolution)
-            ? version.initialSolution
-            : 'No solutions available';
+        return version && version.initialSolution ? version.initialSolution : 'No solutions available';
     }
 
     private getInitialTestByChallengeVersionId(id: number) {
         const selectedVersion = this.challenge.versions.find((version) => version.id === id);
 
-        return (selectedVersion && selectedVersion.exampleTestCases)
+        return selectedVersion && selectedVersion.exampleTestCases
             ? selectedVersion.exampleTestCases
             : 'No tests available';
     }
 
     private mapLanguageName(language?: string): string {
-        return (language)
-            ? languageNameMap.get(language) || language.toLowerCase()
-            : 'No language available';
+        return language ? languageNameMap.get(language) || language.toLowerCase() : 'No language available';
     }
 
     private getLanguageVersionsByLanguage(language: string) {
         return this.challenge.versions
             .filter((version) => this.mapLanguageName(version.language.name) === language)
-            .flatMap((version) => version.language.languageVersions
-                .map((languageVersion) => languageVersion.version));
+            .flatMap((version) => version.language.languageVersions.map((languageVersion) => languageVersion.version));
     }
 }
