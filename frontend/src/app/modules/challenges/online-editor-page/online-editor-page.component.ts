@@ -59,16 +59,14 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
     }
 
     @ViewChild('editorContainer') editorContainer: ElementRef;
+    @ViewChild('editorTestContainer') editorTestContainer: ElementRef;
 
-    toggleFullScreen() {
-        const element = this.editorContainer.nativeElement;
-
-        if (!this.isFullscreen) {
+    toggleFullScreen(element: HTMLDivElement) {
+        this.isFullscreen = !this.isFullscreen;
+        if (this.isFullscreen) {
             element.requestFullscreen();
-            this.isFullscreen = true;
         } else {
             document.exitFullscreen();
-            this.isFullscreen = false;
         }
     }
 
@@ -125,7 +123,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
     private extractLanguageVersions(versions: IChallengeVersion[]) {
         return versions.flatMap((version) =>
-            version.language.languageVersions.map((languageVersion) => languageVersion.version));
+            version.language.languageVersions.map((languageVersion) => languageVersion.version),
+        );
     }
 
     private setupEditorOptions() {
