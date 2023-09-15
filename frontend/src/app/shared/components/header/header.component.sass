@@ -1,31 +1,35 @@
-@import 'src/styles/color-variables'
-@import 'src/styles/fonts'
+@import 'color-variables'
+@import 'fonts'
+@import 'screen-sizes-variables'
 
 .header
-  display: flex
-  justify-content: space-between
-  align-items: center
-  background-color: $deep-dark-grey
-  color: white
-  padding: 0.3rem 0.3rem 0 0.3rem
-  border-radius: 8px
-  margin-bottom: 0.5rem
+    display: grid
+    gap: 10px
+    grid-template-columns: repeat(3, 1fr)
+    align-items: center
+    background-color: $deep-dark-grey
+    color: white
+    padding: 0.3rem 0.3rem 0 0.3rem
+    border-radius: 8px
+    margin-bottom: 0.5rem
 
 .logo img
-  height: 70px
-  cursor: pointer
-  padding-left: 20px
+    height: 70px
+    cursor: pointer
+    padding-left: 20px
 
 .user-menu
-    display: flex
+    justify-self: end
 
 .notification
-  margin-right: 2rem
-  cursor: pointer
-  color: $transparent-grey
+    margin-right: 2rem
+    cursor: pointer
+    color: $transparent-grey
+    @media screen and (max-width: $medium)
+        margin-right: 1rem
 
 :host ::ng-deep .change-color
-  background-color: $cornflower
+    background-color: $cornflower
 
 ::ng-deep .log-out-modal
     .modal-content
@@ -37,61 +41,68 @@
     .modal-body, .modal-footer, button
         color: $white
 
-
-
 .user
-  position: relative
-  align-items: center
-  cursor: pointer
-  padding-right: 1rem
+    position: relative
+    align-items: center
+    cursor: pointer
+    padding-right: 1rem
 
 .user-logo
-  width: 50px
-  height: 50px
-  border-radius: 50%
-  margin-right: 0.5rem
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    margin-right: 0.5rem
 
 .username
-  color: $transparent-grey
-  width: 100%
-  font-family: "Open Sans", sans-serif
-  font-size: 0.9rem
+    color: $transparent-grey
+    width: 100%
+    font-family: "Open Sans", sans-serif
+    font-size: 0.9rem
+    @media screen and (max-width: $medium)
+        display: none
 
 .menu-wraper
-  position: relative
+    position: relative
 
 .menu
-  background-color: $charcoal-grey
-  min-width: 200px
-  z-index: 99
-  position: absolute
-  right: 0.2rem
-  top: 40px
-  border-radius: 8px
-  display: flex
-  flex-direction: column
-  justify-content: flex-start
-  box-shadow: 0 0 5px $medium-black
-  overflow: hidden
-  button
-    white-space: nowrap
-    display: inline-block
-    width: 100%
-    padding: .8rem
-    &:hover
-      background-color: $green
+    background-color: $charcoal-grey
+    min-width: 200px
+    z-index: 99
+    position: absolute
+    right: 0.2rem
+    top: 40px
+    border-radius: 8px
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    box-shadow: 0 0 5px $medium-black
+    overflow: hidden
+    button
+        white-space: nowrap
+        display: inline-block
+        width: 100%
+        padding: .8rem
+        &:hover
+            background-color: $green
 
 .navbar-nav
-  flex-direction: row 
+    flex-direction: row 
+    flex-wrap: nowrap
+    @media screen and (max-width: $mobile)
+        flex-wrap: wrap
 
 .navbar 
-    color: $white
+    justify-self: center
   
 .nav.navbar-nav.tabset 
     list-style-type: none
     padding: 0
-    color: $white
     gap: 30px
+    @media screen and (max-width: $medium)
+        gap: 15px
+    @media screen and (max-width: $mobile)
+        align-items: center
+        justify-content: center
   
 .nav.navbar-nav.tabset li 
     display: inline-block
@@ -111,7 +122,7 @@
         background-color: transparent !important
         color: $green
     &:focus
-      color: $green
-      border-bottom: 2px solid $green
-  
-      
+        color: $green
+        border-bottom: 2px solid $green
+    @media screen and (max-width: $mobile)
+        padding: 10px 7px
