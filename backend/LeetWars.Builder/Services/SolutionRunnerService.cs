@@ -1,4 +1,5 @@
-﻿using Docker.DotNet;
+﻿using System.ComponentModel;
+using Docker.DotNet;
 using Docker.DotNet.Models;
 using LeetWars.Builder.DTO;
 using LeetWars.Builder.Helpers.BuildResultReader;
@@ -139,12 +140,19 @@ namespace LeetWars.Builder.Services
         {
             await _client.Containers.StartContainerAsync(containerId, null);
             await _client.Containers.WaitContainerAsync(containerId);
-            var stringResult = await FileInContainerToStringAsync(containerId, path);
-            await _client.Containers.RemoveContainerAsync(containerId, new ContainerRemoveParameters { Force = true });
-            if (!string.IsNullOrEmpty(volumeName))
+
+            var stringResult = string.Empty;
+            try
             {
-                await _client.Volumes.RemoveAsync(volumeName);
+                stringResult = await FileInContainerToStringAsync(containerId, path);
             }
+            catch (Exception)
+            {
+                await RemoveContainersAsync(containerId, volumeName);
+                return string.Empty;
+            }
+
+            await RemoveContainersAsync(containerId, volumeName);
 
             return stringResult;
         }
@@ -163,6 +171,15 @@ namespace LeetWars.Builder.Services
         {
             GetArchiveFromContainerResponse data = await _client.Containers.GetArchiveFromContainerAsync(containerId, new GetArchiveFromContainerParameters() { Path = pathToFileInContainer }, false);
             return await _tarManagementService.FromTarSingleFileToStringAsync(data.Stream);
+        }
+
+        private async Task RemoveContainersAsync(string containerId, string? volumeName)
+        {
+            await _client.Containers.RemoveContainerAsync(containerId, new ContainerRemoveParameters { Force = true });
+            if (!string.IsNullOrEmpty(volumeName))
+            {
+                await _client.Volumes.RemoveAsync(volumeName);
+            }
         }
 
         public void Dispose()

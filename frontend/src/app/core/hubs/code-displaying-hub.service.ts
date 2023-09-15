@@ -52,6 +52,10 @@ export class CodeDisplayingHubService {
         this.hubConnection.on('BroadcastMessage', (msg: string) => {
             this.messages.next(msg);
         });
+
+        this.hubConnection.onreconnected(() => {
+            this.getConnectionId();
+        });
     }
 
     public getConnectionId = async () => {

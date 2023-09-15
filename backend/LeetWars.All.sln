@@ -18,11 +18,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Builder", "LeetWars.Builder\LeetWars.Builder.csproj", "{75EF42F7-2F18-449F-ADAD-D665992606E6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Emailer", "LeetWars.Emailer\LeetWars.Emailer.csproj", "{C61186C3-19AC-4771-8047-DAA02B91A888}"
-<<<<<<< HEAD
-=======
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.CodeAnalyzer", "LeetWars.CodeAnalyzer\LeetWars.CodeAnalyzer.csproj", "{B70E8C9D-708C-4801-80BB-D86418B05546}"
->>>>>>> dev
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

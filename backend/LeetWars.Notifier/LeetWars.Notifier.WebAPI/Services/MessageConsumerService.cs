@@ -31,17 +31,17 @@ namespace LeetWars.Notifier.WebAPI.Services
 
             var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
+                codeConsumerService.SetAcknowledge(args.DeliveryTag, true);
+
                 var body = args.Body.ToArray();
 
                 var message = Encoding.UTF8.GetString(body);
                 var request = JsonConvert.DeserializeObject<CodeRunResults>(message);
 
-                if(request != null) 
+                if(request is not null) 
                 {
                     await _codeDisplayingHubContext.Clients.Client(request.UserConnectionId).BroadcastMessage(message);
                 }
-
-                codeConsumerService.SetAcknowledge(args.DeliveryTag, true);
             });
 
             codeConsumerService.Listen(handler);

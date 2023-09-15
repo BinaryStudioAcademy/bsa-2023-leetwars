@@ -17,6 +17,7 @@ namespace LeetWars.RabbitMQ.Services
             {
                 channel.BasicQos(0, 1, false);
             }
+
             channel.BasicConsume(settings.QueueName, settings.AutoAcknowledge, consumer);
         }
 
@@ -54,6 +55,5 @@ namespace LeetWars.RabbitMQ.Services
             channel.QueueDeclare(settings.QueueName, true, false, false);
             channel.QueueBind(settings.QueueName, settings.ExchangeName, settings.RoutingKey);
         }
-
     }
 }

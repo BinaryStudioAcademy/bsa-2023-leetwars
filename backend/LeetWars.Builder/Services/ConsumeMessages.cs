@@ -29,6 +29,8 @@ namespace LeetWars.Builder.Services
         {
             var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
+                _consumerService.SetAcknowledge(args.DeliveryTag, true);
+
                 var body = args.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
 
@@ -51,8 +53,6 @@ namespace LeetWars.Builder.Services
                     var codeRunResultJson = JsonConvert.SerializeObject(buildResult, settings);
                     _producerService.Send(codeRunResultJson, ExchangeType.Direct);
                 }
-
-                _consumerService.SetAcknowledge(args.DeliveryTag, true);
             });
 
             _consumerService.Listen(handler);
