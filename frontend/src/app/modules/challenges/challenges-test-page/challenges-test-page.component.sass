@@ -1,6 +1,7 @@
 @import '../styles/challenge-creation-code-editor'
 @import 'color-variables'
 @import 'tab'
+@import 'screen-sizes-variables'
 
 .component-container.maximized
     position: absolute
@@ -50,10 +51,16 @@
 
 .actions
     justify-content: space-between
+    &-tabs
+        @media screen and (max-width: $small-challenge)
+            flex-direction: column
+            width: 100%
 
 .maximize-btn
     padding: 0 5px
     cursor: pointer
+    @media screen and (max-width: $small-challenge)
+        align-self: flex-end
 
 .tab-help
     width: 46px
@@ -66,6 +73,9 @@
     gap: 5px
     margin-left: 20px
     color: $transient-grey
+    @media screen and (max-width: $small-challenge)
+        margin: 0 0 10px 0
+        width: 100%
 
 .tab-help fa-icon
     font-size: 12px

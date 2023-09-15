@@ -5,26 +5,17 @@ using LeetWars.Core.DAL.Enums;
 
 namespace LeetWars.Core.Common.DTO.Challenge
 {
-    public class ChallengePreviewDto : Entity<long>
+    public class ChallengePreviewDto : AuditEntity<long>
     {
         public string AuthorName { get; set; } = string.Empty;
-
         public string LevelName { get; set; } = string.Empty;
-
-        public string Title { get; set; } = string.Empty;
-        
-        public string Instructions { get; set; } = string.Empty;
-        
+        public string Title { get; set; } = string.Empty;        
+        public string Instructions { get; set; } = string.Empty; 
         public ChallengeCategory Category { get; set; }
-
         public ICollection<TagDto>? Tags { get; set; }
-
         public ICollection<LanguageDto>? Languages { get; set; }
-        
         public int Status { get; set; }
-
         public bool IsStarry { get; set; }
-
         public int StarsAmount { get; set; }
     }
 }

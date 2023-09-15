@@ -10,6 +10,10 @@ const routes: Routes = [
         component: ChallengeCreationComponent,
     },
     {
+        path: 'edit/:id',
+        component: ChallengeCreationComponent,
+    },
+    {
         path: ':id',
         component: OnlineEditorPageComponent,
     },
