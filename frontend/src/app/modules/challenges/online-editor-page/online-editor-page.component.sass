@@ -35,7 +35,7 @@
 
 .test-wrp
     margin-top: 10px
-    height: 42%
+    height: 50%
 
 :host ::ng-deep .editor-container
     width: 100%
@@ -44,13 +44,16 @@
     box-shadow: none !important
 
 .header, .problem-info ul
-    height: 36px
+    height: 45px
     display: flex
-    gap: 12px
+    font-size: 15px
+    gap: 30px
     align-items: center
     background-color: $charcoal
     border-radius: 5px 5px 0px 0px
-    border-bottom: 1px solid $extra-light-gray
+    border-bottom: 2px solid $green
+    margin-bottom: 10px
+
 
 .language-selection
     height: 100%
@@ -71,9 +74,9 @@
     color: $transparent-light-grey
     padding-left: 4px !important
     padding-right: 0px !important
-    gap: 8px !important
+    gap: 30px !important
     font-family: Inter
-    font-size: 10px
+    font-size: 15px
     font-weight: 500
 
 :host ::ng-deep .dropdown-item
@@ -89,6 +92,7 @@
 
 :host ::ng-deep .language-selection .dropdown-item
     color: $transparent-light-grey !important
+    font-size: 15px
 
 .vertical-divider
     width: 1px
@@ -124,41 +128,53 @@ button span
     height: 100%
     display: flex
     align-items: center
-    color: $white
+    color: $green
     position: relative
+        
 
-:host ::ng-deep .selectedTab::after
-    content: ""
-    position: absolute
-    left: 0
-    bottom: 0
-    width: 100%
-    height: 2px
-    background-color: $slate-gray
 
 .problem-info ul
     padding-left: 16px
     color: $transparent-light-grey
+    li
+        &:hover
+            color: $green
+    
 
 .challenge-title
     font-size: 16px
     padding-bottom: 16px
 
 .actions
-    margin-top: 15px
     display: flex
     justify-content: flex-end
     gap: 10px
-    padding: 4px
+    margin-bottom: 10px
+    
 
-.actions button
-    padding: 3px 6px
-    border-radius: 5px
+.custom-button
+    font-weight: 600
+    padding: 10px 15px
+    border-radius: 4px
+    transition: all 0.1s ease-in-out
+    user-select: none
     color: $white
-
-button.sumbit
-    background-color: $green
-
-button.run-test
-    background-color: $charcoal-grey
+    &:active
+        transform: scale(98%)
+    &:hover
+        background-color: $transient-grey
+    &.accent
+        color: $white
+        background-color: $green
+        border: 1px solid $green
+        text-shadow: $dark-grey 1px 1px 1px
+        &:hover
+            color: $lavender-ash
+            background-color: $dark-olive-green
+            border: 1px solid $dark-olive-green
+    &:disabled
+        color: $lavender-ash
+        background-color: $dark-olive-green
+        border: 1px solid $dark-olive-green
+        pointer-events: none
 
