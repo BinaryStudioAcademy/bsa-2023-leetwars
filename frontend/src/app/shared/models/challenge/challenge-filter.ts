@@ -7,4 +7,5 @@ export interface IChallengeFilter {
     languageId?: number,
     tagsIds: number[],
     progress?: ChallengeProgress,
+    difficultyLevel?: string,
 }

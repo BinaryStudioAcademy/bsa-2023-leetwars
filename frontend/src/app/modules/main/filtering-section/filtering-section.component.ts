@@ -9,6 +9,7 @@ import {
     SORTING_PROPERTIES,
     STATUS_NAMES_MAP,
 } from '@modules/main/filtering-section/filtering-section.utils';
+import { DifficultyLevel } from '@shared/enums/difficulty-level';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
@@ -34,6 +35,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     public progressesNames: string[] = [];
 
     public tagsNames: string[] = [];
+
+    public difficulties: string[] = [];
 
     public sortingLabels = SORTING_PROPERTIES.map((x) => x.label) as string[];
 
@@ -72,6 +75,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.getChalenges();
         this.getLanguages();
         this.getTags();
+        this.getDifficulties();
 
         this.statusesNames = this.statuses.map((item) => item.name);
         this.progressesNames = this.progresses.map((item) => item.name);
@@ -138,6 +142,14 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.resetChallengesData();
     }
 
+    public onDifficultyChange(value: string | string[]) {
+        if (typeof value === 'string') {
+            return;
+        }
+
+        
+    }
+
     private getChalenges() {
         if (this.isLastPage) {
             return;
@@ -194,6 +206,12 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
                     this.toastrService.showError('Server connection error');
                 },
             });
+    }
+
+    private getDifficulties() {
+        for (const key in DifficultyLevel) {
+            this.difficulties.push(key);
+        }
     }
 
     private resetChallengesData() {
