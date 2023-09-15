@@ -9,5 +9,7 @@ namespace LeetWars.Core.Common.DTO.Filters
         public long? LanguageId { get; set; }
         public ICollection<long>? TagsIds { get; set; }
         public ChallengesProgress? Progress { get; set; }
+
+        public string? DifficultyLevel { get; set; }
     }
 }

@@ -78,6 +78,12 @@ namespace LeetWars.Core.BLL.Services
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
 
+            if(filters.DifficultyLevel is not null)
+            {
+                challenges = challenges.Where(challenge => 
+                challenge.Level != null && challenge.Level.Name.Equals(filters.DifficultyLevel));
+            }
+
             challenges = SortByProperty(challenges, sortingModel);
 
             if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
