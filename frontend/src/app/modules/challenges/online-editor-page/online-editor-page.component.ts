@@ -183,8 +183,9 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     private setupLanguages(challenge: IChallenge) {
         this.challenge = challenge;
-        this.languages = challenge.versions?.map((v) => v.language?.name);
-        this.languageVersions = this.extractLanguageVersions(challenge.versions);
+        this.languages = [...new Set(challenge.versions?.map((v) => v.language?.name))];
+        this.languageVersions = [...new Set(this.extractLanguageVersions(challenge.versions))];
+
         [this.selectedLanguage] = this.languages;
         [this.selectedLanguageVersion] = this.languageVersions;
     }
