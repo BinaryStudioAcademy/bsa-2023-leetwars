@@ -3,24 +3,24 @@
         <img src="assets/images/logo/logo.png" alt="LEETWARS" />
     </div>
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav tabset">
-                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/']">Challenges</a></li>
-                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/leader/board']">LeaderBoard</a></li>
-            </ul>
-        </div>
+        <ul class="nav navbar-nav tabset">
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
+                    [routerLink]="['/']">Challenges</a></li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
+                    [routerLink]="['/leader/board']">LeaderBoard</a></li>
+        </ul>
     </nav>
-    <div class="user-menu align-items-center">
+    <div class="user-menu align-items-center d-flex">
         <div class="notification">
             <fa-layers size="2x">
                 <fa-icon [icon]="['far', 'bell']"></fa-icon>
                 <fa-layers-counter [classes]="['change-color']" content="3"></fa-layers-counter>
             </fa-layers>
         </div>
-        <div class="user">
+        <div class="user" (click)="showMenu = !showMenu">
             <img [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'" alt="User Logo"
                 class="user-logo" />
-            <span class="username" (click)="showMenu = !showMenu">
+            <span class="username">
                 {{ user.firstName && user.lastName ? user.firstName + ' ' + user.lastName : user.userName }}
             </span>
         </div>

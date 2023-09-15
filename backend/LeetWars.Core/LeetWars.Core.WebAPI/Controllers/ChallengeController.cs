@@ -43,13 +43,6 @@ namespace LeetWars.Core.WebAPI.Controllers
             return Ok(challenges);
         }
 
-        [HttpPost("{id}/{selectedLanguage}")]
-        public ActionResult GetCode(CodeRunRequestDto userCode)
-        {
-            _challengeService.ComputeResult(userCode);
-            return Ok();
-        }
-
         [HttpPost("test")]
         public ActionResult TestCode([FromBody] CodeRunRequestDto codeRunRequest)
         {

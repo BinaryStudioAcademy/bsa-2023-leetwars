@@ -2,7 +2,6 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
 import { HttpResponse } from '@microsoft/signalr';
-import { ApiResponse } from '@shared/models/api-response';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
@@ -48,13 +47,6 @@ export class ChallengeService {
 
     public updateStar(star: IStar): Observable<IChallengePreview> {
         return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
-    }
-
-    public postCode(request: ICodeRunRequest): Observable<ApiResponse> {
-        const id: number = request.challengeVersionId;
-        const selectedLanguage: string = request.language;
-
-        return this.httpService.postRequest<ApiResponse>(`${this.challengesRoute}/${id}/${selectedLanguage}`, request);
     }
 
     public runTests(request: ICodeRunRequest): Observable<HttpResponse> {

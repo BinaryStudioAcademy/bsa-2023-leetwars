@@ -3,6 +3,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
+import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
@@ -12,6 +13,7 @@ import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
+import { IUser } from '@shared/models/user/user';
 import { generateFakeCodeRunRequest } from '@shared/utils/code-run-request-example';
 import { takeUntil } from 'rxjs';
 
@@ -47,6 +49,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     solution: ICodeRunRequest;
 
+    user: IUser;
+
     private isFullscreen = false;
 
     constructor(
@@ -56,6 +60,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
         private router: Router,
+        private authService: AuthService,
     ) {
         super();
         breakpointObserver
@@ -137,8 +142,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     sendCode(): void {
+        this.authService.getUser().subscribe((user) => {
+            this.user = user;
+        });
+
         this.solution = {
-            userId: 1,
+            userId: this.user.id,
             userConnectionId: this.signalRService.connectionId,
             challengeVersionId: this.challenge.id,
             language: this.selectedLanguage,
@@ -146,7 +155,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
             tests: this.testCode,
         };
 
-        this.challengeService.postCode(this.solution).subscribe();
+        this.challengeService.runTests(this.solution).subscribe();
     }
 
     subscribeToMessageQueue(): void {

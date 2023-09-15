@@ -1,4 +1,8 @@
 <div class="page-container">
+    <div class="actions">
+        <button class="custom-button cancel-btn" (click)="sendCode()">Run sample tests</button>
+        <button class="custom-button accent">Submit</button>
+    </div>
     <as-split [direction]="splitDirection" [gutterSize]="8">
         <as-split-area [size]="50" [minSize]="splitLeftMinSize">
             <div class="problem-info h-100">
@@ -30,36 +34,18 @@
                 <div class="header">
                     <div class="language-selection">
                         <fa-icon [icon]="'info'" size="sm"></fa-icon>
-                        <app-dropdown-select
-                            [isMultiSelection]="false"
-                            [items]="languages"
+                        <app-dropdown-select [isMultiSelection]="false" [items]="languages"
                             [selectedItem]="selectedLanguage"
                             (selectedItemsChanged)="onSelectedLanguageChanged($event)">
                         </app-dropdown-select>
-                        <app-dropdown-select
-                            [isMultiSelection]="false"
-                            [items]="languageVersions"
+                        <app-dropdown-select [isMultiSelection]="false" [items]="languageVersions"
                             [selectedItem]="selectedLanguageVersion">
                         </app-dropdown-select>
                     </div>
-                    <div class="vertical-divider"></div>
-                    <button>
-                        <span>Auto</span>
-                    </button>
-                    <button (click)="sendCode()">
-                        <span>Run</span>
-                    </button>
-                    <fa-icon (click)="toggleFullScreen()"
-                        class="fullscreen-button"
-                        [icon]="'maximize'"></fa-icon>
+                    <fa-icon (click)="toggleFullScreen()" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
                 </div>
-                    <app-code-editor
-                class="my-code-editor"
-                [(ngModel)]="initialSolution"
-                [initText]="initialSolution!"
-                [language]="selectedLanguage"
-                [options]="editorOptions"
-                (codeChanged)="onCodeChanged($event)"></app-code-editor>
+                <app-code-editor class="my-code-editor" [initText]="initialSolution!" [language]="selectedLanguage" [(ngModel)]="initialSolution" (codeChanged)="onCodeChanged($event)"
+                    [options]="editorOptions"></app-code-editor>
             </div>
 
             <div class="editor test-wrp">
@@ -67,26 +53,13 @@
                     <div class="language-selection">
                         Sample test
                     </div>
-                    <fa-icon (click)="toggleFullScreen()"
-                    class="fullscreen-button"
-                    [icon]="'maximize'"></fa-icon>
-                    </div>
+                    <fa-icon (click)="toggleFullScreen()" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
+                </div>
                 <div class="editor-test" #editorContainer>
-                    <app-code-editor
-                    class="my-code-editor"
-                    [options]="editorOptions"
-                    [language]="selectedLanguage"
-                    [(ngModel)]="testCode"
-                    [initText]="testCode!"
-                    (codeChanged)="onTestChanged($event)"  ></app-code-editor>
+                    <app-code-editor class="my-code-editor" [options]="editorOptions" [language]="selectedLanguage" [(ngModel)]="testCode" (codeChanged)="onTestChanged($event)"
+                        [initText]="testCode!"></app-code-editor>
                 </div>
             </div>
-
-            <div class="actions">
-                <button class="run-test" (click)="sendCode()">Run sample tests</button>
-                <button class="sumbit">Submit</button>
-            </div>
-
         </as-split-area>
     </as-split>
 </div>

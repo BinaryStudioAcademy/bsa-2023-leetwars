@@ -13,8 +13,6 @@ namespace LeetWars.Core.BLL.Interfaces
         void SendCodeRunRequest(CodeRunRequestDto request);
         Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters, PageSettingsDto? page, SortingModel? sortingModel);
         Task<ChallengePreviewDto> GetChallengeSuggestionAsync(SuggestionSettingsDto settings);
-
-        void ComputeResult(CodeRunRequestDto userCode);
         Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto);
         Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto);
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
