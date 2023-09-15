@@ -59,6 +59,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
     }
 
     @ViewChild('editorContainer') editorContainer: ElementRef;
+
     @ViewChild('editorTestContainer') editorTestContainer: ElementRef;
 
     toggleFullScreen(element: HTMLDivElement) {
@@ -123,8 +124,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
     private extractLanguageVersions(versions: IChallengeVersion[]) {
         return versions.flatMap((version) =>
-            version.language.languageVersions.map((languageVersion) => languageVersion.version),
-        );
+            version.language.languageVersions.map((languageVersion) => languageVersion.version));
     }
 
     private setupEditorOptions() {
