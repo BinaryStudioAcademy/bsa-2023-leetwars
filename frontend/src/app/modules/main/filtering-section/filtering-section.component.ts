@@ -16,7 +16,7 @@ import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { ITag } from '@shared/models/tag/tag';
-import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { debounceTime, Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-filtering-section',
@@ -82,9 +82,9 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.searchSubject
             .pipe(debounceTime(SecondsConstants.Delay))
             .subscribe((value) => {
-            this.filter.title = value.trim();
-            this.resetChallengesData();
-        });
+                this.filter.title = value.trim();
+                this.resetChallengesData();
+            });
     }
 
     public onScroll() {
@@ -96,7 +96,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     }
 
     public onSearchTextChange(value: string) {
-       this.searchSubject.next(value);
+        this.searchSubject.next(value);
     }
 
     public onSortChange(value: string | string[]) {
