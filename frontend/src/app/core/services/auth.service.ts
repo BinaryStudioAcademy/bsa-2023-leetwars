@@ -51,7 +51,6 @@ export class AuthService {
             from(this.afAuth.createUserWithEmailAndPassword(user.email, user.password)).pipe(
                 first(),
                 tap(() => this.sendVerificationMail()),
-                catchError((error) => throwError(error.message)),
             ),
             user.userName,
         );
@@ -60,7 +59,6 @@ export class AuthService {
     public login(userDto: IUserLogin) {
         return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
             first(),
-            catchError((error) => throwError(error.message)),
             switchMap(() => this.userService.getCurrentUser()),
             tap((user) => this.setUserInfo(user)),
         );

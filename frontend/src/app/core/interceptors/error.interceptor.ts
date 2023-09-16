@@ -7,11 +7,7 @@ import { catchError } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class ErrorInterceptor implements HttpInterceptor {
-    handleError(error: HttpErrorResponse) {
-        return throwError(() => new Error(error.message ?? 'Something went wrong'));
-    }
-
-    intercept(req: HttpRequest<unknown>, next: HttpHandler) {
-        return next.handle(req).pipe(catchError(this.handleError));
+    public intercept(req: HttpRequest<unknown>, next: HttpHandler) {
+        return next.handle(req).pipe(catchError((response: HttpErrorResponse) => throwError(response.error)));
     }
 }
