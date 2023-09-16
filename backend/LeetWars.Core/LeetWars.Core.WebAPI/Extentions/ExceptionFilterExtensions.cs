@@ -12,6 +12,7 @@ namespace LeetWars.Core.WebAPI.Extentions
             {
                 NotFoundException _ => (HttpStatusCode.NotFound, ErrorCode.NotFound),
                 InvalidUsernameOrPasswordException _ => (HttpStatusCode.Unauthorized, ErrorCode.InvalidUsernameOrPassword),
+                AccessDeniedException _ => (HttpStatusCode.Forbidden, ErrorCode.Forbidden),
                 _ => (HttpStatusCode.InternalServerError, ErrorCode.General),
             };
         }

@@ -5,5 +5,6 @@
         General = 1,
         NotFound,
         InvalidUsernameOrPassword,
+        Forbidden
     }
 }

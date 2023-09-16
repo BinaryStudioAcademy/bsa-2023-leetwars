@@ -13,6 +13,7 @@ using LeetWars.Core.BLL.Extensions;
 using Bogus;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
+using LeetWars.Core.BLL.Exceptions;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -35,7 +36,7 @@ public class UserService : BaseService, IUserService
     {
         if (userDto is null)
         {
-            throw new ArgumentNullException(nameof(userDto));
+            throw new NotFoundException(nameof(User));
         }
 
         var user = await _context.Users.SingleOrDefaultAsync(u => u.Uid == userDto.Uid);
@@ -49,7 +50,7 @@ public class UserService : BaseService, IUserService
 
         if (isExistingEmail)
         {
-            throw new InvalidOperationException($"A user with email {userDto.Email} is already registered.");
+            throw new InvalidUsernameOrPasswordException($"A user with email {userDto.Email} is already registered.");
         }
 
         bool isExistingUserName = await CheckIsExistingUserNameAsync(userDto.UserName);
@@ -113,7 +114,7 @@ public class UserService : BaseService, IUserService
 
         if (user is null)
         {
-            throw new ArgumentNullException("Not Found", new Exception("User was not found"));
+            throw new NotFoundException(nameof(User), id);
         }
 
         return _mapper.Map<User, UserFullDto>(user);
@@ -146,7 +147,7 @@ public class UserService : BaseService, IUserService
     public async Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == userDto.Id)
-            ?? throw new ArgumentNullException(nameof(userDto));
+            ?? throw new NotFoundException(nameof(User), userDto.Id);
 
         user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallengeId);
         user.Reputation = user.TotalScore / REPUTATION_DIVIDER;
@@ -181,7 +182,7 @@ public class UserService : BaseService, IUserService
             .SingleOrDefaultAsync(level => level.ChallengeId == challengeId);
 
         return challengeLevel?.Reward
-            ?? throw new ArgumentNullException(nameof(challengeId));
+            ?? throw new NotFoundException(nameof(Challenge), challengeId);
     }
 
     private async Task<string> GenerateUniqueUsername(string email)

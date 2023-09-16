@@ -128,7 +128,7 @@ namespace LeetWars.Core.BLL.Services
 
                 if (await _context.ChallengeStars.AnyAsync(delegateToCheckChallengeStar))
                 {
-                    throw new ArgumentNullException(nameof(challengeStarDto));
+                    throw new NotFoundException(nameof(ChallengeStar));
                 }
 
                 await _context.ChallengeStars.AddAsync(challengeStar);
@@ -139,7 +139,7 @@ namespace LeetWars.Core.BLL.Services
 
                 if (challengeStar is null)
                 {
-                    throw new ArgumentNullException(nameof(challengeStarDto));
+                    throw new NotFoundException(nameof(ChallengeStar));
                 }
 
                 _context.ChallengeStars.Remove(challengeStar);
@@ -193,7 +193,7 @@ namespace LeetWars.Core.BLL.Services
             var currentUser = _userGetter.GetCurrentUserOrThrow();
             if (currentUser.Id != challengeEditDto.CreatedBy)
             {
-                throw new InvalidOperationException("The user cannot modify this challenge");
+                throw new AccessDeniedException();
             }
 
             var challenge = await GetChallengeByIdAsync(challengeEditDto.Id);
@@ -255,7 +255,7 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(star => star.Author)
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
 
-            return challenge ?? throw new NotFoundException(nameof(Challenge));
+            return challenge ?? throw new NotFoundException(nameof(Challenge), challengeId);
         }
 
         private async Task<ChallengeStar?> GetChallengeStarAsync(Expression<Func<ChallengeStar, bool>> condition)
@@ -330,7 +330,7 @@ namespace LeetWars.Core.BLL.Services
                 { Property: SortingProperty.CreatedAt, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.CreatedAt),
                 { Property: SortingProperty.CreatedAt, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.CreatedAt),
 
-                _ => throw new ArgumentException("Unsuporting sorting type")
+                _ => throw new NotFoundException(nameof(SortingProperty))
             };
         }
 
