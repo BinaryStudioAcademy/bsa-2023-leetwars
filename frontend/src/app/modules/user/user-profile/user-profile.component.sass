@@ -1,4 +1,5 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
 
 .main-wrapper
     margin-top: 30px
@@ -15,10 +16,11 @@
     padding-top: 15px
     height: 100%
 
-.solved
-    min-width: 400px
-
 .badges
     background-color: $deep-dark-grey
     padding: 0
     border-radius: 8px
+
+@media screen and (max-width: $small-large)
+    .solved-and-badges
+        flex-direction: column

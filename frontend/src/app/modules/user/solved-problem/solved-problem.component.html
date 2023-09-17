@@ -1,9 +1,11 @@
-<div class="container">
+<div class="wrapper-container">
     <div class="main-container">
         <p>Solved Problems</p>
         <div class="statistics">
             <div class="circle">
-                <app-pie-chart [currentNumber]="totalTasksCompleted" [totalNumber]="totalTasks"
+                <app-pie-chart
+                    [currentNumber]="totalTasksCompleted"
+                    [totalNumber]="totalTasks"
                     [activeColor]="pieChartActiveColor">
                 </app-pie-chart>
             </div>

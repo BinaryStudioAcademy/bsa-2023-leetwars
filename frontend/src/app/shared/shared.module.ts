@@ -7,7 +7,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
@@ -23,7 +22,6 @@ import { GeneralModalComponent } from './components/general-modal/general-modal.
 import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 @NgModule({
@@ -37,7 +35,6 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         NgbModule,
         MonacoEditorModule,
         InfiniteScrollModule,
-        NgxChartsModule,
         ProgressbarModule,
         MarkdownModule.forRoot(),
         AngularMarkdownEditorModule.forRoot({ iconlibrary: 'fa' }),
@@ -50,7 +47,6 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         DropdownSelectComponent,
         CustomInputComponent,
         CodeEditorComponent,
-        PieChartComponent,
         ProgressBarComponent,
         HeaderComponent,
     ],
@@ -68,7 +64,6 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         GeneralModalComponent,
         DropdownSelectComponent,
         CustomInputComponent,
-        PieChartComponent,
         ProgressBarComponent,
         HeaderComponent,
         NgbModule,
