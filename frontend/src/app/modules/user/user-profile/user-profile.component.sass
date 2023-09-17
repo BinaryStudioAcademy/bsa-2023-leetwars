@@ -14,7 +14,7 @@
 
 .custom-chart
     padding-top: 15px
-    height: 100%
+    height: 180px
 
 .badges
     background-color: $deep-dark-grey
@@ -25,6 +25,12 @@
     .solved-and-badges
         flex-direction: column
 
+@media screen and (max-width: $small-medium)
+    .solved, .badges, .submission-chart
+        max-width: 256px
+
 @media screen and (max-width: $small)
     .content-wrapper
         flex-direction: column
+    .solved, .badges, .submission-chart
+        max-width: 90vw
