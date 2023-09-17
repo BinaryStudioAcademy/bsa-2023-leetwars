@@ -55,14 +55,11 @@ public class UserService : BaseService, IUserService
 
         bool isExistingUserName = await CheckIsExistingUserNameAsync(userDto.UserName);
 
-        if (isExistingUserName && userDto.IsWithProvider)
+        if (isExistingUserName)
         {
-            userDto.UserName = await GenerateUniqueUsername(userDto.Email);
-        }
-
-        if(isExistingUserName && !userDto.IsWithProvider)
-        {
-            throw new InvalidUsernameOrPasswordException($"Error: This username is already registered in the system.");
+            userDto.UserName = userDto.IsWithProvider
+                ? await GenerateUniqueUsername(userDto.Email)
+                : throw new InvalidUsernameOrPasswordException($"Error: This username is already registered in the system.");
         }
 
         var newUser = _mapper.Map<NewUserDto, User>(userDto);

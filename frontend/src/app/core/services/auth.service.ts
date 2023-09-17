@@ -52,7 +52,7 @@ export class AuthService {
                 first(),
                 tap(() => this.sendVerificationMail()),
             ),
-            false,
+            undefined,
             user.userName,
         );
     }
@@ -146,7 +146,7 @@ export class AuthService {
 
     private createUser(
         auth: Observable<firebase.auth.UserCredential>,
-        provider: boolean = false,
+        provider: boolean | undefined = false,
         userName: string | undefined = undefined,
     ) {
         return auth.pipe(
@@ -157,7 +157,7 @@ export class AuthService {
                     email: resp.user?.email ?? '',
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
-                    isWithProvider: provider,
+                    isWithProvider: provider ?? false,
                 })),
             tap((user) => this.setUserInfo(user)),
         );
