@@ -10,7 +10,11 @@ import {
     userNameMaxLength,
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
-import { emailPattern, latinOrCyrillicCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import {
+    emailPattern,
+    latinOrCyrillicCharactersPattern,
+    passwordPattern,
+} from '@shared/utils/validation/regex-patterns';
 import { usernameExistsValidator } from '@shared/utils/validation/username-exists.validator';
 import { getErrorMessage, getFirebaseErrorMessage } from '@shared/utils/validation/validation-helper';
 import { FirebaseError } from 'firebase/app';
@@ -74,11 +78,8 @@ export class SignUpComponent {
                     this.authHelper.handleAuthSuccess(this.registrationForm.value.username!, false);
                 },
                 (error: Error | string) => {
-                    if (error instanceof FirebaseError) {
-                        this.validationError = getFirebaseErrorMessage(error.code);
-                    } else {
-                        this.validationError = error as string;
-                    }
+                    this.validationError =
+                        error instanceof FirebaseError ? getFirebaseErrorMessage(error.code) : (error as string);
                 },
             );
     }
