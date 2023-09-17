@@ -8,6 +8,6 @@ import { catchError } from 'rxjs/operators';
 })
 export class ErrorInterceptor implements HttpInterceptor {
     public intercept(req: HttpRequest<unknown>, next: HttpHandler) {
-        return next.handle(req).pipe(catchError((response: HttpErrorResponse) => throwError(response.error)));
+        return next.handle(req).pipe(catchError((response: HttpErrorResponse) => throwError(response.error.error)));
     }
 }

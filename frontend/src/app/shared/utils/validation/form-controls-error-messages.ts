@@ -42,5 +42,5 @@ export const challengeTagsValidationErrorMessages: ControlErrorMessages = {
 };
 
 export const firebaseValidationErrorMessages = {
-    emailAlreadyInUse: 'This email address is already registered in the system.',
+    emailAlreadyInUse: 'Error: This email address is already registered in the system.',
 };

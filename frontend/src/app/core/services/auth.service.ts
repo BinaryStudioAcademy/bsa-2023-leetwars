@@ -52,6 +52,7 @@ export class AuthService {
                 first(),
                 tap(() => this.sendVerificationMail()),
             ),
+            false,
             user.userName,
         );
     }
@@ -77,11 +78,11 @@ export class AuthService {
     }
 
     public signInWithGoogle(isLogin: boolean = true) {
-        return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider())), isLogin);
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider()), true), isLogin);
     }
 
     public signInWithGitHub(isLogin: boolean = true) {
-        return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider())), isLogin);
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider()), true), isLogin);
     }
 
     // TODO: Implemented only firebase part
@@ -143,7 +144,11 @@ export class AuthService {
         });
     }
 
-    private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string | undefined = undefined) {
+    private createUser(
+        auth: Observable<firebase.auth.UserCredential>,
+        provider: boolean = false,
+        userName: string | undefined = undefined,
+    ) {
         return auth.pipe(
             switchMap((resp) =>
                 this.userService.createUser({
@@ -152,6 +157,7 @@ export class AuthService {
                     email: resp.user?.email ?? '',
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
+                    isWithProvider: provider,
                 })),
             tap((user) => this.setUserInfo(user)),
         );

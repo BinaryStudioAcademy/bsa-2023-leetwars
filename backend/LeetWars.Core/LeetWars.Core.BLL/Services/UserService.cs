@@ -50,14 +50,19 @@ public class UserService : BaseService, IUserService
 
         if (isExistingEmail)
         {
-            throw new InvalidUsernameOrPasswordException($"A user with email {userDto.Email} is already registered.");
+            throw new InvalidUsernameOrPasswordException($"Error: A user with email {userDto.Email} is already registered.");
         }
 
         bool isExistingUserName = await CheckIsExistingUserNameAsync(userDto.UserName);
 
-        if (isExistingUserName)
+        if (isExistingUserName && userDto.IsWithProvider)
         {
             userDto.UserName = await GenerateUniqueUsername(userDto.Email);
+        }
+
+        if(isExistingUserName && !userDto.IsWithProvider)
+        {
+            throw new InvalidUsernameOrPasswordException($"Error: This username is already registered in the system.");
         }
 
         var newUser = _mapper.Map<NewUserDto, User>(userDto);
@@ -79,8 +84,13 @@ public class UserService : BaseService, IUserService
         return isExistingEmail;
     }
 
-    public async Task<bool> CheckIsExistingUserNameAsync(string userName)
+    public async Task<bool> CheckIsExistingUserNameAsync(string? userName)
     {
+        if (string.IsNullOrEmpty((userName)))
+        {
+            return false;
+        }
+
         bool isExistingUserName = await _context.Users.AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
         return isExistingUserName;
     }

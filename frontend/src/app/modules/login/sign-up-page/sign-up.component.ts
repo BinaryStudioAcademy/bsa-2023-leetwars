@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@core/services/auth.service';
+import { UserService } from '@core/services/user.service';
 import { AuthHelper } from '@shared/utils/auth.helper';
 import {
     emailMaxLength,
@@ -9,11 +10,8 @@ import {
     userNameMaxLength,
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
-import {
-    emailPattern,
-    latinOrCyrillicCharactersPattern,
-    passwordPattern,
-} from '@shared/utils/validation/regex-patterns';
+import { emailPattern, latinOrCyrillicCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
+import { usernameExistsValidator } from '@shared/utils/validation/username-exists.validator';
 import { getErrorMessage, getFirebaseErrorMessage } from '@shared/utils/validation/validation-helper';
 import { FirebaseError } from 'firebase/app';
 
@@ -31,12 +29,16 @@ export class SignUpComponent {
             Validators.maxLength(emailMaxLength),
             Validators.pattern(emailPattern),
         ]),
-        username: new FormControl('', [
-            Validators.required,
-            Validators.minLength(userNameMinLength),
-            Validators.maxLength(userNameMaxLength),
-            Validators.pattern(latinOrCyrillicCharactersPattern),
-        ]),
+        username: new FormControl(
+            '',
+            [
+                Validators.required,
+                Validators.minLength(userNameMinLength),
+                Validators.maxLength(userNameMaxLength),
+                Validators.pattern(latinOrCyrillicCharactersPattern),
+            ],
+            [usernameExistsValidator(this.userService)],
+        ),
         password: new FormControl('', [
             Validators.required,
             Validators.minLength(passwordMinLength),
@@ -49,7 +51,7 @@ export class SignUpComponent {
         return getErrorMessage(formControlName, this.registrationForm);
     }
 
-    constructor(private authService: AuthService, private authHelper: AuthHelper) {}
+    constructor(private authService: AuthService, private userService: UserService, private authHelper: AuthHelper) {}
 
     public signUpGitHub() {
         this.authService.signInWithGitHub(false);
@@ -68,11 +70,14 @@ export class SignUpComponent {
             })
             .subscribe(
                 () => {
+                    this.validationError = null;
                     this.authHelper.handleAuthSuccess(this.registrationForm.value.username!, false);
                 },
-                (error: Error) => {
+                (error: Error | string) => {
                     if (error instanceof FirebaseError) {
                         this.validationError = getFirebaseErrorMessage(error.code);
+                    } else {
+                        this.validationError = error as string;
                     }
                 },
             );
