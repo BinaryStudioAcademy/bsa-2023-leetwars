@@ -1,9 +1,10 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
 
 .badges-container
     background-color: $deep-dark-grey
     height: 186px
-    min-width: 410px
+    width: 410px
     padding: 16px
     border-radius: 8px
     color: $white
@@ -52,3 +53,7 @@ img
     width: 65%
     margin: auto
 
+@media screen and (max-width: $small-medium)
+    .badges-container
+        width: 240px
+        height: auto
