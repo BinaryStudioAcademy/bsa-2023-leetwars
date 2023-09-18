@@ -16,8 +16,6 @@ import { UserService } from './user.service';
     providedIn: 'root',
 })
 export class AuthService {
-    private providerName: string = 'firebase';
-
     public userSubject: BehaviorSubject<IUser | undefined>;
 
     private user: IUser | undefined;
@@ -25,6 +23,10 @@ export class AuthService {
     private userKeyName = 'userInfo';
 
     private tokenKeyName = 'userToken';
+
+    private providerName = 'firebase';
+
+    private popUpErrorMessage = 'auth/cancelled-popup-request';
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -158,7 +160,8 @@ export class AuthService {
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
                     isWithProvider: provider ?? false,
-                })),
+                }),
+            ),
             tap((user) => this.setUserInfo(user)),
         );
     }
@@ -182,7 +185,10 @@ export class AuthService {
                     message = error.message;
                 }
 
-                if (!message.toLowerCase().includes(this.providerName)) {
+                if (
+                    message.toLowerCase().includes(this.providerName) &&
+                    !message.toLowerCase().includes(this.popUpErrorMessage)
+                ) {
                     this.toastrNotification.showError(message);
                 }
 
