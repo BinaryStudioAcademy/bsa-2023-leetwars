@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
+import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { IPageSettings } from '@shared/models/page-settings';
@@ -14,6 +15,8 @@ import { takeUntil } from 'rxjs';
 export class LeaderBoardComponent extends BaseComponent implements OnInit {
     public users: IUser[] = [];
 
+    public currentUser: IUser;
+
     public isLastPage = false;
 
     public loading = false;
@@ -23,11 +26,19 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         pageSize: 30,
     };
 
-    constructor(private userService: UserService, private toastrNotification: ToastrNotificationsService) {
+    constructor(
+        private userService: UserService,
+        private authService: AuthService,
+        private toastrNotification: ToastrNotificationsService,
+    ) {
         super();
+
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.currentUser = user;
+        });
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.getUsers();
     }
 
