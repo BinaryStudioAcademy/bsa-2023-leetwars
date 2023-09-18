@@ -72,15 +72,14 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     @ViewChild('editorContainer') editorContainer: ElementRef;
 
-    toggleFullScreen() {
-        const element = this.editorContainer.nativeElement;
+    @ViewChild('editorTestContainer') editorTestContainer: ElementRef;
 
-        if (!this.isFullscreen) {
+    toggleFullScreen(element: HTMLDivElement) {
+        this.isFullscreen = !this.isFullscreen;
+        if (this.isFullscreen) {
             element.requestFullscreen();
-            this.isFullscreen = true;
         } else {
             document.exitFullscreen();
-            this.isFullscreen = false;
         }
     }
 
