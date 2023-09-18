@@ -205,6 +205,12 @@ namespace LeetWars.Core.BLL.Services
             await _context.SaveChangesAsync();
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
+        public async Task DeleteChallengeAsync(long challengeId)
+        {
+            var challenge = await GetChallengeByIdAsync(challengeId);
+            _context.Challenges.Remove(challenge);
+            await _context.SaveChangesAsync();
+        }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)
         {
