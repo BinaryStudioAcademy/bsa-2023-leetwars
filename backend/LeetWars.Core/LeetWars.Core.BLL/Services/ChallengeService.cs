@@ -78,6 +78,12 @@ namespace LeetWars.Core.BLL.Services
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
 
+            if(filters.DifficultyLevel is not null)
+            {
+                challenges = challenges.Where(challenge => 
+                challenge.Level != null && challenge.Level.Name.Equals(filters.DifficultyLevel));
+            }
+
             challenges = SortByProperty(challenges, sortingModel);
 
             if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
@@ -321,8 +327,8 @@ namespace LeetWars.Core.BLL.Services
         {
             return sortingModel switch
             {
-                { Property: SortingProperty.Title, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Title),
-                { Property: SortingProperty.Title, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.Title),
+                { Property: SortingProperty.Title, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Title.TrimStart()),
+                { Property: SortingProperty.Title, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.Title.TrimStart()),
                 { Property: SortingProperty.Level, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Level),
                 { Property: SortingProperty.Level, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.Level),
                 { Property: SortingProperty.Stars, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Stars.Count),
