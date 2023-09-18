@@ -4,6 +4,7 @@ using AutoMapper;
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
 using LeetWars.Core.Common.DTO.Filters;
@@ -210,6 +211,11 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
+        }
+
+        public async Task<List<ChallengeLevelDto>> GetChallengesLevelsAsync()
+        {
+            return _mapper.Map<List<ChallengeLevelDto>>(await _context.ChallengeLevels.ToListAsync());
         }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)

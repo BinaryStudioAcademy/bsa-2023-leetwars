@@ -8,6 +8,7 @@ import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { IStar } from '@shared/models/challenge-star/star';
 import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
@@ -37,6 +38,10 @@ export class ChallengeService {
         httpParams = setParams<ISuggestionSettings>(httpParams, settings);
 
         return this.httpService.getRequest<IChallengePreview>(`${this.challengesRoute}/suggestion`, httpParams);
+    }
+
+    public getChallengeLevels(): Observable<IChallengeLevel[]> {
+        return this.httpService.getRequest<IChallengeLevel[]>(`${this.challengesRoute}/levels`);
     }
 
     public getChallengeById(id: number): Observable<IChallenge> {

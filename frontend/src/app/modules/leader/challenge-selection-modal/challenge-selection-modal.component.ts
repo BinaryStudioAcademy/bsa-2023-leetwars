@@ -1,13 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-    findItemIdByName,
-    findSuggestionTypeByName,
-    ICONS,
-    SUGGESTION_TYPE_NAMES,
-} from '@modules/main/suggested-challenge/suggested-challenge.utils';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { SuggestionType } from '@shared/enums/suggestion-type';
-import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
+import { IFightChallengeSettings } from '@shared/models/challenge/fight-challenge';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { ILanguage } from '@shared/models/language/language';
 
 @Component({
@@ -18,24 +12,22 @@ import { ILanguage } from '@shared/models/language/language';
 export class ChallengeSelectionModalComponent implements OnInit {
     @Input() languages: ILanguage[];
 
+    @Input() levels: IChallengeLevel[];
+
     public languagesNames: string[];
 
-    public suggestionTypesNames: string[];
+    public levelsNames: string[];
 
-    public suggestionIcons = ICONS;
-
-    private suggestionTypes = SUGGESTION_TYPE_NAMES;
-
-    private suggestionSettings: ISuggestionSettings = {
+    private fightChallengeSettings: IFightChallengeSettings = {
         languageId: 0,
-        suggestionType: SuggestionType.Fundamentals,
+        levelId: 0,
     };
 
     constructor(public activeModal: NgbActiveModal) {}
 
     public ngOnInit(): void {
         this.languagesNames = this.languages.map((item) => item.name);
-        this.suggestionTypesNames = this.suggestionTypes.map((item) => item.name);
+        this.levelsNames = this.levels.map((item) => item.name);
     }
 
     public confirmCodeFightRequest() {
@@ -48,13 +40,15 @@ export class ChallengeSelectionModalComponent implements OnInit {
         if (typeof value !== 'string') {
             return;
         }
-        this.suggestionSettings.languageId = findItemIdByName(this.languages, value);
+
+        this.fightChallengeSettings.languageId = this.languages.find((language) => language.name === value)?.id ?? 0;
     }
 
-    public onSuggestionTypeChanged(value: string | string[]) {
+    public onLevelChanged(value: string | string[]) {
         if (typeof value !== 'string') {
             return;
         }
-        this.suggestionSettings.suggestionType = findSuggestionTypeByName(value);
+
+        this.fightChallengeSettings.levelId = this.levels.find((level) => level.name === value)?.id ?? 0;
     }
 }

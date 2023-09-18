@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
+import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
@@ -28,6 +30,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
     private languages: ILanguage[];
 
+    private levels: IChallengeLevel[];
+
     private page: IPageSettings = {
         pageNumber: 0,
         pageSize: 30,
@@ -37,6 +41,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         private userService: UserService,
         private authService: AuthService,
         private languageService: LanguageService,
+        private challengeService: ChallengeService,
         private toastrNotification: ToastrNotificationsService,
         private modalService: NgbModal,
     ) {
@@ -50,6 +55,10 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
         this.languageService.getLanguages().subscribe((languages: ILanguage[]) => {
             this.languages = languages;
+        });
+
+        this.challengeService.getChallengeLevels().subscribe((levels: IChallengeLevel[]) => {
+            this.levels = levels;
         });
 
         this.getUsers();
@@ -101,5 +110,6 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         const challengeSettingsSelect = this.modalService.open(ChallengeSelectionModalComponent);
 
         challengeSettingsSelect.componentInstance.languages = this.languages;
+        challengeSettingsSelect.componentInstance.levels = this.levels;
     }
 }
