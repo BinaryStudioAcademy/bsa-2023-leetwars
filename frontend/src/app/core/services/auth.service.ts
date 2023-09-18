@@ -160,8 +160,7 @@ export class AuthService {
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
                     isWithProvider: provider ?? false,
-                }),
-            ),
+                })),
             tap((user) => this.setUserInfo(user)),
         );
     }
