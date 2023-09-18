@@ -14,7 +14,6 @@ import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
-import { generateFakeCodeRunRequest } from '@shared/utils/code-run-request-example';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -104,18 +103,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         }
     }
 
-    public runTests() {
-        const { connectionId } = this.signalRService;
-
-        if (connectionId) {
-            this.toastrService.showInfo('Test run request sent');
-
-            this.challengeService.runTests(generateFakeCodeRunRequest(connectionId)).subscribe();
-        } else {
-            this.toastrService.showError('Server Connection Error!');
-        }
-    }
-
     onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
 
@@ -156,7 +143,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
             userCode: this.initialSolution as string,
             tests: this.testCode,
         };
-
+        //
         this.challengeService.runTests(this.solution).subscribe();
     }
 

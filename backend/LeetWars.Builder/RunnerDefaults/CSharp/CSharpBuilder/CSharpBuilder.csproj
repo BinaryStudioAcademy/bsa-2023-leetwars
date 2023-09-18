@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   
+  <ItemGroup>
+    <Compile Include="/LocalVolume/Solution.cs" />
+    <Compile Include="/LocalVolume/Preloaded.cs" />
+  </ItemGroup>
+
 </Project>

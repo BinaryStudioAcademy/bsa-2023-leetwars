@@ -5,7 +5,7 @@ export function generateFakeCodeRunRequest(connectionId: string) {
         userConnectionId: connectionId,
         userId: 1234,
         challengeVersionId: 1234,
-        language: 'C#',
+        language: 'csharp',
         userCode: 'public class Solution\r\n{\r\n    public bool IsNumPrime(int num)\r\n    ' +
                 '{\r\n        throw new Exception("Exception!!!");\r\n    }\r\n}\r\n',
         preloaded: undefined,

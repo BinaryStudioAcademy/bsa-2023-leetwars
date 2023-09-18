@@ -1,4 +1,4 @@
-﻿namespace LeetWars.Builder.RunnerDefaults.CSharp
+﻿namespace LeetWars.Builder.RunnerDefaults.HelperModels
 {
     public static class DefaultCSharpFileNaming
     {

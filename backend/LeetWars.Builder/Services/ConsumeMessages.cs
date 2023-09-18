@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using LeetWars.Builder.RunnerDefaults.HelperModels;
 
 namespace LeetWars.Builder.Services
 {
@@ -36,7 +37,7 @@ namespace LeetWars.Builder.Services
 
                 var request = JsonConvert.DeserializeObject<CodeRunRequest>(message);
 
-                if (request != null && Models.HelperModels.Languages.AvailableLanguages.Contains(request.Language))
+                if (request != null && Languages.AvailableLanguages.Contains(request.Language))
                 {
                     var result = await _codeRunManagerService.Run(request);
 

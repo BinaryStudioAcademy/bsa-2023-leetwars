@@ -1,5 +1,5 @@
 ﻿using LeetWars.Builder.Models;
-using LeetWars.Builder.Models.HelperModels;
+using LeetWars.Builder.RunnerDefaults.HelperModels;
 
 namespace LeetWars.Builder.Helpers.BuildResultReader;
 

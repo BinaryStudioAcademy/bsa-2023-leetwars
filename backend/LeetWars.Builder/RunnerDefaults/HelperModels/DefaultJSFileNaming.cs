@@ -1,4 +1,4 @@
-﻿namespace LeetWars.Builder.RunnerDefaults.JS
+﻿namespace LeetWars.Builder.RunnerDefaults.HelperModels
 {
     public static class DefaultJSFileNaming
     {

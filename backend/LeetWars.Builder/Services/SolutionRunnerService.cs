@@ -3,10 +3,7 @@ using Docker.DotNet.Models;
 using LeetWars.Builder.DTO;
 using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
-using LeetWars.Builder.Models.HelperModels;
-using LeetWars.Builder.RunnerDefaults;
-using LeetWars.Builder.RunnerDefaults.CSharp;
-using LeetWars.Builder.RunnerDefaults.JS;
+using LeetWars.Builder.RunnerDefaults.HelperModels;
 
 namespace LeetWars.Builder.Services
 {
@@ -69,6 +66,7 @@ namespace LeetWars.Builder.Services
             await StringToFileInContainerAsync(data.Code, DefaultCSharpFileNaming.SolutionFileName, container.ID, $"/{_localVolumeName}/");
             await StringToFileInContainerAsync(data.Tests, DefaultCSharpFileNaming.SolutionTestFileName, container.ID, $"/{_localVolumeName}/");
             await StringToFileInContainerAsync(data.Preloaded, DefaultCSharpFileNaming.SolutionPreloadedFileName, container.ID, $"/{_localVolumeName}/");
+            await StringToFileInContainerAsync(TestShellScripts.CSharpTestScript, TestShellScriptNaming.CSharpTestScriptName, container.ID, $"/{_localVolumeName}/");
             var stringResult = await RunContainerAndGetResultFile(container.ID, volumeName, $"/{_localVolumeName}/{DefaultCSharpFileNaming.TestResultsFileName}");
             return _parserService.ParseCSharpTestResult(stringResult);
         }
@@ -79,6 +77,7 @@ namespace LeetWars.Builder.Services
             var container = await CreateContainerWithVolumeAsync(data.ProcessName, volumeName, DefaultRunnerImageNames.JSTestImage, _localVolumeName);
             var jsCodeWithTests = data.Preloaded + Environment.NewLine + data.Code + Environment.NewLine + data.Tests;
             await StringToFileInContainerAsync(jsCodeWithTests, DefaultJSFileNaming.SolutionCodeFileName, container.ID, $"/{_localVolumeName}/");
+            await StringToFileInContainerAsync(TestShellScripts.JSTestScript, TestShellScriptNaming.JSTestScriptName, container.ID, $"/{_localVolumeName}/");
             var stringResult = await RunContainerAndGetResultFile(container.ID, volumeName, $"/{_localVolumeName}/{DefaultJSFileNaming.TestResultsFileName}");
             return _parserService.ParseJSTestResult(stringResult);
         }
