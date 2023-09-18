@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h4 class="modal-title">Select challenge</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <p class="modal-body-text">Choose programming language and type of the challenge</p>
+    <div class="d-flex flex-column gap-3">
+        <app-dropdown-select
+            [items]="languagesNames"
+            [selectedItem]="languagesNames[0]"
+            (selectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
+        <app-dropdown-select
+            [items]="suggestionTypesNames"
+            [selectedItem]="suggestionTypesNames[0]"
+            [itemsIcons]="suggestionIcons"
+            (selectedItemsChanged)="onSuggestionTypeChanged($event)"></app-dropdown-select>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn m-2" (click)="confirmCodeFightRequest()">Confirm</button>
+        </div>
+    </div>
+</div>

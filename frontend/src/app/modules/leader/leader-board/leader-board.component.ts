@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
+import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
+
+import { ChallengeSelectionModalComponent } from '../challenge-selection-modal/challenge-selection-modal.component';
 
 @Component({
     selector: 'app-leader-board',
@@ -21,6 +26,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
     public loading = false;
 
+    private languages: ILanguage[];
+
     private page: IPageSettings = {
         pageNumber: 0,
         pageSize: 30,
@@ -29,17 +36,29 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     constructor(
         private userService: UserService,
         private authService: AuthService,
+        private languageService: LanguageService,
         private toastrNotification: ToastrNotificationsService,
+        private modalService: NgbModal,
     ) {
         super();
-
-        this.authService.getUser().subscribe((user: IUser) => {
-            this.currentUser = user;
-        });
     }
 
     public ngOnInit(): void {
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.currentUser = user;
+        });
+
+        this.languageService.getLanguages().subscribe((languages: ILanguage[]) => {
+            this.languages = languages;
+        });
+
         this.getUsers();
+    }
+
+    public startCodeFight() {
+        // TODO: Send notification
+
+        this.openModal();
     }
 
     public onScroll() {
@@ -76,5 +95,11 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
                     this.toastrNotification.showError('Server connection error');
                 },
             });
+    }
+
+    private openModal() {
+        const challengeSettingsSelect = this.modalService.open(ChallengeSelectionModalComponent);
+
+        challengeSettingsSelect.componentInstance.languages = this.languages;
     }
 }
