@@ -6,6 +6,10 @@
 
         public const string CSharpTestImage = "csharptestrunner";
 
+        public const string CSharpBuildImage = "csharpcodebuilder";
+
         public const string JSTestImage = "jstestrunner";
+
+        public const string JSBuildImage = "jscodebuilder";
     }
 }

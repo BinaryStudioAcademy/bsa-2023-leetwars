@@ -3,8 +3,15 @@ services:
   csharptestrunner:
     build: ./backend/LeetWars.Builder/RunnerDefaults/CSharp/CSharpTestRunner
     image: csharptestrunner
+
+  csharpcodebuilder:
+    build: ./backend/LeetWars.Builder/RunnerDefaults/CSharp/CSharpBuilder
+    image: csharpcodebuilder
     
   jstestrunner:
     build: ./backend/LeetWars.Builder/RunnerDefaults/JS/JSTestRunner
     image: jstestrunner
 
+  jscodebuilder:
+    build: ./backend/LeetWars.Builder/RunnerDefaults/JS/JSBuilder
+    image: jscodebuilder

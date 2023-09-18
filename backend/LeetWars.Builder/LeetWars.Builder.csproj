@@ -29,4 +29,9 @@
     <ProjectReference Include="..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RunnerDefaults\CSharp\CSharpBuilder\" />
+    <Folder Include="RunnerDefaults\JS\JSBuilder\" />
+  </ItemGroup>
+
 </Project>

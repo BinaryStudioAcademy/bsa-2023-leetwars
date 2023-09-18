@@ -38,20 +38,14 @@ namespace LeetWars.Builder.Services
 
                 if (request != null && Models.HelperModels.Languages.AvailableLanguages.Contains(request.Language))
                 {
-                    var buildResult = await _codeRunManagerService.Run(request);
-
-                    if (buildResult.BuildResults != null && buildResult.BuildResults.IsSuccess)
-                    {
-                        await _codeRunManagerService.RunCodeAndTestsAsync(request, buildResult);
-                    }
+                    var result = await _codeRunManagerService.Run(request);
 
                     var settings = new JsonSerializerSettings
                     {
                         ContractResolver = new CamelCasePropertyNamesContractResolver()
                     };
 
-                    Console.WriteLine($"builder usercode: {request.UserConnectionId}");
-                    var codeRunResultJson = JsonConvert.SerializeObject(buildResult, settings);
+                    var codeRunResultJson = JsonConvert.SerializeObject(result, settings);
                     _producerService.Send(codeRunResultJson, ExchangeType.Direct);
 
                 }

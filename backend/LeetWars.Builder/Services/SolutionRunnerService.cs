@@ -1,10 +1,6 @@
-﻿using System.ComponentModel;
-using Docker.DotNet;
+﻿using Docker.DotNet;
 using Docker.DotNet.Models;
 using LeetWars.Builder.DTO;
-using LeetWars.Builder.Helpers.BuildResultReader;
-using LeetWars.Builder.Helpers.DockerConfigurations;
-using LeetWars.Builder.Helpers.RunnerFileWriterReader;
 using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
 using LeetWars.Builder.Models.HelperModels;
@@ -20,61 +16,43 @@ namespace LeetWars.Builder.Services
         private readonly IXmlTestResultParserService _parserService;
         private readonly ITarManagementService _tarManagementService;
         private readonly string _localVolumeName = "LocalVolume";
+
         public SolutionRunnerService(IXmlTestResultParserService parserService, ITarManagementService tarManagementService)
         {
             _parserService = parserService;
             _tarManagementService = tarManagementService;
         }
 
-        public async Task<CodeRunResults> Run(CodeRunRequest request)
+        public async Task<string> RunSolutionBuild(ContainerDataDto data)
         {
-            var buildResultReader = new BuildResultReader();
-            var dockerConfig = new DockerConfigurations(_tarManagementService);
-            RunnerFileWriterReaderClass readWrite = new RunnerFileWriterReaderClass();
-
-            var configurationResults = await dockerConfig.GetConfigurations(
-                request.Language,
-                request,
-                _client,
-                dockerConfig
-                );
-
-            string? solutionFileName = configurationResults.Item1;
-
-            string volumeName = configurationResults.Item2;
-
-            Config config = configurationResults.Item3;
-
-            var hostConfig = dockerConfig.GetHostConfig(volumeName);
-
-            var response = await _client.Containers.CreateContainerAsync(new CreateContainerParameters(config)
+            return data.Language switch 
             {
-                HostConfig = hostConfig,
-            });
-
-            var containerId = response.ID;
-
-            string solutionCode = request.UserCode;
-
-            await dockerConfig.WriteBuildData(request, containerId, solutionCode, volumeName, _client, solutionFileName);
-
-            await _client.Containers.StartContainerAsync(containerId, new ContainerStartParameters());
-            await _client.Containers.WaitContainerAsync(containerId);
-
-            string buildLog = await RunContainerAndGetResultFile(containerId, volumeName, $"/{volumeName}/buildoutput.txt");
-
-            var result = new CodeRunResults();
-
-            buildResultReader.BuildResults(buildLog, result, request.Language);
-
-            result.ChallengeVersionId = request.ChallengeVersionId;
-            result.UserConnectionId = request.UserConnectionId;
-            result.Language = request.Language;
-
-            return result;
+                Languages.csharp => await RunCSharpBuildAsync(data),
+                Languages.javascript => await RunJSBuildAsync(data),
+                _ => "",
+            };
         }
 
-        public async Task<TestsOutput?> RunSolutionTestsAsync(TestingContainerDataDto data)
+        public async Task<string> RunCSharpBuildAsync(ContainerDataDto data)
+        {
+            var volumeName = data.ProcessName + "-volume";
+            var container = await CreateContainerWithVolumeAsync(data.ProcessName, volumeName, DefaultRunnerImageNames.CSharpBuildImage, _localVolumeName);
+            await StringToFileInContainerAsync(data.Code, DefaultCSharpFileNaming.SolutionFileName, container.ID, $"/{_localVolumeName}/");
+            await StringToFileInContainerAsync(data.Preloaded, DefaultCSharpFileNaming.SolutionPreloadedFileName, container.ID, $"/{_localVolumeName}/");
+            var buildLog = await RunContainerAndGetResultFile(container.ID, volumeName, $"/{_localVolumeName}/{DefaultCSharpFileNaming.BuildResultsFileName}");
+            return buildLog;
+        }
+
+        public async Task<string> RunJSBuildAsync(ContainerDataDto data)
+        {
+            var volumeName = data.ProcessName + "-volume";
+            var container = await CreateContainerWithVolumeAsync(data.ProcessName, volumeName, DefaultRunnerImageNames.JSBuildImage, _localVolumeName);
+            await StringToFileInContainerAsync(data.Preloaded + Environment.NewLine + data.Code, DefaultJSFileNaming.SolutionCodeFileName, container.ID, $"/{_localVolumeName}/");
+            var buildLog = await RunContainerAndGetResultFile(container.ID, volumeName, $"/{_localVolumeName}/{DefaultCSharpFileNaming.BuildResultsFileName}");
+            return buildLog;
+        }
+
+        public async Task<TestsOutput?> RunSolutionTestsAsync(ContainerDataDto data)
         {
             return data.Language switch
             {
@@ -84,7 +62,7 @@ namespace LeetWars.Builder.Services
             };
         }
 
-        private async Task<TestsOutput> RunCSharpSolutionTestsAsync(TestingContainerDataDto data)
+        private async Task<TestsOutput> RunCSharpSolutionTestsAsync(ContainerDataDto data)
         {
             var volumeName = data.ProcessName + "-volume";
             var container = await CreateContainerWithVolumeAsync(data.ProcessName, volumeName, DefaultRunnerImageNames.CSharpTestImage, _localVolumeName);
@@ -95,12 +73,12 @@ namespace LeetWars.Builder.Services
             return _parserService.ParseCSharpTestResult(stringResult);
         }
 
-        private async Task<TestsOutput> RunJSSolutionTestsAsync(TestingContainerDataDto data)
+        private async Task<TestsOutput> RunJSSolutionTestsAsync(ContainerDataDto data)
         {
             var volumeName = data.ProcessName + "-volume";
             var container = await CreateContainerWithVolumeAsync(data.ProcessName, volumeName, DefaultRunnerImageNames.JSTestImage, _localVolumeName);
             var jsCodeWithTests = data.Preloaded + Environment.NewLine + data.Code + Environment.NewLine + data.Tests;
-            await StringToFileInContainerAsync(jsCodeWithTests, DefaultJSFileNaming.SolutionTestFileName, container.ID, $"/{_localVolumeName}/");
+            await StringToFileInContainerAsync(jsCodeWithTests, DefaultJSFileNaming.SolutionCodeFileName, container.ID, $"/{_localVolumeName}/");
             var stringResult = await RunContainerAndGetResultFile(container.ID, volumeName, $"/{_localVolumeName}/{DefaultJSFileNaming.TestResultsFileName}");
             return _parserService.ParseJSTestResult(stringResult);
         }
