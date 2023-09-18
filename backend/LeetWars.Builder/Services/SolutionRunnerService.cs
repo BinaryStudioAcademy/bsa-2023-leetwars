@@ -29,14 +29,11 @@ namespace LeetWars.Builder.Services
         public async Task<CodeRunResults> Run(CodeRunRequest request)
         {
             var buildResultReader = new BuildResultReader();
-            var dockerConfig = new DockerConfigurations();
+            var dockerConfig = new DockerConfigurations(_tarManagementService);
             RunnerFileWriterReaderClass readWrite = new RunnerFileWriterReaderClass();
-
-            string dir = Directory.GetCurrentDirectory();
 
             var configurationResults = await dockerConfig.GetConfigurations(
                 request.Language,
-                dir,
                 request,
                 _client,
                 dockerConfig
@@ -44,15 +41,11 @@ namespace LeetWars.Builder.Services
 
             string? solutionFileName = configurationResults.Item1;
 
-            dir = configurationResults.Item2;
+            string volumeName = configurationResults.Item2;
 
             Config config = configurationResults.Item3;
 
-            string solutionCode = request.UserCode;
-
-            await readWrite.WriteContentAsync(Path.Combine(dir, solutionFileName), solutionCode);
-
-            var hostConfig = dockerConfig.GetHostConfig(dir);
+            var hostConfig = dockerConfig.GetHostConfig(volumeName);
 
             var response = await _client.Containers.CreateContainerAsync(new CreateContainerParameters(config)
             {
@@ -61,17 +54,14 @@ namespace LeetWars.Builder.Services
 
             var containerId = response.ID;
 
+            string solutionCode = request.UserCode;
+
+            await dockerConfig.WriteBuildData(request, containerId, solutionCode, volumeName, _client, solutionFileName);
+
             await _client.Containers.StartContainerAsync(containerId, new ContainerStartParameters());
             await _client.Containers.WaitContainerAsync(containerId);
 
-            string buildLog = await readWrite.ReadContentAsync(Path.Combine(dir, "buildoutput.txt"));
-
-            await _client.Containers.RemoveContainerAsync(containerId, new ContainerRemoveParameters { Force = true });
-
-            if (Directory.Exists(dir) && dir != Directory.GetCurrentDirectory())
-            {
-                Directory.Delete(dir, true);
-            }
+            string buildLog = await RunContainerAndGetResultFile(containerId, volumeName, $"/{volumeName}/buildoutput.txt");
 
             var result = new CodeRunResults();
 
@@ -117,6 +107,14 @@ namespace LeetWars.Builder.Services
 
         private async Task<CreateContainerResponse> CreateContainerWithVolumeAsync(string containerName, string volumeName, string imageName, string volumeNameInContainer)
         {
+            var volumes = await _client.Volumes.ListAsync();
+            var volume = volumes.Volumes.FirstOrDefault(v => v.Name == volumeName);
+
+            if(volume is not null)
+            {
+                await _client.Volumes.RemoveAsync(volumeName, true);
+            }
+
             await _client.Volumes.CreateAsync(new VolumesCreateParameters
             {
                 Name = volumeName

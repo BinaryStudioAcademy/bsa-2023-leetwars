@@ -50,8 +50,10 @@ namespace LeetWars.Builder.Services
                         ContractResolver = new CamelCasePropertyNamesContractResolver()
                     };
 
+                    Console.WriteLine($"builder usercode: {request.UserConnectionId}");
                     var codeRunResultJson = JsonConvert.SerializeObject(buildResult, settings);
                     _producerService.Send(codeRunResultJson, ExchangeType.Direct);
+
                 }
             });
 

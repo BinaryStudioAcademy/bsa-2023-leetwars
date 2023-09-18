@@ -118,6 +118,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
+        this.selectedLanguage = selectedLang;
 
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
 

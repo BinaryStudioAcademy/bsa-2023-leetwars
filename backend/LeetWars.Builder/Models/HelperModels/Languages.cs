@@ -2,7 +2,7 @@
 
 public static class Languages
 {
-    public const string csharp = "C#";
+    public const string csharp = "csharp";
     public const string javascript = "Javascript";
     public static List<string> AvailableLanguages { get; } = new List<string>
     {

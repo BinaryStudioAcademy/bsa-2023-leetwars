@@ -40,6 +40,8 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 if(request is not null) 
                 {
+                    Console.WriteLine($"notifier usercode: {request.UserConnectionId}");
+
                     await _codeDisplayingHubContext.Clients.Client(request.UserConnectionId).BroadcastMessage(message);
                 }
             });
