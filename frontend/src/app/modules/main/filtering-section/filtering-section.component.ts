@@ -9,14 +9,13 @@ import {
     SORTING_PROPERTIES,
     STATUS_NAMES_MAP,
 } from '@modules/main/filtering-section/filtering-section.utils';
-import { SecondsConstants } from '@shared/constants/second-constants';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { ITag } from '@shared/models/tag/tag';
-import { debounceTime, Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-filtering-section',
@@ -60,8 +59,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     private statuses = STATUS_NAMES_MAP;
 
-    private searchSubject = new Subject<string>();
-
     constructor(
         private challengeService: ChallengeService,
         private languageService: LanguageService,
@@ -78,13 +75,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
         this.statusesNames = this.statuses.map((item) => item.name);
         this.progressesNames = this.progresses.map((item) => item.name);
-
-        this.searchSubject
-            .pipe(debounceTime(SecondsConstants.Delay))
-            .subscribe((value) => {
-                this.filter.title = value.trim();
-                this.resetChallengesData();
-            });
     }
 
     public onScroll() {
@@ -96,7 +86,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     }
 
     public onSearchTextChange(value: string) {
-        this.searchSubject.next(value);
+        this.filter.title = value.trim();
+        this.resetChallengesData();
     }
 
     public onSortChange(value: string | string[]) {
