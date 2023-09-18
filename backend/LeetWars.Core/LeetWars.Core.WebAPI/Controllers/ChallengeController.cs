@@ -34,7 +34,14 @@ namespace LeetWars.Core.WebAPI.Controllers
             var challenge = await _challengeService.GetChallengeSuggestionAsync(settings);
             return Ok(challenge);
         }
-        
+
+        [HttpGet("codefight")]
+        public async Task<ActionResult<ChallengeFullDto>> GetCodeFightChallengeAsync([FromQuery] FightChallengeSettingsDto settings)
+        {
+            var challenge = await _challengeService.GetCodeFightChallengeAsync(settings);
+            return Ok(challenge);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeFullDto>> GetById(long id)
         {

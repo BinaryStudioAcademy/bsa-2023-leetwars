@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ChallengeService } from '@core/services/challenge.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { IFightChallengeSettings } from '@shared/models/challenge/fight-challenge';
+import { IFightChallengeSettings } from '@shared/models/challenge/fight-challenge-settings';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { ILanguage } from '@shared/models/language/language';
 
@@ -23,7 +24,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
         levelId: 0,
     };
 
-    constructor(public activeModal: NgbActiveModal) {}
+    constructor(public activeModal: NgbActiveModal, private challengeService: ChallengeService) {}
 
     public ngOnInit(): void {
         this.languagesNames = this.languages.map((item) => item.name);
@@ -31,7 +32,12 @@ export class ChallengeSelectionModalComponent implements OnInit {
     }
 
     public confirmCodeFightRequest() {
-        //TODO: backend
+        //TODO: send notification
+
+        //TODO: think about nulls
+        this.challengeService.getCodeFightChallenge(this.fightChallengeSettings).subscribe((challenge) => {
+            console.log(challenge);
+        });
 
         this.activeModal.close();
     }

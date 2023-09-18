@@ -12,6 +12,7 @@ namespace LeetWars.Core.BLL.Interfaces
     {
         Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters, PageSettingsDto? page, SortingModel? sortingModel);
         Task<ChallengePreviewDto> GetChallengeSuggestionAsync(SuggestionSettingsDto settings);
+        Task<ChallengeFullDto> GetCodeFightChallengeAsync(FightChallengeSettingsDto settings);
         Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto);
         Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto);
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);

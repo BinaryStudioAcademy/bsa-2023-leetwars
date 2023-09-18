@@ -5,6 +5,7 @@ import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
+import { IFightChallengeSettings } from '@shared/models/challenge/fight-challenge-settings';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
@@ -38,6 +39,14 @@ export class ChallengeService {
         httpParams = setParams<ISuggestionSettings>(httpParams, settings);
 
         return this.httpService.getRequest<IChallengePreview>(`${this.challengesRoute}/suggestion`, httpParams);
+    }
+
+    public getCodeFightChallenge(settings: IFightChallengeSettings): Observable<IChallenge> {
+        let httpParams = new HttpParams();
+
+        httpParams = setParams<IFightChallengeSettings>(httpParams, settings);
+
+        return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/codefight`, httpParams);
     }
 
     public getChallengeLevels(): Observable<IChallengeLevel[]> {

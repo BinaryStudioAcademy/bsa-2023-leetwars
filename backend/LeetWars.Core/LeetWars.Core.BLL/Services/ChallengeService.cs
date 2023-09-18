@@ -79,9 +79,9 @@ namespace LeetWars.Core.BLL.Services
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
 
-            if(filters.DifficultyLevel is not null)
+            if (filters.DifficultyLevel is not null)
             {
-                challenges = challenges.Where(challenge => 
+                challenges = challenges.Where(challenge =>
                 challenge.Level != null && challenge.Level.Name.Equals(filters.DifficultyLevel));
             }
 
@@ -115,6 +115,27 @@ namespace LeetWars.Core.BLL.Services
             var randomPosition = GetRandomInt(challenges.Count());
 
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
+        }
+
+        public async Task<ChallengeFullDto> GetCodeFightChallengeAsync(FightChallengeSettingsDto settings)
+        {
+            var challenges = _context.Challenges
+                .Include(challenge => challenge.Tags)
+                .Include(challenge => challenge.Author)
+                .Include(challenge => challenge.Level)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Language)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(version => version.Solutions)
+                        .ThenInclude(solution => solution.User)
+                .Include(challenge => challenge.Stars)
+                    .ThenInclude(star => star.Author)
+                .Where(challenge => challenge.LevelId == settings.LevelId &&
+                       challenge.Versions.Any(challengeversion => challengeversion.LanguageId == settings.LanguageId));
+
+            var randomPosition = GetRandomInt(challenges.Count());
+
+            return _mapper.Map<ChallengeFullDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
 
         public async Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id)
