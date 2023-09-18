@@ -321,8 +321,8 @@ namespace LeetWars.Core.BLL.Services
         {
             return sortingModel switch
             {
-                { Property: SortingProperty.Title, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Title),
-                { Property: SortingProperty.Title, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.Title),
+                { Property: SortingProperty.Title, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Title.TrimStart()),
+                { Property: SortingProperty.Title, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.Title.TrimStart()),
                 { Property: SortingProperty.Level, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Level),
                 { Property: SortingProperty.Level, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.Level),
                 { Property: SortingProperty.Stars, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Stars.Count),

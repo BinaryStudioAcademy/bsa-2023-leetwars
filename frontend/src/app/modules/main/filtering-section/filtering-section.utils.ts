@@ -24,6 +24,6 @@ export const SORTING_PROPERTIES = [
     { property: SortingProperty.Level, order: SortingOrder.Descending, label: 'Extreme' },
     { property: SortingProperty.Stars, order: SortingOrder.Descending, label: 'Popular' },
     { property: SortingProperty.Stars, order: SortingOrder.Ascending, label: 'Unpopular' },
-    { property: SortingProperty.CreatedAt, order: SortingOrder.Ascending, label: 'Newest' },
-    { property: SortingProperty.CreatedAt, order: SortingOrder.Descending, label: 'Oldest' },
+    { property: SortingProperty.CreatedAt, order: SortingOrder.Descending, label: 'Newest' },
+    { property: SortingProperty.CreatedAt, order: SortingOrder.Ascending, label: 'Oldest' },
 ] as ISortedModel[];
