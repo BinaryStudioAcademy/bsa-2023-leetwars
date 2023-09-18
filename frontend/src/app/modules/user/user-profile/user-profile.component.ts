@@ -45,7 +45,7 @@ export class UserProfileComponent implements OnInit {
             .getFullUser(this.user!.id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: (result) => { this.fullUser = result; },
+                next: (result) => { this.fullUser = result; console.log(this.fullUser)},
                 error: () => { this.toastrNotification.showError('User not found'); },
             });
     }

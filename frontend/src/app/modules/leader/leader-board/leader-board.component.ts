@@ -66,4 +66,6 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
                 },
             });
     }
+
+    addFriend() {}
 }
