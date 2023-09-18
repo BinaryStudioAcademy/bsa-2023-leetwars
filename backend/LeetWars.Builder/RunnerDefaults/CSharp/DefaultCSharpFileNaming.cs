@@ -9,5 +9,7 @@
         public const string SolutionPreloadedFileName = "Preloaded.cs";
 
         public const string TestResultsFileName = "testresults.trx";
+
+        public const string BuildResultsFileName = "buildoutput.txt";
     }
 }
