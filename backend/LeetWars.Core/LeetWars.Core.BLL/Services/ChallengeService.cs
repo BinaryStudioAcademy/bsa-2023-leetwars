@@ -44,7 +44,7 @@ namespace LeetWars.Core.BLL.Services
                         .ThenInclude(solution => solution.User)
                 .Include(challenge => challenge.Stars)
                     .ThenInclude(star => star.Author)
-                .AsSplitQuery();
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(filters.Title))
             {
