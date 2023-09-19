@@ -4,7 +4,7 @@ namespace LeetWars.Core.Common.DTO.ChallengeLevel
 {
     public class NewChallengeLevelDto
     {
-        public string Name { get; set; } = string.Empty;
+        public SkillLevel DifficultyLevel { get; set; }
         public int Reward { get; set; }
         public LanguageLevel SkillLevel { get; set; }
     }

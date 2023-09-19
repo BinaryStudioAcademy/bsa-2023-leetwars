@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.DAL.Entities;
+using LeetWars.Core.DAL.Enums;
 using System.Collections.Immutable;
 
 namespace LeetWars.Core.DAL.Context.SeedSettings
@@ -38,10 +39,10 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
 
         public static readonly ImmutableArray<ChallengeLevel> ChallengeLevels = ImmutableArray.CreateRange(new ChallengeLevel[]
         {
-            new ChallengeLevel("Easy"){ Id = 1, Reward = 10 },
-            new ChallengeLevel("Medium"){ Id = 2, Reward = 20 },
-            new ChallengeLevel("Difficult"){ Id = 3, Reward = 30 },
-            new ChallengeLevel("Extreme"){ Id = 4, Reward = 40 }
+            new ChallengeLevel(SkillLevel.Easy){ Id = 1, Reward = 10 },
+            new ChallengeLevel(SkillLevel.Medium){ Id = 2, Reward = 20 },
+            new ChallengeLevel(SkillLevel.Difficult){ Id = 3, Reward = 30 },
+            new ChallengeLevel(SkillLevel.Extreme){ Id = 4, Reward = 40 }
         });
 
         public static readonly ImmutableArray<Language> Languages = ImmutableArray.CreateRange(new Language[]

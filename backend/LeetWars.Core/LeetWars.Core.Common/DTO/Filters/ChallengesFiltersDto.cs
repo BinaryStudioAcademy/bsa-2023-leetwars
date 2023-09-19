@@ -10,6 +10,6 @@ namespace LeetWars.Core.Common.DTO.Filters
         public ICollection<long>? TagsIds { get; set; }
         public ChallengesProgress? Progress { get; set; }
 
-        public string? DifficultyLevel { get; set; }
+        public SkillLevel? DifficultyLevel { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 import { ChallengeProgress } from '@shared/enums/challenge-progress';
 import { ChallengeStatus } from '@shared/enums/challenge-status';
-import { DifficultyLevel } from '@shared/enums/difficulty-level';
+import { SkillLevel } from '@shared/enums/skill-level';
 import { SortingOrder } from '@shared/enums/sorting-order';
 import { SortingProperty } from '@shared/enums/sorting-property';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
@@ -13,10 +13,10 @@ export const PROGRESS_NAMES_MAP = [
 ];
 
 export const DIFFICULTY_NAMES_MAP = [
-    { state: DifficultyLevel.Easy, name: 'Easy' },
-    { state: DifficultyLevel.Medium, name: 'Medium' },
-    { state: DifficultyLevel.Difficult, name: 'Difficult' },
-    { state: DifficultyLevel.Extreme, name: 'Extreme' },
+    { state: SkillLevel.Easy, name: 'Easy' },
+    { state: SkillLevel.Medium, name: 'Medium' },
+    { state: SkillLevel.Difficult, name: 'Difficult' },
+    { state: SkillLevel.Extreme, name: 'Extreme' },
 ];
 
 export const STATUS_NAMES_MAP = [
