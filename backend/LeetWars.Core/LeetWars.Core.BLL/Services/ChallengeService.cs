@@ -1,4 +1,4 @@
-﻿using System.Linq.Expressions;
+﻿  using System.Linq.Expressions;
 using System.Security.Cryptography;
 using AutoMapper;
 using LeetWars.Core.BLL.Exceptions;
@@ -134,13 +134,14 @@ namespace LeetWars.Core.BLL.Services
                 {
                     throw new ArgumentNullException(nameof(challengeStarDto));
                 }
+                var challange = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id);
 
                 var newNotification = new NewNotificationDto()
                 {
-                    ReceiverId = _userGetter.CurrentUserId,
-                    Author = await _userService.GetBriefUserInfoById(challengeStar.AuthorId),
+                    ReceiverId = challange.Author.Id.ToString(),
+                    Sender = await _userService.GetBriefUserInfoById(challengeStarDto.AuthorId),
                     TypeNotification = TypeNotifications.LikeChallenge,
-                    Challenge = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id)
+                    Challenge = challange
                 };
 
                 _messageSenderService.SendMessageToRabbitMQ(newNotification);
@@ -213,10 +214,10 @@ namespace LeetWars.Core.BLL.Services
         private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
         {
             var challenge = await _context.Challenges
+                .Include(x=>x.Author)
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
 
             return _mapper.Map<BriefChallengeInfoDto>(challenge);
-            return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
 
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)

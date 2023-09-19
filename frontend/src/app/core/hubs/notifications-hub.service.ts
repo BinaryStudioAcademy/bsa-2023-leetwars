@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AuthService } from '@core/services/auth.service';
 import { HubConnection } from '@microsoft/signalr';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { Subject, Subscription } from 'rxjs';
@@ -19,7 +20,7 @@ export class NotificationHubService {
 
     private hubConnectionId: string;
 
-    constructor(private hubFactory: SignalRHubFactoryService) {}
+    constructor(private hubFactory: SignalRHubFactoryService, private authservice: AuthService) {}
 
     async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
@@ -49,12 +50,6 @@ export class NotificationHubService {
             this.messages.next(msg);
         });
 
-        this.hubConnection.invoke('GetConnectionId')
-            .then((id) => {
-                this.hubConnectionId = id;
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+        await this.hubConnection.invoke('OnConnectAsync', `${this.authservice.userSubject.value?.id}`);
     }
 }

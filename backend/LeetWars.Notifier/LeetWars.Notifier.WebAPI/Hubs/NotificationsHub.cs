@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace LeetWars.Notifier.WebAPI.Hubs
 {
-    public class NotificationsHub :  Hub<INotificationsHubClient>
+    public class NotificationsHub : Hub<INotificationsHubClient>
     {
-        public string GetConnectionId()
+        public async Task OnConnectAsync(string currentUserId)
         {
-            return Context.ConnectionId;
+            await Groups.AddToGroupAsync(Context.ConnectionId, currentUserId);
         }
     }
 }

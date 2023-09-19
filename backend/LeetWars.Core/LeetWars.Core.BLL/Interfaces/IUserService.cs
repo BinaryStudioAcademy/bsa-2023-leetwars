@@ -4,7 +4,7 @@ using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using System.Linq.Expressions;
 
-namespace LeetWars.Core.BLL.Services;
+namespace LeetWars.Core.BLL.Interfaces;
 
 public interface IUserService
 {

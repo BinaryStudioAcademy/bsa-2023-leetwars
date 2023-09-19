@@ -7,7 +7,7 @@ namespace LeetWars.Core.Common.DTO.Notifications
     {
         public TypeNotifications TypeNotification { get; set; }
 
-        public BriefUserInfoDto? Author { get; set; }
+        public BriefUserInfoDto? Sender { get; set; }
 
         public BriefChallengeInfoDto? Challenge { get; set; }
 

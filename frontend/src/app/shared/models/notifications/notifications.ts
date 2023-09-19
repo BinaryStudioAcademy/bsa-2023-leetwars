@@ -5,7 +5,7 @@ import { IBriefUserInfo } from '../user/brief-user';
 
 export interface INotificationModel {
     typeNotification: TypeNotification,
-    author: IBriefUserInfo,
+    sender: IBriefUserInfo,
     challenge: IBriefChallengeInfo
     message: string,
     dateSending: Date

@@ -28,14 +28,14 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 var notificationDto = JsonSerializer.Deserialize<NewNotificationDto>(message);
 
-                if(notificationDto?.TypeNotification == TypeNotifications.NewChallenge)
+                if (notificationDto?.TypeNotification == TypeNotifications.NewChallenge)
                 {
                     await _hubContext.Clients.All.SendNotification(notificationDto);
                 }
 
-                if(notificationDto?.TypeNotification == TypeNotifications.LikeChallenge)
+                else if (notificationDto?.TypeNotification == TypeNotifications.LikeChallenge && notificationDto.ReceiverId != null)
                 {
-                    await _hubContext.Clients.All.SendNotification(notificationDto);
+                    await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotification(notificationDto);
                 }
 
                 _consumerService.SetAcknowledge(args.DeliveryTag, false);
