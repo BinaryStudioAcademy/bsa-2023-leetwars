@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header-service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
@@ -27,6 +27,12 @@ export class HeaderComponent {
     ) {
         this.authService.getUser().subscribe((user) => {
             this.user = user;
+        });
+        
+        this.router.events.subscribe((event)=>{
+            if(event instanceof NavigationStart){
+                this.showMenu = false;
+            }
         });
     }
 
