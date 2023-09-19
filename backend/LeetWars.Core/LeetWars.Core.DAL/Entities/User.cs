@@ -4,7 +4,7 @@ namespace LeetWars.Core.DAL.Entities
 {
     public class User : Entity<long>
     {
-        public string Uid { get; set; }  = string.Empty;
+        public string Uid { get; set; } = string.Empty;
         public Country? Country { get; set; }
         public int Timezone { get; set; }
         public Sex Sex { get; set; }
@@ -12,8 +12,8 @@ namespace LeetWars.Core.DAL.Entities
         public DateTime? BirthDate { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        public string UserName { get; set; }  = string.Empty;
-        public string Email { get; set; }  = string.Empty;
+        public string UserName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
         public string? ImagePath { get; set; }
         public long TotalScore { get; set; }
         public long Reputation { get; set; }
@@ -28,8 +28,10 @@ namespace LeetWars.Core.DAL.Entities
         public ICollection<Challenge> Challenges { get; } = new List<Challenge>();
         public ICollection<ChallengeVersion> ChallengeVersions { get; } = new List<ChallengeVersion>();
         public ICollection<UserBadge> UserBadges { get; } = new List<UserBadge>();
+        public ICollection<Friendship> Friendships { get; } = new List<Friendship>();
+        public ICollection<UserFriendship> UserFriendships { get; } = new List<UserFriendship>();
 
-        public User() {}
+        public User() { }
 
         public User(string firstName, string lastName, string userName, string email, string imagePath, string oAuthToken)
         {

@@ -175,7 +175,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 1L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 10, 27, 15, 25, 14, 513, DateTimeKind.Utc).AddTicks(2222),
+                            CreatedAt = new DateTime(2022, 11, 2, 6, 56, 32, 173, DateTimeKind.Utc).AddTicks(2692),
                             CreatedBy = 19L,
                             Instructions = "Perspiciatis cum et et laudantium.",
                             LevelId = 1L,
@@ -185,7 +185,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 2L,
                             Category = 0,
-                            CreatedAt = new DateTime(2018, 3, 16, 18, 20, 34, 587, DateTimeKind.Utc).AddTicks(4028),
+                            CreatedAt = new DateTime(2018, 3, 18, 14, 10, 7, 783, DateTimeKind.Utc).AddTicks(6518),
                             CreatedBy = 17L,
                             Instructions = "quis",
                             LevelId = 2L,
@@ -195,7 +195,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 3L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 6, 23, 12, 1, 4, 971, DateTimeKind.Utc).AddTicks(8941),
+                            CreatedAt = new DateTime(2023, 6, 29, 16, 31, 52, 422, DateTimeKind.Utc).AddTicks(3680),
                             CreatedBy = 34L,
                             Instructions = "Aut rerum consectetur veniam distinctio officiis praesentium.\nAperiam quis qui animi omnis.\nMolestiae laboriosam exercitationem similique amet dolores quibusdam aspernatur consequatur quia.\nSuscipit consequuntur eos laborum facilis culpa.",
                             LevelId = 1L,
@@ -205,7 +205,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 4L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 3, 7, 6, 53, 36, 232, DateTimeKind.Utc).AddTicks(9583),
+                            CreatedAt = new DateTime(2022, 3, 12, 9, 40, 5, 805, DateTimeKind.Utc).AddTicks(2147),
                             CreatedBy = 20L,
                             Instructions = "Suscipit quia modi nobis ad eos voluptatum est.",
                             LevelId = 2L,
@@ -215,7 +215,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 5L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 3, 24, 21, 53, 10, 120, DateTimeKind.Utc).AddTicks(342),
+                            CreatedAt = new DateTime(2023, 3, 30, 21, 28, 19, 771, DateTimeKind.Utc).AddTicks(8073),
                             CreatedBy = 33L,
                             Instructions = "Voluptatem possimus iure impedit enim provident incidunt molestiae earum.",
                             LevelId = 2L,
@@ -225,7 +225,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 6L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 4, 24, 7, 14, 29, 939, DateTimeKind.Utc).AddTicks(9490),
+                            CreatedAt = new DateTime(2023, 4, 30, 8, 28, 50, 93, DateTimeKind.Utc).AddTicks(4791),
                             CreatedBy = 28L,
                             Instructions = "Distinctio rerum voluptatem aut iure nesciunt aut eos voluptatem molestias. Molestias reprehenderit tenetur hic. Esse repudiandae voluptatem quae impedit sed voluptates ratione minus in.",
                             LevelId = 3L,
@@ -235,7 +235,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 7L,
                             Category = 0,
-                            CreatedAt = new DateTime(2020, 1, 8, 15, 41, 40, 708, DateTimeKind.Utc).AddTicks(8502),
+                            CreatedAt = new DateTime(2020, 1, 11, 23, 34, 31, 437, DateTimeKind.Utc).AddTicks(9009),
                             CreatedBy = 40L,
                             Instructions = "Molestiae quis nihil similique autem nemo numquam. Et ut ratione vel. Aperiam harum perferendis ad consequuntur.",
                             LevelId = 1L,
@@ -245,7 +245,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 8L,
                             Category = 0,
-                            CreatedAt = new DateTime(2017, 1, 16, 2, 24, 1, 572, DateTimeKind.Utc).AddTicks(3298),
+                            CreatedAt = new DateTime(2017, 1, 16, 23, 7, 43, 105, DateTimeKind.Utc).AddTicks(8141),
                             CreatedBy = 26L,
                             Instructions = "et",
                             LevelId = 2L,
@@ -255,7 +255,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 9L,
                             Category = 0,
-                            CreatedAt = new DateTime(2019, 12, 7, 9, 3, 2, 714, DateTimeKind.Utc).AddTicks(7448),
+                            CreatedAt = new DateTime(2019, 12, 10, 15, 10, 33, 458, DateTimeKind.Utc).AddTicks(3646),
                             CreatedBy = 3L,
                             Instructions = "Quas maxime esse et dolores accusamus doloremque in magnam quos.\nSaepe incidunt modi recusandae saepe ut et.\nAccusamus sed maiores doloremque aut et aut praesentium quae.\nQui magni eum autem architecto accusamus dolore inventore expedita.\nEos velit optio asperiores dolores voluptas amet voluptatum deserunt.",
                             LevelId = 4L,
@@ -265,7 +265,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 10L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 6, 4, 7, 21, 8, 349, DateTimeKind.Utc).AddTicks(2193),
+                            CreatedAt = new DateTime(2022, 6, 9, 14, 58, 8, 360, DateTimeKind.Utc).AddTicks(4021),
                             CreatedBy = 6L,
                             Instructions = "Doloremque velit maiores unde at commodi.",
                             LevelId = 3L,
@@ -275,7 +275,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 11L,
                             Category = 0,
-                            CreatedAt = new DateTime(2018, 1, 14, 3, 30, 4, 433, DateTimeKind.Utc).AddTicks(6287),
+                            CreatedAt = new DateTime(2018, 1, 15, 19, 58, 32, 392, DateTimeKind.Utc).AddTicks(9956),
                             CreatedBy = 40L,
                             Instructions = "Doloribus eveniet non aut fuga et.",
                             LevelId = 4L,
@@ -285,7 +285,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 12L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 8, 13, 11, 24, 1, 186, DateTimeKind.Utc).AddTicks(2629),
+                            CreatedAt = new DateTime(2022, 8, 18, 22, 50, 0, 633, DateTimeKind.Utc).AddTicks(8496),
                             CreatedBy = 40L,
                             Instructions = "Est molestiae voluptatem eos assumenda et libero voluptatem et.\nAb maxime fuga nemo ad.\nNon illum ut iste ea perspiciatis.",
                             LevelId = 3L,
@@ -295,7 +295,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 13L,
                             Category = 0,
-                            CreatedAt = new DateTime(2017, 10, 23, 14, 38, 29, 233, DateTimeKind.Utc).AddTicks(3748),
+                            CreatedAt = new DateTime(2017, 10, 25, 2, 37, 36, 213, DateTimeKind.Utc).AddTicks(581),
                             CreatedBy = 5L,
                             Instructions = "iure",
                             LevelId = 4L,
@@ -305,7 +305,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 14L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 10, 17, 5, 7, 15, 697, DateTimeKind.Utc).AddTicks(5658),
+                            CreatedAt = new DateTime(2022, 10, 22, 20, 4, 31, 278, DateTimeKind.Utc).AddTicks(6200),
                             CreatedBy = 30L,
                             Instructions = "Nostrum sit quia consequatur eos dolorem quo vel libero ut.\nIusto error quia ab.\nAutem quam et quia eum ea molestias eum dolore consequuntur.\nEligendi rerum nisi aspernatur et commodi libero cupiditate.\nMollitia molestias eaque quia dignissimos voluptas porro voluptas.",
                             LevelId = 3L,
@@ -315,7 +315,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 15L,
                             Category = 0,
-                            CreatedAt = new DateTime(2018, 7, 15, 0, 20, 27, 198, DateTimeKind.Utc).AddTicks(9661),
+                            CreatedAt = new DateTime(2018, 7, 17, 2, 42, 26, 3, DateTimeKind.Utc).AddTicks(353),
                             CreatedBy = 5L,
                             Instructions = "Recusandae molestias id.",
                             LevelId = 3L,
@@ -325,7 +325,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 16L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 3, 20, 23, 12, 13, 639, DateTimeKind.Utc).AddTicks(749),
+                            CreatedAt = new DateTime(2022, 3, 26, 2, 43, 21, 753, DateTimeKind.Utc).AddTicks(1514),
                             CreatedBy = 13L,
                             Instructions = "Corporis veniam vel et voluptas. Rerum quod facilis est nihil qui et rerum et non. Rerum culpa deserunt adipisci vero iure corporis. Quam odit reprehenderit. Atque cupiditate aut minus minus reprehenderit eos. Ipsam et aut nostrum assumenda explicabo rem.",
                             LevelId = 1L,
@@ -335,7 +335,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 17L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 1, 20, 21, 32, 8, 10, DateTimeKind.Utc).AddTicks(3279),
+                            CreatedAt = new DateTime(2023, 1, 26, 17, 41, 39, 30, DateTimeKind.Utc).AddTicks(7558),
                             CreatedBy = 18L,
                             Instructions = "ratione",
                             LevelId = 4L,
@@ -345,7 +345,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 18L,
                             Category = 0,
-                            CreatedAt = new DateTime(2020, 4, 19, 20, 6, 2, 716, DateTimeKind.Utc).AddTicks(7515),
+                            CreatedAt = new DateTime(2020, 4, 23, 9, 32, 21, 572, DateTimeKind.Utc).AddTicks(6696),
                             CreatedBy = 17L,
                             Instructions = "et",
                             LevelId = 4L,
@@ -355,7 +355,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 19L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 7, 26, 15, 34, 30, 617, DateTimeKind.Utc).AddTicks(3447),
+                            CreatedAt = new DateTime(2022, 8, 1, 2, 2, 19, 618, DateTimeKind.Utc).AddTicks(5786),
                             CreatedBy = 20L,
                             Instructions = "Sint doloribus sit aut ipsam maiores voluptatum voluptas in.",
                             LevelId = 3L,
@@ -365,7 +365,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 20L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 4, 5, 7, 25, 4, 493, DateTimeKind.Utc).AddTicks(3661),
+                            CreatedAt = new DateTime(2022, 4, 10, 11, 46, 16, 714, DateTimeKind.Utc).AddTicks(4474),
                             CreatedBy = 38L,
                             Instructions = "perspiciatis",
                             LevelId = 2L,
@@ -375,7 +375,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 21L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 12, 1, 1, 57, 49, 43, DateTimeKind.Utc).AddTicks(7298),
+                            CreatedAt = new DateTime(2022, 12, 6, 19, 21, 30, 115, DateTimeKind.Utc).AddTicks(3697),
                             CreatedBy = 23L,
                             Instructions = "Quisquam cum aut sunt sit suscipit similique voluptatem maxime qui. Quia aut exercitationem est provident enim rerum maiores. Voluptatem aut fugiat sunt exercitationem. Corrupti vitae ea eos enim similique. Fuga et enim ad laboriosam quaerat ut et. Et sed dolorum sunt quisquam incidunt et explicabo et.",
                             LevelId = 4L,
@@ -385,7 +385,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 22L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 9, 29, 17, 14, 22, 561, DateTimeKind.Utc).AddTicks(8461),
+                            CreatedAt = new DateTime(2022, 10, 5, 7, 14, 32, 515, DateTimeKind.Utc).AddTicks(7491),
                             CreatedBy = 2L,
                             Instructions = "Id consequuntur nesciunt laudantium quaerat et suscipit quaerat recusandae nobis. Id corrupti vitae. Hic quisquam cumque aliquam qui. Quasi porro quisquam dicta voluptatibus.",
                             LevelId = 2L,
@@ -395,7 +395,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 23L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 8, 25, 15, 18, 3, 35, DateTimeKind.Utc).AddTicks(3451),
+                            CreatedAt = new DateTime(2023, 8, 31, 23, 14, 53, 34, DateTimeKind.Utc).AddTicks(928),
                             CreatedBy = 35L,
                             Instructions = "Odit laudantium quibusdam nostrum fugiat dolores.",
                             LevelId = 4L,
@@ -405,7 +405,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 24L,
                             Category = 0,
-                            CreatedAt = new DateTime(2021, 8, 13, 2, 50, 13, 355, DateTimeKind.Utc).AddTicks(9191),
+                            CreatedAt = new DateTime(2021, 8, 17, 18, 23, 53, 867, DateTimeKind.Utc).AddTicks(9756),
                             CreatedBy = 20L,
                             Instructions = "Sed voluptate iusto vel ad ea voluptates iure.\nAccusantium saepe iusto dolorum necessitatibus necessitatibus.",
                             LevelId = 3L,
@@ -415,7 +415,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 25L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 11, 8, 6, 0, 26, 621, DateTimeKind.Utc).AddTicks(4382),
+                            CreatedAt = new DateTime(2022, 11, 13, 22, 9, 37, 151, DateTimeKind.Utc).AddTicks(1475),
                             CreatedBy = 11L,
                             Instructions = "eum",
                             LevelId = 4L,
@@ -425,7 +425,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 26L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 1, 8, 2, 38, 4, 313, DateTimeKind.Utc).AddTicks(6937),
+                            CreatedAt = new DateTime(2023, 1, 13, 22, 5, 51, 459, DateTimeKind.Utc).AddTicks(9495),
                             CreatedBy = 18L,
                             Instructions = "Amet qui vel dignissimos maxime quo recusandae provident. Accusamus expedita delectus praesentium nam dolores accusamus. Mollitia iste unde voluptatem.",
                             LevelId = 1L,
@@ -435,7 +435,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 27L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 5, 15, 3, 13, 11, 338, DateTimeKind.Utc).AddTicks(8257),
+                            CreatedAt = new DateTime(2022, 5, 20, 9, 44, 21, 519, DateTimeKind.Utc).AddTicks(2553),
                             CreatedBy = 19L,
                             Instructions = "necessitatibus",
                             LevelId = 4L,
@@ -445,7 +445,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 28L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 2, 14, 21, 25, 50, 817, DateTimeKind.Utc).AddTicks(6133),
+                            CreatedAt = new DateTime(2022, 2, 19, 23, 5, 47, 68, DateTimeKind.Utc).AddTicks(3586),
                             CreatedBy = 23L,
                             Instructions = "Modi blanditiis aut sunt qui ut.\nVeritatis dignissimos deleniti.\nQuod ut aliquid voluptatum dolorem error.",
                             LevelId = 1L,
@@ -455,7 +455,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 29L,
                             Category = 0,
-                            CreatedAt = new DateTime(2020, 7, 27, 21, 1, 8, 718, DateTimeKind.Utc).AddTicks(211),
+                            CreatedAt = new DateTime(2020, 7, 31, 15, 50, 39, 825, DateTimeKind.Utc).AddTicks(604),
                             CreatedBy = 17L,
                             Instructions = "numquam",
                             LevelId = 3L,
@@ -465,7 +465,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 30L,
                             Category = 0,
-                            CreatedAt = new DateTime(2017, 7, 1, 23, 0, 50, 701, DateTimeKind.Utc).AddTicks(214),
+                            CreatedAt = new DateTime(2017, 7, 3, 4, 49, 4, 150, DateTimeKind.Utc).AddTicks(686),
                             CreatedBy = 2L,
                             Instructions = "ut",
                             LevelId = 2L,
@@ -475,7 +475,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 31L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 1, 13, 3, 31, 36, 281, DateTimeKind.Utc).AddTicks(3102),
+                            CreatedAt = new DateTime(2023, 1, 18, 23, 15, 49, 746, DateTimeKind.Utc).AddTicks(9830),
                             CreatedBy = 19L,
                             Instructions = "Eum ea sequi voluptas praesentium hic.\nVoluptatum voluptatem dolor consequatur distinctio et.\nAutem officia ut unde delectus repudiandae eum animi consectetur omnis.",
                             LevelId = 2L,
@@ -485,7 +485,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 32L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 8, 10, 12, 38, 32, 953, DateTimeKind.Utc).AddTicks(1657),
+                            CreatedAt = new DateTime(2023, 8, 16, 19, 46, 4, 178, DateTimeKind.Utc).AddTicks(8468),
                             CreatedBy = 13L,
                             Instructions = "quia",
                             LevelId = 4L,
@@ -495,7 +495,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 33L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 9, 15, 2, 59, 8, 288, DateTimeKind.Utc).AddTicks(8031),
+                            CreatedAt = new DateTime(2022, 9, 20, 16, 11, 40, 661, DateTimeKind.Utc).AddTicks(3049),
                             CreatedBy = 9L,
                             Instructions = "Sunt et est aliquam aut unde blanditiis.\nRepellendus dolorem autem.\nEos nihil veniam quia ipsa.\nOdit fuga illum nobis voluptatum deserunt in.",
                             LevelId = 2L,
@@ -505,7 +505,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 34L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 9, 23, 18, 20, 25, 43, DateTimeKind.Utc).AddTicks(7269),
+                            CreatedAt = new DateTime(2022, 9, 29, 8, 1, 9, 139, DateTimeKind.Utc).AddTicks(737),
                             CreatedBy = 7L,
                             Instructions = "Culpa voluptatem est sequi in sit quam.",
                             LevelId = 3L,
@@ -515,7 +515,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 35L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 5, 13, 23, 27, 29, 446, DateTimeKind.Utc).AddTicks(1501),
+                            CreatedAt = new DateTime(2023, 5, 20, 1, 46, 2, 195, DateTimeKind.Utc).AddTicks(226),
                             CreatedBy = 34L,
                             Instructions = "Quisquam voluptate sequi magni soluta soluta qui voluptatem reprehenderit quo.",
                             LevelId = 1L,
@@ -525,7 +525,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 36L,
                             Category = 0,
-                            CreatedAt = new DateTime(2021, 6, 2, 18, 26, 38, 579, DateTimeKind.Utc).AddTicks(2072),
+                            CreatedAt = new DateTime(2021, 6, 7, 6, 7, 28, 424, DateTimeKind.Utc).AddTicks(276),
                             CreatedBy = 4L,
                             Instructions = "Voluptatem quia ut ut doloribus ut et ratione suscipit. Est sunt veritatis. Quis ducimus laboriosam.",
                             LevelId = 1L,
@@ -535,7 +535,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 37L,
                             Category = 0,
-                            CreatedAt = new DateTime(2021, 9, 29, 14, 35, 7, 962, DateTimeKind.Utc).AddTicks(6830),
+                            CreatedAt = new DateTime(2021, 10, 4, 8, 43, 47, 199, DateTimeKind.Utc).AddTicks(396),
                             CreatedBy = 38L,
                             Instructions = "iusto",
                             LevelId = 3L,
@@ -545,7 +545,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 38L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 6, 21, 17, 57, 43, 312, DateTimeKind.Utc).AddTicks(4921),
+                            CreatedAt = new DateTime(2022, 6, 27, 2, 31, 38, 580, DateTimeKind.Utc).AddTicks(2927),
                             CreatedBy = 6L,
                             Instructions = "Omnis et et eum eum tempora nostrum a iure voluptatem. Expedita itaque quos quia soluta repellat quas perspiciatis. Sed consequatur numquam maxime. Enim quaerat ratione rerum sed quis. Ea dolores dolor eum vitae dolores vitae.",
                             LevelId = 3L,
@@ -555,7 +555,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 39L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 2, 14, 23, 30, 24, 426, DateTimeKind.Utc).AddTicks(206),
+                            CreatedAt = new DateTime(2022, 2, 20, 1, 10, 37, 619, DateTimeKind.Utc).AddTicks(5415),
                             CreatedBy = 13L,
                             Instructions = "Expedita labore omnis omnis delectus doloremque possimus esse fugit.\nQui quasi pariatur et sed aliquam aut quo temporibus animi.\nNihil esse similique molestiae voluptas molestiae eum.\nImpedit et in nihil nihil et.",
                             LevelId = 4L,
@@ -565,7 +565,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 40L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 1, 17, 9, 55, 58, 586, DateTimeKind.Utc).AddTicks(2643),
+                            CreatedAt = new DateTime(2023, 1, 23, 5, 54, 7, 542, DateTimeKind.Utc).AddTicks(2117),
                             CreatedBy = 27L,
                             Instructions = "Adipisci sint quibusdam.",
                             LevelId = 4L,
@@ -575,7 +575,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 41L,
                             Category = 0,
-                            CreatedAt = new DateTime(2021, 12, 3, 15, 48, 20, 446, DateTimeKind.Utc).AddTicks(4882),
+                            CreatedAt = new DateTime(2021, 12, 8, 13, 29, 16, 990, DateTimeKind.Utc).AddTicks(3365),
                             CreatedBy = 23L,
                             Instructions = "Non non ea ab maxime est ratione. Et voluptate iusto ut. Minima nihil qui quaerat ratione aut.",
                             LevelId = 3L,
@@ -585,7 +585,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 42L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 2, 7, 19, 40, 52, 21, DateTimeKind.Utc).AddTicks(2419),
+                            CreatedAt = new DateTime(2023, 2, 13, 16, 48, 52, 427, DateTimeKind.Utc).AddTicks(9756),
                             CreatedBy = 23L,
                             Instructions = "Eos provident laborum placeat reprehenderit voluptatem.",
                             LevelId = 1L,
@@ -595,7 +595,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 43L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 8, 25, 5, 56, 43, 276, DateTimeKind.Utc).AddTicks(1723),
+                            CreatedAt = new DateTime(2023, 8, 31, 13, 52, 16, 947, DateTimeKind.Utc).AddTicks(5605),
                             CreatedBy = 23L,
                             Instructions = "Et dolor error quo doloremque harum explicabo.\nSed qui facere corporis sunt omnis voluptas corporis perspiciatis ut.\nEst rerum ad necessitatibus voluptatem.\nLaboriosam cupiditate dolorem eaque perspiciatis et.",
                             LevelId = 4L,
@@ -605,7 +605,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 44L,
                             Category = 0,
-                            CreatedAt = new DateTime(2019, 2, 8, 18, 15, 9, 919, DateTimeKind.Utc).AddTicks(9382),
+                            CreatedAt = new DateTime(2019, 2, 11, 7, 58, 22, 435, DateTimeKind.Utc).AddTicks(3246),
                             CreatedBy = 21L,
                             Instructions = "Aut ex quis.\nEnim nulla eligendi est quam iusto.\nCumque harum saepe velit consequatur eligendi odit ut vero.\nDolorem sit vel sed nemo modi consequatur.",
                             LevelId = 2L,
@@ -615,7 +615,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 45L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 12, 9, 2, 32, 17, 943, DateTimeKind.Utc).AddTicks(3972),
+                            CreatedAt = new DateTime(2022, 12, 14, 20, 22, 10, 147, DateTimeKind.Utc).AddTicks(2143),
                             CreatedBy = 35L,
                             Instructions = "Ut qui non dolores sunt enim fugiat quisquam cupiditate distinctio. Officiis reprehenderit quidem qui quis quia asperiores quaerat sapiente. Quia quia voluptatem magni et enim iure. Dolorum ut minus.",
                             LevelId = 2L,
@@ -625,7 +625,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 46L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 5, 30, 11, 22, 58, 618, DateTimeKind.Utc).AddTicks(8777),
+                            CreatedAt = new DateTime(2022, 6, 4, 18, 44, 12, 495, DateTimeKind.Utc).AddTicks(8716),
                             CreatedBy = 7L,
                             Instructions = "Officia iusto rerum placeat temporibus corrupti et aut cumque.\nCommodi voluptatem laborum amet consequatur.\nA ducimus est ut reprehenderit.\nSit odit consequuntur.\nTempore magni nihil velit quos sed deleniti aliquid.\nEligendi nesciunt error mollitia et consequatur.",
                             LevelId = 1L,
@@ -635,7 +635,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 47L,
                             Category = 0,
-                            CreatedAt = new DateTime(2020, 11, 9, 7, 46, 8, 533, DateTimeKind.Utc).AddTicks(304),
+                            CreatedAt = new DateTime(2020, 11, 13, 8, 16, 31, 126, DateTimeKind.Utc).AddTicks(9544),
                             CreatedBy = 10L,
                             Instructions = "Earum laudantium molestias quam sed fuga explicabo vel corrupti in. Quibusdam et ut voluptatem facere. Magni qui pariatur reiciendis eveniet.",
                             LevelId = 1L,
@@ -645,7 +645,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 48L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 1, 6, 2, 55, 21, 571, DateTimeKind.Utc).AddTicks(2752),
+                            CreatedAt = new DateTime(2023, 1, 11, 22, 16, 39, 469, DateTimeKind.Utc).AddTicks(3585),
                             CreatedBy = 15L,
                             Instructions = "Sed rerum molestiae ad.\nItaque quas vel sint voluptas maxime assumenda.\nHic debitis tempore minus et quos quia repudiandae.\nUt laudantium ut.",
                             LevelId = 4L,
@@ -655,7 +655,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 49L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 6, 17, 1, 19, 31, 290, DateTimeKind.Utc).AddTicks(9399),
+                            CreatedAt = new DateTime(2023, 6, 23, 5, 29, 16, 669, DateTimeKind.Utc).AddTicks(5846),
                             CreatedBy = 34L,
                             Instructions = "vel",
                             LevelId = 1L,
@@ -665,7 +665,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 50L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 3, 25, 11, 52, 19, 371, DateTimeKind.Utc).AddTicks(2042),
+                            CreatedAt = new DateTime(2023, 3, 31, 11, 29, 23, 110, DateTimeKind.Utc).AddTicks(8938),
                             CreatedBy = 34L,
                             Instructions = "Cum in ex nulla doloremque nostrum nemo quos.\nLaudantium corporis ut hic sapiente dolore sed architecto.\nIusto expedita rerum et pariatur optio ex aperiam dolorem placeat.\nAssumenda nesciunt nostrum pariatur corporis et doloribus quae.",
                             LevelId = 3L,
@@ -675,7 +675,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 51L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 8, 22, 21, 12, 44, 807, DateTimeKind.Utc).AddTicks(4803),
+                            CreatedAt = new DateTime(2022, 8, 28, 9, 9, 26, 557, DateTimeKind.Utc).AddTicks(5288),
                             CreatedBy = 38L,
                             Instructions = "Voluptatem iure quia labore pariatur id quia qui expedita quos.\nLaudantium natus dolorem rerum nemo perferendis quam est explicabo aliquam.\nIncidunt et qui.",
                             LevelId = 2L,
@@ -685,7 +685,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 52L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 2, 1, 9, 41, 52, 260, DateTimeKind.Utc).AddTicks(7639),
+                            CreatedAt = new DateTime(2022, 2, 6, 10, 37, 47, 328, DateTimeKind.Utc).AddTicks(8190),
                             CreatedBy = 16L,
                             Instructions = "Fugiat illo alias error eligendi voluptatem.",
                             LevelId = 2L,
@@ -695,7 +695,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 53L,
                             Category = 0,
-                            CreatedAt = new DateTime(2019, 4, 13, 4, 55, 56, 602, DateTimeKind.Utc).AddTicks(2368),
+                            CreatedAt = new DateTime(2019, 4, 15, 22, 6, 12, 2, DateTimeKind.Utc).AddTicks(4573),
                             CreatedBy = 29L,
                             Instructions = "Distinctio adipisci sequi vitae nulla. Corporis in labore nobis vel laudantium accusantium minus nihil quas. Sapiente quam vitae ea asperiores cum. Et illum temporibus placeat itaque et aliquam nostrum tempore ratione. Quia modi facere quia. Quaerat nostrum voluptatem.",
                             LevelId = 4L,
@@ -705,7 +705,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 54L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 1, 27, 23, 46, 32, 454, DateTimeKind.Utc).AddTicks(4309),
+                            CreatedAt = new DateTime(2022, 2, 2, 0, 28, 3, 333, DateTimeKind.Utc).AddTicks(3586),
                             CreatedBy = 33L,
                             Instructions = "Necessitatibus libero sint ad culpa accusantium sed omnis praesentium.",
                             LevelId = 2L,
@@ -715,7 +715,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 55L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 9, 23, 23, 16, 49, 655, DateTimeKind.Utc).AddTicks(967),
+                            CreatedAt = new DateTime(2022, 9, 29, 12, 58, 14, 59, DateTimeKind.Utc).AddTicks(4728),
                             CreatedBy = 31L,
                             Instructions = "Aut ut ut voluptates tempora ut commodi quos id. Dolores rerum eveniet quaerat dolores eligendi hic ipsum sit. Impedit fugiat numquam ad rerum atque tempore vero ipsa ab. Consequatur vitae hic omnis cumque perspiciatis consequatur ex omnis.",
                             LevelId = 1L,
@@ -725,7 +725,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 56L,
                             Category = 0,
-                            CreatedAt = new DateTime(2018, 4, 23, 8, 37, 35, 588, DateTimeKind.Utc).AddTicks(3849),
+                            CreatedAt = new DateTime(2018, 4, 25, 6, 29, 50, 126, DateTimeKind.Utc).AddTicks(2633),
                             CreatedBy = 26L,
                             Instructions = "Sunt ut fugit minima facere optio accusantium.\nDeserunt molestias ducimus omnis voluptatibus quos aut rerum.\nQuibusdam ratione qui illum quam modi.",
                             LevelId = 4L,
@@ -735,7 +735,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 57L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 6, 9, 1, 28, 53, 981, DateTimeKind.Utc).AddTicks(7169),
+                            CreatedAt = new DateTime(2022, 6, 14, 9, 21, 25, 124, DateTimeKind.Utc).AddTicks(6725),
                             CreatedBy = 15L,
                             Instructions = "Minus quo dolores rerum pariatur nisi.\nDolorem dolore laborum corporis reiciendis dignissimos in.\nEos enim vel placeat minus voluptatem consequuntur totam corporis et.",
                             LevelId = 2L,
@@ -745,7 +745,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 58L,
                             Category = 0,
-                            CreatedAt = new DateTime(2019, 7, 20, 15, 5, 4, 22, DateTimeKind.Utc).AddTicks(8350),
+                            CreatedAt = new DateTime(2019, 7, 23, 13, 36, 31, 202, DateTimeKind.Utc).AddTicks(1520),
                             CreatedBy = 40L,
                             Instructions = "aut",
                             LevelId = 4L,
@@ -755,7 +755,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 59L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 1, 19, 15, 8, 37, 571, DateTimeKind.Utc).AddTicks(451),
+                            CreatedAt = new DateTime(2023, 1, 25, 11, 14, 0, 648, DateTimeKind.Utc).AddTicks(680),
                             CreatedBy = 8L,
                             Instructions = "Veniam rerum repudiandae sint eos delectus qui veniam id consequatur.",
                             LevelId = 2L,
@@ -765,7 +765,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 60L,
                             Category = 0,
-                            CreatedAt = new DateTime(2019, 2, 25, 23, 43, 43, 984, DateTimeKind.Utc).AddTicks(2935),
+                            CreatedAt = new DateTime(2019, 2, 28, 14, 23, 9, 869, DateTimeKind.Utc).AddTicks(776),
                             CreatedBy = 22L,
                             Instructions = "Quia fugiat voluptatem nihil vitae molestias.",
                             LevelId = 4L,
@@ -775,7 +775,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 61L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 4, 29, 18, 8, 26, 982, DateTimeKind.Utc).AddTicks(3300),
+                            CreatedAt = new DateTime(2023, 5, 5, 19, 40, 35, 85, DateTimeKind.Utc).AddTicks(6474),
                             CreatedBy = 2L,
                             Instructions = "Accusamus beatae omnis totam maxime autem in et et.\nEt ducimus ea quia a excepturi a aut.\nExplicabo illo blanditiis illo eum qui itaque natus modi.",
                             LevelId = 4L,
@@ -785,7 +785,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 62L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 10, 6, 5, 37, 47, 518, DateTimeKind.Utc).AddTicks(5249),
+                            CreatedAt = new DateTime(2022, 10, 11, 19, 59, 13, 387, DateTimeKind.Utc).AddTicks(351),
                             CreatedBy = 13L,
                             Instructions = "Voluptatem veniam ut autem enim. Architecto nihil ut rerum aut nihil eos aut. Esse voluptatem reprehenderit perferendis aut ut dolor voluptas.",
                             LevelId = 4L,
@@ -795,7 +795,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 63L,
                             Category = 0,
-                            CreatedAt = new DateTime(2020, 10, 17, 11, 16, 36, 526, DateTimeKind.Utc).AddTicks(38),
+                            CreatedAt = new DateTime(2020, 10, 21, 10, 32, 24, 212, DateTimeKind.Utc).AddTicks(3115),
                             CreatedBy = 26L,
                             Instructions = "Est consectetur voluptatem.\nPlaceat et eos.\nSunt quo et qui eius qui dolor numquam numquam nulla.\nSed nulla sint delectus alias.",
                             LevelId = 3L,
@@ -805,7 +805,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 64L,
                             Category = 0,
-                            CreatedAt = new DateTime(2019, 12, 22, 6, 37, 28, 182, DateTimeKind.Utc).AddTicks(9731),
+                            CreatedAt = new DateTime(2019, 12, 25, 13, 33, 36, 214, DateTimeKind.Utc).AddTicks(3765),
                             CreatedBy = 10L,
                             Instructions = "ut",
                             LevelId = 4L,
@@ -815,7 +815,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 65L,
                             Category = 0,
-                            CreatedAt = new DateTime(2021, 5, 20, 17, 52, 51, 839, DateTimeKind.Utc).AddTicks(9732),
+                            CreatedAt = new DateTime(2021, 5, 25, 4, 51, 11, 605, DateTimeKind.Utc).AddTicks(4129),
                             CreatedBy = 24L,
                             Instructions = "Suscipit iusto quas est quaerat molestiae nostrum tempora aliquam tempora.\nRem dolorem ut voluptas voluptate.\nQuo magnam eligendi.\nIpsum tenetur praesentium earum.",
                             LevelId = 2L,
@@ -825,7 +825,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 66L,
                             Category = 0,
-                            CreatedAt = new DateTime(2021, 12, 1, 22, 15, 59, 161, DateTimeKind.Utc).AddTicks(9872),
+                            CreatedAt = new DateTime(2021, 12, 6, 19, 51, 16, 804, DateTimeKind.Utc).AddTicks(2096),
                             CreatedBy = 33L,
                             Instructions = "Quae aliquid quod error nesciunt.",
                             LevelId = 3L,
@@ -835,7 +835,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 67L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 12, 9, 14, 50, 50, 646, DateTimeKind.Utc).AddTicks(7528),
+                            CreatedAt = new DateTime(2022, 12, 15, 8, 42, 23, 284, DateTimeKind.Utc).AddTicks(3241),
                             CreatedBy = 39L,
                             Instructions = "Autem est neque deleniti quae.\nCum vitae ut id voluptate est aut enim.\nAlias tenetur commodi cumque explicabo est.\nCommodi blanditiis tenetur sapiente dolores atque tempore.\nAut modi officiis neque consequatur.",
                             LevelId = 1L,
@@ -845,7 +845,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 68L,
                             Category = 0,
-                            CreatedAt = new DateTime(2023, 1, 15, 15, 53, 16, 26, DateTimeKind.Utc).AddTicks(4162),
+                            CreatedAt = new DateTime(2023, 1, 21, 11, 45, 41, 951, DateTimeKind.Utc).AddTicks(8113),
                             CreatedBy = 19L,
                             Instructions = "Est dolores id tempore vel.",
                             LevelId = 4L,
@@ -855,7 +855,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 69L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 9, 27, 17, 58, 6, 785, DateTimeKind.Utc).AddTicks(5985),
+                            CreatedAt = new DateTime(2022, 10, 3, 7, 51, 51, 70, DateTimeKind.Utc).AddTicks(6578),
                             CreatedBy = 7L,
                             Instructions = "Aut quibusdam amet at facilis rerum.\nUt veritatis commodi aspernatur doloremque quia quidem.",
                             LevelId = 1L,
@@ -865,7 +865,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 70L,
                             Category = 0,
-                            CreatedAt = new DateTime(2022, 9, 26, 11, 56, 33, 760, DateTimeKind.Utc).AddTicks(7896),
+                            CreatedAt = new DateTime(2022, 10, 2, 1, 46, 13, 82, DateTimeKind.Utc).AddTicks(5607),
                             CreatedBy = 37L,
                             Instructions = "Natus aut officia qui consequatur.",
                             LevelId = 4L,
@@ -1937,7 +1937,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 1L,
                             ChallengeId = 10L,
                             CompleteSolution = "Doloribus modi voluptatum facere eius rerum provident nemo soluta quidem.",
-                            CreatedAt = new DateTime(2023, 5, 12, 14, 48, 59, 866, DateTimeKind.Utc).AddTicks(6974),
+                            CreatedAt = new DateTime(2023, 5, 18, 17, 3, 6, 316, DateTimeKind.Utc).AddTicks(7608),
                             CreatedBy = 8L,
                             ExampleTestCases = "Est aut repellendus qui fugit. Sed fugit explicabo autem cum consequuntur alias. Quo alias et quisquam voluptates. Nisi voluptatem omnis inventore velit ipsum maxime fuga.",
                             InitialSolution = "Eos quae aliquid qui est sit quidem doloribus.",
@@ -1951,7 +1951,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 2L,
                             ChallengeId = 40L,
                             CompleteSolution = "odit",
-                            CreatedAt = new DateTime(2023, 3, 17, 17, 36, 14, 953, DateTimeKind.Utc).AddTicks(1126),
+                            CreatedAt = new DateTime(2023, 3, 23, 16, 47, 59, 29, DateTimeKind.Utc).AddTicks(3985),
                             CreatedBy = 34L,
                             ExampleTestCases = "Vel voluptatum quia quia nesciunt sequi impedit.\nVoluptas repellat nam omnis est magnam rerum eum repudiandae minima.\nQuis atque reprehenderit accusamus dolore est ratione maiores non et.\nSequi minima pariatur dignissimos eum eligendi dolorum.\nCum voluptatibus quibusdam corporis saepe dolores.",
                             InitialSolution = "Et fugit vero vitae.",
@@ -1965,7 +1965,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 3L,
                             ChallengeId = 47L,
                             CompleteSolution = "Officiis ducimus aut dolorem sit dicta ullam.",
-                            CreatedAt = new DateTime(2021, 6, 23, 5, 6, 5, 198, DateTimeKind.Utc).AddTicks(1884),
+                            CreatedAt = new DateTime(2021, 6, 27, 17, 53, 38, 104, DateTimeKind.Utc).AddTicks(5749),
                             CreatedBy = 25L,
                             ExampleTestCases = "maxime",
                             InitialSolution = "Amet voluptates temporibus esse magni.",
@@ -1979,7 +1979,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 4L,
                             ChallengeId = 57L,
                             CompleteSolution = "Molestiae hic et officiis accusantium nostrum repellat aut et.\nItaque animi eveniet ut delectus voluptates dolorem.\nLaudantium itaque sequi officiis sapiente et.",
-                            CreatedAt = new DateTime(2023, 4, 7, 20, 1, 24, 692, DateTimeKind.Utc).AddTicks(4914),
+                            CreatedAt = new DateTime(2023, 4, 13, 20, 22, 0, 424, DateTimeKind.Utc).AddTicks(5952),
                             CreatedBy = 27L,
                             ExampleTestCases = "Non porro impedit.",
                             InitialSolution = "Quis perferendis et pariatur sapiente repellat quasi.",
@@ -1993,7 +1993,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 5L,
                             ChallengeId = 60L,
                             CompleteSolution = "Sit molestiae adipisci repellat eum vel dolorum aut ullam distinctio.\nOmnis animi officiis tenetur.",
-                            CreatedAt = new DateTime(2019, 5, 2, 8, 43, 20, 183, DateTimeKind.Utc).AddTicks(1775),
+                            CreatedAt = new DateTime(2019, 5, 5, 2, 56, 6, 808, DateTimeKind.Utc).AddTicks(2130),
                             CreatedBy = 9L,
                             ExampleTestCases = "Libero dolorem voluptatem et vitae eius nemo.",
                             InitialSolution = "Fugit mollitia aut ab eum est quaerat consequatur.",
@@ -2007,7 +2007,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 6L,
                             ChallengeId = 69L,
                             CompleteSolution = "Culpa maiores officiis deleniti cumque similique optio et sed ab. Quis voluptatem et veniam iusto rerum. Provident inventore voluptas nihil rerum totam expedita hic. Sint rerum earum facilis iusto unde nihil officia minima. Id occaecati quod. Laborum illo ipsum fuga ratione ipsa sequi.",
-                            CreatedAt = new DateTime(2023, 1, 21, 22, 5, 47, 324, DateTimeKind.Utc).AddTicks(2928),
+                            CreatedAt = new DateTime(2023, 1, 27, 18, 18, 38, 742, DateTimeKind.Utc).AddTicks(9419),
                             CreatedBy = 25L,
                             ExampleTestCases = "Qui placeat facere omnis ea quia.",
                             InitialSolution = "Commodi architecto omnis necessitatibus est eum.",
@@ -2021,7 +2021,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 7L,
                             ChallengeId = 63L,
                             CompleteSolution = "Est totam voluptas excepturi et expedita dignissimos et. Atque aut est et. Recusandae rerum dolor assumenda maiores placeat magnam debitis. Facilis velit et qui totam et iusto consequatur ut. Et tempora officiis error enim nulla.",
-                            CreatedAt = new DateTime(2023, 4, 22, 22, 39, 23, 159, DateTimeKind.Utc).AddTicks(2507),
+                            CreatedAt = new DateTime(2023, 4, 28, 23, 49, 17, 461, DateTimeKind.Utc).AddTicks(8532),
                             CreatedBy = 13L,
                             ExampleTestCases = "Debitis consequuntur perspiciatis dolorum architecto placeat error eum aut repellendus. Est cumque velit aspernatur voluptatum fugiat. Consequatur est voluptatum natus sed qui atque inventore beatae totam.",
                             InitialSolution = "Iure nisi voluptatem.",
@@ -2035,7 +2035,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 8L,
                             ChallengeId = 55L,
                             CompleteSolution = "Quia commodi non quis voluptatem ea.\nQuis dignissimos ipsam et in dolores perferendis.\nAspernatur praesentium sint quis eos et at iusto.\nOfficia harum in ab at at dolorem qui nobis.",
-                            CreatedAt = new DateTime(2023, 3, 23, 6, 26, 58, 321, DateTimeKind.Utc).AddTicks(9173),
+                            CreatedAt = new DateTime(2023, 3, 29, 5, 56, 46, 230, DateTimeKind.Utc).AddTicks(7810),
                             CreatedBy = 32L,
                             ExampleTestCases = "Et illo voluptas culpa ea ducimus ea.\nEt eum est est neque qui.\nVoluptatem unde voluptatem non.",
                             InitialSolution = "Voluptas veniam rerum sed qui ipsam accusamus fuga id.",
@@ -2049,7 +2049,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 9L,
                             ChallengeId = 66L,
                             CompleteSolution = "Quis voluptatem autem voluptas ducimus maiores praesentium odit error adipisci. Vitae eligendi consequatur laboriosam commodi atque. Dolor eos est repellat enim aliquam ratione. A voluptatem assumenda delectus quaerat est recusandae aliquam provident. Rerum eius accusamus rerum recusandae cum et officia odit aliquid. Corrupti repellat aliquid dolorum iste quia voluptatibus dolores nostrum ab.",
-                            CreatedAt = new DateTime(2023, 5, 4, 5, 8, 39, 464, DateTimeKind.Utc).AddTicks(4415),
+                            CreatedAt = new DateTime(2023, 5, 10, 6, 55, 20, 557, DateTimeKind.Utc).AddTicks(2810),
                             CreatedBy = 6L,
                             ExampleTestCases = "Suscipit animi recusandae quo voluptatem odio.\nEsse quam ut optio quo non.",
                             InitialSolution = "Officia quos laboriosam porro aut consequuntur.",
@@ -2063,7 +2063,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 10L,
                             ChallengeId = 16L,
                             CompleteSolution = "Sint dolores laboriosam totam. Reprehenderit sed blanditiis perferendis qui non aliquid vero. Ab eaque ea consequatur aut.",
-                            CreatedAt = new DateTime(2022, 11, 10, 21, 6, 14, 672, DateTimeKind.Utc).AddTicks(3216),
+                            CreatedAt = new DateTime(2022, 11, 16, 13, 23, 59, 985, DateTimeKind.Utc).AddTicks(4631),
                             CreatedBy = 37L,
                             ExampleTestCases = "sed",
                             InitialSolution = "Totam voluptatem quam ut cumque sint tenetur sed et debitis.",
@@ -2077,7 +2077,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 11L,
                             ChallengeId = 2L,
                             CompleteSolution = "Vitae aut molestias pariatur expedita provident ex beatae nihil numquam. Adipisci consequatur eos dolor quae sit. In esse et veniam.",
-                            CreatedAt = new DateTime(2020, 10, 27, 0, 40, 36, 963, DateTimeKind.Utc).AddTicks(6078),
+                            CreatedAt = new DateTime(2020, 10, 31, 0, 27, 36, 225, DateTimeKind.Utc).AddTicks(9943),
                             CreatedBy = 23L,
                             ExampleTestCases = "Et dignissimos omnis veniam.\nDoloribus dolorem et accusamus nostrum aliquam aut repellat tenetur.\nQuia impedit ut.",
                             InitialSolution = "Laudantium accusantium possimus mollitia totam blanditiis odio corrupti asperiores.",
@@ -2091,7 +2091,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 12L,
                             ChallengeId = 48L,
                             CompleteSolution = "Rerum quaerat perferendis iusto ea et.",
-                            CreatedAt = new DateTime(2023, 5, 15, 21, 25, 47, 50, DateTimeKind.Utc).AddTicks(7132),
+                            CreatedAt = new DateTime(2023, 5, 21, 23, 50, 34, 871, DateTimeKind.Utc).AddTicks(6762),
                             CreatedBy = 34L,
                             ExampleTestCases = "Suscipit exercitationem error iure rerum.\nEt autem culpa nemo delectus voluptates.\nPariatur ut nihil.",
                             InitialSolution = "Quaerat hic facilis quod expedita adipisci voluptates molestiae qui.",
@@ -2105,7 +2105,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 13L,
                             ChallengeId = 63L,
                             CompleteSolution = "Consequatur et ut dolor ut enim atque. Quia nobis dicta reiciendis. Doloribus qui perferendis odio ratione. Magnam atque minus. Minus rem voluptatum amet a dolorem modi. Qui quia commodi perferendis.",
-                            CreatedAt = new DateTime(2020, 12, 5, 13, 40, 28, 257, DateTimeKind.Utc).AddTicks(3981),
+                            CreatedAt = new DateTime(2020, 12, 9, 15, 36, 29, 982, DateTimeKind.Utc).AddTicks(521),
                             CreatedBy = 13L,
                             ExampleTestCases = "nihil",
                             InitialSolution = "Natus explicabo repudiandae optio totam architecto sequi blanditiis.",
@@ -2119,7 +2119,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 14L,
                             ChallengeId = 52L,
                             CompleteSolution = "Deserunt veritatis ad perferendis et nihil autem quia cupiditate.",
-                            CreatedAt = new DateTime(2022, 12, 1, 12, 52, 8, 872, DateTimeKind.Utc).AddTicks(1522),
+                            CreatedAt = new DateTime(2022, 12, 7, 6, 17, 18, 923, DateTimeKind.Utc).AddTicks(1321),
                             CreatedBy = 2L,
                             ExampleTestCases = "Maiores aut aliquid perferendis adipisci odio expedita ex nulla.\nIste aliquam ex repudiandae atque beatae.\nExcepturi illum et.\nCorporis quod eius vel ut repudiandae et.\nEt voluptas corrupti voluptas quaerat.",
                             InitialSolution = "Fugit error nihil aut veritatis quo.",
@@ -2133,7 +2133,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 15L,
                             ChallengeId = 34L,
                             CompleteSolution = "Voluptatum quod sit voluptas nobis ut magni harum expedita non.",
-                            CreatedAt = new DateTime(2022, 10, 6, 16, 0, 34, 313, DateTimeKind.Utc).AddTicks(8834),
+                            CreatedAt = new DateTime(2022, 10, 12, 6, 23, 24, 867, DateTimeKind.Utc).AddTicks(499),
                             CreatedBy = 24L,
                             ExampleTestCases = "Dicta rerum omnis voluptatem consectetur. Id et nihil. Maxime dolorem recusandae necessitatibus dolores ea velit vero laboriosam. Quaerat doloribus omnis iure rerum magnam perspiciatis necessitatibus et.",
                             InitialSolution = "Dolor labore numquam at praesentium ea ut aut rerum.",
@@ -2147,7 +2147,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 16L,
                             ChallengeId = 15L,
                             CompleteSolution = "Officia neque ducimus aliquam eos.\nDolores est tempore doloremque aspernatur consequuntur autem beatae.\nQuos quo sit nulla autem hic dolore eveniet nostrum voluptatem.",
-                            CreatedAt = new DateTime(2023, 3, 21, 23, 49, 48, 860, DateTimeKind.Utc).AddTicks(9974),
+                            CreatedAt = new DateTime(2023, 3, 27, 23, 15, 26, 959, DateTimeKind.Utc).AddTicks(1103),
                             CreatedBy = 8L,
                             ExampleTestCases = "A velit laudantium cupiditate veritatis ex sunt aspernatur quidem.",
                             InitialSolution = "Ut consequatur laborum laudantium quos consequatur inventore.",
@@ -2161,7 +2161,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 17L,
                             ChallengeId = 14L,
                             CompleteSolution = "Explicabo ipsa cum.\nAutem nisi voluptatem sequi aut aut nulla quod voluptas.\nFugiat harum id enim quisquam at reprehenderit beatae.\nHarum doloremque assumenda laboriosam saepe.",
-                            CreatedAt = new DateTime(2023, 2, 15, 23, 19, 16, 92, DateTimeKind.Utc).AddTicks(4800),
+                            CreatedAt = new DateTime(2023, 2, 21, 20, 53, 52, 644, DateTimeKind.Utc).AddTicks(1050),
                             CreatedBy = 34L,
                             ExampleTestCases = "Aliquid ratione quisquam molestiae ipsam commodi.",
                             InitialSolution = "Et eius asperiores.",
@@ -2175,7 +2175,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 18L,
                             ChallengeId = 38L,
                             CompleteSolution = "Dolores sit libero inventore odit.\nNesciunt totam velit omnis ea quaerat vero est.\nVero optio consequuntur tempore est consequatur.\nOdit quia perspiciatis cumque in.",
-                            CreatedAt = new DateTime(2023, 6, 5, 14, 54, 51, 778, DateTimeKind.Utc).AddTicks(2364),
+                            CreatedAt = new DateTime(2023, 6, 11, 18, 27, 18, 361, DateTimeKind.Utc).AddTicks(9850),
                             CreatedBy = 16L,
                             ExampleTestCases = "Sit amet repudiandae unde excepturi ea et veniam veniam.\nNemo cumque ea ab.",
                             InitialSolution = "Dolorem vitae consequatur qui in ea animi autem.",
@@ -2189,7 +2189,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 19L,
                             ChallengeId = 26L,
                             CompleteSolution = "optio",
-                            CreatedAt = new DateTime(2023, 3, 20, 8, 41, 27, 639, DateTimeKind.Utc).AddTicks(4019),
+                            CreatedAt = new DateTime(2023, 3, 26, 8, 1, 46, 404, DateTimeKind.Utc).AddTicks(1044),
                             CreatedBy = 36L,
                             ExampleTestCases = "Unde animi sed et illo. Sunt iure unde fugit animi. Et dolorem sed ipsum atque reiciendis corporis blanditiis qui. Reprehenderit culpa sint impedit. Dolor maiores eius dolore repellat sunt velit labore dolores. Nesciunt libero inventore cupiditate doloribus ab quia et ab.",
                             InitialSolution = "Et harum dolores.",
@@ -2203,7 +2203,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 20L,
                             ChallengeId = 35L,
                             CompleteSolution = "Accusamus animi maxime molestiae qui. Voluptas quia enim. Recusandae ea dicta numquam. Accusamus qui atque dolorum odit non quis molestias.",
-                            CreatedAt = new DateTime(2023, 5, 29, 5, 8, 57, 332, DateTimeKind.Utc).AddTicks(8857),
+                            CreatedAt = new DateTime(2023, 6, 4, 8, 17, 13, 599, DateTimeKind.Utc).AddTicks(1361),
                             CreatedBy = 2L,
                             ExampleTestCases = "nostrum",
                             InitialSolution = "Quos reprehenderit saepe voluptate quia ut culpa ut molestias.",
@@ -2217,7 +2217,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 21L,
                             ChallengeId = 23L,
                             CompleteSolution = "Molestias nihil quas omnis delectus consequatur quaerat.",
-                            CreatedAt = new DateTime(2023, 9, 2, 11, 31, 48, 168, DateTimeKind.Utc).AddTicks(4013),
+                            CreatedAt = new DateTime(2023, 9, 8, 19, 54, 13, 847, DateTimeKind.Utc).AddTicks(1845),
                             CreatedBy = 30L,
                             ExampleTestCases = "Officiis consequatur non natus ullam voluptatem.\nNon quaerat omnis accusantium ea provident eius sunt iste.\nCum a dicta et ratione.",
                             InitialSolution = "Possimus sit maxime doloribus est velit vel commodi et.",
@@ -2231,7 +2231,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 22L,
                             ChallengeId = 65L,
                             CompleteSolution = "quidem",
-                            CreatedAt = new DateTime(2022, 9, 6, 3, 25, 16, 83, DateTimeKind.Utc).AddTicks(1492),
+                            CreatedAt = new DateTime(2022, 9, 11, 16, 8, 29, 759, DateTimeKind.Utc).AddTicks(7693),
                             CreatedBy = 36L,
                             ExampleTestCases = "earum",
                             InitialSolution = "Fugiat consequatur ipsam dolore laudantium culpa accusamus fuga.",
@@ -2245,7 +2245,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 23L,
                             ChallengeId = 68L,
                             CompleteSolution = "Doloribus laboriosam quo eligendi quidem non porro est qui magni.\nDolor optio magnam quidem qui cumque hic maxime tenetur.",
-                            CreatedAt = new DateTime(2023, 3, 13, 6, 37, 11, 430, DateTimeKind.Utc).AddTicks(3169),
+                            CreatedAt = new DateTime(2023, 3, 19, 5, 34, 22, 665, DateTimeKind.Utc).AddTicks(9438),
                             CreatedBy = 22L,
                             ExampleTestCases = "Eveniet et et in quis. Ea ut quidem eius animi. Tempora in consequatur voluptas velit cum dolore dolorum ut vitae. Voluptatem sed dolore ducimus officiis non possimus voluptatem. Voluptatibus iure quod veniam et nostrum neque. Totam non veritatis aperiam aperiam aliquam rem autem vel.",
                             InitialSolution = "Consequuntur vel ducimus ducimus dolor eveniet tenetur ut hic qui.",
@@ -2259,7 +2259,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 24L,
                             ChallengeId = 55L,
                             CompleteSolution = "eaque",
-                            CreatedAt = new DateTime(2022, 11, 13, 1, 17, 9, 694, DateTimeKind.Utc).AddTicks(5574),
+                            CreatedAt = new DateTime(2022, 11, 18, 17, 42, 0, 743, DateTimeKind.Utc).AddTicks(4499),
                             CreatedBy = 25L,
                             ExampleTestCases = "Ut ullam et ab omnis odit vitae maiores. Maiores totam dolore voluptatem repellendus doloribus et beatae laudantium. Neque quos voluptates. Quis vel iure blanditiis dolorem mollitia.",
                             InitialSolution = "Vel animi placeat.",
@@ -2273,7 +2273,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 25L,
                             ChallengeId = 61L,
                             CompleteSolution = "optio",
-                            CreatedAt = new DateTime(2023, 5, 2, 3, 53, 21, 762, DateTimeKind.Utc).AddTicks(3130),
+                            CreatedAt = new DateTime(2023, 5, 8, 5, 33, 21, 11, DateTimeKind.Utc).AddTicks(912),
                             CreatedBy = 28L,
                             ExampleTestCases = "Labore reprehenderit est sint iure tenetur numquam dolor.\nQuia dolore temporibus rem suscipit excepturi dicta quas.\nOmnis cumque pariatur sapiente.\nAd dolorem autem minus in ullam quam.\nEt ullam unde molestias natus ad quod reiciendis dolor atque.\nQuia quod recusandae quia voluptas.",
                             InitialSolution = "Velit dolor maxime tenetur molestiae distinctio commodi.",
@@ -2287,7 +2287,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 26L,
                             ChallengeId = 25L,
                             CompleteSolution = "Nisi quos molestiae. Hic consequatur omnis voluptatem mollitia eius deserunt possimus repellendus. A laudantium delectus sed qui.",
-                            CreatedAt = new DateTime(2022, 12, 22, 15, 12, 26, 404, DateTimeKind.Utc).AddTicks(8272),
+                            CreatedAt = new DateTime(2022, 12, 28, 9, 46, 27, 442, DateTimeKind.Utc).AddTicks(5223),
                             CreatedBy = 8L,
                             ExampleTestCases = "Et veritatis voluptatem dolorum corporis qui aut quibusdam. Sunt porro id. Adipisci aliquam impedit iure saepe dolores voluptatum corporis voluptas.",
                             InitialSolution = "Velit repellendus ad accusamus autem facere deserunt eius illum.",
@@ -2301,7 +2301,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 27L,
                             ChallengeId = 5L,
                             CompleteSolution = "Omnis et incidunt distinctio dolor.\nDoloremque quos ut deserunt debitis et illo culpa.\nMolestiae neque voluptatem minima eligendi ducimus repudiandae.\nTempore delectus consequuntur cum aut dolor eligendi mollitia aut.\nSunt rerum amet voluptatum qui porro fugiat dignissimos.\nInventore facilis totam consequatur consequuntur error officia optio ut.",
-                            CreatedAt = new DateTime(2023, 7, 31, 17, 13, 19, 273, DateTimeKind.Utc).AddTicks(2467),
+                            CreatedAt = new DateTime(2023, 8, 6, 23, 48, 49, 802, DateTimeKind.Utc).AddTicks(3789),
                             CreatedBy = 21L,
                             ExampleTestCases = "Nihil atque molestiae. Excepturi praesentium qui alias hic sint aperiam nam pariatur nihil. Atque est error ipsa facilis fuga. Dolore eum illo voluptatem reiciendis. Dolor inventore ex minus. Accusamus mollitia fugiat.",
                             InitialSolution = "Dolorum molestiae reiciendis.",
@@ -2315,7 +2315,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 28L,
                             ChallengeId = 60L,
                             CompleteSolution = "Neque ut mollitia aut corrupti deleniti. Modi necessitatibus error corporis laborum voluptatibus eum. Laboriosam officia dolorem sed eveniet est rerum porro. Fugit molestiae sequi quasi velit cupiditate.",
-                            CreatedAt = new DateTime(2023, 4, 6, 14, 14, 4, 647, DateTimeKind.Utc).AddTicks(7127),
+                            CreatedAt = new DateTime(2023, 4, 12, 14, 30, 37, 349, DateTimeKind.Utc).AddTicks(3637),
                             CreatedBy = 32L,
                             ExampleTestCases = "In nesciunt beatae vel.",
                             InitialSolution = "Autem non in itaque deserunt dolorem dolores quis provident rerum.",
@@ -2329,7 +2329,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 29L,
                             ChallengeId = 33L,
                             CompleteSolution = "animi",
-                            CreatedAt = new DateTime(2023, 4, 1, 22, 30, 15, 432, DateTimeKind.Utc).AddTicks(7041),
+                            CreatedAt = new DateTime(2023, 4, 7, 22, 31, 36, 571, DateTimeKind.Utc).AddTicks(5058),
                             CreatedBy = 20L,
                             ExampleTestCases = "Fugiat reiciendis dolore dolorem pariatur iusto repellendus laborum veritatis. Voluptatem ut doloribus velit asperiores quam illum necessitatibus. Veniam facilis est. Et natus sed dolores ipsa. Iste blanditiis placeat. Voluptatem perspiciatis iusto mollitia provident.",
                             InitialSolution = "Aut est esse.",
@@ -2343,7 +2343,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 30L,
                             ChallengeId = 37L,
                             CompleteSolution = "Aut est dignissimos. Facilis ullam maxime in quas numquam enim. Tempore et natus dolorem veniam sapiente mollitia hic ratione quia. Consequatur consectetur quibusdam nemo et et et. Maiores eligendi velit iusto eum voluptatem molestiae.",
-                            CreatedAt = new DateTime(2022, 12, 16, 23, 26, 26, 839, DateTimeKind.Utc).AddTicks(9194),
+                            CreatedAt = new DateTime(2022, 12, 22, 17, 42, 0, 223, DateTimeKind.Utc).AddTicks(9365),
                             CreatedBy = 30L,
                             ExampleTestCases = "Sapiente voluptatibus delectus est recusandae neque rerum aut.\nMaiores harum esse nulla doloribus dolore suscipit alias expedita quis.\nRem et qui tempore ex.\nMolestiae commodi modi magni dicta explicabo assumenda veritatis.",
                             InitialSolution = "Doloribus consequatur voluptate eum perspiciatis temporibus illo eveniet.",
@@ -2357,7 +2357,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 31L,
                             ChallengeId = 69L,
                             CompleteSolution = "Et ipsum voluptatem provident magnam exercitationem quam quaerat id ad.\nAut ut ut est repellendus est qui illo.",
-                            CreatedAt = new DateTime(2022, 10, 22, 13, 23, 11, 8, DateTimeKind.Utc).AddTicks(3697),
+                            CreatedAt = new DateTime(2022, 10, 28, 4, 37, 53, 50, DateTimeKind.Utc).AddTicks(8419),
                             CreatedBy = 19L,
                             ExampleTestCases = "Nulla labore dolore voluptatem. Dicta quia distinctio mollitia et consequatur voluptatem maiores. Commodi dicta omnis deleniti optio. Reiciendis eos et provident laborum provident assumenda nulla ut ut. Id consequatur eos. Voluptatem quos aliquam fugit porro eligendi aut.",
                             InitialSolution = "Illo tempora et nulla sint molestias odio sit laboriosam.",
@@ -2371,7 +2371,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 32L,
                             ChallengeId = 56L,
                             CompleteSolution = "Voluptatem ea eligendi.",
-                            CreatedAt = new DateTime(2019, 8, 24, 17, 12, 18, 832, DateTimeKind.Utc).AddTicks(5408),
+                            CreatedAt = new DateTime(2019, 8, 27, 17, 38, 16, 514, DateTimeKind.Utc).AddTicks(5317),
                             CreatedBy = 17L,
                             ExampleTestCases = "tempora",
                             InitialSolution = "Tempore vel nihil voluptas incidunt earum dolor maiores qui quo.",
@@ -2385,7 +2385,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 33L,
                             ChallengeId = 58L,
                             CompleteSolution = "beatae",
-                            CreatedAt = new DateTime(2020, 8, 17, 7, 15, 15, 72, DateTimeKind.Utc).AddTicks(7413),
+                            CreatedAt = new DateTime(2020, 8, 21, 3, 11, 25, 792, DateTimeKind.Utc).AddTicks(8026),
                             CreatedBy = 32L,
                             ExampleTestCases = "Distinctio omnis quia. Ducimus hic est ea itaque ut ullam molestiae nobis. Maxime repellat id autem quae aut reiciendis nihil.",
                             InitialSolution = "Vitae quia repudiandae perferendis ut rerum sint amet.",
@@ -2399,7 +2399,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 34L,
                             ChallengeId = 67L,
                             CompleteSolution = "Impedit fuga beatae illum necessitatibus ut earum autem temporibus repudiandae.",
-                            CreatedAt = new DateTime(2023, 4, 7, 2, 38, 59, 493, DateTimeKind.Utc).AddTicks(9910),
+                            CreatedAt = new DateTime(2023, 4, 13, 2, 57, 13, 487, DateTimeKind.Utc).AddTicks(8285),
                             CreatedBy = 36L,
                             ExampleTestCases = "Quis fugit ullam incidunt numquam consequatur omnis reiciendis aperiam. Vel nesciunt magni ut. Aliquid eveniet voluptatem porro.",
                             InitialSolution = "Necessitatibus et voluptate eum iusto autem.",
@@ -2413,7 +2413,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 35L,
                             ChallengeId = 40L,
                             CompleteSolution = "Sunt et natus inventore tempora possimus cumque eveniet quasi adipisci. Voluptatem et fugiat. Architecto aut minima deserunt similique tempore quia. Voluptas non ut accusamus odit provident iste quaerat.",
-                            CreatedAt = new DateTime(2023, 6, 7, 6, 12, 11, 30, DateTimeKind.Utc).AddTicks(73),
+                            CreatedAt = new DateTime(2023, 6, 13, 9, 49, 58, 154, DateTimeKind.Utc).AddTicks(820),
                             CreatedBy = 38L,
                             ExampleTestCases = "quisquam",
                             InitialSolution = "Nobis qui quas.",
@@ -2427,7 +2427,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 36L,
                             ChallengeId = 27L,
                             CompleteSolution = "quaerat",
-                            CreatedAt = new DateTime(2022, 9, 7, 1, 6, 42, 617, DateTimeKind.Utc).AddTicks(6425),
+                            CreatedAt = new DateTime(2022, 9, 12, 13, 52, 53, 252, DateTimeKind.Utc).AddTicks(9891),
                             CreatedBy = 32L,
                             ExampleTestCases = "Et beatae aperiam et ut delectus aut. At aliquid rerum nihil. Illo magni autem sit odio at deleniti. Odit voluptatibus debitis quaerat autem.",
                             InitialSolution = "Nihil facilis enim et.",
@@ -2441,7 +2441,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 37L,
                             ChallengeId = 9L,
                             CompleteSolution = "Eaque harum dignissimos nemo architecto et qui in ullam assumenda.",
-                            CreatedAt = new DateTime(2022, 12, 31, 3, 15, 57, 837, DateTimeKind.Utc).AddTicks(7447),
+                            CreatedAt = new DateTime(2023, 1, 5, 22, 17, 43, 709, DateTimeKind.Utc).AddTicks(8282),
                             CreatedBy = 7L,
                             ExampleTestCases = "ut",
                             InitialSolution = "Est vitae ducimus.",
@@ -2455,7 +2455,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 38L,
                             ChallengeId = 32L,
                             CompleteSolution = "Illo fugit recusandae explicabo cupiditate est. Voluptatum voluptatibus aut voluptate ipsum minima blanditiis voluptas. A est quibusdam voluptatibus tempore saepe. Rerum consequatur sint harum nisi maxime et ipsa rem.",
-                            CreatedAt = new DateTime(2023, 9, 2, 11, 52, 40, 876, DateTimeKind.Utc).AddTicks(6272),
+                            CreatedAt = new DateTime(2023, 9, 8, 20, 15, 9, 393, DateTimeKind.Utc).AddTicks(7654),
                             CreatedBy = 18L,
                             ExampleTestCases = "Quasi dolor inventore.",
                             InitialSolution = "Sequi est deserunt.",
@@ -2469,7 +2469,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 39L,
                             ChallengeId = 6L,
                             CompleteSolution = "Ut et odio distinctio saepe. Delectus neque tempore amet adipisci debitis aut. Cumque voluptatem distinctio assumenda impedit quidem quo. Quam quia animi quo quisquam deserunt repudiandae ut animi. Reprehenderit voluptas et est est. Rerum iusto sit veniam dolor magnam.",
-                            CreatedAt = new DateTime(2023, 5, 2, 7, 45, 59, 807, DateTimeKind.Utc).AddTicks(9056),
+                            CreatedAt = new DateTime(2023, 5, 8, 9, 26, 30, 689, DateTimeKind.Utc).AddTicks(3927),
                             CreatedBy = 3L,
                             ExampleTestCases = "et",
                             InitialSolution = "Sint facilis laborum ea quo quis.",
@@ -2483,7 +2483,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 40L,
                             ChallengeId = 31L,
                             CompleteSolution = "Ad nemo iste fuga ipsum fuga inventore voluptatem facilis soluta.",
-                            CreatedAt = new DateTime(2023, 8, 7, 12, 51, 48, 71, DateTimeKind.Utc).AddTicks(7725),
+                            CreatedAt = new DateTime(2023, 8, 13, 19, 49, 33, 679, DateTimeKind.Utc).AddTicks(3875),
                             CreatedBy = 24L,
                             ExampleTestCases = "Quisquam eveniet quo rerum consequatur et est repellat aperiam quaerat.",
                             InitialSolution = "Quis dolore voluptate officia itaque atque quaerat voluptas molestiae laborum.",
@@ -2497,7 +2497,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 41L,
                             ChallengeId = 57L,
                             CompleteSolution = "Nisi occaecati at molestias veritatis alias laudantium suscipit. Suscipit ipsum minima consectetur esse reprehenderit natus temporibus. Aliquid autem ad ut est blanditiis architecto impedit.",
-                            CreatedAt = new DateTime(2023, 4, 13, 8, 4, 42, 751, DateTimeKind.Utc).AddTicks(6031),
+                            CreatedAt = new DateTime(2023, 4, 19, 8, 43, 15, 863, DateTimeKind.Utc).AddTicks(5922),
                             CreatedBy = 4L,
                             ExampleTestCases = "Sit aliquid modi aliquid ut sint. Voluptas ab perferendis odit beatae. Sunt totam velit nobis velit. Natus delectus enim dolorem quod quas et. Asperiores cumque fuga necessitatibus error ut ab et velit aperiam.",
                             InitialSolution = "Et qui incidunt minima.",
@@ -2511,7 +2511,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 42L,
                             ChallengeId = 36L,
                             CompleteSolution = "Excepturi ducimus ipsa nihil maxime.\nAtque nulla sed iste ipsam veritatis nihil.",
-                            CreatedAt = new DateTime(2022, 5, 12, 9, 47, 58, 749, DateTimeKind.Utc).AddTicks(6072),
+                            CreatedAt = new DateTime(2022, 5, 17, 16, 10, 15, 210, DateTimeKind.Utc).AddTicks(7491),
                             CreatedBy = 25L,
                             ExampleTestCases = "Enim autem error animi quia rem exercitationem ut nam sit. Ducimus qui enim et. Autem sed consectetur fuga accusamus. Omnis enim est voluptas est id debitis aperiam.",
                             InitialSolution = "Nesciunt quisquam nisi et error.",
@@ -2525,7 +2525,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 43L,
                             ChallengeId = 46L,
                             CompleteSolution = "Natus sequi placeat. Est rerum dicta animi dolorem exercitationem. Veniam cumque est sunt harum voluptas expedita explicabo temporibus eveniet.",
-                            CreatedAt = new DateTime(2022, 7, 12, 4, 49, 6, 272, DateTimeKind.Utc).AddTicks(3951),
+                            CreatedAt = new DateTime(2022, 7, 17, 14, 29, 46, 235, DateTimeKind.Utc).AddTicks(2032),
                             CreatedBy = 14L,
                             ExampleTestCases = "Aperiam qui asperiores temporibus id impedit dolores animi.",
                             InitialSolution = "Temporibus voluptates quia sunt consequuntur omnis eos laudantium est.",
@@ -2539,7 +2539,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 44L,
                             ChallengeId = 57L,
                             CompleteSolution = "Totam omnis velit enim expedita nesciunt illo.",
-                            CreatedAt = new DateTime(2023, 4, 26, 22, 46, 11, 437, DateTimeKind.Utc).AddTicks(2439),
+                            CreatedAt = new DateTime(2023, 5, 3, 0, 9, 9, 882, DateTimeKind.Utc).AddTicks(9941),
                             CreatedBy = 4L,
                             ExampleTestCases = "Deserunt non ut. Itaque nostrum minima corrupti. Ex aut voluptatibus consequatur maxime. Esse quia voluptas.",
                             InitialSolution = "Eum enim vitae cum doloribus perspiciatis placeat maxime inventore.",
@@ -2553,7 +2553,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 45L,
                             ChallengeId = 47L,
                             CompleteSolution = "Fuga nulla ratione distinctio corporis perferendis cupiditate iste et laudantium. Delectus temporibus rem reiciendis sunt. Vel sint excepturi voluptas quo perferendis. Est provident recusandae. Id qui voluptatem. Magnam quam qui et neque qui sapiente veritatis quia.",
-                            CreatedAt = new DateTime(2022, 1, 14, 13, 38, 10, 121, DateTimeKind.Utc).AddTicks(8767),
+                            CreatedAt = new DateTime(2022, 1, 19, 13, 35, 52, 816, DateTimeKind.Utc).AddTicks(6886),
                             CreatedBy = 27L,
                             ExampleTestCases = "et",
                             InitialSolution = "Quia et non et tenetur autem aliquam ut provident corrupti.",
@@ -2567,7 +2567,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 46L,
                             ChallengeId = 53L,
                             CompleteSolution = "Qui autem qui ut quo quis. Inventore voluptate nisi at qui laboriosam hic omnis iste tempora. Quis accusantium qui quasi ea facilis in tenetur facere et.",
-                            CreatedAt = new DateTime(2020, 8, 31, 3, 19, 2, 591, DateTimeKind.Utc).AddTicks(2806),
+                            CreatedAt = new DateTime(2020, 9, 4, 0, 0, 22, 472, DateTimeKind.Utc).AddTicks(258),
                             CreatedBy = 12L,
                             ExampleTestCases = "consectetur",
                             InitialSolution = "Nam repellendus eum et perferendis.",
@@ -2581,7 +2581,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 47L,
                             ChallengeId = 49L,
                             CompleteSolution = "A porro accusantium ad voluptas doloremque in illo id placeat.\nEt qui omnis et dicta delectus.\nNon distinctio voluptatum deserunt iure.\nEt voluptates doloremque in aut animi.\nCumque dolorem iusto asperiores eaque est illum magnam aut.\nEt qui vel eveniet illum ipsum consectetur dolor recusandae.",
-                            CreatedAt = new DateTime(2023, 8, 23, 5, 57, 39, 233, DateTimeKind.Utc).AddTicks(8842),
+                            CreatedAt = new DateTime(2023, 8, 29, 13, 46, 41, 416, DateTimeKind.Utc).AddTicks(6162),
                             CreatedBy = 29L,
                             ExampleTestCases = "alias",
                             InitialSolution = "Hic autem sit eius aliquam.",
@@ -2595,7 +2595,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 48L,
                             ChallengeId = 22L,
                             CompleteSolution = "Id voluptas in architecto ut officiis.\nDistinctio hic harum nihil.\nRepellendus voluptatem aut ut.\nEos debitis non qui laudantium nihil animi dolorum aut.",
-                            CreatedAt = new DateTime(2023, 1, 7, 7, 55, 11, 713, DateTimeKind.Utc).AddTicks(6226),
+                            CreatedAt = new DateTime(2023, 1, 13, 3, 20, 26, 196, DateTimeKind.Utc).AddTicks(52),
                             CreatedBy = 15L,
                             ExampleTestCases = "eveniet",
                             InitialSolution = "Enim voluptatem veritatis aut accusamus omnis qui.",
@@ -2609,7 +2609,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 49L,
                             ChallengeId = 3L,
                             CompleteSolution = "Quisquam hic magnam. Consequuntur hic unde ut. Qui qui consequuntur impedit quis qui. Quod eos autem qui aliquam animi inventore.",
-                            CreatedAt = new DateTime(2023, 7, 26, 19, 17, 57, 195, DateTimeKind.Utc).AddTicks(9859),
+                            CreatedAt = new DateTime(2023, 8, 2, 1, 37, 25, 639, DateTimeKind.Utc).AddTicks(7875),
                             CreatedBy = 13L,
                             ExampleTestCases = "Est et quia non molestiae iure architecto possimus architecto atque. Officiis aut optio natus cupiditate ipsam ipsa deleniti est sit. Nesciunt ex id unde mollitia et quia quia tempore voluptatibus.",
                             InitialSolution = "Quam et blanditiis et asperiores.",
@@ -2623,7 +2623,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 50L,
                             ChallengeId = 41L,
                             CompleteSolution = "rerum",
-                            CreatedAt = new DateTime(2023, 6, 16, 4, 15, 4, 397, DateTimeKind.Utc).AddTicks(3861),
+                            CreatedAt = new DateTime(2023, 6, 22, 8, 21, 57, 847, DateTimeKind.Utc).AddTicks(6006),
                             CreatedBy = 29L,
                             ExampleTestCases = "Est autem temporibus dolorem unde et vel voluptatibus in.\nMolestias et fugit rem dolorum sunt voluptatem veritatis qui.\nPossimus nisi veniam quis sapiente debitis.\nQuod nihil hic.\nQuas est natus labore quae.",
                             InitialSolution = "Nihil iure facere sed similique cum animi quaerat ut.",
@@ -2637,7 +2637,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 51L,
                             ChallengeId = 37L,
                             CompleteSolution = "quia",
-                            CreatedAt = new DateTime(2022, 2, 28, 20, 28, 35, 961, DateTimeKind.Utc).AddTicks(1340),
+                            CreatedAt = new DateTime(2022, 3, 5, 22, 54, 5, 718, DateTimeKind.Utc).AddTicks(7894),
                             CreatedBy = 28L,
                             ExampleTestCases = "Dolorum qui expedita autem expedita quaerat expedita esse.",
                             InitialSolution = "Nobis corrupti porro cumque eius distinctio enim.",
@@ -2651,7 +2651,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 52L,
                             ChallengeId = 27L,
                             CompleteSolution = "Inventore aperiam impedit et libero. Quod eligendi rerum voluptatem mollitia id. Est ullam voluptas hic sit quis rerum voluptas repellat est. Magnam vitae voluptatem et ipsam veritatis deserunt omnis dolorem. Animi omnis hic adipisci maiores maiores eligendi dolorem quod. Et dolor sint commodi expedita esse molestiae.",
-                            CreatedAt = new DateTime(2022, 11, 15, 1, 41, 5, 911, DateTimeKind.Utc).AddTicks(4846),
+                            CreatedAt = new DateTime(2022, 11, 20, 18, 12, 31, 814, DateTimeKind.Utc).AddTicks(5335),
                             CreatedBy = 23L,
                             ExampleTestCases = "Impedit ut tempore ut ut et aperiam vel. Qui similique ducimus et ut et. Consequatur aliquid sed. Libero at sequi quia harum aut perferendis. Nisi sit ut dolorem rem sit at culpa. Repudiandae rem eaque.",
                             InitialSolution = "Totam ut tenetur dolor autem ut.",
@@ -2665,7 +2665,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 53L,
                             ChallengeId = 27L,
                             CompleteSolution = "At vitae laudantium animi minus atque exercitationem aperiam iure iste. Reiciendis id sed eius ut blanditiis. Vitae vel exercitationem incidunt officia eum ratione totam id commodi. Illum porro voluptas dolorem numquam repellat et rerum ipsam id.",
-                            CreatedAt = new DateTime(2023, 7, 7, 4, 42, 21, 380, DateTimeKind.Utc).AddTicks(9249),
+                            CreatedAt = new DateTime(2023, 7, 13, 9, 57, 50, 459, DateTimeKind.Utc).AddTicks(3250),
                             CreatedBy = 1L,
                             ExampleTestCases = "Quaerat eos qui cupiditate voluptas hic doloribus in.\nHarum officiis in quia enim architecto ab similique cum.",
                             InitialSolution = "Suscipit ad autem laudantium velit unde.",
@@ -2679,7 +2679,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 54L,
                             ChallengeId = 7L,
                             CompleteSolution = "Iusto corporis id.\nUt neque quisquam harum sint dolor qui.",
-                            CreatedAt = new DateTime(2020, 4, 24, 8, 15, 57, 51, DateTimeKind.Utc).AddTicks(2548),
+                            CreatedAt = new DateTime(2020, 4, 27, 21, 56, 58, 376, DateTimeKind.Utc).AddTicks(463),
                             CreatedBy = 2L,
                             ExampleTestCases = "Quod porro aliquam minima libero porro est voluptas ipsam in.\nNon quibusdam sed assumenda consequatur rem occaecati suscipit sint qui.",
                             InitialSolution = "Consequatur iste amet tempore quia eveniet.",
@@ -2693,7 +2693,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 55L,
                             ChallengeId = 6L,
                             CompleteSolution = "Vero sint reprehenderit a voluptatem.\nDolorem necessitatibus mollitia harum a fugiat voluptatem.",
-                            CreatedAt = new DateTime(2023, 5, 13, 14, 26, 33, 347, DateTimeKind.Utc).AddTicks(304),
+                            CreatedAt = new DateTime(2023, 5, 19, 16, 43, 52, 556, DateTimeKind.Utc).AddTicks(8365),
                             CreatedBy = 17L,
                             ExampleTestCases = "labore",
                             InitialSolution = "Eum nisi dolor iure iure similique aspernatur corporis.",
@@ -2707,7 +2707,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 56L,
                             ChallengeId = 32L,
                             CompleteSolution = "quae",
-                            CreatedAt = new DateTime(2023, 8, 27, 5, 15, 57, 435, DateTimeKind.Utc).AddTicks(8679),
+                            CreatedAt = new DateTime(2023, 9, 2, 13, 17, 57, 174, DateTimeKind.Utc).AddTicks(4174),
                             CreatedBy = 8L,
                             ExampleTestCases = "Sit dicta ut.",
                             InitialSolution = "Similique ea optio.",
@@ -2721,7 +2721,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 57L,
                             ChallengeId = 40L,
                             CompleteSolution = "Dolores nostrum sunt veritatis quidem. Odit et architecto. Reiciendis saepe ea voluptate possimus molestiae a earum veritatis qui. Cum voluptas et et eos dolorum. Id a harum veniam sint at blanditiis.",
-                            CreatedAt = new DateTime(2023, 1, 18, 2, 46, 11, 555, DateTimeKind.Utc).AddTicks(4503),
+                            CreatedAt = new DateTime(2023, 1, 23, 22, 46, 37, 876, DateTimeKind.Utc).AddTicks(7055),
                             CreatedBy = 10L,
                             ExampleTestCases = "adipisci",
                             InitialSolution = "Non eveniet in voluptates debitis.",
@@ -2735,7 +2735,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 58L,
                             ChallengeId = 9L,
                             CompleteSolution = "Consequatur optio totam enim.",
-                            CreatedAt = new DateTime(2022, 1, 29, 4, 7, 25, 643, DateTimeKind.Utc).AddTicks(5764),
+                            CreatedAt = new DateTime(2022, 2, 3, 4, 52, 47, 816, DateTimeKind.Utc).AddTicks(3384),
                             CreatedBy = 26L,
                             ExampleTestCases = "Ea provident modi.\nSuscipit in at voluptatibus quia porro nisi necessitatibus quia.",
                             InitialSolution = "Cumque ipsa blanditiis et quas.",
@@ -2749,7 +2749,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 59L,
                             ChallengeId = 40L,
                             CompleteSolution = "Optio modi commodi necessitatibus.\nEt facere ipsam ea et nobis.\nMagni voluptatem molestias quisquam placeat consectetur.\nCum voluptate quae.",
-                            CreatedAt = new DateTime(2023, 3, 19, 20, 2, 11, 577, DateTimeKind.Utc).AddTicks(8136),
+                            CreatedAt = new DateTime(2023, 3, 25, 19, 20, 47, 110, DateTimeKind.Utc).AddTicks(1670),
                             CreatedBy = 21L,
                             ExampleTestCases = "Dignissimos alias nam est vel quisquam est voluptatem enim.",
                             InitialSolution = "Culpa qui possimus minima dolorem facere at.",
@@ -2763,7 +2763,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 60L,
                             ChallengeId = 48L,
                             CompleteSolution = "quod",
-                            CreatedAt = new DateTime(2023, 6, 15, 13, 59, 48, 398, DateTimeKind.Utc).AddTicks(5556),
+                            CreatedAt = new DateTime(2023, 6, 21, 18, 4, 45, 552, DateTimeKind.Utc).AddTicks(6993),
                             CreatedBy = 1L,
                             ExampleTestCases = "sed",
                             InitialSolution = "Voluptatem eveniet fugit ad rerum.",
@@ -2777,7 +2777,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 61L,
                             ChallengeId = 37L,
                             CompleteSolution = "Consequuntur dignissimos veniam.\nVoluptatem ut incidunt incidunt esse voluptatem.\nEst repudiandae voluptas nobis et.\nEst ratione asperiores.\nEst quam perferendis voluptas enim quo qui.",
-                            CreatedAt = new DateTime(2022, 9, 5, 4, 50, 31, 497, DateTimeKind.Utc).AddTicks(2011),
+                            CreatedAt = new DateTime(2022, 9, 10, 17, 30, 40, 966, DateTimeKind.Utc).AddTicks(2581),
                             CreatedBy = 21L,
                             ExampleTestCases = "Et consequuntur nobis eum ipsa dolorem molestiae aut necessitatibus iste.\nEarum exercitationem qui consequatur et expedita molestias.",
                             InitialSolution = "Suscipit quisquam error eos.",
@@ -2791,7 +2791,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 62L,
                             ChallengeId = 28L,
                             CompleteSolution = "dolor",
-                            CreatedAt = new DateTime(2022, 9, 27, 16, 26, 4, 957, DateTimeKind.Utc).AddTicks(3640),
+                            CreatedAt = new DateTime(2022, 10, 3, 6, 19, 36, 722, DateTimeKind.Utc).AddTicks(4888),
                             CreatedBy = 18L,
                             ExampleTestCases = "Velit et quas voluptas.",
                             InitialSolution = "Enim laborum quae.",
@@ -2805,7 +2805,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 63L,
                             ChallengeId = 22L,
                             CompleteSolution = "Sint consectetur asperiores explicabo optio voluptatem dolorem. Odit autem in quaerat voluptatem sed. Commodi dolorum saepe magnam molestias. Ut corrupti aut ad culpa ipsam. Et facilis vel quae sunt at non aut. Voluptate ratione eum.",
-                            CreatedAt = new DateTime(2023, 4, 23, 10, 42, 13, 161, DateTimeKind.Utc).AddTicks(7741),
+                            CreatedAt = new DateTime(2023, 4, 29, 11, 53, 45, 752, DateTimeKind.Utc).AddTicks(8948),
                             CreatedBy = 30L,
                             ExampleTestCases = "Eos repudiandae aut.",
                             InitialSolution = "Ipsum quasi suscipit tempore officia ea atque.",
@@ -2819,7 +2819,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 64L,
                             ChallengeId = 58L,
                             CompleteSolution = "Laudantium error ex dolorem voluptate quia aliquid. Non placeat quam veniam nulla. Rem accusamus commodi omnis. Iusto soluta ut eius perspiciatis quo qui.",
-                            CreatedAt = new DateTime(2019, 12, 31, 1, 7, 46, 245, DateTimeKind.Utc).AddTicks(5685),
+                            CreatedAt = new DateTime(2020, 1, 3, 8, 32, 31, 698, DateTimeKind.Utc).AddTicks(4593),
                             CreatedBy = 13L,
                             ExampleTestCases = "Quos ipsa sed dolorum quisquam nihil voluptatum. Ut voluptatem dicta laborum eum aperiam rem placeat. Vel laudantium accusamus harum libero. Reiciendis dolores nobis.",
                             InitialSolution = "Aliquam aperiam autem cumque voluptatibus illum sed.",
@@ -2833,7 +2833,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 65L,
                             ChallengeId = 3L,
                             CompleteSolution = "Nulla a quis. Dicta consectetur delectus ut blanditiis a dolorem. Modi corrupti aperiam facere et quam ipsa repudiandae aut amet.",
-                            CreatedAt = new DateTime(2023, 7, 5, 4, 14, 25, 718, DateTimeKind.Utc).AddTicks(264),
+                            CreatedAt = new DateTime(2023, 7, 11, 9, 23, 19, 383, DateTimeKind.Utc).AddTicks(4555),
                             CreatedBy = 14L,
                             ExampleTestCases = "A molestias nihil dicta. Voluptas illo est nostrum repudiandae expedita eum labore a architecto. Impedit ut vitae et ut dicta enim velit. Consequatur nisi non non est. Modi qui rerum deserunt quas aperiam. Ut provident aut beatae.",
                             InitialSolution = "Nihil aut maiores et minus voluptates quia expedita dolores voluptatum.",
@@ -2847,7 +2847,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 66L,
                             ChallengeId = 47L,
                             CompleteSolution = "consectetur",
-                            CreatedAt = new DateTime(2022, 4, 16, 1, 13, 7, 69, DateTimeKind.Utc).AddTicks(636),
+                            CreatedAt = new DateTime(2022, 4, 21, 6, 9, 22, 574, DateTimeKind.Utc).AddTicks(956),
                             CreatedBy = 13L,
                             ExampleTestCases = "Laboriosam ea laboriosam nobis optio quisquam ut. Reprehenderit commodi eaque aliquam ut veritatis est velit eligendi. Maiores similique est saepe dignissimos sit ut ullam consequatur.",
                             InitialSolution = "Eos eum et vitae aut.",
@@ -2861,7 +2861,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 67L,
                             ChallengeId = 4L,
                             CompleteSolution = "minima",
-                            CreatedAt = new DateTime(2022, 6, 12, 9, 19, 3, 82, DateTimeKind.Utc).AddTicks(4022),
+                            CreatedAt = new DateTime(2022, 6, 17, 17, 22, 25, 580, DateTimeKind.Utc).AddTicks(6013),
                             CreatedBy = 3L,
                             ExampleTestCases = "Et autem ullam perspiciatis aut dolores enim dignissimos. Et sunt et quaerat quis aperiam maxime similique. Voluptatibus sapiente est error. Quaerat perspiciatis ullam. Ut inventore nihil autem amet iusto possimus iusto. Nulla aperiam dolorem aperiam non corrupti voluptatem sint sit aspernatur.",
                             InitialSolution = "Corporis dolor accusantium explicabo delectus expedita facilis ullam necessitatibus.",
@@ -2875,7 +2875,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 68L,
                             ChallengeId = 51L,
                             CompleteSolution = "Enim ut consectetur.",
-                            CreatedAt = new DateTime(2022, 9, 13, 16, 15, 35, 283, DateTimeKind.Utc).AddTicks(3229),
+                            CreatedAt = new DateTime(2022, 9, 19, 5, 23, 24, 351, DateTimeKind.Utc).AddTicks(142),
                             CreatedBy = 21L,
                             ExampleTestCases = "Dolorem tempora aperiam iure et esse omnis. Distinctio omnis officia aspernatur dolores atque maxime in. Exercitationem minima quia sed. Ea voluptates nulla. Maiores blanditiis nemo nesciunt magni maxime repellat corrupti esse aut. Quo dolorum eum error.",
                             InitialSolution = "Quo earum sint ea suscipit ipsa repellat qui fugiat aperiam.",
@@ -2889,7 +2889,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 69L,
                             ChallengeId = 6L,
                             CompleteSolution = "Perferendis quia dolorem consequuntur perspiciatis et molestiae aspernatur.\nQuas est nulla aut aut et.\nIusto nihil tempore ducimus natus voluptas voluptas aut voluptate.\nQuod animi nemo optio laborum voluptatum non ipsam rem.",
-                            CreatedAt = new DateTime(2023, 8, 14, 13, 49, 56, 744, DateTimeKind.Utc).AddTicks(8311),
+                            CreatedAt = new DateTime(2023, 8, 20, 21, 10, 40, 899, DateTimeKind.Utc).AddTicks(5222),
                             CreatedBy = 28L,
                             ExampleTestCases = "Non dolor expedita tenetur eos quia vel quia quia.",
                             InitialSolution = "Iure voluptatem laborum perspiciatis.",
@@ -2903,7 +2903,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 70L,
                             ChallengeId = 32L,
                             CompleteSolution = "Et nihil aliquam libero ipsa explicabo et fugit consectetur. Fugiat animi ad molestiae occaecati quos dolores consequuntur adipisci. Et ullam exercitationem esse consequuntur in cum magni voluptatem. Voluptatem dolorem animi unde voluptas facere et. Ipsa accusantium amet cum expedita.",
-                            CreatedAt = new DateTime(2023, 9, 2, 11, 40, 35, 426, DateTimeKind.Utc).AddTicks(9108),
+                            CreatedAt = new DateTime(2023, 9, 8, 20, 3, 2, 299, DateTimeKind.Utc).AddTicks(7321),
                             CreatedBy = 7L,
                             ExampleTestCases = "Beatae labore magnam ad dolorem nihil voluptate est atque quam.\nNesciunt ducimus tempore aut nisi est.\nLaborum voluptate officiis rerum numquam sunt.\nDucimus porro ratione animi.\nExcepturi error omnis itaque error sunt.\nIn sed odit omnis.",
                             InitialSolution = "Quisquam facere debitis dolorem temporibus eligendi necessitatibus ipsum quidem.",
@@ -2917,7 +2917,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 71L,
                             ChallengeId = 6L,
                             CompleteSolution = "neque",
-                            CreatedAt = new DateTime(2023, 5, 11, 4, 3, 0, 271, DateTimeKind.Utc).AddTicks(6821),
+                            CreatedAt = new DateTime(2023, 5, 17, 6, 12, 23, 82, DateTimeKind.Utc).AddTicks(1343),
                             CreatedBy = 34L,
                             ExampleTestCases = "Inventore et vero vel. Aut porro aspernatur aut ut quas vero. Sit quia recusandae blanditiis dolorum rerum voluptas sint. Autem similique consequatur non consequuntur.",
                             InitialSolution = "Est illum nobis beatae eos asperiores velit aut iusto.",
@@ -2931,7 +2931,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 72L,
                             ChallengeId = 6L,
                             CompleteSolution = "Aut qui delectus ut quos omnis veniam magnam.",
-                            CreatedAt = new DateTime(2023, 8, 4, 5, 5, 56, 247, DateTimeKind.Utc).AddTicks(950),
+                            CreatedAt = new DateTime(2023, 8, 10, 11, 52, 51, 92, DateTimeKind.Utc).AddTicks(9108),
                             CreatedBy = 15L,
                             ExampleTestCases = "Beatae vel facilis officiis ipsum at.",
                             InitialSolution = "Reiciendis in amet corporis enim.",
@@ -2945,7 +2945,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 73L,
                             ChallengeId = 43L,
                             CompleteSolution = "Doloribus provident totam.",
-                            CreatedAt = new DateTime(2023, 9, 4, 5, 49, 5, 70, DateTimeKind.Utc).AddTicks(6736),
+                            CreatedAt = new DateTime(2023, 9, 10, 14, 17, 15, 758, DateTimeKind.Utc).AddTicks(7337),
                             CreatedBy = 40L,
                             ExampleTestCases = "Aut explicabo aut sunt reiciendis voluptate iusto. Quibusdam temporibus quas commodi. Voluptatibus tempore saepe nesciunt recusandae neque ut dicta. Vel qui cumque enim.",
                             InitialSolution = "Et perferendis exercitationem id soluta blanditiis sunt enim.",
@@ -2959,7 +2959,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 74L,
                             ChallengeId = 57L,
                             CompleteSolution = "Aliquid harum consequatur quia aperiam est ipsa cupiditate enim. Quisquam nesciunt qui harum dicta molestias error. Voluptatibus officiis impedit quas dolorem dignissimos aut dolore.",
-                            CreatedAt = new DateTime(2023, 6, 7, 12, 32, 50, 40, DateTimeKind.Utc).AddTicks(7340),
+                            CreatedAt = new DateTime(2023, 6, 13, 16, 11, 28, 922, DateTimeKind.Utc).AddTicks(6885),
                             CreatedBy = 15L,
                             ExampleTestCases = "Ut numquam expedita.\nHarum voluptatem repellat fugiat vel animi libero dolor.\nIpsa omnis nesciunt vitae.",
                             InitialSolution = "Facere nobis vel possimus.",
@@ -2973,7 +2973,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 75L,
                             ChallengeId = 66L,
                             CompleteSolution = "officia",
-                            CreatedAt = new DateTime(2021, 12, 6, 22, 27, 37, 970, DateTimeKind.Utc).AddTicks(1400),
+                            CreatedAt = new DateTime(2021, 12, 11, 20, 19, 16, 224, DateTimeKind.Utc).AddTicks(3953),
                             CreatedBy = 27L,
                             ExampleTestCases = "dolor",
                             InitialSolution = "Et non odit tempore qui.",
@@ -2987,7 +2987,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 76L,
                             ChallengeId = 17L,
                             CompleteSolution = "Non at dolorum. Et consequatur rerum asperiores placeat. Blanditiis aperiam dolor sed saepe.",
-                            CreatedAt = new DateTime(2023, 3, 10, 10, 59, 27, 670, DateTimeKind.Utc).AddTicks(3862),
+                            CreatedAt = new DateTime(2023, 3, 16, 9, 47, 27, 142, DateTimeKind.Utc).AddTicks(6337),
                             CreatedBy = 23L,
                             ExampleTestCases = "Dignissimos quas delectus dolores voluptatem eius suscipit incidunt beatae. Nisi quis odit explicabo ipsa blanditiis voluptatibus. Voluptas a voluptatem eligendi odit veritatis aut ad. Magnam praesentium eligendi consequuntur est rerum. Assumenda et et. Similique quibusdam quaerat rerum sapiente voluptatem cupiditate.",
                             InitialSolution = "Sed voluptatibus repellat sint reprehenderit ea distinctio atque impedit amet.",
@@ -3001,7 +3001,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 77L,
                             ChallengeId = 41L,
                             CompleteSolution = "Voluptas maiores omnis dicta est eum odio eligendi facilis quasi.",
-                            CreatedAt = new DateTime(2022, 3, 15, 20, 17, 16, 461, DateTimeKind.Utc).AddTicks(453),
+                            CreatedAt = new DateTime(2022, 3, 20, 23, 31, 41, 751, DateTimeKind.Utc).AddTicks(5642),
                             CreatedBy = 35L,
                             ExampleTestCases = "Corporis quae inventore soluta magnam quam iste.\nCumque molestias sit quaerat eveniet exercitationem qui aperiam quia et.",
                             InitialSolution = "Sunt nam earum non facere.",
@@ -3015,7 +3015,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 78L,
                             ChallengeId = 64L,
                             CompleteSolution = "Labore pariatur voluptatem nemo.",
-                            CreatedAt = new DateTime(2020, 10, 22, 18, 27, 42, 723, DateTimeKind.Utc).AddTicks(6244),
+                            CreatedAt = new DateTime(2020, 10, 26, 18, 0, 48, 53, DateTimeKind.Utc).AddTicks(3625),
                             CreatedBy = 8L,
                             ExampleTestCases = "Impedit rerum error nemo magni possimus veritatis occaecati dolores non.\nSequi quas cumque dignissimos necessitatibus voluptatibus et cumque molestias.\nPariatur praesentium distinctio.\nHic provident enim facilis suscipit assumenda nisi laborum optio quia.\nMollitia assumenda ab quibusdam at hic quidem quo aperiam accusamus.\nNam culpa ab quisquam et qui blanditiis autem vero.",
                             InitialSolution = "Sit omnis repudiandae.",
@@ -3029,7 +3029,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 79L,
                             ChallengeId = 67L,
                             CompleteSolution = "ducimus",
-                            CreatedAt = new DateTime(2023, 8, 9, 14, 3, 13, 683, DateTimeKind.Utc).AddTicks(9955),
+                            CreatedAt = new DateTime(2023, 8, 15, 21, 7, 40, 616, DateTimeKind.Utc).AddTicks(1468),
                             CreatedBy = 30L,
                             ExampleTestCases = "Facilis id ad amet eaque ea aspernatur veniam. Eveniet rerum eum ut ipsam aut animi. Culpa voluptas mollitia et id quibusdam veritatis et voluptatem. Rerum fugiat aut ea id ex magnam dolorum eligendi. Enim eum numquam sapiente temporibus molestiae. Dolorum earum explicabo.",
                             InitialSolution = "Debitis neque omnis totam ut aut culpa provident exercitationem.",
@@ -3043,7 +3043,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 80L,
                             ChallengeId = 70L,
                             CompleteSolution = "Odio quos nisi accusantium et eligendi.\nSit corrupti placeat fugit harum minima.\nQuod dignissimos vero illo consequatur eligendi soluta commodi non.\nVoluptatem nam quo.",
-                            CreatedAt = new DateTime(2023, 6, 24, 0, 45, 14, 549, DateTimeKind.Utc).AddTicks(1634),
+                            CreatedAt = new DateTime(2023, 6, 30, 5, 17, 45, 914, DateTimeKind.Utc).AddTicks(9451),
                             CreatedBy = 15L,
                             ExampleTestCases = "Delectus sit officiis. Voluptatibus et aut animi consequatur atque magni earum quia dolor. Itaque laborum non voluptatem. Aut in provident culpa ex dolorum omnis odio. Aut inventore id similique velit. Rerum ipsa blanditiis aspernatur rerum repellat distinctio.",
                             InitialSolution = "Quia officia et earum non iure necessitatibus.",
@@ -3057,7 +3057,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 81L,
                             ChallengeId = 7L,
                             CompleteSolution = "Aut error quibusdam.\nEt ea aspernatur sed dolore.\nNihil reprehenderit autem repudiandae qui modi eveniet nesciunt.\nVoluptatem quo odio vitae ut eos doloribus pariatur sed.\nVoluptas necessitatibus velit quia molestias iusto doloremque ratione placeat.",
-                            CreatedAt = new DateTime(2021, 2, 4, 16, 41, 36, 977, DateTimeKind.Utc).AddTicks(1270),
+                            CreatedAt = new DateTime(2021, 2, 8, 21, 57, 7, 474, DateTimeKind.Utc).AddTicks(8668),
                             CreatedBy = 1L,
                             ExampleTestCases = "Quasi eum mollitia assumenda sequi ut. Rerum officia amet modi modi omnis recusandae. Natus omnis consequuntur vel rerum ullam unde qui est.",
                             InitialSolution = "Animi deserunt eius.",
@@ -3071,7 +3071,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 82L,
                             ChallengeId = 57L,
                             CompleteSolution = "voluptate",
-                            CreatedAt = new DateTime(2023, 9, 6, 19, 58, 24, 681, DateTimeKind.Utc).AddTicks(439),
+                            CreatedAt = new DateTime(2023, 9, 13, 4, 35, 2, 467, DateTimeKind.Utc).AddTicks(1439),
                             CreatedBy = 5L,
                             ExampleTestCases = "ad",
                             InitialSolution = "Quidem occaecati totam.",
@@ -3085,7 +3085,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 83L,
                             ChallengeId = 65L,
                             CompleteSolution = "Architecto rerum debitis perspiciatis laborum. Dolor voluptatum animi ipsa animi dolorem et delectus. Vel voluptatem eaque praesentium et sit illo. Cupiditate sit enim ducimus voluptatibus sequi nihil. Repellendus temporibus et ducimus rerum a animi distinctio omnis. Voluptate quas rerum reiciendis est sed facilis pariatur.",
-                            CreatedAt = new DateTime(2022, 3, 12, 0, 19, 22, 144, DateTimeKind.Utc).AddTicks(8752),
+                            CreatedAt = new DateTime(2022, 3, 17, 3, 21, 17, 135, DateTimeKind.Utc).AddTicks(6779),
                             CreatedBy = 39L,
                             ExampleTestCases = "Iusto dicta laborum distinctio nesciunt enim sed.",
                             InitialSolution = "At dolorum laborum esse quis rerum omnis.",
@@ -3099,7 +3099,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 84L,
                             ChallengeId = 32L,
                             CompleteSolution = "Est consequatur aliquam.",
-                            CreatedAt = new DateTime(2023, 8, 14, 20, 7, 8, 17, DateTimeKind.Utc).AddTicks(9447),
+                            CreatedAt = new DateTime(2023, 8, 21, 3, 28, 43, 462, DateTimeKind.Utc).AddTicks(6444),
                             CreatedBy = 34L,
                             ExampleTestCases = "Iure sit aperiam tempore non necessitatibus sed soluta rerum maxime. A sed et aut quia qui autem. Et voluptate dolorem et eligendi. Nostrum blanditiis eum. Ducimus sed voluptatem non eum. Quia neque id at fugiat eligendi.",
                             InitialSolution = "Itaque asperiores totam possimus aut adipisci adipisci.",
@@ -3113,7 +3113,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 85L,
                             ChallengeId = 67L,
                             CompleteSolution = "commodi",
-                            CreatedAt = new DateTime(2023, 1, 29, 3, 6, 26, 680, DateTimeKind.Utc).AddTicks(3930),
+                            CreatedAt = new DateTime(2023, 2, 3, 23, 42, 49, 623, DateTimeKind.Utc).AddTicks(8050),
                             CreatedBy = 28L,
                             ExampleTestCases = "Id reprehenderit iusto perspiciatis iusto molestiae.\nVel impedit sapiente voluptate cupiditate non odit quo.\nLibero at voluptates consectetur aut soluta.\nDignissimos voluptas tempore reprehenderit nemo.\nEst qui aut non in a dolor perferendis voluptate.\nCumque reprehenderit et asperiores aut mollitia.",
                             InitialSolution = "Ducimus cumque itaque.",
@@ -3127,7 +3127,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 86L,
                             ChallengeId = 47L,
                             CompleteSolution = "Occaecati recusandae qui nemo deserunt magni. Expedita commodi quaerat qui. Quibusdam earum est vel.",
-                            CreatedAt = new DateTime(2020, 12, 22, 4, 47, 39, 260, DateTimeKind.Utc).AddTicks(5129),
+                            CreatedAt = new DateTime(2020, 12, 26, 7, 37, 57, 227, DateTimeKind.Utc).AddTicks(1277),
                             CreatedBy = 29L,
                             ExampleTestCases = "Sint non atque.",
                             InitialSolution = "Atque est qui nihil illo eaque asperiores nihil.",
@@ -3141,7 +3141,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 87L,
                             ChallengeId = 8L,
                             CompleteSolution = "Consequatur perspiciatis aut qui harum perspiciatis omnis.\nUt deleniti mollitia vero natus corporis et enim corrupti.\nAtque officiis repellat animi maiores modi cumque.",
-                            CreatedAt = new DateTime(2017, 12, 19, 15, 37, 35, 991, DateTimeKind.Utc).AddTicks(4165),
+                            CreatedAt = new DateTime(2017, 12, 21, 6, 42, 51, 934, DateTimeKind.Utc).AddTicks(759),
                             CreatedBy = 38L,
                             ExampleTestCases = "Distinctio harum sint deleniti sint modi ut consequuntur dicta.",
                             InitialSolution = "Est voluptas ut aut molestiae reprehenderit nesciunt dolore.",
@@ -3155,7 +3155,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 88L,
                             ChallengeId = 43L,
                             CompleteSolution = "sed",
-                            CreatedAt = new DateTime(2023, 8, 28, 7, 44, 18, 836, DateTimeKind.Utc).AddTicks(9356),
+                            CreatedAt = new DateTime(2023, 9, 3, 15, 49, 54, 554, DateTimeKind.Utc).AddTicks(8477),
                             CreatedBy = 17L,
                             ExampleTestCases = "Qui aliquam mollitia voluptate illo eveniet ex.",
                             InitialSolution = "Quia maiores laboriosam et.",
@@ -3169,7 +3169,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 89L,
                             ChallengeId = 67L,
                             CompleteSolution = "Dolore et mollitia consequatur. Architecto atque mollitia aut unde. Officiis repellat error molestiae sapiente aut sed aut eos. Qui sit eum eum at quaerat quidem sit quam. Laborum cupiditate eveniet est iusto dolores labore. Ut nobis autem aliquam ex aut.",
-                            CreatedAt = new DateTime(2023, 1, 6, 18, 0, 32, 411, DateTimeKind.Utc).AddTicks(1919),
+                            CreatedAt = new DateTime(2023, 1, 12, 13, 23, 53, 400, DateTimeKind.Utc).AddTicks(6614),
                             CreatedBy = 15L,
                             ExampleTestCases = "Ut voluptas sed nihil vel nulla in.",
                             InitialSolution = "Ut et expedita amet molestias facere est non aut expedita.",
@@ -3183,7 +3183,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 90L,
                             ChallengeId = 10L,
                             CompleteSolution = "Nostrum qui omnis.\nId omnis molestias.\nProvident qui nihil asperiores.",
-                            CreatedAt = new DateTime(2022, 12, 5, 6, 27, 41, 64, DateTimeKind.Utc).AddTicks(8673),
+                            CreatedAt = new DateTime(2022, 12, 11, 0, 5, 2, 51, DateTimeKind.Utc).AddTicks(2978),
                             CreatedBy = 28L,
                             ExampleTestCases = "Et molestias quis iure vel quos rerum consequatur.",
                             InitialSolution = "Asperiores laudantium accusamus cumque voluptas qui qui rem nam hic.",
@@ -3197,7 +3197,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 91L,
                             ChallengeId = 56L,
                             CompleteSolution = "Voluptatum cum et sunt beatae cumque quia illum corrupti. Ducimus sit non quia facere hic dolorem consequuntur ullam. Voluptatibus minus dicta. Aut sed quo enim laboriosam non est fugiat tempore. Sequi eum atque exercitationem id autem impedit omnis laboriosam laboriosam.",
-                            CreatedAt = new DateTime(2018, 7, 30, 21, 36, 2, 956, DateTimeKind.Utc).AddTicks(8719),
+                            CreatedAt = new DateTime(2018, 8, 2, 0, 49, 52, 299, DateTimeKind.Utc).AddTicks(3116),
                             CreatedBy = 24L,
                             ExampleTestCases = "et",
                             InitialSolution = "Reiciendis culpa totam qui.",
@@ -3211,7 +3211,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 92L,
                             ChallengeId = 17L,
                             CompleteSolution = "et",
-                            CreatedAt = new DateTime(2023, 7, 22, 0, 7, 44, 486, DateTimeKind.Utc).AddTicks(9727),
+                            CreatedAt = new DateTime(2023, 7, 28, 6, 11, 33, 306, DateTimeKind.Utc).AddTicks(9479),
                             CreatedBy = 1L,
                             ExampleTestCases = "Assumenda dicta impedit voluptates facere dolor quia aspernatur.",
                             InitialSolution = "A et eos deleniti ad.",
@@ -3225,7 +3225,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 93L,
                             ChallengeId = 33L,
                             CompleteSolution = "Ratione velit consequatur aliquid nulla est dolorem nemo.",
-                            CreatedAt = new DateTime(2023, 1, 2, 21, 6, 36, 346, DateTimeKind.Utc).AddTicks(9940),
+                            CreatedAt = new DateTime(2023, 1, 8, 16, 17, 19, 406, DateTimeKind.Utc).AddTicks(6320),
                             CreatedBy = 3L,
                             ExampleTestCases = "Iusto sed recusandae laborum nobis. Et laborum culpa. Ex voluptas et sint omnis eius quisquam. Ut atque consequuntur doloremque molestiae minus inventore qui impedit.",
                             InitialSolution = "Nulla architecto et ipsam consequatur nobis et quae corporis dolorem.",
@@ -3239,7 +3239,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 94L,
                             ChallengeId = 8L,
                             CompleteSolution = "similique",
-                            CreatedAt = new DateTime(2021, 11, 7, 8, 25, 3, 821, DateTimeKind.Utc).AddTicks(2965),
+                            CreatedAt = new DateTime(2021, 11, 12, 4, 40, 9, 158, DateTimeKind.Utc).AddTicks(4077),
                             CreatedBy = 10L,
                             ExampleTestCases = "Est sed iste nostrum voluptatem soluta. Placeat iusto illo fuga. Qui fuga quisquam veniam dolorem ea.",
                             InitialSolution = "Quae quis voluptatem et iusto et eos natus.",
@@ -3253,7 +3253,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 95L,
                             ChallengeId = 27L,
                             CompleteSolution = "Beatae architecto qui et delectus perspiciatis.",
-                            CreatedAt = new DateTime(2022, 10, 11, 3, 12, 53, 458, DateTimeKind.Utc).AddTicks(9033),
+                            CreatedAt = new DateTime(2022, 10, 16, 17, 50, 18, 644, DateTimeKind.Utc).AddTicks(6728),
                             CreatedBy = 21L,
                             ExampleTestCases = "Explicabo qui eum a accusantium.",
                             InitialSolution = "Voluptatibus et dolores.",
@@ -3267,7 +3267,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 96L,
                             ChallengeId = 4L,
                             CompleteSolution = "Voluptas culpa quae dolore facilis aut.",
-                            CreatedAt = new DateTime(2023, 4, 5, 23, 11, 9, 473, DateTimeKind.Utc).AddTicks(3772),
+                            CreatedAt = new DateTime(2023, 4, 11, 23, 25, 39, 397, DateTimeKind.Utc).AddTicks(5752),
                             CreatedBy = 24L,
                             ExampleTestCases = "sint",
                             InitialSolution = "Unde voluptas ullam ex voluptatibus aut voluptatum quia vitae.",
@@ -3281,7 +3281,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 97L,
                             ChallengeId = 39L,
                             CompleteSolution = "Autem veritatis tempore minima repellat tenetur aspernatur.",
-                            CreatedAt = new DateTime(2023, 2, 11, 7, 29, 57, 937, DateTimeKind.Utc).AddTicks(5416),
+                            CreatedAt = new DateTime(2023, 2, 17, 4, 49, 22, 181, DateTimeKind.Utc).AddTicks(8019),
                             CreatedBy = 8L,
                             ExampleTestCases = "Non et perspiciatis quaerat unde reprehenderit qui et hic est.\nSed sit facere.",
                             InitialSolution = "Consequuntur et temporibus ipsa.",
@@ -3295,7 +3295,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 98L,
                             ChallengeId = 6L,
                             CompleteSolution = "Quo veritatis consequatur impedit maiores.",
-                            CreatedAt = new DateTime(2023, 8, 24, 5, 27, 27, 611, DateTimeKind.Utc).AddTicks(9858),
+                            CreatedAt = new DateTime(2023, 8, 30, 13, 19, 41, 496, DateTimeKind.Utc).AddTicks(5962),
                             CreatedBy = 16L,
                             ExampleTestCases = "Aut dolorum voluptas fuga sint ut et quia tempora est.\nSoluta beatae nostrum aspernatur iusto nihil quam.\nExcepturi aut in occaecati illum est in.\nSuscipit minus et omnis eum vitae quaerat officia repellendus.\nVoluptate ut vel cupiditate est velit.\nRerum totam voluptatem reiciendis earum quis.",
                             InitialSolution = "Assumenda ipsa est enim doloribus quas libero blanditiis.",
@@ -3309,7 +3309,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 99L,
                             ChallengeId = 21L,
                             CompleteSolution = "Animi qui cumque ipsam ut perferendis ducimus dolorem.\nLaboriosam autem illo quia eius dolore eum reprehenderit ducimus non.",
-                            CreatedAt = new DateTime(2023, 3, 5, 16, 39, 59, 882, DateTimeKind.Utc).AddTicks(5869),
+                            CreatedAt = new DateTime(2023, 3, 11, 15, 12, 26, 641, DateTimeKind.Utc).AddTicks(8746),
                             CreatedBy = 35L,
                             ExampleTestCases = "voluptas",
                             InitialSolution = "Aut hic itaque sint ut laudantium dignissimos.",
@@ -3323,7 +3323,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 100L,
                             ChallengeId = 30L,
                             CompleteSolution = "Nesciunt ab omnis porro enim quo architecto.",
-                            CreatedAt = new DateTime(2021, 2, 22, 0, 2, 28, 297, DateTimeKind.Utc).AddTicks(2580),
+                            CreatedAt = new DateTime(2021, 2, 26, 6, 14, 27, 437, DateTimeKind.Utc).AddTicks(9404),
                             CreatedBy = 12L,
                             ExampleTestCases = "nemo",
                             InitialSolution = "Et ipsam iste et ut.",
@@ -3337,7 +3337,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 101L,
                             ChallengeId = 8L,
                             CompleteSolution = "Nemo vel consequatur sint.\nUt consequatur eius beatae voluptas ea rerum suscipit sed.\nDolorem sapiente soluta laudantium aliquam omnis.",
-                            CreatedAt = new DateTime(2019, 10, 10, 15, 9, 30, 196, DateTimeKind.Utc).AddTicks(3930),
+                            CreatedAt = new DateTime(2019, 10, 13, 18, 8, 34, 43, DateTimeKind.Utc).AddTicks(6983),
                             CreatedBy = 21L,
                             ExampleTestCases = "maxime",
                             InitialSolution = "Facere alias quo autem vel quia itaque.",
@@ -3351,7 +3351,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 102L,
                             ChallengeId = 10L,
                             CompleteSolution = "sequi",
-                            CreatedAt = new DateTime(2022, 8, 19, 12, 9, 0, 811, DateTimeKind.Utc).AddTicks(8242),
+                            CreatedAt = new DateTime(2022, 8, 24, 23, 54, 41, 198, DateTimeKind.Utc).AddTicks(1856),
                             CreatedBy = 26L,
                             ExampleTestCases = "eos",
                             InitialSolution = "Dolore quaerat eius aut qui libero repellat et ipsa dolor.",
@@ -3365,7 +3365,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 103L,
                             ChallengeId = 54L,
                             CompleteSolution = "Sed possimus deleniti eveniet modi similique molestiae libero.\nTotam perspiciatis perferendis excepturi non sed.\nEst aliquam labore ea corrupti.\nBlanditiis deleniti ut error qui.\nEt similique qui.\nVoluptate omnis excepturi eum eum corporis.",
-                            CreatedAt = new DateTime(2023, 2, 16, 19, 49, 23, 652, DateTimeKind.Utc).AddTicks(6558),
+                            CreatedAt = new DateTime(2023, 2, 22, 17, 26, 47, 467, DateTimeKind.Utc).AddTicks(5104),
                             CreatedBy = 15L,
                             ExampleTestCases = "Vitae eum facere aliquam quod dolorem minus. Voluptas a sit deserunt est. Nostrum consequatur ratione earum voluptatum eius. Nihil laborum doloribus esse sit corrupti quia quidem illo illo. Neque et est officia porro dicta rerum voluptas quaerat.",
                             InitialSolution = "Quia quidem aut fugiat consectetur ut et ab maxime.",
@@ -3379,7 +3379,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 104L,
                             ChallengeId = 28L,
                             CompleteSolution = "corporis",
-                            CreatedAt = new DateTime(2023, 1, 15, 18, 36, 42, 92, DateTimeKind.Utc).AddTicks(8794),
+                            CreatedAt = new DateTime(2023, 1, 21, 14, 29, 30, 242, DateTimeKind.Utc).AddTicks(2189),
                             CreatedBy = 18L,
                             ExampleTestCases = "Molestiae numquam assumenda nihil explicabo. Ullam ratione a. Rerum amet et assumenda consectetur. Est neque labore. Cupiditate vel temporibus enim qui a dolore ut doloribus est. Ut non perferendis eius molestiae nihil est eum facere voluptas.",
                             InitialSolution = "Voluptatum aliquid voluptatum vel.",
@@ -3393,7 +3393,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 105L,
                             ChallengeId = 45L,
                             CompleteSolution = "Quo et nihil dolores aut dolores vel veritatis nesciunt nemo.\nAut expedita animi unde ut.\nConsequuntur omnis atque architecto consequatur.\nOdio voluptas labore vel dolor sit.",
-                            CreatedAt = new DateTime(2023, 5, 1, 6, 19, 8, 244, DateTimeKind.Utc).AddTicks(8464),
+                            CreatedAt = new DateTime(2023, 5, 7, 7, 56, 11, 503, DateTimeKind.Utc).AddTicks(6565),
                             CreatedBy = 17L,
                             ExampleTestCases = "Expedita quasi harum explicabo animi.",
                             InitialSolution = "Quasi numquam voluptas voluptas.",
@@ -3407,7 +3407,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 106L,
                             ChallengeId = 6L,
                             CompleteSolution = "In sit non. Dolore sint dolorum aut eos. Enim voluptas quae voluptatibus ut et voluptate. Adipisci atque quo ut magnam ut. Animi magnam iste officiis. Praesentium deleniti et sequi beatae necessitatibus cumque id.",
-                            CreatedAt = new DateTime(2023, 4, 28, 13, 14, 55, 816, DateTimeKind.Utc).AddTicks(9780),
+                            CreatedAt = new DateTime(2023, 5, 4, 14, 43, 8, 203, DateTimeKind.Utc).AddTicks(406),
                             CreatedBy = 27L,
                             ExampleTestCases = "Impedit sit ea aperiam non reprehenderit quia.\nUt veritatis tempora fugit quasi temporibus eum saepe.",
                             InitialSolution = "Quia molestiae ullam id dolores qui repellat.",
@@ -3421,7 +3421,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 107L,
                             ChallengeId = 70L,
                             CompleteSolution = "Recusandae autem et sunt nulla assumenda ipsum placeat.",
-                            CreatedAt = new DateTime(2023, 3, 9, 3, 12, 31, 107, DateTimeKind.Utc).AddTicks(1835),
+                            CreatedAt = new DateTime(2023, 3, 15, 1, 56, 11, 295, DateTimeKind.Utc).AddTicks(7296),
                             CreatedBy = 28L,
                             ExampleTestCases = "Impedit culpa hic vel molestiae sint dolores.",
                             InitialSolution = "Rem aut repellat voluptatem quaerat.",
@@ -3435,7 +3435,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 108L,
                             ChallengeId = 39L,
                             CompleteSolution = "Ut maiores ut modi sit.\nQui eos quia at illo voluptatem est cupiditate.\nSunt ut voluptas voluptatum id occaecati aut omnis.\nVoluptatem velit enim.\nConsequatur exercitationem dolor itaque temporibus dolore.\nQui rerum eligendi voluptatum corporis nulla omnis natus.",
-                            CreatedAt = new DateTime(2022, 2, 16, 0, 15, 26, 923, DateTimeKind.Utc).AddTicks(3863),
+                            CreatedAt = new DateTime(2022, 2, 21, 1, 59, 2, 47, DateTimeKind.Utc).AddTicks(1506),
                             CreatedBy = 25L,
                             ExampleTestCases = "necessitatibus",
                             InitialSolution = "Culpa ea vero corporis eaque nam dolores.",
@@ -3449,7 +3449,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 109L,
                             ChallengeId = 28L,
                             CompleteSolution = "voluptate",
-                            CreatedAt = new DateTime(2023, 8, 16, 21, 10, 46, 814, DateTimeKind.Utc).AddTicks(1411),
+                            CreatedAt = new DateTime(2023, 8, 23, 4, 39, 2, 521, DateTimeKind.Utc).AddTicks(4548),
                             CreatedBy = 3L,
                             ExampleTestCases = "qui",
                             InitialSolution = "Reiciendis officiis ut reiciendis aut id animi et cupiditate.",
@@ -3463,7 +3463,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 110L,
                             ChallengeId = 7L,
                             CompleteSolution = "Nobis doloremque rerum adipisci omnis provident ratione. Fuga molestias ea aut minus sequi laboriosam harum. Officiis molestiae neque quia voluptatum repellendus. Cupiditate aliquam qui inventore eveniet. Repellat consequuntur voluptatem hic vitae illo cumque eos. Ex sint minima ipsum praesentium assumenda sunt est in.",
-                            CreatedAt = new DateTime(2021, 11, 23, 18, 26, 0, 44, DateTimeKind.Utc).AddTicks(4519),
+                            CreatedAt = new DateTime(2021, 11, 28, 15, 34, 39, 984, DateTimeKind.Utc).AddTicks(2433),
                             CreatedBy = 36L,
                             ExampleTestCases = "Et similique tempore exercitationem.",
                             InitialSolution = "Ut ipsum aut quas minus nam consequatur natus qui.",
@@ -3477,7 +3477,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 111L,
                             ChallengeId = 64L,
                             CompleteSolution = "Sunt et ipsa.",
-                            CreatedAt = new DateTime(2020, 11, 14, 10, 51, 9, 872, DateTimeKind.Utc).AddTicks(1140),
+                            CreatedAt = new DateTime(2020, 11, 18, 11, 38, 16, 652, DateTimeKind.Utc).AddTicks(710),
                             CreatedBy = 1L,
                             ExampleTestCases = "Quaerat distinctio nobis officiis vel.\nTotam perspiciatis voluptate fugiat.\nNostrum hic quos in doloribus quas ipsa.\nEveniet cum exercitationem esse.",
                             InitialSolution = "Eligendi dolor quasi veniam recusandae.",
@@ -3491,7 +3491,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 112L,
                             ChallengeId = 66L,
                             CompleteSolution = "Quibusdam corrupti neque voluptate ut perferendis autem illo aperiam.",
-                            CreatedAt = new DateTime(2023, 1, 24, 13, 29, 54, 852, DateTimeKind.Utc).AddTicks(3278),
+                            CreatedAt = new DateTime(2023, 1, 30, 9, 51, 23, 536, DateTimeKind.Utc).AddTicks(4022),
                             CreatedBy = 1L,
                             ExampleTestCases = "Modi minus laudantium. Qui asperiores qui voluptatum consequatur necessitatibus. Similique dignissimos aut amet magni. Est eveniet perspiciatis. Quia ipsam odio distinctio in laborum laborum ab autem rerum. In eligendi sunt possimus.",
                             InitialSolution = "Earum ex illo exercitationem modi sit aperiam aspernatur velit.",
@@ -3505,7 +3505,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 113L,
                             ChallengeId = 7L,
                             CompleteSolution = "Quasi ex eos sit esse accusantium vel debitis eum. Nihil sunt magnam. Asperiores placeat provident.",
-                            CreatedAt = new DateTime(2020, 6, 28, 10, 24, 24, 162, DateTimeKind.Utc).AddTicks(3523),
+                            CreatedAt = new DateTime(2020, 7, 2, 3, 37, 50, 320, DateTimeKind.Utc).AddTicks(4055),
                             CreatedBy = 6L,
                             ExampleTestCases = "Ut accusantium amet numquam iste accusamus dolorem.\nOmnis iste laboriosam tempore.\nNon quidem non.",
                             InitialSolution = "Libero id adipisci quia eaque qui nihil.",
@@ -3519,7 +3519,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 114L,
                             ChallengeId = 37L,
                             CompleteSolution = "blanditiis",
-                            CreatedAt = new DateTime(2022, 4, 28, 16, 0, 31, 139, DateTimeKind.Utc).AddTicks(184),
+                            CreatedAt = new DateTime(2022, 5, 3, 21, 37, 56, 977, DateTimeKind.Utc).AddTicks(798),
                             CreatedBy = 31L,
                             ExampleTestCases = "Rerum architecto aut modi ex sunt architecto. Est velit dolor hic vitae quas accusantium ut nam eos. Vel minus in. Soluta non consequatur reprehenderit eveniet praesentium et.",
                             InitialSolution = "Ab asperiores ea nesciunt ipsum.",
@@ -3533,7 +3533,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 115L,
                             ChallengeId = 29L,
                             CompleteSolution = "Velit sint accusantium nobis.",
-                            CreatedAt = new DateTime(2021, 2, 13, 6, 13, 3, 452, DateTimeKind.Utc).AddTicks(8856),
+                            CreatedAt = new DateTime(2021, 2, 17, 11, 56, 30, 735, DateTimeKind.Utc).AddTicks(2067),
                             CreatedBy = 19L,
                             ExampleTestCases = "Unde blanditiis exercitationem nostrum aliquid optio dolor dignissimos dolor. Ut maiores enim. Et sapiente assumenda aut. Voluptatum odio ut quam omnis ut voluptatem sunt voluptas ipsum. Dolores est inventore repudiandae placeat sint sunt id. Laudantium est pariatur vel fugit est eaque autem.",
                             InitialSolution = "Eum eveniet inventore neque ut.",
@@ -3547,7 +3547,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 116L,
                             ChallengeId = 70L,
                             CompleteSolution = "Rerum ut molestiae qui.",
-                            CreatedAt = new DateTime(2022, 11, 29, 10, 25, 41, 475, DateTimeKind.Utc).AddTicks(9615),
+                            CreatedAt = new DateTime(2022, 12, 5, 3, 44, 0, 2, DateTimeKind.Utc).AddTicks(681),
                             CreatedBy = 34L,
                             ExampleTestCases = "et",
                             InitialSolution = "Nihil quam enim aperiam provident reprehenderit doloremque est suscipit.",
@@ -3561,7 +3561,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 117L,
                             ChallengeId = 1L,
                             CompleteSolution = "Odit aut reiciendis et.\nDucimus nostrum architecto voluptate tempore eum blanditiis minus.\nNon vitae est eveniet nihil sapiente.",
-                            CreatedAt = new DateTime(2023, 1, 2, 3, 37, 29, 28, DateTimeKind.Utc).AddTicks(2665),
+                            CreatedAt = new DateTime(2023, 1, 7, 22, 45, 49, 430, DateTimeKind.Utc).AddTicks(1431),
                             CreatedBy = 6L,
                             ExampleTestCases = "Omnis fugit labore magni accusantium quasi. Tempora sit et. Nihil amet ut. Ex debitis vero laboriosam hic in recusandae ut omnis. Ut unde labore est expedita nulla qui omnis porro voluptates.",
                             InitialSolution = "Eos quidem quos odio aut iste non tempore vero iure.",
@@ -3575,7 +3575,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 118L,
                             ChallengeId = 31L,
                             CompleteSolution = "Architecto consequatur qui molestiae a et facilis voluptas voluptas numquam.\nQuia possimus occaecati eos in cum.",
-                            CreatedAt = new DateTime(2023, 8, 16, 11, 52, 29, 910, DateTimeKind.Utc).AddTicks(1739),
+                            CreatedAt = new DateTime(2023, 8, 22, 19, 19, 29, 704, DateTimeKind.Utc).AddTicks(3138),
                             CreatedBy = 10L,
                             ExampleTestCases = "Velit nulla quia.",
                             InitialSolution = "Sed corrupti dolorem.",
@@ -3589,7 +3589,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 119L,
                             ChallengeId = 56L,
                             CompleteSolution = "et",
-                            CreatedAt = new DateTime(2020, 2, 29, 10, 46, 41, 176, DateTimeKind.Utc).AddTicks(9298),
+                            CreatedAt = new DateTime(2020, 3, 3, 21, 28, 33, 689, DateTimeKind.Utc).AddTicks(1921),
                             CreatedBy = 32L,
                             ExampleTestCases = "Explicabo ipsam distinctio enim consequuntur velit libero consequuntur aliquam vero. Facilis quibusdam magnam consequatur repudiandae voluptate porro rerum molestiae nisi. In et molestiae qui quisquam. Corrupti placeat dignissimos qui veniam dignissimos veniam magni pariatur. Sed dolor dolorum reiciendis iste voluptatum nihil quibusdam voluptas dolores. Id quia dolorem sapiente sit.",
                             InitialSolution = "Et debitis et voluptatem provident amet quis est.",
@@ -3603,7 +3603,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 120L,
                             ChallengeId = 16L,
                             CompleteSolution = "quam",
-                            CreatedAt = new DateTime(2022, 10, 16, 6, 35, 50, 239, DateTimeKind.Utc).AddTicks(5524),
+                            CreatedAt = new DateTime(2022, 10, 21, 21, 30, 2, 56, DateTimeKind.Utc).AddTicks(1592),
                             CreatedBy = 19L,
                             ExampleTestCases = "facilis",
                             InitialSolution = "Est eveniet quidem molestias velit aliquid ea ex ut ut.",
@@ -3617,7 +3617,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 121L,
                             ChallengeId = 57L,
                             CompleteSolution = "vitae",
-                            CreatedAt = new DateTime(2022, 7, 16, 10, 32, 38, 579, DateTimeKind.Utc).AddTicks(4677),
+                            CreatedAt = new DateTime(2022, 7, 21, 20, 27, 8, 468, DateTimeKind.Utc).AddTicks(4563),
                             CreatedBy = 20L,
                             ExampleTestCases = "quis",
                             InitialSolution = "Aut eos qui velit iste deleniti nulla aut omnis laudantium.",
@@ -3631,7 +3631,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 122L,
                             ChallengeId = 1L,
                             CompleteSolution = "Ipsum molestiae nisi accusantium recusandae quae.",
-                            CreatedAt = new DateTime(2023, 4, 29, 12, 48, 25, 343, DateTimeKind.Utc).AddTicks(9851),
+                            CreatedAt = new DateTime(2023, 5, 5, 14, 19, 49, 924, DateTimeKind.Utc).AddTicks(257),
                             CreatedBy = 30L,
                             ExampleTestCases = "Dignissimos dolore commodi. Maiores cupiditate et voluptas et aut a. Commodi voluptatibus doloremque ab aspernatur enim.",
                             InitialSolution = "Impedit consequatur molestiae cupiditate et placeat optio molestiae blanditiis accusantium.",
@@ -3645,7 +3645,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 123L,
                             ChallengeId = 53L,
                             CompleteSolution = "Maiores ad et eos quo. Officia voluptatem et est numquam et reiciendis quae ut asperiores. Ut in explicabo. Optio tempore voluptas et a eos maiores aut laborum. A qui ipsa repellat possimus voluptatibus.",
-                            CreatedAt = new DateTime(2023, 5, 21, 8, 21, 20, 689, DateTimeKind.Utc).AddTicks(1955),
+                            CreatedAt = new DateTime(2023, 5, 27, 11, 3, 56, 680, DateTimeKind.Utc).AddTicks(9527),
                             CreatedBy = 27L,
                             ExampleTestCases = "aut",
                             InitialSolution = "Odit accusantium nam aut et exercitationem quam.",
@@ -3659,7 +3659,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 124L,
                             ChallengeId = 34L,
                             CompleteSolution = "Nemo sed enim sunt quo sequi.",
-                            CreatedAt = new DateTime(2023, 3, 26, 18, 22, 43, 913, DateTimeKind.Utc).AddTicks(4146),
+                            CreatedAt = new DateTime(2023, 4, 1, 18, 3, 56, 562, DateTimeKind.Utc).AddTicks(7695),
                             CreatedBy = 14L,
                             ExampleTestCases = "Saepe sunt deleniti a.\nTempore dolorem aut voluptas reiciendis et rem aperiam vel.\nQuasi similique alias laborum eius.\nBeatae cumque sit.\nMaxime labore pariatur qui voluptatem et sunt.\nEum consequatur voluptas quia temporibus ipsa quia et necessitatibus dicta.",
                             InitialSolution = "Placeat provident necessitatibus voluptates et alias.",
@@ -3673,7 +3673,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 125L,
                             ChallengeId = 61L,
                             CompleteSolution = "reprehenderit",
-                            CreatedAt = new DateTime(2023, 7, 5, 5, 28, 41, 555, DateTimeKind.Utc).AddTicks(2069),
+                            CreatedAt = new DateTime(2023, 7, 11, 10, 37, 45, 326, DateTimeKind.Utc).AddTicks(1778),
                             CreatedBy = 39L,
                             ExampleTestCases = "Veritatis unde libero atque est aut.",
                             InitialSolution = "Sit et eveniet odit harum beatae vel iure.",
@@ -3687,7 +3687,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 126L,
                             ChallengeId = 1L,
                             CompleteSolution = "provident",
-                            CreatedAt = new DateTime(2023, 4, 22, 4, 33, 37, 757, DateTimeKind.Utc).AddTicks(3066),
+                            CreatedAt = new DateTime(2023, 4, 28, 5, 41, 4, 417, DateTimeKind.Utc).AddTicks(5473),
                             CreatedBy = 36L,
                             ExampleTestCases = "Deleniti voluptatem et. Voluptate nobis quo ratione quia totam itaque dolorum pariatur. Qui libero ullam quo facilis impedit voluptatem sed quae perferendis. Dolores laboriosam laborum neque. Autem aut quibusdam libero nihil ut quis ipsa ut.",
                             InitialSolution = "Amet doloribus quisquam pariatur cum velit quisquam dolorem non.",
@@ -3701,7 +3701,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 127L,
                             ChallengeId = 31L,
                             CompleteSolution = "Delectus minima reiciendis quam id ad nisi aut voluptatibus cupiditate.",
-                            CreatedAt = new DateTime(2023, 4, 28, 14, 1, 3, 637, DateTimeKind.Utc).AddTicks(143),
+                            CreatedAt = new DateTime(2023, 5, 4, 15, 29, 22, 288, DateTimeKind.Utc).AddTicks(8952),
                             CreatedBy = 35L,
                             ExampleTestCases = "At eum quaerat ducimus. Nihil dolores ipsam quos quam ea et et et praesentium. Est et consequatur.",
                             InitialSolution = "Nulla quas quam quis nihil possimus nobis.",
@@ -3715,7 +3715,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 128L,
                             ChallengeId = 67L,
                             CompleteSolution = "Labore molestiae minima fugiat sapiente atque.",
-                            CreatedAt = new DateTime(2023, 5, 27, 16, 23, 10, 217, DateTimeKind.Utc).AddTicks(5691),
+                            CreatedAt = new DateTime(2023, 6, 2, 19, 26, 26, 561, DateTimeKind.Utc).AddTicks(2342),
                             CreatedBy = 20L,
                             ExampleTestCases = "Accusamus amet ut sapiente quae excepturi rerum. Exercitationem aut nulla. Est consequatur tempore repellendus eveniet deleniti. Aut qui non repudiandae nisi id dolores reprehenderit.",
                             InitialSolution = "Eum et aperiam commodi praesentium harum voluptatem quia ut sint.",
@@ -3729,7 +3729,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 129L,
                             ChallengeId = 70L,
                             CompleteSolution = "Aut dolores quia. Quia beatae quia accusamus nam corporis. Magni blanditiis illo. Ad consequatur tempora voluptates quia tenetur aut nesciunt. Ut consectetur nostrum dolorem eaque cum voluptas.",
-                            CreatedAt = new DateTime(2023, 9, 6, 3, 33, 44, 368, DateTimeKind.Utc).AddTicks(542),
+                            CreatedAt = new DateTime(2023, 9, 12, 12, 8, 8, 262, DateTimeKind.Utc).AddTicks(37),
                             CreatedBy = 13L,
                             ExampleTestCases = "Laudantium aut et suscipit autem tempora perferendis repellendus sequi.",
                             InitialSolution = "Ea rerum quidem odit similique.",
@@ -3743,7 +3743,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 130L,
                             ChallengeId = 35L,
                             CompleteSolution = "Aspernatur possimus ea maiores amet. Sunt doloribus aut est fugiat et vel autem. Excepturi enim voluptates tempora ullam vero aut dolores. Qui eaque soluta voluptatibus rerum. Voluptate eius ipsa consequatur optio totam et quibusdam ut neque. Maiores odio exercitationem soluta sapiente error.",
-                            CreatedAt = new DateTime(2023, 5, 20, 14, 7, 56, 267, DateTimeKind.Utc).AddTicks(1181),
+                            CreatedAt = new DateTime(2023, 5, 26, 16, 48, 3, 570, DateTimeKind.Utc).AddTicks(2947),
                             CreatedBy = 3L,
                             ExampleTestCases = "Sed rerum assumenda voluptatum temporibus sint blanditiis voluptate. Omnis occaecati sed impedit quia. Perspiciatis qui ipsum qui rerum unde aut. Iure consectetur autem. Quia aut quia id quidem. Quia inventore ea corrupti tempore sed architecto.",
                             InitialSolution = "In earum nobis quia optio at inventore.",
@@ -3757,7 +3757,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 131L,
                             ChallengeId = 3L,
                             CompleteSolution = "sunt",
-                            CreatedAt = new DateTime(2023, 9, 6, 13, 32, 52, 660, DateTimeKind.Utc).AddTicks(89),
+                            CreatedAt = new DateTime(2023, 9, 12, 22, 8, 38, 21, DateTimeKind.Utc).AddTicks(8793),
                             CreatedBy = 39L,
                             ExampleTestCases = "Iure voluptatem non illo voluptatem ut maxime placeat veritatis doloribus. Sit aliquid ea. Architecto sit dicta impedit similique. Sed et eum aut eum. Quo possimus consectetur ut. Ipsum ut alias.",
                             InitialSolution = "Iure voluptatibus dolore non sed saepe et incidunt sed.",
@@ -3771,7 +3771,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 132L,
                             ChallengeId = 25L,
                             CompleteSolution = "Inventore fugit delectus labore ipsam error sit veniam eum tenetur. Voluptas voluptates asperiores officiis voluptatem saepe neque qui ea. Eaque nemo sed repellendus dolore necessitatibus. Nam quaerat illo qui. Necessitatibus cumque beatae alias accusamus at suscipit.",
-                            CreatedAt = new DateTime(2023, 5, 15, 4, 55, 37, 656, DateTimeKind.Utc).AddTicks(7339),
+                            CreatedAt = new DateTime(2023, 5, 21, 7, 18, 10, 838, DateTimeKind.Utc).AddTicks(9097),
                             CreatedBy = 25L,
                             ExampleTestCases = "Neque ut nihil velit soluta enim nesciunt. Repellendus distinctio dolor non provident voluptatem. Consequatur qui adipisci iure nesciunt et culpa consequatur animi error. Quam molestiae eum ut enim et magni ut.",
                             InitialSolution = "Deleniti illo velit similique ab.",
@@ -3785,7 +3785,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 133L,
                             ChallengeId = 3L,
                             CompleteSolution = "Et iusto quia.",
-                            CreatedAt = new DateTime(2023, 8, 27, 8, 23, 3, 529, DateTimeKind.Utc).AddTicks(460),
+                            CreatedAt = new DateTime(2023, 9, 2, 16, 25, 28, 705, DateTimeKind.Utc).AddTicks(6412),
                             CreatedBy = 11L,
                             ExampleTestCases = "Non quibusdam et corrupti aut laborum sequi maxime et voluptas. Libero et voluptatem aut et sunt amet. Beatae dolores laboriosam est et quo accusantium aut cupiditate.",
                             InitialSolution = "Eos id cupiditate blanditiis aut maiores pariatur.",
@@ -3799,7 +3799,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 134L,
                             ChallengeId = 50L,
                             CompleteSolution = "Autem quis accusantium voluptatem.",
-                            CreatedAt = new DateTime(2023, 9, 8, 20, 47, 22, 14, DateTimeKind.Utc).AddTicks(5147),
+                            CreatedAt = new DateTime(2023, 9, 15, 5, 30, 38, 67, DateTimeKind.Utc).AddTicks(9061),
                             CreatedBy = 38L,
                             ExampleTestCases = "vitae",
                             InitialSolution = "Quis placeat voluptatem incidunt repellat.",
@@ -3813,7 +3813,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 135L,
                             ChallengeId = 14L,
                             CompleteSolution = "Et enim accusamus quis est tempora maxime eos consectetur rem.\nNihil ut fuga mollitia sint ex at dignissimos nulla quia.",
-                            CreatedAt = new DateTime(2023, 1, 29, 19, 19, 22, 954, DateTimeKind.Utc).AddTicks(2049),
+                            CreatedAt = new DateTime(2023, 2, 4, 15, 57, 58, 190, DateTimeKind.Utc).AddTicks(6369),
                             CreatedBy = 31L,
                             ExampleTestCases = "Aut amet quia omnis harum asperiores. Nisi ratione fuga. Ea ut dolorem dignissimos delectus voluptatum aspernatur rerum sit. Rem qui placeat deleniti distinctio vero temporibus aliquam animi quasi.",
                             InitialSolution = "Accusamus voluptatem ducimus est omnis minus.",
@@ -3827,7 +3827,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 136L,
                             ChallengeId = 13L,
                             CompleteSolution = "dignissimos",
-                            CreatedAt = new DateTime(2018, 7, 19, 0, 52, 4, 948, DateTimeKind.Utc).AddTicks(1198),
+                            CreatedAt = new DateTime(2018, 7, 21, 3, 27, 11, 275, DateTimeKind.Utc).AddTicks(1125),
                             CreatedBy = 3L,
                             ExampleTestCases = "Molestiae delectus architecto dignissimos velit animi.\nQuasi aut eos quaerat dicta perspiciatis.\nAt sed dolorem inventore consequuntur odio provident.\nIpsum ut recusandae ut.\nCupiditate eaque nihil eius velit.",
                             InitialSolution = "Rerum necessitatibus porro veniam ipsa ut incidunt.",
@@ -3841,7 +3841,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 137L,
                             ChallengeId = 37L,
                             CompleteSolution = "Est cum quis labore quasi in laudantium veniam saepe eius.\nIpsum excepturi quia dolore itaque aperiam omnis sint veritatis.",
-                            CreatedAt = new DateTime(2023, 5, 5, 5, 50, 34, 629, DateTimeKind.Utc).AddTicks(2980),
+                            CreatedAt = new DateTime(2023, 5, 11, 7, 40, 37, 229, DateTimeKind.Utc).AddTicks(7514),
                             CreatedBy = 10L,
                             ExampleTestCases = "Sapiente in ipsam voluptas similique nesciunt voluptatem officiis. Repudiandae labore et. Exercitationem non fuga sunt. Ut sed ad voluptas nemo explicabo corrupti unde consequuntur.",
                             InitialSolution = "Ex quo quasi officiis repudiandae.",
@@ -3855,7 +3855,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 138L,
                             ChallengeId = 3L,
                             CompleteSolution = "Et quae expedita.",
-                            CreatedAt = new DateTime(2023, 7, 2, 8, 6, 13, 77, DateTimeKind.Utc).AddTicks(1351),
+                            CreatedAt = new DateTime(2023, 7, 8, 13, 5, 50, 843, DateTimeKind.Utc).AddTicks(1008),
                             CreatedBy = 15L,
                             ExampleTestCases = "ad",
                             InitialSolution = "Non repudiandae qui incidunt repudiandae officia rerum sunt voluptas cum.",
@@ -3869,7 +3869,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 139L,
                             ChallengeId = 61L,
                             CompleteSolution = "Et ut illo maiores quas rem facilis.\nAb rerum non est unde minima corrupti aut quidem similique.",
-                            CreatedAt = new DateTime(2023, 5, 4, 9, 28, 23, 368, DateTimeKind.Utc).AddTicks(2467),
+                            CreatedAt = new DateTime(2023, 5, 10, 11, 15, 39, 783, DateTimeKind.Utc).AddTicks(8795),
                             CreatedBy = 12L,
                             ExampleTestCases = "Autem illum qui velit est.\nExercitationem consequatur voluptas ut illo ipsa dolores perferendis.",
                             InitialSolution = "Quam doloribus minima vel rerum reprehenderit distinctio adipisci.",
@@ -3883,7 +3883,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 140L,
                             ChallengeId = 45L,
                             CompleteSolution = "est",
-                            CreatedAt = new DateTime(2023, 4, 26, 3, 57, 25, 661, DateTimeKind.Utc).AddTicks(4357),
+                            CreatedAt = new DateTime(2023, 5, 2, 5, 17, 50, 622, DateTimeKind.Utc).AddTicks(5753),
                             CreatedBy = 34L,
                             ExampleTestCases = "Quo harum architecto ut accusantium.",
                             InitialSolution = "Sint repellendus non non.",
@@ -3897,7 +3897,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 141L,
                             ChallengeId = 63L,
                             CompleteSolution = "Iusto tempore exercitationem expedita fuga.",
-                            CreatedAt = new DateTime(2022, 11, 28, 16, 13, 16, 156, DateTimeKind.Utc).AddTicks(1952),
+                            CreatedAt = new DateTime(2022, 12, 4, 9, 29, 6, 136, DateTimeKind.Utc).AddTicks(8689),
                             CreatedBy = 14L,
                             ExampleTestCases = "sed",
                             InitialSolution = "Velit non et ratione.",
@@ -3911,7 +3911,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 142L,
                             ChallengeId = 19L,
                             CompleteSolution = "Perferendis eaque cumque.\nDolore nisi optio.\nDolorem iste dolorum placeat eaque rerum.\nVoluptas eaque magnam sunt itaque.\nAt et est quasi dicta repudiandae eligendi ut.\nEst culpa ad ex velit voluptatem quas nemo est eos.",
-                            CreatedAt = new DateTime(2022, 7, 29, 4, 7, 48, 667, DateTimeKind.Utc).AddTicks(3890),
+                            CreatedAt = new DateTime(2022, 8, 3, 14, 43, 51, 710, DateTimeKind.Utc).AddTicks(8705),
                             CreatedBy = 22L,
                             ExampleTestCases = "Eos error esse quaerat dolorem quae.",
                             InitialSolution = "Facilis non iste ullam illum a exercitationem vel iure.",
@@ -3925,7 +3925,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 143L,
                             ChallengeId = 25L,
                             CompleteSolution = "Ut quia eius ut suscipit culpa sed veniam.",
-                            CreatedAt = new DateTime(2023, 1, 22, 2, 16, 32, 51, DateTimeKind.Utc).AddTicks(1473),
+                            CreatedAt = new DateTime(2023, 1, 27, 22, 29, 57, 559, DateTimeKind.Utc).AddTicks(7058),
                             CreatedBy = 38L,
                             ExampleTestCases = "Molestiae exercitationem qui iste possimus laboriosam iure.\nAlias eligendi voluptatem aperiam architecto est impedit eligendi nostrum odio.\nEt cum et.",
                             InitialSolution = "A ipsa quidem provident nostrum corrupti.",
@@ -3939,7 +3939,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 144L,
                             ChallengeId = 24L,
                             CompleteSolution = "Impedit ut molestiae.\nIncidunt voluptatem vero velit deserunt eos id molestiae unde necessitatibus.",
-                            CreatedAt = new DateTime(2021, 9, 23, 11, 31, 17, 715, DateTimeKind.Utc).AddTicks(8427),
+                            CreatedAt = new DateTime(2021, 9, 28, 5, 19, 57, 113, DateTimeKind.Utc).AddTicks(2353),
                             CreatedBy = 29L,
                             ExampleTestCases = "Et eligendi sapiente debitis voluptatem et.\nPossimus ut non enim qui sint nam iure excepturi non.\nProvident qui fugit earum id.",
                             InitialSolution = "Et aut eos aut distinctio eum doloremque maxime vel aut.",
@@ -3953,7 +3953,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 145L,
                             ChallengeId = 22L,
                             CompleteSolution = "Ut optio totam temporibus et saepe dolore accusantium.",
-                            CreatedAt = new DateTime(2023, 4, 5, 2, 21, 4, 356, DateTimeKind.Utc).AddTicks(5399),
+                            CreatedAt = new DateTime(2023, 4, 11, 2, 32, 44, 301, DateTimeKind.Utc).AddTicks(7194),
                             CreatedBy = 32L,
                             ExampleTestCases = "est",
                             InitialSolution = "Deserunt vitae officiis officia vero sit neque.",
@@ -3967,7 +3967,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 146L,
                             ChallengeId = 65L,
                             CompleteSolution = "veritatis",
-                            CreatedAt = new DateTime(2023, 7, 20, 14, 12, 29, 825, DateTimeKind.Utc).AddTicks(4001),
+                            CreatedAt = new DateTime(2023, 7, 26, 20, 11, 41, 903, DateTimeKind.Utc).AddTicks(1506),
                             CreatedBy = 25L,
                             ExampleTestCases = "Est ducimus at eos deserunt porro beatae tempore.\nTemporibus quos natus est.\nDucimus consequatur neque molestiae cupiditate corrupti necessitatibus.",
                             InitialSolution = "Quia et dolor autem ducimus iusto eos veritatis facilis.",
@@ -3981,7 +3981,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 147L,
                             ChallengeId = 27L,
                             CompleteSolution = "Repellat qui repellat totam molestiae qui iure quia.\nNisi iste porro voluptatum voluptatem magni voluptatem facilis aut vero.\nVeniam cupiditate libero aliquam expedita iusto cumque voluptas.\nOdit qui repellat inventore vero ducimus tempora dolorem sapiente mollitia.",
-                            CreatedAt = new DateTime(2023, 2, 10, 8, 18, 6, 207, DateTimeKind.Utc).AddTicks(907),
+                            CreatedAt = new DateTime(2023, 2, 16, 5, 34, 21, 186, DateTimeKind.Utc).AddTicks(7581),
                             CreatedBy = 21L,
                             ExampleTestCases = "Distinctio nihil vel.\nVoluptatum sint quod consequatur quos odio.",
                             InitialSolution = "Autem fugiat modi soluta tempore.",
@@ -3995,7 +3995,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 148L,
                             ChallengeId = 40L,
                             CompleteSolution = "occaecati",
-                            CreatedAt = new DateTime(2023, 7, 25, 22, 51, 43, 612, DateTimeKind.Utc).AddTicks(5367),
+                            CreatedAt = new DateTime(2023, 8, 1, 5, 8, 25, 321, DateTimeKind.Utc).AddTicks(5051),
                             CreatedBy = 12L,
                             ExampleTestCases = "quia",
                             InitialSolution = "Et vel et maiores soluta esse excepturi ut.",
@@ -4009,7 +4009,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 149L,
                             ChallengeId = 62L,
                             CompleteSolution = "Explicabo ut quis vero at voluptate dolores facere ea ut.\nDolorem voluptas mollitia natus provident enim.\nMinima quos laboriosam et impedit debitis dignissimos.",
-                            CreatedAt = new DateTime(2022, 10, 23, 8, 10, 7, 36, DateTimeKind.Utc).AddTicks(1270),
+                            CreatedAt = new DateTime(2022, 10, 28, 23, 27, 22, 313, DateTimeKind.Utc).AddTicks(3227),
                             CreatedBy = 10L,
                             ExampleTestCases = "perferendis",
                             InitialSolution = "Ex et adipisci.",
@@ -4023,7 +4023,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 150L,
                             ChallengeId = 56L,
                             CompleteSolution = "non",
-                            CreatedAt = new DateTime(2021, 5, 28, 12, 51, 39, 159, DateTimeKind.Utc).AddTicks(8836),
+                            CreatedAt = new DateTime(2021, 6, 2, 0, 15, 24, 426, DateTimeKind.Utc).AddTicks(6629),
                             CreatedBy = 28L,
                             ExampleTestCases = "Accusamus accusantium sunt. Impedit ab ut possimus asperiores qui. Qui neque praesentium et reprehenderit vel et facere fuga laudantium. Quasi dolore repellendus occaecati. Nihil ut voluptatem. Quia voluptate aut aut.",
                             InitialSolution = "Non et sapiente tempora qui voluptatem blanditiis.",
@@ -4037,7 +4037,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 151L,
                             ChallengeId = 68L,
                             CompleteSolution = "Et modi laborum quidem. Quia rerum consectetur doloremque et voluptate tempore non mollitia quae. Ut neque id enim maxime. Sint recusandae qui ipsam. Quod exercitationem sapiente perferendis aliquid animi alias aliquam.",
-                            CreatedAt = new DateTime(2023, 7, 4, 14, 59, 21, 422, DateTimeKind.Utc).AddTicks(6787),
+                            CreatedAt = new DateTime(2023, 7, 10, 20, 6, 26, 981, DateTimeKind.Utc).AddTicks(1105),
                             CreatedBy = 35L,
                             ExampleTestCases = "Laudantium totam dolores perspiciatis repellendus quia neque.",
                             InitialSolution = "Provident quo possimus error quae tempora inventore voluptate.",
@@ -4051,7 +4051,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 152L,
                             ChallengeId = 6L,
                             CompleteSolution = "Et rerum rerum ut eveniet et voluptates illo.",
-                            CreatedAt = new DateTime(2023, 6, 22, 20, 53, 31, 711, DateTimeKind.Utc).AddTicks(4183),
+                            CreatedAt = new DateTime(2023, 6, 29, 1, 22, 15, 764, DateTimeKind.Utc).AddTicks(8299),
                             CreatedBy = 30L,
                             ExampleTestCases = "Nesciunt officiis fuga eos et dolore harum dolores consequatur.",
                             InitialSolution = "Reprehenderit qui blanditiis necessitatibus.",
@@ -4065,7 +4065,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 153L,
                             ChallengeId = 1L,
                             CompleteSolution = "Eveniet dolorem similique animi. Officiis et sunt impedit fuga eos. Fugiat dolorum aliquam est non aliquam quia accusamus. Iste et neque. Consequatur eos explicabo et aut aut.",
-                            CreatedAt = new DateTime(2023, 2, 17, 4, 19, 20, 189, DateTimeKind.Utc).AddTicks(4971),
+                            CreatedAt = new DateTime(2023, 2, 23, 1, 57, 53, 343, DateTimeKind.Utc).AddTicks(1442),
                             CreatedBy = 21L,
                             ExampleTestCases = "Sit dolorem error assumenda iure doloribus iure nihil quidem. Minima alias quam iure voluptate dolorem occaecati corrupti cupiditate. Ut rerum ducimus dignissimos quidem ut quaerat assumenda vitae.",
                             InitialSolution = "Assumenda sapiente voluptatem unde consequatur.",
@@ -4079,7 +4079,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 154L,
                             ChallengeId = 47L,
                             CompleteSolution = "Explicabo dolor debitis quasi assumenda quas provident deserunt.\nLaborum reprehenderit ea.\nPerspiciatis autem quia magni sequi minus dolorum laboriosam eos vero.\nAtque quasi incidunt voluptas voluptatibus neque.",
-                            CreatedAt = new DateTime(2022, 3, 5, 10, 24, 22, 404, DateTimeKind.Utc).AddTicks(3317),
+                            CreatedAt = new DateTime(2022, 3, 10, 13, 4, 49, 29, DateTimeKind.Utc).AddTicks(3861),
                             CreatedBy = 23L,
                             ExampleTestCases = "modi",
                             InitialSolution = "Vitae nulla ea minima.",
@@ -4093,7 +4093,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 155L,
                             ChallengeId = 8L,
                             CompleteSolution = "Perferendis sapiente voluptate.\nMolestiae eum qui cumque.\nSed laborum debitis ea laborum.",
-                            CreatedAt = new DateTime(2018, 9, 27, 0, 13, 6, 305, DateTimeKind.Utc).AddTicks(8336),
+                            CreatedAt = new DateTime(2018, 9, 29, 6, 36, 33, 730, DateTimeKind.Utc).AddTicks(7444),
                             CreatedBy = 12L,
                             ExampleTestCases = "Natus eligendi reiciendis eum at consequuntur praesentium. Voluptas et et. Quaerat recusandae dicta omnis modi illum enim. Sit maiores voluptas deleniti eaque debitis vero asperiores. Maiores est et repellat dolorem libero et aperiam culpa.",
                             InitialSolution = "Labore corrupti id qui qui nesciunt qui laborum nihil.",
@@ -4107,7 +4107,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 156L,
                             ChallengeId = 42L,
                             CompleteSolution = "Rerum eos nobis sapiente quis sunt non et ut. Ut laudantium enim laboriosam nulla repellat fuga sunt ut et. Facilis quaerat quia minima saepe minus soluta qui. Cupiditate sint cum non ipsa voluptates.",
-                            CreatedAt = new DateTime(2023, 5, 28, 17, 8, 48, 882, DateTimeKind.Utc).AddTicks(8589),
+                            CreatedAt = new DateTime(2023, 6, 3, 20, 15, 27, 236, DateTimeKind.Utc).AddTicks(1009),
                             CreatedBy = 39L,
                             ExampleTestCases = "Aliquid temporibus vel ullam recusandae quasi.\nUllam ipsum ratione consectetur voluptate soluta consequatur.\nRepudiandae illum dignissimos nesciunt quas.\nLabore perferendis aut quod nemo.\nUt ipsam aliquam quaerat vero ut.\nCorrupti numquam mollitia et.",
                             InitialSolution = "Distinctio culpa aliquid.",
@@ -4121,7 +4121,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 157L,
                             ChallengeId = 24L,
                             CompleteSolution = "Amet aut omnis sunt natus et. Labore voluptatibus repudiandae necessitatibus suscipit inventore unde. Veritatis ipsam sed qui similique eos ullam minus dolores accusamus. Eum laboriosam itaque placeat incidunt blanditiis suscipit sapiente earum. Iusto accusantium illo tempore aut consequuntur.",
-                            CreatedAt = new DateTime(2023, 5, 1, 9, 57, 37, 137, DateTimeKind.Utc).AddTicks(3263),
+                            CreatedAt = new DateTime(2023, 5, 7, 11, 35, 10, 105, DateTimeKind.Utc).AddTicks(4148),
                             CreatedBy = 28L,
                             ExampleTestCases = "Et eum porro ab alias nesciunt.",
                             InitialSolution = "Recusandae eveniet et fugit velit error voluptatem.",
@@ -4135,7 +4135,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 158L,
                             ChallengeId = 40L,
                             CompleteSolution = "Ut sunt ut esse et.\nIncidunt quia impedit id enim et et vel.",
-                            CreatedAt = new DateTime(2023, 3, 8, 15, 13, 37, 877, DateTimeKind.Utc).AddTicks(3146),
+                            CreatedAt = new DateTime(2023, 3, 14, 13, 55, 40, 309, DateTimeKind.Utc).AddTicks(6498),
                             CreatedBy = 15L,
                             ExampleTestCases = "aut",
                             InitialSolution = "Voluptates velit animi quod voluptas qui quisquam a.",
@@ -4149,7 +4149,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 159L,
                             ChallengeId = 57L,
                             CompleteSolution = "Alias alias placeat.",
-                            CreatedAt = new DateTime(2022, 12, 9, 21, 35, 1, 127, DateTimeKind.Utc).AddTicks(5327),
+                            CreatedAt = new DateTime(2022, 12, 15, 15, 27, 28, 711, DateTimeKind.Utc).AddTicks(9613),
                             CreatedBy = 23L,
                             ExampleTestCases = "Voluptas asperiores quia quia non quisquam.",
                             InitialSolution = "Magnam maiores eos ratione.",
@@ -4163,7 +4163,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 160L,
                             ChallengeId = 37L,
                             CompleteSolution = "ut",
-                            CreatedAt = new DateTime(2023, 1, 15, 5, 46, 58, 538, DateTimeKind.Utc).AddTicks(2232),
+                            CreatedAt = new DateTime(2023, 1, 21, 1, 38, 2, 27, DateTimeKind.Utc).AddTicks(8415),
                             CreatedBy = 38L,
                             ExampleTestCases = "Sit laudantium mollitia ut minus sapiente aut.\nDistinctio quibusdam facere quos unde veniam iusto ut.\nAspernatur et quia dolorem dolores laudantium ipsa commodi.\nAperiam fuga quaerat beatae inventore.\nQui consequatur vel repellat.",
                             InitialSolution = "Dolores corrupti cupiditate ut tempore corporis.",
@@ -4177,7 +4177,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 161L,
                             ChallengeId = 1L,
                             CompleteSolution = "Dignissimos vel occaecati alias iste est iure molestiae eum quis. Id culpa ipsa perspiciatis ut iusto commodi. Nemo impedit perspiciatis quos.",
-                            CreatedAt = new DateTime(2023, 9, 11, 17, 52, 27, 301, DateTimeKind.Utc).AddTicks(8622),
+                            CreatedAt = new DateTime(2023, 9, 18, 2, 45, 6, 988, DateTimeKind.Utc).AddTicks(4613),
                             CreatedBy = 35L,
                             ExampleTestCases = "Dolore incidunt excepturi quia aut itaque.",
                             InitialSolution = "Velit quia nobis voluptates aspernatur aut fugit illo.",
@@ -4191,7 +4191,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 162L,
                             ChallengeId = 25L,
                             CompleteSolution = "Dolorem vel minima ut necessitatibus iusto quo velit. Qui eligendi officiis dolorem. Et in aperiam et eaque odio. Et et optio ut consectetur aliquam. Magnam qui est voluptas fugiat sint ad consequuntur eveniet.",
-                            CreatedAt = new DateTime(2023, 7, 23, 7, 53, 57, 747, DateTimeKind.Utc).AddTicks(8298),
+                            CreatedAt = new DateTime(2023, 7, 29, 14, 2, 5, 770, DateTimeKind.Utc).AddTicks(2630),
                             CreatedBy = 29L,
                             ExampleTestCases = "Dolor facere quaerat voluptatem ea.",
                             InitialSolution = "Voluptates in perferendis minima ullam eum iusto odit accusamus iste.",
@@ -4205,7 +4205,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 163L,
                             ChallengeId = 64L,
                             CompleteSolution = "vero",
-                            CreatedAt = new DateTime(2020, 4, 10, 15, 55, 34, 99, DateTimeKind.Utc).AddTicks(1204),
+                            CreatedAt = new DateTime(2020, 4, 14, 4, 51, 56, 639, DateTimeKind.Utc).AddTicks(7106),
                             CreatedBy = 11L,
                             ExampleTestCases = "sapiente",
                             InitialSolution = "Et ut nemo culpa et qui quidem optio.",
@@ -4219,7 +4219,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 164L,
                             ChallengeId = 39L,
                             CompleteSolution = "Odio dignissimos molestias blanditiis amet praesentium ratione consequatur qui voluptas. Voluptas nihil et sunt omnis. Nisi pariatur id non sint. Id a odit cumque in ut.",
-                            CreatedAt = new DateTime(2023, 2, 3, 14, 8, 50, 19, DateTimeKind.Utc).AddTicks(1306),
+                            CreatedAt = new DateTime(2023, 2, 9, 11, 3, 2, 54, DateTimeKind.Utc).AddTicks(2416),
                             CreatedBy = 17L,
                             ExampleTestCases = "Et autem in sed consequuntur placeat voluptas in corporis voluptas. Unde illum perspiciatis voluptatem. Sit praesentium in autem in et. Repellat dicta qui aut recusandae.",
                             InitialSolution = "Sunt quaerat non est rerum ad rerum ea.",
@@ -4233,7 +4233,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 165L,
                             ChallengeId = 9L,
                             CompleteSolution = "In sunt tenetur voluptas sit esse itaque perspiciatis a.",
-                            CreatedAt = new DateTime(2020, 8, 25, 20, 41, 9, 319, DateTimeKind.Utc).AddTicks(6997),
+                            CreatedAt = new DateTime(2020, 8, 29, 17, 5, 16, 68, DateTimeKind.Utc).AddTicks(5517),
                             CreatedBy = 5L,
                             ExampleTestCases = "Ipsam impedit nobis quae laboriosam omnis possimus cum eius.\nEt exercitationem necessitatibus ad expedita.\nNon laborum quisquam sunt eos ullam.\nReprehenderit qui ut eius sint nam ipsam possimus occaecati est.\nLaboriosam animi atque.\nOmnis voluptatem tempora modi quia.",
                             InitialSolution = "Maiores voluptate optio non eum quidem minus similique corrupti.",
@@ -4247,7 +4247,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 166L,
                             ChallengeId = 64L,
                             CompleteSolution = "id",
-                            CreatedAt = new DateTime(2022, 7, 19, 10, 39, 21, 748, DateTimeKind.Utc).AddTicks(3640),
+                            CreatedAt = new DateTime(2022, 7, 24, 20, 43, 39, 978, DateTimeKind.Utc).AddTicks(8835),
                             CreatedBy = 19L,
                             ExampleTestCases = "Illo et adipisci fugiat in eos rerum quia rem enim.\nQuia doloremque quae expedita.\nVoluptas fuga repudiandae ipsum quia et consectetur id cum dolor.\nQuia eius eveniet voluptatem et nemo aliquam esse aut magni.\nDolores voluptates ad nulla.\nVoluptatem autem voluptatibus excepturi adipisci.",
                             InitialSolution = "Consequatur quia doloribus saepe est sint.",
@@ -4261,7 +4261,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 167L,
                             ChallengeId = 7L,
                             CompleteSolution = "Deserunt illum est et. Eos est consequuntur consequatur saepe voluptatum id. Commodi eligendi ut temporibus. Corporis veritatis unde recusandae tempore facilis incidunt iure tempore. Debitis eaque voluptas rerum est est dolor neque id similique.",
-                            CreatedAt = new DateTime(2022, 1, 7, 0, 2, 16, 269, DateTimeKind.Utc).AddTicks(7096),
+                            CreatedAt = new DateTime(2022, 1, 11, 23, 35, 17, 382, DateTimeKind.Utc).AddTicks(3057),
                             CreatedBy = 28L,
                             ExampleTestCases = "Illo deserunt sint qui qui provident provident modi ab magnam.\nSed dolore recusandae molestias est nulla culpa sed cupiditate.\nQuaerat incidunt quia quasi quia sit est dolorem harum eos.",
                             InitialSolution = "Laborum amet quo blanditiis nesciunt dolorum officiis et.",
@@ -4275,7 +4275,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 168L,
                             ChallengeId = 53L,
                             CompleteSolution = "Numquam fuga facere quia est architecto.",
-                            CreatedAt = new DateTime(2022, 2, 10, 4, 54, 39, 81, DateTimeKind.Utc).AddTicks(3846),
+                            CreatedAt = new DateTime(2022, 2, 15, 6, 19, 17, 342, DateTimeKind.Utc).AddTicks(5381),
                             CreatedBy = 38L,
                             ExampleTestCases = "Id nihil sunt. Eum quas sunt quo aut maiores esse enim. Ut consequatur nihil saepe dolor. Qui quae quam eveniet aut sed aut qui reprehenderit aut. Distinctio assumenda et ut rem voluptatem molestiae et sed labore.",
                             InitialSolution = "Ratione molestias recusandae qui eos provident ea tempore.",
@@ -4289,7 +4289,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 169L,
                             ChallengeId = 55L,
                             CompleteSolution = "Inventore officiis accusantium sit aut veniam est illum ab. Eum quo quia est. Quo et ut dolor eum facilis nobis quasi. Quo a dolorem perferendis accusamus.",
-                            CreatedAt = new DateTime(2023, 3, 27, 21, 40, 58, 99, DateTimeKind.Utc).AddTicks(6576),
+                            CreatedAt = new DateTime(2023, 4, 2, 21, 25, 53, 511, DateTimeKind.Utc).AddTicks(8955),
                             CreatedBy = 15L,
                             ExampleTestCases = "Magni eos autem non et et vel voluptas nisi. Deserunt odio neque voluptatem. Explicabo id suscipit.",
                             InitialSolution = "Qui soluta id.",
@@ -4303,7 +4303,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 170L,
                             ChallengeId = 37L,
                             CompleteSolution = "Ratione quia officiis nemo aliquid et et rerum alias molestias. Ut possimus consequuntur. Id maiores quam a omnis et sint neque. Praesentium incidunt adipisci dolor sed aut non.",
-                            CreatedAt = new DateTime(2022, 9, 24, 4, 58, 36, 856, DateTimeKind.Utc).AddTicks(2136),
+                            CreatedAt = new DateTime(2022, 9, 29, 18, 40, 47, 731, DateTimeKind.Utc).AddTicks(9071),
                             CreatedBy = 18L,
                             ExampleTestCases = "Molestiae consectetur accusamus in at quaerat quibusdam assumenda.",
                             InitialSolution = "Assumenda repudiandae eaque ratione est dolorem illo quos incidunt.",
@@ -4317,7 +4317,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 171L,
                             ChallengeId = 61L,
                             CompleteSolution = "Ut ullam temporibus ut facilis sit dolor ratione ut.",
-                            CreatedAt = new DateTime(2023, 6, 15, 20, 15, 42, 105, DateTimeKind.Utc).AddTicks(7805),
+                            CreatedAt = new DateTime(2023, 6, 22, 0, 21, 30, 376, DateTimeKind.Utc).AddTicks(2684),
                             CreatedBy = 21L,
                             ExampleTestCases = "Nobis aut ut nostrum impedit rerum omnis.\nAut suscipit ducimus commodi.\nCulpa nisi ut in nisi ut.\nHarum doloremque repellat hic officia et inventore tempore.\nSint rem qui sit animi dolores aspernatur quaerat.\nVoluptatem adipisci est ut ipsum nihil voluptatem quibusdam eos voluptatem.",
                             InitialSolution = "Officiis dolores quis harum quae nostrum nulla quia et.",
@@ -4331,7 +4331,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 172L,
                             ChallengeId = 3L,
                             CompleteSolution = "rerum",
-                            CreatedAt = new DateTime(2023, 7, 13, 14, 11, 26, 5, DateTimeKind.Utc).AddTicks(4358),
+                            CreatedAt = new DateTime(2023, 7, 19, 19, 47, 47, 294, DateTimeKind.Utc).AddTicks(9051),
                             CreatedBy = 18L,
                             ExampleTestCases = "et",
                             InitialSolution = "Molestiae et perferendis in nihil.",
@@ -4345,7 +4345,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 173L,
                             ChallengeId = 30L,
                             CompleteSolution = "Soluta aut cum hic labore accusantium cum atque. Vero magnam quia. Dolorum non maiores iste nostrum. Sit officiis maxime eius dolorum odio adipisci commodi voluptatem. Iusto animi repudiandae voluptatem ratione nihil error excepturi sint. Consequatur dolorem sapiente neque repellendus quis officiis.",
-                            CreatedAt = new DateTime(2020, 7, 15, 8, 49, 21, 845, DateTimeKind.Utc).AddTicks(2064),
+                            CreatedAt = new DateTime(2020, 7, 19, 2, 58, 3, 777, DateTimeKind.Utc).AddTicks(3836),
                             CreatedBy = 36L,
                             ExampleTestCases = "magni",
                             InitialSolution = "Dolorum vitae voluptatem rerum distinctio eos in quibusdam.",
@@ -4359,7 +4359,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 174L,
                             ChallengeId = 29L,
                             CompleteSolution = "Ut sint cupiditate aperiam non cum consequuntur dolorem in.",
-                            CreatedAt = new DateTime(2020, 10, 9, 14, 43, 13, 663, DateTimeKind.Utc).AddTicks(8453),
+                            CreatedAt = new DateTime(2020, 10, 13, 13, 33, 23, 0, DateTimeKind.Utc).AddTicks(5739),
                             CreatedBy = 26L,
                             ExampleTestCases = "Incidunt neque ducimus qui rerum quo veritatis sit tempora.",
                             InitialSolution = "Atque ut blanditiis velit in.",
@@ -4373,7 +4373,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 175L,
                             ChallengeId = 7L,
                             CompleteSolution = "Soluta et totam necessitatibus.",
-                            CreatedAt = new DateTime(2022, 3, 12, 9, 6, 17, 537, DateTimeKind.Utc).AddTicks(3025),
+                            CreatedAt = new DateTime(2022, 3, 17, 12, 9, 24, 184, DateTimeKind.Utc).AddTicks(9974),
                             CreatedBy = 31L,
                             ExampleTestCases = "Omnis sed eligendi fuga sequi.\nUnde et nesciunt aut et at eos aut sint.\nId consequatur quo consequatur et neque debitis aut voluptatem.",
                             InitialSolution = "Numquam quidem cum repudiandae sapiente sint aperiam quaerat fuga similique.",
@@ -4387,7 +4387,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 176L,
                             ChallengeId = 8L,
                             CompleteSolution = "Nesciunt excepturi voluptas sapiente.\nMagni numquam totam quia.",
-                            CreatedAt = new DateTime(2021, 10, 1, 23, 31, 9, 299, DateTimeKind.Utc).AddTicks(3565),
+                            CreatedAt = new DateTime(2021, 10, 6, 17, 47, 33, 33, DateTimeKind.Utc).AddTicks(8219),
                             CreatedBy = 3L,
                             ExampleTestCases = "Rem molestiae est sunt eos error expedita nam.\nQuia quos aut id.\nPariatur voluptas animi aut perferendis maxime autem.",
                             InitialSolution = "Fugiat est perferendis reprehenderit.",
@@ -4401,7 +4401,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 177L,
                             ChallengeId = 70L,
                             CompleteSolution = "Incidunt dolorem cum aspernatur qui rem unde laboriosam.",
-                            CreatedAt = new DateTime(2023, 7, 28, 12, 5, 24, 874, DateTimeKind.Utc).AddTicks(2200),
+                            CreatedAt = new DateTime(2023, 8, 3, 18, 30, 26, 117, DateTimeKind.Utc).AddTicks(9239),
                             CreatedBy = 1L,
                             ExampleTestCases = "Ut et qui consequuntur et voluptas. Sunt repudiandae quos velit nesciunt nemo rerum ducimus quo. Consequatur eveniet ullam doloremque et quia ut quos magni provident. Quia officia enim inventore ut temporibus ad quam occaecati.",
                             InitialSolution = "Libero dicta impedit quo autem numquam.",
@@ -4415,7 +4415,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 178L,
                             ChallengeId = 13L,
                             CompleteSolution = "neque",
-                            CreatedAt = new DateTime(2021, 4, 4, 18, 27, 48, 481, DateTimeKind.Utc).AddTicks(1354),
+                            CreatedAt = new DateTime(2021, 4, 9, 2, 56, 5, 950, DateTimeKind.Utc).AddTicks(4062),
                             CreatedBy = 33L,
                             ExampleTestCases = "Aut voluptas eius eos amet occaecati consequatur accusantium consectetur consequuntur.\nAut quis neque voluptatem voluptatem.\nDignissimos aut culpa ea molestias harum voluptatibus.\nConsequatur laboriosam numquam.\nQuo adipisci voluptatum consequuntur ab maiores et.",
                             InitialSolution = "Aut ipsam ab quia hic dolores optio a quis.",
@@ -4429,7 +4429,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 179L,
                             ChallengeId = 14L,
                             CompleteSolution = "Adipisci porro eius. Autem eligendi labore consequuntur vel sit sequi. Ex recusandae saepe nulla labore dolor. Id velit culpa alias asperiores necessitatibus alias aut.",
-                            CreatedAt = new DateTime(2023, 5, 7, 4, 40, 53, 940, DateTimeKind.Utc).AddTicks(3458),
+                            CreatedAt = new DateTime(2023, 5, 13, 6, 37, 18, 677, DateTimeKind.Utc).AddTicks(639),
                             CreatedBy = 28L,
                             ExampleTestCases = "Qui quod alias possimus voluptates. Laborum id ut ab deleniti dolorum. Veritatis sequi saepe accusantium tempora quidem.",
                             InitialSolution = "Molestias eum et quasi officiis nostrum.",
@@ -4443,7 +4443,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 180L,
                             ChallengeId = 61L,
                             CompleteSolution = "Recusandae eos recusandae temporibus error voluptatibus reprehenderit. Aut eum natus dolorem pariatur. Eaque quo ullam itaque odit in ab iure eaque nobis. Labore pariatur ipsum accusamus aperiam corrupti culpa quibusdam.",
-                            CreatedAt = new DateTime(2023, 8, 27, 23, 12, 21, 815, DateTimeKind.Utc).AddTicks(4840),
+                            CreatedAt = new DateTime(2023, 9, 3, 7, 16, 47, 917, DateTimeKind.Utc).AddTicks(6092),
                             CreatedBy = 16L,
                             ExampleTestCases = "vero",
                             InitialSolution = "Tempora impedit quis necessitatibus quia sit ducimus dolores.",
@@ -4457,7 +4457,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 181L,
                             ChallengeId = 31L,
                             CompleteSolution = "et",
-                            CreatedAt = new DateTime(2023, 3, 5, 16, 26, 54, 572, DateTimeKind.Utc).AddTicks(5136),
+                            CreatedAt = new DateTime(2023, 3, 11, 14, 59, 19, 550, DateTimeKind.Utc).AddTicks(1422),
                             CreatedBy = 35L,
                             ExampleTestCases = "quo",
                             InitialSolution = "Fugiat non aut velit temporibus.",
@@ -4471,7 +4471,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 182L,
                             ChallengeId = 7L,
                             CompleteSolution = "Voluptas nam reprehenderit ut consectetur laborum voluptatem amet sunt. Id ratione aspernatur suscipit. Ea eum est ipsum qui repudiandae rerum. Ut sit alias quas nulla quae. Amet atque maiores aut dolores. Qui aut est est vel rerum placeat aliquam.",
-                            CreatedAt = new DateTime(2020, 2, 10, 9, 48, 6, 244, DateTimeKind.Utc).AddTicks(6137),
+                            CreatedAt = new DateTime(2020, 2, 13, 19, 27, 50, 482, DateTimeKind.Utc).AddTicks(2476),
                             CreatedBy = 4L,
                             ExampleTestCases = "Nobis dolores nulla tenetur sed quia.\nEnim et quam dolores qui aut aut.\nQuo vel assumenda tempore eligendi.",
                             InitialSolution = "Doloribus quae cumque.",
@@ -4485,7 +4485,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 183L,
                             ChallengeId = 33L,
                             CompleteSolution = "Repellendus doloremque enim est.",
-                            CreatedAt = new DateTime(2023, 9, 1, 21, 47, 8, 444, DateTimeKind.Utc).AddTicks(4338),
+                            CreatedAt = new DateTime(2023, 9, 8, 6, 7, 41, 985, DateTimeKind.Utc).AddTicks(8241),
                             CreatedBy = 16L,
                             ExampleTestCases = "Aut esse omnis optio odit aut.",
                             InitialSolution = "Qui eaque eligendi odit earum atque veritatis quisquam illo et.",
@@ -4499,7 +4499,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 184L,
                             ChallengeId = 35L,
                             CompleteSolution = "debitis",
-                            CreatedAt = new DateTime(2023, 8, 16, 13, 3, 32, 602, DateTimeKind.Utc).AddTicks(7382),
+                            CreatedAt = new DateTime(2023, 8, 22, 20, 30, 42, 54, DateTimeKind.Utc).AddTicks(7131),
                             CreatedBy = 10L,
                             ExampleTestCases = "Ipsum perspiciatis veniam.",
                             InitialSolution = "Quod molestias ad occaecati cum temporibus.",
@@ -4513,7 +4513,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 185L,
                             ChallengeId = 55L,
                             CompleteSolution = "Aut perferendis corrupti itaque fugit et est.\nEveniet praesentium delectus harum et ut magnam sapiente eos optio.\nError eligendi ducimus delectus numquam sequi adipisci.",
-                            CreatedAt = new DateTime(2023, 1, 21, 8, 29, 9, 368, DateTimeKind.Utc).AddTicks(1383),
+                            CreatedAt = new DateTime(2023, 1, 27, 4, 40, 9, 746, DateTimeKind.Utc).AddTicks(4979),
                             CreatedBy = 23L,
                             ExampleTestCases = "velit",
                             InitialSolution = "Minus possimus sint corrupti.",
@@ -4527,7 +4527,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 186L,
                             ChallengeId = 23L,
                             CompleteSolution = "Magni vel sint et quae ad dolor sint modi. Quia eos nihil hic modi commodi assumenda consequuntur. Et minus vero libero suscipit odit. Accusamus omnis veniam rerum non tenetur vel dolore necessitatibus animi.",
-                            CreatedAt = new DateTime(2023, 8, 28, 7, 47, 22, 592, DateTimeKind.Utc).AddTicks(145),
+                            CreatedAt = new DateTime(2023, 9, 3, 15, 52, 58, 726, DateTimeKind.Utc).AddTicks(2272),
                             CreatedBy = 35L,
                             ExampleTestCases = "In in inventore enim qui.\nUnde fugit voluptate incidunt quidem qui odit.\nPossimus dolor veritatis dolorum.\nEst quae aut dolore nobis velit velit sequi ut.\nRem dolorem id assumenda quia.\nAut consectetur et praesentium consequatur similique sapiente.",
                             InitialSolution = "Libero saepe ex nisi aperiam ut id voluptates quidem deleniti.",
@@ -4541,7 +4541,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 187L,
                             ChallengeId = 30L,
                             CompleteSolution = "Est autem recusandae et eveniet vel. Nam tenetur doloribus dignissimos nesciunt est beatae dicta incidunt et. Omnis voluptatem velit blanditiis necessitatibus. Ea ut omnis accusamus. Voluptatum illum omnis qui qui.",
-                            CreatedAt = new DateTime(2020, 5, 17, 0, 46, 58, 203, DateTimeKind.Utc).AddTicks(1068),
+                            CreatedAt = new DateTime(2020, 5, 20, 15, 42, 2, 8, DateTimeKind.Utc).AddTicks(1677),
                             CreatedBy = 10L,
                             ExampleTestCases = "Veritatis reprehenderit deleniti ipsum soluta.\nConsectetur nesciunt sint quis distinctio omnis.\nQuae ut sapiente dignissimos et quibusdam.\nEsse est eius veritatis porro qui ut ea qui voluptatem.\nMollitia qui autem nesciunt.\nAut enim non quia et voluptatibus corporis assumenda placeat laboriosam.",
                             InitialSolution = "Ducimus et suscipit voluptas voluptas eius nemo quis sit quis.",
@@ -4555,7 +4555,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 188L,
                             ChallengeId = 50L,
                             CompleteSolution = "dolorem",
-                            CreatedAt = new DateTime(2023, 4, 6, 6, 45, 45, 877, DateTimeKind.Utc).AddTicks(1453),
+                            CreatedAt = new DateTime(2023, 4, 12, 7, 1, 17, 601, DateTimeKind.Utc).AddTicks(1796),
                             CreatedBy = 21L,
                             ExampleTestCases = "Maxime qui mollitia illum voluptatibus aut ut unde est et.\nNeque aspernatur non quia minima exercitationem cupiditate labore.\nVelit et est aut beatae culpa voluptatem quibusdam recusandae.\nUnde sit ut omnis qui enim ex ex ab.\nNon rerum optio dolorem fuga numquam unde.",
                             InitialSolution = "Et hic nulla velit quia esse blanditiis.",
@@ -4569,7 +4569,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 189L,
                             ChallengeId = 15L,
                             CompleteSolution = "Ipsum et temporibus beatae ex dolorum suscipit iure.",
-                            CreatedAt = new DateTime(2020, 1, 14, 7, 27, 15, 946, DateTimeKind.Utc).AddTicks(4653),
+                            CreatedAt = new DateTime(2020, 1, 17, 15, 38, 34, 280, DateTimeKind.Utc).AddTicks(2819),
                             CreatedBy = 27L,
                             ExampleTestCases = "Natus non consequatur ut voluptatum eos aperiam. Dicta porro ex. Quo tempore incidunt praesentium enim eos. Est non eaque enim et maxime enim.",
                             InitialSolution = "Et provident soluta alias quos id.",
@@ -4583,7 +4583,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 190L,
                             ChallengeId = 13L,
                             CompleteSolution = "Dicta eveniet iusto mollitia occaecati rerum odit molestiae. Veritatis quia dolorem optio cupiditate quaerat praesentium sequi quia. Dolorem architecto nihil molestiae temporibus. Ut consequatur modi ratione ipsum nulla quod veniam et tenetur.",
-                            CreatedAt = new DateTime(2022, 11, 6, 7, 49, 40, 351, DateTimeKind.Utc).AddTicks(5725),
+                            CreatedAt = new DateTime(2022, 11, 11, 23, 52, 34, 129, DateTimeKind.Utc).AddTicks(4457),
                             CreatedBy = 30L,
                             ExampleTestCases = "et",
                             InitialSolution = "Mollitia accusamus nemo consequatur ipsam aut sit.",
@@ -4597,7 +4597,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 191L,
                             ChallengeId = 61L,
                             CompleteSolution = "Eius culpa perspiciatis qui similique aut maiores. Blanditiis dolorum quisquam. Ut velit unde. Autem qui voluptatum. Modi aperiam dolores quod et. Et dolorem iusto sed et.",
-                            CreatedAt = new DateTime(2023, 6, 16, 22, 54, 30, 862, DateTimeKind.Utc).AddTicks(677),
+                            CreatedAt = new DateTime(2023, 6, 23, 3, 3, 56, 532, DateTimeKind.Utc).AddTicks(8187),
                             CreatedBy = 38L,
                             ExampleTestCases = "Distinctio tempora quisquam.",
                             InitialSolution = "Consequatur id ut laborum distinctio totam facilis quo unde culpa.",
@@ -4611,7 +4611,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 192L,
                             ChallengeId = 66L,
                             CompleteSolution = "Dignissimos aut qui minima.",
-                            CreatedAt = new DateTime(2022, 7, 26, 19, 17, 3, 250, DateTimeKind.Utc).AddTicks(3410),
+                            CreatedAt = new DateTime(2022, 8, 1, 5, 45, 22, 505, DateTimeKind.Utc).AddTicks(2011),
                             CreatedBy = 29L,
                             ExampleTestCases = "nihil",
                             InitialSolution = "Qui ut quia ut aspernatur animi possimus asperiores voluptate corrupti.",
@@ -4625,7 +4625,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 193L,
                             ChallengeId = 50L,
                             CompleteSolution = "Quo nobis dolorum quibusdam. Aut quas nostrum. Minus aut laboriosam iusto id consequatur deleniti nobis odit eum.",
-                            CreatedAt = new DateTime(2023, 6, 21, 7, 57, 28, 267, DateTimeKind.Utc).AddTicks(8375),
+                            CreatedAt = new DateTime(2023, 6, 27, 12, 21, 10, 979, DateTimeKind.Utc).AddTicks(428),
                             CreatedBy = 11L,
                             ExampleTestCases = "Natus occaecati quia omnis qui.\nTempore repellendus voluptatem.\nUt neque dolorem perspiciatis enim fuga nostrum hic quidem officia.",
                             InitialSolution = "Molestiae quia optio.",
@@ -4639,7 +4639,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 194L,
                             ChallengeId = 54L,
                             CompleteSolution = "Autem dolor sint et ab.\nLibero iusto animi.\nFacere et consequatur.",
-                            CreatedAt = new DateTime(2022, 6, 21, 6, 21, 56, 127, DateTimeKind.Utc).AddTicks(6881),
+                            CreatedAt = new DateTime(2022, 6, 26, 14, 54, 16, 786, DateTimeKind.Utc).AddTicks(8057),
                             CreatedBy = 1L,
                             ExampleTestCases = "qui",
                             InitialSolution = "Architecto ut dolor molestiae.",
@@ -4653,7 +4653,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 195L,
                             ChallengeId = 69L,
                             CompleteSolution = "Sit ut hic molestiae recusandae placeat et possimus est. Asperiores et in. Amet qui velit sunt quis ipsa at maiores. Ut adipisci velit perspiciatis quod cumque quae nihil. Possimus natus repudiandae minima beatae quo quam voluptatem.",
-                            CreatedAt = new DateTime(2022, 12, 8, 9, 57, 23, 702, DateTimeKind.Utc).AddTicks(1947),
+                            CreatedAt = new DateTime(2022, 12, 14, 3, 45, 0, 627, DateTimeKind.Utc).AddTicks(5837),
                             CreatedBy = 30L,
                             ExampleTestCases = "Voluptatem voluptatibus atque consequatur animi deserunt itaque ut.",
                             InitialSolution = "Ut voluptatem officiis distinctio repellendus voluptas quas similique eveniet ut.",
@@ -4667,7 +4667,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 196L,
                             ChallengeId = 27L,
                             CompleteSolution = "Quo omnis et molestias sunt tempore accusantium animi eligendi quod.",
-                            CreatedAt = new DateTime(2022, 10, 30, 10, 21, 2, 823, DateTimeKind.Utc).AddTicks(8742),
+                            CreatedAt = new DateTime(2022, 11, 5, 2, 1, 26, 536, DateTimeKind.Utc).AddTicks(1279),
                             CreatedBy = 23L,
                             ExampleTestCases = "nobis",
                             InitialSolution = "Illo soluta eligendi.",
@@ -4681,7 +4681,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 197L,
                             ChallengeId = 66L,
                             CompleteSolution = "Id minima rerum perspiciatis.\nIpsam quidem suscipit quia beatae sequi qui eius consectetur occaecati.\nTotam maiores delectus eius qui dolor.\nQuos beatae voluptatem repellat aut.\nEst voluptatum unde quia.\nDelectus odit numquam natus omnis.",
-                            CreatedAt = new DateTime(2022, 11, 17, 10, 3, 41, 993, DateTimeKind.Utc).AddTicks(9431),
+                            CreatedAt = new DateTime(2022, 11, 23, 2, 42, 47, 851, DateTimeKind.Utc).AddTicks(7927),
                             CreatedBy = 29L,
                             ExampleTestCases = "Id repellat ipsa optio recusandae exercitationem sed sit sed.",
                             InitialSolution = "Aut unde saepe velit rem repudiandae eos.",
@@ -4695,7 +4695,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 198L,
                             ChallengeId = 14L,
                             CompleteSolution = "Est ut distinctio.",
-                            CreatedAt = new DateTime(2023, 5, 4, 11, 22, 56, 899, DateTimeKind.Utc).AddTicks(7761),
+                            CreatedAt = new DateTime(2023, 5, 10, 13, 10, 28, 888, DateTimeKind.Utc).AddTicks(4914),
                             CreatedBy = 24L,
                             ExampleTestCases = "Voluptatem eum ea est repellendus optio. Quia tempore ut temporibus nesciunt dolores. Vel culpa recusandae est et soluta sequi eveniet.",
                             InitialSolution = "Illum explicabo odit.",
@@ -4709,7 +4709,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 199L,
                             ChallengeId = 15L,
                             CompleteSolution = "Sapiente voluptatem sed.",
-                            CreatedAt = new DateTime(2019, 1, 10, 12, 20, 17, 811, DateTimeKind.Utc).AddTicks(3544),
+                            CreatedAt = new DateTime(2019, 1, 13, 0, 28, 3, 707, DateTimeKind.Utc).AddTicks(3975),
                             CreatedBy = 8L,
                             ExampleTestCases = "Rerum in voluptatibus quia eos non in enim quam.",
                             InitialSolution = "Odit ipsa enim quo et voluptates dolores id in facere.",
@@ -4723,7 +4723,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 200L,
                             ChallengeId = 61L,
                             CompleteSolution = "beatae",
-                            CreatedAt = new DateTime(2023, 8, 22, 10, 36, 55, 904, DateTimeKind.Utc).AddTicks(2273),
+                            CreatedAt = new DateTime(2023, 8, 28, 18, 23, 20, 257, DateTimeKind.Utc).AddTicks(3065),
                             CreatedBy = 37L,
                             ExampleTestCases = "Quisquam magni optio dolorem dolorem reprehenderit omnis expedita ipsam.",
                             InitialSolution = "Quasi et beatae hic sint qui.",
@@ -4731,6 +4731,207 @@ namespace LeetWars.Core.DAL.Migrations
                             PreloadedCode = "",
                             Status = 0,
                             TestCases = "dolor"
+                        });
+                });
+
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.Friendship", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Friendships");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2023, 9, 16, 3, 58, 40, 588, DateTimeKind.Local).AddTicks(5138),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2023, 9, 9, 15, 35, 4, 989, DateTimeKind.Local).AddTicks(6127),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2023, 9, 17, 0, 28, 4, 313, DateTimeKind.Local).AddTicks(4787),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedAt = new DateTime(2023, 9, 12, 17, 43, 56, 387, DateTimeKind.Local).AddTicks(7631),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreatedAt = new DateTime(2023, 9, 17, 22, 43, 43, 210, DateTimeKind.Local).AddTicks(5168),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CreatedAt = new DateTime(2023, 9, 10, 14, 7, 26, 335, DateTimeKind.Local).AddTicks(3288),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CreatedAt = new DateTime(2023, 9, 17, 21, 3, 41, 977, DateTimeKind.Local).AddTicks(5268),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CreatedAt = new DateTime(2023, 9, 12, 23, 8, 42, 364, DateTimeKind.Local).AddTicks(7410),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CreatedAt = new DateTime(2023, 9, 12, 9, 16, 13, 343, DateTimeKind.Local).AddTicks(4768),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CreatedAt = new DateTime(2023, 9, 9, 3, 44, 16, 994, DateTimeKind.Local).AddTicks(9071),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            CreatedAt = new DateTime(2023, 9, 15, 14, 57, 26, 562, DateTimeKind.Local).AddTicks(2977),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            CreatedAt = new DateTime(2023, 9, 17, 16, 29, 59, 104, DateTimeKind.Local).AddTicks(369),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            CreatedAt = new DateTime(2023, 9, 15, 21, 55, 43, 180, DateTimeKind.Local).AddTicks(1840),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            CreatedAt = new DateTime(2023, 9, 13, 23, 53, 12, 452, DateTimeKind.Local).AddTicks(984),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            CreatedAt = new DateTime(2023, 9, 10, 20, 58, 16, 813, DateTimeKind.Local).AddTicks(4098),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            CreatedAt = new DateTime(2023, 9, 9, 6, 16, 13, 230, DateTimeKind.Local).AddTicks(2882),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            CreatedAt = new DateTime(2023, 9, 18, 2, 38, 6, 294, DateTimeKind.Local).AddTicks(1542),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            CreatedAt = new DateTime(2023, 9, 13, 6, 4, 46, 85, DateTimeKind.Local).AddTicks(3201),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 19L,
+                            CreatedAt = new DateTime(2023, 9, 16, 1, 46, 6, 411, DateTimeKind.Local).AddTicks(4170),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            CreatedAt = new DateTime(2023, 9, 11, 3, 32, 56, 253, DateTimeKind.Local).AddTicks(4294),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 21L,
+                            CreatedAt = new DateTime(2023, 9, 18, 1, 36, 46, 264, DateTimeKind.Local).AddTicks(7480),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 22L,
+                            CreatedAt = new DateTime(2023, 9, 16, 17, 11, 34, 190, DateTimeKind.Local).AddTicks(2458),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 23L,
+                            CreatedAt = new DateTime(2023, 9, 14, 10, 54, 59, 247, DateTimeKind.Local).AddTicks(1863),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 24L,
+                            CreatedAt = new DateTime(2023, 9, 11, 7, 1, 49, 486, DateTimeKind.Local).AddTicks(4872),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 25L,
+                            CreatedAt = new DateTime(2023, 9, 15, 9, 2, 27, 41, DateTimeKind.Local).AddTicks(2980),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 26L,
+                            CreatedAt = new DateTime(2023, 9, 9, 17, 15, 59, 165, DateTimeKind.Local).AddTicks(6348),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 27L,
+                            CreatedAt = new DateTime(2023, 9, 13, 19, 35, 52, 87, DateTimeKind.Local).AddTicks(7274),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 28L,
+                            CreatedAt = new DateTime(2023, 9, 18, 19, 15, 58, 384, DateTimeKind.Local).AddTicks(5294),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 29L,
+                            CreatedAt = new DateTime(2023, 9, 17, 7, 55, 33, 861, DateTimeKind.Local).AddTicks(3360),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 30L,
+                            CreatedAt = new DateTime(2023, 9, 17, 13, 21, 47, 801, DateTimeKind.Local).AddTicks(6090),
+                            Status = 0
                         });
                 });
 
@@ -4910,206 +5111,206 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 1L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 10, 22, 22, 33, 34, 176, DateTimeKind.Utc).AddTicks(3860),
+                            EndDate = new DateTime(2023, 10, 29, 4, 35, 6, 532, DateTimeKind.Utc).AddTicks(9511),
                             IsActive = false,
                             PaymentSubscriptionId = "2umhqjy0f1gdzhf2",
-                            StartDate = new DateTime(2023, 7, 21, 7, 24, 7, 417, DateTimeKind.Utc).AddTicks(2943),
-                            SubscribedDate = new DateTime(2022, 8, 16, 11, 55, 57, 562, DateTimeKind.Utc).AddTicks(9341),
+                            StartDate = new DateTime(2023, 7, 27, 13, 25, 39, 773, DateTimeKind.Utc).AddTicks(8594),
+                            SubscribedDate = new DateTime(2022, 8, 21, 23, 31, 48, 759, DateTimeKind.Utc).AddTicks(4732),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 7, 23, 14, 59, 42, 727, DateTimeKind.Utc).AddTicks(8574),
+                            UnsubscribedDate = new DateTime(2023, 7, 29, 21, 8, 48, 644, DateTimeKind.Utc).AddTicks(9468),
                             UserId = 27L
                         },
                         new
                         {
                             Id = 2L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 2, 20, 2, 26, 49, 748, DateTimeKind.Utc).AddTicks(9391),
+                            EndDate = new DateTime(2024, 2, 26, 9, 5, 34, 941, DateTimeKind.Utc).AddTicks(6262),
                             IsActive = true,
                             PaymentSubscriptionId = "6iotvwd2kcauexpx",
-                            StartDate = new DateTime(2023, 8, 1, 17, 4, 54, 624, DateTimeKind.Utc).AddTicks(5339),
-                            SubscribedDate = new DateTime(2023, 1, 24, 6, 24, 32, 114, DateTimeKind.Utc).AddTicks(2835),
+                            StartDate = new DateTime(2023, 8, 7, 23, 43, 39, 817, DateTimeKind.Utc).AddTicks(2210),
+                            SubscribedDate = new DateTime(2023, 1, 30, 2, 45, 2, 961, DateTimeKind.Utc).AddTicks(5267),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 2, 9, 1, 52, 13, 491, DateTimeKind.Utc).AddTicks(8060),
+                            UnsubscribedDate = new DateTime(2023, 2, 14, 23, 4, 20, 201, DateTimeKind.Utc).AddTicks(8880),
                             UserId = 20L
                         },
                         new
                         {
                             Id = 3L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 10, 11, 17, 32, 50, 310, DateTimeKind.Utc).AddTicks(4944),
+                            EndDate = new DateTime(2023, 10, 18, 0, 4, 27, 909, DateTimeKind.Utc).AddTicks(5308),
                             IsActive = false,
                             PaymentSubscriptionId = "uo2s583680b8v54j",
-                            StartDate = new DateTime(2023, 7, 30, 12, 40, 17, 544, DateTimeKind.Utc).AddTicks(4179),
-                            SubscribedDate = new DateTime(2023, 5, 12, 23, 2, 37, 861, DateTimeKind.Utc).AddTicks(5263),
+                            StartDate = new DateTime(2023, 8, 5, 19, 11, 55, 143, DateTimeKind.Utc).AddTicks(4543),
+                            SubscribedDate = new DateTime(2023, 5, 19, 1, 17, 51, 435, DateTimeKind.Utc).AddTicks(5989),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 7, 23, 21, 29, 51, 22, DateTimeKind.Utc).AddTicks(2218),
+                            UnsubscribedDate = new DateTime(2023, 7, 30, 3, 39, 49, 988, DateTimeKind.Utc).AddTicks(8053),
                             UserId = 27L
                         },
                         new
                         {
                             Id = 4L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 1, 15, 20, 21, 54, 920, DateTimeKind.Utc).AddTicks(5094),
+                            EndDate = new DateTime(2023, 1, 21, 3, 55, 46, 908, DateTimeKind.Utc).AddTicks(6519),
                             IsActive = true,
                             PaymentSubscriptionId = "nfd23s23e9y7ukxb",
-                            StartDate = new DateTime(2022, 6, 3, 8, 18, 16, 457, DateTimeKind.Utc).AddTicks(8238),
-                            SubscribedDate = new DateTime(2021, 8, 3, 13, 56, 18, 35, DateTimeKind.Utc).AddTicks(9575),
+                            StartDate = new DateTime(2022, 6, 8, 15, 52, 8, 445, DateTimeKind.Utc).AddTicks(9663),
+                            SubscribedDate = new DateTime(2021, 8, 8, 4, 58, 51, 70, DateTimeKind.Utc).AddTicks(4041),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 8, 15, 0, 45, 28, 260, DateTimeKind.Utc).AddTicks(8834),
+                            UnsubscribedDate = new DateTime(2022, 8, 20, 12, 16, 32, 490, DateTimeKind.Utc).AddTicks(9372),
                             UserId = 10L
                         },
                         new
                         {
                             Id = 5L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 7, 14, 12, 30, 8, 13, DateTimeKind.Utc).AddTicks(9721),
+                            EndDate = new DateTime(2023, 7, 20, 14, 34, 0, 765, DateTimeKind.Utc).AddTicks(9158),
                             IsActive = true,
                             PaymentSubscriptionId = "28569h790c5pv13g",
-                            StartDate = new DateTime(2023, 5, 9, 11, 35, 41, 206, DateTimeKind.Utc).AddTicks(8257),
-                            SubscribedDate = new DateTime(2022, 11, 1, 7, 51, 54, 730, DateTimeKind.Utc).AddTicks(7930),
+                            StartDate = new DateTime(2023, 5, 15, 13, 39, 33, 958, DateTimeKind.Utc).AddTicks(7694),
+                            SubscribedDate = new DateTime(2022, 11, 6, 23, 38, 29, 786, DateTimeKind.Utc).AddTicks(8993),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 8, 17, 10, 39, 12, 505, DateTimeKind.Utc).AddTicks(8925),
+                            UnsubscribedDate = new DateTime(2023, 8, 23, 18, 9, 18, 143, DateTimeKind.Utc).AddTicks(1171),
                             UserId = 38L
                         },
                         new
                         {
                             Id = 6L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2021, 9, 15, 12, 36, 48, 811, DateTimeKind.Utc).AddTicks(1971),
+                            EndDate = new DateTime(2021, 9, 19, 21, 31, 23, 716, DateTimeKind.Utc).AddTicks(4901),
                             IsActive = true,
                             PaymentSubscriptionId = "fhe3z935d1zvmvux",
-                            StartDate = new DateTime(2021, 4, 12, 19, 48, 37, 564, DateTimeKind.Utc).AddTicks(7443),
-                            SubscribedDate = new DateTime(2018, 12, 17, 13, 54, 51, 705, DateTimeKind.Utc).AddTicks(3345),
+                            StartDate = new DateTime(2021, 4, 17, 4, 43, 12, 470, DateTimeKind.Utc).AddTicks(373),
+                            SubscribedDate = new DateTime(2018, 12, 20, 0, 44, 31, 123, DateTimeKind.Utc).AddTicks(8984),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2019, 12, 30, 19, 0, 20, 999, DateTimeKind.Utc).AddTicks(3470),
+                            UnsubscribedDate = new DateTime(2020, 1, 3, 2, 24, 16, 491, DateTimeKind.Utc).AddTicks(6833),
                             UserId = 3L
                         },
                         new
                         {
                             Id = 7L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 2, 24, 19, 37, 16, 30, DateTimeKind.Utc).AddTicks(8137),
+                            EndDate = new DateTime(2023, 3, 2, 16, 23, 58, 525, DateTimeKind.Utc).AddTicks(15),
                             IsActive = true,
                             PaymentSubscriptionId = "04gfoh55j2qr239q",
-                            StartDate = new DateTime(2023, 2, 1, 7, 2, 46, 310, DateTimeKind.Utc).AddTicks(1742),
-                            SubscribedDate = new DateTime(2020, 4, 24, 5, 58, 57, 934, DateTimeKind.Utc).AddTicks(27),
+                            StartDate = new DateTime(2023, 2, 7, 3, 49, 28, 804, DateTimeKind.Utc).AddTicks(3620),
+                            SubscribedDate = new DateTime(2020, 4, 27, 19, 39, 40, 629, DateTimeKind.Utc).AddTicks(9465),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2021, 1, 25, 9, 35, 6, 457, DateTimeKind.Utc).AddTicks(2787),
+                            UnsubscribedDate = new DateTime(2021, 1, 29, 14, 17, 0, 902, DateTimeKind.Utc).AddTicks(4215),
                             UserId = 10L
                         },
                         new
                         {
                             Id = 8L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2022, 10, 19, 13, 11, 46, 944, DateTimeKind.Utc).AddTicks(7629),
+                            EndDate = new DateTime(2022, 10, 25, 1, 26, 9, 321, DateTimeKind.Utc).AddTicks(4430),
                             IsActive = false,
                             PaymentSubscriptionId = "cvjhq7n8273vtohw",
-                            StartDate = new DateTime(2022, 8, 28, 7, 12, 51, 602, DateTimeKind.Utc).AddTicks(4589),
-                            SubscribedDate = new DateTime(2021, 5, 8, 11, 21, 27, 918, DateTimeKind.Utc).AddTicks(8669),
+                            StartDate = new DateTime(2022, 9, 2, 19, 27, 13, 979, DateTimeKind.Utc).AddTicks(1390),
+                            SubscribedDate = new DateTime(2021, 5, 12, 21, 39, 44, 802, DateTimeKind.Utc).AddTicks(5004),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2021, 7, 19, 19, 13, 57, 494, DateTimeKind.Utc).AddTicks(8046),
+                            UnsubscribedDate = new DateTime(2021, 7, 24, 9, 28, 16, 633, DateTimeKind.Utc).AddTicks(3675),
                             UserId = 36L
                         },
                         new
                         {
                             Id = 9L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2024, 5, 28, 13, 8, 39, 61, DateTimeKind.Utc).AddTicks(2699),
+                            EndDate = new DateTime(2024, 6, 3, 16, 17, 52, 448, DateTimeKind.Utc).AddTicks(3725),
                             IsActive = false,
                             PaymentSubscriptionId = "ff9fvm4sae2sxofc",
-                            StartDate = new DateTime(2023, 5, 29, 12, 8, 56, 423, DateTimeKind.Utc).AddTicks(5693),
-                            SubscribedDate = new DateTime(2021, 6, 3, 23, 32, 7, 221, DateTimeKind.Utc).AddTicks(3609),
+                            StartDate = new DateTime(2023, 6, 4, 15, 18, 9, 810, DateTimeKind.Utc).AddTicks(6719),
+                            SubscribedDate = new DateTime(2021, 6, 8, 11, 16, 54, 412, DateTimeKind.Utc).AddTicks(2747),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2022, 5, 3, 21, 50, 44, 599, DateTimeKind.Utc).AddTicks(2906),
+                            UnsubscribedDate = new DateTime(2022, 5, 9, 3, 45, 17, 90, DateTimeKind.Utc).AddTicks(6559),
                             UserId = 17L
                         },
                         new
                         {
                             Id = 10L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 11, 7, 23, 28, 23, 808, DateTimeKind.Utc).AddTicks(2561),
+                            EndDate = new DateTime(2022, 11, 13, 3, 6, 41, 860, DateTimeKind.Utc).AddTicks(4685),
                             IsActive = true,
                             PaymentSubscriptionId = "igx8w9w90k1ay8cf",
-                            StartDate = new DateTime(2022, 3, 23, 3, 54, 2, 238, DateTimeKind.Utc).AddTicks(66),
-                            SubscribedDate = new DateTime(2021, 3, 15, 10, 39, 14, 142, DateTimeKind.Utc).AddTicks(3481),
+                            StartDate = new DateTime(2022, 3, 28, 7, 32, 20, 290, DateTimeKind.Utc).AddTicks(2190),
+                            SubscribedDate = new DateTime(2021, 3, 19, 18, 1, 11, 785, DateTimeKind.Utc).AddTicks(4765),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 12, 6, 23, 46, 2, 566, DateTimeKind.Utc).AddTicks(87),
+                            UnsubscribedDate = new DateTime(2022, 12, 12, 17, 29, 0, 559, DateTimeKind.Utc).AddTicks(5015),
                             UserId = 3L
                         },
                         new
                         {
                             Id = 11L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 11, 30, 17, 13, 28, 151, DateTimeKind.Utc).AddTicks(2812),
+                            EndDate = new DateTime(2023, 12, 6, 17, 49, 11, 682, DateTimeKind.Utc).AddTicks(5112),
                             IsActive = true,
                             PaymentSubscriptionId = "dy4mdzy1ipwfpvv0",
-                            StartDate = new DateTime(2023, 4, 12, 11, 17, 32, 829, DateTimeKind.Utc).AddTicks(9682),
-                            SubscribedDate = new DateTime(2023, 1, 15, 8, 15, 6, 898, DateTimeKind.Utc).AddTicks(3210),
+                            StartDate = new DateTime(2023, 4, 18, 11, 53, 16, 361, DateTimeKind.Utc).AddTicks(1982),
+                            SubscribedDate = new DateTime(2023, 1, 21, 4, 6, 30, 530, DateTimeKind.Utc).AddTicks(7365),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 2, 18, 21, 21, 39, 776, DateTimeKind.Utc).AddTicks(1745),
+                            UnsubscribedDate = new DateTime(2023, 2, 24, 19, 5, 47, 752, DateTimeKind.Utc).AddTicks(7828),
                             UserId = 20L
                         },
                         new
                         {
                             Id = 12L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 4, 20, 15, 40, 28, 867, DateTimeKind.Utc).AddTicks(8880),
+                            EndDate = new DateTime(2023, 4, 26, 10, 2, 13, 735, DateTimeKind.Utc).AddTicks(590),
                             IsActive = true,
                             PaymentSubscriptionId = "69sotjwthpvx4aw1",
-                            StartDate = new DateTime(2022, 12, 18, 20, 58, 24, 958, DateTimeKind.Utc).AddTicks(9957),
-                            SubscribedDate = new DateTime(2022, 9, 23, 20, 15, 16, 883, DateTimeKind.Utc).AddTicks(2782),
+                            StartDate = new DateTime(2022, 12, 24, 15, 20, 9, 826, DateTimeKind.Utc).AddTicks(1667),
+                            SubscribedDate = new DateTime(2022, 9, 29, 9, 56, 16, 599, DateTimeKind.Utc).AddTicks(2476),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 8, 14, 19, 32, 5, 406, DateTimeKind.Utc).AddTicks(1195),
+                            UnsubscribedDate = new DateTime(2023, 8, 21, 2, 53, 36, 85, DateTimeKind.Utc).AddTicks(4499),
                             UserId = 25L
                         },
                         new
                         {
                             Id = 13L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 9, 21, 1, 6, 40, 616, DateTimeKind.Utc).AddTicks(8277),
+                            EndDate = new DateTime(2023, 9, 27, 10, 0, 39, 206, DateTimeKind.Utc).AddTicks(5186),
                             IsActive = true,
                             PaymentSubscriptionId = "gjxuxll8kyg46a7z",
-                            StartDate = new DateTime(2023, 9, 12, 3, 32, 42, 303, DateTimeKind.Utc).AddTicks(4057),
-                            SubscribedDate = new DateTime(2023, 4, 20, 20, 35, 56, 726, DateTimeKind.Utc).AddTicks(11),
+                            StartDate = new DateTime(2023, 9, 18, 12, 26, 40, 893, DateTimeKind.Utc).AddTicks(966),
+                            SubscribedDate = new DateTime(2023, 4, 26, 21, 39, 2, 633, DateTimeKind.Utc).AddTicks(3362),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 9, 2, 20, 52, 42, 846, DateTimeKind.Utc).AddTicks(5721),
+                            UnsubscribedDate = new DateTime(2023, 9, 9, 5, 16, 24, 796, DateTimeKind.Utc).AddTicks(2235),
                             UserId = 32L
                         },
                         new
                         {
                             Id = 14L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2021, 5, 26, 17, 40, 8, 179, DateTimeKind.Utc).AddTicks(8375),
+                            EndDate = new DateTime(2021, 5, 30, 12, 33, 42, 257, DateTimeKind.Utc).AddTicks(3886),
                             IsActive = true,
                             PaymentSubscriptionId = "wprmc5u9im89l2ww",
-                            StartDate = new DateTime(2020, 7, 29, 2, 48, 1, 762, DateTimeKind.Utc).AddTicks(3173),
-                            SubscribedDate = new DateTime(2019, 11, 14, 0, 37, 53, 421, DateTimeKind.Utc).AddTicks(5118),
+                            StartDate = new DateTime(2020, 8, 1, 21, 41, 35, 839, DateTimeKind.Utc).AddTicks(8684),
+                            SubscribedDate = new DateTime(2019, 11, 17, 5, 29, 11, 946, DateTimeKind.Utc).AddTicks(3991),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2022, 10, 27, 11, 27, 47, 989, DateTimeKind.Utc).AddTicks(1238),
+                            UnsubscribedDate = new DateTime(2022, 11, 2, 2, 58, 33, 373, DateTimeKind.Utc).AddTicks(3940),
                             UserId = 5L
                         },
                         new
                         {
                             Id = 15L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 9, 5, 22, 1, 5, 63, DateTimeKind.Utc).AddTicks(6729),
+                            EndDate = new DateTime(2022, 9, 11, 9, 36, 16, 702, DateTimeKind.Utc).AddTicks(928),
                             IsActive = false,
                             PaymentSubscriptionId = "stg9zq5iopx7uyvf",
-                            StartDate = new DateTime(2022, 8, 16, 7, 4, 57, 893, DateTimeKind.Utc).AddTicks(6061),
-                            SubscribedDate = new DateTime(2021, 4, 2, 20, 37, 32, 780, DateTimeKind.Utc).AddTicks(1391),
+                            StartDate = new DateTime(2022, 8, 21, 18, 40, 9, 532, DateTimeKind.Utc).AddTicks(260),
+                            SubscribedDate = new DateTime(2021, 4, 7, 4, 59, 36, 281, DateTimeKind.Utc).AddTicks(2273),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 7, 10, 11, 33, 1, 110, DateTimeKind.Utc).AddTicks(8768),
+                            UnsubscribedDate = new DateTime(2023, 7, 16, 16, 59, 13, 450, DateTimeKind.Utc).AddTicks(3283),
                             UserId = 5L
                         },
                         new
                         {
                             Id = 16L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 10, 12, 4, 57, 47, 160, DateTimeKind.Utc).AddTicks(4122),
+                            EndDate = new DateTime(2023, 10, 18, 12, 45, 36, 958, DateTimeKind.Utc).AddTicks(804),
                             IsActive = true,
                             PaymentSubscriptionId = "61vekpd4uftjpk9r",
-                            StartDate = new DateTime(2023, 8, 22, 21, 5, 17, 782, DateTimeKind.Utc).AddTicks(814),
-                            SubscribedDate = new DateTime(2023, 2, 20, 12, 18, 23, 995, DateTimeKind.Utc).AddTicks(8743),
+                            StartDate = new DateTime(2023, 8, 29, 4, 53, 7, 579, DateTimeKind.Utc).AddTicks(7496),
+                            SubscribedDate = new DateTime(2023, 2, 26, 10, 7, 49, 708, DateTimeKind.Utc).AddTicks(4596),
                             TypeId = 3L,
                             UserId = 19L
                         },
@@ -5117,141 +5318,141 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 17L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2021, 1, 26, 14, 9, 31, 976, DateTimeKind.Utc).AddTicks(598),
+                            EndDate = new DateTime(2021, 1, 30, 16, 8, 42, 15, DateTimeKind.Utc).AddTicks(7515),
                             IsActive = false,
                             PaymentSubscriptionId = "qy2m6a9vgq3xvryz",
-                            StartDate = new DateTime(2020, 12, 6, 12, 45, 23, 209, DateTimeKind.Utc).AddTicks(7186),
-                            SubscribedDate = new DateTime(2019, 1, 19, 17, 16, 11, 531, DateTimeKind.Utc).AddTicks(1934),
+                            StartDate = new DateTime(2020, 12, 10, 14, 44, 33, 249, DateTimeKind.Utc).AddTicks(4103),
+                            SubscribedDate = new DateTime(2019, 1, 22, 5, 53, 59, 915, DateTimeKind.Utc).AddTicks(7988),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2020, 8, 22, 5, 0, 27, 402, DateTimeKind.Utc).AddTicks(826),
+                            UnsubscribedDate = new DateTime(2020, 8, 26, 1, 12, 38, 823, DateTimeKind.Utc).AddTicks(9929),
                             UserId = 14L
                         },
                         new
                         {
                             Id = 18L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2024, 1, 24, 17, 25, 34, 607, DateTimeKind.Utc).AddTicks(8618),
+                            EndDate = new DateTime(2024, 1, 31, 0, 15, 26, 565, DateTimeKind.Utc).AddTicks(2274),
                             IsActive = false,
                             PaymentSubscriptionId = "xt3cbgkhzqommryk",
-                            StartDate = new DateTime(2023, 8, 5, 2, 48, 27, 145, DateTimeKind.Utc).AddTicks(2327),
-                            SubscribedDate = new DateTime(2020, 12, 26, 21, 19, 2, 64, DateTimeKind.Utc).AddTicks(3459),
+                            StartDate = new DateTime(2023, 8, 11, 9, 38, 19, 102, DateTimeKind.Utc).AddTicks(5983),
+                            SubscribedDate = new DateTime(2020, 12, 31, 0, 24, 38, 48, DateTimeKind.Utc).AddTicks(4191),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2021, 12, 3, 8, 19, 10, 719, DateTimeKind.Utc).AddTicks(3179),
+                            UnsubscribedDate = new DateTime(2021, 12, 8, 5, 59, 6, 196, DateTimeKind.Utc).AddTicks(4785),
                             UserId = 7L
                         },
                         new
                         {
                             Id = 19L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 8, 8, 7, 46, 16, 707, DateTimeKind.Utc).AddTicks(5554),
+                            EndDate = new DateTime(2023, 8, 14, 13, 2, 22, 361, DateTimeKind.Utc).AddTicks(5291),
                             IsActive = false,
                             PaymentSubscriptionId = "rmkbbn0e8joc7xjz",
-                            StartDate = new DateTime(2023, 7, 7, 9, 11, 19, 122, DateTimeKind.Utc).AddTicks(9317),
-                            SubscribedDate = new DateTime(2023, 6, 26, 16, 29, 33, 815, DateTimeKind.Utc).AddTicks(5923),
+                            StartDate = new DateTime(2023, 7, 13, 14, 27, 24, 776, DateTimeKind.Utc).AddTicks(9054),
+                            SubscribedDate = new DateTime(2023, 7, 2, 21, 10, 45, 198, DateTimeKind.Utc).AddTicks(1852),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 7, 23, 3, 23, 32, 389, DateTimeKind.Utc).AddTicks(529),
+                            UnsubscribedDate = new DateTime(2023, 7, 29, 9, 31, 3, 643, DateTimeKind.Utc).AddTicks(9105),
                             UserId = 7L
                         },
                         new
                         {
                             Id = 20L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2020, 3, 27, 12, 2, 51, 920, DateTimeKind.Utc).AddTicks(4527),
+                            EndDate = new DateTime(2020, 3, 30, 20, 48, 28, 474, DateTimeKind.Utc).AddTicks(5401),
                             IsActive = true,
                             PaymentSubscriptionId = "us879r2lwdkpw85c",
-                            StartDate = new DateTime(2020, 2, 28, 2, 0, 26, 431, DateTimeKind.Utc).AddTicks(1962),
-                            SubscribedDate = new DateTime(2019, 11, 28, 2, 12, 6, 515, DateTimeKind.Utc).AddTicks(6680),
+                            StartDate = new DateTime(2020, 3, 2, 12, 37, 51, 579, DateTimeKind.Utc).AddTicks(5165),
+                            SubscribedDate = new DateTime(2019, 12, 1, 7, 49, 19, 131, DateTimeKind.Utc).AddTicks(708),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 3, 13, 1, 58, 23, 632, DateTimeKind.Utc).AddTicks(7319),
+                            UnsubscribedDate = new DateTime(2022, 3, 18, 5, 3, 47, 903, DateTimeKind.Utc).AddTicks(9098),
                             UserId = 29L
                         },
                         new
                         {
                             Id = 21L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 10, 8, 11, 22, 39, 76, DateTimeKind.Utc).AddTicks(3494),
+                            EndDate = new DateTime(2023, 10, 14, 14, 41, 51, 660, DateTimeKind.Utc).AddTicks(2981),
                             IsActive = false,
                             PaymentSubscriptionId = "e3suermf9zhiet5h",
-                            StartDate = new DateTime(2023, 6, 1, 13, 35, 35, 78, DateTimeKind.Utc).AddTicks(5948),
-                            SubscribedDate = new DateTime(2022, 3, 5, 7, 10, 46, 345, DateTimeKind.Utc).AddTicks(8342),
+                            StartDate = new DateTime(2023, 6, 7, 16, 54, 47, 662, DateTimeKind.Utc).AddTicks(5435),
+                            SubscribedDate = new DateTime(2022, 3, 10, 9, 50, 46, 640, DateTimeKind.Utc).AddTicks(7256),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 6, 18, 15, 48, 1, 110, DateTimeKind.Utc).AddTicks(9457),
+                            UnsubscribedDate = new DateTime(2023, 6, 24, 20, 3, 0, 398, DateTimeKind.Utc).AddTicks(9547),
                             UserId = 20L
                         },
                         new
                         {
                             Id = 22L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 2, 12, 23, 12, 23, 996, DateTimeKind.Utc).AddTicks(2824),
+                            EndDate = new DateTime(2024, 2, 19, 1, 2, 10, 936, DateTimeKind.Utc).AddTicks(4279),
                             IsActive = false,
                             PaymentSubscriptionId = "gkftyah9gzs5y764",
-                            StartDate = new DateTime(2023, 5, 5, 3, 55, 23, 329, DateTimeKind.Utc).AddTicks(7417),
-                            SubscribedDate = new DateTime(2019, 12, 16, 3, 43, 40, 577, DateTimeKind.Utc).AddTicks(513),
+                            StartDate = new DateTime(2023, 5, 11, 5, 45, 10, 269, DateTimeKind.Utc).AddTicks(8872),
+                            SubscribedDate = new DateTime(2019, 12, 19, 10, 19, 50, 146, DateTimeKind.Utc).AddTicks(4487),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 5, 15, 21, 38, 0, 834, DateTimeKind.Utc).AddTicks(7967),
+                            UnsubscribedDate = new DateTime(2022, 5, 21, 4, 11, 41, 262, DateTimeKind.Utc).AddTicks(3683),
                             UserId = 31L
                         },
                         new
                         {
                             Id = 23L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2020, 3, 27, 17, 49, 1, 877, DateTimeKind.Utc).AddTicks(2176),
+                            EndDate = new DateTime(2020, 3, 31, 5, 42, 14, 779, DateTimeKind.Utc).AddTicks(3312),
                             IsActive = true,
                             PaymentSubscriptionId = "4wkz5jwj0veuctgy",
-                            StartDate = new DateTime(2020, 3, 22, 7, 25, 39, 943, DateTimeKind.Utc).AddTicks(4780),
-                            SubscribedDate = new DateTime(2017, 7, 20, 2, 30, 50, 638, DateTimeKind.Utc).AddTicks(6829),
+                            StartDate = new DateTime(2020, 3, 25, 19, 18, 52, 845, DateTimeKind.Utc).AddTicks(5916),
+                            SubscribedDate = new DateTime(2017, 7, 21, 9, 18, 17, 141, DateTimeKind.Utc).AddTicks(6994),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 9, 2, 3, 41, 19, 902, DateTimeKind.Utc).AddTicks(4693),
+                            UnsubscribedDate = new DateTime(2023, 9, 8, 12, 2, 41, 608, DateTimeKind.Utc).AddTicks(6638),
                             UserId = 21L
                         },
                         new
                         {
                             Id = 24L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2020, 5, 24, 12, 32, 37, 246, DateTimeKind.Utc).AddTicks(7390),
+                            EndDate = new DateTime(2020, 5, 27, 11, 47, 51, 251, DateTimeKind.Utc).AddTicks(8910),
                             IsActive = false,
                             PaymentSubscriptionId = "xb17e65tmjo2pi3w",
-                            StartDate = new DateTime(2019, 8, 3, 1, 3, 22, 257, DateTimeKind.Utc).AddTicks(7946),
-                            SubscribedDate = new DateTime(2019, 3, 31, 23, 13, 55, 719, DateTimeKind.Utc).AddTicks(9943),
+                            StartDate = new DateTime(2019, 8, 6, 0, 18, 36, 262, DateTimeKind.Utc).AddTicks(9466),
+                            SubscribedDate = new DateTime(2019, 4, 3, 15, 44, 14, 943, DateTimeKind.Utc).AddTicks(1738),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2020, 9, 19, 21, 41, 15, 943, DateTimeKind.Utc).AddTicks(3542),
+                            UnsubscribedDate = new DateTime(2020, 9, 23, 19, 27, 6, 5, DateTimeKind.Utc).AddTicks(5502),
                             UserId = 4L
                         },
                         new
                         {
                             Id = 25L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 5, 21, 8, 58, 37, 794, DateTimeKind.Utc).AddTicks(3642),
+                            EndDate = new DateTime(2023, 5, 27, 9, 14, 16, 351, DateTimeKind.Utc).AddTicks(3684),
                             IsActive = false,
                             PaymentSubscriptionId = "ohejkiv4da2uho5t",
-                            StartDate = new DateTime(2023, 4, 6, 7, 35, 53, 188, DateTimeKind.Utc).AddTicks(9426),
-                            SubscribedDate = new DateTime(2021, 4, 13, 11, 41, 55, 362, DateTimeKind.Utc).AddTicks(2750),
+                            StartDate = new DateTime(2023, 4, 12, 7, 51, 31, 745, DateTimeKind.Utc).AddTicks(9468),
+                            SubscribedDate = new DateTime(2021, 4, 17, 20, 38, 39, 884, DateTimeKind.Utc).AddTicks(2173),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2022, 4, 10, 23, 29, 20, 327, DateTimeKind.Utc).AddTicks(4845),
+                            UnsubscribedDate = new DateTime(2022, 4, 16, 4, 9, 2, 689, DateTimeKind.Utc).AddTicks(319),
                             UserId = 30L
                         },
                         new
                         {
                             Id = 26L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 10, 27, 10, 20, 24, 789, DateTimeKind.Utc).AddTicks(4046),
+                            EndDate = new DateTime(2023, 11, 2, 12, 49, 40, 28, DateTimeKind.Utc).AddTicks(4198),
                             IsActive = true,
                             PaymentSubscriptionId = "46crvfhli3jxsl84",
-                            StartDate = new DateTime(2023, 5, 17, 6, 12, 25, 807, DateTimeKind.Utc).AddTicks(9817),
-                            SubscribedDate = new DateTime(2023, 2, 14, 16, 27, 52, 803, DateTimeKind.Utc).AddTicks(2632),
+                            StartDate = new DateTime(2023, 5, 23, 8, 41, 41, 46, DateTimeKind.Utc).AddTicks(9969),
+                            SubscribedDate = new DateTime(2023, 2, 20, 13, 58, 17, 606, DateTimeKind.Utc).AddTicks(8974),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 4, 4, 18, 35, 46, 921, DateTimeKind.Utc).AddTicks(8999),
+                            UnsubscribedDate = new DateTime(2023, 4, 10, 18, 46, 23, 595, DateTimeKind.Utc).AddTicks(1220),
                             UserId = 27L
                         },
                         new
                         {
                             Id = 27L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 2, 22, 22, 19, 5, 477, DateTimeKind.Utc).AddTicks(9026),
+                            EndDate = new DateTime(2023, 2, 28, 17, 8, 31, 6, DateTimeKind.Utc).AddTicks(4154),
                             IsActive = true,
                             PaymentSubscriptionId = "3ab74yu98efe549y",
-                            StartDate = new DateTime(2022, 12, 27, 8, 31, 20, 722, DateTimeKind.Utc).AddTicks(8823),
-                            SubscribedDate = new DateTime(2022, 7, 6, 9, 30, 57, 22, DateTimeKind.Utc).AddTicks(5941),
+                            StartDate = new DateTime(2023, 1, 2, 3, 20, 46, 251, DateTimeKind.Utc).AddTicks(3951),
+                            SubscribedDate = new DateTime(2022, 7, 11, 18, 52, 40, 469, DateTimeKind.Utc).AddTicks(333),
                             TypeId = 2L,
                             UserId = 33L
                         },
@@ -5259,154 +5460,154 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 28L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 7, 29, 2, 36, 14, 77, DateTimeKind.Utc).AddTicks(9806),
+                            EndDate = new DateTime(2023, 8, 4, 5, 43, 21, 652, DateTimeKind.Utc).AddTicks(2693),
                             IsActive = false,
                             PaymentSubscriptionId = "c26kqtjwrynk39gj",
-                            StartDate = new DateTime(2023, 5, 28, 20, 43, 42, 737, DateTimeKind.Utc).AddTicks(8184),
-                            SubscribedDate = new DateTime(2023, 3, 27, 20, 9, 48, 994, DateTimeKind.Utc).AddTicks(6784),
+                            StartDate = new DateTime(2023, 6, 3, 23, 50, 50, 312, DateTimeKind.Utc).AddTicks(1071),
+                            SubscribedDate = new DateTime(2023, 4, 2, 19, 54, 32, 7, DateTimeKind.Utc).AddTicks(8215),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 8, 15, 5, 6, 49, 190, DateTimeKind.Utc).AddTicks(7753),
+                            UnsubscribedDate = new DateTime(2023, 8, 21, 12, 29, 38, 18, DateTimeKind.Utc).AddTicks(7088),
                             UserId = 11L
                         },
                         new
                         {
                             Id = 29L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 9, 24, 6, 41, 33, 788, DateTimeKind.Utc).AddTicks(5386),
+                            EndDate = new DateTime(2023, 9, 30, 6, 55, 33, 138, DateTimeKind.Utc).AddTicks(7081),
                             IsActive = false,
                             PaymentSubscriptionId = "aqmyw08v96v1s9if",
-                            StartDate = new DateTime(2023, 4, 5, 19, 26, 19, 208, DateTimeKind.Utc).AddTicks(6350),
-                            SubscribedDate = new DateTime(2023, 2, 27, 1, 28, 26, 687, DateTimeKind.Utc).AddTicks(2730),
+                            StartDate = new DateTime(2023, 4, 11, 19, 40, 18, 558, DateTimeKind.Utc).AddTicks(8045),
+                            SubscribedDate = new DateTime(2023, 3, 4, 23, 39, 14, 662, DateTimeKind.Utc).AddTicks(307),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 7, 17, 10, 27, 32, 642, DateTimeKind.Utc).AddTicks(4926),
+                            UnsubscribedDate = new DateTime(2023, 7, 23, 16, 16, 26, 716, DateTimeKind.Utc).AddTicks(7012),
                             UserId = 35L
                         },
                         new
                         {
                             Id = 30L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 12, 13, 14, 5, 54, 76, DateTimeKind.Utc).AddTicks(3234),
+                            EndDate = new DateTime(2023, 12, 19, 20, 11, 42, 571, DateTimeKind.Utc).AddTicks(4592),
                             IsActive = false,
                             PaymentSubscriptionId = "0s5wjozi3ma06kzq",
-                            StartDate = new DateTime(2023, 7, 22, 14, 47, 49, 277, DateTimeKind.Utc).AddTicks(4074),
-                            SubscribedDate = new DateTime(2021, 8, 6, 19, 52, 44, 382, DateTimeKind.Utc).AddTicks(9672),
+                            StartDate = new DateTime(2023, 7, 28, 20, 53, 37, 772, DateTimeKind.Utc).AddTicks(5432),
+                            SubscribedDate = new DateTime(2021, 8, 11, 11, 5, 53, 294, DateTimeKind.Utc).AddTicks(8847),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2022, 6, 25, 6, 52, 11, 699, DateTimeKind.Utc).AddTicks(8741),
+                            UnsubscribedDate = new DateTime(2022, 6, 30, 15, 37, 39, 703, DateTimeKind.Utc).AddTicks(5801),
                             UserId = 30L
                         },
                         new
                         {
                             Id = 31L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2024, 8, 10, 10, 38, 25, 866, DateTimeKind.Utc).AddTicks(7646),
+                            EndDate = new DateTime(2024, 8, 16, 18, 25, 32, 813, DateTimeKind.Utc).AddTicks(64),
                             IsActive = true,
                             PaymentSubscriptionId = "q9hn6s2kv3y4vcck",
-                            StartDate = new DateTime(2023, 8, 22, 15, 50, 9, 493, DateTimeKind.Utc).AddTicks(2659),
-                            SubscribedDate = new DateTime(2023, 8, 18, 15, 8, 22, 799, DateTimeKind.Utc).AddTicks(3788),
+                            StartDate = new DateTime(2023, 8, 28, 23, 37, 16, 439, DateTimeKind.Utc).AddTicks(5077),
+                            SubscribedDate = new DateTime(2023, 8, 24, 22, 42, 20, 842, DateTimeKind.Utc).AddTicks(354),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 8, 31, 6, 40, 43, 116, DateTimeKind.Utc).AddTicks(8821),
+                            UnsubscribedDate = new DateTime(2023, 9, 6, 14, 55, 57, 603, DateTimeKind.Utc).AddTicks(5978),
                             UserId = 8L
                         },
                         new
                         {
                             Id = 32L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2022, 11, 12, 13, 34, 0, 410, DateTimeKind.Utc).AddTicks(9695),
+                            EndDate = new DateTime(2022, 11, 17, 17, 49, 50, 527, DateTimeKind.Utc).AddTicks(5626),
                             IsActive = true,
                             PaymentSubscriptionId = "iwgpew5l055a6ccb",
-                            StartDate = new DateTime(2022, 4, 3, 15, 56, 19, 919, DateTimeKind.Utc).AddTicks(1106),
-                            SubscribedDate = new DateTime(2022, 2, 10, 22, 12, 21, 944, DateTimeKind.Utc).AddTicks(3460),
+                            StartDate = new DateTime(2022, 4, 8, 20, 12, 10, 35, DateTimeKind.Utc).AddTicks(7037),
+                            SubscribedDate = new DateTime(2022, 2, 15, 23, 39, 21, 297, DateTimeKind.Utc).AddTicks(6827),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 7, 4, 1, 5, 37, 598, DateTimeKind.Utc).AddTicks(3154),
+                            UnsubscribedDate = new DateTime(2023, 7, 10, 6, 10, 49, 791, DateTimeKind.Utc).AddTicks(7783),
                             UserId = 23L
                         },
                         new
                         {
                             Id = 33L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2022, 9, 4, 5, 57, 31, 121, DateTimeKind.Utc).AddTicks(4989),
+                            EndDate = new DateTime(2022, 9, 9, 14, 42, 7, 112, DateTimeKind.Utc).AddTicks(2619),
                             IsActive = false,
                             PaymentSubscriptionId = "fqq1hl08z749bd6z",
-                            StartDate = new DateTime(2022, 6, 25, 0, 29, 39, 346, DateTimeKind.Utc).AddTicks(7582),
-                            SubscribedDate = new DateTime(2019, 6, 15, 22, 8, 9, 270, DateTimeKind.Utc).AddTicks(2072),
+                            StartDate = new DateTime(2022, 6, 30, 9, 14, 15, 337, DateTimeKind.Utc).AddTicks(5212),
+                            SubscribedDate = new DateTime(2019, 6, 18, 18, 46, 20, 777, DateTimeKind.Utc).AddTicks(2015),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2019, 8, 24, 22, 12, 18, 899, DateTimeKind.Utc).AddTicks(8011),
+                            UnsubscribedDate = new DateTime(2019, 8, 27, 22, 38, 57, 368, DateTimeKind.Utc).AddTicks(55),
                             UserId = 38L
                         },
                         new
                         {
                             Id = 34L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 11, 20, 21, 43, 4, 660, DateTimeKind.Utc).AddTicks(6655),
+                            EndDate = new DateTime(2023, 11, 27, 6, 10, 35, 966, DateTimeKind.Utc).AddTicks(2865),
                             IsActive = true,
                             PaymentSubscriptionId = "0ml8d5on129n534f",
-                            StartDate = new DateTime(2023, 9, 4, 0, 59, 27, 225, DateTimeKind.Utc).AddTicks(1263),
-                            SubscribedDate = new DateTime(2022, 8, 19, 16, 7, 1, 315, DateTimeKind.Utc).AddTicks(7971),
+                            StartDate = new DateTime(2023, 9, 10, 9, 26, 58, 530, DateTimeKind.Utc).AddTicks(7473),
+                            SubscribedDate = new DateTime(2022, 8, 25, 3, 53, 14, 65, DateTimeKind.Utc).AddTicks(8128),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2022, 9, 17, 9, 2, 58, 457, DateTimeKind.Utc).AddTicks(8103),
+                            UnsubscribedDate = new DateTime(2022, 9, 22, 22, 22, 51, 912, DateTimeKind.Utc).AddTicks(1115),
                             UserId = 6L
                         },
                         new
                         {
                             Id = 35L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2019, 12, 3, 10, 7, 0, 390, DateTimeKind.Utc).AddTicks(7956),
+                            EndDate = new DateTime(2019, 12, 6, 14, 5, 57, 624, DateTimeKind.Utc).AddTicks(141),
                             IsActive = false,
                             PaymentSubscriptionId = "k558r56ddw1u0svt",
-                            StartDate = new DateTime(2019, 10, 28, 23, 36, 5, 785, DateTimeKind.Utc).AddTicks(9243),
-                            SubscribedDate = new DateTime(2018, 8, 4, 16, 48, 26, 38, DateTimeKind.Utc).AddTicks(998),
+                            StartDate = new DateTime(2019, 11, 1, 3, 35, 3, 19, DateTimeKind.Utc).AddTicks(1428),
+                            SubscribedDate = new DateTime(2018, 8, 6, 20, 17, 55, 298, DateTimeKind.Utc).AddTicks(3154),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2021, 3, 20, 21, 13, 56, 441, DateTimeKind.Utc).AddTicks(9290),
+                            UnsubscribedDate = new DateTime(2021, 3, 25, 4, 53, 39, 419, DateTimeKind.Utc).AddTicks(977),
                             UserId = 21L
                         },
                         new
                         {
                             Id = 36L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2021, 12, 19, 13, 48, 9, 457, DateTimeKind.Utc).AddTicks(3296),
+                            EndDate = new DateTime(2021, 12, 24, 11, 0, 30, 5, DateTimeKind.Utc).AddTicks(9753),
                             IsActive = true,
                             PaymentSubscriptionId = "9olaqemxndo70gvv",
-                            StartDate = new DateTime(2021, 11, 24, 21, 28, 26, 407, DateTimeKind.Utc).AddTicks(7277),
-                            SubscribedDate = new DateTime(2021, 4, 10, 23, 14, 28, 26, DateTimeKind.Utc).AddTicks(818),
+                            StartDate = new DateTime(2021, 11, 29, 18, 40, 46, 956, DateTimeKind.Utc).AddTicks(3734),
+                            SubscribedDate = new DateTime(2021, 4, 15, 8, 2, 59, 302, DateTimeKind.Utc).AddTicks(5599),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2021, 12, 9, 9, 5, 52, 770, DateTimeKind.Utc).AddTicks(1564),
+                            UnsubscribedDate = new DateTime(2021, 12, 14, 7, 5, 29, 433, DateTimeKind.Utc).AddTicks(903),
                             UserId = 36L
                         },
                         new
                         {
                             Id = 37L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 5, 18, 0, 40, 30, 366, DateTimeKind.Utc).AddTicks(6256),
+                            EndDate = new DateTime(2023, 5, 24, 1, 3, 29, 751, DateTimeKind.Utc).AddTicks(9668),
                             IsActive = true,
                             PaymentSubscriptionId = "1ggquq41cbz3kwmy",
-                            StartDate = new DateTime(2023, 4, 8, 13, 37, 51, 962, DateTimeKind.Utc).AddTicks(9467),
-                            SubscribedDate = new DateTime(2022, 7, 11, 0, 47, 24, 280, DateTimeKind.Utc).AddTicks(2567),
+                            StartDate = new DateTime(2023, 4, 14, 14, 0, 51, 348, DateTimeKind.Utc).AddTicks(2879),
+                            SubscribedDate = new DateTime(2022, 7, 16, 10, 24, 15, 562, DateTimeKind.Utc).AddTicks(587),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 4, 21, 7, 36, 11, 584, DateTimeKind.Utc).AddTicks(6856),
+                            UnsubscribedDate = new DateTime(2023, 4, 27, 8, 40, 47, 264, DateTimeKind.Utc).AddTicks(9564),
                             UserId = 11L
                         },
                         new
                         {
                             Id = 38L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2024, 2, 9, 15, 57, 37, 594, DateTimeKind.Utc).AddTicks(3257),
+                            EndDate = new DateTime(2024, 2, 15, 23, 36, 34, 313, DateTimeKind.Utc).AddTicks(5504),
                             IsActive = false,
                             PaymentSubscriptionId = "mcc78krz988ayw3w",
-                            StartDate = new DateTime(2023, 8, 20, 3, 44, 54, 921, DateTimeKind.Utc).AddTicks(6768),
-                            SubscribedDate = new DateTime(2023, 6, 29, 4, 17, 28, 568, DateTimeKind.Utc).AddTicks(3181),
+                            StartDate = new DateTime(2023, 8, 26, 11, 23, 51, 640, DateTimeKind.Utc).AddTicks(9015),
+                            SubscribedDate = new DateTime(2023, 7, 5, 9, 6, 47, 819, DateTimeKind.Utc).AddTicks(6983),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 8, 25, 23, 7, 33, 918, DateTimeKind.Utc).AddTicks(2295),
+                            UnsubscribedDate = new DateTime(2023, 9, 1, 7, 5, 27, 758, DateTimeKind.Utc).AddTicks(5335),
                             UserId = 11L
                         },
                         new
                         {
                             Id = 39L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2024, 2, 26, 18, 25, 7, 481, DateTimeKind.Utc).AddTicks(2458),
+                            EndDate = new DateTime(2024, 3, 3, 23, 18, 47, 808, DateTimeKind.Utc).AddTicks(1103),
                             IsActive = true,
                             PaymentSubscriptionId = "8czy2s8dnd3hewts",
-                            StartDate = new DateTime(2023, 6, 30, 12, 17, 28, 833, DateTimeKind.Utc).AddTicks(292),
-                            SubscribedDate = new DateTime(2023, 5, 25, 12, 17, 8, 360, DateTimeKind.Utc).AddTicks(4783),
+                            StartDate = new DateTime(2023, 7, 6, 17, 11, 9, 159, DateTimeKind.Utc).AddTicks(8937),
+                            SubscribedDate = new DateTime(2023, 5, 31, 15, 13, 19, 636, DateTimeKind.Utc).AddTicks(7991),
                             TypeId = 3L,
                             UserId = 23L
                         },
@@ -5414,141 +5615,141 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 40L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 4, 30, 23, 50, 59, 624, DateTimeKind.Utc).AddTicks(23),
+                            EndDate = new DateTime(2023, 5, 6, 9, 29, 39, 98, DateTimeKind.Utc).AddTicks(4978),
                             IsActive = true,
                             PaymentSubscriptionId = "0adhs4lu1czvkswh",
-                            StartDate = new DateTime(2022, 7, 11, 14, 2, 58, 191, DateTimeKind.Utc).AddTicks(9786),
-                            SubscribedDate = new DateTime(2020, 12, 19, 6, 49, 51, 695, DateTimeKind.Utc).AddTicks(4327),
+                            StartDate = new DateTime(2022, 7, 16, 23, 41, 37, 666, DateTimeKind.Utc).AddTicks(4741),
+                            SubscribedDate = new DateTime(2020, 12, 23, 9, 30, 38, 865, DateTimeKind.Utc).AddTicks(5623),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2022, 8, 9, 14, 14, 7, 337, DateTimeKind.Utc).AddTicks(6096),
+                            UnsubscribedDate = new DateTime(2022, 8, 15, 1, 27, 26, 692, DateTimeKind.Utc).AddTicks(2723),
                             UserId = 1L
                         },
                         new
                         {
                             Id = 41L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2020, 12, 29, 9, 40, 28, 887, DateTimeKind.Utc).AddTicks(7632),
+                            EndDate = new DateTime(2021, 1, 1, 18, 32, 29, 978, DateTimeKind.Utc).AddTicks(2639),
                             IsActive = false,
                             PaymentSubscriptionId = "t24hxzbvbmyserki",
-                            StartDate = new DateTime(2020, 1, 26, 18, 51, 50, 890, DateTimeKind.Utc).AddTicks(4363),
-                            SubscribedDate = new DateTime(2019, 11, 30, 8, 36, 46, 153, DateTimeKind.Utc).AddTicks(5839),
+                            StartDate = new DateTime(2020, 1, 30, 3, 43, 51, 980, DateTimeKind.Utc).AddTicks(9370),
+                            SubscribedDate = new DateTime(2019, 12, 3, 14, 21, 22, 686, DateTimeKind.Utc).AddTicks(2155),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 6, 14, 14, 28, 45, 994, DateTimeKind.Utc).AddTicks(7086),
+                            UnsubscribedDate = new DateTime(2023, 6, 20, 18, 30, 31, 284, DateTimeKind.Utc).AddTicks(8583),
                             UserId = 32L
                         },
                         new
                         {
                             Id = 42L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 5, 24, 17, 46, 58, 96, DateTimeKind.Utc).AddTicks(3353),
+                            EndDate = new DateTime(2024, 5, 30, 23, 38, 25, 290, DateTimeKind.Utc).AddTicks(6590),
                             IsActive = true,
                             PaymentSubscriptionId = "2cbsqfkes0nq04x2",
-                            StartDate = new DateTime(2023, 7, 18, 5, 13, 36, 697, DateTimeKind.Utc).AddTicks(7553),
-                            SubscribedDate = new DateTime(2020, 6, 8, 1, 5, 47, 453, DateTimeKind.Utc).AddTicks(7353),
+                            StartDate = new DateTime(2023, 7, 24, 11, 5, 3, 892, DateTimeKind.Utc).AddTicks(790),
+                            SubscribedDate = new DateTime(2020, 6, 11, 17, 12, 41, 543, DateTimeKind.Utc).AddTicks(4830),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2020, 11, 4, 16, 22, 21, 971, DateTimeKind.Utc).AddTicks(6243),
+                            UnsubscribedDate = new DateTime(2020, 11, 8, 16, 37, 35, 734, DateTimeKind.Utc).AddTicks(8229),
                             UserId = 2L
                         },
                         new
                         {
                             Id = 43L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 9, 27, 14, 23, 46, 455, DateTimeKind.Utc).AddTicks(8085),
+                            EndDate = new DateTime(2023, 10, 3, 22, 11, 2, 760, DateTimeKind.Utc).AddTicks(5028),
                             IsActive = false,
                             PaymentSubscriptionId = "a3sk5gfvudeknj5w",
-                            StartDate = new DateTime(2023, 8, 22, 16, 58, 58, 616, DateTimeKind.Utc).AddTicks(455),
-                            SubscribedDate = new DateTime(2023, 8, 8, 9, 0, 51, 326, DateTimeKind.Utc).AddTicks(668),
+                            StartDate = new DateTime(2023, 8, 29, 0, 46, 14, 920, DateTimeKind.Utc).AddTicks(7398),
+                            SubscribedDate = new DateTime(2023, 8, 14, 16, 1, 21, 338, DateTimeKind.Utc).AddTicks(5839),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 9, 6, 19, 5, 24, 467, DateTimeKind.Utc).AddTicks(8925),
+                            UnsubscribedDate = new DateTime(2023, 9, 13, 3, 41, 55, 48, DateTimeKind.Utc).AddTicks(8742),
                             UserId = 3L
                         },
                         new
                         {
                             Id = 44L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2024, 5, 1, 5, 15, 28, 657, DateTimeKind.Utc).AddTicks(8261),
+                            EndDate = new DateTime(2024, 5, 7, 12, 47, 17, 611, DateTimeKind.Utc).AddTicks(1205),
                             IsActive = true,
                             PaymentSubscriptionId = "bc0td9wya1hmn09c",
-                            StartDate = new DateTime(2023, 8, 17, 23, 19, 1, 492, DateTimeKind.Utc).AddTicks(4292),
-                            SubscribedDate = new DateTime(2023, 7, 3, 18, 57, 24, 542, DateTimeKind.Utc).AddTicks(7771),
+                            StartDate = new DateTime(2023, 8, 24, 6, 50, 50, 445, DateTimeKind.Utc).AddTicks(7236),
+                            SubscribedDate = new DateTime(2023, 7, 10, 0, 1, 46, 667, DateTimeKind.Utc).AddTicks(3735),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 7, 28, 15, 43, 12, 556, DateTimeKind.Utc).AddTicks(7544),
+                            UnsubscribedDate = new DateTime(2023, 8, 3, 22, 8, 43, 416, DateTimeKind.Utc).AddTicks(5798),
                             UserId = 23L
                         },
                         new
                         {
                             Id = 45L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 5, 11, 11, 11, 46, 229, DateTimeKind.Utc).AddTicks(438),
+                            EndDate = new DateTime(2023, 5, 17, 12, 34, 49, 553, DateTimeKind.Utc).AddTicks(5574),
                             IsActive = true,
                             PaymentSubscriptionId = "xowb5o5gk48tfmik",
-                            StartDate = new DateTime(2023, 4, 26, 23, 22, 3, 942, DateTimeKind.Utc).AddTicks(5111),
-                            SubscribedDate = new DateTime(2022, 9, 18, 10, 50, 5, 22, DateTimeKind.Utc).AddTicks(1264),
+                            StartDate = new DateTime(2023, 5, 3, 0, 45, 7, 267, DateTimeKind.Utc).AddTicks(247),
+                            SubscribedDate = new DateTime(2022, 9, 24, 0, 13, 28, 845, DateTimeKind.Utc).AddTicks(1262),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 3, 23, 11, 32, 8, 37, DateTimeKind.Utc).AddTicks(431),
+                            UnsubscribedDate = new DateTime(2023, 3, 29, 11, 2, 37, 434, DateTimeKind.Utc).AddTicks(5931),
                             UserId = 19L
                         },
                         new
                         {
                             Id = 46L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 11, 20, 4, 54, 47, 984, DateTimeKind.Utc).AddTicks(9763),
+                            EndDate = new DateTime(2022, 11, 25, 6, 38, 11, 298, DateTimeKind.Utc).AddTicks(2496),
                             IsActive = false,
                             PaymentSubscriptionId = "anubxvyyxivpdltm",
-                            StartDate = new DateTime(2022, 2, 15, 22, 48, 34, 2, DateTimeKind.Utc).AddTicks(5246),
-                            SubscribedDate = new DateTime(2020, 6, 15, 3, 5, 43, 444, DateTimeKind.Utc).AddTicks(7651),
+                            StartDate = new DateTime(2022, 2, 21, 0, 31, 57, 315, DateTimeKind.Utc).AddTicks(7979),
+                            SubscribedDate = new DateTime(2020, 6, 18, 19, 35, 44, 470, DateTimeKind.Utc).AddTicks(2169),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2021, 11, 24, 11, 4, 37, 93, DateTimeKind.Utc).AddTicks(5391),
+                            UnsubscribedDate = new DateTime(2021, 11, 29, 8, 15, 32, 817, DateTimeKind.Utc).AddTicks(2589),
                             UserId = 36L
                         },
                         new
                         {
                             Id = 47L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 5, 23, 19, 29, 39, 295, DateTimeKind.Utc).AddTicks(3841),
+                            EndDate = new DateTime(2024, 5, 30, 3, 45, 1, 805, DateTimeKind.Utc).AddTicks(4415),
                             IsActive = false,
                             PaymentSubscriptionId = "ab681sgffu1ituio",
-                            StartDate = new DateTime(2023, 8, 31, 7, 39, 43, 328, DateTimeKind.Utc).AddTicks(566),
-                            SubscribedDate = new DateTime(2023, 4, 17, 17, 36, 22, 383, DateTimeKind.Utc).AddTicks(5983),
+                            StartDate = new DateTime(2023, 9, 6, 15, 55, 5, 838, DateTimeKind.Utc).AddTicks(1140),
+                            SubscribedDate = new DateTime(2023, 4, 23, 18, 29, 16, 454, DateTimeKind.Utc).AddTicks(5476),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 8, 13, 21, 49, 25, 534, DateTimeKind.Utc).AddTicks(7415),
+                            UnsubscribedDate = new DateTime(2023, 8, 20, 5, 7, 59, 82, DateTimeKind.Utc).AddTicks(3696),
                             UserId = 7L
                         },
                         new
                         {
                             Id = 48L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2022, 7, 5, 8, 15, 10, 907, DateTimeKind.Utc).AddTicks(7595),
+                            EndDate = new DateTime(2022, 7, 10, 6, 30, 56, 659, DateTimeKind.Utc).AddTicks(3753),
                             IsActive = true,
                             PaymentSubscriptionId = "noq0gqauqw1mppw5",
-                            StartDate = new DateTime(2021, 12, 14, 7, 52, 45, 147, DateTimeKind.Utc).AddTicks(2450),
-                            SubscribedDate = new DateTime(2020, 1, 5, 12, 11, 50, 65, DateTimeKind.Utc).AddTicks(7682),
+                            StartDate = new DateTime(2021, 12, 19, 6, 8, 30, 898, DateTimeKind.Utc).AddTicks(8608),
+                            SubscribedDate = new DateTime(2020, 1, 8, 19, 54, 24, 841, DateTimeKind.Utc).AddTicks(5120),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2021, 2, 23, 21, 40, 34, 603, DateTimeKind.Utc).AddTicks(1040),
+                            UnsubscribedDate = new DateTime(2021, 2, 28, 3, 58, 46, 58, DateTimeKind.Utc).AddTicks(3905),
                             UserId = 4L
                         },
                         new
                         {
                             Id = 49L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 6, 22, 4, 32, 35, 886, DateTimeKind.Utc).AddTicks(9798),
+                            EndDate = new DateTime(2024, 6, 28, 12, 47, 57, 546, DateTimeKind.Utc).AddTicks(8285),
                             IsActive = true,
                             PaymentSubscriptionId = "icchkz7h4bld2gyo",
-                            StartDate = new DateTime(2023, 8, 31, 7, 33, 28, 245, DateTimeKind.Utc).AddTicks(8238),
-                            SubscribedDate = new DateTime(2023, 4, 5, 23, 53, 32, 703, DateTimeKind.Utc).AddTicks(3701),
+                            StartDate = new DateTime(2023, 9, 6, 15, 48, 49, 905, DateTimeKind.Utc).AddTicks(6725),
+                            SubscribedDate = new DateTime(2023, 4, 12, 0, 8, 8, 390, DateTimeKind.Utc).AddTicks(6946),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 8, 27, 18, 34, 22, 532, DateTimeKind.Utc).AddTicks(40),
+                            UnsubscribedDate = new DateTime(2023, 9, 3, 2, 38, 10, 836, DateTimeKind.Utc).AddTicks(4624),
                             UserId = 23L
                         },
                         new
                         {
                             Id = 50L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2021, 8, 14, 22, 0, 2, 552, DateTimeKind.Utc).AddTicks(2435),
+                            EndDate = new DateTime(2021, 8, 19, 11, 16, 7, 404, DateTimeKind.Utc).AddTicks(2911),
                             IsActive = false,
                             PaymentSubscriptionId = "dqu9ioacwoh3dt9r",
-                            StartDate = new DateTime(2021, 7, 1, 22, 56, 6, 716, DateTimeKind.Utc).AddTicks(5766),
-                            SubscribedDate = new DateTime(2020, 3, 7, 4, 33, 47, 674, DateTimeKind.Utc).AddTicks(3298),
+                            StartDate = new DateTime(2021, 7, 6, 12, 12, 11, 568, DateTimeKind.Utc).AddTicks(6242),
+                            SubscribedDate = new DateTime(2020, 3, 10, 15, 37, 40, 122, DateTimeKind.Utc).AddTicks(2065),
                             TypeId = 2L,
                             UserId = 28L
                         },
@@ -5556,362 +5757,362 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 51L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 4, 30, 8, 32, 26, 698, DateTimeKind.Utc).AddTicks(8335),
+                            EndDate = new DateTime(2022, 5, 4, 19, 9, 2, 875, DateTimeKind.Utc).AddTicks(1729),
                             IsActive = false,
                             PaymentSubscriptionId = "hlzcjv8mdw4u5yyf",
-                            StartDate = new DateTime(2021, 5, 14, 2, 5, 51, 389, DateTimeKind.Utc).AddTicks(9943),
-                            SubscribedDate = new DateTime(2019, 10, 31, 14, 37, 16, 750, DateTimeKind.Utc).AddTicks(7751),
+                            StartDate = new DateTime(2021, 5, 18, 12, 42, 27, 566, DateTimeKind.Utc).AddTicks(3337),
+                            SubscribedDate = new DateTime(2019, 11, 3, 18, 44, 48, 135, DateTimeKind.Utc).AddTicks(8686),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 2, 18, 5, 31, 43, 785, DateTimeKind.Utc).AddTicks(4853),
+                            UnsubscribedDate = new DateTime(2023, 2, 24, 3, 13, 42, 596, DateTimeKind.Utc).AddTicks(6526),
                             UserId = 1L
                         },
                         new
                         {
                             Id = 52L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2024, 4, 19, 18, 53, 20, 50, DateTimeKind.Utc).AddTicks(4722),
+                            EndDate = new DateTime(2024, 4, 26, 1, 56, 30, 450, DateTimeKind.Utc).AddTicks(7415),
                             IsActive = false,
                             PaymentSubscriptionId = "y089embtn7rxpys0",
-                            StartDate = new DateTime(2023, 8, 9, 4, 40, 24, 269, DateTimeKind.Utc).AddTicks(4487),
-                            SubscribedDate = new DateTime(2023, 7, 8, 4, 25, 53, 270, DateTimeKind.Utc).AddTicks(6585),
+                            StartDate = new DateTime(2023, 8, 15, 11, 43, 34, 669, DateTimeKind.Utc).AddTicks(7180),
+                            SubscribedDate = new DateTime(2023, 7, 14, 9, 44, 35, 913, DateTimeKind.Utc).AddTicks(7638),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 8, 3, 13, 18, 46, 37, DateTimeKind.Utc).AddTicks(4921),
+                            UnsubscribedDate = new DateTime(2023, 8, 9, 20, 3, 32, 88, DateTimeKind.Utc).AddTicks(4060),
                             UserId = 18L
                         },
                         new
                         {
                             Id = 53L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 10, 12, 16, 30, 37, 42, DateTimeKind.Utc).AddTicks(9202),
+                            EndDate = new DateTime(2023, 10, 18, 23, 27, 52, 726, DateTimeKind.Utc).AddTicks(9676),
                             IsActive = true,
                             PaymentSubscriptionId = "l2cv2onna8ejmz8r",
-                            StartDate = new DateTime(2023, 8, 7, 9, 11, 43, 540, DateTimeKind.Utc).AddTicks(3590),
-                            SubscribedDate = new DateTime(2022, 3, 25, 19, 6, 7, 943, DateTimeKind.Utc).AddTicks(1309),
+                            StartDate = new DateTime(2023, 8, 13, 16, 8, 59, 224, DateTimeKind.Utc).AddTicks(4064),
+                            SubscribedDate = new DateTime(2022, 3, 30, 22, 53, 1, 616, DateTimeKind.Utc).AddTicks(9943),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 4, 14, 1, 38, 38, 631, DateTimeKind.Utc).AddTicks(1561),
+                            UnsubscribedDate = new DateTime(2022, 4, 19, 6, 28, 25, 984, DateTimeKind.Utc).AddTicks(9640),
                             UserId = 23L
                         },
                         new
                         {
                             Id = 54L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 3, 27, 11, 4, 30, 324, DateTimeKind.Utc).AddTicks(8290),
+                            EndDate = new DateTime(2023, 4, 2, 0, 6, 42, 301, DateTimeKind.Utc).AddTicks(8051),
                             IsActive = true,
                             PaymentSubscriptionId = "gfy34t1jeinb9gqz",
-                            StartDate = new DateTime(2022, 9, 11, 22, 56, 32, 798, DateTimeKind.Utc).AddTicks(9739),
-                            SubscribedDate = new DateTime(2021, 10, 22, 2, 30, 23, 36, DateTimeKind.Utc).AddTicks(5035),
+                            StartDate = new DateTime(2022, 9, 17, 11, 58, 44, 775, DateTimeKind.Utc).AddTicks(9500),
+                            SubscribedDate = new DateTime(2021, 10, 26, 21, 52, 27, 254, DateTimeKind.Utc).AddTicks(6272),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 4, 14, 9, 30, 6, 67, DateTimeKind.Utc).AddTicks(133),
+                            UnsubscribedDate = new DateTime(2022, 4, 19, 14, 20, 57, 539, DateTimeKind.Utc).AddTicks(4244),
                             UserId = 22L
                         },
                         new
                         {
                             Id = 55L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 1, 21, 0, 51, 31, 115, DateTimeKind.Utc).AddTicks(4451),
+                            EndDate = new DateTime(2023, 1, 26, 14, 33, 3, 941, DateTimeKind.Utc).AddTicks(455),
                             IsActive = true,
                             PaymentSubscriptionId = "nzwe7ojkc9empkjg",
-                            StartDate = new DateTime(2022, 9, 24, 0, 18, 52, 198, DateTimeKind.Utc).AddTicks(6102),
-                            SubscribedDate = new DateTime(2022, 8, 9, 2, 49, 35, 584, DateTimeKind.Utc).AddTicks(9939),
+                            StartDate = new DateTime(2022, 9, 29, 14, 0, 25, 24, DateTimeKind.Utc).AddTicks(2106),
+                            SubscribedDate = new DateTime(2022, 8, 14, 14, 1, 21, 843, DateTimeKind.Utc).AddTicks(8224),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 8, 5, 21, 27, 11, 526, DateTimeKind.Utc).AddTicks(4129),
+                            UnsubscribedDate = new DateTime(2023, 8, 12, 4, 19, 35, 604, DateTimeKind.Utc).AddTicks(4606),
                             UserId = 8L
                         },
                         new
                         {
                             Id = 56L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 10, 6, 8, 22, 42, 942, DateTimeKind.Utc).AddTicks(1439),
+                            EndDate = new DateTime(2023, 10, 12, 17, 15, 53, 460, DateTimeKind.Utc).AddTicks(4128),
                             IsActive = false,
                             PaymentSubscriptionId = "j7d2e9j71hg4xncp",
-                            StartDate = new DateTime(2023, 9, 11, 21, 39, 10, 700, DateTimeKind.Utc).AddTicks(8667),
-                            SubscribedDate = new DateTime(2023, 7, 9, 21, 47, 31, 987, DateTimeKind.Utc).AddTicks(8479),
+                            StartDate = new DateTime(2023, 9, 18, 6, 32, 21, 219, DateTimeKind.Utc).AddTicks(1356),
+                            SubscribedDate = new DateTime(2023, 7, 16, 3, 11, 52, 80, DateTimeKind.Utc).AddTicks(8797),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 7, 17, 9, 21, 51, 729, DateTimeKind.Utc).AddTicks(5533),
+                            UnsubscribedDate = new DateTime(2023, 7, 23, 15, 10, 36, 874, DateTimeKind.Utc).AddTicks(2839),
                             UserId = 39L
                         },
                         new
                         {
                             Id = 57L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 11, 4, 17, 13, 2, 491, DateTimeKind.Utc).AddTicks(5720),
+                            EndDate = new DateTime(2022, 11, 10, 6, 41, 10, 888, DateTimeKind.Utc).AddTicks(7284),
                             IsActive = false,
                             PaymentSubscriptionId = "l7ao3a4qisuzah62",
-                            StartDate = new DateTime(2022, 9, 19, 21, 42, 50, 644, DateTimeKind.Utc).AddTicks(8524),
-                            SubscribedDate = new DateTime(2022, 6, 10, 13, 4, 26, 432, DateTimeKind.Utc).AddTicks(9648),
+                            StartDate = new DateTime(2022, 9, 25, 11, 10, 59, 42, DateTimeKind.Utc).AddTicks(88),
+                            SubscribedDate = new DateTime(2022, 6, 15, 21, 1, 47, 968, DateTimeKind.Utc).AddTicks(2468),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 12, 13, 14, 59, 21, 416, DateTimeKind.Utc).AddTicks(8695),
+                            UnsubscribedDate = new DateTime(2022, 12, 19, 9, 3, 58, 430, DateTimeKind.Utc).AddTicks(2440),
                             UserId = 30L
                         },
                         new
                         {
                             Id = 58L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 12, 31, 9, 44, 57, 20, DateTimeKind.Utc).AddTicks(7933),
+                            EndDate = new DateTime(2024, 1, 6, 8, 48, 28, 123, DateTimeKind.Utc).AddTicks(6772),
                             IsActive = true,
                             PaymentSubscriptionId = "if58xh1fxeg6zu3r",
-                            StartDate = new DateTime(2023, 3, 15, 5, 10, 49, 177, DateTimeKind.Utc).AddTicks(7123),
-                            SubscribedDate = new DateTime(2023, 2, 19, 12, 2, 59, 606, DateTimeKind.Utc).AddTicks(3418),
+                            StartDate = new DateTime(2023, 3, 21, 4, 14, 20, 280, DateTimeKind.Utc).AddTicks(5962),
+                            SubscribedDate = new DateTime(2023, 2, 25, 9, 49, 7, 418, DateTimeKind.Utc).AddTicks(7565),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 5, 6, 0, 8, 32, 997, DateTimeKind.Utc).AddTicks(3011),
+                            UnsubscribedDate = new DateTime(2023, 5, 12, 2, 1, 4, 893, DateTimeKind.Utc).AddTicks(9945),
                             UserId = 15L
                         },
                         new
                         {
                             Id = 59L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2022, 12, 12, 7, 29, 3, 170, DateTimeKind.Utc).AddTicks(2083),
+                            EndDate = new DateTime(2022, 12, 18, 0, 58, 51, 379, DateTimeKind.Utc).AddTicks(4848),
                             IsActive = false,
                             PaymentSubscriptionId = "xw8vj1u6nq6o4wt0",
-                            StartDate = new DateTime(2022, 12, 2, 22, 57, 47, 147, DateTimeKind.Utc).AddTicks(2040),
-                            SubscribedDate = new DateTime(2017, 4, 19, 12, 39, 12, 987, DateTimeKind.Utc).AddTicks(1633),
+                            StartDate = new DateTime(2022, 12, 8, 16, 27, 35, 356, DateTimeKind.Utc).AddTicks(4805),
+                            SubscribedDate = new DateTime(2017, 4, 20, 14, 27, 48, 95, DateTimeKind.Utc).AddTicks(2346),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 7, 16, 11, 14, 40, 145, DateTimeKind.Utc).AddTicks(6377),
+                            UnsubscribedDate = new DateTime(2023, 7, 22, 17, 0, 24, 823, DateTimeKind.Utc).AddTicks(7365),
                             UserId = 31L
                         },
                         new
                         {
                             Id = 60L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 9, 23, 23, 40, 32, 427, DateTimeKind.Utc).AddTicks(1959),
+                            EndDate = new DateTime(2023, 9, 29, 19, 35, 21, 866, DateTimeKind.Utc).AddTicks(4634),
                             IsActive = true,
                             PaymentSubscriptionId = "2tufsfq40oa185wv",
-                            StartDate = new DateTime(2023, 1, 16, 9, 28, 41, 239, DateTimeKind.Utc).AddTicks(3043),
-                            SubscribedDate = new DateTime(2022, 11, 2, 4, 38, 57, 710, DateTimeKind.Utc).AddTicks(5325),
+                            StartDate = new DateTime(2023, 1, 22, 5, 23, 30, 678, DateTimeKind.Utc).AddTicks(5718),
+                            SubscribedDate = new DateTime(2022, 11, 7, 20, 28, 22, 328, DateTimeKind.Utc).AddTicks(7458),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 3, 16, 2, 38, 5, 954, DateTimeKind.Utc).AddTicks(7960),
+                            UnsubscribedDate = new DateTime(2023, 3, 22, 1, 44, 32, 98, DateTimeKind.Utc).AddTicks(4396),
                             UserId = 23L
                         },
                         new
                         {
                             Id = 61L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 4, 4, 20, 4, 44, 527, DateTimeKind.Utc).AddTicks(5127),
+                            EndDate = new DateTime(2023, 4, 10, 8, 3, 49, 745, DateTimeKind.Utc).AddTicks(6906),
                             IsActive = false,
                             PaymentSubscriptionId = "wmcdbjgysdsp6fe8",
-                            StartDate = new DateTime(2022, 8, 23, 14, 47, 50, 655, DateTimeKind.Utc).AddTicks(980),
-                            SubscribedDate = new DateTime(2021, 10, 12, 5, 24, 5, 366, DateTimeKind.Utc).AddTicks(4930),
+                            StartDate = new DateTime(2022, 8, 29, 2, 46, 55, 873, DateTimeKind.Utc).AddTicks(2759),
+                            SubscribedDate = new DateTime(2021, 10, 17, 0, 13, 55, 148, DateTimeKind.Utc).AddTicks(6586),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 4, 5, 14, 41, 43, 403, DateTimeKind.Utc).AddTicks(1117),
+                            UnsubscribedDate = new DateTime(2023, 4, 11, 14, 55, 4, 59, DateTimeKind.Utc).AddTicks(5740),
                             UserId = 40L
                         },
                         new
                         {
                             Id = 62L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 8, 10, 10, 53, 54, 217, DateTimeKind.Utc).AddTicks(2221),
+                            EndDate = new DateTime(2023, 8, 16, 10, 50, 33, 8, DateTimeKind.Utc).AddTicks(6627),
                             IsActive = true,
                             PaymentSubscriptionId = "i6bqfv7n7ei52dtg",
-                            StartDate = new DateTime(2023, 3, 31, 11, 53, 46, 695, DateTimeKind.Utc).AddTicks(2636),
-                            SubscribedDate = new DateTime(2019, 11, 5, 9, 34, 52, 966, DateTimeKind.Utc).AddTicks(5495),
+                            StartDate = new DateTime(2023, 4, 6, 11, 50, 25, 486, DateTimeKind.Utc).AddTicks(7042),
+                            SubscribedDate = new DateTime(2019, 11, 8, 13, 58, 2, 256, DateTimeKind.Utc).AddTicks(742),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2020, 8, 27, 12, 36, 10, 521, DateTimeKind.Utc).AddTicks(351),
+                            UnsubscribedDate = new DateTime(2020, 8, 31, 9, 5, 42, 933, DateTimeKind.Utc).AddTicks(9828),
                             UserId = 10L
                         },
                         new
                         {
                             Id = 63L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 4, 13, 8, 45, 2, 92, DateTimeKind.Utc).AddTicks(4760),
+                            EndDate = new DateTime(2024, 4, 19, 11, 12, 40, 752, DateTimeKind.Utc).AddTicks(4536),
                             IsActive = false,
                             PaymentSubscriptionId = "va8nr6u4vqv58pix",
-                            StartDate = new DateTime(2023, 5, 16, 18, 22, 9, 204, DateTimeKind.Utc).AddTicks(7332),
-                            SubscribedDate = new DateTime(2022, 3, 3, 10, 32, 3, 180, DateTimeKind.Utc).AddTicks(7476),
+                            StartDate = new DateTime(2023, 5, 22, 20, 49, 47, 864, DateTimeKind.Utc).AddTicks(7108),
+                            SubscribedDate = new DateTime(2022, 3, 8, 13, 5, 59, 234, DateTimeKind.Utc).AddTicks(7213),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 7, 14, 17, 20, 31, 912, DateTimeKind.Utc).AddTicks(7592),
+                            UnsubscribedDate = new DateTime(2022, 7, 20, 3, 9, 25, 662, DateTimeKind.Utc).AddTicks(5397),
                             UserId = 7L
                         },
                         new
                         {
                             Id = 64L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 4, 28, 9, 52, 53, 603, DateTimeKind.Utc).AddTicks(9360),
+                            EndDate = new DateTime(2023, 5, 4, 1, 30, 42, 359, DateTimeKind.Utc).AddTicks(587),
                             IsActive = false,
                             PaymentSubscriptionId = "7779iv8ah6v5mjw1",
-                            StartDate = new DateTime(2022, 10, 29, 15, 21, 25, 468, DateTimeKind.Utc).AddTicks(3406),
-                            SubscribedDate = new DateTime(2022, 6, 3, 7, 39, 52, 395, DateTimeKind.Utc).AddTicks(2440),
+                            StartDate = new DateTime(2022, 11, 4, 6, 59, 14, 223, DateTimeKind.Utc).AddTicks(4633),
+                            SubscribedDate = new DateTime(2022, 6, 8, 15, 13, 39, 151, DateTimeKind.Utc).AddTicks(1577),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 4, 12, 19, 24, 28, 628, DateTimeKind.Utc).AddTicks(7203),
+                            UnsubscribedDate = new DateTime(2023, 4, 18, 20, 1, 18, 368, DateTimeKind.Utc).AddTicks(8584),
                             UserId = 23L
                         },
                         new
                         {
                             Id = 65L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2022, 6, 8, 12, 22, 13, 982, DateTimeKind.Utc).AddTicks(9143),
+                            EndDate = new DateTime(2022, 6, 13, 3, 48, 37, 549, DateTimeKind.Utc).AddTicks(8929),
                             IsActive = false,
                             PaymentSubscriptionId = "tbp7qw8m3mfjyklz",
-                            StartDate = new DateTime(2021, 8, 10, 21, 16, 45, 245, DateTimeKind.Utc).AddTicks(2635),
-                            SubscribedDate = new DateTime(2021, 6, 24, 4, 42, 47, 62, DateTimeKind.Utc).AddTicks(3657),
+                            StartDate = new DateTime(2021, 8, 15, 12, 43, 8, 812, DateTimeKind.Utc).AddTicks(2421),
+                            SubscribedDate = new DateTime(2021, 6, 28, 17, 33, 32, 607, DateTimeKind.Utc).AddTicks(8241),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2022, 4, 6, 21, 6, 31, 508, DateTimeKind.Utc).AddTicks(6789),
+                            UnsubscribedDate = new DateTime(2022, 4, 12, 1, 32, 51, 234, DateTimeKind.Utc).AddTicks(1091),
                             UserId = 21L
                         },
                         new
                         {
                             Id = 66L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 10, 11, 22, 37, 22, 350, DateTimeKind.Utc).AddTicks(5154),
+                            EndDate = new DateTime(2023, 10, 18, 7, 7, 41, 34, DateTimeKind.Utc).AddTicks(3617),
                             IsActive = true,
                             PaymentSubscriptionId = "8g7ixv4jzog650kl",
-                            StartDate = new DateTime(2023, 9, 4, 21, 30, 23, 475, DateTimeKind.Utc).AddTicks(3095),
-                            SubscribedDate = new DateTime(2019, 3, 26, 2, 23, 40, 764, DateTimeKind.Utc).AddTicks(6656),
+                            StartDate = new DateTime(2023, 9, 11, 6, 0, 42, 159, DateTimeKind.Utc).AddTicks(1558),
+                            SubscribedDate = new DateTime(2019, 3, 28, 18, 34, 50, 953, DateTimeKind.Utc).AddTicks(6642),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2020, 11, 16, 10, 51, 34, 849, DateTimeKind.Utc).AddTicks(8987),
+                            UnsubscribedDate = new DateTime(2020, 11, 20, 11, 45, 13, 296, DateTimeKind.Utc).AddTicks(8176),
                             UserId = 38L
                         },
                         new
                         {
                             Id = 67L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2022, 12, 4, 7, 8, 53, 507, DateTimeKind.Utc).AddTicks(9694),
+                            EndDate = new DateTime(2022, 12, 9, 22, 35, 29, 8, DateTimeKind.Utc).AddTicks(9697),
                             IsActive = true,
                             PaymentSubscriptionId = "sbtx06pg02z9opp8",
-                            StartDate = new DateTime(2022, 10, 26, 4, 50, 7, 922, DateTimeKind.Utc).AddTicks(9891),
-                            SubscribedDate = new DateTime(2022, 6, 17, 2, 8, 5, 766, DateTimeKind.Utc).AddTicks(8052),
+                            StartDate = new DateTime(2022, 10, 31, 20, 16, 43, 423, DateTimeKind.Utc).AddTicks(9894),
+                            SubscribedDate = new DateTime(2022, 6, 22, 10, 26, 48, 693, DateTimeKind.Utc).AddTicks(4104),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2022, 12, 22, 12, 50, 1, 406, DateTimeKind.Utc).AddTicks(7308),
+                            UnsubscribedDate = new DateTime(2022, 12, 28, 7, 23, 43, 84, DateTimeKind.Utc).AddTicks(981),
                             UserId = 20L
                         },
                         new
                         {
                             Id = 68L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2018, 4, 5, 15, 43, 43, 443, DateTimeKind.Utc).AddTicks(4237),
+                            EndDate = new DateTime(2018, 4, 7, 11, 42, 28, 454, DateTimeKind.Utc).AddTicks(9309),
                             IsActive = true,
                             PaymentSubscriptionId = "z24labjvd7qm17jt",
-                            StartDate = new DateTime(2018, 3, 19, 13, 58, 45, 921, DateTimeKind.Utc).AddTicks(3125),
-                            SubscribedDate = new DateTime(2017, 9, 20, 2, 27, 25, 717, DateTimeKind.Utc).AddTicks(9475),
+                            StartDate = new DateTime(2018, 3, 21, 9, 57, 30, 932, DateTimeKind.Utc).AddTicks(8197),
+                            SubscribedDate = new DateTime(2017, 9, 21, 12, 37, 11, 708, DateTimeKind.Utc).AddTicks(323),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2019, 7, 12, 6, 29, 46, 297, DateTimeKind.Utc).AddTicks(43),
+                            UnsubscribedDate = new DateTime(2019, 7, 15, 4, 33, 56, 965, DateTimeKind.Utc).AddTicks(7323),
                             UserId = 39L
                         },
                         new
                         {
                             Id = 69L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 8, 3, 1, 17, 47, 41, DateTimeKind.Utc).AddTicks(3125),
+                            EndDate = new DateTime(2024, 8, 9, 8, 15, 29, 865, DateTimeKind.Utc).AddTicks(454),
                             IsActive = true,
                             PaymentSubscriptionId = "jti7tswdhcxx146p",
-                            StartDate = new DateTime(2023, 8, 7, 12, 31, 19, 58, DateTimeKind.Utc).AddTicks(7870),
-                            SubscribedDate = new DateTime(2023, 7, 6, 6, 47, 4, 135, DateTimeKind.Utc).AddTicks(5070),
+                            StartDate = new DateTime(2023, 8, 13, 19, 29, 1, 882, DateTimeKind.Utc).AddTicks(5199),
+                            SubscribedDate = new DateTime(2023, 7, 12, 11, 59, 34, 368, DateTimeKind.Utc).AddTicks(1632),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 7, 12, 0, 22, 42, 568, DateTimeKind.Utc).AddTicks(7457),
+                            UnsubscribedDate = new DateTime(2023, 7, 18, 5, 53, 55, 371, DateTimeKind.Utc).AddTicks(7035),
                             UserId = 23L
                         },
                         new
                         {
                             Id = 70L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 5, 8, 0, 27, 24, 379, DateTimeKind.Utc).AddTicks(3200),
+                            EndDate = new DateTime(2023, 5, 13, 20, 47, 25, 184, DateTimeKind.Utc).AddTicks(1495),
                             IsActive = false,
                             PaymentSubscriptionId = "dqb49qfp6v2htb1l",
-                            StartDate = new DateTime(2023, 1, 24, 2, 43, 36, 142, DateTimeKind.Utc).AddTicks(3),
-                            SubscribedDate = new DateTime(2021, 7, 7, 2, 42, 54, 579, DateTimeKind.Utc).AddTicks(4632),
+                            StartDate = new DateTime(2023, 1, 29, 23, 3, 36, 946, DateTimeKind.Utc).AddTicks(8298),
+                            SubscribedDate = new DateTime(2021, 7, 11, 16, 15, 49, 285, DateTimeKind.Utc).AddTicks(7607),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2022, 11, 4, 6, 39, 39, 987, DateTimeKind.Utc).AddTicks(5873),
+                            UnsubscribedDate = new DateTime(2022, 11, 9, 22, 35, 52, 632, DateTimeKind.Utc).AddTicks(9323),
                             UserId = 13L
                         },
                         new
                         {
                             Id = 71L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 3, 22, 11, 12, 25, 894, DateTimeKind.Utc).AddTicks(8904),
+                            EndDate = new DateTime(2022, 3, 27, 13, 29, 47, 437, DateTimeKind.Utc).AddTicks(5097),
                             IsActive = true,
                             PaymentSubscriptionId = "tfjxef8gm7u3gr4q",
-                            StartDate = new DateTime(2022, 2, 26, 8, 38, 8, 135, DateTimeKind.Utc).AddTicks(1228),
-                            SubscribedDate = new DateTime(2021, 10, 31, 21, 33, 13, 332, DateTimeKind.Utc).AddTicks(3814),
+                            StartDate = new DateTime(2022, 3, 3, 10, 55, 29, 677, DateTimeKind.Utc).AddTicks(7421),
+                            SubscribedDate = new DateTime(2021, 11, 5, 17, 27, 15, 202, DateTimeKind.Utc).AddTicks(1963),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 2, 7, 19, 20, 36, 271, DateTimeKind.Utc).AddTicks(4266),
+                            UnsubscribedDate = new DateTime(2023, 2, 13, 16, 28, 33, 927, DateTimeKind.Utc).AddTicks(6136),
                             UserId = 37L
                         },
                         new
                         {
                             Id = 72L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 10, 26, 12, 34, 38, 71, DateTimeKind.Utc).AddTicks(6733),
+                            EndDate = new DateTime(2023, 11, 1, 14, 4, 53, 593, DateTimeKind.Utc).AddTicks(4694),
                             IsActive = false,
                             PaymentSubscriptionId = "2b5myh0ryhbt7haq",
-                            StartDate = new DateTime(2023, 4, 29, 4, 20, 30, 502, DateTimeKind.Utc).AddTicks(5962),
-                            SubscribedDate = new DateTime(2022, 10, 13, 20, 51, 16, 14, DateTimeKind.Utc).AddTicks(6095),
+                            StartDate = new DateTime(2023, 5, 5, 5, 50, 46, 24, DateTimeKind.Utc).AddTicks(3923),
+                            SubscribedDate = new DateTime(2022, 10, 19, 11, 37, 36, 738, DateTimeKind.Utc).AddTicks(2192),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 8, 26, 5, 40, 55, 239, DateTimeKind.Utc).AddTicks(2549),
+                            UnsubscribedDate = new DateTime(2023, 9, 1, 13, 39, 42, 566, DateTimeKind.Utc).AddTicks(9570),
                             UserId = 26L
                         },
                         new
                         {
                             Id = 73L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 2, 5, 2, 18, 7, 392, DateTimeKind.Utc).AddTicks(2974),
+                            EndDate = new DateTime(2024, 2, 11, 9, 50, 59, 857, DateTimeKind.Utc).AddTicks(4044),
                             IsActive = true,
                             PaymentSubscriptionId = "8ds2vlr4ibv39lh4",
-                            StartDate = new DateTime(2023, 8, 18, 7, 6, 6, 394, DateTimeKind.Utc).AddTicks(9019),
-                            SubscribedDate = new DateTime(2022, 3, 12, 2, 1, 30, 802, DateTimeKind.Utc).AddTicks(9815),
+                            StartDate = new DateTime(2023, 8, 24, 14, 38, 58, 860, DateTimeKind.Utc).AddTicks(89),
+                            SubscribedDate = new DateTime(2022, 3, 17, 5, 3, 39, 678, DateTimeKind.Utc).AddTicks(6672),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 8, 26, 11, 3, 34, 102, DateTimeKind.Utc).AddTicks(2831),
+                            UnsubscribedDate = new DateTime(2022, 8, 31, 23, 11, 56, 231, DateTimeKind.Utc).AddTicks(7104),
                             UserId = 9L
                         },
                         new
                         {
                             Id = 74L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 2, 8, 5, 43, 17, 550, DateTimeKind.Utc).AddTicks(2256),
+                            EndDate = new DateTime(2024, 2, 14, 10, 24, 45, 765, DateTimeKind.Utc).AddTicks(3551),
                             IsActive = true,
                             PaymentSubscriptionId = "xzjgtbq46mekoxwc",
-                            StartDate = new DateTime(2023, 6, 26, 18, 33, 21, 335, DateTimeKind.Utc).AddTicks(810),
-                            SubscribedDate = new DateTime(2021, 7, 9, 1, 43, 32, 606, DateTimeKind.Utc).AddTicks(5464),
+                            StartDate = new DateTime(2023, 7, 2, 23, 14, 49, 550, DateTimeKind.Utc).AddTicks(2105),
+                            SubscribedDate = new DateTime(2021, 7, 13, 15, 22, 50, 855, DateTimeKind.Utc).AddTicks(2841),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2021, 12, 12, 23, 3, 31, 54, DateTimeKind.Utc).AddTicks(2755),
+                            UnsubscribedDate = new DateTime(2021, 12, 17, 21, 14, 49, 31, DateTimeKind.Utc).AddTicks(4503),
                             UserId = 30L
                         },
                         new
                         {
                             Id = 75L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 11, 5, 8, 17, 29, 687, DateTimeKind.Utc).AddTicks(1094),
+                            EndDate = new DateTime(2023, 11, 11, 15, 51, 44, 803, DateTimeKind.Utc).AddTicks(5421),
                             IsActive = true,
                             PaymentSubscriptionId = "4qdes62xud4v2bb7",
-                            StartDate = new DateTime(2023, 8, 18, 17, 13, 56, 514, DateTimeKind.Utc).AddTicks(3921),
-                            SubscribedDate = new DateTime(2023, 7, 5, 18, 23, 19, 843, DateTimeKind.Utc).AddTicks(9490),
+                            StartDate = new DateTime(2023, 8, 25, 0, 48, 11, 630, DateTimeKind.Utc).AddTicks(8248),
+                            SubscribedDate = new DateTime(2023, 7, 11, 23, 34, 8, 946, DateTimeKind.Utc).AddTicks(4442),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 9, 6, 13, 38, 56, 776, DateTimeKind.Utc).AddTicks(2627),
+                            UnsubscribedDate = new DateTime(2023, 9, 12, 22, 14, 42, 966, DateTimeKind.Utc).AddTicks(89),
                             UserId = 24L
                         },
                         new
                         {
                             Id = 76L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2024, 3, 9, 12, 25, 1, 826, DateTimeKind.Utc).AddTicks(2024),
+                            EndDate = new DateTime(2024, 3, 15, 14, 44, 59, 603, DateTimeKind.Utc).AddTicks(9989),
                             IsActive = true,
                             PaymentSubscriptionId = "6s7a0msqiic2ybbz",
-                            StartDate = new DateTime(2023, 5, 14, 9, 52, 43, 899, DateTimeKind.Utc).AddTicks(6613),
-                            SubscribedDate = new DateTime(2023, 3, 24, 11, 15, 9, 279, DateTimeKind.Utc).AddTicks(1296),
+                            StartDate = new DateTime(2023, 5, 20, 12, 12, 41, 677, DateTimeKind.Utc).AddTicks(4578),
+                            SubscribedDate = new DateTime(2023, 3, 30, 10, 48, 52, 175, DateTimeKind.Utc).AddTicks(2923),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 3, 30, 2, 0, 39, 263, DateTimeKind.Utc).AddTicks(6748),
+                            UnsubscribedDate = new DateTime(2023, 4, 5, 1, 52, 41, 595, DateTimeKind.Utc).AddTicks(447),
                             UserId = 23L
                         },
                         new
                         {
                             Id = 77L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2023, 12, 20, 4, 31, 56, 989, DateTimeKind.Utc).AddTicks(255),
+                            EndDate = new DateTime(2023, 12, 25, 23, 39, 30, 78, DateTimeKind.Utc).AddTicks(9266),
                             IsActive = true,
                             PaymentSubscriptionId = "u2bu9ut7a380yrw7",
-                            StartDate = new DateTime(2023, 1, 1, 21, 49, 30, 406, DateTimeKind.Utc).AddTicks(8102),
-                            SubscribedDate = new DateTime(2022, 2, 22, 0, 6, 42, 856, DateTimeKind.Utc).AddTicks(4822),
+                            StartDate = new DateTime(2023, 1, 7, 16, 57, 3, 496, DateTimeKind.Utc).AddTicks(7113),
+                            SubscribedDate = new DateTime(2022, 2, 27, 2, 9, 51, 625, DateTimeKind.Utc).AddTicks(2108),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2022, 7, 19, 8, 52, 4, 247, DateTimeKind.Utc).AddTicks(18),
+                            UnsubscribedDate = new DateTime(2022, 7, 24, 18, 56, 7, 884, DateTimeKind.Utc).AddTicks(1203),
                             UserId = 24L
                         },
                         new
                         {
                             Id = 78L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 7, 4, 21, 11, 15, 524, DateTimeKind.Utc).AddTicks(5971),
+                            EndDate = new DateTime(2023, 7, 11, 0, 43, 2, 403, DateTimeKind.Utc).AddTicks(2349),
                             IsActive = false,
                             PaymentSubscriptionId = "gx2r65g5hsfxbxgo",
-                            StartDate = new DateTime(2023, 6, 5, 10, 2, 49, 992, DateTimeKind.Utc).AddTicks(1632),
-                            SubscribedDate = new DateTime(2022, 1, 9, 19, 37, 4, 35, DateTimeKind.Utc).AddTicks(4669),
+                            StartDate = new DateTime(2023, 6, 11, 13, 34, 36, 870, DateTimeKind.Utc).AddTicks(8010),
+                            SubscribedDate = new DateTime(2022, 1, 14, 19, 19, 16, 505, DateTimeKind.Utc).AddTicks(9549),
                             TypeId = 1L,
                             UserId = 28L
                         },
@@ -5919,154 +6120,154 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 79L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 5, 5, 15, 28, 34, 687, DateTimeKind.Utc).AddTicks(1337),
+                            EndDate = new DateTime(2023, 5, 11, 10, 28, 52, 853, DateTimeKind.Utc).AddTicks(2199),
                             IsActive = false,
                             PaymentSubscriptionId = "jjpfoqglt2ecr215",
-                            StartDate = new DateTime(2022, 12, 30, 16, 30, 59, 694, DateTimeKind.Utc).AddTicks(2615),
-                            SubscribedDate = new DateTime(2022, 11, 11, 12, 4, 48, 532, DateTimeKind.Utc).AddTicks(5250),
+                            StartDate = new DateTime(2023, 1, 5, 11, 31, 17, 860, DateTimeKind.Utc).AddTicks(3477),
+                            SubscribedDate = new DateTime(2022, 11, 17, 4, 24, 36, 25, DateTimeKind.Utc).AddTicks(7072),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 9, 5, 6, 47, 40, 259, DateTimeKind.Utc).AddTicks(4519),
+                            UnsubscribedDate = new DateTime(2023, 9, 11, 15, 19, 14, 719, DateTimeKind.Utc).AddTicks(8288),
                             UserId = 27L
                         },
                         new
                         {
                             Id = 80L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2019, 6, 3, 6, 17, 8, 63, DateTimeKind.Utc).AddTicks(5271),
+                            EndDate = new DateTime(2019, 6, 5, 15, 49, 32, 292, DateTimeKind.Utc).AddTicks(2025),
                             IsActive = false,
                             PaymentSubscriptionId = "xnuthf65wa7mg0gr",
-                            StartDate = new DateTime(2018, 11, 23, 21, 46, 34, 643, DateTimeKind.Utc).AddTicks(1483),
-                            SubscribedDate = new DateTime(2017, 4, 11, 22, 44, 19, 768, DateTimeKind.Utc).AddTicks(2130),
+                            StartDate = new DateTime(2018, 11, 26, 7, 18, 58, 871, DateTimeKind.Utc).AddTicks(8237),
+                            SubscribedDate = new DateTime(2017, 4, 13, 0, 8, 10, 713, DateTimeKind.Utc).AddTicks(6298),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2017, 12, 27, 22, 1, 23, 513, DateTimeKind.Utc).AddTicks(9841),
+                            UnsubscribedDate = new DateTime(2017, 12, 29, 13, 33, 38, 88, DateTimeKind.Utc).AddTicks(6022),
                             UserId = 14L
                         },
                         new
                         {
                             Id = 81L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 8, 7, 19, 50, 57, 449, DateTimeKind.Utc).AddTicks(3326),
+                            EndDate = new DateTime(2023, 8, 13, 9, 47, 35, 933, DateTimeKind.Utc).AddTicks(3848),
                             IsActive = false,
                             PaymentSubscriptionId = "3m6zsvfkn1i0vm3e",
-                            StartDate = new DateTime(2022, 9, 28, 15, 19, 12, 754, DateTimeKind.Utc).AddTicks(4594),
-                            SubscribedDate = new DateTime(2021, 11, 1, 22, 5, 34, 183, DateTimeKind.Utc).AddTicks(9827),
+                            StartDate = new DateTime(2022, 10, 4, 5, 15, 51, 238, DateTimeKind.Utc).AddTicks(5116),
+                            SubscribedDate = new DateTime(2021, 11, 6, 18, 2, 56, 251, DateTimeKind.Utc).AddTicks(2136),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 8, 7, 5, 9, 11, 688, DateTimeKind.Utc).AddTicks(7824),
+                            UnsubscribedDate = new DateTime(2022, 8, 12, 16, 14, 45, 330, DateTimeKind.Utc).AddTicks(9245),
                             UserId = 36L
                         },
                         new
                         {
                             Id = 82L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2024, 3, 13, 15, 21, 52, 308, DateTimeKind.Utc).AddTicks(2817),
+                            EndDate = new DateTime(2024, 3, 20, 0, 7, 50, 766, DateTimeKind.Utc).AddTicks(357),
                             IsActive = false,
                             PaymentSubscriptionId = "mrtium4tr7pv86d0",
-                            StartDate = new DateTime(2023, 9, 9, 16, 41, 42, 523, DateTimeKind.Utc).AddTicks(2189),
-                            SubscribedDate = new DateTime(2023, 9, 7, 17, 9, 14, 101, DateTimeKind.Utc).AddTicks(8832),
+                            StartDate = new DateTime(2023, 9, 16, 1, 27, 40, 980, DateTimeKind.Utc).AddTicks(9729),
+                            SubscribedDate = new DateTime(2023, 9, 14, 1, 48, 44, 691, DateTimeKind.Utc).AddTicks(310),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 9, 9, 21, 12, 40, 51, DateTimeKind.Utc).AddTicks(5289),
+                            UnsubscribedDate = new DateTime(2023, 9, 16, 5, 59, 15, 353, DateTimeKind.Utc).AddTicks(2384),
                             UserId = 34L
                         },
                         new
                         {
                             Id = 83L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2022, 10, 23, 21, 3, 48, 86, DateTimeKind.Utc).AddTicks(5729),
+                            EndDate = new DateTime(2022, 10, 28, 18, 16, 45, 95, DateTimeKind.Utc).AddTicks(2775),
                             IsActive = false,
                             PaymentSubscriptionId = "qpd9nfspxjd01xp0",
-                            StartDate = new DateTime(2021, 11, 25, 1, 56, 31, 739, DateTimeKind.Utc).AddTicks(6955),
-                            SubscribedDate = new DateTime(2018, 4, 21, 1, 41, 28, 162, DateTimeKind.Utc).AddTicks(1857),
+                            StartDate = new DateTime(2021, 11, 29, 23, 9, 28, 748, DateTimeKind.Utc).AddTicks(4001),
+                            SubscribedDate = new DateTime(2018, 4, 22, 23, 26, 14, 505, DateTimeKind.Utc).AddTicks(8171),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2019, 7, 12, 22, 0, 21, 687, DateTimeKind.Utc).AddTicks(4732),
+                            UnsubscribedDate = new DateTime(2019, 7, 15, 20, 6, 38, 894, DateTimeKind.Utc).AddTicks(5933),
                             UserId = 37L
                         },
                         new
                         {
                             Id = 84L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 7, 5, 6, 56, 19, 450, DateTimeKind.Utc).AddTicks(1361),
+                            EndDate = new DateTime(2024, 7, 11, 15, 41, 40, 341, DateTimeKind.Utc).AddTicks(459),
                             IsActive = false,
                             PaymentSubscriptionId = "wfn8fa46w4r59v5c",
-                            StartDate = new DateTime(2023, 9, 9, 12, 5, 25, 963, DateTimeKind.Utc).AddTicks(9108),
-                            SubscribedDate = new DateTime(2023, 9, 1, 22, 35, 46, 151, DateTimeKind.Utc).AddTicks(7511),
+                            StartDate = new DateTime(2023, 9, 15, 20, 50, 46, 854, DateTimeKind.Utc).AddTicks(8206),
+                            SubscribedDate = new DateTime(2023, 9, 8, 6, 56, 26, 307, DateTimeKind.Utc).AddTicks(6098),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 9, 5, 18, 23, 40, 20, DateTimeKind.Utc).AddTicks(1132),
+                            UnsubscribedDate = new DateTime(2023, 9, 12, 2, 56, 49, 118, DateTimeKind.Utc).AddTicks(9775),
                             UserId = 18L
                         },
                         new
                         {
                             Id = 85L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 6, 8, 4, 46, 55, 424, DateTimeKind.Utc).AddTicks(5534),
+                            EndDate = new DateTime(2023, 6, 14, 5, 16, 19, 309, DateTimeKind.Utc).AddTicks(3906),
                             IsActive = true,
                             PaymentSubscriptionId = "wyht67sijod7rj9m",
-                            StartDate = new DateTime(2023, 4, 10, 12, 45, 31, 519, DateTimeKind.Utc).AddTicks(1009),
-                            SubscribedDate = new DateTime(2016, 11, 13, 20, 45, 3, 355, DateTimeKind.Utc).AddTicks(5174),
+                            StartDate = new DateTime(2023, 4, 16, 13, 14, 55, 403, DateTimeKind.Utc).AddTicks(9381),
+                            SubscribedDate = new DateTime(2016, 11, 14, 14, 2, 23, 42, DateTimeKind.Utc).AddTicks(5726),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2020, 9, 28, 9, 57, 6, 348, DateTimeKind.Utc).AddTicks(4784),
+                            UnsubscribedDate = new DateTime(2020, 10, 2, 8, 10, 42, 916, DateTimeKind.Utc).AddTicks(7550),
                             UserId = 17L
                         },
                         new
                         {
                             Id = 86L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 10, 12, 7, 12, 3, 561, DateTimeKind.Utc).AddTicks(6325),
+                            EndDate = new DateTime(2023, 10, 18, 7, 34, 30, 55, DateTimeKind.Utc).AddTicks(5666),
                             IsActive = false,
                             PaymentSubscriptionId = "jx8v9gvjgqbhtb0p",
-                            StartDate = new DateTime(2023, 4, 8, 9, 35, 57, 332, DateTimeKind.Utc).AddTicks(3482),
-                            SubscribedDate = new DateTime(2022, 9, 4, 17, 32, 38, 40, DateTimeKind.Utc).AddTicks(4571),
+                            StartDate = new DateTime(2023, 4, 14, 9, 58, 23, 826, DateTimeKind.Utc).AddTicks(2823),
+                            SubscribedDate = new DateTime(2022, 9, 10, 6, 11, 15, 328, DateTimeKind.Utc).AddTicks(4485),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 8, 21, 7, 54, 17, 398, DateTimeKind.Utc).AddTicks(2551),
+                            UnsubscribedDate = new DateTime(2023, 8, 27, 15, 37, 3, 832, DateTimeKind.Utc).AddTicks(3758),
                             UserId = 13L
                         },
                         new
                         {
                             Id = 87L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 7, 5, 23, 9, 8, 98, DateTimeKind.Utc).AddTicks(4272),
+                            EndDate = new DateTime(2023, 7, 11, 23, 41, 9, 286, DateTimeKind.Utc).AddTicks(8064),
                             IsActive = true,
                             PaymentSubscriptionId = "rcan81qc7fa8yw83",
-                            StartDate = new DateTime(2023, 4, 11, 8, 2, 24, 168, DateTimeKind.Utc).AddTicks(641),
-                            SubscribedDate = new DateTime(2023, 4, 6, 4, 50, 42, 638, DateTimeKind.Utc).AddTicks(8743),
+                            StartDate = new DateTime(2023, 4, 17, 8, 34, 25, 356, DateTimeKind.Utc).AddTicks(4433),
+                            SubscribedDate = new DateTime(2023, 4, 12, 5, 5, 58, 733, DateTimeKind.Utc).AddTicks(3323),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 8, 7, 18, 58, 53, 873, DateTimeKind.Utc).AddTicks(9078),
+                            UnsubscribedDate = new DateTime(2023, 8, 14, 1, 57, 29, 399, DateTimeKind.Utc).AddTicks(2221),
                             UserId = 33L
                         },
                         new
                         {
                             Id = 88L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2021, 2, 12, 11, 4, 43, 389, DateTimeKind.Utc).AddTicks(1524),
+                            EndDate = new DateTime(2021, 2, 16, 16, 0, 50, 46, DateTimeKind.Utc).AddTicks(282),
                             IsActive = true,
                             PaymentSubscriptionId = "5emwz6jldc4x58af",
-                            StartDate = new DateTime(2021, 1, 29, 18, 2, 27, 640, DateTimeKind.Utc).AddTicks(5810),
-                            SubscribedDate = new DateTime(2019, 6, 24, 18, 41, 11, 763, DateTimeKind.Utc).AddTicks(2737),
+                            StartDate = new DateTime(2021, 2, 2, 22, 58, 34, 297, DateTimeKind.Utc).AddTicks(4568),
+                            SubscribedDate = new DateTime(2019, 6, 27, 15, 48, 17, 383, DateTimeKind.Utc).AddTicks(7628),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2022, 10, 4, 18, 13, 16, 767, DateTimeKind.Utc).AddTicks(2773),
+                            UnsubscribedDate = new DateTime(2022, 10, 10, 8, 29, 53, 756, DateTimeKind.Utc).AddTicks(8377),
                             UserId = 40L
                         },
                         new
                         {
                             Id = 89L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2024, 2, 23, 5, 13, 48, 592, DateTimeKind.Utc).AddTicks(9663),
+                            EndDate = new DateTime(2024, 2, 29, 7, 16, 3, 260, DateTimeKind.Utc).AddTicks(7861),
                             IsActive = false,
                             PaymentSubscriptionId = "1hro6jnzj7hueud0",
-                            StartDate = new DateTime(2023, 5, 8, 23, 34, 21, 137, DateTimeKind.Utc).AddTicks(7902),
-                            SubscribedDate = new DateTime(2022, 9, 27, 17, 15, 44, 649, DateTimeKind.Utc).AddTicks(7087),
+                            StartDate = new DateTime(2023, 5, 15, 1, 36, 35, 805, DateTimeKind.Utc).AddTicks(6100),
+                            SubscribedDate = new DateTime(2022, 10, 3, 7, 9, 23, 177, DateTimeKind.Utc).AddTicks(561),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 1, 14, 11, 39, 18, 22, DateTimeKind.Utc).AddTicks(4100),
+                            UnsubscribedDate = new DateTime(2023, 1, 20, 7, 27, 53, 616, DateTimeKind.Utc).AddTicks(7163),
                             UserId = 37L
                         },
                         new
                         {
                             Id = 90L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 3, 6, 23, 21, 15, 9, DateTimeKind.Utc).AddTicks(3785),
+                            EndDate = new DateTime(2024, 3, 13, 2, 50, 30, 890, DateTimeKind.Utc).AddTicks(7093),
                             IsActive = true,
                             PaymentSubscriptionId = "jb19he1dn7vheueu",
-                            StartDate = new DateTime(2023, 6, 4, 15, 32, 21, 855, DateTimeKind.Utc).AddTicks(208),
-                            SubscribedDate = new DateTime(2019, 4, 6, 20, 44, 10, 327, DateTimeKind.Utc).AddTicks(4292),
+                            StartDate = new DateTime(2023, 6, 10, 19, 1, 37, 736, DateTimeKind.Utc).AddTicks(3516),
+                            SubscribedDate = new DateTime(2019, 4, 9, 13, 33, 44, 26, DateTimeKind.Utc).AddTicks(6818),
                             TypeId = 1L,
                             UserId = 28L
                         },
@@ -6074,260 +6275,260 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 91L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 9, 26, 22, 36, 6, 216, DateTimeKind.Utc).AddTicks(9760),
+                            EndDate = new DateTime(2022, 10, 1, 16, 48, 10, 853, DateTimeKind.Utc).AddTicks(3527),
                             IsActive = true,
                             PaymentSubscriptionId = "l9hcw3mpj65vhei4",
-                            StartDate = new DateTime(2021, 9, 30, 15, 45, 44, 271, DateTimeKind.Utc).AddTicks(9395),
-                            SubscribedDate = new DateTime(2021, 4, 4, 21, 57, 31, 769, DateTimeKind.Utc).AddTicks(7206),
+                            StartDate = new DateTime(2021, 10, 5, 9, 57, 48, 908, DateTimeKind.Utc).AddTicks(3162),
+                            SubscribedDate = new DateTime(2021, 4, 9, 6, 26, 17, 748, DateTimeKind.Utc).AddTicks(2466),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 6, 4, 15, 14, 7, 613, DateTimeKind.Utc).AddTicks(6671),
+                            UnsubscribedDate = new DateTime(2023, 6, 10, 18, 43, 21, 13, DateTimeKind.Utc).AddTicks(9343),
                             UserId = 7L
                         },
                         new
                         {
                             Id = 92L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 4, 7, 1, 17, 46, 836, DateTimeKind.Utc).AddTicks(6187),
+                            EndDate = new DateTime(2024, 4, 13, 7, 57, 40, 110, DateTimeKind.Utc).AddTicks(6666),
                             IsActive = true,
                             PaymentSubscriptionId = "a0yox0t3avo8xphk",
-                            StartDate = new DateTime(2023, 8, 2, 1, 25, 36, 58, DateTimeKind.Utc).AddTicks(5759),
-                            SubscribedDate = new DateTime(2023, 7, 20, 19, 14, 14, 800, DateTimeKind.Utc).AddTicks(9954),
+                            StartDate = new DateTime(2023, 8, 8, 8, 5, 29, 332, DateTimeKind.Utc).AddTicks(6238),
+                            SubscribedDate = new DateTime(2023, 7, 27, 1, 14, 7, 911, DateTimeKind.Utc).AddTicks(7613),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 8, 19, 2, 35, 42, 721, DateTimeKind.Utc).AddTicks(5642),
+                            UnsubscribedDate = new DateTime(2023, 8, 25, 10, 11, 14, 225, DateTimeKind.Utc).AddTicks(3101),
                             UserId = 24L
                         },
                         new
                         {
                             Id = 93L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 3, 1, 2, 31, 50, 603, DateTimeKind.Utc).AddTicks(4120),
+                            EndDate = new DateTime(2024, 3, 7, 6, 23, 40, 906, DateTimeKind.Utc).AddTicks(3882),
                             IsActive = true,
                             PaymentSubscriptionId = "m8rn9t5pne2v4ysj",
-                            StartDate = new DateTime(2023, 6, 11, 13, 33, 7, 24, DateTimeKind.Utc).AddTicks(714),
-                            SubscribedDate = new DateTime(2023, 1, 18, 7, 16, 21, 587, DateTimeKind.Utc).AddTicks(6929),
+                            StartDate = new DateTime(2023, 6, 17, 17, 24, 57, 327, DateTimeKind.Utc).AddTicks(476),
+                            SubscribedDate = new DateTime(2023, 1, 24, 3, 17, 24, 642, DateTimeKind.Utc).AddTicks(9888),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 3, 24, 6, 15, 0, 787, DateTimeKind.Utc).AddTicks(3541),
+                            UnsubscribedDate = new DateTime(2023, 3, 30, 5, 48, 2, 870, DateTimeKind.Utc).AddTicks(523),
                             UserId = 15L
                         },
                         new
                         {
                             Id = 94L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 9, 22, 6, 28, 39, 419, DateTimeKind.Utc).AddTicks(7330),
+                            EndDate = new DateTime(2023, 9, 28, 3, 26, 21, 11, DateTimeKind.Utc).AddTicks(8936),
                             IsActive = false,
                             PaymentSubscriptionId = "mmluyddqoo1o85th",
-                            StartDate = new DateTime(2023, 2, 4, 15, 49, 56, 826, DateTimeKind.Utc).AddTicks(7005),
-                            SubscribedDate = new DateTime(2022, 5, 28, 18, 8, 20, 683, DateTimeKind.Utc).AddTicks(6855),
+                            StartDate = new DateTime(2023, 2, 10, 12, 47, 38, 418, DateTimeKind.Utc).AddTicks(8611),
+                            SubscribedDate = new DateTime(2022, 6, 3, 1, 23, 58, 69, DateTimeKind.Utc).AddTicks(811),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 3, 5, 23, 8, 51, 899, DateTimeKind.Utc).AddTicks(493),
+                            UnsubscribedDate = new DateTime(2023, 3, 11, 21, 42, 11, 537, DateTimeKind.Utc).AddTicks(6228),
                             UserId = 30L
                         },
                         new
                         {
                             Id = 95L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2021, 5, 19, 0, 54, 27, 222, DateTimeKind.Utc).AddTicks(9685),
+                            EndDate = new DateTime(2021, 5, 22, 17, 58, 47, 79, DateTimeKind.Utc).AddTicks(4620),
                             IsActive = true,
                             PaymentSubscriptionId = "cevlzqkc2a1n7br9",
-                            StartDate = new DateTime(2020, 6, 25, 15, 26, 45, 440, DateTimeKind.Utc).AddTicks(8578),
-                            SubscribedDate = new DateTime(2017, 10, 12, 3, 30, 14, 889, DateTimeKind.Utc).AddTicks(4412),
+                            StartDate = new DateTime(2020, 6, 29, 8, 31, 5, 297, DateTimeKind.Utc).AddTicks(3513),
+                            SubscribedDate = new DateTime(2017, 10, 13, 14, 51, 57, 146, DateTimeKind.Utc).AddTicks(4156),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2018, 6, 1, 12, 49, 10, 91, DateTimeKind.Utc).AddTicks(2109),
+                            UnsubscribedDate = new DateTime(2018, 6, 3, 12, 49, 15, 257, DateTimeKind.Utc).AddTicks(5556),
                             UserId = 2L
                         },
                         new
                         {
                             Id = 96L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 9, 4, 14, 52, 30, 145, DateTimeKind.Utc).AddTicks(216),
+                            EndDate = new DateTime(2023, 9, 10, 21, 3, 48, 905, DateTimeKind.Utc).AddTicks(7607),
                             IsActive = true,
                             PaymentSubscriptionId = "93vrpnu06yhjisrx",
-                            StartDate = new DateTime(2023, 7, 24, 7, 16, 40, 126, DateTimeKind.Utc).AddTicks(5493),
-                            SubscribedDate = new DateTime(2021, 5, 19, 21, 17, 53, 25, DateTimeKind.Utc).AddTicks(7987),
+                            StartDate = new DateTime(2023, 7, 30, 13, 27, 58, 887, DateTimeKind.Utc).AddTicks(2884),
+                            SubscribedDate = new DateTime(2021, 5, 24, 8, 13, 24, 877, DateTimeKind.Utc).AddTicks(100),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2021, 10, 12, 1, 18, 46, 669, DateTimeKind.Utc).AddTicks(4711),
+                            UnsubscribedDate = new DateTime(2021, 10, 16, 20, 8, 3, 95, DateTimeKind.Utc).AddTicks(2855),
                             UserId = 5L
                         },
                         new
                         {
                             Id = 97L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 12, 21, 5, 52, 6, 827, DateTimeKind.Utc).AddTicks(8724),
+                            EndDate = new DateTime(2023, 12, 27, 23, 35, 36, 905, DateTimeKind.Utc).AddTicks(5454),
                             IsActive = true,
                             PaymentSubscriptionId = "7biaezr83ocwvtne",
-                            StartDate = new DateTime(2023, 2, 26, 16, 33, 23, 576, DateTimeKind.Utc).AddTicks(1810),
-                            SubscribedDate = new DateTime(2022, 12, 18, 1, 42, 18, 23, DateTimeKind.Utc).AddTicks(2027),
+                            StartDate = new DateTime(2023, 3, 4, 14, 42, 58, 795, DateTimeKind.Utc).AddTicks(6302),
+                            SubscribedDate = new DateTime(2022, 12, 23, 20, 1, 25, 677, DateTimeKind.Utc).AddTicks(6372),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 2, 11, 11, 6, 43, 238, DateTimeKind.Utc).AddTicks(1368),
+                            UnsubscribedDate = new DateTime(2023, 2, 17, 8, 26, 36, 952, DateTimeKind.Utc).AddTicks(7246),
                             UserId = 19L
                         },
                         new
                         {
                             Id = 98L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 1, 8, 19, 44, 46, 672, DateTimeKind.Utc).AddTicks(4747),
+                            EndDate = new DateTime(2024, 1, 15, 2, 26, 39, 57, DateTimeKind.Utc).AddTicks(8773),
                             IsActive = true,
                             PaymentSubscriptionId = "k9c7hc23tgje5jm7",
-                            StartDate = new DateTime(2023, 8, 2, 16, 1, 34, 807, DateTimeKind.Utc).AddTicks(2672),
-                            SubscribedDate = new DateTime(2022, 12, 31, 18, 48, 5, 412, DateTimeKind.Utc).AddTicks(5022),
+                            StartDate = new DateTime(2023, 8, 8, 22, 43, 27, 192, DateTimeKind.Utc).AddTicks(6698),
+                            SubscribedDate = new DateTime(2023, 1, 6, 13, 51, 58, 22, DateTimeKind.Utc).AddTicks(7195),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 8, 7, 17, 43, 22, 895, DateTimeKind.Utc).AddTicks(51),
+                            UnsubscribedDate = new DateTime(2023, 8, 14, 0, 41, 48, 151, DateTimeKind.Utc).AddTicks(4055),
                             UserId = 8L
                         },
                         new
                         {
                             Id = 99L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 8, 27, 2, 58, 4, 424, DateTimeKind.Utc).AddTicks(7184),
+                            EndDate = new DateTime(2022, 9, 1, 10, 2, 14, 607, DateTimeKind.Utc).AddTicks(3342),
                             IsActive = false,
                             PaymentSubscriptionId = "17h3p0lzj9p4mkrq",
-                            StartDate = new DateTime(2022, 5, 25, 5, 54, 31, 42, DateTimeKind.Utc).AddTicks(3362),
-                            SubscribedDate = new DateTime(2021, 7, 6, 12, 56, 56, 394, DateTimeKind.Utc).AddTicks(7463),
+                            StartDate = new DateTime(2022, 5, 30, 12, 58, 41, 224, DateTimeKind.Utc).AddTicks(9520),
+                            SubscribedDate = new DateTime(2021, 7, 11, 2, 27, 58, 787, DateTimeKind.Utc).AddTicks(6848),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 1, 28, 10, 8, 3, 60, DateTimeKind.Utc).AddTicks(4081),
+                            UnsubscribedDate = new DateTime(2022, 2, 2, 10, 50, 58, 455, DateTimeKind.Utc).AddTicks(102),
                             UserId = 24L
                         },
                         new
                         {
                             Id = 100L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2024, 6, 29, 23, 57, 48, 280, DateTimeKind.Utc).AddTicks(3696),
+                            EndDate = new DateTime(2024, 7, 6, 8, 19, 24, 666, DateTimeKind.Utc).AddTicks(2889),
                             IsActive = false,
                             PaymentSubscriptionId = "ea2krxtp615avzdt",
-                            StartDate = new DateTime(2023, 9, 2, 5, 29, 17, 660, DateTimeKind.Utc).AddTicks(3272),
-                            SubscribedDate = new DateTime(2023, 6, 15, 20, 23, 46, 311, DateTimeKind.Utc).AddTicks(3918),
+                            StartDate = new DateTime(2023, 9, 8, 13, 50, 54, 46, DateTimeKind.Utc).AddTicks(2465),
+                            SubscribedDate = new DateTime(2023, 6, 22, 0, 29, 35, 676, DateTimeKind.Utc).AddTicks(4750),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 7, 30, 2, 5, 11, 757, DateTimeKind.Utc).AddTicks(701),
+                            UnsubscribedDate = new DateTime(2023, 8, 5, 8, 35, 22, 997, DateTimeKind.Utc).AddTicks(4662),
                             UserId = 35L
                         },
                         new
                         {
                             Id = 101L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 1, 29, 10, 3, 20, 785, DateTimeKind.Utc).AddTicks(8878),
+                            EndDate = new DateTime(2024, 2, 4, 18, 17, 24, 875, DateTimeKind.Utc).AddTicks(1678),
                             IsActive = false,
                             PaymentSubscriptionId = "hp86so1sykofx18m",
-                            StartDate = new DateTime(2023, 8, 30, 22, 3, 0, 71, DateTimeKind.Utc).AddTicks(1540),
-                            SubscribedDate = new DateTime(2023, 8, 12, 2, 14, 54, 48, DateTimeKind.Utc).AddTicks(3943),
+                            StartDate = new DateTime(2023, 9, 6, 6, 17, 4, 160, DateTimeKind.Utc).AddTicks(4340),
+                            SubscribedDate = new DateTime(2023, 8, 18, 9, 27, 32, 82, DateTimeKind.Utc).AddTicks(819),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 8, 27, 4, 22, 5, 720, DateTimeKind.Utc).AddTicks(7605),
+                            UnsubscribedDate = new DateTime(2023, 9, 2, 12, 23, 58, 135, DateTimeKind.Utc).AddTicks(877),
                             UserId = 19L
                         },
                         new
                         {
                             Id = 102L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2021, 4, 4, 10, 59, 28, 679, DateTimeKind.Utc).AddTicks(4722),
+                            EndDate = new DateTime(2021, 4, 8, 13, 21, 23, 690, DateTimeKind.Utc).AddTicks(4816),
                             IsActive = false,
                             PaymentSubscriptionId = "v9jped3wpf21omxi",
-                            StartDate = new DateTime(2020, 12, 13, 12, 3, 43, 79, DateTimeKind.Utc).AddTicks(1670),
-                            SubscribedDate = new DateTime(2019, 10, 10, 6, 56, 47, 5, DateTimeKind.Utc).AddTicks(7450),
+                            StartDate = new DateTime(2020, 12, 17, 14, 25, 38, 90, DateTimeKind.Utc).AddTicks(1764),
+                            SubscribedDate = new DateTime(2019, 10, 13, 9, 54, 43, 852, DateTimeKind.Utc).AddTicks(7866),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2023, 7, 31, 13, 58, 15, 220, DateTimeKind.Utc).AddTicks(2032),
+                            UnsubscribedDate = new DateTime(2023, 8, 6, 20, 33, 19, 226, DateTimeKind.Utc).AddTicks(4090),
                             UserId = 40L
                         },
                         new
                         {
                             Id = 103L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2024, 4, 6, 20, 39, 24, 319, DateTimeKind.Utc).AddTicks(1283),
+                            EndDate = new DateTime(2024, 4, 12, 21, 41, 41, 743, DateTimeKind.Utc).AddTicks(6784),
                             IsActive = false,
                             PaymentSubscriptionId = "a7ftky80unai4cdk",
-                            StartDate = new DateTime(2023, 4, 20, 14, 39, 24, 528, DateTimeKind.Utc).AddTicks(1696),
-                            SubscribedDate = new DateTime(2022, 11, 17, 15, 10, 7, 382, DateTimeKind.Utc).AddTicks(1486),
+                            StartDate = new DateTime(2023, 4, 26, 15, 41, 41, 952, DateTimeKind.Utc).AddTicks(7197),
+                            SubscribedDate = new DateTime(2022, 11, 23, 7, 49, 54, 911, DateTimeKind.Utc).AddTicks(5794),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 1, 20, 18, 44, 30, 776, DateTimeKind.Utc).AddTicks(9180),
+                            UnsubscribedDate = new DateTime(2023, 1, 26, 14, 53, 39, 20, DateTimeKind.Utc).AddTicks(4554),
                             UserId = 20L
                         },
                         new
                         {
                             Id = 104L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2023, 1, 5, 23, 44, 53, 383, DateTimeKind.Utc).AddTicks(8808),
+                            EndDate = new DateTime(2023, 1, 11, 12, 22, 3, 856, DateTimeKind.Utc).AddTicks(319),
                             IsActive = false,
                             PaymentSubscriptionId = "2fl25kawdqe7y9cr",
-                            StartDate = new DateTime(2022, 9, 4, 6, 54, 14, 127, DateTimeKind.Utc).AddTicks(6092),
-                            SubscribedDate = new DateTime(2022, 8, 23, 8, 36, 55, 462, DateTimeKind.Utc).AddTicks(2709),
+                            StartDate = new DateTime(2022, 9, 9, 19, 31, 24, 599, DateTimeKind.Utc).AddTicks(7603),
+                            SubscribedDate = new DateTime(2022, 8, 28, 20, 35, 10, 229, DateTimeKind.Utc).AddTicks(4471),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 1, 29, 12, 55, 42, 772, DateTimeKind.Utc).AddTicks(3774),
+                            UnsubscribedDate = new DateTime(2023, 2, 4, 9, 33, 25, 832, DateTimeKind.Utc).AddTicks(5341),
                             UserId = 8L
                         },
                         new
                         {
                             Id = 105L,
                             Cost = 151.37m,
-                            EndDate = new DateTime(2020, 10, 25, 10, 45, 26, 515, DateTimeKind.Utc).AddTicks(7365),
+                            EndDate = new DateTime(2020, 10, 28, 15, 45, 16, 182, DateTimeKind.Utc).AddTicks(1301),
                             IsActive = true,
                             PaymentSubscriptionId = "yrti9du39mr5c5va",
-                            StartDate = new DateTime(2019, 11, 16, 15, 16, 55, 621, DateTimeKind.Utc).AddTicks(6780),
-                            SubscribedDate = new DateTime(2017, 6, 28, 13, 24, 36, 10, DateTimeKind.Utc).AddTicks(3159),
+                            StartDate = new DateTime(2019, 11, 19, 20, 16, 45, 288, DateTimeKind.Utc).AddTicks(716),
+                            SubscribedDate = new DateTime(2017, 6, 29, 19, 1, 43, 686, DateTimeKind.Utc).AddTicks(2016),
                             TypeId = 2L,
-                            UnsubscribedDate = new DateTime(2018, 8, 9, 0, 50, 38, 341, DateTimeKind.Utc).AddTicks(4486),
+                            UnsubscribedDate = new DateTime(2018, 8, 11, 4, 34, 16, 394, DateTimeKind.Utc).AddTicks(930),
                             UserId = 14L
                         },
                         new
                         {
                             Id = 106L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2024, 1, 30, 5, 30, 26, 14, DateTimeKind.Utc).AddTicks(6353),
+                            EndDate = new DateTime(2024, 2, 5, 11, 49, 37, 269, DateTimeKind.Utc).AddTicks(1849),
                             IsActive = true,
                             PaymentSubscriptionId = "fybw1xhn0y3drrm0",
-                            StartDate = new DateTime(2023, 7, 26, 17, 11, 30, 28, DateTimeKind.Utc).AddTicks(7023),
-                            SubscribedDate = new DateTime(2023, 7, 2, 2, 13, 33, 576, DateTimeKind.Utc).AddTicks(5928),
+                            StartDate = new DateTime(2023, 8, 1, 23, 30, 41, 283, DateTimeKind.Utc).AddTicks(2519),
+                            SubscribedDate = new DateTime(2023, 7, 8, 7, 12, 23, 396, DateTimeKind.Utc).AddTicks(8893),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 7, 16, 21, 9, 46, 590, DateTimeKind.Utc).AddTicks(5658),
+                            UnsubscribedDate = new DateTime(2023, 7, 23, 2, 56, 52, 188, DateTimeKind.Utc).AddTicks(4260),
                             UserId = 36L
                         },
                         new
                         {
                             Id = 107L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 12, 23, 20, 24, 18, 734, DateTimeKind.Utc).AddTicks(7597),
+                            EndDate = new DateTime(2022, 12, 29, 13, 35, 59, 70, DateTimeKind.Utc).AddTicks(9125),
                             IsActive = false,
                             PaymentSubscriptionId = "6voy90ps5l3b1y1b",
-                            StartDate = new DateTime(2022, 11, 27, 9, 37, 23, 17, DateTimeKind.Utc).AddTicks(9818),
-                            SubscribedDate = new DateTime(2022, 5, 13, 17, 43, 2, 595, DateTimeKind.Utc).AddTicks(6568),
+                            StartDate = new DateTime(2022, 12, 3, 2, 49, 3, 354, DateTimeKind.Utc).AddTicks(1346),
+                            SubscribedDate = new DateTime(2022, 5, 19, 0, 9, 39, 445, DateTimeKind.Utc).AddTicks(8285),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2023, 1, 10, 1, 21, 6, 29, DateTimeKind.Utc).AddTicks(2705),
+                            UnsubscribedDate = new DateTime(2023, 1, 15, 20, 55, 14, 332, DateTimeKind.Utc).AddTicks(5478),
                             UserId = 6L
                         },
                         new
                         {
                             Id = 108L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2021, 1, 5, 22, 39, 30, 21, DateTimeKind.Utc).AddTicks(5808),
+                            EndDate = new DateTime(2021, 1, 9, 12, 45, 34, 913, DateTimeKind.Utc).AddTicks(8771),
                             IsActive = false,
                             PaymentSubscriptionId = "r4im89p8kap58jd0",
-                            StartDate = new DateTime(2020, 5, 2, 0, 33, 33, 32, DateTimeKind.Utc).AddTicks(2644),
-                            SubscribedDate = new DateTime(2019, 8, 31, 0, 46, 7, 730, DateTimeKind.Utc).AddTicks(6021),
+                            StartDate = new DateTime(2020, 5, 5, 14, 39, 37, 924, DateTimeKind.Utc).AddTicks(5607),
+                            SubscribedDate = new DateTime(2019, 9, 3, 1, 32, 41, 949, DateTimeKind.Utc).AddTicks(3790),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2020, 12, 3, 6, 42, 1, 388, DateTimeKind.Utc).AddTicks(9043),
+                            UnsubscribedDate = new DateTime(2020, 12, 7, 8, 30, 34, 599, DateTimeKind.Utc).AddTicks(1010),
                             UserId = 10L
                         },
                         new
                         {
                             Id = 109L,
                             Cost = 91.86m,
-                            EndDate = new DateTime(2023, 11, 9, 0, 50, 16, 496, DateTimeKind.Utc).AddTicks(48),
+                            EndDate = new DateTime(2023, 11, 15, 8, 1, 25, 283, DateTimeKind.Utc).AddTicks(859),
                             IsActive = false,
                             PaymentSubscriptionId = "9l7e2zypb364i3jv",
-                            StartDate = new DateTime(2023, 8, 11, 15, 18, 33, 589, DateTimeKind.Utc).AddTicks(4324),
-                            SubscribedDate = new DateTime(2023, 5, 3, 1, 10, 35, 6, DateTimeKind.Utc).AddTicks(4838),
+                            StartDate = new DateTime(2023, 8, 17, 22, 29, 42, 376, DateTimeKind.Utc).AddTicks(5135),
+                            SubscribedDate = new DateTime(2023, 5, 9, 2, 53, 27, 921, DateTimeKind.Utc).AddTicks(3225),
                             TypeId = 3L,
-                            UnsubscribedDate = new DateTime(2023, 8, 28, 22, 8, 56, 987, DateTimeKind.Utc).AddTicks(2461),
+                            UnsubscribedDate = new DateTime(2023, 9, 4, 6, 16, 30, 274, DateTimeKind.Utc).AddTicks(834),
                             UserId = 35L
                         },
                         new
                         {
                             Id = 110L,
                             Cost = 136.02m,
-                            EndDate = new DateTime(2022, 12, 23, 15, 46, 17, 97, DateTimeKind.Utc).AddTicks(1628),
+                            EndDate = new DateTime(2022, 12, 29, 3, 31, 38, 214, DateTimeKind.Utc).AddTicks(380),
                             IsActive = true,
                             PaymentSubscriptionId = "p45radwg6kdm2a5k",
-                            StartDate = new DateTime(2022, 8, 19, 9, 47, 12, 462, DateTimeKind.Utc).AddTicks(7346),
-                            SubscribedDate = new DateTime(2022, 6, 19, 18, 19, 39, 922, DateTimeKind.Utc).AddTicks(388),
+                            StartDate = new DateTime(2022, 8, 24, 21, 32, 33, 579, DateTimeKind.Utc).AddTicks(6098),
+                            SubscribedDate = new DateTime(2022, 6, 25, 2, 47, 6, 576, DateTimeKind.Utc).AddTicks(5883),
                             TypeId = 1L,
-                            UnsubscribedDate = new DateTime(2022, 10, 10, 21, 37, 48, 147, DateTimeKind.Utc).AddTicks(4676),
+                            UnsubscribedDate = new DateTime(2022, 10, 16, 12, 14, 27, 781, DateTimeKind.Utc).AddTicks(8113),
                             UserId = 14L
                         });
                 });
@@ -6490,7 +6691,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 1L,
                             ChallengeVersionId = 14L,
                             Code = "Fuga molestiae laborum architecto minus aut quisquam explicabo corporis.\nVeniam omnis et dolores temporibus voluptatem ea.\nIste odio quis delectus.\nDeleniti qui et consequatur.\nMinus illo quibusdam distinctio cumque nihil voluptate occaecati molestiae fuga.\nEx eos quibusdam ipsa nobis veritatis hic eaque.",
-                            CreatedAt = new DateTime(2023, 8, 13, 6, 7, 28, 611, DateTimeKind.Utc).AddTicks(2697),
+                            CreatedAt = new DateTime(2023, 8, 19, 13, 23, 54, 72, DateTimeKind.Utc).AddTicks(993),
                             CreatedBy = 30L,
                             IsPublic = false
                         },
@@ -6499,7 +6700,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 2L,
                             ChallengeVersionId = 90L,
                             Code = "odit",
-                            CreatedAt = new DateTime(2023, 1, 27, 6, 5, 38, 962, DateTimeKind.Utc).AddTicks(9438),
+                            CreatedAt = new DateTime(2023, 2, 2, 2, 35, 54, 653, DateTimeKind.Utc).AddTicks(2177),
                             CreatedBy = 27L,
                             IsPublic = true
                         },
@@ -6508,7 +6709,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 3L,
                             ChallengeVersionId = 173L,
                             Code = "soluta",
-                            CreatedAt = new DateTime(2021, 9, 6, 22, 36, 4, 233, DateTimeKind.Utc).AddTicks(9134),
+                            CreatedAt = new DateTime(2021, 9, 11, 15, 30, 45, 336, DateTimeKind.Utc).AddTicks(6015),
                             CreatedBy = 29L,
                             IsPublic = false
                         },
@@ -6517,7 +6718,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 4L,
                             ChallengeVersionId = 125L,
                             Code = "dolorem",
-                            CreatedAt = new DateTime(2023, 7, 11, 9, 25, 1, 69, DateTimeKind.Utc).AddTicks(9550),
+                            CreatedAt = new DateTime(2023, 7, 17, 14, 54, 11, 808, DateTimeKind.Utc).AddTicks(9899),
                             CreatedBy = 32L,
                             IsPublic = true
                         },
@@ -6526,7 +6727,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 5L,
                             ChallengeVersionId = 185L,
                             Code = "Id quam velit corporis sunt.",
-                            CreatedAt = new DateTime(2023, 5, 5, 10, 45, 24, 670, DateTimeKind.Utc).AddTicks(4595),
+                            CreatedAt = new DateTime(2023, 5, 11, 12, 36, 7, 361, DateTimeKind.Utc).AddTicks(2905),
                             CreatedBy = 17L,
                             IsPublic = true
                         },
@@ -6535,7 +6736,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 6L,
                             ChallengeVersionId = 47L,
                             Code = "Repellat neque temporibus iste magnam. Placeat sit temporibus rerum aut. Esse iusto autem vero odio necessitatibus et. Voluptatum in nesciunt officia voluptates ratione quo id harum quo.",
-                            CreatedAt = new DateTime(2023, 9, 1, 18, 32, 5, 423, DateTimeKind.Utc).AddTicks(6780),
+                            CreatedAt = new DateTime(2023, 9, 8, 2, 52, 12, 441, DateTimeKind.Utc).AddTicks(8173),
                             CreatedBy = 18L,
                             IsPublic = true
                         },
@@ -6544,7 +6745,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 7L,
                             ChallengeVersionId = 100L,
                             Code = "Eaque et consequatur.",
-                            CreatedAt = new DateTime(2022, 7, 18, 3, 24, 12, 847, DateTimeKind.Utc).AddTicks(1592),
+                            CreatedAt = new DateTime(2022, 7, 23, 13, 24, 16, 102, DateTimeKind.Utc).AddTicks(3310),
                             CreatedBy = 38L,
                             IsPublic = true
                         },
@@ -6553,7 +6754,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 8L,
                             ChallengeVersionId = 10L,
                             Code = "Rerum dolores consequuntur cumque reiciendis iste qui. Omnis animi alias sed facilis. Blanditiis perferendis cumque. Quo nulla consectetur. Quasi impedit qui quis vitae maxime quidem ut pariatur quis.",
-                            CreatedAt = new DateTime(2023, 6, 13, 18, 18, 20, 662, DateTimeKind.Utc).AddTicks(4584),
+                            CreatedAt = new DateTime(2023, 6, 19, 22, 17, 21, 358, DateTimeKind.Utc).AddTicks(9509),
                             CreatedBy = 11L,
                             IsPublic = true
                         },
@@ -6562,7 +6763,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 9L,
                             ChallengeVersionId = 61L,
                             Code = "Soluta ducimus odit est assumenda vitae quo quam.\nIpsa voluptas ut rem architecto eligendi eum itaque.\nQuam debitis id.\nVoluptas est labore placeat harum voluptatem.\nPariatur facere ea assumenda laboriosam.\nQui dicta voluptatem.",
-                            CreatedAt = new DateTime(2023, 8, 25, 12, 36, 43, 517, DateTimeKind.Utc).AddTicks(1460),
+                            CreatedAt = new DateTime(2023, 8, 31, 20, 33, 11, 573, DateTimeKind.Utc).AddTicks(8541),
                             CreatedBy = 40L,
                             IsPublic = true
                         },
@@ -6571,7 +6772,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 10L,
                             ChallengeVersionId = 39L,
                             Code = "Nemo corporis vel exercitationem ea hic quia quidem.",
-                            CreatedAt = new DateTime(2023, 5, 29, 22, 3, 1, 707, DateTimeKind.Utc).AddTicks(7971),
+                            CreatedAt = new DateTime(2023, 6, 5, 1, 13, 35, 876, DateTimeKind.Utc).AddTicks(2674),
                             CreatedBy = 6L,
                             IsPublic = true
                         },
@@ -6580,7 +6781,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 11L,
                             ChallengeVersionId = 42L,
                             Code = "Sit qui nobis aut at nostrum.\nTotam magni ipsa exercitationem ullam tempore voluptas autem saepe expedita.\nEos vel itaque.\nLaboriosam autem commodi non sed.",
-                            CreatedAt = new DateTime(2023, 6, 19, 7, 0, 33, 925, DateTimeKind.Utc).AddTicks(9492),
+                            CreatedAt = new DateTime(2023, 6, 25, 11, 17, 37, 295, DateTimeKind.Utc).AddTicks(1300),
                             CreatedBy = 9L,
                             IsPublic = false
                         },
@@ -6589,7 +6790,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 12L,
                             ChallengeVersionId = 115L,
                             Code = "Veniam quia corporis voluptas cupiditate velit eum quo dolore. Veritatis et est officiis in. Voluptatum aut totam aperiam. Est fugit necessitatibus maxime voluptas quia porro. Et eius quas fuga vero deleniti dolorum deserunt vel.",
-                            CreatedAt = new DateTime(2021, 5, 19, 2, 47, 40, 940, DateTimeKind.Utc).AddTicks(9537),
+                            CreatedAt = new DateTime(2021, 5, 23, 13, 40, 41, 832, DateTimeKind.Utc).AddTicks(8422),
                             CreatedBy = 40L,
                             IsPublic = false
                         },
@@ -6598,7 +6799,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 13L,
                             ChallengeVersionId = 147L,
                             Code = "dicta",
-                            CreatedAt = new DateTime(2023, 4, 3, 14, 4, 37, 287, DateTimeKind.Utc).AddTicks(2141),
+                            CreatedAt = new DateTime(2023, 4, 9, 14, 11, 21, 279, DateTimeKind.Utc).AddTicks(5932),
                             CreatedBy = 36L,
                             IsPublic = false
                         },
@@ -6607,7 +6808,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 14L,
                             ChallengeVersionId = 181L,
                             Code = "Quo voluptatem rerum corporis quidem veritatis velit explicabo. Labore nam vitae voluptas. Iste accusantium temporibus. Omnis similique distinctio ut quod aperiam. Cupiditate accusantium nesciunt aperiam ducimus non.",
-                            CreatedAt = new DateTime(2023, 6, 10, 0, 57, 17, 104, DateTimeKind.Utc).AddTicks(269),
+                            CreatedAt = new DateTime(2023, 6, 16, 4, 44, 8, 823, DateTimeKind.Utc).AddTicks(4298),
                             CreatedBy = 8L,
                             IsPublic = true
                         },
@@ -6616,7 +6817,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 15L,
                             ChallengeVersionId = 112L,
                             Code = "maiores",
-                            CreatedAt = new DateTime(2023, 3, 7, 5, 2, 7, 871, DateTimeKind.Utc).AddTicks(851),
+                            CreatedAt = new DateTime(2023, 3, 13, 3, 39, 31, 346, DateTimeKind.Utc).AddTicks(3257),
                             CreatedBy = 23L,
                             IsPublic = false
                         },
@@ -6625,7 +6826,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 16L,
                             ChallengeVersionId = 178L,
                             Code = "Sit sit quibusdam ab quia nobis.\nPariatur aperiam voluptatibus.\nQuia culpa id.",
-                            CreatedAt = new DateTime(2021, 11, 16, 17, 24, 31, 519, DateTimeKind.Utc).AddTicks(7246),
+                            CreatedAt = new DateTime(2021, 11, 21, 14, 10, 12, 459, DateTimeKind.Utc).AddTicks(3391),
                             CreatedBy = 2L,
                             IsPublic = true
                         },
@@ -6634,7 +6835,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 17L,
                             ChallengeVersionId = 62L,
                             Code = "placeat",
-                            CreatedAt = new DateTime(2022, 11, 16, 20, 24, 11, 222, DateTimeKind.Utc).AddTicks(6023),
+                            CreatedAt = new DateTime(2022, 11, 22, 13, 1, 25, 647, DateTimeKind.Utc).AddTicks(1289),
                             CreatedBy = 36L,
                             IsPublic = false
                         },
@@ -6643,7 +6844,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 18L,
                             ChallengeVersionId = 134L,
                             Code = "Incidunt unde eius.\nRerum dolorem magnam nihil reprehenderit qui.\nVoluptatibus ut ea beatae accusamus eius odit sit id eum.",
-                            CreatedAt = new DateTime(2023, 9, 12, 9, 34, 23, 568, DateTimeKind.Utc).AddTicks(6977),
+                            CreatedAt = new DateTime(2023, 9, 18, 18, 29, 11, 334, DateTimeKind.Utc).AddTicks(1503),
                             CreatedBy = 21L,
                             IsPublic = false
                         },
@@ -6652,7 +6853,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 19L,
                             ChallengeVersionId = 101L,
                             Code = "Similique eos et cupiditate.\nEst vero corporis illum deserunt magni aut sit ut.\nVel veritatis enim quo iure incidunt.\nNam aperiam velit voluptas expedita error consequatur optio laudantium quis.\nEt dolores aliquam architecto qui dolor cumque.",
-                            CreatedAt = new DateTime(2022, 3, 21, 10, 32, 29, 193, DateTimeKind.Utc).AddTicks(731),
+                            CreatedAt = new DateTime(2022, 3, 26, 14, 5, 9, 811, DateTimeKind.Utc).AddTicks(314),
                             CreatedBy = 3L,
                             IsPublic = false
                         },
@@ -6661,7 +6862,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 20L,
                             ChallengeVersionId = 3L,
                             Code = "Atque ipsum ex laudantium expedita. Et tenetur cum voluptatum et quia eaque doloribus nostrum dolores. Magni voluptas rem. Assumenda et nemo est sunt.",
-                            CreatedAt = new DateTime(2023, 5, 5, 4, 40, 53, 720, DateTimeKind.Utc).AddTicks(965),
+                            CreatedAt = new DateTime(2023, 5, 11, 6, 30, 46, 843, DateTimeKind.Utc).AddTicks(2533),
                             CreatedBy = 19L,
                             IsPublic = false
                         },
@@ -6670,7 +6871,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 21L,
                             ChallengeVersionId = 176L,
                             Code = "inventore",
-                            CreatedAt = new DateTime(2022, 7, 8, 12, 9, 16, 114, DateTimeKind.Utc).AddTicks(9936),
+                            CreatedAt = new DateTime(2022, 7, 13, 21, 37, 52, 708, DateTimeKind.Utc).AddTicks(5570),
                             CreatedBy = 7L,
                             IsPublic = true
                         },
@@ -6679,7 +6880,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 22L,
                             ChallengeVersionId = 92L,
                             Code = "Aut ut exercitationem aut.",
-                            CreatedAt = new DateTime(2023, 7, 28, 17, 50, 54, 529, DateTimeKind.Utc).AddTicks(5549),
+                            CreatedAt = new DateTime(2023, 8, 4, 0, 16, 42, 748, DateTimeKind.Utc).AddTicks(8855),
                             CreatedBy = 19L,
                             IsPublic = false
                         },
@@ -6688,7 +6889,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 23L,
                             ChallengeVersionId = 43L,
                             Code = "impedit",
-                            CreatedAt = new DateTime(2023, 2, 7, 5, 10, 6, 726, DateTimeKind.Utc).AddTicks(7063),
+                            CreatedAt = new DateTime(2023, 2, 13, 2, 16, 8, 731, DateTimeKind.Utc).AddTicks(3152),
                             CreatedBy = 38L,
                             IsPublic = true
                         },
@@ -6697,7 +6898,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 24L,
                             ChallengeVersionId = 2L,
                             Code = "pariatur",
-                            CreatedAt = new DateTime(2023, 3, 26, 9, 3, 11, 417, DateTimeKind.Utc).AddTicks(2165),
+                            CreatedAt = new DateTime(2023, 4, 1, 8, 43, 7, 980, DateTimeKind.Utc).AddTicks(5087),
                             CreatedBy = 38L,
                             IsPublic = false
                         },
@@ -6706,7 +6907,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 25L,
                             ChallengeVersionId = 48L,
                             Code = "Ea et quo iusto natus ducimus perspiciatis illum eveniet eaque. Voluptas dolores dolor voluptatem enim praesentium pariatur deleniti hic corporis. Quia et unde et accusantium deleniti praesentium laudantium. Autem labore esse recusandae laborum dolorum. Eveniet soluta mollitia necessitatibus ipsam.",
-                            CreatedAt = new DateTime(2023, 6, 14, 23, 39, 17, 212, DateTimeKind.Utc).AddTicks(8608),
+                            CreatedAt = new DateTime(2023, 6, 21, 3, 42, 17, 357, DateTimeKind.Utc).AddTicks(5233),
                             CreatedBy = 7L,
                             IsPublic = true
                         },
@@ -6715,7 +6916,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 26L,
                             ChallengeVersionId = 125L,
                             Code = "Totam velit autem et fuga est.\nNon rerum quidem quam et.\nIusto harum excepturi dicta beatae.\nUt eligendi fugit tenetur.\nAliquid velit ex itaque eos eum veniam ex fuga.\nRepellat non alias.",
-                            CreatedAt = new DateTime(2023, 7, 25, 11, 42, 36, 751, DateTimeKind.Utc).AddTicks(3985),
+                            CreatedAt = new DateTime(2023, 7, 31, 17, 57, 47, 478, DateTimeKind.Utc).AddTicks(1205),
                             CreatedBy = 10L,
                             IsPublic = false
                         },
@@ -6724,7 +6925,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 27L,
                             ChallengeVersionId = 85L,
                             Code = "Voluptatem provident provident aut est.\nVitae natus et voluptatem quo aliquid et.\nVoluptatem non suscipit eum quasi et aliquid.\nOdio nemo odio.",
-                            CreatedAt = new DateTime(2023, 4, 4, 2, 55, 17, 900, DateTimeKind.Utc).AddTicks(268),
+                            CreatedAt = new DateTime(2023, 4, 10, 3, 3, 46, 693, DateTimeKind.Utc).AddTicks(1134),
                             CreatedBy = 19L,
                             IsPublic = true
                         },
@@ -6733,7 +6934,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 28L,
                             ChallengeVersionId = 181L,
                             Code = "Et optio sed. Aut voluptatum sit voluptas corporis est molestiae corporis nisi. Delectus molestiae ea culpa voluptates et et sapiente.",
-                            CreatedAt = new DateTime(2023, 4, 17, 12, 46, 28, 217, DateTimeKind.Utc).AddTicks(43),
+                            CreatedAt = new DateTime(2023, 4, 23, 13, 38, 42, 863, DateTimeKind.Utc).AddTicks(3046),
                             CreatedBy = 4L,
                             IsPublic = true
                         },
@@ -6742,7 +6943,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 29L,
                             ChallengeVersionId = 15L,
                             Code = "Voluptatem dolorum ad et.",
-                            CreatedAt = new DateTime(2023, 4, 11, 0, 26, 35, 269, DateTimeKind.Utc).AddTicks(9431),
+                            CreatedAt = new DateTime(2023, 4, 17, 0, 57, 34, 478, DateTimeKind.Utc).AddTicks(2304),
                             CreatedBy = 28L,
                             IsPublic = false
                         },
@@ -6751,7 +6952,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 30L,
                             ChallengeVersionId = 66L,
                             Code = "dignissimos",
-                            CreatedAt = new DateTime(2023, 5, 3, 5, 55, 24, 238, DateTimeKind.Utc).AddTicks(8229),
+                            CreatedAt = new DateTime(2023, 5, 9, 7, 38, 55, 882, DateTimeKind.Utc).AddTicks(3802),
                             CreatedBy = 3L,
                             IsPublic = false
                         },
@@ -6760,7 +6961,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 31L,
                             ChallengeVersionId = 28L,
                             Code = "et",
-                            CreatedAt = new DateTime(2023, 8, 10, 21, 45, 13, 993, DateTimeKind.Utc).AddTicks(4626),
+                            CreatedAt = new DateTime(2023, 8, 17, 4, 53, 59, 550, DateTimeKind.Utc).AddTicks(69),
                             CreatedBy = 39L,
                             IsPublic = true
                         },
@@ -6769,7 +6970,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 32L,
                             ChallengeVersionId = 68L,
                             Code = "Aut nihil dicta.",
-                            CreatedAt = new DateTime(2023, 6, 28, 20, 57, 40, 529, DateTimeKind.Utc).AddTicks(7284),
+                            CreatedAt = new DateTime(2023, 7, 5, 1, 45, 59, 976, DateTimeKind.Utc).AddTicks(9759),
                             CreatedBy = 28L,
                             IsPublic = true
                         },
@@ -6778,7 +6979,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 33L,
                             ChallengeVersionId = 128L,
                             Code = "Distinctio aperiam ratione corporis soluta qui quos incidunt.",
-                            CreatedAt = new DateTime(2023, 7, 8, 19, 52, 25, 284, DateTimeKind.Utc).AddTicks(8623),
+                            CreatedAt = new DateTime(2023, 7, 15, 1, 13, 13, 917, DateTimeKind.Utc).AddTicks(1777),
                             CreatedBy = 17L,
                             IsPublic = false
                         },
@@ -6787,7 +6988,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 34L,
                             ChallengeVersionId = 139L,
                             Code = "At officiis omnis. Inventore tenetur voluptatem est est. Occaecati similique ut minus voluptatem consequatur facere optio porro libero. Et odio occaecati dolor facilis et voluptas pariatur eaque.",
-                            CreatedAt = new DateTime(2023, 5, 9, 11, 42, 0, 529, DateTimeKind.Utc).AddTicks(6556),
+                            CreatedAt = new DateTime(2023, 5, 15, 13, 45, 54, 142, DateTimeKind.Utc).AddTicks(3174),
                             CreatedBy = 19L,
                             IsPublic = true
                         },
@@ -6796,7 +6997,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 35L,
                             ChallengeVersionId = 73L,
                             Code = "Non sint minima est in eum nihil.",
-                            CreatedAt = new DateTime(2023, 9, 5, 11, 22, 42, 336, DateTimeKind.Utc).AddTicks(2196),
+                            CreatedAt = new DateTime(2023, 9, 11, 19, 54, 54, 193, DateTimeKind.Utc).AddTicks(7714),
                             CreatedBy = 36L,
                             IsPublic = true
                         },
@@ -6805,7 +7006,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 36L,
                             ChallengeVersionId = 45L,
                             Code = "Itaque nam eligendi velit culpa.",
-                            CreatedAt = new DateTime(2022, 6, 11, 2, 51, 15, 974, DateTimeKind.Utc).AddTicks(9733),
+                            CreatedAt = new DateTime(2022, 6, 16, 10, 50, 29, 941, DateTimeKind.Utc).AddTicks(2774),
                             CreatedBy = 18L,
                             IsPublic = false
                         },
@@ -6814,7 +7015,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 37L,
                             ChallengeVersionId = 11L,
                             Code = "esse",
-                            CreatedAt = new DateTime(2022, 10, 18, 4, 10, 53, 583, DateTimeKind.Utc).AddTicks(6879),
+                            CreatedAt = new DateTime(2022, 10, 23, 19, 11, 17, 305, DateTimeKind.Utc).AddTicks(1304),
                             CreatedBy = 32L,
                             IsPublic = false
                         },
@@ -6823,7 +7024,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 38L,
                             ChallengeVersionId = 48L,
                             Code = "Aut nemo dolore aut beatae.",
-                            CreatedAt = new DateTime(2023, 3, 15, 20, 58, 36, 623, DateTimeKind.Utc).AddTicks(5721),
+                            CreatedAt = new DateTime(2023, 3, 21, 20, 4, 16, 608, DateTimeKind.Utc).AddTicks(4149),
                             CreatedBy = 38L,
                             IsPublic = true
                         },
@@ -6832,7 +7033,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 39L,
                             ChallengeVersionId = 183L,
                             Code = "Beatae ex exercitationem et ea aut.",
-                            CreatedAt = new DateTime(2023, 9, 12, 13, 51, 43, 274, DateTimeKind.Utc).AddTicks(9373),
+                            CreatedAt = new DateTime(2023, 9, 18, 22, 47, 6, 30, DateTimeKind.Utc).AddTicks(7106),
                             CreatedBy = 40L,
                             IsPublic = true
                         },
@@ -6841,7 +7042,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 40L,
                             ChallengeVersionId = 8L,
                             Code = "Beatae est quam et quisquam laudantium officia. Aut fugiat est quo magnam sint eos molestiae. Aliquam enim omnis totam ea. Aut repudiandae est molestiae rerum enim magnam laboriosam labore corrupti. Est iure qui omnis modi consequatur vero maxime. Cupiditate occaecati distinctio voluptatem quos illo rerum est id error.",
-                            CreatedAt = new DateTime(2023, 8, 8, 22, 3, 4, 40, DateTimeKind.Utc).AddTicks(5318),
+                            CreatedAt = new DateTime(2023, 8, 15, 5, 5, 20, 411, DateTimeKind.Utc).AddTicks(509),
                             CreatedBy = 29L,
                             IsPublic = true
                         },
@@ -6850,7 +7051,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 41L,
                             ChallengeVersionId = 122L,
                             Code = "Sed cumque nihil.\nQuos sed ut perspiciatis autem rem id est aperiam.\nEt quisquam reprehenderit commodi veniam magnam dolores.\nFugiat commodi non id tempore ducimus.\nAlias officia quia animi ratione enim sequi voluptatem.\nAperiam maiores enim.",
-                            CreatedAt = new DateTime(2023, 6, 15, 1, 8, 9, 102, DateTimeKind.Utc).AddTicks(139),
+                            CreatedAt = new DateTime(2023, 6, 21, 5, 11, 21, 327, DateTimeKind.Utc).AddTicks(5519),
                             CreatedBy = 24L,
                             IsPublic = false
                         },
@@ -6859,7 +7060,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 42L,
                             ChallengeVersionId = 13L,
                             Code = "nihil",
-                            CreatedAt = new DateTime(2021, 11, 1, 11, 49, 55, 486, DateTimeKind.Utc).AddTicks(9194),
+                            CreatedAt = new DateTime(2021, 11, 6, 7, 45, 53, 846, DateTimeKind.Utc).AddTicks(5366),
                             CreatedBy = 15L,
                             IsPublic = true
                         },
@@ -6868,7 +7069,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 43L,
                             ChallengeVersionId = 67L,
                             Code = "Cumque culpa aut et inventore.",
-                            CreatedAt = new DateTime(2023, 7, 28, 18, 28, 5, 369, DateTimeKind.Utc).AddTicks(891),
+                            CreatedAt = new DateTime(2023, 8, 4, 0, 53, 58, 644, DateTimeKind.Utc).AddTicks(5329),
                             CreatedBy = 35L,
                             IsPublic = false
                         },
@@ -6877,7 +7078,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 44L,
                             ChallengeVersionId = 23L,
                             Code = "In quia rerum tempora voluptas in quis sit ullam earum. Minus magnam voluptatem non ut laborum sit veniam cum sequi. Ut similique ipsum quis voluptatem est qui quia velit. Repudiandae cumque earum debitis illum fugiat aliquid hic. Odit doloremque possimus. Quis et aperiam aut doloribus magnam similique fuga.",
-                            CreatedAt = new DateTime(2023, 4, 23, 0, 19, 56, 232, DateTimeKind.Utc).AddTicks(7556),
+                            CreatedAt = new DateTime(2023, 4, 29, 1, 30, 4, 202, DateTimeKind.Utc).AddTicks(6603),
                             CreatedBy = 22L,
                             IsPublic = false
                         },
@@ -6886,7 +7087,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 45L,
                             ChallengeVersionId = 38L,
                             Code = "Deleniti eos sint.",
-                            CreatedAt = new DateTime(2023, 9, 4, 9, 45, 6, 77, DateTimeKind.Utc).AddTicks(6435),
+                            CreatedAt = new DateTime(2023, 9, 10, 18, 13, 48, 857, DateTimeKind.Utc).AddTicks(4029),
                             CreatedBy = 22L,
                             IsPublic = true
                         },
@@ -6895,7 +7096,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 46L,
                             ChallengeVersionId = 58L,
                             Code = "Et vitae omnis. Suscipit quidem ab voluptas qui officiis et tempore tempora ut. Officiis nulla architecto et. Esse expedita et omnis officiis consequatur cupiditate sint vero incidunt. Omnis et tenetur voluptatem et rem qui.",
-                            CreatedAt = new DateTime(2023, 3, 9, 12, 12, 8, 91, DateTimeKind.Utc).AddTicks(2343),
+                            CreatedAt = new DateTime(2023, 3, 15, 10, 57, 1, 651, DateTimeKind.Utc).AddTicks(63),
                             CreatedBy = 28L,
                             IsPublic = true
                         },
@@ -6904,7 +7105,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 47L,
                             ChallengeVersionId = 52L,
                             Code = "dignissimos",
-                            CreatedAt = new DateTime(2023, 4, 28, 12, 44, 7, 419, DateTimeKind.Utc).AddTicks(3959),
+                            CreatedAt = new DateTime(2023, 5, 4, 14, 12, 15, 607, DateTimeKind.Utc).AddTicks(2497),
                             CreatedBy = 37L,
                             IsPublic = false
                         },
@@ -6913,7 +7114,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 48L,
                             ChallengeVersionId = 137L,
                             Code = "corporis",
-                            CreatedAt = new DateTime(2023, 7, 19, 13, 15, 32, 792, DateTimeKind.Utc).AddTicks(6528),
+                            CreatedAt = new DateTime(2023, 7, 25, 19, 11, 21, 320, DateTimeKind.Utc).AddTicks(1507),
                             CreatedBy = 1L,
                             IsPublic = true
                         },
@@ -6922,7 +7123,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 49L,
                             ChallengeVersionId = 2L,
                             Code = "Alias aut cupiditate fugit magni maiores repudiandae.\nDolore est enim illum magnam.\nQuaerat repellendus quia exercitationem minus in.\nSint et eveniet.\nNecessitatibus omnis perspiciatis reprehenderit provident corrupti quis sequi voluptas rem.\nVoluptas commodi unde optio dolorem architecto.",
-                            CreatedAt = new DateTime(2023, 7, 25, 21, 53, 23, 269, DateTimeKind.Utc).AddTicks(502),
+                            CreatedAt = new DateTime(2023, 8, 1, 4, 9, 57, 43, DateTimeKind.Utc).AddTicks(4907),
                             CreatedBy = 26L,
                             IsPublic = true
                         },
@@ -6931,7 +7132,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 50L,
                             ChallengeVersionId = 20L,
                             Code = "Quia eligendi veniam itaque quam occaecati. Ipsa et dolores et et consequatur. Porro quia maiores distinctio et recusandae dolor voluptatem sapiente placeat. Voluptate maiores molestias. Aliquam magnam odit et quia quasi quo quia aliquid. Aut maiores iusto dolores tempora corporis voluptatem quibusdam.",
-                            CreatedAt = new DateTime(2023, 8, 7, 3, 26, 1, 131, DateTimeKind.Utc).AddTicks(1585),
+                            CreatedAt = new DateTime(2023, 8, 13, 10, 22, 29, 800, DateTimeKind.Utc).AddTicks(5125),
                             CreatedBy = 4L,
                             IsPublic = true
                         },
@@ -6940,7 +7141,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 51L,
                             ChallengeVersionId = 194L,
                             Code = "eos",
-                            CreatedAt = new DateTime(2023, 5, 15, 9, 19, 56, 212, DateTimeKind.Utc).AddTicks(342),
+                            CreatedAt = new DateTime(2023, 5, 21, 11, 43, 5, 332, DateTimeKind.Utc).AddTicks(1480),
                             CreatedBy = 13L,
                             IsPublic = true
                         },
@@ -6949,7 +7150,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 52L,
                             ChallengeVersionId = 35L,
                             Code = "Sed aut quia.\nRerum dolores dolor dolore voluptates.\nSint quidem non fugit rerum ut rerum minus dignissimos est.\nRerum numquam autem mollitia amet dolore nobis.\nVoluptas odit tempore ducimus quisquam enim.\nQuaerat omnis nisi.",
-                            CreatedAt = new DateTime(2023, 6, 25, 17, 38, 27, 730, DateTimeKind.Utc).AddTicks(9272),
+                            CreatedAt = new DateTime(2023, 7, 1, 22, 16, 32, 673, DateTimeKind.Utc).AddTicks(7056),
                             CreatedBy = 23L,
                             IsPublic = true
                         },
@@ -6958,7 +7159,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 53L,
                             ChallengeVersionId = 60L,
                             Code = "Voluptatem dolores maxime voluptatem.",
-                            CreatedAt = new DateTime(2023, 6, 23, 13, 23, 48, 975, DateTimeKind.Utc).AddTicks(8711),
+                            CreatedAt = new DateTime(2023, 6, 29, 17, 54, 47, 681, DateTimeKind.Utc).AddTicks(2154),
                             CreatedBy = 40L,
                             IsPublic = true
                         },
@@ -6967,7 +7168,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 54L,
                             ChallengeVersionId = 130L,
                             Code = "ea",
-                            CreatedAt = new DateTime(2023, 8, 18, 3, 51, 3, 313, DateTimeKind.Utc).AddTicks(1199),
+                            CreatedAt = new DateTime(2023, 8, 24, 11, 23, 29, 249, DateTimeKind.Utc).AddTicks(5922),
                             CreatedBy = 16L,
                             IsPublic = false
                         },
@@ -6976,7 +7177,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 55L,
                             ChallengeVersionId = 51L,
                             Code = "Assumenda qui assumenda.\nAmet quia nulla recusandae.\nConsequuntur reprehenderit ad.\nInventore optio quibusdam et in.\nQuas distinctio dolor.\nAut qui voluptatem voluptatem dolorum.",
-                            CreatedAt = new DateTime(2023, 2, 26, 6, 25, 22, 451, DateTimeKind.Utc).AddTicks(6141),
+                            CreatedAt = new DateTime(2023, 3, 4, 4, 33, 34, 998, DateTimeKind.Utc).AddTicks(665),
                             CreatedBy = 40L,
                             IsPublic = false
                         },
@@ -6985,7 +7186,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 56L,
                             ChallengeVersionId = 180L,
                             Code = "Repellendus quae est sint fugiat non.",
-                            CreatedAt = new DateTime(2023, 9, 1, 13, 14, 8, 5, DateTimeKind.Utc).AddTicks(7175),
+                            CreatedAt = new DateTime(2023, 9, 7, 21, 33, 31, 790, DateTimeKind.Utc).AddTicks(2331),
                             CreatedBy = 9L,
                             IsPublic = true
                         },
@@ -6994,7 +7195,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 57L,
                             ChallengeVersionId = 31L,
                             Code = "Nisi tenetur delectus facere sed est eum et officia.\nDistinctio distinctio accusamus rerum tempora soluta non qui maxime.\nEveniet ad est ratione quo quod quia id sunt ut.\nQuas voluptas voluptatum.\nLibero veniam quia dolor repellat eveniet a adipisci aliquam doloribus.\nDelectus ipsa tempore voluptate repellat.",
-                            CreatedAt = new DateTime(2023, 8, 25, 15, 36, 8, 659, DateTimeKind.Utc).AddTicks(3473),
+                            CreatedAt = new DateTime(2023, 8, 31, 23, 33, 1, 112, DateTimeKind.Utc).AddTicks(5833),
                             CreatedBy = 34L,
                             IsPublic = false
                         },
@@ -7003,7 +7204,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 58L,
                             ChallengeVersionId = 164L,
                             Code = "corporis",
-                            CreatedAt = new DateTime(2023, 5, 31, 1, 52, 37, 995, DateTimeKind.Utc).AddTicks(7734),
+                            CreatedAt = new DateTime(2023, 6, 6, 5, 6, 59, 185, DateTimeKind.Utc).AddTicks(6170),
                             CreatedBy = 19L,
                             IsPublic = true
                         },
@@ -7012,7 +7213,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 59L,
                             ChallengeVersionId = 1L,
                             Code = "Id nesciunt saepe qui voluptates natus in. Ea maxime explicabo. Beatae qui nesciunt blanditiis omnis beatae non neque aut et. Earum provident et commodi laudantium vitae voluptatem rem. Aspernatur culpa occaecati. Commodi similique magni fugit aut voluptates temporibus sed minus.",
-                            CreatedAt = new DateTime(2023, 8, 1, 23, 47, 2, 496, DateTimeKind.Utc).AddTicks(1539),
+                            CreatedAt = new DateTime(2023, 8, 8, 6, 26, 42, 364, DateTimeKind.Utc).AddTicks(2703),
                             CreatedBy = 37L,
                             IsPublic = false
                         },
@@ -7021,7 +7222,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 60L,
                             ChallengeVersionId = 184L,
                             Code = "Pariatur optio facilis eum sint hic.\nConsequatur adipisci recusandae consequatur ipsa ad reiciendis nulla et.\nVoluptas sunt quia hic illum voluptatem veritatis sed cupiditate non.\nVoluptates blanditiis aut dolores quidem voluptatem ut.\nRecusandae eligendi ipsam velit impedit quia.",
-                            CreatedAt = new DateTime(2023, 9, 5, 20, 54, 33, 23, DateTimeKind.Utc).AddTicks(4477),
+                            CreatedAt = new DateTime(2023, 9, 12, 5, 28, 2, 634, DateTimeKind.Utc).AddTicks(2194),
                             CreatedBy = 37L,
                             IsPublic = true
                         },
@@ -7030,7 +7231,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 61L,
                             ChallengeVersionId = 197L,
                             Code = "Dolores aperiam suscipit dolores. Et doloremque perspiciatis culpa impedit asperiores. Suscipit explicabo id consequuntur molestias ea magnam quo. Error sit aut cum et dolorem. Architecto nesciunt consequatur soluta blanditiis consequatur esse nihil totam alias. Cupiditate ut at ex.",
-                            CreatedAt = new DateTime(2023, 3, 8, 15, 27, 49, 462, DateTimeKind.Utc).AddTicks(1775),
+                            CreatedAt = new DateTime(2023, 3, 14, 14, 9, 53, 821, DateTimeKind.Utc).AddTicks(4882),
                             CreatedBy = 27L,
                             IsPublic = true
                         },
@@ -7039,7 +7240,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 62L,
                             ChallengeVersionId = 190L,
                             Code = "dolor",
-                            CreatedAt = new DateTime(2023, 5, 9, 3, 59, 53, 356, DateTimeKind.Utc).AddTicks(8503),
+                            CreatedAt = new DateTime(2023, 5, 15, 6, 2, 44, 127, DateTimeKind.Utc).AddTicks(912),
                             CreatedBy = 14L,
                             IsPublic = true
                         },
@@ -7048,7 +7249,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 63L,
                             ChallengeVersionId = 187L,
                             Code = "porro",
-                            CreatedAt = new DateTime(2023, 2, 5, 4, 49, 18, 118, DateTimeKind.Utc).AddTicks(7475),
+                            CreatedAt = new DateTime(2023, 2, 11, 1, 48, 45, 682, DateTimeKind.Utc).AddTicks(8384),
                             CreatedBy = 14L,
                             IsPublic = false
                         },
@@ -7057,7 +7258,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 64L,
                             ChallengeVersionId = 29L,
                             Code = "Rem nihil nisi ipsam. Ut cum ipsam distinctio molestias. Est voluptatum officia non. Est consequatur magni autem. Consequuntur omnis voluptatem dicta esse est atque in.",
-                            CreatedAt = new DateTime(2023, 8, 18, 20, 41, 12, 81, DateTimeKind.Utc).AddTicks(8348),
+                            CreatedAt = new DateTime(2023, 8, 25, 4, 15, 55, 375, DateTimeKind.Utc).AddTicks(9517),
                             CreatedBy = 8L,
                             IsPublic = true
                         },
@@ -7066,7 +7267,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 65L,
                             ChallengeVersionId = 186L,
                             Code = "eum",
-                            CreatedAt = new DateTime(2023, 9, 3, 7, 3, 5, 917, DateTimeKind.Utc).AddTicks(8835),
+                            CreatedAt = new DateTime(2023, 9, 9, 15, 28, 10, 863, DateTimeKind.Utc).AddTicks(1174),
                             CreatedBy = 1L,
                             IsPublic = true
                         },
@@ -7075,7 +7276,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 66L,
                             ChallengeVersionId = 113L,
                             Code = "Et nostrum rerum aut et.",
-                            CreatedAt = new DateTime(2022, 7, 27, 2, 36, 58, 398, DateTimeKind.Utc).AddTicks(9508),
+                            CreatedAt = new DateTime(2022, 8, 1, 13, 6, 17, 480, DateTimeKind.Utc).AddTicks(3201),
                             CreatedBy = 29L,
                             IsPublic = true
                         },
@@ -7084,7 +7285,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 67L,
                             ChallengeVersionId = 198L,
                             Code = "Aut velit ut nam voluptatem tempora accusamus voluptatem adipisci.\nSint voluptas quae debitis autem quia minima natus.\nEt est dignissimos vero fugiat officiis voluptates modi.\nCupiditate omnis molestiae molestias consequatur ut delectus eligendi eaque.\nVoluptatem dolor occaecati vitae nesciunt.\nEst natus et.",
-                            CreatedAt = new DateTime(2023, 7, 1, 14, 7, 56, 278, DateTimeKind.Utc).AddTicks(1959),
+                            CreatedAt = new DateTime(2023, 7, 7, 19, 5, 7, 428, DateTimeKind.Utc).AddTicks(283),
                             CreatedBy = 37L,
                             IsPublic = true
                         },
@@ -7093,7 +7294,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 68L,
                             ChallengeVersionId = 40L,
                             Code = "tenetur",
-                            CreatedAt = new DateTime(2023, 8, 27, 13, 55, 7, 579, DateTimeKind.Utc).AddTicks(8482),
+                            CreatedAt = new DateTime(2023, 9, 2, 21, 58, 17, 909, DateTimeKind.Utc).AddTicks(4651),
                             CreatedBy = 18L,
                             IsPublic = true
                         },
@@ -7102,7 +7303,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 69L,
                             ChallengeVersionId = 151L,
                             Code = "Consequatur sit quibusdam iusto vel aut.\nOptio voluptates soluta dolorem perferendis et et explicabo facilis quis.\nVeritatis ipsam nulla ut distinctio animi voluptatem voluptas.\nDolorem incidunt non eos non voluptatum voluptates.\nQuas quis est enim omnis animi consequatur beatae molestias.",
-                            CreatedAt = new DateTime(2023, 7, 8, 3, 1, 22, 5, DateTimeKind.Utc).AddTicks(7239),
+                            CreatedAt = new DateTime(2023, 7, 14, 8, 19, 53, 157, DateTimeKind.Utc).AddTicks(1320),
                             CreatedBy = 34L,
                             IsPublic = true
                         },
@@ -7111,7 +7312,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 70L,
                             ChallengeVersionId = 31L,
                             Code = "rem",
-                            CreatedAt = new DateTime(2023, 3, 25, 16, 22, 59, 596, DateTimeKind.Utc).AddTicks(1138),
+                            CreatedAt = new DateTime(2023, 3, 31, 16, 0, 40, 156, DateTimeKind.Utc).AddTicks(8438),
                             CreatedBy = 18L,
                             IsPublic = false
                         },
@@ -7120,7 +7321,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 71L,
                             ChallengeVersionId = 16L,
                             Code = "Velit fugit aut praesentium autem.\nEum perspiciatis rerum sed sit magni.\nEa error quam ullam porro voluptatum nesciunt.\nNulla necessitatibus repellat quas.\nPossimus autem ipsam.",
-                            CreatedAt = new DateTime(2023, 3, 22, 5, 15, 3, 77, DateTimeKind.Utc).AddTicks(1824),
+                            CreatedAt = new DateTime(2023, 3, 28, 4, 41, 25, 399, DateTimeKind.Utc).AddTicks(7542),
                             CreatedBy = 14L,
                             IsPublic = true
                         },
@@ -7129,7 +7330,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 72L,
                             ChallengeVersionId = 122L,
                             Code = "dicta",
-                            CreatedAt = new DateTime(2023, 8, 17, 2, 14, 19, 666, DateTimeKind.Utc).AddTicks(9091),
+                            CreatedAt = new DateTime(2023, 8, 23, 9, 43, 16, 646, DateTimeKind.Utc).AddTicks(7418),
                             CreatedBy = 13L,
                             IsPublic = true
                         },
@@ -7138,7 +7339,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 73L,
                             ChallengeVersionId = 147L,
                             Code = "Fugit saepe excepturi et excepturi fugit deserunt ea ratione possimus. Et quia aliquid. Aut tenetur qui nihil. Tempora natus provident. Magni ducimus enim a vitae repellat voluptates sunt laudantium amet.",
-                            CreatedAt = new DateTime(2023, 6, 15, 8, 5, 37, 524, DateTimeKind.Utc).AddTicks(4737),
+                            CreatedAt = new DateTime(2023, 6, 21, 12, 9, 46, 515, DateTimeKind.Utc).AddTicks(2986),
                             CreatedBy = 20L,
                             IsPublic = false
                         },
@@ -7147,7 +7348,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 74L,
                             ChallengeVersionId = 127L,
                             Code = "Repudiandae non dolore quaerat iure itaque id vel commodi.\nArchitecto velit nobis id omnis.\nCupiditate temporibus et voluptas harum.\nVoluptatem nulla excepturi voluptatem voluptatem.\nIncidunt corrupti quis dolor veritatis modi ipsam.",
-                            CreatedAt = new DateTime(2023, 8, 8, 9, 24, 31, 57, DateTimeKind.Utc).AddTicks(6409),
+                            CreatedAt = new DateTime(2023, 8, 14, 16, 25, 4, 282, DateTimeKind.Utc).AddTicks(2808),
                             CreatedBy = 30L,
                             IsPublic = true
                         },
@@ -7156,7 +7357,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 75L,
                             ChallengeVersionId = 62L,
                             Code = "Quisquam est quo autem dolor ducimus dolor.\nSapiente autem corrupti et voluptatem mollitia dolor in.\nUt sint sed ratione officiis reiciendis saepe eos.\nQuam et quasi et quae iste.",
-                            CreatedAt = new DateTime(2023, 3, 22, 17, 44, 27, 854, DateTimeKind.Utc).AddTicks(7602),
+                            CreatedAt = new DateTime(2023, 3, 28, 17, 12, 32, 73, DateTimeKind.Utc).AddTicks(5441),
                             CreatedBy = 24L,
                             IsPublic = true
                         },
@@ -7165,7 +7366,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 76L,
                             ChallengeVersionId = 75L,
                             Code = "eos",
-                            CreatedAt = new DateTime(2022, 12, 23, 14, 3, 45, 712, DateTimeKind.Utc).AddTicks(7035),
+                            CreatedAt = new DateTime(2022, 12, 29, 8, 40, 53, 216, DateTimeKind.Utc).AddTicks(160),
                             CreatedBy = 18L,
                             IsPublic = true
                         },
@@ -7174,7 +7375,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 77L,
                             ChallengeVersionId = 70L,
                             Code = "Quaerat architecto quisquam pariatur necessitatibus reiciendis molestias deserunt.\nMolestiae pariatur tempore earum labore voluptatem.\nQuaerat similique nesciunt.\nNon quos explicabo repellat ad iure est et.",
-                            CreatedAt = new DateTime(2023, 9, 5, 23, 22, 46, 590, DateTimeKind.Utc).AddTicks(8019),
+                            CreatedAt = new DateTime(2023, 9, 12, 7, 56, 36, 359, DateTimeKind.Utc).AddTicks(6258),
                             CreatedBy = 23L,
                             IsPublic = true
                         },
@@ -7183,7 +7384,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 78L,
                             ChallengeVersionId = 37L,
                             Code = "Debitis eum cumque quasi.",
-                            CreatedAt = new DateTime(2023, 9, 3, 19, 35, 32, 55, DateTimeKind.Utc).AddTicks(4471),
+                            CreatedAt = new DateTime(2023, 9, 10, 4, 2, 19, 310, DateTimeKind.Utc).AddTicks(7283),
                             CreatedBy = 22L,
                             IsPublic = false
                         },
@@ -7192,7 +7393,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 79L,
                             ChallengeVersionId = 195L,
                             Code = "Fugiat et eveniet illo perspiciatis dolor voluptatem quis. Omnis voluptas voluptatibus quisquam sunt et consequatur facilis et. Officiis molestias ad quod ea recusandae voluptas consectetur. Suscipit sed delectus animi laudantium aliquam. Quia quo consequatur et et provident.",
-                            CreatedAt = new DateTime(2023, 1, 9, 8, 22, 8, 245, DateTimeKind.Utc).AddTicks(233),
+                            CreatedAt = new DateTime(2023, 1, 15, 3, 53, 57, 998, DateTimeKind.Utc).AddTicks(714),
                             CreatedBy = 18L,
                             IsPublic = true
                         },
@@ -7201,7 +7402,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 80L,
                             ChallengeVersionId = 108L,
                             Code = "Dolores soluta blanditiis eveniet quisquam nesciunt possimus labore natus voluptas.",
-                            CreatedAt = new DateTime(2023, 9, 7, 0, 46, 9, 203, DateTimeKind.Utc).AddTicks(7463),
+                            CreatedAt = new DateTime(2023, 9, 13, 9, 23, 26, 112, DateTimeKind.Utc).AddTicks(5780),
                             CreatedBy = 9L,
                             IsPublic = true
                         },
@@ -7210,7 +7411,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 81L,
                             ChallengeVersionId = 107L,
                             Code = "Autem neque sint totam magni dolor expedita fugiat.\nUt laboriosam sed impedit exercitationem dolore.",
-                            CreatedAt = new DateTime(2023, 7, 19, 16, 30, 15, 315, DateTimeKind.Utc).AddTicks(5168),
+                            CreatedAt = new DateTime(2023, 7, 25, 22, 26, 30, 318, DateTimeKind.Utc).AddTicks(9003),
                             CreatedBy = 28L,
                             IsPublic = true
                         },
@@ -7219,7 +7420,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 82L,
                             ChallengeVersionId = 66L,
                             Code = "Odio impedit perferendis rerum. Quia eligendi qui excepturi eveniet itaque non est hic rerum. Consequatur quas et et minima molestiae esse. Pariatur doloremque nostrum officia officiis exercitationem non voluptatem.",
-                            CreatedAt = new DateTime(2023, 6, 6, 17, 52, 10, 424, DateTimeKind.Utc).AddTicks(1542),
+                            CreatedAt = new DateTime(2023, 6, 12, 21, 28, 16, 922, DateTimeKind.Utc).AddTicks(8798),
                             CreatedBy = 29L,
                             IsPublic = true
                         },
@@ -7228,7 +7429,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 83L,
                             ChallengeVersionId = 145L,
                             Code = "Sit deleniti eos vero.",
-                            CreatedAt = new DateTime(2023, 8, 8, 5, 38, 33, 210, DateTimeKind.Utc).AddTicks(584),
+                            CreatedAt = new DateTime(2023, 8, 14, 12, 38, 35, 710, DateTimeKind.Utc).AddTicks(56),
                             CreatedBy = 24L,
                             IsPublic = true
                         },
@@ -7237,7 +7438,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 84L,
                             ChallengeVersionId = 46L,
                             Code = "Eum voluptas sed vitae et delectus sint nostrum.\nEaque sapiente aut odit quo.\nDelectus temporibus id aspernatur.",
-                            CreatedAt = new DateTime(2021, 1, 14, 13, 21, 16, 568, DateTimeKind.Utc).AddTicks(6454),
+                            CreatedAt = new DateTime(2021, 1, 18, 17, 27, 47, 906, DateTimeKind.Utc).AddTicks(160),
                             CreatedBy = 3L,
                             IsPublic = true
                         },
@@ -7246,7 +7447,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 85L,
                             ChallengeVersionId = 14L,
                             Code = "Molestiae nihil velit aut odit.",
-                            CreatedAt = new DateTime(2023, 8, 27, 12, 6, 24, 786, DateTimeKind.Utc).AddTicks(870),
+                            CreatedAt = new DateTime(2023, 9, 2, 20, 9, 20, 332, DateTimeKind.Utc).AddTicks(2026),
                             CreatedBy = 40L,
                             IsPublic = true
                         },
@@ -7255,7 +7456,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 86L,
                             ChallengeVersionId = 146L,
                             Code = "ut",
-                            CreatedAt = new DateTime(2023, 8, 21, 6, 17, 53, 386, DateTimeKind.Utc).AddTicks(2681),
+                            CreatedAt = new DateTime(2023, 8, 27, 14, 0, 26, 708, DateTimeKind.Utc).AddTicks(2127),
                             CreatedBy = 4L,
                             IsPublic = true
                         },
@@ -7264,7 +7465,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 87L,
                             ChallengeVersionId = 29L,
                             Code = "occaecati",
-                            CreatedAt = new DateTime(2023, 7, 9, 0, 58, 20, 288, DateTimeKind.Utc).AddTicks(6633),
+                            CreatedAt = new DateTime(2023, 7, 15, 6, 19, 50, 515, DateTimeKind.Utc).AddTicks(8464),
                             CreatedBy = 9L,
                             IsPublic = true
                         },
@@ -7273,7 +7474,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 88L,
                             ChallengeVersionId = 103L,
                             Code = "qui",
-                            CreatedAt = new DateTime(2023, 3, 24, 19, 57, 1, 392, DateTimeKind.Utc).AddTicks(159),
+                            CreatedAt = new DateTime(2023, 3, 30, 19, 31, 55, 247, DateTimeKind.Utc).AddTicks(7156),
                             CreatedBy = 33L,
                             IsPublic = true
                         },
@@ -7282,7 +7483,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 89L,
                             ChallengeVersionId = 135L,
                             Code = "Assumenda sed aut omnis voluptatem ut ipsam.\nQuia delectus culpa rerum neque.",
-                            CreatedAt = new DateTime(2023, 7, 11, 8, 53, 31, 545, DateTimeKind.Utc).AddTicks(1526),
+                            CreatedAt = new DateTime(2023, 7, 17, 14, 22, 37, 998, DateTimeKind.Utc).AddTicks(3034),
                             CreatedBy = 10L,
                             IsPublic = true
                         },
@@ -7291,7 +7492,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 90L,
                             ChallengeVersionId = 175L,
                             Code = "Iste et sint.\nQuisquam necessitatibus veniam.\nEt ullam eveniet fugiat non autem enim assumenda.\nNemo voluptas quae necessitatibus sed recusandae labore quidem porro.",
-                            CreatedAt = new DateTime(2022, 7, 17, 22, 29, 20, 530, DateTimeKind.Utc).AddTicks(7706),
+                            CreatedAt = new DateTime(2022, 7, 23, 8, 28, 43, 690, DateTimeKind.Utc).AddTicks(3599),
                             CreatedBy = 11L,
                             IsPublic = true
                         },
@@ -7300,7 +7501,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 91L,
                             ChallengeVersionId = 8L,
                             Code = "est",
-                            CreatedAt = new DateTime(2023, 8, 17, 14, 1, 33, 998, DateTimeKind.Utc).AddTicks(5342),
+                            CreatedAt = new DateTime(2023, 8, 23, 21, 32, 7, 146, DateTimeKind.Utc).AddTicks(8262),
                             CreatedBy = 1L,
                             IsPublic = true
                         },
@@ -7309,7 +7510,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 92L,
                             ChallengeVersionId = 158L,
                             Code = "Ipsa molestiae aliquam et vel et quasi maxime tenetur.",
-                            CreatedAt = new DateTime(2023, 5, 22, 16, 1, 15, 705, DateTimeKind.Utc).AddTicks(1996),
+                            CreatedAt = new DateTime(2023, 5, 28, 18, 48, 10, 37, DateTimeKind.Utc).AddTicks(4174),
                             CreatedBy = 20L,
                             IsPublic = true
                         },
@@ -7318,7 +7519,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 93L,
                             ChallengeVersionId = 85L,
                             Code = "Totam magni aliquid maiores cum laudantium consequatur perferendis consequatur.",
-                            CreatedAt = new DateTime(2023, 3, 25, 19, 16, 21, 177, DateTimeKind.Utc).AddTicks(2863),
+                            CreatedAt = new DateTime(2023, 3, 31, 18, 54, 25, 314, DateTimeKind.Utc).AddTicks(1178),
                             CreatedBy = 9L,
                             IsPublic = true
                         },
@@ -7327,7 +7528,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 94L,
                             ChallengeVersionId = 192L,
                             Code = "Quam deleniti veritatis voluptatem laboriosam. Voluptatem reprehenderit doloremque dolorem necessitatibus omnis dicta quasi autem. Tempore saepe similique sint distinctio et est voluptatem eaque. Dignissimos quia perspiciatis eligendi dolorem hic. Nihil reiciendis asperiores. Voluptatem quam cum accusamus sapiente.",
-                            CreatedAt = new DateTime(2022, 11, 4, 7, 2, 37, 124, DateTimeKind.Utc).AddTicks(9233),
+                            CreatedAt = new DateTime(2022, 11, 9, 22, 58, 52, 885, DateTimeKind.Utc).AddTicks(8849),
                             CreatedBy = 23L,
                             IsPublic = true
                         },
@@ -7336,7 +7537,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 95L,
                             ChallengeVersionId = 85L,
                             Code = "Iusto sed aliquid tempora delectus nihil iste accusamus. Tempora molestiae nisi inventore pariatur suscipit nisi earum. Nam explicabo quibusdam dolores cupiditate voluptatum saepe ab. Voluptates aspernatur maxime autem atque nihil in odit. Rem quisquam aut quisquam.",
-                            CreatedAt = new DateTime(2023, 8, 26, 3, 45, 20, 875, DateTimeKind.Utc).AddTicks(874),
+                            CreatedAt = new DateTime(2023, 9, 1, 11, 43, 52, 482, DateTimeKind.Utc).AddTicks(7811),
                             CreatedBy = 24L,
                             IsPublic = true
                         },
@@ -7345,7 +7546,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 96L,
                             ChallengeVersionId = 111L,
                             Code = "Consequatur fugit dolorum dolorem et.",
-                            CreatedAt = new DateTime(2023, 3, 24, 10, 33, 48, 37, DateTimeKind.Utc).AddTicks(8276),
+                            CreatedAt = new DateTime(2023, 3, 30, 10, 7, 25, 310, DateTimeKind.Utc).AddTicks(1628),
                             CreatedBy = 26L,
                             IsPublic = true
                         },
@@ -7354,7 +7555,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 97L,
                             ChallengeVersionId = 49L,
                             Code = "Suscipit sint consequatur est est repellat et odio rerum atque. Dolor accusamus modi officia earum tempore tempore ut. Voluptatibus natus labore qui quis recusandae fugit.",
-                            CreatedAt = new DateTime(2023, 8, 31, 7, 49, 37, 451, DateTimeKind.Utc).AddTicks(4374),
+                            CreatedAt = new DateTime(2023, 9, 6, 16, 5, 1, 302, DateTimeKind.Utc).AddTicks(5058),
                             CreatedBy = 3L,
                             IsPublic = true
                         },
@@ -7363,7 +7564,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 98L,
                             ChallengeVersionId = 120L,
                             Code = "qui",
-                            CreatedAt = new DateTime(2023, 6, 10, 14, 35, 57, 904, DateTimeKind.Utc).AddTicks(9676),
+                            CreatedAt = new DateTime(2023, 6, 16, 18, 24, 40, 945, DateTimeKind.Utc).AddTicks(7779),
                             CreatedBy = 8L,
                             IsPublic = true
                         },
@@ -7372,7 +7573,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 99L,
                             ChallengeVersionId = 62L,
                             Code = "Quos illo eligendi voluptas autem odio ullam. Delectus voluptatem reiciendis nesciunt eaque velit. Omnis soluta quam ea voluptas aut consectetur eius culpa quod. Eaque enim quo ea tempora eveniet voluptatem.",
-                            CreatedAt = new DateTime(2023, 7, 27, 17, 47, 20, 965, DateTimeKind.Utc).AddTicks(2432),
+                            CreatedAt = new DateTime(2023, 8, 3, 0, 9, 52, 894, DateTimeKind.Utc).AddTicks(6843),
                             CreatedBy = 38L,
                             IsPublic = true
                         },
@@ -7381,7 +7582,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 100L,
                             ChallengeVersionId = 6L,
                             Code = "Harum impedit ad ut vitae culpa magni minus cumque. Quas ullam velit excepturi quo ullam fugiat. Officia et ea.",
-                            CreatedAt = new DateTime(2023, 2, 12, 16, 37, 8, 112, DateTimeKind.Utc).AddTicks(6810),
+                            CreatedAt = new DateTime(2023, 2, 18, 14, 1, 2, 566, DateTimeKind.Utc).AddTicks(2299),
                             CreatedBy = 23L,
                             IsPublic = true
                         },
@@ -7390,7 +7591,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 101L,
                             ChallengeVersionId = 146L,
                             Code = "quo",
-                            CreatedAt = new DateTime(2023, 9, 7, 19, 55, 55, 240, DateTimeKind.Utc).AddTicks(446),
+                            CreatedAt = new DateTime(2023, 9, 14, 4, 35, 48, 489, DateTimeKind.Utc).AddTicks(9242),
                             CreatedBy = 39L,
                             IsPublic = true
                         },
@@ -7399,7 +7600,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 102L,
                             ChallengeVersionId = 143L,
                             Code = "Quia quia repudiandae voluptatem et nesciunt odio. Sunt tempora eveniet non atque. Mollitia vel sunt facere quia velit ducimus id eos.",
-                            CreatedAt = new DateTime(2023, 7, 14, 13, 1, 44, 789, DateTimeKind.Utc).AddTicks(8022),
+                            CreatedAt = new DateTime(2023, 7, 20, 18, 41, 12, 410, DateTimeKind.Utc).AddTicks(4922),
                             CreatedBy = 1L,
                             IsPublic = false
                         },
@@ -7408,7 +7609,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 103L,
                             ChallengeVersionId = 108L,
                             Code = "Qui optio minus sunt ut corporis.",
-                            CreatedAt = new DateTime(2023, 2, 2, 22, 50, 2, 102, DateTimeKind.Utc).AddTicks(8933),
+                            CreatedAt = new DateTime(2023, 2, 8, 19, 42, 9, 201, DateTimeKind.Utc).AddTicks(6476),
                             CreatedBy = 21L,
                             IsPublic = true
                         },
@@ -7417,7 +7618,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 104L,
                             ChallengeVersionId = 119L,
                             Code = "Aspernatur qui nisi nam neque.",
-                            CreatedAt = new DateTime(2021, 11, 16, 19, 45, 30, 322, DateTimeKind.Utc).AddTicks(444),
+                            CreatedAt = new DateTime(2021, 11, 21, 16, 31, 30, 432, DateTimeKind.Utc).AddTicks(2770),
                             CreatedBy = 6L,
                             IsPublic = true
                         },
@@ -7426,7 +7627,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 105L,
                             ChallengeVersionId = 31L,
                             Code = "Quibusdam veritatis animi eaque sed excepturi. Esse eaque accusamus voluptas provident neque. Qui quas illo molestiae in eos saepe quae ut.",
-                            CreatedAt = new DateTime(2023, 5, 19, 18, 21, 56, 603, DateTimeKind.Utc).AddTicks(6305),
+                            CreatedAt = new DateTime(2023, 5, 25, 20, 59, 22, 648, DateTimeKind.Utc).AddTicks(7894),
                             CreatedBy = 2L,
                             IsPublic = false
                         },
@@ -7435,7 +7636,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 106L,
                             ChallengeVersionId = 101L,
                             Code = "Ut hic at ut quis exercitationem quo nihil.",
-                            CreatedAt = new DateTime(2020, 3, 27, 3, 17, 10, 277, DateTimeKind.Utc).AddTicks(3246),
+                            CreatedAt = new DateTime(2020, 3, 30, 15, 26, 8, 417, DateTimeKind.Utc).AddTicks(9353),
                             CreatedBy = 1L,
                             IsPublic = true
                         },
@@ -7444,7 +7645,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 107L,
                             ChallengeVersionId = 47L,
                             Code = "quia",
-                            CreatedAt = new DateTime(2023, 9, 2, 11, 40, 36, 937, DateTimeKind.Utc).AddTicks(748),
+                            CreatedAt = new DateTime(2023, 9, 8, 20, 3, 3, 809, DateTimeKind.Utc).AddTicks(8555),
                             CreatedBy = 33L,
                             IsPublic = true
                         },
@@ -7453,7 +7654,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 108L,
                             ChallengeVersionId = 61L,
                             Code = "Non beatae inventore.",
-                            CreatedAt = new DateTime(2023, 6, 10, 16, 8, 15, 552, DateTimeKind.Utc).AddTicks(1182),
+                            CreatedAt = new DateTime(2023, 6, 16, 19, 57, 11, 143, DateTimeKind.Utc).AddTicks(6901),
                             CreatedBy = 23L,
                             IsPublic = true
                         },
@@ -7462,7 +7663,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 109L,
                             ChallengeVersionId = 105L,
                             Code = "Sequi accusamus vitae nihil.\nSint doloribus doloribus debitis ut maxime et omnis dolore.\nVoluptatem rerum est fugit ut voluptatibus unde.\nEa amet consectetur saepe omnis.",
-                            CreatedAt = new DateTime(2023, 5, 17, 10, 20, 56, 186, DateTimeKind.Utc).AddTicks(6209),
+                            CreatedAt = new DateTime(2023, 5, 23, 12, 50, 45, 214, DateTimeKind.Utc).AddTicks(6032),
                             CreatedBy = 22L,
                             IsPublic = false
                         },
@@ -7471,7 +7672,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 110L,
                             ChallengeVersionId = 63L,
                             Code = "Doloremque eos aperiam nemo omnis.",
-                            CreatedAt = new DateTime(2023, 7, 21, 5, 47, 11, 621, DateTimeKind.Utc).AddTicks(7870),
+                            CreatedAt = new DateTime(2023, 7, 27, 11, 48, 30, 795, DateTimeKind.Utc).AddTicks(7425),
                             CreatedBy = 33L,
                             IsPublic = true
                         },
@@ -7480,7 +7681,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 111L,
                             ChallengeVersionId = 32L,
                             Code = "Cupiditate vel qui repellat libero voluptatem id et. Est omnis soluta occaecati culpa. Odio totam qui. Fuga perspiciatis exercitationem numquam iusto doloribus in quia et et.",
-                            CreatedAt = new DateTime(2020, 3, 17, 14, 25, 21, 812, DateTimeKind.Utc).AddTicks(2760),
+                            CreatedAt = new DateTime(2020, 3, 21, 2, 3, 12, 755, DateTimeKind.Utc).AddTicks(1319),
                             CreatedBy = 22L,
                             IsPublic = false
                         },
@@ -7489,7 +7690,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 112L,
                             ChallengeVersionId = 85L,
                             Code = "Vitae qui non quasi non sint aliquid repellat.",
-                            CreatedAt = new DateTime(2023, 7, 26, 16, 37, 37, 182, DateTimeKind.Utc).AddTicks(2959),
+                            CreatedAt = new DateTime(2023, 8, 1, 22, 56, 43, 826, DateTimeKind.Utc).AddTicks(2705),
                             CreatedBy = 15L,
                             IsPublic = true
                         },
@@ -7498,7 +7699,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 113L,
                             ChallengeVersionId = 13L,
                             Code = "Ex atque quibusdam rerum. Incidunt mollitia exercitationem consequatur. Pariatur aut maiores. Nobis voluptatem ut.",
-                            CreatedAt = new DateTime(2022, 8, 21, 2, 29, 1, 868, DateTimeKind.Utc).AddTicks(7779),
+                            CreatedAt = new DateTime(2022, 8, 26, 14, 19, 55, 12, DateTimeKind.Utc).AddTicks(3657),
                             CreatedBy = 38L,
                             IsPublic = false
                         },
@@ -7507,7 +7708,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 114L,
                             ChallengeVersionId = 180L,
                             Code = "Odit adipisci exercitationem autem pariatur quidem. Sed excepturi quod aut odio minus et ad iusto. Non occaecati reiciendis cum quo commodi.",
-                            CreatedAt = new DateTime(2023, 9, 9, 16, 40, 9, 455, DateTimeKind.Utc).AddTicks(9692),
+                            CreatedAt = new DateTime(2023, 9, 16, 1, 26, 7, 698, DateTimeKind.Utc).AddTicks(3660),
                             CreatedBy = 23L,
                             IsPublic = false
                         },
@@ -7516,7 +7717,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 115L,
                             ChallengeVersionId = 58L,
                             Code = "Error esse velit sit provident.\nRecusandae et dignissimos quis corporis est exercitationem et ullam dolore.",
-                            CreatedAt = new DateTime(2022, 11, 8, 13, 49, 33, 369, DateTimeKind.Utc).AddTicks(3357),
+                            CreatedAt = new DateTime(2022, 11, 14, 5, 59, 47, 693, DateTimeKind.Utc).AddTicks(5541),
                             CreatedBy = 32L,
                             IsPublic = true
                         },
@@ -7525,7 +7726,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 116L,
                             ChallengeVersionId = 80L,
                             Code = "Nihil explicabo temporibus.",
-                            CreatedAt = new DateTime(2023, 6, 28, 15, 32, 10, 225, DateTimeKind.Utc).AddTicks(5826),
+                            CreatedAt = new DateTime(2023, 7, 4, 20, 19, 45, 414, DateTimeKind.Utc).AddTicks(7377),
                             CreatedBy = 17L,
                             IsPublic = false
                         },
@@ -7534,7 +7735,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 117L,
                             ChallengeVersionId = 101L,
                             Code = "Veritatis ratione neque quia reprehenderit accusantium ea ut quis.",
-                            CreatedAt = new DateTime(2020, 5, 7, 21, 45, 57, 320, DateTimeKind.Utc).AddTicks(351),
+                            CreatedAt = new DateTime(2020, 5, 11, 12, 11, 14, 260, DateTimeKind.Utc).AddTicks(1273),
                             CreatedBy = 4L,
                             IsPublic = true
                         },
@@ -7543,7 +7744,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 118L,
                             ChallengeVersionId = 107L,
                             Code = "Quia animi quos minima assumenda earum.\nNecessitatibus voluptatum doloribus voluptatem ut dolores nesciunt.",
-                            CreatedAt = new DateTime(2023, 6, 19, 10, 3, 44, 843, DateTimeKind.Utc).AddTicks(2622),
+                            CreatedAt = new DateTime(2023, 6, 25, 14, 21, 13, 122, DateTimeKind.Utc).AddTicks(1548),
                             CreatedBy = 7L,
                             IsPublic = false
                         },
@@ -7552,7 +7753,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 119L,
                             ChallengeVersionId = 27L,
                             Code = "et",
-                            CreatedAt = new DateTime(2023, 8, 10, 2, 54, 44, 656, DateTimeKind.Utc).AddTicks(1207),
+                            CreatedAt = new DateTime(2023, 8, 16, 10, 0, 56, 494, DateTimeKind.Utc).AddTicks(9189),
                             CreatedBy = 37L,
                             IsPublic = true
                         },
@@ -7561,7 +7762,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 120L,
                             ChallengeVersionId = 185L,
                             Code = "Aut assumenda consequatur ad quam omnis reiciendis. Et error consequatur inventore quia sunt enim cumque. Impedit eos fugiat consequuntur aut earum.",
-                            CreatedAt = new DateTime(2023, 5, 24, 23, 47, 52, 201, DateTimeKind.Utc).AddTicks(6399),
+                            CreatedAt = new DateTime(2023, 5, 31, 2, 42, 21, 594, DateTimeKind.Utc).AddTicks(8462),
                             CreatedBy = 18L,
                             IsPublic = true
                         },
@@ -7570,7 +7771,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 121L,
                             ChallengeVersionId = 139L,
                             Code = "Eligendi enim qui.",
-                            CreatedAt = new DateTime(2023, 5, 20, 2, 21, 22, 372, DateTimeKind.Utc).AddTicks(4149),
+                            CreatedAt = new DateTime(2023, 5, 26, 4, 59, 53, 613, DateTimeKind.Utc).AddTicks(5135),
                             CreatedBy = 25L,
                             IsPublic = true
                         },
@@ -7579,7 +7780,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 122L,
                             ChallengeVersionId = 24L,
                             Code = "Ut dolor sequi qui qui dolor sequi corrupti.",
-                            CreatedAt = new DateTime(2023, 3, 3, 20, 31, 43, 820, DateTimeKind.Utc).AddTicks(7797),
+                            CreatedAt = new DateTime(2023, 3, 9, 18, 58, 10, 482, DateTimeKind.Utc).AddTicks(2276),
                             CreatedBy = 35L,
                             IsPublic = false
                         },
@@ -7588,7 +7789,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 123L,
                             ChallengeVersionId = 86L,
                             Code = "Labore autem alias.\nDicta cum voluptatibus incidunt eligendi est aut exercitationem est.\nSoluta ut sequi ut nobis.\nVitae cum tempore et voluptas voluptas fugit ipsam animi.",
-                            CreatedAt = new DateTime(2023, 1, 19, 12, 6, 15, 873, DateTimeKind.Utc).AddTicks(4641),
+                            CreatedAt = new DateTime(2023, 1, 25, 8, 11, 14, 157, DateTimeKind.Utc).AddTicks(6344),
                             CreatedBy = 8L,
                             IsPublic = true
                         },
@@ -7597,7 +7798,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 124L,
                             ChallengeVersionId = 110L,
                             Code = "Veritatis animi nostrum vel ipsa sint.",
-                            CreatedAt = new DateTime(2023, 1, 5, 3, 54, 42, 742, DateTimeKind.Utc).AddTicks(5855),
+                            CreatedAt = new DateTime(2023, 1, 10, 23, 12, 52, 909, DateTimeKind.Utc).AddTicks(375),
                             CreatedBy = 33L,
                             IsPublic = true
                         },
@@ -7606,7 +7807,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 125L,
                             ChallengeVersionId = 199L,
                             Code = "Iusto a nihil. Dolorem cumque itaque natus. Possimus et quia natus libero harum voluptatem a. Provident incidunt voluptates dolorum quis eos at facilis saepe provident. Accusamus fuga aut modi.",
-                            CreatedAt = new DateTime(2022, 5, 27, 12, 52, 3, 940, DateTimeKind.Utc).AddTicks(3919),
+                            CreatedAt = new DateTime(2022, 6, 1, 20, 3, 42, 514, DateTimeKind.Utc).AddTicks(6720),
                             CreatedBy = 26L,
                             IsPublic = false
                         },
@@ -7615,7 +7816,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 126L,
                             ChallengeVersionId = 37L,
                             Code = "Odio saepe commodi.\nTempora inventore deleniti dolore repudiandae velit voluptas eligendi aliquid.\nNumquam illum officia voluptas ad.",
-                            CreatedAt = new DateTime(2023, 3, 29, 8, 14, 57, 12, DateTimeKind.Utc).AddTicks(8404),
+                            CreatedAt = new DateTime(2023, 4, 4, 8, 4, 34, 435, DateTimeKind.Utc).AddTicks(3012),
                             CreatedBy = 17L,
                             IsPublic = false
                         },
@@ -7624,7 +7825,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 127L,
                             ChallengeVersionId = 183L,
                             Code = "Aspernatur similique autem asperiores. In similique totam temporibus perferendis aliquam non. Quibusdam neque est dolorum sit accusantium recusandae non.",
-                            CreatedAt = new DateTime(2023, 9, 2, 10, 48, 58, 758, DateTimeKind.Utc).AddTicks(5699),
+                            CreatedAt = new DateTime(2023, 9, 8, 19, 11, 18, 611, DateTimeKind.Utc).AddTicks(2317),
                             CreatedBy = 3L,
                             IsPublic = false
                         },
@@ -7633,7 +7834,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 128L,
                             ChallengeVersionId = 43L,
                             Code = "Aliquam eaque unde non. Eaque a repudiandae blanditiis sint expedita dignissimos quia. Occaecati velit natus veritatis quia deleniti sit nesciunt dolor voluptas. Velit expedita consectetur temporibus minus rerum distinctio fugit reprehenderit.",
-                            CreatedAt = new DateTime(2023, 5, 18, 22, 52, 43, 545, DateTimeKind.Utc).AddTicks(9185),
+                            CreatedAt = new DateTime(2023, 5, 25, 1, 27, 30, 604, DateTimeKind.Utc).AddTicks(7423),
                             CreatedBy = 19L,
                             IsPublic = false
                         },
@@ -7642,7 +7843,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 129L,
                             ChallengeVersionId = 50L,
                             Code = "Magnam consectetur cumque ea qui consequatur facilis iure culpa. Doloribus cum aut nesciunt aspernatur aliquam. Est excepturi eum assumenda. Est aut asperiores. Qui libero assumenda minus fugiat.",
-                            CreatedAt = new DateTime(2023, 8, 22, 23, 38, 7, 372, DateTimeKind.Utc).AddTicks(4978),
+                            CreatedAt = new DateTime(2023, 8, 29, 7, 26, 17, 946, DateTimeKind.Utc).AddTicks(4111),
                             CreatedBy = 26L,
                             IsPublic = true
                         },
@@ -7651,7 +7852,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 130L,
                             ChallengeVersionId = 73L,
                             Code = "Eius reprehenderit perferendis et quia ut a maiores enim ut. Dolores dolore alias. Numquam quasi magni totam est.",
-                            CreatedAt = new DateTime(2023, 9, 12, 11, 0, 48, 30, DateTimeKind.Utc).AddTicks(5147),
+                            CreatedAt = new DateTime(2023, 9, 18, 19, 55, 47, 544, DateTimeKind.Utc).AddTicks(8589),
                             CreatedBy = 4L,
                             IsPublic = true
                         },
@@ -7660,7 +7861,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 131L,
                             ChallengeVersionId = 198L,
                             Code = "Quod et neque reprehenderit magni quia magnam quas.\nQuis ut repudiandae.\nSit aut sit dolores iste ad.\nFugiat itaque reprehenderit sunt quidem et.\nEst delectus enim eaque dolor.\nSimilique numquam sint voluptatem voluptas.",
-                            CreatedAt = new DateTime(2023, 7, 8, 13, 44, 39, 120, DateTimeKind.Utc).AddTicks(5690),
+                            CreatedAt = new DateTime(2023, 7, 14, 19, 4, 37, 743, DateTimeKind.Utc).AddTicks(3206),
                             CreatedBy = 40L,
                             IsPublic = true
                         },
@@ -7669,7 +7870,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 132L,
                             ChallengeVersionId = 21L,
                             Code = "nulla",
-                            CreatedAt = new DateTime(2023, 9, 9, 16, 50, 3, 166, DateTimeKind.Utc).AddTicks(3952),
+                            CreatedAt = new DateTime(2023, 9, 16, 1, 36, 2, 755, DateTimeKind.Utc).AddTicks(2292),
                             CreatedBy = 40L,
                             IsPublic = true
                         },
@@ -7678,7 +7879,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 133L,
                             ChallengeVersionId = 167L,
                             Code = "Qui quam ut commodi.",
-                            CreatedAt = new DateTime(2023, 1, 2, 20, 11, 22, 174, DateTimeKind.Utc).AddTicks(2720),
+                            CreatedAt = new DateTime(2023, 1, 8, 15, 21, 57, 725, DateTimeKind.Utc).AddTicks(8017),
                             CreatedBy = 27L,
                             IsPublic = false
                         },
@@ -7687,7 +7888,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 134L,
                             ChallengeVersionId = 53L,
                             Code = "Facilis ut consequatur sit temporibus iste et aut sunt. Expedita similique tenetur corrupti suscipit facere unde rem quam. Est magnam qui est dolorum fugiat asperiores. Velit et natus vitae ex dolores aliquid a. Sint enim distinctio inventore ut.",
-                            CreatedAt = new DateTime(2023, 9, 2, 14, 37, 15, 308, DateTimeKind.Utc).AddTicks(3924),
+                            CreatedAt = new DateTime(2023, 9, 8, 23, 0, 6, 199, DateTimeKind.Utc).AddTicks(648),
                             CreatedBy = 38L,
                             IsPublic = true
                         },
@@ -7696,7 +7897,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 135L,
                             ChallengeVersionId = 143L,
                             Code = "Quos ab consequuntur fugit suscipit aut quia reprehenderit consequatur vitae.",
-                            CreatedAt = new DateTime(2023, 3, 5, 8, 6, 48, 841, DateTimeKind.Utc).AddTicks(8898),
+                            CreatedAt = new DateTime(2023, 3, 11, 6, 38, 5, 817, DateTimeKind.Utc).AddTicks(7166),
                             CreatedBy = 23L,
                             IsPublic = false
                         },
@@ -7705,7 +7906,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 136L,
                             ChallengeVersionId = 153L,
                             Code = "Nemo sunt numquam blanditiis eos vel vel aperiam neque.",
-                            CreatedAt = new DateTime(2023, 9, 10, 7, 43, 52, 968, DateTimeKind.Utc).AddTicks(9230),
+                            CreatedAt = new DateTime(2023, 9, 16, 16, 31, 54, 95, DateTimeKind.Utc).AddTicks(6868),
                             CreatedBy = 30L,
                             IsPublic = true
                         },
@@ -7714,7 +7915,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 137L,
                             ChallengeVersionId = 65L,
                             Code = "Assumenda dignissimos sed dolore ea sed ducimus placeat et.",
-                            CreatedAt = new DateTime(2023, 7, 25, 8, 51, 37, 901, DateTimeKind.Utc).AddTicks(500),
+                            CreatedAt = new DateTime(2023, 7, 31, 15, 6, 25, 373, DateTimeKind.Utc).AddTicks(695),
                             CreatedBy = 6L,
                             IsPublic = false
                         },
@@ -7723,7 +7924,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 138L,
                             ChallengeVersionId = 146L,
                             Code = "Debitis molestias quam. Aliquid quidem recusandae. Fugit tempore explicabo tenetur in et et ea. Veniam earum excepturi dignissimos recusandae aperiam.",
-                            CreatedAt = new DateTime(2023, 9, 11, 4, 2, 22, 36, DateTimeKind.Utc).AddTicks(3409),
+                            CreatedAt = new DateTime(2023, 9, 17, 12, 53, 8, 848, DateTimeKind.Utc).AddTicks(14),
                             CreatedBy = 33L,
                             IsPublic = false
                         },
@@ -7732,7 +7933,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 139L,
                             ChallengeVersionId = 46L,
                             Code = "quia",
-                            CreatedAt = new DateTime(2023, 2, 9, 8, 17, 50, 515, DateTimeKind.Utc).AddTicks(603),
+                            CreatedAt = new DateTime(2023, 2, 15, 5, 30, 49, 657, DateTimeKind.Utc).AddTicks(7762),
                             CreatedBy = 10L,
                             IsPublic = true
                         },
@@ -7741,7 +7942,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 140L,
                             ChallengeVersionId = 183L,
                             Code = "Similique nemo ducimus magni.\nVel magni est voluptatem dolores quia deserunt.\nNatus nihil consequatur eos nulla et earum voluptatum eligendi adipisci.\nNam quibusdam error rerum qui et ratione.",
-                            CreatedAt = new DateTime(2023, 9, 10, 21, 0, 41, 949, DateTimeKind.Utc).AddTicks(8039),
+                            CreatedAt = new DateTime(2023, 9, 17, 5, 50, 31, 425, DateTimeKind.Utc).AddTicks(39),
                             CreatedBy = 8L,
                             IsPublic = true
                         },
@@ -7750,7 +7951,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 141L,
                             ChallengeVersionId = 163L,
                             Code = "quo",
-                            CreatedAt = new DateTime(2023, 1, 10, 22, 58, 24, 23, DateTimeKind.Utc).AddTicks(8764),
+                            CreatedAt = new DateTime(2023, 1, 16, 18, 35, 28, 731, DateTimeKind.Utc).AddTicks(7382),
                             CreatedBy = 3L,
                             IsPublic = true
                         },
@@ -7759,7 +7960,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 142L,
                             ChallengeVersionId = 193L,
                             Code = "Consequatur et vel et et cupiditate vitae quis.",
-                            CreatedAt = new DateTime(2023, 8, 23, 14, 22, 7, 301, DateTimeKind.Utc).AddTicks(1645),
+                            CreatedAt = new DateTime(2023, 8, 29, 22, 12, 18, 75, DateTimeKind.Utc).AddTicks(8645),
                             CreatedBy = 26L,
                             IsPublic = true
                         },
@@ -7768,7 +7969,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 143L,
                             ChallengeVersionId = 86L,
                             Code = "Totam quo illum dolore odit nesciunt ut voluptatem occaecati optio. Similique ipsum ab nulla officia eos magni maiores. Debitis veniam iste rerum commodi et quos amet ut.",
-                            CreatedAt = new DateTime(2021, 1, 18, 5, 12, 38, 100, DateTimeKind.Utc).AddTicks(8093),
+                            CreatedAt = new DateTime(2021, 1, 22, 9, 31, 6, 216, DateTimeKind.Utc).AddTicks(5449),
                             CreatedBy = 39L,
                             IsPublic = true
                         },
@@ -7777,7 +7978,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 144L,
                             ChallengeVersionId = 19L,
                             Code = "Dolore iste ut unde sit. Eos unde necessitatibus tenetur voluptates voluptatem. Nihil et et. Veniam ipsa amet sequi accusamus rerum id nam neque ea.",
-                            CreatedAt = new DateTime(2023, 6, 23, 21, 10, 24, 209, DateTimeKind.Utc).AddTicks(5465),
+                            CreatedAt = new DateTime(2023, 6, 30, 1, 42, 26, 353, DateTimeKind.Utc).AddTicks(7779),
                             CreatedBy = 31L,
                             IsPublic = true
                         },
@@ -7786,7 +7987,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 145L,
                             ChallengeVersionId = 2L,
                             Code = "Iste laboriosam culpa saepe odio consequatur corrupti nihil.",
-                            CreatedAt = new DateTime(2023, 7, 1, 6, 24, 14, 265, DateTimeKind.Utc).AddTicks(5463),
+                            CreatedAt = new DateTime(2023, 7, 7, 11, 20, 22, 362, DateTimeKind.Utc).AddTicks(902),
                             CreatedBy = 17L,
                             IsPublic = true
                         },
@@ -7795,7 +7996,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 146L,
                             ChallengeVersionId = 96L,
                             Code = "quasi",
-                            CreatedAt = new DateTime(2023, 4, 15, 20, 28, 0, 377, DateTimeKind.Utc).AddTicks(5861),
+                            CreatedAt = new DateTime(2023, 4, 21, 21, 14, 46, 173, DateTimeKind.Utc).AddTicks(3815),
                             CreatedBy = 33L,
                             IsPublic = false
                         },
@@ -7804,7 +8005,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 147L,
                             ChallengeVersionId = 16L,
                             Code = "Dolores vel tempore harum.\nVero accusantium assumenda quis sed velit distinctio laborum natus vitae.\nMinus qui rem omnis omnis ratione vel voluptatum sit quos.\nAut dolorem ducimus.\nQuibusdam autem unde nihil sapiente et voluptatem natus.\nPraesentium expedita quisquam itaque asperiores non natus molestias qui consequatur.",
-                            CreatedAt = new DateTime(2023, 5, 18, 3, 42, 50, 550, DateTimeKind.Utc).AddTicks(6306),
+                            CreatedAt = new DateTime(2023, 5, 24, 6, 15, 1, 255, DateTimeKind.Utc).AddTicks(3704),
                             CreatedBy = 11L,
                             IsPublic = true
                         },
@@ -7813,7 +8014,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 148L,
                             ChallengeVersionId = 58L,
                             Code = "Error adipisci laborum iure voluptas ratione id voluptas voluptate et.",
-                            CreatedAt = new DateTime(2022, 4, 11, 18, 57, 20, 150, DateTimeKind.Utc).AddTicks(1936),
+                            CreatedAt = new DateTime(2022, 4, 16, 23, 39, 41, 335, DateTimeKind.Utc).AddTicks(2595),
                             CreatedBy = 6L,
                             IsPublic = true
                         },
@@ -7822,7 +8023,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 149L,
                             ChallengeVersionId = 179L,
                             Code = "totam",
-                            CreatedAt = new DateTime(2023, 5, 20, 16, 44, 58, 251, DateTimeKind.Utc).AddTicks(4967),
+                            CreatedAt = new DateTime(2023, 5, 26, 19, 25, 26, 917, DateTimeKind.Utc).AddTicks(8164),
                             CreatedBy = 4L,
                             IsPublic = true
                         },
@@ -7831,7 +8032,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 150L,
                             ChallengeVersionId = 10L,
                             Code = "Atque dicta recusandae qui corrupti nesciunt quis aut cupiditate.",
-                            CreatedAt = new DateTime(2023, 3, 12, 5, 40, 43, 435, DateTimeKind.Utc).AddTicks(2347),
+                            CreatedAt = new DateTime(2023, 3, 18, 4, 34, 31, 188, DateTimeKind.Utc).AddTicks(1744),
                             CreatedBy = 18L,
                             IsPublic = true
                         },
@@ -7840,7 +8041,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 151L,
                             ChallengeVersionId = 146L,
                             Code = "Amet ipsam illo debitis.\nVel facilis dolores consequatur enim asperiores est.\nFacere labore nostrum natus est quo non blanditiis.\nDistinctio dignissimos rem corporis.\nLabore voluptates nihil.",
-                            CreatedAt = new DateTime(2023, 8, 28, 18, 13, 57, 131, DateTimeKind.Utc).AddTicks(3122),
+                            CreatedAt = new DateTime(2023, 9, 4, 2, 20, 58, 459, DateTimeKind.Utc).AddTicks(7002),
                             CreatedBy = 33L,
                             IsPublic = true
                         },
@@ -7849,7 +8050,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 152L,
                             ChallengeVersionId = 153L,
                             Code = "Ab unde laboriosam aut odio iusto numquam numquam neque.",
-                            CreatedAt = new DateTime(2023, 8, 3, 22, 47, 11, 298, DateTimeKind.Utc).AddTicks(9476),
+                            CreatedAt = new DateTime(2023, 8, 10, 5, 33, 14, 638, DateTimeKind.Utc).AddTicks(7062),
                             CreatedBy = 31L,
                             IsPublic = true
                         },
@@ -7858,7 +8059,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 153L,
                             ChallengeVersionId = 72L,
                             Code = "Repellat quia quo alias expedita est voluptate tempora. Voluptate qui nam unde eligendi. Doloribus esse laudantium labore perferendis ut est dicta voluptatem. Dignissimos minima impedit sint quia et ab eum sit corporis. Aut suscipit fugit dignissimos eos fugit illum aperiam. Omnis libero rem aut qui ex nisi dolorum eos.",
-                            CreatedAt = new DateTime(2023, 8, 31, 13, 37, 9, 799, DateTimeKind.Utc).AddTicks(9609),
+                            CreatedAt = new DateTime(2023, 9, 6, 21, 53, 20, 909, DateTimeKind.Utc).AddTicks(4261),
                             CreatedBy = 2L,
                             IsPublic = true
                         },
@@ -7867,7 +8068,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 154L,
                             ChallengeVersionId = 66L,
                             Code = "non",
-                            CreatedAt = new DateTime(2023, 8, 24, 21, 38, 19, 846, DateTimeKind.Utc).AddTicks(3550),
+                            CreatedAt = new DateTime(2023, 8, 31, 5, 32, 45, 742, DateTimeKind.Utc).AddTicks(2593),
                             CreatedBy = 13L,
                             IsPublic = false
                         },
@@ -7876,7 +8077,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 155L,
                             ChallengeVersionId = 197L,
                             Code = "Non iure explicabo voluptatibus vitae ut quibusdam debitis ut. Illo ipsum esse omnis consequatur id cupiditate delectus dicta. Ut distinctio repudiandae distinctio voluptatem ullam. Fugit iusto et vero inventore ipsam porro eos vitae debitis. Ad asperiores dolorem maiores quia animi.",
-                            CreatedAt = new DateTime(2023, 3, 28, 0, 51, 14, 3, DateTimeKind.Utc).AddTicks(772),
+                            CreatedAt = new DateTime(2023, 4, 3, 0, 36, 35, 279, DateTimeKind.Utc).AddTicks(9464),
                             CreatedBy = 25L,
                             IsPublic = true
                         },
@@ -7885,7 +8086,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 156L,
                             ChallengeVersionId = 133L,
                             Code = "Repellat necessitatibus aut et accusamus rem et distinctio dolor.\nNobis odio et recusandae asperiores vero.\nQuidem est vero odit est explicabo id voluptatibus.\nIpsam soluta autem cum totam mollitia rem.\nVero dolorem sed.\nEnim est ducimus facere quos unde qui perspiciatis est.",
-                            CreatedAt = new DateTime(2023, 9, 11, 9, 26, 54, 623, DateTimeKind.Utc).AddTicks(7717),
+                            CreatedAt = new DateTime(2023, 9, 17, 18, 18, 25, 565, DateTimeKind.Utc).AddTicks(5827),
                             CreatedBy = 27L,
                             IsPublic = false
                         },
@@ -7894,7 +8095,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 157L,
                             ChallengeVersionId = 177L,
                             Code = "Cum enim quibusdam. Aut sit nesciunt facere accusamus odit reiciendis. Ut esse beatae. Et pariatur commodi fugit voluptate ex adipisci perspiciatis praesentium. Nulla et eligendi consequuntur possimus nam. Commodi laboriosam perspiciatis quis optio delectus earum qui optio.",
-                            CreatedAt = new DateTime(2023, 7, 30, 22, 33, 36, 986, DateTimeKind.Utc).AddTicks(6553),
+                            CreatedAt = new DateTime(2023, 8, 6, 5, 6, 35, 261, DateTimeKind.Utc).AddTicks(9433),
                             CreatedBy = 23L,
                             IsPublic = true
                         },
@@ -7903,7 +8104,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 158L,
                             ChallengeVersionId = 122L,
                             Code = "Neque perferendis quasi iusto soluta cumque quia.\nMagnam quae dignissimos.\nMolestias inventore quod aliquid enim quis.",
-                            CreatedAt = new DateTime(2023, 6, 30, 8, 37, 0, 230, DateTimeKind.Utc).AddTicks(3707),
+                            CreatedAt = new DateTime(2023, 7, 6, 13, 30, 10, 573, DateTimeKind.Utc).AddTicks(6378),
                             CreatedBy = 22L,
                             IsPublic = true
                         },
@@ -7912,7 +8113,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 159L,
                             ChallengeVersionId = 62L,
                             Code = "Distinctio quo rem consequatur aut voluptate. Sunt et provident aut nobis tempora quia distinctio sit. Sed est cupiditate blanditiis rerum quidem. Eaque aliquam voluptas delectus. Illo impedit inventore consectetur. Sit maiores pariatur.",
-                            CreatedAt = new DateTime(2023, 4, 18, 0, 0, 52, 300, DateTimeKind.Utc).AddTicks(2160),
+                            CreatedAt = new DateTime(2023, 4, 24, 0, 54, 38, 648, DateTimeKind.Utc).AddTicks(3089),
                             CreatedBy = 26L,
                             IsPublic = true
                         },
@@ -7921,7 +8122,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 160L,
                             ChallengeVersionId = 43L,
                             Code = "Et nam dicta dolorem rerum veritatis aut. Nemo ea sapiente porro architecto. Assumenda quisquam facilis eveniet quis. Qui illo dolores.",
-                            CreatedAt = new DateTime(2022, 9, 20, 21, 26, 36, 546, DateTimeKind.Utc).AddTicks(3901),
+                            CreatedAt = new DateTime(2022, 9, 26, 10, 57, 58, 541, DateTimeKind.Utc).AddTicks(208),
                             CreatedBy = 28L,
                             IsPublic = true
                         },
@@ -7930,7 +8131,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 161L,
                             ChallengeVersionId = 3L,
                             Code = "voluptas",
-                            CreatedAt = new DateTime(2022, 8, 5, 16, 44, 58, 904, DateTimeKind.Utc).AddTicks(6222),
+                            CreatedAt = new DateTime(2022, 8, 11, 3, 45, 35, 545, DateTimeKind.Utc).AddTicks(7162),
                             CreatedBy = 22L,
                             IsPublic = false
                         },
@@ -7939,7 +8140,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 162L,
                             ChallengeVersionId = 75L,
                             Code = "excepturi",
-                            CreatedAt = new DateTime(2021, 12, 19, 20, 8, 5, 82, DateTimeKind.Utc).AddTicks(3669),
+                            CreatedAt = new DateTime(2021, 12, 24, 18, 41, 49, 835, DateTimeKind.Utc).AddTicks(236),
                             CreatedBy = 25L,
                             IsPublic = true
                         },
@@ -7948,7 +8149,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 163L,
                             ChallengeVersionId = 75L,
                             Code = "tenetur",
-                            CreatedAt = new DateTime(2022, 1, 9, 23, 19, 58, 344, DateTimeKind.Utc).AddTicks(7254),
+                            CreatedAt = new DateTime(2022, 1, 14, 23, 2, 41, 108, DateTimeKind.Utc).AddTicks(4583),
                             CreatedBy = 34L,
                             IsPublic = false
                         },
@@ -7957,7 +8158,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 164L,
                             ChallengeVersionId = 175L,
                             Code = "Occaecati sed iste asperiores cum ut et nihil in ipsum.",
-                            CreatedAt = new DateTime(2023, 7, 17, 7, 52, 54, 226, DateTimeKind.Utc).AddTicks(1033),
+                            CreatedAt = new DateTime(2023, 7, 23, 13, 41, 27, 269, DateTimeKind.Utc).AddTicks(2826),
                             CreatedBy = 11L,
                             IsPublic = true
                         },
@@ -7966,7 +8167,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 165L,
                             ChallengeVersionId = 41L,
                             Code = "Esse quam numquam delectus illum. Unde ipsa debitis ut inventore qui. Nam nesciunt aut omnis facilis. Quis sit ut consequatur quasi voluptate itaque.",
-                            CreatedAt = new DateTime(2023, 8, 5, 11, 21, 33, 541, DateTimeKind.Utc).AddTicks(3690),
+                            CreatedAt = new DateTime(2023, 8, 11, 18, 12, 35, 263, DateTimeKind.Utc).AddTicks(5307),
                             CreatedBy = 22L,
                             IsPublic = true
                         },
@@ -7975,7 +8176,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 166L,
                             ChallengeVersionId = 177L,
                             Code = "aut",
-                            CreatedAt = new DateTime(2023, 8, 26, 17, 57, 16, 2, DateTimeKind.Utc).AddTicks(1926),
+                            CreatedAt = new DateTime(2023, 9, 2, 1, 57, 43, 450, DateTimeKind.Utc).AddTicks(9937),
                             CreatedBy = 17L,
                             IsPublic = true
                         },
@@ -7984,7 +8185,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 167L,
                             ChallengeVersionId = 142L,
                             Code = "hic",
-                            CreatedAt = new DateTime(2023, 8, 23, 21, 49, 49, 472, DateTimeKind.Utc).AddTicks(1350),
+                            CreatedAt = new DateTime(2023, 8, 30, 5, 41, 1, 125, DateTimeKind.Utc).AddTicks(1260),
                             CreatedBy = 1L,
                             IsPublic = true
                         },
@@ -7993,7 +8194,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 168L,
                             ChallengeVersionId = 56L,
                             Code = "Aliquam enim quas quo aliquam. Magnam qui quia minima ratione esse qui. Debitis adipisci magnam quas magni asperiores vitae. Pariatur magnam cupiditate porro vel itaque dignissimos.",
-                            CreatedAt = new DateTime(2023, 9, 7, 18, 14, 20, 684, DateTimeKind.Utc).AddTicks(1593),
+                            CreatedAt = new DateTime(2023, 9, 14, 2, 54, 0, 123, DateTimeKind.Utc).AddTicks(2504),
                             CreatedBy = 19L,
                             IsPublic = true
                         },
@@ -8002,7 +8203,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 169L,
                             ChallengeVersionId = 152L,
                             Code = "Optio qui veniam labore doloribus culpa cum quia.\nEius rerum reprehenderit eum rerum.",
-                            CreatedAt = new DateTime(2023, 7, 18, 1, 44, 30, 918, DateTimeKind.Utc).AddTicks(3751),
+                            CreatedAt = new DateTime(2023, 7, 24, 7, 35, 29, 678, DateTimeKind.Utc).AddTicks(5200),
                             CreatedBy = 27L,
                             IsPublic = true
                         },
@@ -8011,7 +8212,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 170L,
                             ChallengeVersionId = 43L,
                             Code = "Quam magnam amet sed eligendi ipsam hic molestiae.",
-                            CreatedAt = new DateTime(2023, 1, 17, 21, 38, 23, 375, DateTimeKind.Utc).AddTicks(5360),
+                            CreatedAt = new DateTime(2023, 1, 23, 17, 38, 7, 843, DateTimeKind.Utc).AddTicks(5219),
                             CreatedBy = 29L,
                             IsPublic = true
                         },
@@ -8020,7 +8221,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 171L,
                             ChallengeVersionId = 2L,
                             Code = "Dolores nam eius necessitatibus.",
-                            CreatedAt = new DateTime(2023, 7, 16, 14, 21, 43, 700, DateTimeKind.Utc).AddTicks(8750),
+                            CreatedAt = new DateTime(2023, 7, 22, 20, 7, 53, 809, DateTimeKind.Utc).AddTicks(2787),
                             CreatedBy = 36L,
                             IsPublic = true
                         },
@@ -8029,7 +8230,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 172L,
                             ChallengeVersionId = 158L,
                             Code = "Nihil aut et occaecati et quibusdam reprehenderit voluptate totam. Ducimus in placeat unde cum. Placeat sapiente qui quas et maiores dolorum ducimus. Incidunt dolor corporis.",
-                            CreatedAt = new DateTime(2023, 4, 27, 14, 42, 15, 346, DateTimeKind.Utc).AddTicks(3729),
+                            CreatedAt = new DateTime(2023, 5, 3, 16, 7, 23, 794, DateTimeKind.Utc).AddTicks(4838),
                             CreatedBy = 30L,
                             IsPublic = false
                         },
@@ -8038,7 +8239,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 173L,
                             ChallengeVersionId = 80L,
                             Code = "Quia qui voluptate mollitia aut. Aperiam itaque a ab voluptatem. Nisi sit officiis qui quo in. Ad odio corrupti illo nihil eum sit sunt dolorum. Molestias sit occaecati maiores ad rem dolor laboriosam. Nihil sit laudantium quae nam.",
-                            CreatedAt = new DateTime(2023, 7, 29, 5, 0, 58, 847, DateTimeKind.Utc).AddTicks(5393),
+                            CreatedAt = new DateTime(2023, 8, 4, 11, 28, 18, 183, DateTimeKind.Utc).AddTicks(2308),
                             CreatedBy = 31L,
                             IsPublic = false
                         },
@@ -8047,7 +8248,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 174L,
                             ChallengeVersionId = 11L,
                             Code = "Doloremque et architecto corrupti fugiat porro in voluptatibus. Eos incidunt velit voluptatem. Accusamus maxime atque quasi eos optio. Nisi optio dolorum consequatur qui qui expedita deserunt fuga. Sed quo accusantium deleniti ipsam dignissimos dolores. Facere dolor ea sequi voluptas tenetur.",
-                            CreatedAt = new DateTime(2022, 5, 4, 8, 24, 4, 95, DateTimeKind.Utc).AddTicks(5081),
+                            CreatedAt = new DateTime(2022, 5, 9, 14, 20, 2, 700, DateTimeKind.Utc).AddTicks(5717),
                             CreatedBy = 9L,
                             IsPublic = false
                         },
@@ -8056,7 +8257,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 175L,
                             ChallengeVersionId = 74L,
                             Code = "ad",
-                            CreatedAt = new DateTime(2023, 8, 28, 14, 11, 34, 230, DateTimeKind.Utc).AddTicks(137),
+                            CreatedAt = new DateTime(2023, 9, 3, 22, 18, 2, 599, DateTimeKind.Utc).AddTicks(7355),
                             CreatedBy = 9L,
                             IsPublic = true
                         },
@@ -8065,7 +8266,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 176L,
                             ChallengeVersionId = 61L,
                             Code = "Soluta odio eveniet quod reprehenderit officia.\nAut cumque labore ut omnis.",
-                            CreatedAt = new DateTime(2022, 10, 15, 9, 12, 56, 223, DateTimeKind.Utc).AddTicks(9773),
+                            CreatedAt = new DateTime(2022, 10, 21, 0, 4, 13, 600, DateTimeKind.Utc).AddTicks(2346),
                             CreatedBy = 26L,
                             IsPublic = false
                         },
@@ -8074,7 +8275,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 177L,
                             ChallengeVersionId = 80L,
                             Code = "Vero nam possimus laborum. Consequuntur molestias ut numquam consequatur dolores sit. Ratione maiores illum alias vero eaque delectus similique natus. Aliquid perspiciatis magnam aut repellendus quis quod alias corporis.",
-                            CreatedAt = new DateTime(2023, 8, 26, 19, 9, 3, 154, DateTimeKind.Utc).AddTicks(334),
+                            CreatedAt = new DateTime(2023, 9, 2, 3, 9, 40, 363, DateTimeKind.Utc).AddTicks(6993),
                             CreatedBy = 13L,
                             IsPublic = true
                         },
@@ -8083,7 +8284,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 178L,
                             ChallengeVersionId = 100L,
                             Code = "Et aut labore et aut. Illo dolor voluptate ipsam. Fuga magnam officiis voluptatum. Exercitationem dolorem voluptate quasi aliquid sequi est. Voluptatum alias adipisci. Exercitationem fugiat adipisci saepe dolor natus nihil dicta voluptas.",
-                            CreatedAt = new DateTime(2022, 5, 23, 9, 11, 27, 486, DateTimeKind.Utc).AddTicks(4483),
+                            CreatedAt = new DateTime(2022, 5, 28, 16, 9, 32, 842, DateTimeKind.Utc).AddTicks(3264),
                             CreatedBy = 6L,
                             IsPublic = false
                         },
@@ -8092,7 +8293,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 179L,
                             ChallengeVersionId = 94L,
                             Code = "similique",
-                            CreatedAt = new DateTime(2023, 3, 29, 6, 33, 5, 1, DateTimeKind.Utc).AddTicks(6341),
+                            CreatedAt = new DateTime(2023, 4, 4, 6, 22, 28, 570, DateTimeKind.Utc).AddTicks(8850),
                             CreatedBy = 5L,
                             IsPublic = true
                         },
@@ -8101,7 +8302,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 180L,
                             ChallengeVersionId = 21L,
                             Code = "Debitis sit delectus sint possimus earum praesentium nesciunt sit deserunt.",
-                            CreatedAt = new DateTime(2023, 9, 11, 11, 39, 58, 169, DateTimeKind.Utc).AddTicks(8304),
+                            CreatedAt = new DateTime(2023, 9, 17, 20, 31, 47, 204, DateTimeKind.Utc).AddTicks(9353),
                             CreatedBy = 11L,
                             IsPublic = true
                         },
@@ -8110,7 +8311,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 181L,
                             ChallengeVersionId = 154L,
                             Code = "Ducimus est qui reprehenderit nostrum.\nDicta voluptatem culpa minima officia aliquam rerum ex magnam.",
-                            CreatedAt = new DateTime(2023, 6, 2, 20, 35, 2, 709, DateTimeKind.Utc).AddTicks(4213),
+                            CreatedAt = new DateTime(2023, 6, 8, 23, 58, 28, 131, DateTimeKind.Utc).AddTicks(7668),
                             CreatedBy = 17L,
                             IsPublic = false
                         },
@@ -8119,7 +8320,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 182L,
                             ChallengeVersionId = 85L,
                             Code = "autem",
-                            CreatedAt = new DateTime(2023, 8, 26, 16, 41, 42, 731, DateTimeKind.Utc).AddTicks(6190),
+                            CreatedAt = new DateTime(2023, 9, 2, 0, 41, 59, 906, DateTimeKind.Utc).AddTicks(166),
                             CreatedBy = 39L,
                             IsPublic = true
                         },
@@ -8128,7 +8329,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 183L,
                             ChallengeVersionId = 128L,
                             Code = "et",
-                            CreatedAt = new DateTime(2023, 6, 17, 2, 59, 20, 463, DateTimeKind.Utc).AddTicks(4747),
+                            CreatedAt = new DateTime(2023, 6, 23, 7, 9, 19, 423, DateTimeKind.Utc).AddTicks(1994),
                             CreatedBy = 9L,
                             IsPublic = true
                         },
@@ -8137,7 +8338,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 184L,
                             ChallengeVersionId = 24L,
                             Code = "Tempore veritatis aut non qui eius aut aliquam quia. Officiis et ut ut pariatur et velit totam. Necessitatibus voluptates voluptatem quasi corrupti totam ratione saepe ducimus. Consequatur sunt deserunt ut.",
-                            CreatedAt = new DateTime(2023, 7, 11, 20, 50, 40, 140, DateTimeKind.Utc).AddTicks(598),
+                            CreatedAt = new DateTime(2023, 7, 18, 2, 21, 24, 107, DateTimeKind.Utc).AddTicks(7987),
                             CreatedBy = 8L,
                             IsPublic = true
                         },
@@ -8146,7 +8347,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 185L,
                             ChallengeVersionId = 158L,
                             Code = "Animi ut sed dolore sapiente sunt sit voluptates tempore.",
-                            CreatedAt = new DateTime(2023, 7, 22, 12, 34, 37, 339, DateTimeKind.Utc).AddTicks(5586),
+                            CreatedAt = new DateTime(2023, 7, 28, 18, 40, 7, 717, DateTimeKind.Utc).AddTicks(7475),
                             CreatedBy = 33L,
                             IsPublic = false
                         },
@@ -8155,7 +8356,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 186L,
                             ChallengeVersionId = 185L,
                             Code = "praesentium",
-                            CreatedAt = new DateTime(2023, 5, 15, 17, 32, 50, 106, DateTimeKind.Utc).AddTicks(6875),
+                            CreatedAt = new DateTime(2023, 5, 21, 19, 57, 6, 253, DateTimeKind.Utc).AddTicks(3726),
                             CreatedBy = 40L,
                             IsPublic = true
                         },
@@ -8164,7 +8365,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 187L,
                             ChallengeVersionId = 66L,
                             Code = "odio",
-                            CreatedAt = new DateTime(2023, 6, 5, 20, 14, 26, 724, DateTimeKind.Utc).AddTicks(1701),
+                            CreatedAt = new DateTime(2023, 6, 11, 23, 47, 36, 762, DateTimeKind.Utc).AddTicks(4880),
                             CreatedBy = 6L,
                             IsPublic = true
                         },
@@ -8173,7 +8374,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 188L,
                             ChallengeVersionId = 45L,
                             Code = "Sed omnis distinctio.\nBeatae quidem nesciunt perspiciatis temporibus omnis.\nQui ducimus ut.",
-                            CreatedAt = new DateTime(2022, 12, 20, 3, 7, 30, 177, DateTimeKind.Utc).AddTicks(3452),
+                            CreatedAt = new DateTime(2022, 12, 25, 21, 33, 21, 34, DateTimeKind.Utc).AddTicks(944),
                             CreatedBy = 10L,
                             IsPublic = true
                         },
@@ -8182,7 +8383,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 189L,
                             ChallengeVersionId = 55L,
                             Code = "Dignissimos consectetur aperiam adipisci corporis.",
-                            CreatedAt = new DateTime(2023, 9, 1, 16, 22, 41, 260, DateTimeKind.Utc).AddTicks(5485),
+                            CreatedAt = new DateTime(2023, 9, 8, 0, 42, 30, 682, DateTimeKind.Utc).AddTicks(560),
                             CreatedBy = 11L,
                             IsPublic = true
                         },
@@ -8191,7 +8392,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 190L,
                             ChallengeVersionId = 93L,
                             Code = "Consequatur perferendis autem sed magni dignissimos. Dicta vitae sint dolores officiis rerum sunt laborum. Aut omnis eveniet dolore. Molestiae natus molestiae sint.",
-                            CreatedAt = new DateTime(2023, 3, 5, 4, 41, 43, 407, DateTimeKind.Utc).AddTicks(9625),
+                            CreatedAt = new DateTime(2023, 3, 11, 3, 12, 32, 497, DateTimeKind.Utc).AddTicks(3993),
                             CreatedBy = 33L,
                             IsPublic = true
                         },
@@ -8200,7 +8401,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 191L,
                             ChallengeVersionId = 40L,
                             Code = "Suscipit quo officia et dignissimos aut non temporibus fugiat. Ad cupiditate inventore neque enim. Expedita consectetur ipsum magni. Adipisci adipisci rerum. Et id libero corporis sint nulla.",
-                            CreatedAt = new DateTime(2023, 8, 27, 0, 0, 29, 817, DateTimeKind.Utc).AddTicks(6819),
+                            CreatedAt = new DateTime(2023, 9, 2, 8, 1, 46, 657, DateTimeKind.Utc).AddTicks(4081),
                             CreatedBy = 14L,
                             IsPublic = true
                         },
@@ -8209,7 +8410,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 192L,
                             ChallengeVersionId = 36L,
                             Code = "quas",
-                            CreatedAt = new DateTime(2022, 12, 8, 19, 3, 23, 901, DateTimeKind.Utc).AddTicks(4525),
+                            CreatedAt = new DateTime(2022, 12, 14, 12, 52, 15, 62, DateTimeKind.Utc).AddTicks(124),
                             CreatedBy = 1L,
                             IsPublic = false
                         },
@@ -8218,7 +8419,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 193L,
                             ChallengeVersionId = 184L,
                             Code = "velit",
-                            CreatedAt = new DateTime(2023, 9, 9, 3, 44, 24, 226, DateTimeKind.Utc).AddTicks(6824),
+                            CreatedAt = new DateTime(2023, 9, 15, 12, 28, 36, 984, DateTimeKind.Utc).AddTicks(2573),
                             CreatedBy = 2L,
                             IsPublic = true
                         },
@@ -8227,7 +8428,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 194L,
                             ChallengeVersionId = 101L,
                             Code = "Non voluptatem illo porro.",
-                            CreatedAt = new DateTime(2021, 10, 19, 8, 46, 21, 632, DateTimeKind.Utc).AddTicks(3428),
+                            CreatedAt = new DateTime(2021, 10, 24, 3, 59, 29, 556, DateTimeKind.Utc).AddTicks(1318),
                             CreatedBy = 6L,
                             IsPublic = false
                         },
@@ -8236,7 +8437,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 195L,
                             ChallengeVersionId = 135L,
                             Code = "Dolores eos atque sint iusto beatae et.\nFuga dolores quo deleniti molestiae dolorem aut voluptatibus.\nMinima ut quam asperiores magnam sint quis voluptas temporibus.\nDolor fuga qui distinctio et velit.\nQuas iure fuga dolores.\nSunt autem ratione qui sit eius.",
-                            CreatedAt = new DateTime(2023, 6, 19, 2, 55, 42, 826, DateTimeKind.Utc).AddTicks(2205),
+                            CreatedAt = new DateTime(2023, 6, 25, 7, 12, 12, 901, DateTimeKind.Utc).AddTicks(2919),
                             CreatedBy = 22L,
                             IsPublic = true
                         },
@@ -8245,7 +8446,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 196L,
                             ChallengeVersionId = 56L,
                             Code = "Totam natus qui dolore.\nAut voluptatem facilis mollitia laudantium.\nTempora voluptatum voluptates.",
-                            CreatedAt = new DateTime(2023, 9, 4, 7, 39, 12, 224, DateTimeKind.Utc).AddTicks(5044),
+                            CreatedAt = new DateTime(2023, 9, 10, 16, 7, 37, 883, DateTimeKind.Utc).AddTicks(7026),
                             CreatedBy = 27L,
                             IsPublic = true
                         },
@@ -8254,7 +8455,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 197L,
                             ChallengeVersionId = 100L,
                             Code = "Quibusdam distinctio fuga pariatur occaecati.",
-                            CreatedAt = new DateTime(2021, 7, 25, 22, 16, 38, 493, DateTimeKind.Utc).AddTicks(2078),
+                            CreatedAt = new DateTime(2021, 7, 30, 12, 50, 57, 312, DateTimeKind.Utc).AddTicks(571),
                             CreatedBy = 4L,
                             IsPublic = true
                         },
@@ -8263,7 +8464,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 198L,
                             ChallengeVersionId = 148L,
                             Code = "Aperiam quam sit quidem animi quaerat ipsa excepturi nisi fugiat. Voluptas ab quas ut nemo qui eum necessitatibus magni consequatur. Odio aut recusandae.",
-                            CreatedAt = new DateTime(2023, 9, 10, 12, 49, 56, 430, DateTimeKind.Utc).AddTicks(3365),
+                            CreatedAt = new DateTime(2023, 9, 16, 21, 38, 39, 173, DateTimeKind.Utc).AddTicks(5993),
                             CreatedBy = 35L,
                             IsPublic = false
                         },
@@ -8272,7 +8473,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 199L,
                             ChallengeVersionId = 133L,
                             Code = "deleniti",
-                            CreatedAt = new DateTime(2023, 8, 30, 11, 55, 0, 711, DateTimeKind.Utc).AddTicks(6683),
+                            CreatedAt = new DateTime(2023, 9, 5, 20, 7, 42, 125, DateTimeKind.Utc).AddTicks(3661),
                             CreatedBy = 8L,
                             IsPublic = true
                         },
@@ -8281,7 +8482,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 200L,
                             ChallengeVersionId = 129L,
                             Code = "culpa",
-                            CreatedAt = new DateTime(2023, 9, 9, 2, 0, 4, 507, DateTimeKind.Utc).AddTicks(6452),
+                            CreatedAt = new DateTime(2023, 9, 15, 10, 44, 3, 80, DateTimeKind.Utc).AddTicks(8621),
                             CreatedBy = 17L,
                             IsPublic = true
                         });
@@ -8377,7 +8578,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Tremblay",
                             OAuthToken = "j5xii6spbrvfvasc6b42i4qkxc0xih8e",
-                            RegisteredAt = new DateTime(2016, 5, 19, 21, 23, 28, 185, DateTimeKind.Utc).AddTicks(7766),
+                            RegisteredAt = new DateTime(2016, 5, 20, 4, 59, 59, 690, DateTimeKind.Utc).AddTicks(4922),
                             Reputation = 4765L,
                             Sex = 3,
                             Status = 0,
@@ -8398,7 +8599,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = false,
                             LastName = "Reinger",
                             OAuthToken = "roqfrnkdcm3m8bgk66qjt1asorug0bea",
-                            RegisteredAt = new DateTime(2016, 4, 10, 17, 1, 27, 536, DateTimeKind.Utc).AddTicks(2573),
+                            RegisteredAt = new DateTime(2016, 4, 10, 22, 30, 6, 993, DateTimeKind.Utc).AddTicks(9343),
                             Reputation = 7871L,
                             Sex = 0,
                             Status = 1,
@@ -8419,7 +8620,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = false,
                             LastName = "Greenholt",
                             OAuthToken = "u5fkzd7d2caxhmyuxb2hmylyvswlmxpo",
-                            RegisteredAt = new DateTime(2017, 11, 10, 19, 19, 15, 299, DateTimeKind.Utc).AddTicks(592),
+                            RegisteredAt = new DateTime(2017, 11, 12, 8, 17, 44, 957, DateTimeKind.Utc).AddTicks(1690),
                             Reputation = 5925L,
                             Sex = 2,
                             Status = 3,
@@ -8440,7 +8641,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Kreiger",
                             OAuthToken = "skfyumcicwffr5ljwzkq4jfaio5psdgc",
-                            RegisteredAt = new DateTime(2018, 7, 26, 14, 59, 9, 103, DateTimeKind.Utc).AddTicks(5608),
+                            RegisteredAt = new DateTime(2018, 7, 28, 17, 59, 1, 248, DateTimeKind.Utc).AddTicks(174),
                             Reputation = 722L,
                             Sex = 2,
                             Status = 2,
@@ -8461,7 +8662,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Brakus",
                             OAuthToken = "9e7py2ak81f0r4s380y8tr8iy6q7o0ae",
-                            RegisteredAt = new DateTime(2017, 8, 16, 9, 37, 26, 220, DateTimeKind.Utc).AddTicks(4343),
+                            RegisteredAt = new DateTime(2017, 8, 17, 17, 53, 57, 480, DateTimeKind.Utc).AddTicks(4547),
                             Reputation = 252L,
                             Sex = 0,
                             Status = 3,
@@ -8482,7 +8683,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = false,
                             LastName = "Bradtke",
                             OAuthToken = "eha5a9t76e9hs5stl8o391w8th8j77ro",
-                            RegisteredAt = new DateTime(2022, 3, 7, 23, 21, 56, 511, DateTimeKind.Utc).AddTicks(8007),
+                            RegisteredAt = new DateTime(2022, 3, 13, 2, 10, 40, 463, DateTimeKind.Utc).AddTicks(7223),
                             Reputation = 5794L,
                             Sex = 1,
                             Status = 0,
@@ -8503,7 +8704,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Sanford",
                             OAuthToken = "tjst16gthiilfsssm8s5eytvo094ypcn",
-                            RegisteredAt = new DateTime(2020, 9, 19, 0, 18, 39, 186, DateTimeKind.Utc).AddTicks(1889),
+                            RegisteredAt = new DateTime(2020, 9, 22, 22, 1, 34, 834, DateTimeKind.Utc).AddTicks(270),
                             Reputation = 8557L,
                             Sex = 1,
                             Status = 3,
@@ -8524,7 +8725,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = false,
                             LastName = "Mueller",
                             OAuthToken = "lxoce5d7dtqca6dq54p3mlzmobdpjxxe",
-                            RegisteredAt = new DateTime(2022, 6, 2, 9, 10, 53, 533, DateTimeKind.Utc).AddTicks(4712),
+                            RegisteredAt = new DateTime(2022, 6, 7, 16, 41, 36, 853, DateTimeKind.Utc).AddTicks(2979),
                             Reputation = 3225L,
                             Sex = 2,
                             Status = 2,
@@ -8545,7 +8746,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Bahringer",
                             OAuthToken = "l7knozeg7whxviqdhbn17pfpxgywyh6k",
-                            RegisteredAt = new DateTime(2021, 12, 8, 7, 9, 48, 807, DateTimeKind.Utc).AddTicks(9170),
+                            RegisteredAt = new DateTime(2021, 12, 13, 5, 5, 53, 871, DateTimeKind.Utc).AddTicks(9176),
                             Reputation = 9026L,
                             Sex = 1,
                             Status = 2,
@@ -8566,7 +8767,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Haley",
                             OAuthToken = "gxtd6gh1ywtx83i5cyueazcw5bgnba6h",
-                            RegisteredAt = new DateTime(2018, 7, 20, 20, 18, 18, 559, DateTimeKind.Utc).AddTicks(5663),
+                            RegisteredAt = new DateTime(2018, 7, 22, 22, 59, 19, 268, DateTimeKind.Utc).AddTicks(94),
                             Reputation = 3261L,
                             Sex = 3,
                             Status = 2,
@@ -8587,7 +8788,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Wisozk",
                             OAuthToken = "qoma0anm89xg0pp1lwnpq1vqftttt6in",
-                            RegisteredAt = new DateTime(2022, 3, 29, 13, 32, 19, 620, DateTimeKind.Utc).AddTicks(4486),
+                            RegisteredAt = new DateTime(2022, 4, 3, 17, 31, 31, 122, DateTimeKind.Utc).AddTicks(7855),
                             Reputation = 2778L,
                             Sex = 3,
                             Status = 3,
@@ -8608,7 +8809,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Mosciski",
                             OAuthToken = "z23ipk4lu7xdma3i5r17zf785is5u5zj",
-                            RegisteredAt = new DateTime(2019, 9, 17, 19, 29, 46, 349, DateTimeKind.Utc).AddTicks(1050),
+                            RegisteredAt = new DateTime(2019, 9, 20, 21, 14, 22, 47, DateTimeKind.Utc).AddTicks(4952),
                             Reputation = 3871L,
                             Sex = 3,
                             Status = 3,
@@ -8629,7 +8830,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Abshire",
                             OAuthToken = "o27c94814kghx80czw3ny3khkyyxnv1h",
-                            RegisteredAt = new DateTime(2021, 3, 13, 22, 28, 35, 753, DateTimeKind.Utc).AddTicks(2037),
+                            RegisteredAt = new DateTime(2021, 3, 18, 5, 45, 38, 227, DateTimeKind.Utc).AddTicks(8342),
                             Reputation = 9824L,
                             Sex = 1,
                             Status = 1,
@@ -8650,7 +8851,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = false,
                             LastName = "Vandervort",
                             OAuthToken = "mz5dn5g47un0og6o2ev50qzdbrv3uxyu",
-                            RegisteredAt = new DateTime(2016, 6, 10, 2, 35, 5, 590, DateTimeKind.Utc).AddTicks(9778),
+                            RegisteredAt = new DateTime(2016, 6, 10, 11, 20, 51, 387, DateTimeKind.Utc).AddTicks(3999),
                             Reputation = 8261L,
                             Sex = 1,
                             Status = 1,
@@ -8671,7 +8872,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Beahan",
                             OAuthToken = "v0c79w1oqa56jo7d3zzq43z3g99nhpij",
-                            RegisteredAt = new DateTime(2022, 3, 17, 21, 50, 50, 940, DateTimeKind.Utc).AddTicks(1560),
+                            RegisteredAt = new DateTime(2022, 3, 23, 1, 12, 0, 561, DateTimeKind.Utc).AddTicks(9118),
                             Reputation = 6182L,
                             Sex = 1,
                             Status = 0,
@@ -8692,7 +8893,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Strosin",
                             OAuthToken = "hmbyu4hpaeelpjmvwk8bmtrcv29t1evm",
-                            RegisteredAt = new DateTime(2017, 6, 23, 12, 28, 30, 995, DateTimeKind.Utc).AddTicks(4219),
+                            RegisteredAt = new DateTime(2017, 6, 24, 17, 49, 12, 13, DateTimeKind.Utc).AddTicks(8002),
                             Reputation = 7704L,
                             Sex = 2,
                             Status = 2,
@@ -8713,7 +8914,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "White",
                             OAuthToken = "jbqp132odtsoi80r87caxdrqmia5te2n",
-                            RegisteredAt = new DateTime(2016, 1, 19, 23, 6, 1, 281, DateTimeKind.Utc).AddTicks(1299),
+                            RegisteredAt = new DateTime(2016, 1, 20, 0, 7, 54, 248, DateTimeKind.Utc).AddTicks(4122),
                             Reputation = 1387L,
                             Sex = 3,
                             Status = 3,
@@ -8734,7 +8935,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Kozey",
                             OAuthToken = "18sj6m3bnayxc56o2n49a9328n2le4cw",
-                            RegisteredAt = new DateTime(2022, 12, 31, 17, 0, 35, 563, DateTimeKind.Utc).AddTicks(8070),
+                            RegisteredAt = new DateTime(2023, 1, 6, 12, 4, 13, 546, DateTimeKind.Utc).AddTicks(5183),
                             Reputation = 537L,
                             Sex = 2,
                             Status = 3,
@@ -8755,7 +8956,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Kohler",
                             OAuthToken = "je5li2tqa8jmgvz0t0t3r3oadzr7evhd",
-                            RegisteredAt = new DateTime(2022, 4, 18, 23, 3, 40, 95, DateTimeKind.Utc).AddTicks(260),
+                            RegisteredAt = new DateTime(2022, 4, 24, 4, 9, 25, 398, DateTimeKind.Utc).AddTicks(8047),
                             Reputation = 1743L,
                             Sex = 2,
                             Status = 1,
@@ -8776,7 +8977,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Grimes",
                             OAuthToken = "gxq5d8bgj9ke7jfw1bzl1krz9xdxandc",
-                            RegisteredAt = new DateTime(2020, 12, 19, 14, 9, 37, 568, DateTimeKind.Utc).AddTicks(742),
+                            RegisteredAt = new DateTime(2020, 12, 23, 16, 51, 24, 521, DateTimeKind.Utc).AddTicks(2216),
                             Reputation = 2166L,
                             Sex = 1,
                             Status = 0,
@@ -8797,7 +8998,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Grimes",
                             OAuthToken = "h9obbv5mrpfwpnofrburg6udyi72222q",
-                            RegisteredAt = new DateTime(2017, 1, 24, 22, 31, 46, 368, DateTimeKind.Utc).AddTicks(3255),
+                            RegisteredAt = new DateTime(2017, 1, 25, 19, 44, 18, 569, DateTimeKind.Utc).AddTicks(6922),
                             Reputation = 6853L,
                             Sex = 0,
                             Status = 2,
@@ -8818,7 +9019,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Goodwin",
                             OAuthToken = "lv858ligye5yxx1fd90qsywhxs37bucf",
-                            RegisteredAt = new DateTime(2018, 5, 5, 8, 16, 52, 923, DateTimeKind.Utc).AddTicks(9652),
+                            RegisteredAt = new DateTime(2018, 5, 7, 6, 48, 14, 307, DateTimeKind.Utc).AddTicks(1100),
                             Reputation = 7135L,
                             Sex = 1,
                             Status = 0,
@@ -8839,7 +9040,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Sipes",
                             OAuthToken = "gapmhfd5scdgjahzwwi2qggbiebeibws",
-                            RegisteredAt = new DateTime(2021, 11, 11, 8, 8, 31, 912, DateTimeKind.Utc).AddTicks(7796),
+                            RegisteredAt = new DateTime(2021, 11, 16, 4, 36, 38, 208, DateTimeKind.Utc).AddTicks(7836),
                             Reputation = 5855L,
                             Sex = 3,
                             Status = 2,
@@ -8860,7 +9061,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Schumm",
                             OAuthToken = "f8o9lm8euq18a1z0ift2568r6ub1jotv",
-                            RegisteredAt = new DateTime(2021, 4, 30, 10, 36, 38, 404, DateTimeKind.Utc).AddTicks(5408),
+                            RegisteredAt = new DateTime(2021, 5, 4, 20, 28, 42, 740, DateTimeKind.Utc).AddTicks(6424),
                             Reputation = 1805L,
                             Sex = 0,
                             Status = 3,
@@ -8881,7 +9082,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Greenholt",
                             OAuthToken = "rc5nbq25ykelph6p4rygdqhnpzytge0z",
-                            RegisteredAt = new DateTime(2019, 2, 23, 16, 40, 44, 161, DateTimeKind.Utc).AddTicks(9080),
+                            RegisteredAt = new DateTime(2019, 2, 26, 7, 12, 40, 914, DateTimeKind.Utc).AddTicks(2358),
                             Reputation = 4369L,
                             Sex = 0,
                             Status = 2,
@@ -8902,7 +9103,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Stanton",
                             OAuthToken = "r2clhjhuudf12cih0lw8gbo2iez213cl",
-                            RegisteredAt = new DateTime(2016, 6, 21, 21, 55, 36, 635, DateTimeKind.Utc).AddTicks(700),
+                            RegisteredAt = new DateTime(2016, 6, 22, 7, 19, 54, 96, DateTimeKind.Utc).AddTicks(1575),
                             Reputation = 8150L,
                             Sex = 1,
                             Status = 3,
@@ -8923,7 +9124,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "King",
                             OAuthToken = "vd1gh29xpbe67o4v8lqx9jas8evgkenm",
-                            RegisteredAt = new DateTime(2021, 12, 16, 5, 20, 7, 450, DateTimeKind.Utc).AddTicks(73),
+                            RegisteredAt = new DateTime(2021, 12, 21, 3, 42, 4, 43, DateTimeKind.Utc).AddTicks(8110),
                             Reputation = 7635L,
                             Sex = 3,
                             Status = 1,
@@ -8944,7 +9145,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Blanda",
                             OAuthToken = "wbnyi8hdsg1e64j9f7k3mrte1aqankc1",
-                            RegisteredAt = new DateTime(2016, 7, 18, 13, 5, 31, 622, DateTimeKind.Utc).AddTicks(6206),
+                            RegisteredAt = new DateTime(2016, 7, 18, 23, 56, 43, 757, DateTimeKind.Utc).AddTicks(1727),
                             Reputation = 54L,
                             Sex = 0,
                             Status = 2,
@@ -8965,7 +9166,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Bartell",
                             OAuthToken = "0b0i5gy4jjts04l233zghqo51aghk4dv",
-                            RegisteredAt = new DateTime(2017, 8, 4, 21, 1, 9, 691, DateTimeKind.Utc).AddTicks(6136),
+                            RegisteredAt = new DateTime(2017, 8, 6, 4, 40, 4, 254, DateTimeKind.Utc).AddTicks(1629),
                             Reputation = 9380L,
                             Sex = 1,
                             Status = 2,
@@ -8986,7 +9187,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Cole",
                             OAuthToken = "y10bz5xrxejtjf26ctgvfvgmeqetmx4x",
-                            RegisteredAt = new DateTime(2020, 8, 25, 6, 0, 30, 90, DateTimeKind.Utc).AddTicks(9238),
+                            RegisteredAt = new DateTime(2020, 8, 29, 2, 22, 37, 80, DateTimeKind.Utc).AddTicks(9250),
                             Reputation = 6299L,
                             Sex = 0,
                             Status = 0,
@@ -9007,7 +9208,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Wiza",
                             OAuthToken = "142u8w2c1qhg2uk50vzv64rninybw7no",
-                            RegisteredAt = new DateTime(2016, 12, 17, 5, 8, 17, 199, DateTimeKind.Utc).AddTicks(4348),
+                            RegisteredAt = new DateTime(2016, 12, 18, 0, 14, 26, 897, DateTimeKind.Utc).AddTicks(3961),
                             Reputation = 8185L,
                             Sex = 3,
                             Status = 1,
@@ -9028,7 +9229,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Hilpert",
                             OAuthToken = "lkxx91ladel24b90m91w8cw4h1x8sfyb",
-                            RegisteredAt = new DateTime(2016, 12, 25, 7, 7, 14, 225, DateTimeKind.Utc).AddTicks(4350),
+                            RegisteredAt = new DateTime(2016, 12, 26, 2, 39, 46, 542, DateTimeKind.Utc).AddTicks(9065),
                             Reputation = 2620L,
                             Sex = 1,
                             Status = 2,
@@ -9049,7 +9250,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Moen",
                             OAuthToken = "i9gvbsu2xwsaa630xz6au2dus0tpp4l5",
-                            RegisteredAt = new DateTime(2021, 12, 1, 11, 18, 9, 914, DateTimeKind.Utc).AddTicks(1837),
+                            RegisteredAt = new DateTime(2021, 12, 6, 8, 51, 58, 108, DateTimeKind.Utc).AddTicks(4587),
                             Reputation = 6313L,
                             Sex = 0,
                             Status = 1,
@@ -9070,7 +9271,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Tillman",
                             OAuthToken = "3ogsvf4dmok0ps0dhvzugge259zu4fhj",
-                            RegisteredAt = new DateTime(2023, 3, 17, 23, 6, 42, 443, DateTimeKind.Utc).AddTicks(8266),
+                            RegisteredAt = new DateTime(2023, 3, 23, 22, 19, 11, 437, DateTimeKind.Utc).AddTicks(6042),
                             Reputation = 242L,
                             Sex = 1,
                             Status = 0,
@@ -9091,7 +9292,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Hackett",
                             OAuthToken = "ztlu8jkz000mqgmag23c2b33jfrhir9b",
-                            RegisteredAt = new DateTime(2022, 2, 21, 0, 7, 23, 692, DateTimeKind.Utc).AddTicks(8734),
+                            RegisteredAt = new DateTime(2022, 2, 26, 2, 7, 16, 740, DateTimeKind.Utc).AddTicks(5486),
                             Reputation = 6738L,
                             Sex = 0,
                             Status = 1,
@@ -9112,7 +9313,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Mills",
                             OAuthToken = "ccek5cf42iqsmelujrcnwvubh6dphsut",
-                            RegisteredAt = new DateTime(2020, 4, 10, 23, 58, 1, 50, DateTimeKind.Utc).AddTicks(7895),
+                            RegisteredAt = new DateTime(2020, 4, 14, 12, 55, 29, 185, DateTimeKind.Utc).AddTicks(624),
                             Reputation = 9212L,
                             Sex = 2,
                             Status = 2,
@@ -9133,7 +9334,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Macejkovic",
                             OAuthToken = "a4iwyhds880o77dyhqrbr9kqg6dkxols",
-                            RegisteredAt = new DateTime(2016, 5, 7, 13, 34, 51, 203, DateTimeKind.Utc).AddTicks(8350),
+                            RegisteredAt = new DateTime(2016, 5, 7, 20, 31, 9, 320, DateTimeKind.Utc).AddTicks(2565),
                             Reputation = 2160L,
                             Sex = 3,
                             Status = 3,
@@ -9154,7 +9355,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Rodriguez",
                             OAuthToken = "4ww7cki3exa5wrbgtnxddwabl67hgagi",
-                            RegisteredAt = new DateTime(2018, 12, 23, 6, 22, 53, 662, DateTimeKind.Utc).AddTicks(7091),
+                            RegisteredAt = new DateTime(2018, 12, 25, 17, 31, 6, 453, DateTimeKind.Utc).AddTicks(8189),
                             Reputation = 7897L,
                             Sex = 0,
                             Status = 2,
@@ -9175,7 +9376,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = false,
                             LastName = "Mann",
                             OAuthToken = "6soe4ox78yk7u8nfvyuud80z36zh0cpu",
-                            RegisteredAt = new DateTime(2016, 7, 25, 2, 49, 36, 576, DateTimeKind.Utc).AddTicks(6559),
+                            RegisteredAt = new DateTime(2016, 7, 25, 14, 2, 15, 600, DateTimeKind.Utc).AddTicks(5838),
                             Reputation = 7353L,
                             Sex = 1,
                             Status = 0,
@@ -9196,7 +9397,7 @@ namespace LeetWars.Core.DAL.Migrations
                             IsSubscribed = true,
                             LastName = "Metz",
                             OAuthToken = "lkmvpf0yvxu8luhfbq06kamv88m30490",
-                            RegisteredAt = new DateTime(2017, 10, 22, 0, 36, 49, 554, DateTimeKind.Utc).AddTicks(4046),
+                            RegisteredAt = new DateTime(2017, 10, 23, 12, 30, 46, 281, DateTimeKind.Utc).AddTicks(7745),
                             Reputation = 8292L,
                             Sex = 3,
                             Status = 3,
@@ -9239,562 +9440,942 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            BadgeId = 5L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(800),
-                            UserId = 27L
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1127),
+                            UserId = 19L
                         },
                         new
                         {
                             Id = 2L,
-                            BadgeId = 2L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1041),
-                            UserId = 28L
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1257),
+                            UserId = 22L
                         },
                         new
                         {
                             Id = 3L,
-                            BadgeId = 3L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1053),
-                            UserId = 37L
+                            BadgeId = 12L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1265),
+                            UserId = 39L
                         },
                         new
                         {
                             Id = 4L,
-                            BadgeId = 9L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1062),
-                            UserId = 21L
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1273),
+                            UserId = 4L
                         },
                         new
                         {
                             Id = 5L,
-                            BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1070),
-                            UserId = 14L
+                            BadgeId = 6L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1279),
+                            UserId = 34L
                         },
                         new
                         {
                             Id = 6L,
-                            BadgeId = 1L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1078),
-                            UserId = 31L
+                            BadgeId = 11L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1285),
+                            UserId = 9L
                         },
                         new
                         {
                             Id = 7L,
-                            BadgeId = 11L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1086),
-                            UserId = 29L
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1297),
+                            UserId = 40L
                         },
                         new
                         {
                             Id = 8L,
                             BadgeId = 10L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1094),
-                            UserId = 6L
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            BadgeId = 7L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1102),
-                            UserId = 34L
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            BadgeId = 3L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1109),
-                            UserId = 16L
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            BadgeId = 11L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1117),
-                            UserId = 7L
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1124),
-                            UserId = 16L
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            BadgeId = 2L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1132),
-                            UserId = 24L
-                        },
-                        new
-                        {
-                            Id = 14L,
-                            BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1140),
-                            UserId = 15L
-                        },
-                        new
-                        {
-                            Id = 15L,
-                            BadgeId = 1L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1147),
-                            UserId = 21L
-                        },
-                        new
-                        {
-                            Id = 16L,
-                            BadgeId = 1L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1206),
-                            UserId = 1L
-                        },
-                        new
-                        {
-                            Id = 17L,
-                            BadgeId = 3L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1215),
-                            UserId = 23L
-                        },
-                        new
-                        {
-                            Id = 18L,
-                            BadgeId = 7L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1222),
-                            UserId = 27L
-                        },
-                        new
-                        {
-                            Id = 19L,
-                            BadgeId = 11L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1230),
-                            UserId = 19L
-                        },
-                        new
-                        {
-                            Id = 20L,
-                            BadgeId = 9L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1237),
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1305),
                             UserId = 2L
                         },
                         new
                         {
+                            Id = 9L,
+                            BadgeId = 5L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1311),
+                            UserId = 36L
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            BadgeId = 4L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1316),
+                            UserId = 5L
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1322),
+                            UserId = 36L
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            BadgeId = 6L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1327),
+                            UserId = 33L
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            BadgeId = 10L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1333),
+                            UserId = 34L
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            BadgeId = 4L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1338),
+                            UserId = 35L
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            BadgeId = 11L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1344),
+                            UserId = 2L
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1349),
+                            UserId = 38L
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            BadgeId = 4L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1355),
+                            UserId = 24L
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            BadgeId = 10L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1360),
+                            UserId = 40L
+                        },
+                        new
+                        {
+                            Id = 19L,
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1366),
+                            UserId = 18L
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            BadgeId = 7L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1371),
+                            UserId = 19L
+                        },
+                        new
+                        {
                             Id = 21L,
-                            BadgeId = 9L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1249),
+                            BadgeId = 5L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1377),
                             UserId = 9L
                         },
                         new
                         {
                             Id = 22L,
-                            BadgeId = 7L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1256),
-                            UserId = 37L
+                            BadgeId = 4L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1382),
+                            UserId = 17L
                         },
                         new
                         {
                             Id = 23L,
-                            BadgeId = 5L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1263),
-                            UserId = 37L
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1388),
+                            UserId = 38L
                         },
                         new
                         {
                             Id = 24L,
-                            BadgeId = 6L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1270),
+                            BadgeId = 9L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1393),
                             UserId = 39L
                         },
                         new
                         {
                             Id = 25L,
-                            BadgeId = 4L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1277),
-                            UserId = 23L
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1398),
+                            UserId = 3L
                         },
                         new
                         {
                             Id = 26L,
                             BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1284),
-                            UserId = 15L
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1404),
+                            UserId = 35L
                         },
                         new
                         {
                             Id = 27L,
-                            BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1292),
-                            UserId = 34L
-                        },
-                        new
-                        {
-                            Id = 28L,
-                            BadgeId = 9L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1299),
-                            UserId = 16L
-                        },
-                        new
-                        {
-                            Id = 29L,
-                            BadgeId = 9L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1306),
-                            UserId = 21L
-                        },
-                        new
-                        {
-                            Id = 30L,
-                            BadgeId = 4L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1313),
-                            UserId = 15L
-                        },
-                        new
-                        {
-                            Id = 31L,
                             BadgeId = 11L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1320),
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1409),
                             UserId = 26L
                         },
                         new
                         {
-                            Id = 32L,
-                            BadgeId = 5L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1327),
-                            UserId = 28L
-                        },
-                        new
-                        {
-                            Id = 33L,
+                            Id = 28L,
                             BadgeId = 6L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1335),
-                            UserId = 27L
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1415),
+                            UserId = 39L
                         },
                         new
                         {
-                            Id = 34L,
-                            BadgeId = 2L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1342),
-                            UserId = 12L
+                            Id = 29L,
+                            BadgeId = 12L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1421),
+                            UserId = 11L
                         },
                         new
                         {
-                            Id = 35L,
-                            BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1349),
+                            Id = 30L,
+                            BadgeId = 9L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1426),
+                            UserId = 33L
+                        },
+                        new
+                        {
+                            Id = 31L,
+                            BadgeId = 4L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1431),
+                            UserId = 15L
+                        },
+                        new
+                        {
+                            Id = 32L,
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1437),
                             UserId = 34L
                         },
                         new
                         {
+                            Id = 33L,
+                            BadgeId = 11L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1442),
+                            UserId = 17L
+                        },
+                        new
+                        {
+                            Id = 34L,
+                            BadgeId = 7L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1451),
+                            UserId = 2L
+                        },
+                        new
+                        {
+                            Id = 35L,
+                            BadgeId = 9L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1457),
+                            UserId = 6L
+                        },
+                        new
+                        {
                             Id = 36L,
-                            BadgeId = 3L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1357),
-                            UserId = 10L
+                            BadgeId = 7L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1462),
+                            UserId = 30L
                         },
                         new
                         {
                             Id = 37L,
-                            BadgeId = 12L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1364),
-                            UserId = 12L
+                            BadgeId = 8L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1467),
+                            UserId = 7L
                         },
                         new
                         {
                             Id = 38L,
-                            BadgeId = 6L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1371),
-                            UserId = 21L
+                            BadgeId = 7L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1473),
+                            UserId = 25L
                         },
                         new
                         {
                             Id = 39L,
-                            BadgeId = 6L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1378),
+                            BadgeId = 8L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1478),
                             UserId = 23L
                         },
                         new
                         {
                             Id = 40L,
-                            BadgeId = 5L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1385),
-                            UserId = 39L
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1483),
+                            UserId = 28L
                         },
                         new
                         {
                             Id = 41L,
-                            BadgeId = 6L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1392),
-                            UserId = 27L
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1488),
+                            UserId = 20L
                         },
                         new
                         {
                             Id = 42L,
                             BadgeId = 1L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1400),
-                            UserId = 32L
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1494),
+                            UserId = 33L
                         },
                         new
                         {
                             Id = 43L,
-                            BadgeId = 5L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1441),
-                            UserId = 18L
+                            BadgeId = 12L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1499),
+                            UserId = 10L
                         },
                         new
                         {
                             Id = 44L,
-                            BadgeId = 7L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1450),
-                            UserId = 1L
+                            BadgeId = 12L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1504),
+                            UserId = 23L
                         },
                         new
                         {
                             Id = 45L,
-                            BadgeId = 12L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1457),
-                            UserId = 32L
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1509),
+                            UserId = 12L
                         },
                         new
                         {
                             Id = 46L,
-                            BadgeId = 9L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1465),
-                            UserId = 19L
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1515),
+                            UserId = 20L
                         },
                         new
                         {
                             Id = 47L,
-                            BadgeId = 5L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1472),
-                            UserId = 18L
+                            BadgeId = 8L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1520),
+                            UserId = 30L
                         },
                         new
                         {
                             Id = 48L,
-                            BadgeId = 12L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1479),
-                            UserId = 24L
+                            BadgeId = 10L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1525),
+                            UserId = 11L
                         },
                         new
                         {
                             Id = 49L,
-                            BadgeId = 1L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1486),
-                            UserId = 16L
-                        },
-                        new
-                        {
-                            Id = 50L,
-                            BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1493),
-                            UserId = 13L
-                        },
-                        new
-                        {
-                            Id = 51L,
-                            BadgeId = 6L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1501),
-                            UserId = 35L
-                        },
-                        new
-                        {
-                            Id = 52L,
-                            BadgeId = 4L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1508),
-                            UserId = 32L
-                        },
-                        new
-                        {
-                            Id = 53L,
-                            BadgeId = 9L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1515),
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1531),
                             UserId = 2L
                         },
                         new
                         {
+                            Id = 50L,
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1536),
+                            UserId = 22L
+                        },
+                        new
+                        {
+                            Id = 51L,
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1541),
+                            UserId = 27L
+                        },
+                        new
+                        {
+                            Id = 52L,
+                            BadgeId = 7L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1546),
+                            UserId = 18L
+                        },
+                        new
+                        {
+                            Id = 53L,
+                            BadgeId = 12L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1552),
+                            UserId = 15L
+                        },
+                        new
+                        {
                             Id = 54L,
-                            BadgeId = 11L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1522),
-                            UserId = 13L
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1557),
+                            UserId = 3L
                         },
                         new
                         {
                             Id = 55L,
-                            BadgeId = 4L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1529),
-                            UserId = 25L
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1563),
+                            UserId = 7L
                         },
                         new
                         {
                             Id = 56L,
-                            BadgeId = 6L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1536),
-                            UserId = 40L
+                            BadgeId = 10L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1568),
+                            UserId = 16L
                         },
                         new
                         {
                             Id = 57L,
-                            BadgeId = 7L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1543),
-                            UserId = 36L
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1574),
+                            UserId = 9L
                         },
                         new
                         {
                             Id = 58L,
-                            BadgeId = 7L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1550),
-                            UserId = 6L
+                            BadgeId = 10L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1579),
+                            UserId = 16L
                         },
                         new
                         {
                             Id = 59L,
                             BadgeId = 11L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1558),
-                            UserId = 6L
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1584),
+                            UserId = 8L
                         },
                         new
                         {
                             Id = 60L,
-                            BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1565),
-                            UserId = 2L
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1589),
+                            UserId = 25L
                         },
                         new
                         {
                             Id = 61L,
-                            BadgeId = 5L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1572),
-                            UserId = 13L
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1595),
+                            UserId = 15L
                         },
                         new
                         {
                             Id = 62L,
-                            BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1579),
-                            UserId = 14L
+                            BadgeId = 12L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1603),
+                            UserId = 37L
                         },
                         new
                         {
                             Id = 63L,
-                            BadgeId = 10L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1586),
-                            UserId = 12L
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1608),
+                            UserId = 37L
                         },
                         new
                         {
                             Id = 64L,
-                            BadgeId = 12L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1593),
-                            UserId = 23L
+                            BadgeId = 5L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1614),
+                            UserId = 7L
                         },
                         new
                         {
                             Id = 65L,
-                            BadgeId = 1L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1600),
-                            UserId = 13L
+                            BadgeId = 4L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1619),
+                            UserId = 31L
                         },
                         new
                         {
                             Id = 66L,
-                            BadgeId = 11L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1608),
-                            UserId = 20L
+                            BadgeId = 9L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1625),
+                            UserId = 38L
                         },
                         new
                         {
                             Id = 67L,
-                            BadgeId = 4L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1615),
-                            UserId = 14L
+                            BadgeId = 2L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1630),
+                            UserId = 13L
                         },
                         new
                         {
                             Id = 68L,
                             BadgeId = 4L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1622),
-                            UserId = 20L
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1635),
+                            UserId = 18L
                         },
                         new
                         {
                             Id = 69L,
-                            BadgeId = 10L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1629),
-                            UserId = 12L
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1641),
+                            UserId = 19L
                         },
                         new
                         {
                             Id = 70L,
-                            BadgeId = 10L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1636),
-                            UserId = 31L
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1646),
+                            UserId = 30L
                         },
                         new
                         {
                             Id = 71L,
-                            BadgeId = 10L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1679),
-                            UserId = 1L
-                        },
-                        new
-                        {
-                            Id = 72L,
-                            BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1687),
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1651),
                             UserId = 34L
                         },
                         new
                         {
-                            Id = 73L,
-                            BadgeId = 9L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1695),
-                            UserId = 23L
+                            Id = 72L,
+                            BadgeId = 3L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1657),
+                            UserId = 20L
                         },
                         new
                         {
-                            Id = 74L,
-                            BadgeId = 10L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1702),
+                            Id = 73L,
+                            BadgeId = 12L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1662),
                             UserId = 8L
                         },
                         new
                         {
+                            Id = 74L,
+                            BadgeId = 9L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1667),
+                            UserId = 4L
+                        },
+                        new
+                        {
                             Id = 75L,
-                            BadgeId = 10L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1708),
-                            UserId = 31L
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1672),
+                            UserId = 30L
                         },
                         new
                         {
                             Id = 76L,
-                            BadgeId = 3L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1715),
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1678),
                             UserId = 32L
                         },
                         new
                         {
                             Id = 77L,
-                            BadgeId = 4L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1723),
-                            UserId = 33L
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1683),
+                            UserId = 36L
                         },
                         new
                         {
                             Id = 78L,
-                            BadgeId = 10L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1730),
-                            UserId = 37L
+                            BadgeId = 1L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1688),
+                            UserId = 3L
                         },
                         new
                         {
                             Id = 79L,
                             BadgeId = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1737),
-                            UserId = 29L
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1693),
+                            UserId = 10L
                         },
                         new
                         {
                             Id = 80L,
-                            BadgeId = 12L,
-                            CreatedAt = new DateTime(2023, 9, 12, 16, 17, 29, 730, DateTimeKind.Local).AddTicks(1744),
+                            BadgeId = 8L,
+                            CreatedAt = new DateTime(2023, 9, 19, 1, 13, 12, 303, DateTimeKind.Local).AddTicks(1698),
                             UserId = 23L
+                        });
+                });
+
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserFriendship", b =>
+                {
+                    b.Property<long>("FriendshipId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsSender")
+                        .HasColumnType("bit");
+
+                    b.HasKey("FriendshipId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserFriendships");
+
+                    b.HasData(
+                        new
+                        {
+                            FriendshipId = 1L,
+                            UserId = 29L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 1L,
+                            UserId = 11L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 2L,
+                            UserId = 38L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 2L,
+                            UserId = 27L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 3L,
+                            UserId = 26L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 3L,
+                            UserId = 35L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 4L,
+                            UserId = 13L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 4L,
+                            UserId = 6L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 5L,
+                            UserId = 12L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 5L,
+                            UserId = 17L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 6L,
+                            UserId = 13L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 6L,
+                            UserId = 40L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 7L,
+                            UserId = 20L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 7L,
+                            UserId = 35L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 8L,
+                            UserId = 10L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 8L,
+                            UserId = 27L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 9L,
+                            UserId = 32L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 9L,
+                            UserId = 33L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 10L,
+                            UserId = 20L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 10L,
+                            UserId = 35L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 11L,
+                            UserId = 29L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 11L,
+                            UserId = 11L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 12L,
+                            UserId = 40L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 12L,
+                            UserId = 21L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 13L,
+                            UserId = 18L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 13L,
+                            UserId = 32L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 14L,
+                            UserId = 22L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 14L,
+                            UserId = 2L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 15L,
+                            UserId = 2L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 15L,
+                            UserId = 39L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 16L,
+                            UserId = 22L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 16L,
+                            UserId = 2L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 17L,
+                            UserId = 18L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 17L,
+                            UserId = 14L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 18L,
+                            UserId = 4L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 18L,
+                            UserId = 17L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 19L,
+                            UserId = 31L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 19L,
+                            UserId = 34L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 20L,
+                            UserId = 40L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 20L,
+                            UserId = 12L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 21L,
+                            UserId = 33L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 21L,
+                            UserId = 20L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 22L,
+                            UserId = 23L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 22L,
+                            UserId = 37L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 23L,
+                            UserId = 37L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 23L,
+                            UserId = 2L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 24L,
+                            UserId = 27L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 24L,
+                            UserId = 9L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 25L,
+                            UserId = 38L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 25L,
+                            UserId = 27L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 26L,
+                            UserId = 27L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 26L,
+                            UserId = 5L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 27L,
+                            UserId = 3L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 27L,
+                            UserId = 37L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 28L,
+                            UserId = 23L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 28L,
+                            UserId = 9L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 29L,
+                            UserId = 12L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 29L,
+                            UserId = 8L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 30L,
+                            UserId = 27L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 30L,
+                            UserId = 18L,
+                            IsSender = false
                         });
                 });
 
@@ -9874,67 +10455,67 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 1L,
                             ChallengeVersionId = 164L,
                             Code = "Vitae earum pariatur animi saepe explicabo asperiores molestiae et nihil. Esse provident id saepe nesciunt enim. Neque nemo dolore cupiditate temporibus vitae. Ut est voluptates qui minima dolor totam reprehenderit. Dolores non blanditiis facere numquam et facilis. Saepe sequi adipisci labore nesciunt.",
-                            CreatedAt = new DateTime(2023, 8, 13, 11, 18, 30, 231, DateTimeKind.Utc).AddTicks(9511),
+                            CreatedAt = new DateTime(2023, 8, 19, 18, 35, 37, 983, DateTimeKind.Utc).AddTicks(656),
                             CreatedBy = 33L,
                             Output = "Tempora minus et in facilis natus voluptatem voluptas non. Dignissimos dicta dolor delectus molestiae alias accusantium voluptatem. Delectus cumque iste. Ea nam aut et. Necessitatibus molestiae odit quibusdam ullam ad ab quae.",
-                            SubmittedAt = new DateTime(2023, 9, 10, 18, 47, 28, 17, DateTimeKind.Utc).AddTicks(9004)
+                            SubmittedAt = new DateTime(2023, 9, 17, 3, 36, 59, 375, DateTimeKind.Utc).AddTicks(1318)
                         },
                         new
                         {
                             Id = 2L,
                             ChallengeVersionId = 57L,
                             Code = "Ea iste quos non incidunt consectetur numquam.\nQuod facilis dolorem libero.\nNostrum voluptates tempore non sint debitis et.\nFacilis temporibus molestias repudiandae aut amet non.\nIpsum amet perferendis id.\nAlias aut deleniti optio ea optio numquam.",
-                            CreatedAt = new DateTime(2023, 5, 27, 21, 46, 53, 988, DateTimeKind.Utc).AddTicks(7308),
+                            CreatedAt = new DateTime(2023, 6, 3, 0, 50, 54, 346, DateTimeKind.Utc).AddTicks(6051),
                             CreatedBy = 8L,
                             Output = "Aut vel dolores cupiditate et consectetur consequatur voluptatem. Voluptatem quasi quo assumenda maiores sit aliquid consequatur alias. Sunt praesentium voluptatem recusandae hic nostrum et consectetur ut aut.",
-                            SubmittedAt = new DateTime(2023, 7, 30, 8, 7, 15, 754, DateTimeKind.Utc).AddTicks(9186)
+                            SubmittedAt = new DateTime(2023, 8, 5, 14, 38, 16, 222, DateTimeKind.Utc).AddTicks(6936)
                         },
                         new
                         {
                             Id = 3L,
                             ChallengeVersionId = 98L,
                             Code = "Eum distinctio corporis ut dolorem et velit.",
-                            CreatedAt = new DateTime(2023, 8, 27, 22, 24, 23, 17, DateTimeKind.Utc).AddTicks(7976),
+                            CreatedAt = new DateTime(2023, 9, 3, 6, 28, 42, 595, DateTimeKind.Utc).AddTicks(6748),
                             CreatedBy = 40L,
                             Output = "Quis laboriosam dolores soluta illo est numquam.",
-                            SubmittedAt = new DateTime(2023, 9, 12, 0, 48, 16, 641, DateTimeKind.Utc).AddTicks(7860)
+                            SubmittedAt = new DateTime(2023, 9, 18, 9, 41, 52, 866, DateTimeKind.Utc).AddTicks(4059)
                         },
                         new
                         {
                             Id = 4L,
                             ChallengeVersionId = 187L,
                             Code = "Repellat est sequi.\nEaque cupiditate consequuntur harum deserunt atque delectus nisi.\nAut voluptate ut tenetur sint quam consequatur praesentium.",
-                            CreatedAt = new DateTime(2020, 10, 19, 1, 0, 42, 550, DateTimeKind.Utc).AddTicks(2375),
+                            CreatedAt = new DateTime(2020, 10, 23, 0, 21, 38, 97, DateTimeKind.Utc).AddTicks(7279),
                             CreatedBy = 1L,
                             Output = "Corrupti quasi omnis.\nRerum iusto dicta.\nMolestiae velit ut reprehenderit assumenda similique vel consequatur neque.\nUt velit sunt ut sint maiores beatae et.",
-                            SubmittedAt = new DateTime(2021, 6, 18, 16, 41, 23, 476, DateTimeKind.Utc).AddTicks(4365)
+                            SubmittedAt = new DateTime(2021, 6, 23, 5, 14, 11, 899, DateTimeKind.Utc).AddTicks(1852)
                         },
                         new
                         {
                             Id = 5L,
                             ChallengeVersionId = 80L,
                             Code = "Aspernatur qui delectus ut.",
-                            CreatedAt = new DateTime(2023, 7, 4, 15, 31, 38, 705, DateTimeKind.Utc).AddTicks(4336),
+                            CreatedAt = new DateTime(2023, 7, 10, 20, 38, 48, 656, DateTimeKind.Utc).AddTicks(5318),
                             CreatedBy = 7L,
                             Output = "nobis",
-                            SubmittedAt = new DateTime(2023, 9, 6, 19, 15, 1, 499, DateTimeKind.Utc).AddTicks(6786)
+                            SubmittedAt = new DateTime(2023, 9, 13, 3, 51, 33, 381, DateTimeKind.Utc).AddTicks(9210)
                         },
                         new
                         {
                             Id = 6L,
                             ChallengeVersionId = 192L,
                             Code = "perferendis",
-                            CreatedAt = new DateTime(2023, 1, 20, 10, 10, 12, 498, DateTimeKind.Utc).AddTicks(9292),
+                            CreatedAt = new DateTime(2023, 1, 26, 6, 18, 10, 802, DateTimeKind.Utc).AddTicks(9198),
                             CreatedBy = 33L,
                             Output = "Esse voluptas facere autem. Delectus qui iste error voluptatem. Molestiae sequi impedit velit iste. Ipsum tempore molestiae esse aperiam eos accusantium placeat.",
-                            SubmittedAt = new DateTime(2023, 1, 24, 16, 34, 47, 805, DateTimeKind.Utc).AddTicks(3540)
+                            SubmittedAt = new DateTime(2023, 1, 30, 12, 56, 41, 626, DateTimeKind.Utc).AddTicks(8326)
                         },
                         new
                         {
                             Id = 7L,
                             ChallengeVersionId = 61L,
                             Code = "aut",
-                            CreatedAt = new DateTime(2023, 3, 26, 18, 34, 11, 955, DateTimeKind.Utc).AddTicks(5778),
+                            CreatedAt = new DateTime(2023, 4, 1, 18, 15, 26, 162, DateTimeKind.Utc).AddTicks(4287),
                             CreatedBy = 7L,
                             Output = "Iure saepe quas accusamus magni repellat velit ea.\nReprehenderit est labore.\nPorro earum consequatur nulla aspernatur a.\nVel nihil qui quae unde aut quo sed.\nA velit aut commodi asperiores vel nam."
                         },
@@ -9943,427 +10524,427 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 8L,
                             ChallengeVersionId = 21L,
                             Code = "Voluptatem error provident quo beatae culpa modi repellendus.\nQuasi suscipit soluta neque praesentium voluptatem sed quis.",
-                            CreatedAt = new DateTime(2023, 9, 10, 17, 34, 47, 435, DateTimeKind.Utc).AddTicks(8161),
+                            CreatedAt = new DateTime(2023, 9, 17, 2, 24, 8, 911, DateTimeKind.Utc).AddTicks(9827),
                             CreatedBy = 28L,
                             Output = "Reiciendis sint debitis. Et ad sed perspiciatis omnis non. Placeat error explicabo accusantium maiores deleniti repellat praesentium. Id et eos. Expedita magni et impedit voluptatibus. Qui consequuntur nulla explicabo expedita aut.",
-                            SubmittedAt = new DateTime(2023, 9, 12, 6, 56, 54, 86, DateTimeKind.Utc).AddTicks(2127)
+                            SubmittedAt = new DateTime(2023, 9, 18, 15, 51, 20, 434, DateTimeKind.Utc).AddTicks(9320)
                         },
                         new
                         {
                             Id = 9L,
                             ChallengeVersionId = 76L,
                             Code = "Ut officia fugit quasi.\nSit rerum quis esse placeat nemo.\nDolor qui est est omnis.",
-                            CreatedAt = new DateTime(2023, 4, 14, 23, 7, 50, 387, DateTimeKind.Utc).AddTicks(8386),
+                            CreatedAt = new DateTime(2023, 4, 20, 23, 51, 42, 101, DateTimeKind.Utc).AddTicks(4114),
                             CreatedBy = 12L,
                             Output = "Consequuntur iure deserunt ut rem iusto et.",
-                            SubmittedAt = new DateTime(2023, 7, 23, 8, 28, 29, 57, DateTimeKind.Utc).AddTicks(4374)
+                            SubmittedAt = new DateTime(2023, 7, 29, 14, 36, 41, 768, DateTimeKind.Utc).AddTicks(7166)
                         },
                         new
                         {
                             Id = 10L,
                             ChallengeVersionId = 4L,
                             Code = "qui",
-                            CreatedAt = new DateTime(2023, 6, 14, 11, 3, 52, 480, DateTimeKind.Utc).AddTicks(6280),
+                            CreatedAt = new DateTime(2023, 6, 20, 15, 5, 9, 904, DateTimeKind.Utc).AddTicks(156),
                             CreatedBy = 3L,
                             Output = "earum",
-                            SubmittedAt = new DateTime(2023, 7, 9, 4, 31, 55, 569, DateTimeKind.Utc).AddTicks(3844)
+                            SubmittedAt = new DateTime(2023, 7, 15, 9, 53, 54, 838, DateTimeKind.Utc).AddTicks(1076)
                         },
                         new
                         {
                             Id = 11L,
                             ChallengeVersionId = 147L,
                             Code = "Explicabo repellendus enim quia aut voluptas aperiam voluptatem. Sed aut placeat possimus nobis facilis quidem excepturi aperiam voluptatem. Possimus sunt magnam. Omnis rerum nihil possimus ut eius voluptates laboriosam provident aut. Nobis quia mollitia velit ab sequi quidem est earum. Aliquam amet vel quis temporibus.",
-                            CreatedAt = new DateTime(2023, 6, 3, 11, 31, 5, 166, DateTimeKind.Utc).AddTicks(984),
+                            CreatedAt = new DateTime(2023, 6, 9, 14, 56, 32, 425, DateTimeKind.Utc).AddTicks(8886),
                             CreatedBy = 5L,
                             Output = "Omnis tenetur consequatur sed ea unde laudantium. Minima cum nam quia voluptas numquam officiis. A excepturi repudiandae quo non earum sed ipsam nemo distinctio. Qui voluptas iure iste praesentium nostrum vel. Molestiae et ratione voluptas ab id et debitis sapiente.",
-                            SubmittedAt = new DateTime(2023, 6, 7, 12, 44, 55, 23, DateTimeKind.Utc).AddTicks(901)
+                            SubmittedAt = new DateTime(2023, 6, 13, 16, 23, 35, 544, DateTimeKind.Utc).AddTicks(7511)
                         },
                         new
                         {
                             Id = 12L,
                             ChallengeVersionId = 56L,
                             Code = "Nulla dolor ipsam qui fugiat.\nTempora cumque doloremque aut exercitationem necessitatibus sed quia.\nHic dignissimos rerum beatae consequatur maxime et aut omnis veritatis.\nQuia in magni deleniti.",
-                            CreatedAt = new DateTime(2023, 9, 6, 7, 16, 39, 287, DateTimeKind.Utc).AddTicks(5730),
+                            CreatedAt = new DateTime(2023, 9, 12, 15, 51, 33, 490, DateTimeKind.Utc).AddTicks(6108),
                             CreatedBy = 39L,
                             Output = "qui",
-                            SubmittedAt = new DateTime(2023, 9, 9, 13, 29, 32, 662, DateTimeKind.Utc).AddTicks(9558)
+                            SubmittedAt = new DateTime(2023, 9, 15, 22, 15, 4, 985, DateTimeKind.Utc).AddTicks(7411)
                         },
                         new
                         {
                             Id = 13L,
                             ChallengeVersionId = 100L,
                             Code = "Et et sit. Eos maiores voluptas ut qui in mollitia consequatur. Animi provident reiciendis soluta sed possimus.",
-                            CreatedAt = new DateTime(2022, 5, 6, 5, 59, 58, 567, DateTimeKind.Utc).AddTicks(5181),
+                            CreatedAt = new DateTime(2022, 5, 11, 12, 2, 9, 189, DateTimeKind.Utc).AddTicks(9880),
                             CreatedBy = 11L,
                             Output = "Similique unde accusamus rem sint quo mollitia ea.\nQuos at ut necessitatibus soluta nulla.\nRerum beatae ipsam nemo possimus omnis.\nEst in autem placeat harum eum a adipisci quam et.",
-                            SubmittedAt = new DateTime(2023, 7, 3, 5, 0, 55, 255, DateTimeKind.Utc).AddTicks(7695)
+                            SubmittedAt = new DateTime(2023, 7, 9, 10, 3, 23, 633, DateTimeKind.Utc).AddTicks(2685)
                         },
                         new
                         {
                             Id = 14L,
                             ChallengeVersionId = 62L,
                             Code = "alias",
-                            CreatedAt = new DateTime(2023, 8, 7, 16, 55, 25, 845, DateTimeKind.Utc).AddTicks(8721),
+                            CreatedAt = new DateTime(2023, 8, 13, 23, 53, 44, 576, DateTimeKind.Utc).AddTicks(5105),
                             CreatedBy = 6L,
                             Output = "Consequuntur aut excepturi blanditiis impedit at.",
-                            SubmittedAt = new DateTime(2023, 9, 1, 3, 2, 2, 478, DateTimeKind.Utc).AddTicks(3626)
+                            SubmittedAt = new DateTime(2023, 9, 7, 11, 20, 3, 29, DateTimeKind.Utc).AddTicks(2239)
                         },
                         new
                         {
                             Id = 15L,
                             ChallengeVersionId = 15L,
                             Code = "eveniet",
-                            CreatedAt = new DateTime(2023, 4, 9, 13, 59, 16, 806, DateTimeKind.Utc).AddTicks(1735),
+                            CreatedAt = new DateTime(2023, 4, 15, 14, 25, 34, 908, DateTimeKind.Utc).AddTicks(9840),
                             CreatedBy = 4L,
                             Output = "nam",
-                            SubmittedAt = new DateTime(2023, 4, 23, 21, 1, 47, 901, DateTimeKind.Utc).AddTicks(647)
+                            SubmittedAt = new DateTime(2023, 4, 29, 22, 14, 44, 735, DateTimeKind.Utc).AddTicks(1606)
                         },
                         new
                         {
                             Id = 16L,
                             ChallengeVersionId = 127L,
                             Code = "Iusto laboriosam fuga dolor autem.\nAut consequatur ipsam alias laboriosam molestiae dolor.\nEarum nam eveniet quas cupiditate.\nSint inventore ducimus.",
-                            CreatedAt = new DateTime(2023, 8, 17, 3, 3, 29, 690, DateTimeKind.Utc).AddTicks(7044),
+                            CreatedAt = new DateTime(2023, 8, 23, 10, 32, 33, 354, DateTimeKind.Utc).AddTicks(8695),
                             CreatedBy = 34L,
                             Output = "Aut possimus mollitia non repudiandae nisi.",
-                            SubmittedAt = new DateTime(2023, 8, 19, 4, 20, 45, 621, DateTimeKind.Utc).AddTicks(9485)
+                            SubmittedAt = new DateTime(2023, 8, 25, 11, 56, 31, 403, DateTimeKind.Utc).AddTicks(6515)
                         },
                         new
                         {
                             Id = 17L,
                             ChallengeVersionId = 37L,
                             Code = "tempore",
-                            CreatedAt = new DateTime(2023, 1, 6, 3, 46, 20, 629, DateTimeKind.Utc).AddTicks(8700),
+                            CreatedAt = new DateTime(2023, 1, 11, 23, 7, 45, 466, DateTimeKind.Utc).AddTicks(6340),
                             CreatedBy = 40L,
                             Output = "Tempore quae quia iste qui rerum voluptas consequuntur debitis adipisci. Ab et dolor autem necessitatibus magnam. Sunt omnis vel deleniti in expedita dolores quibusdam. Sit eum in modi placeat id eos nulla perferendis ad. Ut sint sint totam est porro rerum autem velit. Cumque modi fugiat.",
-                            SubmittedAt = new DateTime(2023, 5, 21, 9, 42, 7, 875, DateTimeKind.Utc).AddTicks(5997)
+                            SubmittedAt = new DateTime(2023, 5, 27, 12, 24, 54, 850, DateTimeKind.Utc).AddTicks(1900)
                         },
                         new
                         {
                             Id = 18L,
                             ChallengeVersionId = 189L,
                             Code = "Repellendus repudiandae distinctio.\nUllam aut impedit enim nostrum.\nCommodi et odio temporibus expedita nulla repudiandae eum nobis assumenda.\nMollitia hic deleniti id maxime et similique quo.",
-                            CreatedAt = new DateTime(2022, 3, 15, 23, 18, 37, 27, DateTimeKind.Utc).AddTicks(8586),
+                            CreatedAt = new DateTime(2022, 3, 21, 2, 33, 26, 985, DateTimeKind.Utc).AddTicks(5966),
                             CreatedBy = 20L,
                             Output = "Facere facere sed consequatur quaerat.\nUt maxime dolor atque.\nSunt laboriosam id qui consectetur cupiditate dolor et ea a.\nEa amet delectus dolor eligendi iste qui qui mollitia.\nVeniam doloribus et nobis tempore et officia placeat.",
-                            SubmittedAt = new DateTime(2022, 7, 12, 1, 45, 58, 455, DateTimeKind.Utc).AddTicks(6717)
+                            SubmittedAt = new DateTime(2022, 7, 17, 11, 26, 13, 516, DateTimeKind.Utc).AddTicks(2213)
                         },
                         new
                         {
                             Id = 19L,
                             ChallengeVersionId = 162L,
                             Code = "Ut illo quae. Ut nostrum velit repellat qui non ipsa. Rem temporibus sit.",
-                            CreatedAt = new DateTime(2023, 8, 10, 4, 56, 54, 910, DateTimeKind.Utc).AddTicks(7387),
+                            CreatedAt = new DateTime(2023, 8, 16, 12, 3, 23, 359, DateTimeKind.Utc).AddTicks(5143),
                             CreatedBy = 9L,
                             Output = "necessitatibus",
-                            SubmittedAt = new DateTime(2023, 9, 3, 22, 13, 10, 961, DateTimeKind.Utc).AddTicks(7446)
+                            SubmittedAt = new DateTime(2023, 9, 10, 6, 40, 19, 652, DateTimeKind.Utc).AddTicks(1921)
                         },
                         new
                         {
                             Id = 20L,
                             ChallengeVersionId = 99L,
                             Code = "Aut debitis sit nesciunt qui et odit.\nEligendi quia tempore.\nInventore est doloribus.\nEt nostrum quod laborum excepturi ad eligendi.\nIste voluptas rem ab autem voluptatem rerum sed ipsum hic.\nVelit qui voluptas.",
-                            CreatedAt = new DateTime(2023, 8, 9, 1, 36, 56, 23, DateTimeKind.Utc).AddTicks(2343),
+                            CreatedAt = new DateTime(2023, 8, 15, 8, 39, 41, 472, DateTimeKind.Utc).AddTicks(95),
                             CreatedBy = 34L,
                             Output = "Recusandae eaque dolor qui nisi itaque.",
-                            SubmittedAt = new DateTime(2023, 9, 4, 17, 20, 14, 986, DateTimeKind.Utc).AddTicks(8380)
+                            SubmittedAt = new DateTime(2023, 9, 11, 1, 49, 59, 650, DateTimeKind.Utc).AddTicks(5935)
                         },
                         new
                         {
                             Id = 21L,
                             ChallengeVersionId = 28L,
                             Code = "Voluptatem beatae est amet explicabo id illum doloremque inventore.",
-                            CreatedAt = new DateTime(2023, 8, 31, 18, 29, 19, 505, DateTimeKind.Utc).AddTicks(7355),
+                            CreatedAt = new DateTime(2023, 9, 7, 2, 46, 10, 339, DateTimeKind.Utc).AddTicks(8253),
                             CreatedBy = 23L,
                             Output = "et",
-                            SubmittedAt = new DateTime(2023, 9, 2, 1, 58, 15, 601, DateTimeKind.Utc).AddTicks(1689)
+                            SubmittedAt = new DateTime(2023, 9, 8, 10, 19, 23, 285, DateTimeKind.Utc).AddTicks(2985)
                         },
                         new
                         {
                             Id = 22L,
                             ChallengeVersionId = 45L,
                             Code = "Ipsa enim cum.\nQuos odit culpa et dolores reiciendis.",
-                            CreatedAt = new DateTime(2023, 4, 21, 10, 54, 8, 545, DateTimeKind.Utc).AddTicks(4821),
+                            CreatedAt = new DateTime(2023, 4, 27, 11, 59, 11, 141, DateTimeKind.Utc).AddTicks(1297),
                             CreatedBy = 16L,
                             Output = "voluptatem",
-                            SubmittedAt = new DateTime(2023, 8, 30, 18, 19, 3, 55, DateTimeKind.Utc).AddTicks(3208)
+                            SubmittedAt = new DateTime(2023, 9, 6, 2, 32, 36, 686, DateTimeKind.Utc).AddTicks(4108)
                         },
                         new
                         {
                             Id = 23L,
                             ChallengeVersionId = 60L,
                             Code = "Corporis ut iusto in.",
-                            CreatedAt = new DateTime(2023, 7, 14, 15, 7, 37, 39, DateTimeKind.Utc).AddTicks(5928),
+                            CreatedAt = new DateTime(2023, 7, 20, 20, 47, 21, 777, DateTimeKind.Utc).AddTicks(280),
                             CreatedBy = 34L,
                             Output = "Perferendis quia perferendis quisquam eos. Officia nulla vel laudantium. Est fugit beatae excepturi maiores voluptatem ab. Modi ipsa ut autem perferendis labore voluptatem aliquid aut. Id repudiandae et cum qui explicabo autem id omnis. Doloribus iusto perspiciatis.",
-                            SubmittedAt = new DateTime(2023, 7, 30, 11, 32, 28, 733, DateTimeKind.Utc).AddTicks(824)
+                            SubmittedAt = new DateTime(2023, 8, 5, 18, 3, 57, 106, DateTimeKind.Utc).AddTicks(5698)
                         },
                         new
                         {
                             Id = 24L,
                             ChallengeVersionId = 133L,
                             Code = "autem",
-                            CreatedAt = new DateTime(2023, 9, 9, 23, 17, 29, 526, DateTimeKind.Utc).AddTicks(3480),
+                            CreatedAt = new DateTime(2023, 9, 16, 8, 4, 21, 795, DateTimeKind.Utc).AddTicks(2007),
                             CreatedBy = 13L,
                             Output = "Ut ab sunt.",
-                            SubmittedAt = new DateTime(2023, 9, 12, 16, 11, 21, 53, DateTimeKind.Utc).AddTicks(5296)
+                            SubmittedAt = new DateTime(2023, 9, 19, 1, 7, 2, 793, DateTimeKind.Utc).AddTicks(7395)
                         },
                         new
                         {
                             Id = 25L,
                             ChallengeVersionId = 97L,
                             Code = "Illo est omnis repellendus non ut maiores eos.\nUt recusandae quo repellendus dolores molestias.\nEst aut dolor.\nSunt ut corrupti error.\nAut fugiat et ut est exercitationem voluptate explicabo.\nQuos quasi placeat ut sit in neque et.",
-                            CreatedAt = new DateTime(2023, 5, 9, 16, 4, 37, 857, DateTimeKind.Utc).AddTicks(7937),
+                            CreatedAt = new DateTime(2023, 5, 15, 18, 9, 7, 174, DateTimeKind.Utc).AddTicks(3911),
                             CreatedBy = 32L,
                             Output = "Non repellendus vel nesciunt omnis enim. Molestiae nobis dolorum excepturi veniam maiores aperiam. Dolores omnis mollitia est dolore non quod inventore alias. Voluptas ratione rerum eum quae iusto. Repudiandae voluptatem sed ipsam voluptatem ad dolor exercitationem.",
-                            SubmittedAt = new DateTime(2023, 5, 23, 8, 23, 31, 554, DateTimeKind.Utc).AddTicks(452)
+                            SubmittedAt = new DateTime(2023, 5, 29, 11, 12, 39, 450, DateTimeKind.Utc).AddTicks(2307)
                         },
                         new
                         {
                             Id = 26L,
                             ChallengeVersionId = 146L,
                             Code = "Quas voluptatem est illo aspernatur voluptas rerum. Qui consequatur quisquam iusto neque eos. Rerum sit voluptas quis quo dolores excepturi. Minima illum voluptatum. Quae sit hic accusantium et error. Eos sed iusto vel sunt qui voluptatem et.",
-                            CreatedAt = new DateTime(2023, 8, 12, 16, 9, 50, 662, DateTimeKind.Utc).AddTicks(9257),
+                            CreatedAt = new DateTime(2023, 8, 18, 23, 24, 22, 225, DateTimeKind.Utc).AddTicks(3753),
                             CreatedBy = 21L,
                             Output = "Ut dolores molestiae itaque assumenda molestiae dolores.\nEt aut asperiores voluptatem voluptas labore.\nOfficiis voluptas eos omnis repellendus et accusamus.",
-                            SubmittedAt = new DateTime(2023, 8, 19, 0, 42, 14, 677, DateTimeKind.Utc).AddTicks(5870)
+                            SubmittedAt = new DateTime(2023, 8, 25, 8, 17, 30, 747, DateTimeKind.Utc).AddTicks(6833)
                         },
                         new
                         {
                             Id = 27L,
                             ChallengeVersionId = 69L,
                             Code = "In molestiae et et est rem nisi non aut.",
-                            CreatedAt = new DateTime(2023, 8, 31, 12, 19, 51, 496, DateTimeKind.Utc).AddTicks(5905),
+                            CreatedAt = new DateTime(2023, 9, 6, 20, 35, 52, 94, DateTimeKind.Utc).AddTicks(416),
                             CreatedBy = 26L,
                             Output = "Labore facilis et qui ut aut qui tenetur impedit quam.\nConsequatur nihil corrupti voluptatum est sed molestias natus sed et.",
-                            SubmittedAt = new DateTime(2023, 9, 1, 9, 2, 15, 351, DateTimeKind.Utc).AddTicks(4521)
+                            SubmittedAt = new DateTime(2023, 9, 7, 17, 21, 4, 885, DateTimeKind.Utc).AddTicks(1573)
                         },
                         new
                         {
                             Id = 28L,
                             ChallengeVersionId = 116L,
                             Code = "Ut minus sunt facere eveniet.\nModi eveniet qui praesentium explicabo nam ipsam architecto nesciunt.\nAut atque labore repellat minus voluptas.\nAlias voluptates voluptatem est ullam quae architecto.\nMolestias vel cum commodi nobis ea inventore non.",
-                            CreatedAt = new DateTime(2023, 7, 1, 6, 58, 56, 213, DateTimeKind.Utc).AddTicks(9327),
+                            CreatedAt = new DateTime(2023, 7, 7, 11, 55, 9, 28, DateTimeKind.Utc).AddTicks(7931),
                             CreatedBy = 39L,
                             Output = "Dolorum ab totam blanditiis omnis omnis amet vitae.\nOmnis commodi assumenda perspiciatis voluptatem dolores similique voluptas officiis eius.\nPariatur excepturi id officia quis rerum quo rem qui illo.",
-                            SubmittedAt = new DateTime(2023, 7, 2, 14, 21, 6, 454, DateTimeKind.Utc).AddTicks(822)
+                            SubmittedAt = new DateTime(2023, 7, 8, 19, 21, 35, 199, DateTimeKind.Utc).AddTicks(2152)
                         },
                         new
                         {
                             Id = 29L,
                             ChallengeVersionId = 33L,
                             Code = "Rem illo fugit sapiente fugit sapiente.\nLaborum magni nisi omnis.\nNumquam et odio voluptas et aut ipsam debitis dolorem.\nVoluptas quo earum et consequatur repellendus voluptatem non ipsam qui.",
-                            CreatedAt = new DateTime(2023, 2, 11, 6, 55, 4, 595, DateTimeKind.Utc).AddTicks(2326),
+                            CreatedAt = new DateTime(2023, 2, 17, 4, 14, 24, 93, DateTimeKind.Utc).AddTicks(8338),
                             CreatedBy = 17L,
                             Output = "iure",
-                            SubmittedAt = new DateTime(2023, 8, 19, 12, 10, 41, 932, DateTimeKind.Utc).AddTicks(1719)
+                            SubmittedAt = new DateTime(2023, 8, 25, 19, 47, 31, 613, DateTimeKind.Utc).AddTicks(9750)
                         },
                         new
                         {
                             Id = 30L,
                             ChallengeVersionId = 143L,
                             Code = "Excepturi consequatur sint aliquid quo ullam eos esse. Mollitia incidunt expedita quis. Numquam in voluptatem quia sequi ex officia. Doloremque delectus possimus eum magnam ad sint.",
-                            CreatedAt = new DateTime(2023, 9, 8, 11, 40, 11, 970, DateTimeKind.Utc).AddTicks(2912),
+                            CreatedAt = new DateTime(2023, 9, 14, 20, 22, 13, 617, DateTimeKind.Utc).AddTicks(6407),
                             CreatedBy = 26L,
                             Output = "Iusto quos qui voluptatum autem deserunt quasi. Facilis id autem porro ex autem aut. Hic voluptate et consectetur dolorum dicta dicta repudiandae suscipit. Deserunt aut ab et ut quia rerum est modi autem. Id est et dolores.",
-                            SubmittedAt = new DateTime(2023, 9, 9, 10, 21, 14, 704, DateTimeKind.Utc).AddTicks(3521)
+                            SubmittedAt = new DateTime(2023, 9, 15, 19, 6, 21, 421, DateTimeKind.Utc).AddTicks(4311)
                         },
                         new
                         {
                             Id = 31L,
                             ChallengeVersionId = 5L,
                             Code = "Esse voluptas aut aut cupiditate et ut voluptate.\nEos voluptas repellat veritatis praesentium dolor.\nVelit eum nam voluptatem enim libero non et.",
-                            CreatedAt = new DateTime(2020, 10, 26, 0, 56, 17, 789, DateTimeKind.Utc).AddTicks(5111),
+                            CreatedAt = new DateTime(2020, 10, 30, 0, 40, 3, 372, DateTimeKind.Utc).AddTicks(6765),
                             CreatedBy = 28L,
                             Output = "Aut autem odit.",
-                            SubmittedAt = new DateTime(2021, 6, 4, 20, 10, 25, 711, DateTimeKind.Utc).AddTicks(785)
+                            SubmittedAt = new DateTime(2021, 6, 9, 7, 58, 1, 275, DateTimeKind.Utc).AddTicks(8733)
                         },
                         new
                         {
                             Id = 32L,
                             ChallengeVersionId = 178L,
                             Code = "Veritatis commodi assumenda debitis eum nobis animi voluptas et.\nConsectetur non ad.\nAtque hic incidunt.\nMaxime fugit nemo cum totam hic.",
-                            CreatedAt = new DateTime(2021, 4, 19, 11, 4, 29, 891, DateTimeKind.Utc).AddTicks(6879),
+                            CreatedAt = new DateTime(2021, 4, 23, 20, 20, 44, 166, DateTimeKind.Utc).AddTicks(73),
                             CreatedBy = 15L,
                             Output = "Fugit et repellendus omnis dolorem et repudiandae dolores totam. Ad molestiae maiores laborum eaque alias voluptatibus dolor dignissimos eum. Ut reprehenderit reiciendis officiis rerum nihil atque iure. Illum et vitae rerum atque voluptatem facilis exercitationem commodi est.",
-                            SubmittedAt = new DateTime(2021, 6, 2, 15, 22, 32, 221, DateTimeKind.Utc).AddTicks(9315)
+                            SubmittedAt = new DateTime(2021, 6, 7, 3, 2, 57, 31, DateTimeKind.Utc).AddTicks(5562)
                         },
                         new
                         {
                             Id = 33L,
                             ChallengeVersionId = 188L,
                             Code = "Quas enim tempore atque dolorem cupiditate rem dolores in.",
-                            CreatedAt = new DateTime(2023, 8, 14, 13, 21, 16, 521, DateTimeKind.Utc).AddTicks(944),
+                            CreatedAt = new DateTime(2023, 8, 20, 20, 41, 56, 768, DateTimeKind.Utc).AddTicks(9574),
                             CreatedBy = 37L,
                             Output = "aut",
-                            SubmittedAt = new DateTime(2023, 8, 27, 3, 30, 57, 295, DateTimeKind.Utc).AddTicks(4675)
+                            SubmittedAt = new DateTime(2023, 9, 2, 11, 32, 42, 748, DateTimeKind.Utc).AddTicks(1830)
                         },
                         new
                         {
                             Id = 34L,
                             ChallengeVersionId = 144L,
                             Code = "Voluptas aspernatur consequuntur est ea.\nQuam facere totam est cupiditate nisi voluptatem iure.",
-                            CreatedAt = new DateTime(2022, 7, 16, 3, 11, 0, 982, DateTimeKind.Utc).AddTicks(1346),
+                            CreatedAt = new DateTime(2022, 7, 21, 13, 4, 30, 825, DateTimeKind.Utc).AddTicks(6745),
                             CreatedBy = 9L,
                             Output = "et",
-                            SubmittedAt = new DateTime(2023, 4, 16, 19, 32, 53, 927, DateTimeKind.Utc).AddTicks(8784)
+                            SubmittedAt = new DateTime(2023, 4, 22, 20, 22, 48, 31, DateTimeKind.Utc).AddTicks(8679)
                         },
                         new
                         {
                             Id = 35L,
                             ChallengeVersionId = 123L,
                             Code = "Sequi quo reprehenderit nihil officiis non qui dignissimos ut officia.\nNam autem dolores ipsam quibusdam placeat assumenda alias.\nIllo voluptas repellendus sint vel.\nEius aperiam nesciunt et maiores incidunt ut eius dolorum occaecati.\nAsperiores aut ut harum beatae.",
-                            CreatedAt = new DateTime(2023, 7, 29, 21, 39, 4, 373, DateTimeKind.Utc).AddTicks(9794),
+                            CreatedAt = new DateTime(2023, 8, 5, 4, 8, 39, 424, DateTimeKind.Utc).AddTicks(2316),
                             CreatedBy = 36L,
                             Output = "Maxime praesentium unde porro in laborum.",
-                            SubmittedAt = new DateTime(2023, 8, 16, 6, 2, 20, 265, DateTimeKind.Utc).AddTicks(7117)
+                            SubmittedAt = new DateTime(2023, 8, 22, 13, 28, 32, 443, DateTimeKind.Utc).AddTicks(1953)
                         },
                         new
                         {
                             Id = 36L,
                             ChallengeVersionId = 70L,
                             Code = "Officiis laborum reiciendis.",
-                            CreatedAt = new DateTime(2023, 9, 7, 15, 4, 20, 287, DateTimeKind.Utc).AddTicks(7415),
+                            CreatedAt = new DateTime(2023, 9, 13, 23, 43, 33, 890, DateTimeKind.Utc).AddTicks(4478),
                             CreatedBy = 15L,
                             Output = "Sed id velit voluptatem nesciunt.\nQuibusdam et possimus necessitatibus laudantium minus aut qui aliquid assumenda.",
-                            SubmittedAt = new DateTime(2023, 9, 10, 19, 48, 35, 343, DateTimeKind.Utc).AddTicks(5988)
+                            SubmittedAt = new DateTime(2023, 9, 17, 4, 38, 15, 12, DateTimeKind.Utc).AddTicks(6175)
                         },
                         new
                         {
                             Id = 37L,
                             ChallengeVersionId = 37L,
                             Code = "A commodi incidunt laudantium nihil vel et.\nCupiditate autem fugiat eum suscipit qui iure quo id.\nQui quisquam ratione.",
-                            CreatedAt = new DateTime(2023, 6, 20, 18, 18, 57, 794, DateTimeKind.Utc).AddTicks(5807),
+                            CreatedAt = new DateTime(2023, 6, 26, 22, 40, 49, 214, DateTimeKind.Utc).AddTicks(4683),
                             CreatedBy = 18L,
                             Output = "Nihil odit quaerat et sed voluptatum quod alias tempora temporibus.\nAutem est sit beatae autem.\nHarum non sit natus cupiditate iusto quia sapiente libero doloremque.\nReprehenderit et voluptatum corporis atque ut.\nIpsam quia minima et ab illo fugiat animi unde.\nMollitia amet enim aperiam voluptas quod sint dignissimos optio.",
-                            SubmittedAt = new DateTime(2023, 6, 24, 23, 15, 8, 956, DateTimeKind.Utc).AddTicks(8712)
+                            SubmittedAt = new DateTime(2023, 7, 1, 3, 50, 43, 873, DateTimeKind.Utc).AddTicks(4793)
                         },
                         new
                         {
                             Id = 38L,
                             ChallengeVersionId = 26L,
                             Code = "Laborum sunt enim illo enim.\nSunt omnis aliquam nihil alias neque.\nQui et rerum nihil.\nDeleniti possimus in et repudiandae.",
-                            CreatedAt = new DateTime(2023, 1, 22, 10, 21, 41, 155, DateTimeKind.Utc).AddTicks(8715),
+                            CreatedAt = new DateTime(2023, 1, 28, 6, 36, 12, 633, DateTimeKind.Utc).AddTicks(1084),
                             CreatedBy = 3L,
                             Output = "Et culpa facilis architecto laborum sunt id placeat eius. Ut minus veniam. Optio enim excepturi eaque excepturi minima error impedit quaerat. Et corporis illo est et voluptatibus distinctio ut consectetur. Est asperiores fugit sit explicabo voluptates natus. Molestias necessitatibus et eligendi vitae nihil.",
-                            SubmittedAt = new DateTime(2023, 8, 15, 2, 48, 8, 496, DateTimeKind.Utc).AddTicks(2060)
+                            SubmittedAt = new DateTime(2023, 8, 21, 10, 10, 38, 460, DateTimeKind.Utc).AddTicks(6182)
                         },
                         new
                         {
                             Id = 39L,
                             ChallengeVersionId = 187L,
                             Code = "Voluptatem eos ducimus.\nEaque sint voluptas labore consequatur.\nUt omnis dolorem nihil sequi sit rerum animi quisquam sit.",
-                            CreatedAt = new DateTime(2021, 2, 7, 0, 15, 32, 184, DateTimeKind.Utc).AddTicks(9318),
+                            CreatedAt = new DateTime(2021, 2, 11, 5, 38, 36, 15, DateTimeKind.Utc).AddTicks(9672),
                             CreatedBy = 6L,
                             Output = "consequatur",
-                            SubmittedAt = new DateTime(2022, 1, 6, 15, 29, 32, 737, DateTimeKind.Utc).AddTicks(6763)
+                            SubmittedAt = new DateTime(2022, 1, 11, 15, 1, 24, 130, DateTimeKind.Utc).AddTicks(2238)
                         },
                         new
                         {
                             Id = 40L,
                             ChallengeVersionId = 39L,
                             Code = "Eveniet laborum ullam sint tempore aliquam id dolor officiis. Ut ut occaecati voluptas sequi quia sed ex. Repellendus recusandae pariatur vero ipsa saepe hic qui excepturi sunt. Quis et quis officia doloribus molestiae praesentium et. Ut mollitia neque. Beatae rerum recusandae nulla consequatur dolor eveniet vel.",
-                            CreatedAt = new DateTime(2023, 6, 18, 14, 20, 33, 42, DateTimeKind.Utc).AddTicks(6861),
+                            CreatedAt = new DateTime(2023, 6, 24, 18, 35, 20, 436, DateTimeKind.Utc).AddTicks(4118),
                             CreatedBy = 28L,
                             Output = "Beatae pariatur quae facere quaerat dolorum est non modi.",
-                            SubmittedAt = new DateTime(2023, 7, 29, 14, 25, 31, 624, DateTimeKind.Utc).AddTicks(4484)
+                            SubmittedAt = new DateTime(2023, 8, 4, 20, 54, 7, 723, DateTimeKind.Utc).AddTicks(6877)
                         },
                         new
                         {
                             Id = 41L,
                             ChallengeVersionId = 195L,
                             Code = "Eos rerum quia quasi. Est quia omnis ea. Aut ea minus adipisci accusamus perferendis quaerat nostrum quod earum. Sed doloremque nemo quis. Totam sed est neque aperiam. Deserunt omnis aperiam non hic minus necessitatibus architecto et aut.",
-                            CreatedAt = new DateTime(2023, 2, 6, 3, 46, 52, 956, DateTimeKind.Utc).AddTicks(1444),
+                            CreatedAt = new DateTime(2023, 2, 12, 0, 49, 27, 838, DateTimeKind.Utc).AddTicks(5525),
                             CreatedBy = 36L,
                             Output = "Ipsum quos et voluptatem laboriosam eius id. Fugiat illo distinctio vero. Cumque qui corporis. Illo labore molestiae consectetur voluptas dolor nesciunt. Veritatis cupiditate ea nam sit velit ut quis nobis sed.",
-                            SubmittedAt = new DateTime(2023, 5, 1, 7, 40, 28, 618, DateTimeKind.Utc).AddTicks(3688)
+                            SubmittedAt = new DateTime(2023, 5, 7, 9, 17, 42, 937, DateTimeKind.Utc).AddTicks(497)
                         },
                         new
                         {
                             Id = 42L,
                             ChallengeVersionId = 163L,
                             Code = "Omnis et autem architecto recusandae aperiam quasi est.",
-                            CreatedAt = new DateTime(2023, 3, 13, 9, 15, 10, 192, DateTimeKind.Utc).AddTicks(3017),
+                            CreatedAt = new DateTime(2023, 3, 19, 8, 12, 42, 908, DateTimeKind.Utc).AddTicks(9192),
                             CreatedBy = 22L,
                             Output = "Et minus et ea ipsam laboriosam vel ad eligendi sed.",
-                            SubmittedAt = new DateTime(2023, 5, 9, 17, 41, 19, 268, DateTimeKind.Utc).AddTicks(3823)
+                            SubmittedAt = new DateTime(2023, 5, 15, 19, 46, 1, 731, DateTimeKind.Utc).AddTicks(1245)
                         },
                         new
                         {
                             Id = 43L,
                             ChallengeVersionId = 98L,
                             Code = "Earum suscipit autem libero exercitationem dolores.",
-                            CreatedAt = new DateTime(2023, 8, 30, 17, 39, 50, 487, DateTimeKind.Utc).AddTicks(7044),
+                            CreatedAt = new DateTime(2023, 9, 6, 1, 53, 18, 790, DateTimeKind.Utc).AddTicks(6442),
                             CreatedBy = 6L,
                             Output = "Cum repellendus accusamus.",
-                            SubmittedAt = new DateTime(2023, 9, 11, 6, 49, 1, 44, DateTimeKind.Utc).AddTicks(8863)
+                            SubmittedAt = new DateTime(2023, 9, 17, 15, 40, 10, 515, DateTimeKind.Utc).AddTicks(6173)
                         },
                         new
                         {
                             Id = 44L,
                             ChallengeVersionId = 130L,
                             Code = "Rerum aliquam quibusdam error et fugiat aut magnam.",
-                            CreatedAt = new DateTime(2023, 5, 27, 16, 45, 33, 627, DateTimeKind.Utc).AddTicks(536),
+                            CreatedAt = new DateTime(2023, 6, 2, 19, 48, 53, 3, DateTimeKind.Utc).AddTicks(568),
                             CreatedBy = 38L,
                             Output = "amet",
-                            SubmittedAt = new DateTime(2023, 7, 30, 7, 43, 3, 677, DateTimeKind.Utc).AddTicks(9472)
+                            SubmittedAt = new DateTime(2023, 8, 5, 14, 14, 0, 851, DateTimeKind.Utc).AddTicks(7745)
                         },
                         new
                         {
                             Id = 45L,
                             ChallengeVersionId = 85L,
                             Code = "Sapiente magnam quia ut a in.\nIste excepturi ratione quia et rerum magni sunt.",
-                            CreatedAt = new DateTime(2023, 7, 4, 18, 59, 37, 506, DateTimeKind.Utc).AddTicks(1380),
+                            CreatedAt = new DateTime(2023, 7, 11, 0, 7, 15, 734, DateTimeKind.Utc).AddTicks(5525),
                             CreatedBy = 30L,
                             Output = "Cumque autem nihil.\nNatus ipsa ut quis veritatis doloremque quisquam.\nCupiditate tenetur quia blanditiis est.\nVoluptate voluptate exercitationem.\nMolestiae architecto quia sapiente quae commodi.\nVel architecto deleniti maxime provident fugiat facere.",
-                            SubmittedAt = new DateTime(2023, 7, 24, 9, 18, 3, 964, DateTimeKind.Utc).AddTicks(6711)
+                            SubmittedAt = new DateTime(2023, 7, 30, 15, 29, 39, 227, DateTimeKind.Utc).AddTicks(1552)
                         },
                         new
                         {
                             Id = 46L,
                             ChallengeVersionId = 63L,
                             Code = "Fugiat ut fuga magnam distinctio sit voluptate.\nQuia iusto dolor corporis ducimus et numquam.\nAsperiores et id dolore a et provident.",
-                            CreatedAt = new DateTime(2023, 8, 8, 1, 39, 26, 999, DateTimeKind.Utc).AddTicks(8085),
+                            CreatedAt = new DateTime(2023, 8, 14, 8, 38, 56, 986, DateTimeKind.Utc).AddTicks(651),
                             CreatedBy = 13L,
                             Output = "Quisquam corporis suscipit magni odio dolorum. Voluptatem et sunt. Autem cumque commodi voluptate non.",
-                            SubmittedAt = new DateTime(2023, 8, 26, 21, 12, 32, 205, DateTimeKind.Utc).AddTicks(878)
+                            SubmittedAt = new DateTime(2023, 9, 2, 5, 13, 26, 203, DateTimeKind.Utc).AddTicks(8486)
                         },
                         new
                         {
                             Id = 47L,
                             ChallengeVersionId = 187L,
                             Code = "quia",
-                            CreatedAt = new DateTime(2020, 9, 7, 16, 58, 27, 709, DateTimeKind.Utc).AddTicks(3163),
+                            CreatedAt = new DateTime(2020, 9, 11, 14, 4, 29, 651, DateTimeKind.Utc).AddTicks(3680),
                             CreatedBy = 3L,
                             Output = "quis",
-                            SubmittedAt = new DateTime(2022, 8, 26, 2, 39, 35, 626, DateTimeKind.Utc).AddTicks(6038)
+                            SubmittedAt = new DateTime(2022, 8, 31, 14, 46, 49, 232, DateTimeKind.Utc).AddTicks(4309)
                         },
                         new
                         {
                             Id = 48L,
                             ChallengeVersionId = 76L,
                             Code = "Non laudantium aut non.\nAsperiores nesciunt dolore.\nIure consequuntur voluptatem velit.\nAutem quo molestiae recusandae.\nEt deserunt ratione laborum.",
-                            CreatedAt = new DateTime(2023, 7, 16, 10, 53, 54, 84, DateTimeKind.Utc).AddTicks(8423),
+                            CreatedAt = new DateTime(2023, 7, 22, 16, 39, 35, 929, DateTimeKind.Utc).AddTicks(1570),
                             CreatedBy = 34L,
                             Output = "et",
-                            SubmittedAt = new DateTime(2023, 9, 10, 14, 49, 22, 966, DateTimeKind.Utc).AddTicks(709)
+                            SubmittedAt = new DateTime(2023, 9, 16, 23, 38, 21, 948, DateTimeKind.Utc).AddTicks(7651)
                         },
                         new
                         {
                             Id = 49L,
                             ChallengeVersionId = 123L,
                             Code = "Distinctio quos eveniet corporis voluptatem voluptatem ipsam deserunt.\nDolor quisquam beatae eum dicta.\nNatus quaerat modi expedita deleniti reprehenderit ut veritatis at.",
-                            CreatedAt = new DateTime(2023, 7, 14, 5, 34, 16, 604, DateTimeKind.Utc).AddTicks(7729),
+                            CreatedAt = new DateTime(2023, 7, 20, 11, 12, 43, 381, DateTimeKind.Utc).AddTicks(6719),
                             CreatedBy = 9L,
                             Output = "delectus",
-                            SubmittedAt = new DateTime(2023, 7, 31, 7, 10, 55, 262, DateTimeKind.Utc).AddTicks(2686)
+                            SubmittedAt = new DateTime(2023, 8, 6, 13, 45, 3, 875, DateTimeKind.Utc).AddTicks(6852)
                         },
                         new
                         {
                             Id = 50L,
                             ChallengeVersionId = 198L,
                             Code = "Sed impedit voluptatum provident aut tempore et.\nEnim delectus saepe sit esse possimus occaecati consequuntur.\nDignissimos asperiores voluptates enim quia molestiae quae ullam.\nVeritatis cumque sed repellat porro.\nLaboriosam ut unde voluptatem vitae est aut maiores in quod.",
-                            CreatedAt = new DateTime(2023, 7, 15, 17, 42, 31, 614, DateTimeKind.Utc).AddTicks(3099),
+                            CreatedAt = new DateTime(2023, 7, 21, 23, 25, 53, 220, DateTimeKind.Utc).AddTicks(7195),
                             CreatedBy = 39L,
                             Output = "explicabo"
                         },
@@ -10372,37 +10953,37 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 51L,
                             ChallengeVersionId = 41L,
                             Code = "Sit quod eum aliquam esse minima et.",
-                            CreatedAt = new DateTime(2023, 7, 3, 7, 39, 50, 984, DateTimeKind.Utc).AddTicks(7357),
+                            CreatedAt = new DateTime(2023, 7, 9, 12, 42, 40, 972, DateTimeKind.Utc).AddTicks(4405),
                             CreatedBy = 25L,
                             Output = "omnis",
-                            SubmittedAt = new DateTime(2023, 7, 25, 11, 49, 53, 434, DateTimeKind.Utc).AddTicks(4769)
+                            SubmittedAt = new DateTime(2023, 7, 31, 18, 5, 5, 145, DateTimeKind.Utc).AddTicks(7443)
                         },
                         new
                         {
                             Id = 52L,
                             ChallengeVersionId = 137L,
                             Code = "Non quis quae voluptatibus. Aut sit similique necessitatibus suscipit. Enim et dolorum. Omnis nihil optio et molestias perferendis magni. Est quos aliquid autem quis quia et nulla ab.",
-                            CreatedAt = new DateTime(2023, 7, 12, 20, 6, 4, 95, DateTimeKind.Utc).AddTicks(627),
+                            CreatedAt = new DateTime(2023, 7, 19, 1, 39, 57, 803, DateTimeKind.Utc).AddTicks(1297),
                             CreatedBy = 20L,
                             Output = "Incidunt quisquam exercitationem deserunt nobis qui.",
-                            SubmittedAt = new DateTime(2023, 9, 9, 8, 57, 51, 51, DateTimeKind.Utc).AddTicks(2879)
+                            SubmittedAt = new DateTime(2023, 9, 15, 17, 42, 46, 428, DateTimeKind.Utc).AddTicks(5455)
                         },
                         new
                         {
                             Id = 53L,
                             ChallengeVersionId = 108L,
                             Code = "Deserunt facere rerum omnis nam ipsum eos vitae quas in. Voluptatibus quidem sapiente ea ut corrupti. Consequatur in iure. Deleniti eum aut sint perferendis voluptas id et corporis sunt. Iure dolor blanditiis aperiam nostrum iure. Voluptatem voluptatem eius eveniet.",
-                            CreatedAt = new DateTime(2022, 8, 21, 6, 21, 14, 302, DateTimeKind.Utc).AddTicks(2424),
+                            CreatedAt = new DateTime(2022, 8, 26, 18, 12, 39, 15, DateTimeKind.Utc).AddTicks(1179),
                             CreatedBy = 4L,
                             Output = "nihil",
-                            SubmittedAt = new DateTime(2023, 3, 24, 17, 33, 31, 832, DateTimeKind.Utc).AddTicks(1830)
+                            SubmittedAt = new DateTime(2023, 3, 30, 17, 8, 6, 174, DateTimeKind.Utc).AddTicks(9787)
                         },
                         new
                         {
                             Id = 54L,
                             ChallengeVersionId = 132L,
                             Code = "Natus animi nihil ad inventore perspiciatis ratione nesciunt consequatur voluptatum.",
-                            CreatedAt = new DateTime(2023, 8, 23, 10, 30, 53, 888, DateTimeKind.Utc).AddTicks(4023),
+                            CreatedAt = new DateTime(2023, 8, 29, 18, 20, 33, 222, DateTimeKind.Utc).AddTicks(977),
                             CreatedBy = 40L,
                             Output = "Officia magnam dolor et itaque velit est accusamus dolores labore.\nQui est nemo nihil voluptatum alias ab laudantium."
                         },
@@ -10411,47 +10992,47 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 55L,
                             ChallengeVersionId = 152L,
                             Code = "reiciendis",
-                            CreatedAt = new DateTime(2023, 7, 30, 19, 46, 54, 557, DateTimeKind.Utc).AddTicks(1739),
+                            CreatedAt = new DateTime(2023, 8, 6, 2, 19, 30, 163, DateTimeKind.Utc).AddTicks(1307),
                             CreatedBy = 11L,
                             Output = "Qui cum quidem aut amet sed voluptas ex quam dolorum.\nDistinctio quae nihil ea aperiam.\nSit labore est soluta consequatur molestiae sed aut.",
-                            SubmittedAt = new DateTime(2023, 8, 4, 12, 7, 35, 804, DateTimeKind.Utc).AddTicks(9436)
+                            SubmittedAt = new DateTime(2023, 8, 10, 18, 55, 27, 983, DateTimeKind.Utc).AddTicks(1667)
                         },
                         new
                         {
                             Id = 56L,
                             ChallengeVersionId = 182L,
                             Code = "Necessitatibus soluta error aperiam omnis sed. Culpa quia qui molestiae. Suscipit est voluptate nihil. Corrupti facilis excepturi.",
-                            CreatedAt = new DateTime(2022, 11, 11, 2, 41, 37, 777, DateTimeKind.Utc).AddTicks(9495),
+                            CreatedAt = new DateTime(2022, 11, 16, 19, 0, 8, 694, DateTimeKind.Utc).AddTicks(3484),
                             CreatedBy = 40L,
                             Output = "Magnam occaecati nihil molestiae commodi vel dolore eligendi.\nAut magnam sequi quod quibusdam repellat repudiandae autem.\nQui natus modi.",
-                            SubmittedAt = new DateTime(2023, 5, 29, 19, 32, 29, 667, DateTimeKind.Utc).AddTicks(5602)
+                            SubmittedAt = new DateTime(2023, 6, 4, 22, 42, 43, 359, DateTimeKind.Utc).AddTicks(9957)
                         },
                         new
                         {
                             Id = 57L,
                             ChallengeVersionId = 179L,
                             Code = "et",
-                            CreatedAt = new DateTime(2023, 7, 22, 14, 10, 4, 702, DateTimeKind.Utc).AddTicks(8228),
+                            CreatedAt = new DateTime(2023, 7, 28, 20, 15, 48, 60, DateTimeKind.Utc).AddTicks(6285),
                             CreatedBy = 38L,
                             Output = "enim",
-                            SubmittedAt = new DateTime(2023, 7, 24, 10, 46, 39, 690, DateTimeKind.Utc).AddTicks(6616)
+                            SubmittedAt = new DateTime(2023, 7, 30, 16, 58, 26, 999, DateTimeKind.Utc).AddTicks(8492)
                         },
                         new
                         {
                             Id = 58L,
                             ChallengeVersionId = 70L,
                             Code = "Dolorem sed officiis saepe voluptas ea vitae.\nNam et eaque sunt pariatur praesentium.",
-                            CreatedAt = new DateTime(2023, 9, 11, 6, 34, 37, 43, DateTimeKind.Utc).AddTicks(6831),
+                            CreatedAt = new DateTime(2023, 9, 17, 15, 25, 44, 556, DateTimeKind.Utc).AddTicks(5819),
                             CreatedBy = 19L,
                             Output = "Nihil magnam laborum itaque ad perferendis laboriosam sit.",
-                            SubmittedAt = new DateTime(2023, 9, 11, 18, 36, 5, 178, DateTimeKind.Utc).AddTicks(2549)
+                            SubmittedAt = new DateTime(2023, 9, 18, 3, 28, 50, 793, DateTimeKind.Utc).AddTicks(3882)
                         },
                         new
                         {
                             Id = 59L,
                             ChallengeVersionId = 134L,
                             Code = "Quo amet modi itaque est sit.\nQuas nobis sed nobis.\nDoloremque nam praesentium atque occaecati vero.\nVeritatis et eos suscipit vel et eligendi.",
-                            CreatedAt = new DateTime(2023, 9, 9, 18, 20, 4, 368, DateTimeKind.Utc).AddTicks(1589),
+                            CreatedAt = new DateTime(2023, 9, 16, 3, 6, 16, 197, DateTimeKind.Utc).AddTicks(5909),
                             CreatedBy = 30L,
                             Output = "Ut est necessitatibus a qui iste."
                         },
@@ -10460,67 +11041,67 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 60L,
                             ChallengeVersionId = 66L,
                             Code = "voluptatem",
-                            CreatedAt = new DateTime(2023, 8, 6, 17, 3, 6, 407, DateTimeKind.Utc).AddTicks(7773),
+                            CreatedAt = new DateTime(2023, 8, 12, 23, 58, 10, 376, DateTimeKind.Utc).AddTicks(4746),
                             CreatedBy = 3L,
                             Output = "magnam",
-                            SubmittedAt = new DateTime(2023, 8, 12, 8, 3, 29, 741, DateTimeKind.Utc).AddTicks(9351)
+                            SubmittedAt = new DateTime(2023, 8, 18, 15, 16, 55, 170, DateTimeKind.Utc).AddTicks(2100)
                         },
                         new
                         {
                             Id = 61L,
                             ChallengeVersionId = 196L,
                             Code = "Nihil explicabo quam in cumque pariatur velit architecto repellat. Vel sapiente a enim est ut rem non quibusdam dolore. Consequatur occaecati ipsa. Rerum voluptatem atque itaque ut et non neque necessitatibus.",
-                            CreatedAt = new DateTime(2022, 11, 11, 3, 9, 4, 199, DateTimeKind.Utc).AddTicks(9513),
+                            CreatedAt = new DateTime(2022, 11, 16, 19, 27, 38, 841, DateTimeKind.Utc).AddTicks(5519),
                             CreatedBy = 29L,
                             Output = "et",
-                            SubmittedAt = new DateTime(2023, 7, 18, 14, 31, 19, 58, DateTimeKind.Utc).AddTicks(7632)
+                            SubmittedAt = new DateTime(2023, 7, 24, 20, 24, 2, 79, DateTimeKind.Utc).AddTicks(2476)
                         },
                         new
                         {
                             Id = 62L,
                             ChallengeVersionId = 156L,
                             Code = "Velit quia qui.",
-                            CreatedAt = new DateTime(2023, 8, 23, 16, 31, 43, 574, DateTimeKind.Utc).AddTicks(9459),
+                            CreatedAt = new DateTime(2023, 8, 30, 0, 22, 11, 972, DateTimeKind.Utc).AddTicks(9526),
                             CreatedBy = 16L,
                             Output = "Id distinctio soluta vero sunt dolores facere saepe sunt.",
-                            SubmittedAt = new DateTime(2023, 9, 4, 9, 12, 32, 390, DateTimeKind.Utc).AddTicks(8985)
+                            SubmittedAt = new DateTime(2023, 9, 10, 17, 41, 10, 737, DateTimeKind.Utc).AddTicks(3418)
                         },
                         new
                         {
                             Id = 63L,
                             ChallengeVersionId = 14L,
                             Code = "praesentium",
-                            CreatedAt = new DateTime(2023, 1, 5, 12, 49, 7, 966, DateTimeKind.Utc).AddTicks(7058),
+                            CreatedAt = new DateTime(2023, 1, 11, 8, 8, 30, 804, DateTimeKind.Utc).AddTicks(4137),
                             CreatedBy = 33L,
                             Output = "veniam",
-                            SubmittedAt = new DateTime(2023, 8, 9, 7, 43, 21, 119, DateTimeKind.Utc).AddTicks(6631)
+                            SubmittedAt = new DateTime(2023, 8, 15, 14, 46, 56, 392, DateTimeKind.Utc).AddTicks(4560)
                         },
                         new
                         {
                             Id = 64L,
                             ChallengeVersionId = 179L,
                             Code = "Reiciendis nihil est possimus voluptatem fugiat expedita deserunt quas debitis.",
-                            CreatedAt = new DateTime(2023, 6, 4, 16, 6, 47, 301, DateTimeKind.Utc).AddTicks(9046),
+                            CreatedAt = new DateTime(2023, 6, 10, 19, 36, 7, 860, DateTimeKind.Utc).AddTicks(2387),
                             CreatedBy = 10L,
                             Output = "Autem odio doloremque eos exercitationem nostrum nisi sed modi.",
-                            SubmittedAt = new DateTime(2023, 8, 2, 21, 57, 3, 373, DateTimeKind.Utc).AddTicks(9137)
+                            SubmittedAt = new DateTime(2023, 8, 9, 4, 39, 44, 91, DateTimeKind.Utc).AddTicks(2263)
                         },
                         new
                         {
                             Id = 65L,
                             ChallengeVersionId = 199L,
                             Code = "Rerum quod sed sit. Fugit impedit accusantium dolores magnam perspiciatis sed modi vitae ab. Animi dignissimos nulla est non eum sunt velit nostrum. Placeat provident quas dolorem ea voluptates ipsam commodi.",
-                            CreatedAt = new DateTime(2021, 6, 8, 18, 51, 47, 792, DateTimeKind.Utc).AddTicks(8586),
+                            CreatedAt = new DateTime(2021, 6, 13, 6, 52, 15, 888, DateTimeKind.Utc).AddTicks(7103),
                             CreatedBy = 15L,
                             Output = "Cum eum voluptas voluptatem. Nesciunt eaque et. Alias voluptatem voluptas.",
-                            SubmittedAt = new DateTime(2021, 8, 14, 4, 49, 9, 132, DateTimeKind.Utc).AddTicks(7331)
+                            SubmittedAt = new DateTime(2021, 8, 18, 20, 26, 21, 627, DateTimeKind.Utc).AddTicks(919)
                         },
                         new
                         {
                             Id = 66L,
                             ChallengeVersionId = 160L,
                             Code = "Dolorem sint necessitatibus ullam commodi dolor cupiditate ut saepe.",
-                            CreatedAt = new DateTime(2023, 1, 27, 11, 34, 28, 25, DateTimeKind.Utc).AddTicks(7840),
+                            CreatedAt = new DateTime(2023, 2, 2, 8, 5, 28, 433, DateTimeKind.Utc).AddTicks(4363),
                             CreatedBy = 16L,
                             Output = "Eius repudiandae nihil molestiae et occaecati blanditiis illum libero.\nIn non libero animi est ratione quia.\nEum placeat veritatis illo ut et repellendus non sapiente.\nQui consectetur qui dolorem.\nQui non non et quasi.\nNatus fugit deleniti qui harum sint soluta harum voluptas corrupti."
                         },
@@ -10529,107 +11110,107 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 67L,
                             ChallengeVersionId = 72L,
                             Code = "Laudantium eos sunt iste enim incidunt voluptatum reprehenderit ut non. Libero possimus quos aut rerum ut quidem. Voluptates laboriosam est aut eveniet adipisci et.",
-                            CreatedAt = new DateTime(2023, 8, 13, 4, 51, 54, 720, DateTimeKind.Utc).AddTicks(9480),
+                            CreatedAt = new DateTime(2023, 8, 19, 12, 8, 9, 908, DateTimeKind.Utc).AddTicks(9037),
                             CreatedBy = 4L,
                             Output = "qui",
-                            SubmittedAt = new DateTime(2023, 8, 23, 16, 15, 29, 989, DateTimeKind.Utc).AddTicks(7918)
+                            SubmittedAt = new DateTime(2023, 8, 30, 0, 5, 56, 184, DateTimeKind.Utc).AddTicks(365)
                         },
                         new
                         {
                             Id = 68L,
                             ChallengeVersionId = 164L,
                             Code = "Consequatur consequatur et dolore nam et veniam placeat aut aspernatur. Rerum eligendi odit ut esse numquam aliquam id. Eaque consectetur commodi distinctio accusantium beatae ullam officiis.",
-                            CreatedAt = new DateTime(2023, 8, 2, 1, 10, 34, 964, DateTimeKind.Utc).AddTicks(7679),
+                            CreatedAt = new DateTime(2023, 8, 8, 7, 50, 26, 190, DateTimeKind.Utc).AddTicks(3709),
                             CreatedBy = 40L,
                             Output = "Assumenda corporis quia dolores voluptatem fugiat suscipit dolore explicabo odio.\nAutem aspernatur et voluptatem nihil.",
-                            SubmittedAt = new DateTime(2023, 8, 7, 10, 12, 19, 62, DateTimeKind.Utc).AddTicks(2369)
+                            SubmittedAt = new DateTime(2023, 8, 13, 17, 9, 42, 979, DateTimeKind.Utc).AddTicks(332)
                         },
                         new
                         {
                             Id = 69L,
                             ChallengeVersionId = 172L,
                             Code = "Saepe dolorum rerum qui modi qui.",
-                            CreatedAt = new DateTime(2023, 7, 30, 19, 4, 24, 856, DateTimeKind.Utc).AddTicks(3485),
+                            CreatedAt = new DateTime(2023, 8, 6, 1, 36, 54, 680, DateTimeKind.Utc).AddTicks(1355),
                             CreatedBy = 16L,
                             Output = "Et adipisci sapiente. Sint ut ad culpa aut consequatur molestias. Nobis qui voluptatem id impedit. Enim illo necessitatibus illo reprehenderit.",
-                            SubmittedAt = new DateTime(2023, 8, 22, 12, 8, 32, 115, DateTimeKind.Utc).AddTicks(8056)
+                            SubmittedAt = new DateTime(2023, 8, 28, 19, 55, 8, 919, DateTimeKind.Utc).AddTicks(7342)
                         },
                         new
                         {
                             Id = 70L,
                             ChallengeVersionId = 30L,
                             Code = "Sequi aperiam nemo officiis et sapiente id amet.\nPerspiciatis incidunt dolore.",
-                            CreatedAt = new DateTime(2022, 12, 18, 7, 0, 8, 725, DateTimeKind.Utc).AddTicks(1535),
+                            CreatedAt = new DateTime(2022, 12, 24, 1, 19, 59, 606, DateTimeKind.Utc).AddTicks(9026),
                             CreatedBy = 28L,
                             Output = "Quia modi vel ea.\nNon harum aliquid sequi accusamus et in.\nUt qui expedita necessitatibus assumenda ut ex ut.\nCupiditate ea est ut amet exercitationem.\nDistinctio aut necessitatibus quas nihil architecto exercitationem.\nQuis mollitia ducimus occaecati.",
-                            SubmittedAt = new DateTime(2023, 1, 15, 4, 16, 3, 660, DateTimeKind.Utc).AddTicks(7856)
+                            SubmittedAt = new DateTime(2023, 1, 21, 0, 6, 54, 788, DateTimeKind.Utc).AddTicks(4197)
                         },
                         new
                         {
                             Id = 71L,
                             ChallengeVersionId = 168L,
                             Code = "hic",
-                            CreatedAt = new DateTime(2023, 2, 23, 23, 30, 43, 431, DateTimeKind.Utc).AddTicks(8813),
+                            CreatedAt = new DateTime(2023, 3, 1, 21, 31, 27, 982, DateTimeKind.Utc).AddTicks(7574),
                             CreatedBy = 8L,
                             Output = "Deleniti sequi cupiditate aut eum.\nVoluptatem et perspiciatis voluptatem suscipit voluptas dolores veritatis.\nArchitecto voluptatem neque nesciunt velit animi ipsum eveniet fugiat officia.\nSint aliquam reprehenderit sapiente.\nQui dolorum voluptatem quia.\nVoluptatibus dolorem dolore mollitia modi expedita ab molestiae.",
-                            SubmittedAt = new DateTime(2023, 8, 31, 23, 37, 46, 773, DateTimeKind.Utc).AddTicks(4588)
+                            SubmittedAt = new DateTime(2023, 9, 7, 7, 55, 19, 548, DateTimeKind.Utc).AddTicks(9880)
                         },
                         new
                         {
                             Id = 72L,
                             ChallengeVersionId = 116L,
                             Code = "Temporibus voluptate voluptatum quod nemo quaerat est exercitationem mollitia sit.",
-                            CreatedAt = new DateTime(2022, 12, 17, 9, 50, 40, 377, DateTimeKind.Utc).AddTicks(284),
+                            CreatedAt = new DateTime(2022, 12, 23, 4, 7, 38, 642, DateTimeKind.Utc).AddTicks(5784),
                             CreatedBy = 24L,
                             Output = "Repellendus est eius dolor id dolor sunt. Sint error consectetur earum. Rem est placeat.",
-                            SubmittedAt = new DateTime(2023, 1, 8, 3, 26, 33, 882, DateTimeKind.Utc).AddTicks(1500)
+                            SubmittedAt = new DateTime(2023, 1, 13, 22, 54, 27, 641, DateTimeKind.Utc).AddTicks(7142)
                         },
                         new
                         {
                             Id = 73L,
                             ChallengeVersionId = 54L,
                             Code = "Ratione in sit voluptatum nostrum.",
-                            CreatedAt = new DateTime(2020, 10, 27, 4, 58, 18, 174, DateTimeKind.Utc).AddTicks(7935),
+                            CreatedAt = new DateTime(2020, 10, 31, 4, 45, 52, 473, DateTimeKind.Utc).AddTicks(3134),
                             CreatedBy = 27L,
                             Output = "Blanditiis quam totam rerum in et.\nSed perferendis eius temporibus officiis nulla.\nEt amet repellendus ipsa perspiciatis.\nId nihil nesciunt.\nLaboriosam quis architecto id quisquam nihil quibusdam.",
-                            SubmittedAt = new DateTime(2022, 12, 8, 23, 35, 58, 254, DateTimeKind.Utc).AddTicks(8300)
+                            SubmittedAt = new DateTime(2022, 12, 14, 17, 25, 26, 483, DateTimeKind.Utc).AddTicks(9927)
                         },
                         new
                         {
                             Id = 74L,
                             ChallengeVersionId = 85L,
                             Code = "Dolores aut quis.\nEos sit in.\nEos est eum est magnam maiores.\nAut facere quaerat eos ullam quis perspiciatis officiis.\nNemo quam quia id optio unde.\nSed tenetur ut velit et.",
-                            CreatedAt = new DateTime(2023, 7, 20, 22, 48, 11, 700, DateTimeKind.Utc).AddTicks(1039),
+                            CreatedAt = new DateTime(2023, 7, 27, 4, 48, 33, 898, DateTimeKind.Utc).AddTicks(494),
                             CreatedBy = 12L,
                             Output = "et",
-                            SubmittedAt = new DateTime(2023, 9, 2, 15, 56, 31, 512, DateTimeKind.Utc).AddTicks(1214)
+                            SubmittedAt = new DateTime(2023, 9, 9, 0, 19, 33, 179, DateTimeKind.Utc).AddTicks(5927)
                         },
                         new
                         {
                             Id = 75L,
                             ChallengeVersionId = 152L,
                             Code = "Perspiciatis soluta facilis. Voluptatibus voluptatem temporibus provident repellendus. Tempora saepe quod odio veritatis aut dolor. Dolores nostrum minus veniam in. In aspernatur delectus odio sed voluptatum sit ipsa. Nostrum debitis dignissimos sapiente aliquid error sit.",
-                            CreatedAt = new DateTime(2023, 6, 23, 17, 26, 14, 926, DateTimeKind.Utc).AddTicks(1277),
+                            CreatedAt = new DateTime(2023, 6, 29, 21, 57, 46, 600, DateTimeKind.Utc).AddTicks(55),
                             CreatedBy = 5L,
                             Output = "Qui eligendi laboriosam repudiandae.\nCommodi temporibus aperiam ut suscipit id veniam quaerat aut.\nAssumenda rerum ullam aliquid asperiores nemo quaerat sit nemo ducimus.\nEt aut molestiae maxime deleniti perspiciatis enim.",
-                            SubmittedAt = new DateTime(2023, 7, 12, 16, 33, 1, 259, DateTimeKind.Utc).AddTicks(7486)
+                            SubmittedAt = new DateTime(2023, 7, 18, 22, 6, 26, 1, DateTimeKind.Utc).AddTicks(4603)
                         },
                         new
                         {
                             Id = 76L,
                             ChallengeVersionId = 39L,
                             Code = "architecto",
-                            CreatedAt = new DateTime(2023, 6, 8, 1, 7, 21, 989, DateTimeKind.Utc).AddTicks(8417),
+                            CreatedAt = new DateTime(2023, 6, 14, 4, 47, 43, 473, DateTimeKind.Utc).AddTicks(5331),
                             CreatedBy = 28L,
                             Output = "Impedit maiores aut et laboriosam voluptatem.\nSoluta porro qui molestiae officiis error molestias.\nLaudantium exercitationem maxime.\nEst sequi at inventore ut nesciunt ut non sed.",
-                            SubmittedAt = new DateTime(2023, 7, 1, 22, 20, 33, 523, DateTimeKind.Utc).AddTicks(6664)
+                            SubmittedAt = new DateTime(2023, 7, 8, 3, 18, 51, 659, DateTimeKind.Utc).AddTicks(3671)
                         },
                         new
                         {
                             Id = 77L,
                             ChallengeVersionId = 106L,
                             Code = "Iusto hic minima doloribus nulla. Omnis ratione rerum. Consectetur et velit quisquam. Sit ut fugiat ad vero molestiae ipsa blanditiis doloribus.",
-                            CreatedAt = new DateTime(2023, 5, 15, 5, 9, 31, 874, DateTimeKind.Utc).AddTicks(824),
+                            CreatedAt = new DateTime(2023, 5, 21, 7, 32, 6, 952, DateTimeKind.Utc).AddTicks(3322),
                             CreatedBy = 40L,
                             Output = "quae"
                         },
@@ -10638,7 +11219,7 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 78L,
                             ChallengeVersionId = 160L,
                             Code = "Accusantium ut laudantium temporibus omnis sunt explicabo repudiandae.\nRecusandae sequi molestiae.",
-                            CreatedAt = new DateTime(2023, 2, 4, 11, 6, 56, 22, DateTimeKind.Utc).AddTicks(6020),
+                            CreatedAt = new DateTime(2023, 2, 10, 8, 3, 59, 131, DateTimeKind.Utc).AddTicks(3564),
                             CreatedBy = 36L,
                             Output = "Vel rerum minima aperiam iste dolorum qui qui quos nostrum."
                         },
@@ -10647,77 +11228,77 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 79L,
                             ChallengeVersionId = 172L,
                             Code = "Totam atque optio laudantium et sit.\nSit omnis perferendis.\nOccaecati fugiat nam quo alias ratione dolor ut ut dolor.",
-                            CreatedAt = new DateTime(2023, 9, 5, 20, 10, 51, 573, DateTimeKind.Utc).AddTicks(9085),
+                            CreatedAt = new DateTime(2023, 9, 12, 4, 44, 15, 241, DateTimeKind.Utc).AddTicks(3447),
                             CreatedBy = 1L,
                             Output = "Et at quia necessitatibus delectus.",
-                            SubmittedAt = new DateTime(2023, 9, 8, 10, 43, 52, 536, DateTimeKind.Utc).AddTicks(1901)
+                            SubmittedAt = new DateTime(2023, 9, 14, 19, 25, 46, 524, DateTimeKind.Utc).AddTicks(2576)
                         },
                         new
                         {
                             Id = 80L,
                             ChallengeVersionId = 122L,
                             Code = "Veniam repudiandae beatae aspernatur delectus quis vero eum odio.\nBlanditiis ut vitae vitae dicta pariatur et dolore veniam illo.\nEt laborum est nostrum.\nQuia ut quia.\nAut dolores nihil eos quisquam ut aspernatur.\nConsequatur aut iste recusandae consectetur aut porro expedita aut.",
-                            CreatedAt = new DateTime(2023, 7, 20, 19, 34, 40, 549, DateTimeKind.Utc).AddTicks(4892),
+                            CreatedAt = new DateTime(2023, 7, 27, 1, 34, 36, 432, DateTimeKind.Utc).AddTicks(1329),
                             CreatedBy = 6L,
                             Output = "Culpa totam esse. Nobis eius corporis iure aut vero velit tenetur quaerat et. Voluptatem non modi ea. Placeat repellat labore voluptatum dolores ut officiis qui ut. Modi magnam magni vitae asperiores laboriosam quisquam et. Quas non quo repellat.",
-                            SubmittedAt = new DateTime(2023, 8, 26, 3, 27, 11, 595, DateTimeKind.Utc).AddTicks(3685)
+                            SubmittedAt = new DateTime(2023, 9, 1, 11, 25, 40, 731, DateTimeKind.Utc).AddTicks(8614)
                         },
                         new
                         {
                             Id = 81L,
                             ChallengeVersionId = 68L,
                             Code = "Distinctio error sint nostrum.\nTempora itaque velit ducimus nisi sunt esse.\nQuidem rerum qui quia.",
-                            CreatedAt = new DateTime(2023, 1, 5, 10, 49, 7, 440, DateTimeKind.Utc).AddTicks(9790),
+                            CreatedAt = new DateTime(2023, 1, 11, 6, 8, 13, 958, DateTimeKind.Utc).AddTicks(7263),
                             CreatedBy = 33L,
                             Output = "Qui ipsa vero et eaque repellat sunt. Necessitatibus natus omnis perferendis sunt molestias error nobis non. Esse aut dolor iure qui neque ea exercitationem eum. Distinctio dolor et blanditiis rerum quibusdam in. Impedit repellat aliquam qui dolores quasi occaecati. Temporibus iste voluptas distinctio quasi quaerat est eum blanditiis quisquam.",
-                            SubmittedAt = new DateTime(2023, 6, 28, 17, 36, 12, 477, DateTimeKind.Utc).AddTicks(92)
+                            SubmittedAt = new DateTime(2023, 7, 4, 22, 24, 4, 527, DateTimeKind.Utc).AddTicks(3908)
                         },
                         new
                         {
                             Id = 82L,
                             ChallengeVersionId = 34L,
                             Code = "Quia aut veritatis explicabo magni omnis odit.\nReiciendis numquam sed eum aut quo accusamus quo quis et.",
-                            CreatedAt = new DateTime(2023, 9, 9, 11, 12, 12, 361, DateTimeKind.Utc).AddTicks(3627),
+                            CreatedAt = new DateTime(2023, 9, 15, 19, 57, 26, 7, DateTimeKind.Utc).AddTicks(4420),
                             CreatedBy = 40L,
                             Output = "Dignissimos in quia fugit.",
-                            SubmittedAt = new DateTime(2023, 9, 9, 16, 0, 35, 76, DateTimeKind.Utc).AddTicks(7545)
+                            SubmittedAt = new DateTime(2023, 9, 16, 0, 46, 27, 935, DateTimeKind.Utc).AddTicks(4321)
                         },
                         new
                         {
                             Id = 83L,
                             ChallengeVersionId = 160L,
                             Code = "et",
-                            CreatedAt = new DateTime(2023, 1, 25, 19, 11, 59, 478, DateTimeKind.Utc).AddTicks(9808),
+                            CreatedAt = new DateTime(2023, 1, 31, 15, 37, 30, 487, DateTimeKind.Utc).AddTicks(7498),
                             CreatedBy = 39L,
                             Output = "Eos velit eum optio molestiae et iste.\nVeniam reprehenderit nulla.\nMaxime aut totam voluptatum voluptas omnis nostrum alias.\nConsequatur itaque rerum aspernatur.",
-                            SubmittedAt = new DateTime(2023, 6, 22, 15, 41, 19, 543, DateTimeKind.Utc).AddTicks(3593)
+                            SubmittedAt = new DateTime(2023, 6, 28, 20, 9, 21, 138, DateTimeKind.Utc).AddTicks(9250)
                         },
                         new
                         {
                             Id = 84L,
                             ChallengeVersionId = 96L,
                             Code = "Quam at praesentium consequatur cum quis. Laborum voluptatem sed dolor ut autem. Debitis deserunt eum nobis libero eius.",
-                            CreatedAt = new DateTime(2023, 5, 26, 11, 1, 42, 626, DateTimeKind.Utc).AddTicks(8240),
+                            CreatedAt = new DateTime(2023, 6, 1, 14, 0, 59, 450, DateTimeKind.Utc).AddTicks(1200),
                             CreatedBy = 21L,
                             Output = "Ab voluptatum rerum animi totam enim.",
-                            SubmittedAt = new DateTime(2023, 8, 1, 2, 19, 43, 241, DateTimeKind.Utc).AddTicks(4891)
+                            SubmittedAt = new DateTime(2023, 8, 7, 8, 56, 28, 63, DateTimeKind.Utc).AddTicks(679)
                         },
                         new
                         {
                             Id = 85L,
                             ChallengeVersionId = 131L,
                             Code = "quia",
-                            CreatedAt = new DateTime(2023, 9, 8, 22, 53, 23, 901, DateTimeKind.Utc).AddTicks(9653),
+                            CreatedAt = new DateTime(2023, 9, 15, 7, 36, 57, 90, DateTimeKind.Utc).AddTicks(6437),
                             CreatedBy = 19L,
                             Output = "aut",
-                            SubmittedAt = new DateTime(2023, 9, 12, 7, 43, 12, 240, DateTimeKind.Utc).AddTicks(7214)
+                            SubmittedAt = new DateTime(2023, 9, 18, 16, 37, 44, 884, DateTimeKind.Utc).AddTicks(5500)
                         },
                         new
                         {
                             Id = 86L,
                             ChallengeVersionId = 70L,
                             Code = "Soluta quisquam ut et. Vel veniam fugit aut alias repellat. Voluptatibus quia architecto et sed aspernatur voluptas et ipsum. Neque aspernatur fuga qui commodi aperiam. Ipsam voluptatem id commodi voluptatem.",
-                            CreatedAt = new DateTime(2023, 9, 3, 2, 41, 1, 195, DateTimeKind.Utc).AddTicks(8634),
+                            CreatedAt = new DateTime(2023, 9, 9, 11, 5, 30, 505, DateTimeKind.Utc).AddTicks(1922),
                             CreatedBy = 38L,
                             Output = "debitis"
                         },
@@ -10726,57 +11307,57 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 87L,
                             ChallengeVersionId = 97L,
                             Code = "Non quia ducimus.",
-                            CreatedAt = new DateTime(2023, 7, 29, 6, 36, 34, 998, DateTimeKind.Utc).AddTicks(960),
+                            CreatedAt = new DateTime(2023, 8, 4, 13, 4, 7, 329, DateTimeKind.Utc).AddTicks(4597),
                             CreatedBy = 24L,
                             Output = "nisi",
-                            SubmittedAt = new DateTime(2023, 8, 11, 11, 32, 9, 530, DateTimeKind.Utc).AddTicks(91)
+                            SubmittedAt = new DateTime(2023, 8, 17, 18, 42, 47, 525, DateTimeKind.Utc).AddTicks(7791)
                         },
                         new
                         {
                             Id = 88L,
                             ChallengeVersionId = 73L,
                             Code = "Natus odio exercitationem accusamus. Magnam fugiat quos reiciendis qui odio. Sint velit reiciendis assumenda eaque quia assumenda tempore. Tenetur est dolor iste voluptatem blanditiis. Non minus et rem sit aut ipsam corrupti illo. Eius repellendus distinctio occaecati.",
-                            CreatedAt = new DateTime(2023, 9, 7, 19, 43, 8, 43, DateTimeKind.Utc).AddTicks(7299),
+                            CreatedAt = new DateTime(2023, 9, 14, 4, 22, 59, 556, DateTimeKind.Utc).AddTicks(4993),
                             CreatedBy = 1L,
                             Output = "molestiae",
-                            SubmittedAt = new DateTime(2023, 9, 9, 15, 29, 52, 110, DateTimeKind.Utc).AddTicks(3029)
+                            SubmittedAt = new DateTime(2023, 9, 16, 0, 15, 40, 794, DateTimeKind.Utc).AddTicks(7261)
                         },
                         new
                         {
                             Id = 89L,
                             ChallengeVersionId = 197L,
                             Code = "magnam",
-                            CreatedAt = new DateTime(2022, 11, 20, 17, 16, 46, 218, DateTimeKind.Utc).AddTicks(4278),
+                            CreatedAt = new DateTime(2022, 11, 26, 10, 6, 38, 380, DateTimeKind.Utc).AddTicks(4768),
                             CreatedBy = 39L,
                             Output = "Autem id nam fugit enim. Autem ipsa sapiente et assumenda delectus. Earum aut quos quo nulla.",
-                            SubmittedAt = new DateTime(2023, 8, 18, 2, 53, 8, 626, DateTimeKind.Utc).AddTicks(2391)
+                            SubmittedAt = new DateTime(2023, 8, 24, 10, 25, 26, 687, DateTimeKind.Utc).AddTicks(1942)
                         },
                         new
                         {
                             Id = 90L,
                             ChallengeVersionId = 61L,
                             Code = "Mollitia vitae quis molestias. Dolorem aliquid sit dolor impedit qui. Aut autem asperiores dolorum natus doloribus nesciunt eaque doloremque deleniti.",
-                            CreatedAt = new DateTime(2023, 7, 30, 12, 5, 21, 176, DateTimeKind.Utc).AddTicks(7890),
+                            CreatedAt = new DateTime(2023, 8, 5, 18, 36, 54, 18, DateTimeKind.Utc).AddTicks(5996),
                             CreatedBy = 6L,
                             Output = "Nemo voluptate pariatur.",
-                            SubmittedAt = new DateTime(2023, 9, 7, 14, 21, 21, 22, DateTimeKind.Utc).AddTicks(2031)
+                            SubmittedAt = new DateTime(2023, 9, 13, 23, 0, 28, 775, DateTimeKind.Utc).AddTicks(9735)
                         },
                         new
                         {
                             Id = 91L,
                             ChallengeVersionId = 43L,
                             Code = "Impedit facere qui voluptas earum et ipsam voluptas ipsum. Est sapiente neque doloribus reprehenderit aliquid minus est. Dolorem sed officia ad.",
-                            CreatedAt = new DateTime(2023, 5, 13, 23, 4, 7, 192, DateTimeKind.Utc).AddTicks(9736),
+                            CreatedAt = new DateTime(2023, 5, 20, 1, 22, 36, 771, DateTimeKind.Utc).AddTicks(2536),
                             CreatedBy = 40L,
                             Output = "quasi",
-                            SubmittedAt = new DateTime(2023, 6, 19, 5, 54, 31, 261, DateTimeKind.Utc).AddTicks(8845)
+                            SubmittedAt = new DateTime(2023, 6, 25, 10, 11, 25, 647, DateTimeKind.Utc).AddTicks(8865)
                         },
                         new
                         {
                             Id = 92L,
                             ChallengeVersionId = 135L,
                             Code = "asperiores",
-                            CreatedAt = new DateTime(2023, 6, 20, 5, 40, 53, 248, DateTimeKind.Utc).AddTicks(2091),
+                            CreatedAt = new DateTime(2023, 6, 26, 10, 1, 1, 587, DateTimeKind.Utc).AddTicks(2711),
                             CreatedBy = 38L,
                             Output = "Accusamus aut modi numquam nihil. Porro voluptatem nisi provident dignissimos nobis ratione repudiandae. Voluptatem magni vel tenetur quo quia deleniti. Eligendi delectus ea animi. Ut libero dolor velit velit impedit. Et molestias rem impedit qui in enim."
                         },
@@ -10785,47 +11366,47 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 93L,
                             ChallengeVersionId = 109L,
                             Code = "Officiis sit consequatur magnam neque reprehenderit eos provident. Sit fugit magnam aut cum. Dolore corrupti odio reprehenderit veniam facilis expedita odit et. Pariatur unde in et tempore. Quibusdam optio tempore autem animi. Rerum unde magni eum reiciendis modi.",
-                            CreatedAt = new DateTime(2023, 9, 9, 19, 55, 27, 715, DateTimeKind.Utc).AddTicks(3599),
+                            CreatedAt = new DateTime(2023, 9, 16, 4, 41, 52, 512, DateTimeKind.Utc).AddTicks(545),
                             CreatedBy = 35L,
                             Output = "Exercitationem aliquam sint vel.\nFuga velit atque doloremque numquam architecto enim earum enim.\nVeniam laudantium culpa cum ipsam omnis ullam aut sequi.",
-                            SubmittedAt = new DateTime(2023, 9, 10, 13, 48, 36, 614, DateTimeKind.Utc).AddTicks(3265)
+                            SubmittedAt = new DateTime(2023, 9, 16, 22, 37, 27, 333, DateTimeKind.Utc).AddTicks(4459)
                         },
                         new
                         {
                             Id = 94L,
                             ChallengeVersionId = 126L,
                             Code = "Neque nesciunt iste nostrum expedita nobis.\nPorro iure non facilis culpa cupiditate beatae consequatur ut.\nAspernatur excepturi rerum aut sit.\nRepellat autem voluptas cupiditate ut qui ratione.",
-                            CreatedAt = new DateTime(2023, 6, 1, 15, 56, 39, 342, DateTimeKind.Utc).AddTicks(6764),
+                            CreatedAt = new DateTime(2023, 6, 7, 19, 16, 11, 103, DateTimeKind.Utc).AddTicks(5498),
                             CreatedBy = 10L,
                             Output = "Expedita ratione dolor possimus omnis fuga omnis quo sapiente.\nNisi expedita corporis et dolor sed expedita aut et sequi.\nVoluptate qui error iste sint saepe neque animi maiores.",
-                            SubmittedAt = new DateTime(2023, 8, 23, 4, 25, 15, 697, DateTimeKind.Utc).AddTicks(5134)
+                            SubmittedAt = new DateTime(2023, 8, 29, 12, 14, 5, 312, DateTimeKind.Utc).AddTicks(8722)
                         },
                         new
                         {
                             Id = 95L,
                             ChallengeVersionId = 169L,
                             Code = "Id rem minus molestiae ab sunt. Laboriosam architecto dolores maxime qui. Quia dolor quia.",
-                            CreatedAt = new DateTime(2023, 8, 3, 7, 29, 56, 308, DateTimeKind.Utc).AddTicks(8851),
+                            CreatedAt = new DateTime(2023, 8, 9, 14, 13, 54, 924, DateTimeKind.Utc).AddTicks(3792),
                             CreatedBy = 9L,
                             Output = "Eius velit quidem. Et fugit aut est porro autem et omnis. Ipsam dolor labore sit nihil accusamus ea illo enim.",
-                            SubmittedAt = new DateTime(2023, 8, 20, 5, 43, 7, 415, DateTimeKind.Utc).AddTicks(1583)
+                            SubmittedAt = new DateTime(2023, 8, 26, 13, 22, 20, 201, DateTimeKind.Utc).AddTicks(6554)
                         },
                         new
                         {
                             Id = 96L,
                             ChallengeVersionId = 175L,
                             Code = "Architecto illum dolorum non consequatur veniam aut quod sed. Architecto in sed delectus sunt quis eveniet velit saepe. Qui repellendus fugit rerum rerum voluptates voluptatibus temporibus ut adipisci.",
-                            CreatedAt = new DateTime(2022, 8, 23, 3, 24, 39, 513, DateTimeKind.Utc).AddTicks(1336),
+                            CreatedAt = new DateTime(2022, 8, 28, 15, 22, 11, 830, DateTimeKind.Utc).AddTicks(9830),
                             CreatedBy = 26L,
                             Output = "inventore",
-                            SubmittedAt = new DateTime(2023, 5, 13, 3, 8, 57, 289, DateTimeKind.Utc).AddTicks(609)
+                            SubmittedAt = new DateTime(2023, 5, 19, 5, 24, 44, 353, DateTimeKind.Utc).AddTicks(6616)
                         },
                         new
                         {
                             Id = 97L,
                             ChallengeVersionId = 117L,
                             Code = "Eos officia nemo illo quis expedita est magnam enim reprehenderit. Praesentium voluptatem magni qui nostrum nihil minus. Aspernatur corporis enim assumenda et sunt perferendis est libero libero. Incidunt reiciendis aut repellat quibusdam eos voluptatum veritatis animi nostrum.",
-                            CreatedAt = new DateTime(2023, 6, 21, 22, 50, 39, 551, DateTimeKind.Utc).AddTicks(7976),
+                            CreatedAt = new DateTime(2023, 6, 28, 3, 16, 23, 718, DateTimeKind.Utc).AddTicks(5370),
                             CreatedBy = 21L,
                             Output = "qui"
                         },
@@ -10834,97 +11415,97 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 98L,
                             ChallengeVersionId = 27L,
                             Code = "Consequatur reiciendis voluptate recusandae numquam deserunt.",
-                            CreatedAt = new DateTime(2023, 8, 19, 2, 5, 53, 944, DateTimeKind.Utc).AddTicks(5447),
+                            CreatedAt = new DateTime(2023, 8, 25, 9, 41, 21, 390, DateTimeKind.Utc).AddTicks(5624),
                             CreatedBy = 17L,
                             Output = "Deleniti enim aut odit qui vel. Perspiciatis ex voluptatem sit. Vel facilis magni est sapiente sunt temporibus. Dolore temporibus aut ad. Distinctio repudiandae qui quae. Ea aut ipsa sunt culpa voluptas velit doloremque ratione eos.",
-                            SubmittedAt = new DateTime(2023, 8, 19, 12, 22, 9, 526, DateTimeKind.Utc).AddTicks(6702)
+                            SubmittedAt = new DateTime(2023, 8, 25, 19, 59, 0, 769, DateTimeKind.Utc).AddTicks(2441)
                         },
                         new
                         {
                             Id = 99L,
                             ChallengeVersionId = 194L,
                             Code = "Ad dolore magnam sit eaque. Eos est ullam id repudiandae et totam laboriosam. Laudantium et ea quos est veritatis.",
-                            CreatedAt = new DateTime(2022, 11, 11, 14, 10, 22, 624, DateTimeKind.Utc).AddTicks(3998),
+                            CreatedAt = new DateTime(2022, 11, 17, 6, 30, 27, 189, DateTimeKind.Utc).AddTicks(1574),
                             CreatedBy = 19L,
                             Output = "Molestiae est assumenda sed commodi a aut dolore rem in. Et rerum iure recusandae velit tenetur necessitatibus. Aut fugit modi. Vitae harum sapiente in consequatur qui totam ad.",
-                            SubmittedAt = new DateTime(2023, 5, 10, 22, 5, 54, 512, DateTimeKind.Utc).AddTicks(845)
+                            SubmittedAt = new DateTime(2023, 5, 17, 0, 14, 28, 755, DateTimeKind.Utc).AddTicks(7903)
                         },
                         new
                         {
                             Id = 100L,
                             ChallengeVersionId = 110L,
                             Code = "Laboriosam dolores nam ducimus saepe. Cumque dolorem incidunt nihil beatae assumenda quia est rem. Sed reiciendis nobis atque in iste ullam autem consequatur.",
-                            CreatedAt = new DateTime(2023, 7, 28, 16, 22, 8, 682, DateTimeKind.Utc).AddTicks(4521),
+                            CreatedAt = new DateTime(2023, 8, 3, 22, 47, 44, 830, DateTimeKind.Utc).AddTicks(1536),
                             CreatedBy = 22L,
                             Output = "Fugiat voluptatem autem.",
-                            SubmittedAt = new DateTime(2023, 8, 23, 13, 23, 38, 808, DateTimeKind.Utc).AddTicks(2730)
+                            SubmittedAt = new DateTime(2023, 8, 29, 21, 13, 41, 631, DateTimeKind.Utc).AddTicks(613)
                         },
                         new
                         {
                             Id = 101L,
                             ChallengeVersionId = 82L,
                             Code = "Omnis dolor quis non eos ipsum.",
-                            CreatedAt = new DateTime(2023, 9, 7, 20, 52, 49, 896, DateTimeKind.Utc).AddTicks(9674),
+                            CreatedAt = new DateTime(2023, 9, 14, 5, 32, 50, 887, DateTimeKind.Utc).AddTicks(5227),
                             CreatedBy = 16L,
                             Output = "Optio aut optio dolores quas.",
-                            SubmittedAt = new DateTime(2023, 9, 10, 10, 49, 4, 191, DateTimeKind.Utc).AddTicks(4371)
+                            SubmittedAt = new DateTime(2023, 9, 16, 19, 37, 30, 499, DateTimeKind.Utc).AddTicks(1279)
                         },
                         new
                         {
                             Id = 102L,
                             ChallengeVersionId = 182L,
                             Code = "Dignissimos officia quisquam et quas iusto officiis provident voluptas. Vitae nesciunt commodi molestiae velit in iste. Eum repudiandae quam nemo sed.",
-                            CreatedAt = new DateTime(2020, 7, 14, 22, 12, 21, 804, DateTimeKind.Utc).AddTicks(8897),
+                            CreatedAt = new DateTime(2020, 7, 18, 16, 19, 37, 118, DateTimeKind.Utc).AddTicks(3278),
                             CreatedBy = 26L,
                             Output = "Illum voluptate eos quis reprehenderit.",
-                            SubmittedAt = new DateTime(2022, 5, 14, 10, 24, 51, 834, DateTimeKind.Utc).AddTicks(5205)
+                            SubmittedAt = new DateTime(2022, 5, 19, 16, 53, 44, 918, DateTimeKind.Utc).AddTicks(4676)
                         },
                         new
                         {
                             Id = 103L,
                             ChallengeVersionId = 103L,
                             Code = "error",
-                            CreatedAt = new DateTime(2023, 8, 10, 17, 47, 4, 463, DateTimeKind.Utc).AddTicks(5241),
+                            CreatedAt = new DateTime(2023, 8, 17, 0, 55, 17, 632, DateTimeKind.Utc).AddTicks(7626),
                             CreatedBy = 30L,
                             Output = "harum",
-                            SubmittedAt = new DateTime(2023, 9, 7, 21, 55, 41, 123, DateTimeKind.Utc).AddTicks(2279)
+                            SubmittedAt = new DateTime(2023, 9, 14, 6, 35, 50, 655, DateTimeKind.Utc).AddTicks(5431)
                         },
                         new
                         {
                             Id = 104L,
                             ChallengeVersionId = 162L,
                             Code = "Sapiente non omnis voluptatibus.\nIn minima qui dolores iure ut provident est.\nMinus neque ducimus.",
-                            CreatedAt = new DateTime(2023, 8, 3, 8, 28, 40, 767, DateTimeKind.Utc).AddTicks(5069),
+                            CreatedAt = new DateTime(2023, 8, 9, 15, 12, 47, 371, DateTimeKind.Utc).AddTicks(8472),
                             CreatedBy = 8L,
                             Output = "Repellendus explicabo consequatur. Quos et est in culpa qui quo possimus repellat. Ducimus non deserunt velit ut molestias quo consequuntur.",
-                            SubmittedAt = new DateTime(2023, 8, 24, 20, 22, 34, 895, DateTimeKind.Utc).AddTicks(6890)
+                            SubmittedAt = new DateTime(2023, 8, 31, 4, 16, 50, 490, DateTimeKind.Utc).AddTicks(5346)
                         },
                         new
                         {
                             Id = 105L,
                             ChallengeVersionId = 76L,
                             Code = "Voluptate sint dignissimos ullam aliquid et quia earum.\nEaque placeat aut accusamus soluta tempore.\nProvident perferendis culpa aut similique aperiam consequatur.\nSed expedita saepe velit fuga a nobis earum.\nUt quae velit ipsam cumque quia culpa.",
-                            CreatedAt = new DateTime(2023, 3, 23, 0, 16, 25, 686, DateTimeKind.Utc).AddTicks(5114),
+                            CreatedAt = new DateTime(2023, 3, 28, 23, 45, 23, 195, DateTimeKind.Utc).AddTicks(4895),
                             CreatedBy = 17L,
                             Output = "Non omnis a quaerat sint dolores fuga alias non consequuntur.\nAut quis molestias omnis aspernatur eligendi ut consequatur voluptatem provident.\nConsequatur quaerat ut quidem voluptatum.\nEum est alias beatae sint.\nArchitecto ut et.",
-                            SubmittedAt = new DateTime(2023, 9, 12, 11, 6, 12, 989, DateTimeKind.Utc).AddTicks(6046)
+                            SubmittedAt = new DateTime(2023, 9, 18, 20, 1, 13, 237, DateTimeKind.Utc).AddTicks(8084)
                         },
                         new
                         {
                             Id = 106L,
                             ChallengeVersionId = 107L,
                             Code = "Autem tempore est sed id et est quisquam. Iure culpa tenetur optio quis. Expedita ut ipsum labore consequuntur eveniet consectetur quaerat iusto officiis. Exercitationem deserunt itaque voluptatem in deserunt asperiores et dolor. Temporibus id modi inventore reprehenderit ea qui est quos hic. Fugit dolores velit est repellendus sint est.",
-                            CreatedAt = new DateTime(2023, 3, 23, 4, 21, 36, 432, DateTimeKind.Utc).AddTicks(4463),
+                            CreatedAt = new DateTime(2023, 3, 29, 3, 51, 7, 293, DateTimeKind.Utc).AddTicks(8741),
                             CreatedBy = 22L,
                             Output = "Aliquam nam placeat suscipit perferendis dolor.\nVel maiores a.\nOdit et accusamus.\nRerum sit minus ut est provident earum.\nEnim dolor aspernatur non libero autem beatae nemo officiis in.",
-                            SubmittedAt = new DateTime(2023, 6, 13, 10, 2, 8, 781, DateTimeKind.Utc).AddTicks(6144)
+                            SubmittedAt = new DateTime(2023, 6, 19, 14, 0, 2, 7, DateTimeKind.Utc).AddTicks(7907)
                         },
                         new
                         {
                             Id = 107L,
                             ChallengeVersionId = 93L,
                             Code = "Error repudiandae molestias doloribus laudantium consequatur sunt.",
-                            CreatedAt = new DateTime(2023, 4, 3, 2, 0, 50, 510, DateTimeKind.Utc).AddTicks(6383),
+                            CreatedAt = new DateTime(2023, 4, 9, 2, 5, 56, 87, DateTimeKind.Utc).AddTicks(252),
                             CreatedBy = 19L,
                             Output = "Suscipit tenetur quia asperiores rerum ipsam id odio nesciunt.\nAliquam ut voluptatem voluptates et quia non autem suscipit sed."
                         },
@@ -10933,37 +11514,37 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 108L,
                             ChallengeVersionId = 180L,
                             Code = "Nulla ipsum cupiditate maiores et tenetur maxime ex libero qui.\nEius suscipit aperiam error laudantium voluptatem eius saepe.\nLaboriosam aliquam voluptatum velit quia quas commodi.\nMollitia et hic enim aut aut deserunt maiores iure.",
-                            CreatedAt = new DateTime(2023, 9, 11, 0, 13, 15, 195, DateTimeKind.Utc).AddTicks(5531),
+                            CreatedAt = new DateTime(2023, 9, 17, 9, 3, 30, 851, DateTimeKind.Utc).AddTicks(1962),
                             CreatedBy = 18L,
                             Output = "Et neque ullam ut rerum porro sed velit.",
-                            SubmittedAt = new DateTime(2023, 9, 12, 1, 53, 55, 940, DateTimeKind.Utc).AddTicks(1569)
+                            SubmittedAt = new DateTime(2023, 9, 18, 10, 47, 41, 91, DateTimeKind.Utc).AddTicks(123)
                         },
                         new
                         {
                             Id = 109L,
                             ChallengeVersionId = 33L,
                             Code = "Officia eligendi voluptas dolor quia officia officiis.\nNihil quidem iure suscipit provident odio in architecto ab.\nDolorem iusto ipsa porro provident atque.\nNemo molestiae aut.\nId quia unde quae quia consequatur nostrum veritatis.\nMollitia deleniti nostrum ut fugit enim.",
-                            CreatedAt = new DateTime(2023, 3, 23, 13, 35, 39, 837, DateTimeKind.Utc).AddTicks(172),
+                            CreatedAt = new DateTime(2023, 3, 29, 13, 6, 26, 30, DateTimeKind.Utc).AddTicks(7118),
                             CreatedBy = 35L,
                             Output = "Nam alias quia qui deserunt sit saepe in iste.",
-                            SubmittedAt = new DateTime(2023, 7, 21, 16, 52, 5, 691, DateTimeKind.Utc).AddTicks(4967)
+                            SubmittedAt = new DateTime(2023, 7, 27, 22, 54, 55, 271, DateTimeKind.Utc).AddTicks(8895)
                         },
                         new
                         {
                             Id = 110L,
                             ChallengeVersionId = 36L,
                             Code = "Qui excepturi voluptas.\nQuia iusto veniam perferendis natus.\nUt qui quas id modi sequi corporis rerum molestiae et.\nPerferendis autem et facilis et dolores magni numquam quibusdam dolor.\nReprehenderit deleniti nostrum quibusdam atque quos laboriosam similique eaque.\nDoloremque et unde quaerat illo ut itaque est reprehenderit.",
-                            CreatedAt = new DateTime(2023, 7, 3, 23, 49, 54, 645, DateTimeKind.Utc).AddTicks(3804),
+                            CreatedAt = new DateTime(2023, 7, 10, 4, 54, 56, 535, DateTimeKind.Utc).AddTicks(8080),
                             CreatedBy = 10L,
                             Output = "id",
-                            SubmittedAt = new DateTime(2023, 8, 23, 16, 8, 45, 801, DateTimeKind.Utc).AddTicks(6895)
+                            SubmittedAt = new DateTime(2023, 8, 29, 23, 59, 11, 75, DateTimeKind.Utc).AddTicks(7259)
                         },
                         new
                         {
                             Id = 111L,
                             ChallengeVersionId = 134L,
                             Code = "Voluptatem quibusdam omnis sed provident.\nVoluptatem enim nihil libero consequatur ullam ea laborum.\nVoluptatibus commodi odit.\nAnimi et consectetur cupiditate voluptate id.\nRatione nemo atque.",
-                            CreatedAt = new DateTime(2023, 9, 9, 21, 6, 30, 837, DateTimeKind.Utc).AddTicks(597),
+                            CreatedAt = new DateTime(2023, 9, 16, 5, 53, 5, 298, DateTimeKind.Utc).AddTicks(2277),
                             CreatedBy = 35L,
                             Output = "ullam"
                         },
@@ -10972,47 +11553,47 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 112L,
                             ChallengeVersionId = 76L,
                             Code = "Perferendis molestias doloremque a sint.",
-                            CreatedAt = new DateTime(2023, 7, 6, 13, 9, 11, 185, DateTimeKind.Utc).AddTicks(2858),
+                            CreatedAt = new DateTime(2023, 7, 12, 18, 22, 33, 367, DateTimeKind.Utc).AddTicks(8056),
                             CreatedBy = 36L,
                             Output = "culpa",
-                            SubmittedAt = new DateTime(2023, 7, 13, 7, 19, 30, 675, DateTimeKind.Utc).AddTicks(6857)
+                            SubmittedAt = new DateTime(2023, 7, 19, 12, 54, 55, 950, DateTimeKind.Utc).AddTicks(5057)
                         },
                         new
                         {
                             Id = 113L,
                             ChallengeVersionId = 44L,
                             Code = "Aliquam architecto iusto.",
-                            CreatedAt = new DateTime(2023, 7, 18, 17, 53, 46, 526, DateTimeKind.Utc).AddTicks(6898),
+                            CreatedAt = new DateTime(2023, 7, 24, 23, 46, 57, 77, DateTimeKind.Utc).AddTicks(9597),
                             CreatedBy = 30L,
                             Output = "Sint blanditiis animi porro eum. Quis a et explicabo est. Quo ab sunt. Similique voluptates cum quas dolorem est optio excepturi quia expedita.",
-                            SubmittedAt = new DateTime(2023, 8, 21, 0, 18, 40, 978, DateTimeKind.Utc).AddTicks(3209)
+                            SubmittedAt = new DateTime(2023, 8, 27, 8, 0, 25, 453, DateTimeKind.Utc).AddTicks(5026)
                         },
                         new
                         {
                             Id = 114L,
                             ChallengeVersionId = 156L,
                             Code = "Quibusdam natus voluptates ipsam consequuntur ipsum est fuga dolore quis. Doloremque fugit corporis doloribus autem molestias cupiditate veniam assumenda provident. Possimus sunt molestias ipsum et sequi ea aperiam voluptatem. Sit et aliquam provident ut magnam dolor quas at. Voluptatum velit id quia.",
-                            CreatedAt = new DateTime(2023, 9, 3, 9, 30, 45, 462, DateTimeKind.Utc).AddTicks(1191),
+                            CreatedAt = new DateTime(2023, 9, 9, 17, 56, 10, 479, DateTimeKind.Utc).AddTicks(6443),
                             CreatedBy = 30L,
                             Output = "Eius sunt nemo facilis.\nVel consequatur aut illum aut tenetur iste dolores voluptatem non.\nAut cumque enim.\nPraesentium voluptate aliquam.",
-                            SubmittedAt = new DateTime(2023, 9, 6, 11, 6, 23, 332, DateTimeKind.Utc).AddTicks(1487)
+                            SubmittedAt = new DateTime(2023, 9, 12, 19, 41, 48, 770, DateTimeKind.Utc).AddTicks(373)
                         },
                         new
                         {
                             Id = 115L,
                             ChallengeVersionId = 66L,
                             Code = "Suscipit harum amet non qui rerum.",
-                            CreatedAt = new DateTime(2022, 10, 22, 19, 14, 18, 574, DateTimeKind.Utc).AddTicks(6882),
+                            CreatedAt = new DateTime(2022, 10, 28, 10, 29, 48, 360, DateTimeKind.Utc).AddTicks(7798),
                             CreatedBy = 19L,
                             Output = "Nihil magnam est voluptatem dignissimos. Rerum ea earum voluptatem iure dolores rem incidunt vel. Vel fugiat error et illo ab est praesentium sit.",
-                            SubmittedAt = new DateTime(2023, 4, 24, 21, 24, 23, 268, DateTimeKind.Utc).AddTicks(9309)
+                            SubmittedAt = new DateTime(2023, 4, 30, 22, 40, 38, 979, DateTimeKind.Utc).AddTicks(1728)
                         },
                         new
                         {
                             Id = 116L,
                             ChallengeVersionId = 117L,
                             Code = "Tenetur laboriosam rerum.",
-                            CreatedAt = new DateTime(2023, 1, 10, 3, 33, 29, 490, DateTimeKind.Utc).AddTicks(1540),
+                            CreatedAt = new DateTime(2023, 1, 15, 23, 7, 55, 794, DateTimeKind.Utc).AddTicks(3659),
                             CreatedBy = 14L,
                             Output = "Consequatur sint eum omnis reprehenderit. A doloribus eos. Consequatur neque voluptas fugit reprehenderit nostrum. Autem natus voluptatem qui aut. Culpa autem illum repellat ipsam ut dolores."
                         },
@@ -11021,47 +11602,47 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 117L,
                             ChallengeVersionId = 168L,
                             Code = "Expedita quidem quas nisi laborum molestiae natus.\nAutem sequi soluta nam doloremque excepturi.",
-                            CreatedAt = new DateTime(2022, 10, 8, 10, 14, 47, 83, DateTimeKind.Utc).AddTicks(6614),
+                            CreatedAt = new DateTime(2022, 10, 14, 0, 43, 22, 227, DateTimeKind.Utc).AddTicks(8150),
                             CreatedBy = 18L,
                             Output = "rem",
-                            SubmittedAt = new DateTime(2023, 1, 1, 13, 57, 7, 350, DateTimeKind.Utc).AddTicks(9217)
+                            SubmittedAt = new DateTime(2023, 1, 7, 9, 3, 36, 206, DateTimeKind.Utc).AddTicks(7194)
                         },
                         new
                         {
                             Id = 118L,
                             ChallengeVersionId = 70L,
                             Code = "Ducimus est illo tempora magni assumenda dicta quod.\nAut porro molestiae omnis voluptatum.",
-                            CreatedAt = new DateTime(2023, 9, 8, 4, 34, 9, 940, DateTimeKind.Utc).AddTicks(461),
+                            CreatedAt = new DateTime(2023, 9, 14, 13, 15, 13, 659, DateTimeKind.Utc).AddTicks(1175),
                             CreatedBy = 34L,
                             Output = "Sit iure accusantium nulla quidem debitis aut.",
-                            SubmittedAt = new DateTime(2023, 9, 8, 17, 56, 39, 554, DateTimeKind.Utc).AddTicks(2009)
+                            SubmittedAt = new DateTime(2023, 9, 15, 2, 39, 32, 392, DateTimeKind.Utc).AddTicks(8590)
                         },
                         new
                         {
                             Id = 119L,
                             ChallengeVersionId = 63L,
                             Code = "repellendus",
-                            CreatedAt = new DateTime(2023, 8, 2, 14, 22, 3, 167, DateTimeKind.Utc).AddTicks(1544),
+                            CreatedAt = new DateTime(2023, 8, 8, 21, 3, 42, 15, DateTimeKind.Utc).AddTicks(391),
                             CreatedBy = 32L,
                             Output = "Vero saepe rerum accusamus sit ad accusantium.\nItaque voluptate tempora.",
-                            SubmittedAt = new DateTime(2023, 9, 10, 23, 5, 29, 659, DateTimeKind.Utc).AddTicks(5247)
+                            SubmittedAt = new DateTime(2023, 9, 17, 7, 55, 36, 100, DateTimeKind.Utc).AddTicks(9923)
                         },
                         new
                         {
                             Id = 120L,
                             ChallengeVersionId = 27L,
                             Code = "Perspiciatis quia aut similique fuga. Debitis similique facilis eveniet. Totam veritatis harum laboriosam ut qui deleniti.",
-                            CreatedAt = new DateTime(2023, 8, 24, 2, 4, 20, 654, DateTimeKind.Utc).AddTicks(4067),
+                            CreatedAt = new DateTime(2023, 8, 30, 9, 56, 6, 916, DateTimeKind.Utc).AddTicks(3828),
                             CreatedBy = 40L,
                             Output = "Alias dolor optio.\nDebitis ipsa eaque pariatur dolorem porro.\nOmnis quis ut vel pariatur quia.\nEst blanditiis nihil vel dolorem.\nEarum neque nesciunt ut consequatur autem.",
-                            SubmittedAt = new DateTime(2023, 8, 29, 3, 46, 14, 847, DateTimeKind.Utc).AddTicks(8320)
+                            SubmittedAt = new DateTime(2023, 9, 4, 11, 54, 33, 993, DateTimeKind.Utc).AddTicks(6911)
                         },
                         new
                         {
                             Id = 121L,
                             ChallengeVersionId = 11L,
                             Code = "Aspernatur maxime dolor voluptas quisquam.",
-                            CreatedAt = new DateTime(2021, 7, 24, 11, 56, 28, 642, DateTimeKind.Utc).AddTicks(9858),
+                            CreatedAt = new DateTime(2021, 7, 29, 2, 26, 7, 328, DateTimeKind.Utc).AddTicks(3917),
                             CreatedBy = 39L,
                             Output = "Fugit repudiandae eligendi sunt."
                         },
@@ -11070,17 +11651,17 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 122L,
                             ChallengeVersionId = 60L,
                             Code = "voluptate",
-                            CreatedAt = new DateTime(2023, 8, 23, 10, 1, 35, 496, DateTimeKind.Utc).AddTicks(4791),
+                            CreatedAt = new DateTime(2023, 8, 29, 17, 51, 10, 845, DateTimeKind.Utc).AddTicks(1610),
                             CreatedBy = 2L,
                             Output = "Non porro aut et eaque.\nQuisquam voluptatem aut aut asperiores hic ut modi sint.\nEt maiores ut maiores enim accusantium.\nQuasi aut possimus sed omnis beatae.\nAt molestiae vel ipsa sunt.",
-                            SubmittedAt = new DateTime(2023, 9, 6, 5, 50, 0, 717, DateTimeKind.Utc).AddTicks(5513)
+                            SubmittedAt = new DateTime(2023, 9, 12, 14, 24, 43, 135, DateTimeKind.Utc).AddTicks(7488)
                         },
                         new
                         {
                             Id = 123L,
                             ChallengeVersionId = 38L,
                             Code = "Et culpa aspernatur aut excepturi aperiam cumque qui et.",
-                            CreatedAt = new DateTime(2023, 9, 9, 14, 34, 29, 627, DateTimeKind.Utc).AddTicks(9652),
+                            CreatedAt = new DateTime(2023, 9, 15, 23, 20, 10, 782, DateTimeKind.Utc).AddTicks(447),
                             CreatedBy = 38L,
                             Output = "Et a quas dolore vel inventore veniam tempore."
                         },
@@ -11089,357 +11670,357 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 124L,
                             ChallengeVersionId = 143L,
                             Code = "et",
-                            CreatedAt = new DateTime(2023, 4, 25, 13, 8, 57, 623, DateTimeKind.Utc).AddTicks(7584),
+                            CreatedAt = new DateTime(2023, 5, 1, 14, 27, 21, 771, DateTimeKind.Utc).AddTicks(7052),
                             CreatedBy = 20L,
                             Output = "Voluptas corporis numquam non.\nSed necessitatibus ut repellat et dicta.\nQuos eligendi molestiae.\nAmet vitae et dolor.",
-                            SubmittedAt = new DateTime(2023, 4, 27, 19, 18, 40, 105, DateTimeKind.Utc).AddTicks(5609)
+                            SubmittedAt = new DateTime(2023, 5, 3, 20, 44, 26, 136, DateTimeKind.Utc).AddTicks(2695)
                         },
                         new
                         {
                             Id = 125L,
                             ChallengeVersionId = 26L,
                             Code = "Doloremque officiis perferendis vel non.\nOmnis quia et aspernatur dolores iure.\nVoluptas veritatis eaque qui accusamus.",
-                            CreatedAt = new DateTime(2023, 2, 21, 0, 36, 37, 218, DateTimeKind.Utc).AddTicks(1034),
+                            CreatedAt = new DateTime(2023, 2, 26, 22, 27, 43, 309, DateTimeKind.Utc).AddTicks(6786),
                             CreatedBy = 38L,
                             Output = "Vero tenetur esse officia impedit eligendi consequuntur ut velit.\nAutem voluptates sunt.",
-                            SubmittedAt = new DateTime(2023, 7, 14, 22, 47, 48, 618, DateTimeKind.Utc).AddTicks(9717)
+                            SubmittedAt = new DateTime(2023, 7, 21, 4, 28, 35, 928, DateTimeKind.Utc).AddTicks(1747)
                         },
                         new
                         {
                             Id = 126L,
                             ChallengeVersionId = 195L,
                             Code = "sint",
-                            CreatedAt = new DateTime(2023, 2, 2, 17, 3, 39, 226, DateTimeKind.Utc).AddTicks(15),
+                            CreatedAt = new DateTime(2023, 2, 8, 13, 54, 59, 227, DateTimeKind.Utc).AddTicks(5635),
                             CreatedBy = 26L,
                             Output = "Dicta officia soluta nihil rerum et commodi et.",
-                            SubmittedAt = new DateTime(2023, 5, 21, 22, 5, 3, 594, DateTimeKind.Utc).AddTicks(7045)
+                            SubmittedAt = new DateTime(2023, 5, 28, 0, 49, 31, 588, DateTimeKind.Utc).AddTicks(1169)
                         },
                         new
                         {
                             Id = 127L,
                             ChallengeVersionId = 20L,
                             Code = "Et quisquam est eius ullam dicta cumque voluptatum repellendus. Recusandae consequatur debitis alias et dicta cupiditate ratione et eum. Veniam ab voluptatum ut assumenda consequatur dolorem impedit vitae assumenda. Et repudiandae consequatur ea. Dicta velit repellat rerum quia.",
-                            CreatedAt = new DateTime(2023, 7, 11, 16, 1, 3, 783, DateTimeKind.Utc).AddTicks(6331),
+                            CreatedAt = new DateTime(2023, 7, 17, 21, 31, 8, 365, DateTimeKind.Utc).AddTicks(4823),
                             CreatedBy = 28L,
                             Output = "Omnis omnis facilis ex fugit sapiente doloremque illo.\nRerum numquam libero quia soluta provident porro debitis voluptas.\nDolores qui sit delectus harum aliquam illum iusto.\nAccusamus earum cumque rerum enim possimus doloribus eius.\nTotam mollitia quia quod sequi vero doloremque voluptatem.",
-                            SubmittedAt = new DateTime(2023, 9, 5, 0, 20, 47, 362, DateTimeKind.Utc).AddTicks(806)
+                            SubmittedAt = new DateTime(2023, 9, 11, 8, 51, 29, 207, DateTimeKind.Utc).AddTicks(5528)
                         },
                         new
                         {
                             Id = 128L,
                             ChallengeVersionId = 74L,
                             Code = "odio",
-                            CreatedAt = new DateTime(2023, 7, 6, 15, 1, 57, 683, DateTimeKind.Utc).AddTicks(4176),
+                            CreatedAt = new DateTime(2023, 7, 12, 20, 15, 35, 205, DateTimeKind.Utc).AddTicks(7601),
                             CreatedBy = 29L,
                             Output = "Quis qui aut aspernatur exercitationem non exercitationem amet eum amet. Ea esse eligendi enim asperiores velit ipsum. Reprehenderit in quia recusandae atque similique est. Vero qui recusandae. Cumque cumque assumenda et harum.",
-                            SubmittedAt = new DateTime(2023, 8, 15, 23, 5, 23, 127, DateTimeKind.Utc).AddTicks(6519)
+                            SubmittedAt = new DateTime(2023, 8, 22, 6, 30, 38, 608, DateTimeKind.Utc).AddTicks(4342)
                         },
                         new
                         {
                             Id = 129L,
                             ChallengeVersionId = 141L,
                             Code = "In voluptas soluta porro error nostrum mollitia enim commodi. Velit quae est non. Sunt et iusto animi saepe molestiae officiis.",
-                            CreatedAt = new DateTime(2023, 6, 9, 22, 12, 9, 643, DateTimeKind.Utc).AddTicks(665),
+                            CreatedAt = new DateTime(2023, 6, 16, 1, 58, 38, 909, DateTimeKind.Utc).AddTicks(4730),
                             CreatedBy = 37L,
                             Output = "Soluta minima ipsa.\nMaiores rerum est exercitationem explicabo et labore ipsa enim.\nExercitationem suscipit doloribus suscipit corrupti.\nSunt voluptatibus amet quo qui.\nAut consequatur magni.",
-                            SubmittedAt = new DateTime(2023, 6, 12, 21, 15, 5, 395, DateTimeKind.Utc).AddTicks(9888)
+                            SubmittedAt = new DateTime(2023, 6, 19, 1, 11, 14, 318, DateTimeKind.Utc).AddTicks(9973)
                         },
                         new
                         {
                             Id = 130L,
                             ChallengeVersionId = 41L,
                             Code = "In vel ut aut placeat iste fuga. Non consectetur ratione corporis natus. Ut ipsum exercitationem quas optio sunt quia qui saepe itaque.",
-                            CreatedAt = new DateTime(2023, 7, 8, 18, 58, 40, 324, DateTimeKind.Utc).AddTicks(1199),
+                            CreatedAt = new DateTime(2023, 7, 15, 0, 19, 21, 643, DateTimeKind.Utc).AddTicks(1959),
                             CreatedBy = 8L,
                             Output = "dolorem",
-                            SubmittedAt = new DateTime(2023, 7, 9, 13, 54, 47, 517, DateTimeKind.Utc).AddTicks(5533)
+                            SubmittedAt = new DateTime(2023, 7, 15, 19, 18, 3, 321, DateTimeKind.Utc).AddTicks(8176)
                         },
                         new
                         {
                             Id = 131L,
                             ChallengeVersionId = 55L,
                             Code = "Dolor deserunt a modi unde.",
-                            CreatedAt = new DateTime(2023, 7, 17, 3, 57, 43, 19, DateTimeKind.Utc).AddTicks(7705),
+                            CreatedAt = new DateTime(2023, 7, 23, 9, 45, 44, 84, DateTimeKind.Utc).AddTicks(5898),
                             CreatedBy = 28L,
                             Output = "Ut velit ut eos et sunt voluptatibus. Quas id qui amet. Aliquid aliquam atque voluptas similique qui eum quam est sint. Id sit dolor nisi culpa rerum maxime.",
-                            SubmittedAt = new DateTime(2023, 8, 24, 7, 47, 52, 294, DateTimeKind.Utc).AddTicks(7685)
+                            SubmittedAt = new DateTime(2023, 8, 30, 15, 40, 25, 266, DateTimeKind.Utc).AddTicks(7697)
                         },
                         new
                         {
                             Id = 132L,
                             ChallengeVersionId = 199L,
                             Code = "Deserunt adipisci eaque et. Non eius commodi molestiae laboriosam. Saepe voluptatibus labore ipsa qui illum.",
-                            CreatedAt = new DateTime(2021, 6, 12, 10, 11, 58, 232, DateTimeKind.Utc).AddTicks(9597),
+                            CreatedAt = new DateTime(2021, 6, 16, 22, 24, 18, 867, DateTimeKind.Utc).AddTicks(1341),
                             CreatedBy = 10L,
                             Output = "Quae autem quidem.\nIste doloribus praesentium repudiandae reprehenderit est nemo.\nMagnam reprehenderit asperiores amet vel distinctio.",
-                            SubmittedAt = new DateTime(2022, 12, 4, 3, 25, 37, 297, DateTimeKind.Utc).AddTicks(8525)
+                            SubmittedAt = new DateTime(2022, 12, 9, 20, 59, 17, 724, DateTimeKind.Utc).AddTicks(8999)
                         },
                         new
                         {
                             Id = 133L,
                             ChallengeVersionId = 47L,
                             Code = "odit",
-                            CreatedAt = new DateTime(2023, 8, 31, 3, 43, 25, 763, DateTimeKind.Utc).AddTicks(3680),
+                            CreatedAt = new DateTime(2023, 9, 6, 11, 58, 16, 138, DateTimeKind.Utc).AddTicks(668),
                             CreatedBy = 18L,
                             Output = "voluptas",
-                            SubmittedAt = new DateTime(2023, 9, 10, 18, 35, 45, 547, DateTimeKind.Utc).AddTicks(337)
+                            SubmittedAt = new DateTime(2023, 9, 17, 3, 25, 15, 311, DateTimeKind.Utc).AddTicks(2353)
                         },
                         new
                         {
                             Id = 134L,
                             ChallengeVersionId = 10L,
                             Code = "Quibusdam iste praesentium molestias.\nEt nemo ut quod doloremque.\nFacilis officia dolore vero omnis sequi odio iure est iure.\nHarum rem quas modi voluptatem soluta.\nVoluptas quae rerum.\nVoluptatem adipisci et et voluptatem.",
-                            CreatedAt = new DateTime(2023, 7, 21, 14, 32, 32, 254, DateTimeKind.Utc).AddTicks(9716),
+                            CreatedAt = new DateTime(2023, 7, 27, 20, 35, 2, 859, DateTimeKind.Utc).AddTicks(283),
                             CreatedBy = 4L,
                             Output = "Nobis laborum aut consequuntur. Dolor adipisci autem fuga eligendi dolorem. Nisi quod ex molestiae. Consequatur veritatis quae et delectus ut maiores explicabo laboriosam quia. Tempora quo alias. Praesentium qui nihil fugiat expedita nisi.",
-                            SubmittedAt = new DateTime(2023, 8, 6, 19, 53, 17, 15, DateTimeKind.Utc).AddTicks(314)
+                            SubmittedAt = new DateTime(2023, 8, 13, 2, 48, 44, 123, DateTimeKind.Utc).AddTicks(504)
                         },
                         new
                         {
                             Id = 135L,
                             ChallengeVersionId = 32L,
                             Code = "modi",
-                            CreatedAt = new DateTime(2022, 1, 17, 13, 38, 52, 229, DateTimeKind.Utc).AddTicks(4492),
+                            CreatedAt = new DateTime(2022, 1, 22, 13, 46, 22, 434, DateTimeKind.Utc).AddTicks(822),
                             CreatedBy = 28L,
                             Output = "Voluptas nihil itaque ratione saepe rerum qui.\nImpedit doloribus aperiam et at qui voluptatem repellendus.\nLaboriosam omnis rerum aperiam occaecati ut rerum voluptates.\nEius quia officia.\nVoluptas molestiae eum et numquam occaecati ut at officia.\nVel maiores quia libero enim doloremque consectetur.",
-                            SubmittedAt = new DateTime(2022, 10, 19, 2, 52, 7, 806, DateTimeKind.Utc).AddTicks(1083)
+                            SubmittedAt = new DateTime(2022, 10, 24, 17, 55, 36, 620, DateTimeKind.Utc).AddTicks(3448)
                         },
                         new
                         {
                             Id = 136L,
                             ChallengeVersionId = 12L,
                             Code = "Voluptatem iusto exercitationem labore debitis nam. Magni tenetur modi est nobis. Non et rerum.",
-                            CreatedAt = new DateTime(2023, 5, 31, 19, 23, 23, 261, DateTimeKind.Utc).AddTicks(7604),
+                            CreatedAt = new DateTime(2023, 6, 6, 22, 40, 7, 329, DateTimeKind.Utc).AddTicks(5064),
                             CreatedBy = 15L,
                             Output = "Dolores ab in mollitia. Debitis dolorem provident dolorem asperiores. Aut cupiditate quis enim saepe. Id et impedit. Omnis vero dolorem dignissimos nihil nisi dolores possimus non impedit. Magni porro debitis odio sint voluptas delectus.",
-                            SubmittedAt = new DateTime(2023, 6, 10, 19, 26, 58, 158, DateTimeKind.Utc).AddTicks(4854)
+                            SubmittedAt = new DateTime(2023, 6, 16, 23, 16, 20, 769, DateTimeKind.Utc).AddTicks(3585)
                         },
                         new
                         {
                             Id = 137L,
                             ChallengeVersionId = 69L,
                             Code = "Enim maxime aperiam.\nMinima eius eaque minima culpa adipisci incidunt.\nFuga sed est omnis.",
-                            CreatedAt = new DateTime(2023, 9, 7, 14, 26, 10, 94, DateTimeKind.Utc).AddTicks(241),
+                            CreatedAt = new DateTime(2023, 9, 13, 23, 5, 18, 503, DateTimeKind.Utc).AddTicks(6196),
                             CreatedBy = 28L,
                             Output = "Facere consequatur dolores officiis reiciendis et rerum aliquam.\nEst blanditiis quisquam excepturi odit dolorum aperiam reprehenderit.\nMaiores et in sunt iusto exercitationem et nobis.",
-                            SubmittedAt = new DateTime(2023, 9, 9, 11, 16, 23, 214, DateTimeKind.Utc).AddTicks(493)
+                            SubmittedAt = new DateTime(2023, 9, 15, 20, 1, 37, 428, DateTimeKind.Utc).AddTicks(7362)
                         },
                         new
                         {
                             Id = 138L,
                             ChallengeVersionId = 131L,
                             Code = "Reiciendis officia ad vel accusamus illo ullam rerum sapiente.",
-                            CreatedAt = new DateTime(2023, 9, 11, 19, 11, 52, 998, DateTimeKind.Utc).AddTicks(5004),
+                            CreatedAt = new DateTime(2023, 9, 18, 4, 4, 43, 480, DateTimeKind.Utc).AddTicks(6091),
                             CreatedBy = 3L,
                             Output = "Consequuntur rem quisquam quae consequatur et exercitationem.",
-                            SubmittedAt = new DateTime(2023, 9, 12, 1, 6, 4, 406, DateTimeKind.Utc).AddTicks(245)
+                            SubmittedAt = new DateTime(2023, 9, 18, 9, 59, 43, 49, DateTimeKind.Utc).AddTicks(3192)
                         },
                         new
                         {
                             Id = 139L,
                             ChallengeVersionId = 44L,
                             Code = "Et nostrum iste ullam.",
-                            CreatedAt = new DateTime(2023, 7, 8, 7, 22, 7, 311, DateTimeKind.Utc).AddTicks(3653),
+                            CreatedAt = new DateTime(2023, 7, 14, 12, 41, 13, 916, DateTimeKind.Utc).AddTicks(4486),
                             CreatedBy = 14L,
                             Output = "Quam repellat officiis sed sint.",
-                            SubmittedAt = new DateTime(2023, 8, 21, 13, 22, 15, 460, DateTimeKind.Utc).AddTicks(8341)
+                            SubmittedAt = new DateTime(2023, 8, 27, 21, 5, 46, 483, DateTimeKind.Utc).AddTicks(2930)
                         },
                         new
                         {
                             Id = 140L,
                             ChallengeVersionId = 193L,
                             Code = "Non ipsum assumenda delectus rerum suscipit quia architecto. Aut doloribus optio non ut. Et voluptas maxime nisi provident aspernatur dicta. Animi amet provident expedita.",
-                            CreatedAt = new DateTime(2023, 6, 30, 3, 13, 34, 30, DateTimeKind.Utc).AddTicks(1498),
+                            CreatedAt = new DateTime(2023, 7, 6, 8, 6, 0, 388, DateTimeKind.Utc).AddTicks(3363),
                             CreatedBy = 37L,
                             Output = "Iure ut et nulla tenetur dignissimos accusantium vero voluptas.",
-                            SubmittedAt = new DateTime(2023, 7, 16, 1, 17, 37, 391, DateTimeKind.Utc).AddTicks(9159)
+                            SubmittedAt = new DateTime(2023, 7, 22, 7, 2, 0, 875, DateTimeKind.Utc).AddTicks(4263)
                         },
                         new
                         {
                             Id = 141L,
                             ChallengeVersionId = 188L,
                             Code = "aut",
-                            CreatedAt = new DateTime(2023, 5, 31, 9, 25, 34, 972, DateTimeKind.Utc).AddTicks(2761),
+                            CreatedAt = new DateTime(2023, 6, 6, 12, 40, 57, 742, DateTimeKind.Utc).AddTicks(608),
                             CreatedBy = 25L,
                             Output = "Id minima ut itaque ducimus et. Voluptas ipsa ipsum dolor aut cum ipsa. Voluptates quo molestiae at reiciendis. Officia eum odio fugiat vel molestiae. Delectus itaque quisquam ut rerum non cum quos corrupti doloremque.",
-                            SubmittedAt = new DateTime(2023, 8, 2, 6, 27, 46, 879, DateTimeKind.Utc).AddTicks(235)
+                            SubmittedAt = new DateTime(2023, 8, 8, 13, 8, 21, 232, DateTimeKind.Utc).AddTicks(148)
                         },
                         new
                         {
                             Id = 142L,
                             ChallengeVersionId = 171L,
                             Code = "Quis veritatis repudiandae quia aliquid tenetur maiores est asperiores.\nSaepe laudantium odit.\nVoluptatum quisquam officiis.\nQui et dolorem.",
-                            CreatedAt = new DateTime(2023, 8, 8, 12, 41, 59, 485, DateTimeKind.Utc).AddTicks(5396),
+                            CreatedAt = new DateTime(2023, 8, 14, 19, 42, 59, 562, DateTimeKind.Utc).AddTicks(1258),
                             CreatedBy = 26L,
                             Output = "Aut nihil consequatur enim repudiandae.",
-                            SubmittedAt = new DateTime(2023, 9, 1, 23, 44, 18, 8, DateTimeKind.Utc).AddTicks(1006)
+                            SubmittedAt = new DateTime(2023, 9, 8, 8, 5, 7, 476, DateTimeKind.Utc).AddTicks(934)
                         },
                         new
                         {
                             Id = 143L,
                             ChallengeVersionId = 93L,
                             Code = "explicabo",
-                            CreatedAt = new DateTime(2023, 6, 9, 8, 37, 16, 701, DateTimeKind.Utc).AddTicks(5745),
+                            CreatedAt = new DateTime(2023, 6, 15, 12, 21, 55, 161, DateTimeKind.Utc).AddTicks(5946),
                             CreatedBy = 22L,
                             Output = "Omnis officia voluptas commodi suscipit eius nam animi voluptatem molestiae.",
-                            SubmittedAt = new DateTime(2023, 8, 17, 17, 7, 2, 551, DateTimeKind.Utc).AddTicks(8482)
+                            SubmittedAt = new DateTime(2023, 8, 24, 0, 38, 0, 916, DateTimeKind.Utc).AddTicks(7527)
                         },
                         new
                         {
                             Id = 144L,
                             ChallengeVersionId = 181L,
                             Code = "fugit",
-                            CreatedAt = new DateTime(2023, 5, 17, 12, 45, 11, 68, DateTimeKind.Utc).AddTicks(9280),
+                            CreatedAt = new DateTime(2023, 5, 23, 15, 15, 19, 708, DateTimeKind.Utc).AddTicks(7719),
                             CreatedBy = 40L,
                             Output = "Odit dolor perspiciatis facilis quasi reiciendis qui velit.\nSimilique architecto aut aut.\nFugit occaecati nobis et eum dolore cumque quia in.\nVoluptas qui consequatur quia est blanditiis omnis qui ad libero.\nReiciendis ipsa quia exercitationem ex beatae magnam in qui.\nSunt aliquid officiis laborum ea iste ab aut sunt.",
-                            SubmittedAt = new DateTime(2023, 8, 3, 8, 0, 42, 856, DateTimeKind.Utc).AddTicks(8594)
+                            SubmittedAt = new DateTime(2023, 8, 9, 14, 44, 45, 655, DateTimeKind.Utc).AddTicks(2631)
                         },
                         new
                         {
                             Id = 145L,
                             ChallengeVersionId = 197L,
                             Code = "Nobis quod autem.\nCumque dignissimos rerum eos voluptatum natus est voluptatum.\nDucimus consequatur rerum aperiam.\nAut dolores excepturi consequatur.\nQui officia cumque tempore delectus mollitia eum et tempore eum.\nSimilique expedita distinctio.",
-                            CreatedAt = new DateTime(2023, 4, 7, 13, 19, 17, 83, DateTimeKind.Utc).AddTicks(8288),
+                            CreatedAt = new DateTime(2023, 4, 13, 13, 38, 58, 133, DateTimeKind.Utc).AddTicks(1068),
                             CreatedBy = 37L,
                             Output = "accusamus",
-                            SubmittedAt = new DateTime(2023, 8, 25, 1, 56, 26, 318, DateTimeKind.Utc).AddTicks(7209)
+                            SubmittedAt = new DateTime(2023, 8, 31, 9, 51, 27, 308, DateTimeKind.Utc).AddTicks(1279)
                         },
                         new
                         {
                             Id = 146L,
                             ChallengeVersionId = 175L,
                             Code = "In perspiciatis explicabo et fuga.",
-                            CreatedAt = new DateTime(2022, 6, 8, 23, 15, 17, 195, DateTimeKind.Utc).AddTicks(7729),
+                            CreatedAt = new DateTime(2022, 6, 14, 7, 7, 30, 182, DateTimeKind.Utc).AddTicks(2522),
                             CreatedBy = 6L,
                             Output = "Quas ipsam quo et sunt repellat est et perspiciatis.\nVoluptatem aspernatur sunt.\nAut voluptatem quis.\nQuia adipisci voluptatem ipsa corrupti voluptates ducimus quaerat corporis.",
-                            SubmittedAt = new DateTime(2023, 5, 25, 15, 6, 53, 481, DateTimeKind.Utc).AddTicks(6823)
+                            SubmittedAt = new DateTime(2023, 5, 31, 18, 3, 27, 835, DateTimeKind.Utc).AddTicks(7098)
                         },
                         new
                         {
                             Id = 147L,
                             ChallengeVersionId = 11L,
                             Code = "unde",
-                            CreatedAt = new DateTime(2021, 12, 4, 0, 12, 4, 841, DateTimeKind.Utc).AddTicks(4118),
+                            CreatedAt = new DateTime(2021, 12, 8, 21, 54, 9, 895, DateTimeKind.Utc).AddTicks(2996),
                             CreatedBy = 26L,
                             Output = "Deserunt vitae officiis dolores veritatis molestiae autem tempore dolor.\nNostrum nam earum ratione.\nCommodi quia nobis laudantium eum non et fugiat optio.",
-                            SubmittedAt = new DateTime(2022, 7, 5, 2, 35, 42, 31, DateTimeKind.Utc).AddTicks(1284)
+                            SubmittedAt = new DateTime(2022, 7, 10, 11, 53, 13, 214, DateTimeKind.Utc).AddTicks(5241)
                         },
                         new
                         {
                             Id = 148L,
                             ChallengeVersionId = 27L,
                             Code = "Et sit eligendi dolor qui inventore sunt. Eligendi ut enim. Aut laudantium non. Alias adipisci eum. Sunt nihil necessitatibus reiciendis magnam quia quos aut perspiciatis.",
-                            CreatedAt = new DateTime(2023, 8, 30, 11, 38, 38, 8, DateTimeKind.Utc).AddTicks(6849),
+                            CreatedAt = new DateTime(2023, 9, 5, 19, 51, 17, 193, DateTimeKind.Utc).AddTicks(239),
                             CreatedBy = 15L,
                             Output = "Labore optio minus aperiam laborum qui reiciendis repudiandae ut deserunt.",
-                            SubmittedAt = new DateTime(2023, 9, 4, 1, 21, 14, 715, DateTimeKind.Utc).AddTicks(6564)
+                            SubmittedAt = new DateTime(2023, 9, 10, 9, 48, 48, 977, DateTimeKind.Utc).AddTicks(4466)
                         },
                         new
                         {
                             Id = 149L,
                             ChallengeVersionId = 56L,
                             Code = "Consequatur voluptas error.\nSoluta totam sed.",
-                            CreatedAt = new DateTime(2023, 9, 3, 6, 34, 30, 884, DateTimeKind.Utc).AddTicks(3274),
+                            CreatedAt = new DateTime(2023, 9, 9, 14, 59, 31, 940, DateTimeKind.Utc).AddTicks(8968),
                             CreatedBy = 13L,
                             Output = "Provident ad similique vitae sunt incidunt voluptatem aperiam.",
-                            SubmittedAt = new DateTime(2023, 9, 6, 5, 45, 36, 612, DateTimeKind.Utc).AddTicks(4957)
+                            SubmittedAt = new DateTime(2023, 9, 12, 14, 20, 18, 434, DateTimeKind.Utc).AddTicks(7048)
                         },
                         new
                         {
                             Id = 150L,
                             ChallengeVersionId = 100L,
                             Code = "veniam",
-                            CreatedAt = new DateTime(2022, 3, 7, 22, 32, 34, 85, DateTimeKind.Utc).AddTicks(6443),
+                            CreatedAt = new DateTime(2022, 3, 13, 1, 21, 11, 337, DateTimeKind.Utc).AddTicks(9751),
                             CreatedBy = 13L,
                             Output = "Nostrum velit harum iusto quos enim rerum quia.\nAliquid consequuntur sit voluptatem.\nQuia id ducimus quidem optio excepturi dolor ut quis.",
-                            SubmittedAt = new DateTime(2023, 4, 28, 7, 19, 24, 599, DateTimeKind.Utc).AddTicks(7620)
+                            SubmittedAt = new DateTime(2023, 5, 4, 8, 46, 48, 634, DateTimeKind.Utc).AddTicks(9666)
                         },
                         new
                         {
                             Id = 151L,
                             ChallengeVersionId = 96L,
                             Code = "Unde velit qui repudiandae et. Aspernatur dolor quaerat. Qui aspernatur ut et. Perferendis mollitia qui dolorem in.",
-                            CreatedAt = new DateTime(2023, 7, 23, 19, 45, 55, 270, DateTimeKind.Utc).AddTicks(8105),
+                            CreatedAt = new DateTime(2023, 7, 30, 1, 55, 40, 99, DateTimeKind.Utc).AddTicks(6424),
                             CreatedBy = 28L,
                             Output = "A iure dolorem voluptatem earum dicta natus architecto consequatur.\nQuasi culpa id sed sint recusandae et ut at.\nIpsam eum aut in voluptate adipisci.\nSequi nam voluptatibus minus quidem soluta.\nAssumenda non esse assumenda nesciunt optio optio quia.\nEnim ut voluptas.",
-                            SubmittedAt = new DateTime(2023, 8, 3, 12, 24, 16, 367, DateTimeKind.Utc).AddTicks(6886)
+                            SubmittedAt = new DateTime(2023, 8, 9, 19, 8, 55, 4, DateTimeKind.Utc).AddTicks(6400)
                         },
                         new
                         {
                             Id = 152L,
                             ChallengeVersionId = 82L,
                             Code = "temporibus",
-                            CreatedAt = new DateTime(2023, 9, 9, 2, 4, 1, 121, DateTimeKind.Utc).AddTicks(4223),
+                            CreatedAt = new DateTime(2023, 9, 15, 10, 48, 0, 230, DateTimeKind.Utc).AddTicks(1922),
                             CreatedBy = 17L,
                             Output = "In culpa nihil voluptates maxime eligendi.",
-                            SubmittedAt = new DateTime(2023, 9, 9, 10, 21, 7, 145, DateTimeKind.Utc).AddTicks(8338)
+                            SubmittedAt = new DateTime(2023, 9, 15, 19, 6, 13, 848, DateTimeKind.Utc).AddTicks(170)
                         },
                         new
                         {
                             Id = 153L,
                             ChallengeVersionId = 27L,
                             Code = "Iure sint rerum consectetur nesciunt quod adipisci ex sed. Beatae et repudiandae rem blanditiis consequatur quas. Aliquam numquam consectetur rerum doloribus vero velit consequatur exercitationem. Facilis quia laudantium et maxime impedit nostrum eligendi. Aperiam harum soluta dolore modi. Molestiae fugiat dolore.",
-                            CreatedAt = new DateTime(2023, 9, 6, 6, 4, 0, 62, DateTimeKind.Utc).AddTicks(1253),
+                            CreatedAt = new DateTime(2023, 9, 12, 14, 38, 44, 382, DateTimeKind.Utc).AddTicks(8169),
                             CreatedBy = 1L,
                             Output = "In deserunt deserunt rerum minus in dignissimos cupiditate doloremque dolor. Ducimus atque quo commodi. Est facere sed. Omnis cupiditate totam non. Ut ut et et accusantium neque tempora. Possimus et culpa officiis temporibus.",
-                            SubmittedAt = new DateTime(2023, 9, 7, 8, 6, 48, 933, DateTimeKind.Utc).AddTicks(8182)
+                            SubmittedAt = new DateTime(2023, 9, 13, 16, 45, 5, 759, DateTimeKind.Utc).AddTicks(8302)
                         },
                         new
                         {
                             Id = 154L,
                             ChallengeVersionId = 108L,
                             Code = "Ut omnis molestias soluta necessitatibus sit.",
-                            CreatedAt = new DateTime(2022, 11, 5, 21, 53, 42, 56, DateTimeKind.Utc).AddTicks(7936),
+                            CreatedAt = new DateTime(2022, 11, 11, 13, 55, 14, 791, DateTimeKind.Utc).AddTicks(629),
                             CreatedBy = 25L,
                             Output = "Facere consectetur ab quia eum et voluptas.",
-                            SubmittedAt = new DateTime(2022, 11, 6, 20, 7, 0, 365, DateTimeKind.Utc).AddTicks(5763)
+                            SubmittedAt = new DateTime(2022, 11, 12, 12, 11, 34, 397, DateTimeKind.Utc).AddTicks(5367)
                         },
                         new
                         {
                             Id = 155L,
                             ChallengeVersionId = 63L,
                             Code = "Facilis dolor neque eos quod quasi sit deserunt. Numquam qui laboriosam quia praesentium. Dolor voluptas libero et.",
-                            CreatedAt = new DateTime(2023, 6, 2, 7, 31, 48, 55, DateTimeKind.Utc).AddTicks(9182),
+                            CreatedAt = new DateTime(2023, 6, 8, 10, 53, 26, 978, DateTimeKind.Utc).AddTicks(2020),
                             CreatedBy = 6L,
                             Output = "Praesentium quos quisquam.\nNon enim impedit aliquam.\nIste ratione aperiam et eveniet qui quia facere.\nNihil mollitia repellendus voluptates expedita qui iste.",
-                            SubmittedAt = new DateTime(2023, 6, 18, 17, 27, 26, 927, DateTimeKind.Utc).AddTicks(6793)
+                            SubmittedAt = new DateTime(2023, 6, 24, 21, 42, 39, 733, DateTimeKind.Utc).AddTicks(2458)
                         },
                         new
                         {
                             Id = 156L,
                             ChallengeVersionId = 199L,
                             Code = "Nesciunt et quia libero eos quos.",
-                            CreatedAt = new DateTime(2022, 4, 4, 8, 0, 20, 614, DateTimeKind.Utc).AddTicks(2792),
+                            CreatedAt = new DateTime(2022, 4, 9, 12, 18, 21, 820, DateTimeKind.Utc).AddTicks(926),
                             CreatedBy = 34L,
                             Output = "Aut sunt ipsum adipisci ipsum mollitia voluptas qui occaecati repudiandae.\nAmet ut incidunt unde.",
-                            SubmittedAt = new DateTime(2022, 10, 24, 4, 36, 50, 680, DateTimeKind.Utc).AddTicks(2800)
+                            SubmittedAt = new DateTime(2022, 10, 29, 19, 56, 52, 760, DateTimeKind.Utc).AddTicks(3650)
                         },
                         new
                         {
                             Id = 157L,
                             ChallengeVersionId = 32L,
                             Code = "Est quis libero.",
-                            CreatedAt = new DateTime(2019, 9, 22, 0, 16, 10, 516, DateTimeKind.Utc).AddTicks(8360),
+                            CreatedAt = new DateTime(2019, 9, 25, 2, 14, 28, 391, DateTimeKind.Utc).AddTicks(7640),
                             CreatedBy = 33L,
                             Output = "Inventore sit quaerat sapiente ea porro est. Atque sed eum unde maiores. Rerum aperiam quia nostrum consectetur qui omnis fugiat ratione.",
-                            SubmittedAt = new DateTime(2021, 7, 9, 16, 55, 52, 63, DateTimeKind.Utc).AddTicks(9616)
+                            SubmittedAt = new DateTime(2021, 7, 14, 6, 37, 14, 372, DateTimeKind.Utc).AddTicks(5812)
                         },
                         new
                         {
                             Id = 158L,
                             ChallengeVersionId = 83L,
                             Code = "Exercitationem ea possimus reprehenderit laboriosam et amet. Aliquam blanditiis non aliquid praesentium nemo quo perferendis animi. Expedita dolorem vel nobis voluptas autem. Aperiam praesentium consequatur iure. Vero qui id aut dicta. Tempora iusto corporis eum.",
-                            CreatedAt = new DateTime(2022, 10, 17, 5, 41, 43, 772, DateTimeKind.Utc).AddTicks(2335),
+                            CreatedAt = new DateTime(2022, 10, 22, 20, 39, 4, 33, DateTimeKind.Utc).AddTicks(3804),
                             CreatedBy = 16L,
                             Output = "Itaque error deleniti est quos voluptatem consequatur at praesentium incidunt. Qui laborum sint sapiente dolorem corporis adipisci vel. Doloribus mollitia omnis placeat ducimus modi. Repellendus neque sequi enim incidunt accusamus maxime ut. Maxime ut delectus quos.",
-                            SubmittedAt = new DateTime(2022, 12, 29, 16, 4, 44, 532, DateTimeKind.Utc).AddTicks(9941)
+                            SubmittedAt = new DateTime(2023, 1, 4, 11, 1, 43, 321, DateTimeKind.Utc).AddTicks(3406)
                         },
                         new
                         {
                             Id = 159L,
                             ChallengeVersionId = 84L,
                             Code = "Ut enim repellat amet iste fugit hic nisi. Minus et enim tempore modi est nemo a corrupti. Et laborum minus nihil tenetur. Rerum perferendis culpa velit.",
-                            CreatedAt = new DateTime(2023, 9, 8, 8, 41, 31, 390, DateTimeKind.Utc).AddTicks(6547),
+                            CreatedAt = new DateTime(2023, 9, 14, 17, 23, 8, 742, DateTimeKind.Utc).AddTicks(1941),
                             CreatedBy = 13L,
                             Output = "Placeat aut sint saepe sequi vitae tempore.\nQuibusdam natus nihil aut odit eligendi qui nesciunt quisquam.\nVoluptatem qui deserunt.\nInventore sed nulla ipsa a tempore aut.\nQui ut accusamus nam cupiditate.\nNihil quibusdam sequi officiis illum occaecati quasi illo."
                         },
@@ -11448,410 +12029,410 @@ namespace LeetWars.Core.DAL.Migrations
                             Id = 160L,
                             ChallengeVersionId = 74L,
                             Code = "Enim laudantium maiores. Repudiandae voluptatibus quae aut. Alias et molestiae. Nesciunt eos dignissimos dolorem quia qui. Itaque reprehenderit culpa architecto ut consequatur tempora et adipisci nihil. Dolore excepturi eaque asperiores voluptate soluta eum.",
-                            CreatedAt = new DateTime(2023, 6, 14, 19, 42, 14, 256, DateTimeKind.Utc).AddTicks(6004),
+                            CreatedAt = new DateTime(2023, 6, 20, 23, 44, 42, 166, DateTimeKind.Utc).AddTicks(4147),
                             CreatedBy = 36L,
                             Output = "Ipsa placeat illum et rerum quidem voluptatem minima. Consequatur rerum ea non dolorem aut. Voluptates animi et possimus et sint cumque qui voluptate sint. Neque minus voluptas repellendus suscipit minus. Eveniet rerum voluptas quia.",
-                            SubmittedAt = new DateTime(2023, 6, 28, 13, 8, 26, 706, DateTimeKind.Utc).AddTicks(5260)
+                            SubmittedAt = new DateTime(2023, 7, 4, 17, 55, 42, 348, DateTimeKind.Utc).AddTicks(4210)
                         },
                         new
                         {
                             Id = 161L,
                             ChallengeVersionId = 119L,
                             Code = "expedita",
-                            CreatedAt = new DateTime(2021, 5, 18, 11, 4, 6, 84, DateTimeKind.Utc).AddTicks(3642),
+                            CreatedAt = new DateTime(2021, 5, 22, 21, 54, 58, 668, DateTimeKind.Utc).AddTicks(2991),
                             CreatedBy = 31L,
                             Output = "Fugit occaecati assumenda repellendus debitis delectus magni consequuntur ab. Praesentium quisquam quaerat doloribus perspiciatis facilis. Laborum libero facere enim labore quia nihil. Ut soluta laudantium dolores facilis quod error suscipit. Ab non asperiores alias blanditiis assumenda quae.",
-                            SubmittedAt = new DateTime(2023, 2, 9, 19, 44, 36, 101, DateTimeKind.Utc).AddTicks(6397)
+                            SubmittedAt = new DateTime(2023, 2, 15, 16, 59, 8, 624, DateTimeKind.Utc).AddTicks(9207)
                         },
                         new
                         {
                             Id = 162L,
                             ChallengeVersionId = 199L,
                             Code = "dicta",
-                            CreatedAt = new DateTime(2020, 11, 28, 0, 4, 36, 42, DateTimeKind.Utc).AddTicks(4052),
+                            CreatedAt = new DateTime(2020, 12, 2, 1, 35, 56, 182, DateTimeKind.Utc).AddTicks(8071),
                             CreatedBy = 27L,
                             Output = "Quae quia dolorem mollitia officiis in.\nVitae laboriosam veniam.",
-                            SubmittedAt = new DateTime(2022, 10, 21, 9, 0, 57, 368, DateTimeKind.Utc).AddTicks(7392)
+                            SubmittedAt = new DateTime(2022, 10, 27, 0, 11, 47, 944, DateTimeKind.Utc).AddTicks(7314)
                         },
                         new
                         {
                             Id = 163L,
                             ChallengeVersionId = 168L,
                             Code = "Earum suscipit et qui sequi ut nihil et est.",
-                            CreatedAt = new DateTime(2023, 4, 28, 18, 27, 33, 272, DateTimeKind.Utc).AddTicks(2343),
+                            CreatedAt = new DateTime(2023, 5, 4, 19, 56, 28, 159, DateTimeKind.Utc).AddTicks(3268),
                             CreatedBy = 36L,
                             Output = "Et mollitia vero asperiores quia eligendi reprehenderit. Repudiandae quia vel non sint fugit atque. Omnis consectetur nam pariatur temporibus ex. Ad corrupti rerum necessitatibus. Quia explicabo modi dolorum aut. Voluptates est consequatur repellat tempora maiores molestias.",
-                            SubmittedAt = new DateTime(2023, 7, 9, 4, 17, 23, 504, DateTimeKind.Utc).AddTicks(6812)
+                            SubmittedAt = new DateTime(2023, 7, 15, 9, 39, 20, 795, DateTimeKind.Utc).AddTicks(6161)
                         },
                         new
                         {
                             Id = 164L,
                             ChallengeVersionId = 156L,
                             Code = "Quia est praesentium fugit odit id.\nQui qui quas.",
-                            CreatedAt = new DateTime(2023, 9, 8, 15, 0, 28, 828, DateTimeKind.Utc).AddTicks(1552),
+                            CreatedAt = new DateTime(2023, 9, 14, 23, 42, 57, 707, DateTimeKind.Utc).AddTicks(6648),
                             CreatedBy = 23L,
                             Output = "Sed iure illum tenetur consectetur illum commodi quia quibusdam.",
-                            SubmittedAt = new DateTime(2023, 9, 11, 9, 2, 31, 131, DateTimeKind.Utc).AddTicks(1806)
+                            SubmittedAt = new DateTime(2023, 9, 17, 17, 53, 58, 753, DateTimeKind.Utc).AddTicks(2578)
                         },
                         new
                         {
                             Id = 165L,
                             ChallengeVersionId = 199L,
                             Code = "Facere voluptas eius at at quibusdam. Voluptas molestias alias illum fugiat. Modi dolores itaque sit. Corrupti sit vel sit et ullam. Dolorum placeat rerum dolores iusto voluptas qui iste quasi.",
-                            CreatedAt = new DateTime(2020, 4, 23, 17, 1, 5, 439, DateTimeKind.Utc).AddTicks(9823),
+                            CreatedAt = new DateTime(2020, 4, 27, 6, 40, 2, 363, DateTimeKind.Utc).AddTicks(2314),
                             CreatedBy = 10L,
                             Output = "Hic ut officia. Amet soluta illum unde autem natus. Veniam voluptatem dolores a molestiae. Similique quam eos et voluptatem incidunt. Molestiae enim architecto.",
-                            SubmittedAt = new DateTime(2020, 11, 18, 13, 17, 5, 499, DateTimeKind.Utc).AddTicks(7319)
+                            SubmittedAt = new DateTime(2020, 11, 22, 14, 17, 35, 343, DateTimeKind.Utc).AddTicks(5719)
                         },
                         new
                         {
                             Id = 166L,
                             ChallengeVersionId = 191L,
                             Code = "Sed eveniet sunt et. Dicta facere qui veritatis in distinctio rem itaque. Qui inventore et voluptate debitis voluptatem molestiae eaque ut. Repudiandae est in. Aut reprehenderit tenetur non sequi voluptatem voluptas. Non earum est est dolorem similique dolorem.",
-                            CreatedAt = new DateTime(2023, 9, 2, 11, 10, 32, 188, DateTimeKind.Utc).AddTicks(9380),
+                            CreatedAt = new DateTime(2023, 9, 8, 19, 32, 54, 968, DateTimeKind.Utc).AddTicks(4493),
                             CreatedBy = 6L,
                             Output = "Dolores et mollitia eius libero maiores debitis quisquam corporis.\nEx unde quo.\nMolestias sed aliquid.\nDignissimos magni voluptatem tempore delectus accusamus consequuntur iste.\nAut voluptatibus ea officiis necessitatibus aliquam fugit rem.",
-                            SubmittedAt = new DateTime(2023, 9, 9, 19, 42, 19, 451, DateTimeKind.Utc).AddTicks(558)
+                            SubmittedAt = new DateTime(2023, 9, 16, 4, 28, 42, 460, DateTimeKind.Utc).AddTicks(3016)
                         },
                         new
                         {
                             Id = 167L,
                             ChallengeVersionId = 5L,
                             Code = "Voluptas ipsum vel incidunt qui ut delectus numquam dolores quia.\nDeleniti laudantium totam qui sunt fugit ut omnis.\nRerum sed totam nostrum mollitia sunt commodi dolore.\nTenetur rem atque rerum quo velit.",
-                            CreatedAt = new DateTime(2022, 4, 12, 16, 38, 39, 197, DateTimeKind.Utc).AddTicks(8009),
+                            CreatedAt = new DateTime(2022, 4, 17, 21, 23, 57, 325, DateTimeKind.Utc).AddTicks(9966),
                             CreatedBy = 28L,
                             Output = "Voluptates quo sit qui vel.\nDolorum quidem aut cum tempora autem id fuga.\nOptio perferendis natus cumque sunt quidem nesciunt ut porro.\nPerspiciatis id voluptatem mollitia placeat enim doloremque nisi.\nIusto itaque quisquam aut dolorem temporibus libero a natus.",
-                            SubmittedAt = new DateTime(2022, 10, 9, 11, 18, 13, 993, DateTimeKind.Utc).AddTicks(4546)
+                            SubmittedAt = new DateTime(2022, 10, 15, 1, 50, 13, 567, DateTimeKind.Utc).AddTicks(8273)
                         },
                         new
                         {
                             Id = 168L,
                             ChallengeVersionId = 32L,
                             Code = "Rerum repellat expedita est facere itaque corporis qui.\nEarum rem eaque quaerat ea adipisci qui vel amet.",
-                            CreatedAt = new DateTime(2022, 8, 3, 21, 40, 48, 347, DateTimeKind.Utc).AddTicks(518),
+                            CreatedAt = new DateTime(2022, 8, 9, 8, 35, 33, 599, DateTimeKind.Utc).AddTicks(7140),
                             CreatedBy = 1L,
                             Output = "Minus repudiandae quam cum. Non eligendi architecto adipisci necessitatibus perspiciatis voluptate. Et aperiam nobis. Nobis repellat quam. Doloribus nulla velit et corporis veniam. Modi provident distinctio tempore numquam quos et vitae labore.",
-                            SubmittedAt = new DateTime(2023, 4, 6, 14, 13, 49, 79, DateTimeKind.Utc).AddTicks(1180)
+                            SubmittedAt = new DateTime(2023, 4, 12, 14, 30, 21, 739, DateTimeKind.Utc).AddTicks(3571)
                         },
                         new
                         {
                             Id = 169L,
                             ChallengeVersionId = 112L,
                             Code = "Harum non omnis neque voluptas impedit quas itaque iste quibusdam.\nQuasi eius possimus exercitationem molestiae accusamus pariatur distinctio.",
-                            CreatedAt = new DateTime(2023, 7, 10, 20, 14, 59, 756, DateTimeKind.Utc).AddTicks(7339),
+                            CreatedAt = new DateTime(2023, 7, 17, 1, 42, 23, 64, DateTimeKind.Utc).AddTicks(2083),
                             CreatedBy = 8L,
                             Output = "officiis",
-                            SubmittedAt = new DateTime(2023, 9, 9, 15, 41, 20, 703, DateTimeKind.Utc).AddTicks(3844)
+                            SubmittedAt = new DateTime(2023, 9, 16, 0, 27, 10, 944, DateTimeKind.Utc).AddTicks(9324)
                         },
                         new
                         {
                             Id = 170L,
                             ChallengeVersionId = 32L,
                             Code = "non",
-                            CreatedAt = new DateTime(2022, 8, 13, 10, 6, 3, 432, DateTimeKind.Utc).AddTicks(6898),
+                            CreatedAt = new DateTime(2022, 8, 18, 21, 31, 52, 272, DateTimeKind.Utc).AddTicks(5110),
                             CreatedBy = 33L,
                             Output = "Sunt ut temporibus enim nostrum sunt molestias nam praesentium.",
-                            SubmittedAt = new DateTime(2023, 5, 1, 3, 32, 13, 292, DateTimeKind.Utc).AddTicks(4610)
+                            SubmittedAt = new DateTime(2023, 5, 7, 5, 8, 53, 851, DateTimeKind.Utc).AddTicks(8677)
                         },
                         new
                         {
                             Id = 171L,
                             ChallengeVersionId = 160L,
                             Code = "aut",
-                            CreatedAt = new DateTime(2023, 7, 11, 22, 10, 1, 43, DateTimeKind.Utc).AddTicks(1542),
+                            CreatedAt = new DateTime(2023, 7, 18, 3, 40, 55, 797, DateTimeKind.Utc).AddTicks(7177),
                             CreatedBy = 35L,
                             Output = "aliquam",
-                            SubmittedAt = new DateTime(2023, 8, 10, 14, 9, 2, 352, DateTimeKind.Utc).AddTicks(9252)
+                            SubmittedAt = new DateTime(2023, 8, 16, 21, 16, 45, 874, DateTimeKind.Utc).AddTicks(5404)
                         },
                         new
                         {
                             Id = 172L,
                             ChallengeVersionId = 193L,
                             Code = "Est illo non ipsam et aut. Quod impedit qui minima rerum laudantium sed quam. Iure quo quasi eos.",
-                            CreatedAt = new DateTime(2023, 8, 22, 15, 28, 33, 134, DateTimeKind.Utc).AddTicks(4887),
+                            CreatedAt = new DateTime(2023, 8, 28, 23, 15, 37, 134, DateTimeKind.Utc).AddTicks(1459),
                             CreatedBy = 31L,
                             Output = "Earum molestiae quo libero rem architecto et.\nDelectus eius pariatur dignissimos blanditiis.\nQui non amet et sint maiores.\nQui quasi temporibus distinctio vel sed dicta qui facere.\nEt dolor corrupti ut necessitatibus omnis corporis consectetur libero sunt.\nIpsam qui laborum.",
-                            SubmittedAt = new DateTime(2023, 8, 27, 19, 24, 34, 423, DateTimeKind.Utc).AddTicks(2930)
+                            SubmittedAt = new DateTime(2023, 9, 3, 3, 28, 29, 544, DateTimeKind.Utc).AddTicks(6472)
                         },
                         new
                         {
                             Id = 173L,
                             ChallengeVersionId = 83L,
                             Code = "Aut quibusdam non ea quae consequatur explicabo. Provident tempora non corporis rerum distinctio delectus. Aliquam et aut debitis.",
-                            CreatedAt = new DateTime(2022, 9, 16, 12, 11, 3, 751, DateTimeKind.Utc).AddTicks(8554),
+                            CreatedAt = new DateTime(2022, 9, 22, 1, 28, 6, 977, DateTimeKind.Utc).AddTicks(8692),
                             CreatedBy = 30L,
                             Output = "saepe",
-                            SubmittedAt = new DateTime(2022, 11, 18, 22, 23, 57, 219, DateTimeKind.Utc).AddTicks(6898)
+                            SubmittedAt = new DateTime(2022, 11, 24, 15, 7, 59, 540, DateTimeKind.Utc).AddTicks(1193)
                         },
                         new
                         {
                             Id = 174L,
                             ChallengeVersionId = 22L,
                             Code = "Quo sint accusamus voluptas quis ut eligendi illo non.",
-                            CreatedAt = new DateTime(2023, 5, 16, 9, 33, 45, 410, DateTimeKind.Utc).AddTicks(4780),
+                            CreatedAt = new DateTime(2023, 5, 22, 12, 0, 12, 214, DateTimeKind.Utc).AddTicks(3888),
                             CreatedBy = 35L,
                             Output = "Magni iste et.\nNihil libero aspernatur.\nNatus doloribus adipisci consequatur adipisci consequatur doloribus veritatis quibusdam perferendis.",
-                            SubmittedAt = new DateTime(2023, 8, 13, 18, 59, 54, 209, DateTimeKind.Utc).AddTicks(8401)
+                            SubmittedAt = new DateTime(2023, 8, 20, 2, 18, 4, 698, DateTimeKind.Utc).AddTicks(2634)
                         },
                         new
                         {
                             Id = 175L,
                             ChallengeVersionId = 3L,
                             Code = "Expedita omnis ad magni est cumque.\nDolor fugit suscipit itaque enim sint molestias.\nEsse tempora pariatur voluptatem eos est sint voluptates harum.",
-                            CreatedAt = new DateTime(2022, 3, 26, 0, 48, 49, 194, DateTimeKind.Utc).AddTicks(8875),
+                            CreatedAt = new DateTime(2022, 3, 31, 4, 36, 29, 475, DateTimeKind.Utc).AddTicks(1096),
                             CreatedBy = 39L,
                             Output = "Vero consectetur quam eum eos sunt omnis.",
-                            SubmittedAt = new DateTime(2023, 4, 17, 12, 51, 8, 201, DateTimeKind.Utc).AddTicks(2628)
+                            SubmittedAt = new DateTime(2023, 4, 23, 13, 43, 23, 481, DateTimeKind.Utc).AddTicks(708)
                         },
                         new
                         {
                             Id = 176L,
                             ChallengeVersionId = 53L,
                             Code = "Nihil esse aliquam et quia corrupti.",
-                            CreatedAt = new DateTime(2023, 8, 11, 8, 1, 12, 608, DateTimeKind.Utc).AddTicks(7211),
+                            CreatedAt = new DateTime(2023, 8, 17, 15, 11, 21, 921, DateTimeKind.Utc).AddTicks(5113),
                             CreatedBy = 13L,
                             Output = "commodi",
-                            SubmittedAt = new DateTime(2023, 9, 7, 16, 33, 27, 881, DateTimeKind.Utc).AddTicks(5178)
+                            SubmittedAt = new DateTime(2023, 9, 14, 1, 12, 53, 599, DateTimeKind.Utc).AddTicks(1295)
                         },
                         new
                         {
                             Id = 177L,
                             ChallengeVersionId = 134L,
                             Code = "Id pariatur facilis officiis non voluptas reprehenderit commodi minus.",
-                            CreatedAt = new DateTime(2023, 9, 9, 20, 25, 53, 584, DateTimeKind.Utc).AddTicks(9573),
+                            CreatedAt = new DateTime(2023, 9, 16, 5, 12, 22, 522, DateTimeKind.Utc).AddTicks(5512),
                             CreatedBy = 10L,
                             Output = "Unde a dolores praesentium eligendi et qui qui odio.",
-                            SubmittedAt = new DateTime(2023, 9, 11, 6, 54, 9, 345, DateTimeKind.Utc).AddTicks(7533)
+                            SubmittedAt = new DateTime(2023, 9, 17, 15, 45, 19, 515, DateTimeKind.Utc).AddTicks(5195)
                         },
                         new
                         {
                             Id = 178L,
                             ChallengeVersionId = 16L,
                             Code = "Rerum sequi eos sit optio minima.",
-                            CreatedAt = new DateTime(2023, 6, 26, 15, 11, 15, 720, DateTimeKind.Utc).AddTicks(9902),
+                            CreatedAt = new DateTime(2023, 7, 2, 19, 52, 16, 451, DateTimeKind.Utc).AddTicks(8408),
                             CreatedBy = 20L,
                             Output = "enim",
-                            SubmittedAt = new DateTime(2023, 6, 30, 21, 55, 18, 794, DateTimeKind.Utc).AddTicks(2838)
+                            SubmittedAt = new DateTime(2023, 7, 7, 2, 50, 17, 688, DateTimeKind.Utc).AddTicks(8600)
                         },
                         new
                         {
                             Id = 179L,
                             ChallengeVersionId = 70L,
                             Code = "ab",
-                            CreatedAt = new DateTime(2023, 9, 7, 15, 3, 43, 124, DateTimeKind.Utc).AddTicks(7872),
+                            CreatedAt = new DateTime(2023, 9, 13, 23, 42, 56, 642, DateTimeKind.Utc).AddTicks(5418),
                             CreatedBy = 32L,
                             Output = "Itaque eos accusamus voluptas similique.\nVoluptatem similique ipsa culpa architecto deserunt dolores aut.",
-                            SubmittedAt = new DateTime(2023, 9, 8, 16, 7, 7, 471, DateTimeKind.Utc).AddTicks(3708)
+                            SubmittedAt = new DateTime(2023, 9, 15, 0, 49, 45, 415, DateTimeKind.Utc).AddTicks(6525)
                         },
                         new
                         {
                             Id = 180L,
                             ChallengeVersionId = 91L,
                             Code = "Enim consequatur modi ut.",
-                            CreatedAt = new DateTime(2019, 12, 5, 18, 55, 31, 277, DateTimeKind.Utc).AddTicks(3589),
+                            CreatedAt = new DateTime(2019, 12, 9, 0, 57, 50, 972, DateTimeKind.Utc).AddTicks(4754),
                             CreatedBy = 38L,
                             Output = "Dolorem velit sit qui beatae incidunt fugiat.\nEt ipsa officia qui facere.\nLabore error velit ut.",
-                            SubmittedAt = new DateTime(2021, 1, 31, 22, 27, 8, 688, DateTimeKind.Utc).AddTicks(9032)
+                            SubmittedAt = new DateTime(2021, 2, 5, 3, 30, 22, 945, DateTimeKind.Utc).AddTicks(6041)
                         },
                         new
                         {
                             Id = 181L,
                             ChallengeVersionId = 197L,
                             Code = "Consequuntur libero voluptas facilis officiis tenetur rem minus. Harum in non excepturi ut ut. Quisquam praesentium et qui cumque voluptatem doloremque. Voluptatem quasi libero quibusdam. Eos rerum suscipit dolores ea.",
-                            CreatedAt = new DateTime(2023, 1, 7, 20, 19, 28, 527, DateTimeKind.Utc).AddTicks(7208),
+                            CreatedAt = new DateTime(2023, 1, 13, 15, 46, 24, 204, DateTimeKind.Utc).AddTicks(4297),
                             CreatedBy = 39L,
                             Output = "dolorem",
-                            SubmittedAt = new DateTime(2023, 6, 14, 1, 43, 55, 604, DateTimeKind.Utc).AddTicks(2151)
+                            SubmittedAt = new DateTime(2023, 6, 20, 5, 43, 56, 885, DateTimeKind.Utc).AddTicks(3680)
                         },
                         new
                         {
                             Id = 182L,
                             ChallengeVersionId = 128L,
                             Code = "qui",
-                            CreatedAt = new DateTime(2023, 6, 5, 10, 27, 35, 100, DateTimeKind.Utc).AddTicks(8851),
+                            CreatedAt = new DateTime(2023, 6, 11, 13, 59, 25, 343, DateTimeKind.Utc).AddTicks(6197),
                             CreatedBy = 5L,
                             Output = "Iure ipsa sit facere officia.\nTempora et voluptatem.",
-                            SubmittedAt = new DateTime(2023, 8, 5, 22, 41, 20, 407, DateTimeKind.Utc).AddTicks(748)
+                            SubmittedAt = new DateTime(2023, 8, 12, 5, 33, 54, 562, DateTimeKind.Utc).AddTicks(9779)
                         },
                         new
                         {
                             Id = 183L,
                             ChallengeVersionId = 68L,
                             Code = "Totam ut placeat veritatis et sequi quibusdam aut.",
-                            CreatedAt = new DateTime(2023, 7, 6, 1, 31, 41, 148, DateTimeKind.Utc).AddTicks(8261),
+                            CreatedAt = new DateTime(2023, 7, 12, 6, 43, 28, 491, DateTimeKind.Utc).AddTicks(4771),
                             CreatedBy = 35L,
                             Output = "Maiores illo soluta exercitationem nihil.\nFacere soluta et.\nExcepturi ad illum aut sunt laboriosam alias.\nOfficiis commodi quis aliquid repellat omnis amet.\nAut quo ut et vitae adipisci pariatur omnis et.",
-                            SubmittedAt = new DateTime(2023, 7, 20, 14, 22, 39, 969, DateTimeKind.Utc).AddTicks(9130)
+                            SubmittedAt = new DateTime(2023, 7, 26, 20, 21, 53, 426, DateTimeKind.Utc).AddTicks(2158)
                         },
                         new
                         {
                             Id = 184L,
                             ChallengeVersionId = 200L,
                             Code = "Inventore a ut non tenetur eos vel quibusdam. Nobis autem sint harum illo magni odit. Voluptatibus repudiandae ducimus eum non ipsam nihil.",
-                            CreatedAt = new DateTime(2023, 8, 26, 11, 19, 6, 900, DateTimeKind.Utc).AddTicks(3777),
+                            CreatedAt = new DateTime(2023, 9, 1, 19, 18, 40, 210, DateTimeKind.Utc).AddTicks(7870),
                             CreatedBy = 29L,
                             Output = "accusamus",
-                            SubmittedAt = new DateTime(2023, 8, 31, 23, 11, 19, 866, DateTimeKind.Utc).AddTicks(1741)
+                            SubmittedAt = new DateTime(2023, 9, 7, 7, 28, 49, 47, DateTimeKind.Utc).AddTicks(6129)
                         },
                         new
                         {
                             Id = 185L,
                             ChallengeVersionId = 90L,
                             Code = "Eligendi earum mollitia et non.",
-                            CreatedAt = new DateTime(2023, 4, 28, 22, 10, 55, 413, DateTimeKind.Utc).AddTicks(3557),
+                            CreatedAt = new DateTime(2023, 5, 4, 23, 40, 20, 671, DateTimeKind.Utc).AddTicks(2535),
                             CreatedBy = 17L,
                             Output = "reiciendis",
-                            SubmittedAt = new DateTime(2023, 7, 7, 18, 53, 6, 73, DateTimeKind.Utc).AddTicks(9808)
+                            SubmittedAt = new DateTime(2023, 7, 14, 0, 10, 30, 828, DateTimeKind.Utc).AddTicks(1863)
                         },
                         new
                         {
                             Id = 186L,
                             ChallengeVersionId = 119L,
                             Code = "Non nihil est sit a tempore enim non rerum. Necessitatibus dicta nesciunt illum id magnam vel aut nam. Fugit sed sit harum fugiat recusandae accusantium itaque perferendis aut. Sit quaerat saepe temporibus atque tempore at ut culpa nihil. Tenetur vitae ipsa veritatis qui id.",
-                            CreatedAt = new DateTime(2022, 11, 22, 11, 19, 16, 899, DateTimeKind.Utc).AddTicks(573),
+                            CreatedAt = new DateTime(2022, 11, 28, 4, 14, 52, 65, DateTimeKind.Utc).AddTicks(3131),
                             CreatedBy = 5L,
                             Output = "Deserunt adipisci libero optio cum cupiditate perferendis sit. Est suscipit excepturi. Necessitatibus impedit dolorem voluptatem doloremque quia culpa a laboriosam. Sint nihil culpa.",
-                            SubmittedAt = new DateTime(2022, 12, 26, 1, 31, 56, 110, DateTimeKind.Utc).AddTicks(7824)
+                            SubmittedAt = new DateTime(2022, 12, 31, 20, 17, 8, 803, DateTimeKind.Utc).AddTicks(6497)
                         },
                         new
                         {
                             Id = 187L,
                             ChallengeVersionId = 119L,
                             Code = "facere",
-                            CreatedAt = new DateTime(2020, 11, 9, 14, 45, 56, 621, DateTimeKind.Utc).AddTicks(1265),
+                            CreatedAt = new DateTime(2020, 11, 13, 15, 17, 16, 298, DateTimeKind.Utc).AddTicks(9210),
                             CreatedBy = 40L,
                             Output = "ex",
-                            SubmittedAt = new DateTime(2021, 3, 5, 10, 17, 23, 958, DateTimeKind.Utc).AddTicks(1995)
+                            SubmittedAt = new DateTime(2021, 3, 9, 17, 6, 40, 574, DateTimeKind.Utc).AddTicks(4574)
                         },
                         new
                         {
                             Id = 188L,
                             ChallengeVersionId = 33L,
                             Code = "Recusandae sunt eveniet sed adipisci sit ut.\nIn quisquam nobis quod aliquam odit sequi.\nExplicabo quam quam velit et tempora labore omnis qui provident.\nUt et sint neque et quis dolorem sequi.\nConsequatur laudantium voluptates quaerat sed iste.",
-                            CreatedAt = new DateTime(2023, 4, 25, 16, 35, 0, 576, DateTimeKind.Utc).AddTicks(3142),
+                            CreatedAt = new DateTime(2023, 5, 1, 17, 53, 52, 742, DateTimeKind.Utc).AddTicks(3104),
                             CreatedBy = 21L,
                             Output = "Commodi aut debitis. Quia sit ut ut quaerat laborum. Pariatur dolores iure distinctio laborum repellat quos distinctio. Voluptas blanditiis molestiae tenetur est sit harum.",
-                            SubmittedAt = new DateTime(2023, 6, 13, 16, 19, 41, 614, DateTimeKind.Utc).AddTicks(7121)
+                            SubmittedAt = new DateTime(2023, 6, 19, 20, 18, 26, 174, DateTimeKind.Utc).AddTicks(4197)
                         },
                         new
                         {
                             Id = 189L,
                             ChallengeVersionId = 129L,
                             Code = "Molestiae voluptas quibusdam eos ut. Nobis accusantium numquam dignissimos in tempore architecto. Est sed et amet. Corporis et tempore et quo voluptatem eum accusantium architecto. Quaerat voluptas maiores odio voluptatem ut.",
-                            CreatedAt = new DateTime(2023, 9, 12, 8, 47, 36, 886, DateTimeKind.Utc).AddTicks(6771),
+                            CreatedAt = new DateTime(2023, 9, 18, 17, 42, 18, 287, DateTimeKind.Utc).AddTicks(9273),
                             CreatedBy = 25L,
                             Output = "Possimus itaque beatae et numquam excepturi ratione excepturi. Ut excepturi laboriosam veniam consectetur quae reprehenderit. Facere sint dicta voluptas sint deserunt.",
-                            SubmittedAt = new DateTime(2023, 9, 12, 9, 40, 14, 486, DateTimeKind.Utc).AddTicks(3945)
+                            SubmittedAt = new DateTime(2023, 9, 18, 18, 35, 3, 43, DateTimeKind.Utc).AddTicks(5791)
                         },
                         new
                         {
                             Id = 190L,
                             ChallengeVersionId = 88L,
                             Code = "illo",
-                            CreatedAt = new DateTime(2023, 9, 3, 21, 53, 49, 139, DateTimeKind.Utc).AddTicks(8770),
+                            CreatedAt = new DateTime(2023, 9, 10, 6, 20, 55, 200, DateTimeKind.Utc).AddTicks(1967),
                             CreatedBy = 14L,
                             Output = "debitis",
-                            SubmittedAt = new DateTime(2023, 9, 11, 14, 53, 35, 529, DateTimeKind.Utc).AddTicks(9584)
+                            SubmittedAt = new DateTime(2023, 9, 17, 23, 45, 50, 890, DateTimeKind.Utc).AddTicks(740)
                         },
                         new
                         {
                             Id = 191L,
                             ChallengeVersionId = 188L,
                             Code = "Velit error excepturi dolorem omnis natus.",
-                            CreatedAt = new DateTime(2023, 4, 13, 19, 53, 57, 664, DateTimeKind.Utc).AddTicks(1124),
+                            CreatedAt = new DateTime(2023, 4, 19, 20, 34, 7, 204, DateTimeKind.Utc).AddTicks(780),
                             CreatedBy = 6L,
                             Output = "reiciendis",
-                            SubmittedAt = new DateTime(2023, 7, 8, 1, 36, 56, 754, DateTimeKind.Utc).AddTicks(9407)
+                            SubmittedAt = new DateTime(2023, 7, 14, 6, 55, 16, 418, DateTimeKind.Utc).AddTicks(1766)
                         },
                         new
                         {
                             Id = 192L,
                             ChallengeVersionId = 6L,
                             Code = "Labore nisi totam temporibus voluptatem reprehenderit iste minima quas. Harum alias nulla voluptas dolorem. Maiores exercitationem quas occaecati.",
-                            CreatedAt = new DateTime(2023, 3, 14, 16, 59, 42, 302, DateTimeKind.Utc).AddTicks(6506),
+                            CreatedAt = new DateTime(2023, 3, 20, 16, 1, 33, 993, DateTimeKind.Utc).AddTicks(4251),
                             CreatedBy = 22L,
                             Output = "Fugiat ab mollitia aut voluptatibus et amet quos.",
-                            SubmittedAt = new DateTime(2023, 7, 10, 11, 58, 28, 616, DateTimeKind.Utc).AddTicks(6261)
+                            SubmittedAt = new DateTime(2023, 7, 16, 17, 24, 44, 410, DateTimeKind.Utc).AddTicks(6397)
                         },
                         new
                         {
                             Id = 193L,
                             ChallengeVersionId = 62L,
                             Code = "Adipisci sit aut incidunt quia quas molestiae quae.\nQuis est debitis in.\nNisi deserunt praesentium omnis.\nEsse adipisci nostrum velit ut explicabo aut.\nId dolor velit in harum velit ullam aut.",
-                            CreatedAt = new DateTime(2023, 8, 14, 8, 36, 30, 703, DateTimeKind.Utc).AddTicks(7005),
+                            CreatedAt = new DateTime(2023, 8, 20, 15, 56, 32, 231, DateTimeKind.Utc).AddTicks(1183),
                             CreatedBy = 36L,
                             Output = "Explicabo commodi voluptas consequuntur omnis nulla est.",
-                            SubmittedAt = new DateTime(2023, 8, 24, 13, 6, 4, 624, DateTimeKind.Utc).AddTicks(6919)
+                            SubmittedAt = new DateTime(2023, 8, 30, 20, 59, 20, 863, DateTimeKind.Utc).AddTicks(378)
                         },
                         new
                         {
                             Id = 194L,
                             ChallengeVersionId = 37L,
                             Code = "Accusantium nisi quos et est odit eos ipsam.\nVoluptatem voluptatem recusandae quibusdam eos totam minima vitae vero.",
-                            CreatedAt = new DateTime(2023, 3, 15, 1, 56, 28, 316, DateTimeKind.Utc).AddTicks(3982),
+                            CreatedAt = new DateTime(2023, 3, 21, 0, 59, 32, 995, DateTimeKind.Utc).AddTicks(1026),
                             CreatedBy = 8L,
                             Output = "consequatur",
-                            SubmittedAt = new DateTime(2023, 7, 9, 17, 34, 15, 284, DateTimeKind.Utc).AddTicks(5017)
+                            SubmittedAt = new DateTime(2023, 7, 15, 22, 58, 0, 930, DateTimeKind.Utc).AddTicks(8157)
                         },
                         new
                         {
                             Id = 195L,
                             ChallengeVersionId = 45L,
                             Code = "Explicabo autem et voluptatem perferendis itaque est quasi aut. Debitis ea tenetur ab. Aut quis repudiandae vel quod voluptas quidem.",
-                            CreatedAt = new DateTime(2022, 9, 18, 23, 27, 5, 936, DateTimeKind.Utc).AddTicks(1819),
+                            CreatedAt = new DateTime(2022, 9, 24, 12, 52, 12, 703, DateTimeKind.Utc).AddTicks(1732),
                             CreatedBy = 15L,
                             Output = "Unde illum qui nulla illo pariatur praesentium aut dicta.",
-                            SubmittedAt = new DateTime(2023, 2, 9, 16, 26, 38, 115, DateTimeKind.Utc).AddTicks(984)
+                            SubmittedAt = new DateTime(2023, 2, 15, 13, 40, 43, 720, DateTimeKind.Utc).AddTicks(4310)
                         },
                         new
                         {
                             Id = 196L,
                             ChallengeVersionId = 82L,
                             Code = "In voluptatum rerum reiciendis cum velit dolores. Atque ex provident maiores minima rerum blanditiis aut. Id adipisci atque. Sit tenetur quod architecto voluptatem animi dolorem eos ea. Asperiores tenetur non dignissimos. Vel pariatur officiis voluptate.",
-                            CreatedAt = new DateTime(2023, 9, 11, 7, 40, 49, 313, DateTimeKind.Utc).AddTicks(8470),
+                            CreatedAt = new DateTime(2023, 9, 17, 16, 32, 5, 828, DateTimeKind.Utc).AddTicks(4394),
                             CreatedBy = 33L,
                             Output = "Similique dolores molestiae illum.",
-                            SubmittedAt = new DateTime(2023, 9, 11, 17, 24, 4, 582, DateTimeKind.Utc).AddTicks(4479)
+                            SubmittedAt = new DateTime(2023, 9, 18, 2, 16, 40, 405, DateTimeKind.Utc).AddTicks(2679)
                         },
                         new
                         {
                             Id = 197L,
                             ChallengeVersionId = 89L,
                             Code = "Assumenda vel occaecati ratione et.\nConsequatur enim et vitae sit.\nAperiam et quas nostrum qui et minus.\nDolorem iste ducimus praesentium vel aliquam molestias adipisci inventore.\nAspernatur nam enim culpa odio veritatis facilis ut earum.",
-                            CreatedAt = new DateTime(2023, 6, 17, 7, 59, 15, 821, DateTimeKind.Utc).AddTicks(465),
+                            CreatedAt = new DateTime(2023, 6, 23, 12, 9, 55, 559, DateTimeKind.Utc).AddTicks(5781),
                             CreatedBy = 26L,
                             Output = "Impedit corrupti enim.\nRepellendus quod ut voluptatum similique veritatis.\nItaque quia numquam recusandae veritatis sit et pariatur laborum.\nDistinctio maiores occaecati enim qui.",
-                            SubmittedAt = new DateTime(2023, 7, 30, 14, 0, 50, 477, DateTimeKind.Utc).AddTicks(1946)
+                            SubmittedAt = new DateTime(2023, 8, 5, 20, 32, 39, 22, DateTimeKind.Utc).AddTicks(7374)
                         },
                         new
                         {
                             Id = 198L,
                             ChallengeVersionId = 30L,
                             Code = "amet",
-                            CreatedAt = new DateTime(2023, 4, 11, 8, 17, 24, 565, DateTimeKind.Utc).AddTicks(8660),
+                            CreatedAt = new DateTime(2023, 4, 17, 8, 49, 27, 794, DateTimeKind.Utc).AddTicks(2416),
                             CreatedBy = 39L,
                             Output = "nulla",
-                            SubmittedAt = new DateTime(2023, 6, 22, 16, 23, 47, 728, DateTimeKind.Utc).AddTicks(3178)
+                            SubmittedAt = new DateTime(2023, 6, 28, 20, 51, 55, 98, DateTimeKind.Utc).AddTicks(1533)
                         },
                         new
                         {
                             Id = 199L,
                             ChallengeVersionId = 152L,
                             Code = "Enim aperiam rerum sit autem tempora consequuntur.",
-                            CreatedAt = new DateTime(2023, 7, 9, 2, 19, 52, 583, DateTimeKind.Utc).AddTicks(4886),
+                            CreatedAt = new DateTime(2023, 7, 15, 7, 41, 33, 901, DateTimeKind.Utc).AddTicks(676),
                             CreatedBy = 34L,
                             Output = "Libero maiores possimus ab quas.\nFugit sit fugit praesentium dolorem architecto omnis error facere.\nConsequatur aut repudiandae.\nSit vitae quia libero iure hic harum itaque beatae in.\nEt deserunt perferendis unde sed.\nQuibusdam blanditiis ex enim dolores est.",
-                            SubmittedAt = new DateTime(2023, 7, 26, 23, 7, 38, 170, DateTimeKind.Utc).AddTicks(6703)
+                            SubmittedAt = new DateTime(2023, 8, 2, 5, 27, 37, 847, DateTimeKind.Utc).AddTicks(9306)
                         },
                         new
                         {
                             Id = 200L,
                             ChallengeVersionId = 183L,
                             Code = "Sequi libero alias odit officia distinctio dicta distinctio omnis.\nDolor aliquam porro qui.\nDeleniti placeat perferendis omnis rerum sunt sint iste deserunt.",
-                            CreatedAt = new DateTime(2023, 9, 3, 22, 47, 18, 595, DateTimeKind.Utc).AddTicks(3718),
+                            CreatedAt = new DateTime(2023, 9, 10, 7, 14, 31, 928, DateTimeKind.Utc).AddTicks(5536),
                             CreatedBy = 20L,
                             Output = "et",
-                            SubmittedAt = new DateTime(2023, 9, 9, 20, 56, 24, 998, DateTimeKind.Utc).AddTicks(5945)
+                            SubmittedAt = new DateTime(2023, 9, 16, 5, 42, 58, 83, DateTimeKind.Utc).AddTicks(6965)
                         });
                 });
 
@@ -12003,6 +12584,25 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserFriendship", b =>
+                {
+                    b.HasOne("LeetWars.Core.DAL.Entities.Friendship", "Friendship")
+                        .WithMany("UserFriendships")
+                        .HasForeignKey("FriendshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "User")
+                        .WithMany("UserFriendships")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Friendship");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserLanguageLevel", b =>
                 {
                     b.HasOne("LeetWars.Core.DAL.Entities.Language", "Language")
@@ -12073,6 +12673,11 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("Solutions");
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.Friendship", b =>
+                {
+                    b.Navigation("UserFriendships");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.Language", b =>
                 {
                     b.Navigation("LanguageVersions");
@@ -12096,6 +12701,8 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("Subscriptions");
 
                     b.Navigation("UserBadges");
+
+                    b.Navigation("UserFriendships");
                 });
 #pragma warning restore 612, 618
         }
