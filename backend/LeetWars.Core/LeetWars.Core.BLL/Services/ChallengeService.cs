@@ -81,7 +81,7 @@ namespace LeetWars.Core.BLL.Services
             if(filters.DifficultyLevel is not null)
             {
                 challenges = challenges.Where(challenge => 
-                challenge.Level != null && challenge.Level.DifficultyLevel.Equals(filters.DifficultyLevel));
+                challenge.Level != null && challenge.Level.DifficultyLevel == filters.DifficultyLevel);
             }
 
             challenges = SortByProperty(challenges, sortingModel);

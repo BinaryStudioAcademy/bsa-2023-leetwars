@@ -19,6 +19,5 @@ namespace LeetWars.Builder.Extensions
             services.AddSingleton(sp => sp.GetRequiredService<IOptions<ConsumerSettings>>().Value);
             services.AddSingleton<IConsumerService, ConsumerService>();
         }
-
     }
 }

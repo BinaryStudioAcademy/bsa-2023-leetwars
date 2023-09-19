@@ -5,11 +5,11 @@ import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import {
-    DIFFICULTY_NAMES_MAP,
     PROGRESS_NAMES_MAP,
     SORTING_PROPERTIES,
     STATUS_NAMES_MAP,
 } from '@modules/main/filtering-section/filtering-section.utils';
+import { SkillLevel } from '@shared/enums/skill-level';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
@@ -36,9 +36,9 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     public tagsNames: string[] = [];
 
-    public difficultyNames: string[] = [];
-
     public sortingLabels = SORTING_PROPERTIES.map((x) => x.label) as string[];
+
+    public difficultyNames: string[];
 
     private sortingProperty?: ISortedModel;
 
@@ -62,8 +62,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     private statuses = STATUS_NAMES_MAP;
 
-    private difficulties = DIFFICULTY_NAMES_MAP;
-
     constructor(
         private challengeService: ChallengeService,
         private languageService: LanguageService,
@@ -80,7 +78,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
         this.statusesNames = this.statuses.map((item) => item.name);
         this.progressesNames = this.progresses.map((item) => item.name);
-        this.difficultyNames = this.difficulties.map((item) => item.name);
+        this.difficultyNames = Object.values(SkillLevel).filter(value => value !== SkillLevel.None);
     }
 
     public onScroll() {
@@ -149,8 +147,13 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             return;
         }
 
-        this.filter.difficultyLevel = this.difficulties.find((item) => item.name === value)?.state;
+        this.filter.difficultyLevel = this.getEnumValue(SkillLevel, value);
         this.resetChallengesData();
+    }
+
+    getEnumValue(enumType: any, enumString: string): any {
+        const keys = Object.keys(enumType).filter((key) => enumType[key] === enumString);
+        return keys.length > 0 ? enumType[keys[0]] : null;
     }
 
     private getChalenges() {

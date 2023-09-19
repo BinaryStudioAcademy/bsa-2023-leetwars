@@ -12,13 +12,6 @@ export const PROGRESS_NAMES_MAP = [
     { state: ChallengeProgress.NotStarted, name: 'Not trained on', id: 0 },
 ];
 
-export const DIFFICULTY_NAMES_MAP = [
-    { state: SkillLevel.Easy, name: 'Easy' },
-    { state: SkillLevel.Medium, name: 'Medium' },
-    { state: SkillLevel.Difficult, name: 'Difficult' },
-    { state: SkillLevel.Extreme, name: 'Extreme' },
-];
-
 export const STATUS_NAMES_MAP = [
     { status: undefined, name: 'Approved & Beta' },
     { status: ChallengeStatus.Approved, name: 'Approved' },
