@@ -7,8 +7,6 @@ namespace LeetWars.Core.Common.DTO.Challenge
     {
         public BriefUserInfoDto Author { get; set; } = new();
 
-        public long ChallengeId { get; set; }
-
         public string Title { get; set; } = string.Empty;
     }
 }
