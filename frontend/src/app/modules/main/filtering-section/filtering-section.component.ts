@@ -151,9 +151,14 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.resetChallengesData();
     }
 
-    getEnumValue(enumType: any, enumString: string): any {
-        const keys = Object.keys(enumType).filter((key) => enumType[key] === enumString);
-        return keys.length > 0 ? enumType[keys[0]] : null;
+    getEnumValue<T extends object, K extends keyof T>(
+        enumType: T,
+        enumString: string,
+    ): T[K] | null {
+        const keys = Object.keys(enumType) as Array<K>;
+        const key = keys.find((k) => (enumType[k] as unknown as string) === enumString);
+
+        return key !== undefined ? enumType[key] : null;
     }
 
     private getChalenges() {

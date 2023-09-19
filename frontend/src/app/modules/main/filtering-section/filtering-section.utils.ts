@@ -1,6 +1,5 @@
 import { ChallengeProgress } from '@shared/enums/challenge-progress';
 import { ChallengeStatus } from '@shared/enums/challenge-status';
-import { SkillLevel } from '@shared/enums/skill-level';
 import { SortingOrder } from '@shared/enums/sorting-order';
 import { SortingProperty } from '@shared/enums/sorting-property';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
