@@ -1,4 +1,4 @@
-﻿  using System.Linq.Expressions;
+using System.Linq.Expressions;
 using System.Security.Cryptography;
 using AutoMapper;
 using LeetWars.Core.BLL.Exceptions;
@@ -8,6 +8,7 @@ using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.Common.DTO.Tag;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
@@ -37,7 +38,7 @@ namespace LeetWars.Core.BLL.Services
         }
 
         public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters,
-            PageSettingsDto? page)
+            PageSettingsDto? page, SortingModel? sortingModel)
         {
             var challenges = _context.Challenges
                 .Include(challenge => challenge.Tags)
@@ -83,6 +84,14 @@ namespace LeetWars.Core.BLL.Services
                 challenges = challenges.Where(challenge =>
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
+
+            if(filters.DifficultyLevel is not null)
+            {
+                challenges = challenges.Where(challenge => 
+                challenge.Level != null && challenge.Level.Name.Equals(filters.DifficultyLevel));
+            }
+
+            challenges = SortByProperty(challenges, sortingModel);
 
             if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
             {
@@ -228,8 +237,7 @@ namespace LeetWars.Core.BLL.Services
                 throw new InvalidOperationException("The user cannot modify this challenge");
             }
 
-            var challenge = await GetChallengeByIdAsync(challengeEditDto.Id) 
-                ?? throw new NotFoundException(nameof(Challenge));
+            var challenge = await GetChallengeByIdAsync(challengeEditDto.Id);
 
             _mapper.Map(challengeEditDto, challenge);
             UpdateChallengeVersions(challenge, challengeEditDto.Versions!, currentUser.Id);
@@ -270,9 +278,9 @@ namespace LeetWars.Core.BLL.Services
 
         }
 
-        private async Task<Challenge?> GetChallengeByIdAsync(long challengeId)
+        private async Task<Challenge> GetChallengeByIdAsync(long challengeId)
         {
-            return await _context.Challenges
+            var challenge = await _context.Challenges
                 .Include(challenge => challenge.Level)
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
@@ -288,6 +296,8 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Stars)
                     .ThenInclude(star => star.Author)
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+
+            return challenge ?? throw new NotFoundException(nameof(Challenge));
         }
 
         private async Task<ChallengeStar?> GetChallengeStarAsync(Expression<Func<ChallengeStar, bool>> condition)
@@ -347,6 +357,22 @@ namespace LeetWars.Core.BLL.Services
                 SuggestionType.PracticeAndRepeat => challenges.Where(challenge => challenge.Versions.Any(version =>
                     version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId))),
                 _ => challenges
+            };
+        }
+        private static IOrderedQueryable<Challenge> SortByProperty(IQueryable<Challenge> challenges, SortingModel? sortingModel)
+        {
+            return sortingModel switch
+            {
+                { Property: SortingProperty.Title, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Title.TrimStart()),
+                { Property: SortingProperty.Title, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.Title.TrimStart()),
+                { Property: SortingProperty.Level, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Level),
+                { Property: SortingProperty.Level, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.Level),
+                { Property: SortingProperty.Stars, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.Stars.Count),
+                { Property: SortingProperty.Stars, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.Stars.Count),
+                { Property: SortingProperty.CreatedAt, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.CreatedAt),
+                { Property: SortingProperty.CreatedAt, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.CreatedAt),
+
+                _ => throw new ArgumentException("Unsuporting sorting type")
             };
         }
 

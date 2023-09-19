@@ -4,9 +4,15 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { PROGRESS_NAMES_MAP, STATUS_NAMES_MAP } from '@modules/main/filtering-section/filtering-section.utils';
+import {
+    DIFFICULTY_NAMES_MAP,
+    PROGRESS_NAMES_MAP,
+    SORTING_PROPERTIES,
+    STATUS_NAMES_MAP,
+} from '@modules/main/filtering-section/filtering-section.utils';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
+import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { ITag } from '@shared/models/tag/tag';
@@ -30,6 +36,12 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     public tagsNames: string[] = [];
 
+    public difficultyNames: string[] = [];
+
+    public sortingLabels = SORTING_PROPERTIES.map((x) => x.label) as string[];
+
+    private sortingProperty?: ISortedModel;
+
     private page: IPageSettings = {
         pageNumber: 0,
         pageSize: 10,
@@ -50,6 +62,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     private statuses = STATUS_NAMES_MAP;
 
+    private difficulties = DIFFICULTY_NAMES_MAP;
+
     constructor(
         private challengeService: ChallengeService,
         private languageService: LanguageService,
@@ -66,6 +80,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
         this.statusesNames = this.statuses.map((item) => item.name);
         this.progressesNames = this.progresses.map((item) => item.name);
+        this.difficultyNames = this.difficulties.map((item) => item.name);
     }
 
     public onScroll() {
@@ -78,6 +93,15 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     public onSearchTextChange(value: string) {
         this.filter.title = value.trim();
+        this.resetChallengesData();
+    }
+
+    public onSortChange(value: string | string[]) {
+        if (typeof value !== 'string') {
+            return;
+        }
+        this.sortingProperty = SORTING_PROPERTIES.find((x) => x.label === value);
+
         this.resetChallengesData();
     }
 
@@ -120,6 +144,15 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.resetChallengesData();
     }
 
+    public onDifficultyChange(value: string | string[]) {
+        if (typeof value !== 'string') {
+            return;
+        }
+
+        this.filter.difficultyLevel = this.difficulties.find((item) => item.name === value)?.state;
+        this.resetChallengesData();
+    }
+
     private getChalenges() {
         if (this.isLastPage) {
             return;
@@ -129,7 +162,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         this.loading = true;
 
         this.challengeService
-            .getChallenges(this.filter, this.page)
+            .getChallenges(this.filter, this.page, this.sortingProperty)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (data) => {

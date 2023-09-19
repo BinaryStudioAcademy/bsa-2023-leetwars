@@ -2,19 +2,25 @@
     <div class="logo">
         <img src="assets/images/logo/logo.png" alt="LEETWARS" />
     </div>
-    <div class="user-menu">
+    <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav tabset">
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
+                    [routerLink]="['/']">Challenges</a></li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
+                    [routerLink]="['/leader/board']">LeaderBoard</a></li>
+        </ul>
+    </nav>
+    <div class="user-menu align-items-center d-flex">
         <div class="notification"  (click)="showNotifications()">
             <fa-layers size="2x">
                 <fa-icon [icon]="['far', 'bell']"></fa-icon>
                 <fa-layers-counter  *ngIf="countNotification" [classes]="['change-color']" content={{countNotification}}></fa-layers-counter>
             </fa-layers>
         </div>
-        <div class="user">
-            <img
-                [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'"
-                alt="User Logo"
+        <div class="user" (click)="showMenu = !showMenu">
+            <img [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'" alt="User Logo"
                 class="user-logo" />
-            <span class="username" (click)="showMenu = !showMenu">
+            <span class="username">
                 {{ user.firstName && user.lastName ? user.firstName + ' ' + user.lastName : user.userName }}
             </span>
         </div>
