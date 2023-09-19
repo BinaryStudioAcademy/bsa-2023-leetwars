@@ -89,7 +89,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     private listeningHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
-            this.notifications.push(msg);
+            this.notifications = [...this.notifications, msg];
         });
     }
 

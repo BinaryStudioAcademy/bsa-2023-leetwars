@@ -28,7 +28,7 @@ export class NotificationHubService {
     }
 
     listenMessages(action: (msg: INotificationModel) => void) {
-        this.subscriptions.push(this.messages.subscribe({ next: action }));
+        this.subscriptions = [...this.subscriptions, this.messages.subscribe({ next: action })];
     }
 
     async stop() {

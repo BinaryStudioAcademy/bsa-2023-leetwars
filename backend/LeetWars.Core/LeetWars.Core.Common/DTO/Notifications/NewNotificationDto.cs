@@ -1,10 +1,12 @@
 ﻿using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.User;
+using System.Text.Json.Serialization;
 
 namespace LeetWars.Core.Common.DTO.Notifications
 {
     public class NewNotificationDto
     {
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public TypeNotifications TypeNotification { get; set; }
 
         public BriefUserInfoDto? Sender { get; set; }
