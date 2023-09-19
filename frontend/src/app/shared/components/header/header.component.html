@@ -11,7 +11,7 @@
         </div>
         <div class="user">
             <img
-                [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'"
+                [src]="user.imagePath ? user.imagePath : '/assets/images/default-profile-img.jpg'"
                 alt="User Logo"
                 class="user-logo" />
             <span class="username" (click)="showMenu = !showMenu">

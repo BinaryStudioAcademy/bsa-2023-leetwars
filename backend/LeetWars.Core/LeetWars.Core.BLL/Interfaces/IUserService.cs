@@ -3,6 +3,7 @@ using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using System.Linq.Expressions;
+using Microsoft.AspNetCore.Http;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -17,4 +18,6 @@ public interface IUserService
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId);
     public Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto);
     public Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page);
+    public Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto);
+    public Task<UserAvatarDto> UpdateUserAvatar(IFormFile image);
 }

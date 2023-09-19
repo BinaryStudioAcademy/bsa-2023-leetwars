@@ -6,6 +6,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 import { ProfilePageMainInfoComponent } from './profile-page-main-info/profile-page-main-info.component';
 import { SolvedProblemComponent } from './solved-problem/solved-problem.component';
+import { UserInfoEditorComponent } from './user-info-editor/user-info-editor.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
         ProfilePageMainInfoComponent,
         SolvedProblemComponent,
         UserProfileComponent,
+        UserInfoEditorComponent,
     ],
     imports: [SharedModule, UserRoutingModule, ProgressbarModule],
 })

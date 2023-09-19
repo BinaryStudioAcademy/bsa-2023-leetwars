@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header-service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IUser } from '@shared/models/user/user';
+import { Subject, takeUntil } from 'rxjs';
 
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
@@ -13,7 +14,9 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.sass'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy {
+    private destroy$ = new Subject<void>();
+
     public showMenu: boolean = false;
 
     public user: IUser;
@@ -25,9 +28,10 @@ export class HeaderComponent {
         private headerService: HeaderService,
         private toastrService: ToastrNotificationsService,
     ) {
-        this.authService.getUser().subscribe((user) => {
-            this.user = user;
-        });
+        this.authService.currentUser$.pipe(takeUntil(this.destroy$))
+            .subscribe((user) => {
+                this.user = user!;
+            });
     }
 
     onLogOut() {
@@ -60,5 +64,10 @@ export class HeaderComponent {
     public goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
+        this.destroy$.complete();
     }
 }

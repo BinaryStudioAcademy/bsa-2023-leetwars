@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { EditUserInfo } from '@shared/models/user/edit-user-info';
 import { IUser } from '@shared/models/user/user';
 import { IUserLogin } from '@shared/models/user/user-login';
 import { IUserRegister } from '@shared/models/user/user-register';
@@ -18,9 +19,9 @@ import { UserService } from './user.service';
 export class AuthService {
     private providerName: string = 'firebase';
 
-    public userSubject: BehaviorSubject<IUser | undefined>;
+    private userSubject: BehaviorSubject<IUser | undefined>;
 
-    private user: IUser | undefined;
+    public currentUser$: Observable<IUser | undefined>;
 
     private userKeyName = 'userInfo';
 
@@ -33,6 +34,7 @@ export class AuthService {
         private authHelper: AuthHelper,
     ) {
         this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
+        this.currentUser$ = this.userSubject.asObservable();
         afAuth.authState.subscribe(async (user) => {
             if (user) {
                 localStorage.setItem(this.tokenKeyName, await user.getIdToken());
@@ -68,7 +70,6 @@ export class AuthService {
 
     public logout() {
         this.removeUserInfo();
-        this.user = undefined;
         this.userSubject.next(undefined);
 
         return from(this.afAuth.signOut());
@@ -110,6 +111,18 @@ export class AuthService {
 
                 throw new Error('User is not authorized');
             }),
+        );
+    }
+
+    public updateUserEmail(email: string) {
+        return this.afAuth.authState.subscribe(async (user) => {
+            user?.updateEmail(email);
+        });
+    }
+
+    public updateUserInfo(editUserInfo: EditUserInfo): Observable<IUser> {
+        return this.userService.updateUser(editUserInfo).pipe(
+            tap((user) => { this.updateUserEmail(user.email!); }),
         );
     }
 
@@ -187,10 +200,9 @@ export class AuthService {
         );
     }
 
-    private setUserInfo(user: IUser) {
+    public setUserInfo(user: IUser) {
         localStorage.setItem(this.userKeyName, JSON.stringify(user));
         this.userSubject.next(user);
-        this.user = user;
     }
 
     private removeUserInfo() {

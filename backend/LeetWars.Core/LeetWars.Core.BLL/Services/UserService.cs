@@ -13,6 +13,7 @@ using LeetWars.Core.BLL.Extensions;
 using Bogus;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -20,15 +21,19 @@ public class UserService : BaseService, IUserService
 {
     private readonly IUserGetter _userGetter;
     private readonly IMessageSenderService _messageSenderService;
+    private readonly IBlobService _blobService;
     private const int REPUTATION_DIVIDER = 10;
 
     public UserService(LeetWarsCoreContext context,
                        IMapper mapper,
                        IUserGetter userGetter,
-                       IMessageSenderService messageSenderService) : base(context, mapper)
+                       IMessageSenderService messageSenderService,
+                       IBlobService blobService
+                       ) : base(context, mapper)
     {
         _userGetter = userGetter;
         _messageSenderService = messageSenderService;
+        _blobService = blobService;
     }
 
     public async Task<UserDto> CreateUserAsync(NewUserDto userDto)
@@ -168,6 +173,36 @@ public class UserService : BaseService, IUserService
         }
 
         return _mapper.Map<List<UserDto>>(await users.ToListAsync());
+    }
+
+    public async Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto)
+    {
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                          ?? throw new ArgumentException();
+        
+        currentUser.Email = userInfoDto.Email;
+        currentUser.UserName = userInfoDto.Username;
+        
+        _context.Users.Update(currentUser);
+        await _context.SaveChangesAsync();
+        return _mapper.Map<UserDto>(currentUser);
+    }
+
+    public async Task<UserAvatarDto> UpdateUserAvatar(IFormFile image)
+    {
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                            ?? throw new ArgumentException("");
+        
+        var uniqueFileName = FileNameHelper.CreateUniqueFileName(image!.FileName);
+        await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
+            uniqueFileName);
+        currentUser!.ImagePath = uniqueFileName;
+        
+        _context.Users.Update(currentUser);
+        await _context.SaveChangesAsync();
+        
+        var newUserAvatar = new UserAvatarDto() { ImagePath = _blobService.GetBlob(uniqueFileName) };
+        return newUserAvatar;
     }
 
     private async Task<int> GetRewardFromChallenge(long challengeId)

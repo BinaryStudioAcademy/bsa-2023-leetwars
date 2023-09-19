@@ -1,5 +1,7 @@
+using System.Runtime.CompilerServices;
 using LeetWars.Core.WebAPI.Extentions;
 using LeetWars.Core.WebAPI.Middlewares;
+using LeetWars.Core.WebAPI.Settings;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Converters;
 
@@ -20,6 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddLeetWarsCoreContext(builder.Configuration);
 builder.Services.AddRabbitMqServices(builder.Configuration);
 builder.Services.RegisterCustomServices(builder.Configuration);
+builder.Services.AddAzureBlobServices(builder.Configuration);
 builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();

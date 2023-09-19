@@ -1,0 +1,46 @@
+@import 'color-variables'
+
+.page-wrapper
+    color: $white
+    height: calc( 100% - 87px )
+    padding: 65px 10px 0px 10px
+
+.submit-button
+    height: 45px
+    width: 186px
+    background-color: $green
+    border-radius: 10px
+    font-weight: 800
+
+.form-wrapper
+    max-width: 970px
+    gap: 39px
+
+.editUserInfoForm
+    background-color: $charcoal-grey
+    border-radius: 38px
+    min-height: 344px
+    padding: 26px 36px 26px 29px
+
+.avatar
+    width: 160px
+    height: 160px
+    img
+        width: 100%
+        cursor: pointer
+        object-fit: cover
+        border-radius: 15px
+        border: 5px solid $white
+        height: 100%
+
+.form-data
+    gap: 77px
+    flex-wrap: wrap
+    padding-top: 20px
+    padding-bottom: 20px
+
+.right-form-data
+    height: 160px
+
+:host::ng-deep .input-form-container
+    height: 100% !important
