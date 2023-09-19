@@ -1,11 +1,13 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("[controller]")]
 public class ChallengeLevelController : ControllerBase
 {
