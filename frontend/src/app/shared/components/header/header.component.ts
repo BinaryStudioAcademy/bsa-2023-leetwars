@@ -28,9 +28,9 @@ export class HeaderComponent {
         this.authService.getUser().subscribe((user) => {
             this.user = user;
         });
-        
-        this.router.events.subscribe((event)=>{
-            if(event instanceof NavigationStart){
+
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationStart) {
                 this.showMenu = false;
             }
         });
