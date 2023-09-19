@@ -143,14 +143,15 @@ namespace LeetWars.Core.BLL.Services
                 {
                     throw new ArgumentNullException(nameof(challengeStarDto));
                 }
-                var challange = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id);
+
+                var briefChallenge = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id);
 
                 var newNotification = new NewNotificationDto()
                 {
-                    ReceiverId = challange.Author.Id.ToString(),
+                    ReceiverId = briefChallenge.Author.Id.ToString(),
                     Sender = await _userService.GetBriefUserInfoById(challengeStarDto.AuthorId),
                     TypeNotification = TypeNotifications.LikeChallenge,
-                    Challenge = challange
+                    Challenge = briefChallenge
                 };
 
                 _messageSenderService.SendMessageToRabbitMQ(newNotification);
@@ -220,15 +221,6 @@ namespace LeetWars.Core.BLL.Services
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
 
-        private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
-        {
-            var challenge = await _context.Challenges
-                .Include(x=>x.Author)
-                .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
-
-            return _mapper.Map<BriefChallengeInfoDto>(challenge);
-        }
-
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
@@ -245,6 +237,15 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
+        }
+
+        private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
+        {
+            var challenge = await _context.Challenges
+                .Include(x => x.Author)
+                .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+
+            return _mapper.Map<BriefChallengeInfoDto>(challenge);
         }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)

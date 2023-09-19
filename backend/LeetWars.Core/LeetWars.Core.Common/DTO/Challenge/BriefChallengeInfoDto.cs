@@ -3,7 +3,7 @@ using LeetWars.Core.DAL.Entities;
 
 namespace LeetWars.Core.Common.DTO.Challenge
 {
-    public class BriefChallengeInfoDto : AuditEntity<long>
+    public class BriefChallengeInfoDto : Entity<long>
     {
         public BriefUserInfoDto Author { get; set; } = new();
 
