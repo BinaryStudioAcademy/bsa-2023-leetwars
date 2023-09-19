@@ -178,7 +178,7 @@ public class UserService : BaseService, IUserService
     public async Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto)
     {
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
-                          ?? throw new ArgumentException();
+                          ?? throw new ArgumentException(nameof(userInfoDto));
         
         currentUser.Email = userInfoDto.Email;
         currentUser.UserName = userInfoDto.Username;
@@ -191,7 +191,7 @@ public class UserService : BaseService, IUserService
     public async Task<UserAvatarDto> UpdateUserAvatar(IFormFile image)
     {
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
-                            ?? throw new ArgumentException("");
+                            ?? throw new ArgumentException(nameof(image));
         
         var uniqueFileName = FileNameHelper.CreateUniqueFileName(image!.FileName);
         await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
