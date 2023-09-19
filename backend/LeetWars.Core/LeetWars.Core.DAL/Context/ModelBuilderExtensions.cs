@@ -5,7 +5,6 @@ using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
-using LeetWars.Core.DAL.Migrations;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.DAL.Context
@@ -27,6 +26,12 @@ namespace LeetWars.Core.DAL.Context
 
             var userEntities = GenerateUsers();
             modelBuilder.Entity<User>().HasData(userEntities);
+
+            var friendshipEntities = GenerateFriendships();
+            modelBuilder.Entity<Friendship>().HasData(friendshipEntities);
+
+            var userFriendshipEntities = GenerateUserFriendships(userEntities, friendshipEntities);
+            modelBuilder.Entity<UserFriendship>().HasData(userFriendshipEntities);
 
             var subscriptionTypeEntities = GenerateSubscriptionTypes();
             modelBuilder.Entity<SubscriptionType>().HasData(subscriptionTypeEntities);
@@ -79,7 +84,7 @@ namespace LeetWars.Core.DAL.Context
             Faker.GlobalUniqueIndex = 0;
 
             return new Faker<ChallengeVersion>()
-                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text(),"", f.Lorem.Text(), f.Lorem.Text()))
+                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text(), "", f.Lorem.Text(), f.Lorem.Text()))
                 .UseSeed(SeedDefaults.ChallengeVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
@@ -93,7 +98,7 @@ namespace LeetWars.Core.DAL.Context
                 })
                 .Generate(count);
         }
-        
+
         private static ICollection<ChallengeTag> GenerateChallengeTags(ICollection<Challenge> challenges)
         {
             int count = challenges.Count * 3;
@@ -114,7 +119,7 @@ namespace LeetWars.Core.DAL.Context
             Faker.GlobalUniqueIndex = 0;
 
             return new Faker<LanguageVersion>()
-                .CustomInstantiator( f => new LanguageVersion(f.System.Version().ToString().LimitLength(EntitySettings.MaxShortNameLength)))
+                .CustomInstantiator(f => new LanguageVersion(f.System.Version().ToString().LimitLength(EntitySettings.MaxShortNameLength)))
                 .UseSeed(SeedDefaults.LanguageVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
@@ -210,7 +215,7 @@ namespace LeetWars.Core.DAL.Context
                 })
                 .Generate(count);
         }
-        
+
         private static ICollection<UserBadge> GenerateUserBadges(ICollection<User> users, int count = 80)
         {
             Faker.GlobalUniqueIndex = 0;
@@ -250,5 +255,40 @@ namespace LeetWars.Core.DAL.Context
                 .Generate(count);
         }
 
+        private static ICollection<Friendship> GenerateFriendships(int count = 30)
+        {
+            Faker.GlobalUniqueIndex = 0;
+
+            return new Faker<Friendship>()
+                .CustomInstantiator(f => new Friendship())
+                .RuleFor(e => e.Id, f => f.IndexGlobal)
+                .RuleFor(e => e.Status, f => f.PickRandom<FriendshipStatus>())
+                .RuleFor(e => e.CreatedAt, f => f.Date.Recent(10))
+                .Generate(count);
+        }
+
+        private static ICollection<UserFriendship> GenerateUserFriendships(ICollection<User> users, ICollection<Friendship> friendships)
+        {
+            Faker.GlobalUniqueIndex = 0;
+
+            var userFriendships = new List<UserFriendship>();
+
+            foreach (var friendship in friendships)
+            {
+                var faker = new Faker();
+
+                var senderUser = faker.PickRandom(users);
+                var recipientUsers = users.Where(u => u.Id != senderUser.Id).ToList();
+                var recipientUser = faker.PickRandom(recipientUsers);
+
+                var senderUserFriendship = new UserFriendship(senderUser.Id, friendship.Id, true);
+                userFriendships.Add(senderUserFriendship);
+
+                var recipientUserFriendship = new UserFriendship(recipientUser.Id, friendship.Id, false);
+                userFriendships.Add(recipientUserFriendship);
+            }
+
+            return userFriendships;
+        }
     }
 }
