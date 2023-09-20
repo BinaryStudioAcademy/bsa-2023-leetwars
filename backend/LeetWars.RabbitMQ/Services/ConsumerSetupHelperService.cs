@@ -1,11 +1,12 @@
-﻿using RabbitMQ.Client;
+﻿using LeetWars.RabbitMQ.Settings;
+using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
 namespace LeetWars.RabbitMQ.Services
 {
     public static class ConsumerSetupHelperService
     {
-        public static void ListenSetup(EventHandler<BasicDeliverEventArgs> messageReceivedHandler, IModel channel, ConsumerSettings settings)
+        public static void ListenSetup(EventHandler<BasicDeliverEventArgs> messageReceivedHandler, IModel channel, GeneralConsumerSettings settings)
         {
             SetupChannel(channel, settings);
 
@@ -21,7 +22,7 @@ namespace LeetWars.RabbitMQ.Services
             channel.BasicConsume(settings.QueueName, settings.AutoAcknowledge, consumer);
         }
 
-        public static void ListenAsyncSetup(AsyncEventHandler<BasicDeliverEventArgs> messageReceivedHandler, IModel channel, ConsumerSettings settings)
+        public static void ListenAsyncSetup(AsyncEventHandler<BasicDeliverEventArgs> messageReceivedHandler, IModel channel, GeneralConsumerSettings settings)
         {
             SetupChannel(channel, settings);
 
@@ -49,7 +50,7 @@ namespace LeetWars.RabbitMQ.Services
             }
         }
 
-        private static void SetupChannel(IModel channel, ConsumerSettings settings)
+        private static void SetupChannel(IModel channel, GeneralConsumerSettings settings)
         {
             channel.ExchangeDeclare(settings.ExchangeName, settings.ExchangeType);
             channel.QueueDeclare(settings.QueueName, true, false, false);

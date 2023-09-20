@@ -14,24 +14,22 @@ namespace LeetWars.Notifier.WebAPI.Services
 {
     public class MessageConsumerService : BackgroundService
     {
-        private readonly IConsumerServiceFactory _consumerServiceFactory;
+        private readonly IConsumerService _consumerService;
         private readonly IHubContext<CodeDisplayingHub, ICodeDisplayingHubClient> _codeDisplayingHubContext;
 
         public MessageConsumerService(
-            IConsumerServiceFactory consumerServiceFactory,
+            IConsumerService consumerService,
             IHubContext<CodeDisplayingHub, ICodeDisplayingHubClient> codeDisplayingHubContext)
         {
-            _consumerServiceFactory = consumerServiceFactory;
+            _consumerService = consumerService;
             _codeDisplayingHubContext = codeDisplayingHubContext;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var codeConsumerService = _consumerServiceFactory.GetInstance(ConsumerNames.codeResultConsumer);
-
             var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
-                codeConsumerService.SetAcknowledge(args.DeliveryTag, true);
+                _consumerService.SetAcknowledge(args.DeliveryTag, true);
 
                 var body = args.Body.ToArray();
 
@@ -40,13 +38,11 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 if(request is not null) 
                 {
-                    Console.WriteLine($"notifier usercode: {request.UserConnectionId}");
-
                     await _codeDisplayingHubContext.Clients.Client(request.UserConnectionId).BroadcastMessage(message);
                 }
             });
 
-            codeConsumerService.Listen(handler);
+            _consumerService.Listen(handler);
 
             return Task.CompletedTask;
         }

@@ -1,6 +1,7 @@
 ﻿using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Services;
 using LeetWars.RabbitMQ;
+using LeetWars.RabbitMQ.Settings;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 
@@ -29,8 +30,6 @@ namespace LeetWars.Builder.Extensions
                 Uri = new Uri(configuration["Rabbit"])
             }
             .CreateConnection());
-                
-            services.AddSingleton(sp => sp.GetRequiredService<IOptions<ConsumerSettings>>().Value);
             services.AddSingleton<IConsumerService, ConsumerService>();
         }
 

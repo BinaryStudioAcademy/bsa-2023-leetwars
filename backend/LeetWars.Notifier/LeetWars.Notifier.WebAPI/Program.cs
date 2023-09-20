@@ -2,6 +2,7 @@ using LeetWars.Notifier.Hubs;
 using LeetWars.Notifier.WebAPI.Hubs;
 using LeetWars.Notifier.WebAPI.Interfaces;
 using LeetWars.Notifier.WebAPI.Services;
+using LeetWars.RabbitMQ;
 using LeetWars.RabbitMQ.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +20,6 @@ builder.Services.AddSignalR();
 
 builder.Services.AddRabbitMqServices(builder.Configuration);
 builder.Services.AddCodeConsumerRabbitMqServices(builder.Configuration);
-builder.Services.AddTransient<IConsumerServiceFactory, ConsumerServiceFactory>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
