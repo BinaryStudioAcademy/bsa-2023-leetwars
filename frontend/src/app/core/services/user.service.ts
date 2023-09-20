@@ -2,10 +2,10 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IEditUser } from '@shared/models/user/edit-user';
-import { EditUserInfo } from '@shared/models/user/edit-user-info';
+import { IEditUserInfo } from '@shared/models/user/edit-user-info';
 import { INewUser } from '@shared/models/user/new-user';
 import { IUser } from '@shared/models/user/user';
-import { UserAvatar } from '@shared/models/user/user-avatar';
+import { IUserAvatar } from '@shared/models/user/user-avatar';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 import { setParams } from '@shared/utils/http-params.utils';
@@ -41,12 +41,12 @@ export class UserService {
         return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/${id}`);
     }
 
-    public updateUser(editUserInfo: EditUserInfo): Observable<IUser> {
+    public updateUser(editUserInfo: IEditUserInfo): Observable<IUser> {
         return this.httpService.putRequest<IUser>(`${this.baseUrl}`, editUserInfo);
     }
 
-    public updateUserAvatar(fileFormData: FormData): Observable<UserAvatar> {
-        return this.httpService.postRequest<UserAvatar>(`${this.baseUrl}/avatar`, fileFormData);
+    public updateUserAvatar(fileFormData: FormData): Observable<IUserAvatar> {
+        return this.httpService.postRequest<IUserAvatar>(`${this.baseUrl}/avatar`, fileFormData);
     }
 
     public getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {

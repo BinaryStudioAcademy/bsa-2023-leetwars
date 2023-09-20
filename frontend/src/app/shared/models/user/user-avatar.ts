@@ -1,3 +1,3 @@
-export interface UserAvatar {
+export interface IUserAvatar {
     imagePath: string;
 }

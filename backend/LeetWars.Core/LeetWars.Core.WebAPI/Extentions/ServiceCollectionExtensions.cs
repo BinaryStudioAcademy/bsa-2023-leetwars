@@ -103,8 +103,8 @@ namespace LeetWars.Core.WebAPI.Extentions
             this IServiceCollection services, IConfiguration configuration)
         {
             var blobUrl = configuration["BLOB_URL"];
-            var blobContainerName = configuration["BLOB_CONTAINER_NAME"];
-            var blobAccess = configuration["BLOB_ACCESS"];
+            var blobContainerName = configuration["BlobContainerName"];
+            var blobAccess = configuration["BlobAccess"];
 
             var settings = new BlobStorageSettings(blobUrl, blobContainerName, blobAccess);
             var blobContainerClient = new BlobContainerClient(settings.BlobUrl, settings.BlobContainerName);

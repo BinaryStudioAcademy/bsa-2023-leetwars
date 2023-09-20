@@ -3,7 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { EditUserInfo } from '@shared/models/user/edit-user-info';
+import { AssetConstants } from '@shared/constants/asset-constants';
+import { IEditUserInfo } from '@shared/models/user/edit-user-info';
 import { IUser } from '@shared/models/user/user';
 import { validatePictureFileName } from '@shared/utils/validation/file-validation-helper';
 import {
@@ -51,7 +52,7 @@ export class UserInfoEditorComponent implements OnInit {
     }
 
     public onSave() {
-        const editUserInfo: EditUserInfo = {
+        const editUserInfo: IEditUserInfo = {
             email: this.userInfoForm.value.email,
             username: this.userInfoForm.value.username,
         };
@@ -104,7 +105,7 @@ export class UserInfoEditorComponent implements OnInit {
         this.userService.getCurrentUser().subscribe((user) => {
             this.user = user;
             this.initializeForm(user);
-            this.avatarPreview = this.user?.imagePath ?? '/assets/images/default-profile-img.jpg';
+            this.avatarPreview = this.user?.imagePath ?? AssetConstants.defaultProfileImagePath;
         });
     }
 
@@ -116,10 +117,11 @@ export class UserInfoEditorComponent implements OnInit {
     }
 
     private updateAvatarPreview(target: HTMLInputElement) {
-        if (!target.files || !target.files[0]) {
+        const file = target.files && target.files[0];
+
+        if (!file) {
             return;
         }
-        const file = target.files[0];
 
         const reader = new FileReader();
 

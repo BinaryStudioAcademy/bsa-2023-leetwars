@@ -181,11 +181,12 @@ public class UserService : BaseService, IUserService
         {
             throw new ArgumentNullException(nameof(userInfoDto));
         }
+
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                            ?? throw new InvalidOperationException($"A user with id {_userGetter.CurrentUserId} is not found.");
         
-        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId);
-        
-        currentUser!.Email = userInfoDto.Email!;
-        currentUser!.UserName = userInfoDto.Username!;
+        currentUser.Email = userInfoDto.Email;
+        currentUser.UserName = userInfoDto.Username;
         
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
@@ -194,22 +195,23 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserAvatarDto> UpdateUserAvatar(IFormFile image)
     {
-        if(image is null)
+        if (image is null)
         {
             throw new ArgumentNullException(nameof(image));
         }
         
-        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId);
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                            ?? throw new InvalidOperationException($"A user with id {_userGetter.CurrentUserId} is not found.");
         
-        var uniqueFileName = FileNameHelper.CreateUniqueFileName(image!.FileName);
+        var uniqueFileName = FileNameHelper.CreateUniqueFileName(image.FileName);
         await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
             uniqueFileName);
-        currentUser!.ImagePath = uniqueFileName;
+        currentUser.ImagePath = uniqueFileName;
         
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
         
-        var newUserAvatar = new UserAvatarDto() { ImagePath = _blobService.GetBlob(uniqueFileName) };
+        var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
     }
 

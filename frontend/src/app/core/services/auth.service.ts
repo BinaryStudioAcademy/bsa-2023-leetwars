@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { EditUserInfo } from '@shared/models/user/edit-user-info';
+import { IEditUserInfo } from '@shared/models/user/edit-user-info';
 import { IUser } from '@shared/models/user/user';
 import { IUserLogin } from '@shared/models/user/user-login';
 import { IUserRegister } from '@shared/models/user/user-register';
@@ -120,7 +120,7 @@ export class AuthService {
         });
     }
 
-    public updateUserInfo(editUserInfo: EditUserInfo): Observable<IUser> {
+    public updateUserInfo(editUserInfo: IEditUserInfo): Observable<IUser> {
         return this.userService.updateUser(editUserInfo).pipe(
             tap((user) => { this.updateUserEmail(user.email!); }),
         );

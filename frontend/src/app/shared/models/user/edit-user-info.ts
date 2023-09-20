@@ -1,4 +1,4 @@
-export interface EditUserInfo {
+export interface IEditUserInfo {
     email: string;
     username: string;
 }

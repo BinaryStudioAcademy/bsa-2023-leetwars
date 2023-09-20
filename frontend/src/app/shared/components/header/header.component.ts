@@ -1,11 +1,12 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header-service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IUser } from '@shared/models/user/user';
-import { Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
@@ -14,9 +15,7 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.sass'],
 })
-export class HeaderComponent implements OnDestroy {
-    private destroy$ = new Subject<void>();
-
+export class HeaderComponent extends BaseComponent {
     public showMenu: boolean = false;
 
     public user: IUser;
@@ -28,7 +27,8 @@ export class HeaderComponent implements OnDestroy {
         private headerService: HeaderService,
         private toastrService: ToastrNotificationsService,
     ) {
-        this.authService.currentUser$.pipe(takeUntil(this.destroy$))
+        super();
+        this.authService.currentUser$.pipe(takeUntil(this.unsubscribe$))
             .subscribe((user) => {
                 this.user = user!;
             });
@@ -64,10 +64,5 @@ export class HeaderComponent implements OnDestroy {
     public goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
-    }
-
-    ngOnDestroy(): void {
-        this.destroy$.next();
-        this.destroy$.complete();
     }
 }
