@@ -6,7 +6,7 @@ import { IUserRegister } from '@shared/models/user/user-register';
 import { AuthHelper } from '@shared/utils/auth.helper';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
-import { BehaviorSubject, first, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
+import { BehaviorSubject, first, from, Observable, ObservableInput, of, switchMap, tap, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { ToastrNotificationsService } from './toastr-notifications.service';
@@ -62,6 +62,8 @@ export class AuthService {
     public login(userDto: IUserLogin) {
         return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
             first(),
+            switchMap((userCredential) => from(userCredential.user?.getIdToken() as ObservableInput<string>)),
+            tap((token) => { this.setIdToken(token); }),
             switchMap(() => this.userService.getCurrentUser()),
             tap((user) => this.setUserInfo(user)),
         );
@@ -194,6 +196,10 @@ export class AuthService {
                 return of(undefined);
             }),
         );
+    }
+
+    private setIdToken(token: string) {
+        localStorage.setItem(this.tokenKeyName, token);
     }
 
     private setUserInfo(user: IUser) {
