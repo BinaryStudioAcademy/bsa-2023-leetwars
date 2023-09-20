@@ -14,6 +14,7 @@ namespace LeetWars.RabbitMQ.Extensions
             services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
             services.AddSingleton<IConsumerService, ConsumerService>();
             services.AddHostedService<MessageConsumerService>();
+            services.AddHostedService<NotificationConsumerService>();
         }
 
         public static void AddCodeConsumerRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
@@ -31,7 +32,6 @@ namespace LeetWars.RabbitMQ.Extensions
                 var factory = new ConnectionFactory { Uri = rabbitUri };
                 return factory.CreateConnection();
             });
-
         }
     }
 }

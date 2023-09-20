@@ -1,8 +1,5 @@
 using LeetWars.Notifier.Hubs;
 using LeetWars.Notifier.WebAPI.Hubs;
-using LeetWars.Notifier.WebAPI.Interfaces;
-using LeetWars.Notifier.WebAPI.Services;
-using LeetWars.RabbitMQ;
 using LeetWars.RabbitMQ.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,6 +46,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
     endpoints.MapHub<BroadcastHub>("/broadcastHub");
     endpoints.MapHub<CodeDisplayingHub>("/codeDisplayingHub");
+    endpoints.MapHub<NotificationsHub>("/notificationHub");
     endpoints.MapHealthChecks("/health");
 });
 

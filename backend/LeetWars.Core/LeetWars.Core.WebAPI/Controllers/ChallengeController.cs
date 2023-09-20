@@ -6,10 +6,12 @@ using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LeetWars.Core.WebAPI.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class ChallengeController : ControllerBase
     {
@@ -67,6 +69,13 @@ namespace LeetWars.Core.WebAPI.Controllers
         public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
         {
             return Ok(await _challengeService.UpdateStarAsync(challengeStarDto));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteChallenge(long id)
+        {
+            await _challengeService.DeleteChallengeAsync(id);
+            return NoContent();
         }
     }
 }

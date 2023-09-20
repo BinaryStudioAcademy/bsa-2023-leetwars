@@ -4,21 +4,25 @@
     </div>
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav tabset">
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
-                    [routerLink]="['/']">Challenges</a></li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
-                    [routerLink]="['/leader/board']">LeaderBoard</a></li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['/']">Challenges</a>
+            </li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['/leader/board']">LeaderBoard</a>
+            </li>
         </ul>
     </nav>
     <div class="user-menu align-items-center d-flex">
-        <div class="notification">
+        <div class="notification"  (click)="showNotifications()">
             <fa-layers size="2x">
                 <fa-icon [icon]="['far', 'bell']"></fa-icon>
-                <fa-layers-counter [classes]="['change-color']" content="3"></fa-layers-counter>
+                <fa-layers-counter  *ngIf="countNotification" [classes]="['change-color']" content={{countNotification}}></fa-layers-counter>
             </fa-layers>
         </div>
         <div class="user" (click)="showMenu = !showMenu">
-            <img [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'" alt="User Logo"
+            <img
+                [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'"
+                alt="User Logo"
                 class="user-logo" />
             <span class="username">
                 {{ user.firstName && user.lastName ? user.firstName + ' ' + user.lastName : user.userName }}
@@ -26,8 +30,8 @@
         </div>
         <div class="menu-wraper">
             <div class="menu" *ngIf="showMenu">
-                <button (click)="onLogOut()">Log Out</button>
                 <button (click)="goToProfile()">Go to profile page</button>
+                <button (click)="onLogOut()">Log Out</button>
             </div>
         </div>
     </div>
