@@ -2,6 +2,7 @@ using System.Security.Claims;
 using LeetWars.Core.BLL.Services;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -79,5 +80,19 @@ public class UsersController : ControllerBase
     {
         var updatedUser = await _userService.UpdateUserRankAsync(userDto);
         return Ok(updatedUser);
+    }
+
+    [HttpPost("send-friendship-request")]
+    public async Task<ActionResult<UserDto>> SendFriendshipRequest([FromBody] NewFriendshipDto newFriendshipDto)
+    {
+        var user = await _userService.SendFriendshipRequest(newFriendshipDto);
+        return Ok(user);
+    }
+
+    [HttpPut("update-friendship-request")]
+    public async Task<ActionResult<UserDto>> UpdateFriendshipRequest([FromBody] UpdateFriendshipDto updateFriendshipDto)
+    {
+        var user = await _userService.UpdateFriendshipRequest(updateFriendshipDto);
+        return Ok(user);
     }
 }

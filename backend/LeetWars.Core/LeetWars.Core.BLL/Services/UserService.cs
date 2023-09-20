@@ -13,6 +13,10 @@ using LeetWars.Core.BLL.Extensions;
 using Bogus;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
+using LeetWars.Core.Common.DTO.Friendship;
+using LeetWars.Core.DAL.Enums;
+using LeetWars.Core.BLL.Exceptions;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -95,14 +99,16 @@ public class UserService : BaseService, IUserService
             .Include(user => user.UserBadges)
             .ThenInclude(badge => badge.Badge)
             .Include(user => user.ChallengeVersions)
+            .Include(user => user.Friendships)
+                .ThenInclude(friendship => friendship.Users)
+            .Include(user => user.Friendships)
+                .ThenInclude(f => f.UserFriendships)
             .SingleOrDefaultAsync(expression);
     }
 
     public async Task<UserDto> GetCurrentUserAsync()
     {
-        var userStringId = _userGetter.CurrentUserId;
-
-        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
+        var user = await GetCurrentUserEntityAsync();
 
         return _mapper.Map<UserDto>(user);
     }
@@ -164,10 +170,80 @@ public class UserService : BaseService, IUserService
         if (page is not null)
         {
             users = users.Skip(page.PageSize * (page.PageNumber - 1))
-                .Take(page.PageSize);
+                         .Take(page.PageSize);
         }
 
         return _mapper.Map<List<UserDto>>(await users.ToListAsync());
+    }
+
+    public async Task<UserDto> SendFriendshipRequest(NewFriendshipDto newFriendshipDto)
+    {
+        var senderId = newFriendshipDto.SenderId;
+        var recipientId = newFriendshipDto.RecipientId;
+        var currentUser = await GetCurrentUserEntityAsync();
+
+        ThrowIfIsNotMatchingIds(senderId, currentUser.Id);
+
+        var friendshipGroups = currentUser.Friendships.SelectMany(f => f.UserFriendships).GroupBy(uf => uf.FriendshipId);
+        var hasSuchFriendship = friendshipGroups.Any(group => group.Any(uf => uf.UserId == recipientId));
+
+        if (hasSuchFriendship)
+        {
+            throw new InvalidOperationException($"User #{senderId} already has a friendship with user #{recipientId}");
+        }
+
+        var currentDateTime = DateTime.UtcNow;
+        var friendship = new Friendship(currentDateTime, FriendshipStatus.Pending);
+
+        _context.Friendships.Add(friendship);
+        await _context.SaveChangesAsync();
+
+        var senderUserFriendship = new UserFriendship(senderId, friendship.Id, true);
+        var recipientUserFriendship = new UserFriendship(recipientId, friendship.Id, false);
+
+        _context.UserFriendships.Add(senderUserFriendship);
+        _context.UserFriendships.Add(recipientUserFriendship);
+
+        await _context.SaveChangesAsync();
+        return _mapper.Map<UserDto>(senderUserFriendship.User);
+    }
+
+    public async Task<UserDto> UpdateFriendshipRequest(UpdateFriendshipDto updateFriendshipDto)
+    {
+        var userId = updateFriendshipDto.UserId;
+        var friendshipId = updateFriendshipDto.FriendshipId;
+        var friendshipStatus = updateFriendshipDto.FriendshipStatus;
+        var currentUser = await GetCurrentUserEntityAsync();
+
+        ThrowIfIsNotMatchingIds(userId, currentUser.Id);
+
+        var friendshipToUpdate = currentUser.Friendships.FirstOrDefault(f => f.Id == friendshipId) 
+            ?? throw new NotFoundException(nameof(Friendship), (int)friendshipId);
+
+        switch (friendshipStatus)
+        {
+            case FriendshipStatus.Pending:
+                throw new InvalidOperationException("You cannot update a friendship status as 'Pending'");
+            case FriendshipStatus.Declined:
+                _context.Friendships.Remove(friendshipToUpdate);
+                break;
+            case FriendshipStatus.Accepted:
+                friendshipToUpdate.Status = friendshipStatus;
+                break;
+            default:
+                throw new InvalidOperationException("Not expected friendship status value");
+        }
+
+        await _context.SaveChangesAsync();
+        return _mapper.Map<UserDto>(currentUser);
+    }
+
+    private async Task<User> GetCurrentUserEntityAsync()
+    {
+        var userStringId = _userGetter.CurrentUserId;
+        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
+
+        return user ?? throw new NotFoundException(nameof(User));
     }
 
     private async Task<int> GetRewardFromChallenge(long challengeId)
@@ -195,5 +271,13 @@ public class UserService : BaseService, IUserService
         }
 
         return newUserName;
+    }
+
+    private static void ThrowIfIsNotMatchingIds(long userId, long currentUserId)
+    {
+        if (userId != currentUserId)
+        {
+            throw new InvalidOperationException($"User id: {userId} should match with current user id: {currentUserId}");
+        }
     }
 }
