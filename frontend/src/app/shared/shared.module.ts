@@ -23,7 +23,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 @NgModule({
@@ -50,6 +49,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         CustomInputComponent,
         CodeEditorComponent,
         ProgressBarComponent,
+        NotificationsComponent,
         HeaderComponent,
     ],
     exports: [
