@@ -6,11 +6,12 @@ import { IDropdownItem } from '@shared/models/dropdown-item';
     templateUrl: './challenges-dropdown-select.component.html',
     styleUrls: ['./challenges-dropdown-select.component.sass'],
 })
-
 export class ChallengesDropdownSelectComponent {
     @Input() items: IDropdownItem[] = [];
 
     @Input() selectedItem?: IDropdownItem;
+
+    @Input() canOpen: boolean;
 
     @Output() selectedItemChanged: EventEmitter<IDropdownItem> = new EventEmitter<IDropdownItem>();
 

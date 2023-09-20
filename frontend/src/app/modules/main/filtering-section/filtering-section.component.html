@@ -1,40 +1,31 @@
 <div class="filtering-section d-flex mt-3">
     <div class="filters d-flex flex-column">
         <div class="search-container m-0-12px">
-            <app-custom-input
-                [Identifier]="'search'"
-                [Width]="'100%'"
-                [Height]="'100%'"
-                [InputPlaceholder]="'Search'"
+            <app-custom-input [Identifier]="'search'" [Width]="'100%'" [Height]="'100%'" [InputPlaceholder]="'Search'"
                 (InputValueChange)="onSearchTextChange($event)"></app-custom-input>
             <fa-icon [icon]="'search'" size="lg" class="search-filter-icon"></fa-icon>
         </div>
         <app-dropdown-select
             [isMultiSelection]="false"
-            [title]="'By language'"
-            [items]="languagesNames"
-            (selectedItemsChanged)="onLanguageChange($event)"
-            class="m-0-12px"></app-dropdown-select>
-        <app-dropdown-select
-            [isMultiSelection]="false"
-            [title]="'By status'"
-            [items]="statusesNames"
-            (selectedItemsChanged)="onStatusChange($event)"
-            class="m-0-12px"></app-dropdown-select>
-        <app-dropdown-select
-            [isMultiSelection]="false"
-            [title]="'By progress'"
-            [items]="progressesNames"
-            (selectedItemsChanged)="onProgressChange($event)"
-            class="m-0-12px"></app-dropdown-select>
-        <app-dropdown-select
-            [isMultiSelection]="true"
-            [title]="'By tags'"
-            [items]="tagsNames"
-            (selectedItemsChanged)="onTagsChange($event)"
-            class="m-0-12px mb-28px"></app-dropdown-select>
+            [title]="'Sort By'"
+            [items]="sortingLabels"
+            (selectedItemsChanged)="onSortChange($event)"
+            class="m-0-12px">
+            >
+        </app-dropdown-select>
+        <app-dropdown-select [isMultiSelection]="false" [title]="'By language'" [items]="languagesNames"
+            (selectedItemsChanged)="onLanguageChange($event)" class="m-0-12px"></app-dropdown-select>
+        <app-dropdown-select [isMultiSelection]="false" [title]="'By status'" [items]="statusesNames"
+            (selectedItemsChanged)="onStatusChange($event)" class="m-0-12px"></app-dropdown-select>
+        <app-dropdown-select [isMultiSelection]="false" [title]="'By progress'" [items]="progressesNames"
+            (selectedItemsChanged)="onProgressChange($event)" class="m-0-12px"></app-dropdown-select>
+        <app-dropdown-select [isMultiSelection]="false" [title]="'By difficulty'" [items]="difficultyNames"
+            (selectedItemsChanged)="onDifficultyChange($event)" class="m-0-12px"></app-dropdown-select>
+        <app-dropdown-select [isMultiSelection]="true" [title]="'By tags'" [items]="tagsNames"
+            (selectedItemsChanged)="onTagsChange($event)" class="m-0-12px mb-28px"></app-dropdown-select>
+        
     </div>
-    <div class="challenges d-grid justify-content-center gap-2" infinite-scroll (scrolled)="onScroll()">
+    <div class="challenges d-flex flex-column gap-2" infinite-scroll (scrolled)="onScroll()">
         <div class="d-flex text-center text-white text-opacity-50 mt-3" *ngIf="!challenges.length && !loading">
             <div>
                 <h4>No available challenge</h4>
@@ -42,7 +33,7 @@
             </div>
         </div>
 
-        <div *ngFor="let challenge of challenges">
+        <div *ngFor="let challenge of challenges" class="challenges-list">
             <app-challenge [challenge]="challenge"></app-challenge>
         </div>
         <div *ngIf="loading">

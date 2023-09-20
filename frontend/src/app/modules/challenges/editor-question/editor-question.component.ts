@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getNewChallenge } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { CategoryType } from '@shared/enums/category-type';
 import { TabType } from '@shared/enums/tab-type';
+import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { ITag } from '@shared/models/tag/tag';
@@ -16,7 +17,7 @@ import { MarkdownService } from 'ngx-markdown';
     styleUrls: ['./editor-question.component.sass'],
 })
 export class EditorQuestionComponent implements OnInit, OnChanges {
-    @Input() challenge: INewChallenge = getNewChallenge();
+    @Input() challenge: INewChallenge | IEditChallenge = getNewChallenge();
 
     @Input() allTags: ITag[];
 
@@ -35,18 +36,10 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
     public selectedLevelName = '';
 
     inputForm = new FormGroup({
-        name: new FormControl(this.challenge.title, [
-            Validators.required,
-        ]),
-        description: new FormControl(this.challenge.instructions, [
-            Validators.required,
-        ]),
-        tags: new FormControl(this.selectedTagsNames, [
-            Validators.required,
-        ]),
-        level: new FormControl(this.selectedLevelName, [
-            Validators.required,
-        ]),
+        name: new FormControl(this.challenge.title, [Validators.required]),
+        description: new FormControl(this.challenge.instructions, [Validators.required]),
+        tags: new FormControl(this.selectedTagsNames, [Validators.required]),
+        level: new FormControl(this.selectedLevelName, [Validators.required]),
     });
 
     private bsEditorInstance: EditorInstance;
@@ -63,8 +56,7 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
 
     public customInputWidth = '100%';
 
-    constructor(private markdownService: MarkdownService) {
-    }
+    constructor(private markdownService: MarkdownService) {}
 
     public ngOnInit() {
         this.editorOptions = {
@@ -113,7 +105,7 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             return;
         }
 
-        this.challenge.tags = this.allTags.filter(tag => value.includes(tag.name));
+        this.challenge.tags = this.allTags.filter((tag) => value.includes(tag.name));
 
         this.inputForm.controls.tags.setValue(value);
         this.validationChange.emit(this.inputForm.valid);
@@ -124,7 +116,8 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             return;
         }
 
-        this.challenge.level = this.allLevels.find(item => item.name === value);
+        this.challenge.level = this.allLevels.find((item) => item.name === value);
+        this.challenge.levelId = this.challenge.level?.id!;
 
         this.inputForm.controls.level.setValue(this.challenge.level?.name ?? '');
         this.validationChange.emit(this.inputForm.valid);
@@ -139,13 +132,13 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             this.inputForm.markAllAsTouched();
         }
         if (allTags) {
-            this.allTagsNames = this.allTags.map(t => t.name);
+            this.allTagsNames = this.allTags.map((t) => t.name);
         }
         if (allLevels) {
-            this.allLevelsNames = this.allLevels.map(t => t.name);
+            this.allLevelsNames = this.allLevels.map((t) => t.name);
         }
         if (challenge) {
-            this.selectedTagsNames = this.challenge.tags.map(t => t.name);
+            this.selectedTagsNames = this.challenge.tags.map((t) => t.name);
             this.inputForm.controls.tags.setValue(this.selectedTagsNames);
 
             this.selectedLevelName = this.challenge.level?.name ?? '';

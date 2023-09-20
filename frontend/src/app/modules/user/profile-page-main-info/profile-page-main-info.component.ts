@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import * as utils from '@modules/user/profile-page-main-info/profile-page-main.utils';
 import { IUserFull } from '@shared/models/user/user-full';
@@ -30,8 +30,10 @@ export class ProfilePageMainInfoComponent implements OnChanges {
 
     constructor(private router: Router) {}
 
-    public ngOnChanges() {
-        this.updateSolutions();
+    public ngOnChanges({ user }: SimpleChanges) {
+        if (user && this.user) {
+            this.updateSolutions();
+        }
     }
 
     public onEditProfile() {

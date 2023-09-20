@@ -1,4 +1,15 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
+
+.creation-wrapper
+    margin: 40px 130px
+    background-color: $deep-dark-grey
+    border-radius: 32px
+    min-height: 100%
+
+.buttons
+    justify-content: flex-end
+    padding-right: 1rem
 
 .step-container
     color: $white-grey
@@ -15,20 +26,56 @@
     cursor: default
 
 .custom-button
-    color: $white-grey
+    font-weight: 600
     padding: 10px 15px
-    border: 1px solid $border-grey
     border-radius: 4px
     transition: all 0.1s ease-in-out
+    user-select: none
     &:active
         transform: scale(98%)
+    &:hover
+        background-color: $transient-grey
     &.accent
-        color: $white-grey
+        color: $white
         background-color: $green
         border: 1px solid $green
         text-shadow: $dark-grey 1px 1px 1px
+        &:hover
+            color: $lavender-ash
+            background-color: $dark-olive-green
+            border: 1px solid $dark-olive-green
     &:disabled
+        color: $lavender-ash
+        background-color: $dark-olive-green
+        border: 1px solid $dark-olive-green
         pointer-events: none
-        color: $silver
-        text-shadow: none
 
+.empty-container
+    height: 20px
+
+@media (max-width: $small-challenge)
+  .buttons
+    flex-direction: column
+    align-items: center
+    padding-right: 0 !important
+    & .custom-button
+        width: 50%
+
+  .language-block
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 12px
+    &-dropdown
+      justify-content: center
+      width: 100%
+      & app-challenges-dropdown-select
+        width: 80%
+
+.cancel-btn
+    color: $white-grey
+    border: 1px solid $border-grey
+    &:hover
+        color: $black
+        background-color: $lavender-ash
+        border: 1px solid $lavender-ash
