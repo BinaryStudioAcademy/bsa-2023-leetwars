@@ -36,7 +36,6 @@ namespace LeetWars.Builder.Extensions
         public static void RegisterProduceMessagesServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<ProducerSettings>(configuration.GetSection("RabbitMQProducer"));
-            services.AddSingleton(sp => sp.GetRequiredService<IOptions<ProducerSettings>>().Value);
             services.AddSingleton<IProducerService, ProducerService>();
         }
     }
