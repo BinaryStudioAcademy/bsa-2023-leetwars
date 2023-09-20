@@ -177,11 +177,15 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto)
     {
-        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
-                          ?? throw new ArgumentException(nameof(userInfoDto));
+        if (userInfoDto is null)
+        {
+            throw new ArgumentNullException(nameof(userInfoDto));
+        }
         
-        currentUser.Email = userInfoDto.Email;
-        currentUser.UserName = userInfoDto.Username;
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId);
+        
+        currentUser!.Email = userInfoDto.Email!;
+        currentUser!.UserName = userInfoDto.Username!;
         
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
@@ -190,8 +194,12 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserAvatarDto> UpdateUserAvatar(IFormFile image)
     {
-        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
-                            ?? throw new ArgumentException(nameof(image));
+        if(image is null)
+        {
+            throw new ArgumentNullException(nameof(image));
+        }
+        
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId);
         
         var uniqueFileName = FileNameHelper.CreateUniqueFileName(image!.FileName);
         await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
