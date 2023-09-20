@@ -243,7 +243,7 @@ namespace LeetWars.Core.BLL.Services
         {
             var challenge = await _context.Challenges
                 .Include(x => x.Author)
-                .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
+                .FirstOrDefaultAsync(challenge => challenge.Id == challengeId);
 
             return _mapper.Map<BriefChallengeInfoDto>(challenge);
         }
