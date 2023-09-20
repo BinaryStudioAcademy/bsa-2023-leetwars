@@ -11,10 +11,10 @@
         </ul>
     </nav>
     <div class="user-menu align-items-center d-flex">
-        <div class="notification">
+        <div class="notification"  (click)="showNotifications()">
             <fa-layers size="2x">
                 <fa-icon [icon]="['far', 'bell']"></fa-icon>
-                <fa-layers-counter [classes]="['change-color']" content="3"></fa-layers-counter>
+                <fa-layers-counter  *ngIf="countNotification" [classes]="['change-color']" content={{countNotification}}></fa-layers-counter>
             </fa-layers>
         </div>
         <div class="user" (click)="showMenu = !showMenu">

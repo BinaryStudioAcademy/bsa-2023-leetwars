@@ -42,7 +42,7 @@
                             [selectedItem]="selectedLanguageVersion">
                         </app-dropdown-select>
                     </div>
-                    <fa-icon (click)="toggleFullScreen()" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
+                    <fa-icon (click)="toggleFullScreen(editorContainer)" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
                 </div>
                 <app-code-editor class="my-code-editor" [initText]="initialSolution!" [language]="selectedLanguage"
                     [options]="editorOptions"></app-code-editor>
@@ -53,9 +53,9 @@
                     <div class="language-selection">
                         Sample test
                     </div>
-                    <fa-icon (click)="toggleFullScreen()" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
+                    <fa-icon (click)="toggleFullScreen(editorTestContainer)" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
                 </div>
-                <div class="editor-test" #editorContainer>
+                <div class="editor-test" #editorTestContainer>
                     <app-code-editor class="my-code-editor" [options]="editorOptions" [language]="selectedLanguage"
                         [initText]="testCode!"></app-code-editor>
                 </div>

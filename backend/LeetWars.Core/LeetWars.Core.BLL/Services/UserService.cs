@@ -113,6 +113,18 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(user);
     }
 
+    public async Task<BriefUserInfoDto> GetBriefUserInfoById(long id)
+    {
+        var user = await GetUserByExpressionAsync(user => user.Id == id);
+
+        if (user is null)
+        {
+            throw new ArgumentNullException("Not Found", new Exception("User was not found"));
+        }
+
+        return _mapper.Map<User, BriefUserInfoDto>(user);
+    }
+
     public async Task<UserFullDto> GetFullUserAsync(long id)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == id);

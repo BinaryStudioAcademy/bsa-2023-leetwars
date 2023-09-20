@@ -5,6 +5,7 @@ import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import {
+    DIFFICULTY_NAMES_MAP,
     PROGRESS_NAMES_MAP,
     SORTING_PROPERTIES,
     STATUS_NAMES_MAP,
@@ -35,6 +36,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     public tagsNames: string[] = [];
 
+    public difficultyNames: string[] = [];
+
     public sortingLabels = SORTING_PROPERTIES.map((x) => x.label) as string[];
 
     private sortingProperty?: ISortedModel;
@@ -59,6 +62,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     private statuses = STATUS_NAMES_MAP;
 
+    private difficulties = DIFFICULTY_NAMES_MAP;
+
     constructor(
         private challengeService: ChallengeService,
         private languageService: LanguageService,
@@ -75,6 +80,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
         this.statusesNames = this.statuses.map((item) => item.name);
         this.progressesNames = this.progresses.map((item) => item.name);
+        this.difficultyNames = this.difficulties.map((item) => item.name);
     }
 
     public onScroll() {
@@ -135,6 +141,15 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             .map((tagName) => this.tags.find((item) => item.name === tagName)?.id ?? 0)
             .filter((item) => item !== 0);
 
+        this.resetChallengesData();
+    }
+
+    public onDifficultyChange(value: string | string[]) {
+        if (typeof value !== 'string') {
+            return;
+        }
+
+        this.filter.difficultyLevel = this.difficulties.find((item) => item.name === value)?.state;
         this.resetChallengesData();
     }
 
