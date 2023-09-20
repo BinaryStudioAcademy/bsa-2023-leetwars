@@ -4,7 +4,7 @@ using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using System.Linq.Expressions;
 
-namespace LeetWars.Core.BLL.Services;
+namespace LeetWars.Core.BLL.Interfaces;
 
 public interface IUserService
 {
@@ -16,5 +16,6 @@ public interface IUserService
     public Task<UserFullDto> GetFullUserAsync(long id);
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId);
     public Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto);
+    public Task<BriefUserInfoDto> GetBriefUserInfoById(long id);
     public Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page);
 }

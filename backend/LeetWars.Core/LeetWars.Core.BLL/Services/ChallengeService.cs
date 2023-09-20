@@ -7,6 +7,7 @@ using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.Common.DTO.Tag;
 using LeetWars.Core.DAL.Context;
@@ -20,13 +21,19 @@ namespace LeetWars.Core.BLL.Services
     public class ChallengeService : BaseService, IChallengeService
     {
         private readonly IUserGetter _userGetter;
+        private readonly IMessageSenderService _messageSenderService;
+        private readonly IUserService _userService;
 
         public ChallengeService(
+            IMessageSenderService messageSenderService,
             LeetWarsCoreContext context,
             IMapper mapper,
-            IUserGetter userGetter
+            IUserGetter userGetter,
+            IUserService userService
         ) : base(context, mapper)
         {
+            _userService = userService;
+            _messageSenderService = messageSenderService;
             _userGetter = userGetter;
         }
 
@@ -137,6 +144,18 @@ namespace LeetWars.Core.BLL.Services
                     throw new ArgumentNullException(nameof(challengeStarDto));
                 }
 
+                var briefChallenge = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id);
+
+                var newNotification = new NewNotificationDto()
+                {
+                    ReceiverId = briefChallenge.Author.Id.ToString(),
+                    Sender = await _userService.GetBriefUserInfoById(challengeStarDto.AuthorId),
+                    TypeNotification = TypeNotifications.LikeChallenge,
+                    Challenge = briefChallenge
+                };
+
+                _messageSenderService.SendMessageToRabbitMQ(newNotification);
+
                 await _context.ChallengeStars.AddAsync(challengeStar);
             }
             else
@@ -190,6 +209,14 @@ namespace LeetWars.Core.BLL.Services
             _context.ChallengeVersions.AddRange(challengeVersions);
 
             await _context.SaveChangesAsync();
+            
+            var newNotification = new NewNotificationDto()
+            {
+                TypeNotification = TypeNotifications.NewChallenge,
+                Message = "New challenge!",
+            };
+
+            _messageSenderService.SendMessageToRabbitMQ(newNotification);
 
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
@@ -210,6 +237,15 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
+        }
+
+        private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
+        {
+            var challenge = await _context.Challenges
+                .Include(x => x.Author)
+                .FirstOrDefaultAsync(challenge => challenge.Id == challengeId);
+
+            return _mapper.Map<BriefChallengeInfoDto>(challenge);
         }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)
@@ -240,6 +276,7 @@ namespace LeetWars.Core.BLL.Services
                 }).ToList();
 
             _context.ChallengeTags.AddRange(editedChallengeTags);
+
         }
 
         private async Task<Challenge> GetChallengeByIdAsync(long challengeId)
