@@ -1,6 +1,5 @@
 ﻿using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using LeetWars.Notifier.WebAPI.Hubs;
-using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
@@ -36,7 +35,9 @@ public class CodeMessageConsumerService : BackgroundService
 
             if (request is not null)
             {
-                await _codeDisplayingHubContext.Clients.Client(request.UserConnectionId).BroadcastMessage(message);
+                Console.WriteLine($"notifier usercode: {request.UserConnectionId}");
+
+                await _codeDisplayingHubContext.Clients.Group(request.UserConnectionId).BroadcastMessage(message);
             }
         });
 

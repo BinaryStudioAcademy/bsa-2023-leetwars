@@ -18,6 +18,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddSignalR();
 
+builder.Services.RegisterRabbit(builder.Configuration);
 builder.Services.AddRabbitMqServices(builder.Configuration);
 builder.Services.AddCodeConsumerRabbitMqServices(builder.Configuration);
 

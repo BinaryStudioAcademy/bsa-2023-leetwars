@@ -20,25 +20,36 @@ namespace LeetWars.Builder.Services
             var result = new CodeRunResults
             {
                 UserConnectionId = request.UserConnectionId,
-                ChallengeVersionId = request.ChallengeVersionId,
                 Language = request.Language
             };
-            string buildProcessName = request.UserId + "_" + request.ChallengeVersionId + "-build";
+
+            await BuildCode(request, result);
+
+            await TestCode(request, result);
+
+            return result;
+        }
+
+        private async Task BuildCode(CodeRunRequest request, CodeRunResults result)
+        {
+            string buildProcessName = request.UserConnectionId + "-build";
 
             var buildLog = await _solutionRunner.RunSolutionBuild(new ContainerDataDto(buildProcessName, request.Language, request.UserCode, request.Tests ?? "", request.Preloaded ?? ""));
 
             _buildResultBuilder.BuildResults(buildLog, result, result.Language);
 
+        }
+
+        private async Task TestCode(CodeRunRequest request, CodeRunResults result)
+        {
             if (result.BuildResults?.IsSuccess ?? false) 
             {
-                string testProcessName = request.UserId + "_" + request.ChallengeVersionId + "-testing";
+                string testProcessName = request.UserConnectionId + "-testing";
 
                 var testRunResults = await _solutionRunner.RunSolutionTestsAsync(new ContainerDataDto(testProcessName, request.Language, request.UserCode, request.Tests ?? "", request.Preloaded ?? ""));
 
                 result.TestRunResults = testRunResults;
             }
-
-            return result;
-        }
+        }       
     }
 }

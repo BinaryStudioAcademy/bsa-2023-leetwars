@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HubConnection } from '@microsoft/signalr';
-import { map, Subject, Subscription } from 'rxjs';
+import { Guid } from 'guid-typescript';
+import { Subject, Subscription } from 'rxjs';
 
 import { SignalRHubFactoryService } from './signalr-hub-factory.service';
 
@@ -16,25 +17,18 @@ export class CodeDisplayingHubService {
 
     private subscriptions: Subscription[] = [];
 
-    public connectionId: string;
+    public singleUserGroupId: string;
 
     constructor(private hubFactory: SignalRHubFactoryService) {}
 
     async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
+        this.singleUserGroupId = Guid.create().toString();
         await this.init();
     }
 
     listenMessages(action: (msg: string) => void) {
-        const mappedObservable = this.messages.pipe(
-            map((message: string) => {
-                action(message);
-
-                return message;
-            }),
-        );
-
-        this.subscriptions.push(mappedObservable.subscribe());
+        this.subscriptions = [...this.subscriptions, this.messages.subscribe({ next: action })];
     }
 
     async stop() {
@@ -46,7 +40,7 @@ export class CodeDisplayingHubService {
         await this.hubConnection
             .start()
             .then(() => console.info(`"${this.hubFactory}" successfully started.`))
-            .then(() => this.getConnectionId())
+            .then(() => this.registerUser())
             .catch(() => console.info(`"${this.hubFactory}" failed.`));
 
         this.hubConnection.on('BroadcastMessage', (msg: string) => {
@@ -54,15 +48,13 @@ export class CodeDisplayingHubService {
         });
 
         this.hubConnection.onreconnected(() => {
-            this.getConnectionId();
+            this.registerUser();
         });
     }
 
-    public getConnectionId = async () => {
+    public registerUser = async () => {
         try {
-            const connectionId = await this.hubConnection.invoke('GetConnectionId');
-
-            this.connectionId = connectionId;
+            await this.hubConnection.invoke('OnConnectAsync', `${this.singleUserGroupId}`);
         } catch (error) {
             console.error('Error getting connection ID:', error);
         }

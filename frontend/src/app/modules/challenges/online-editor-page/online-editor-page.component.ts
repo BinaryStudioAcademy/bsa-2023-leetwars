@@ -3,7 +3,6 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
-import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
@@ -50,6 +49,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     user: IUser;
 
+    userId: string;
+
     private isFullscreen = false;
 
     constructor(
@@ -59,7 +60,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
         private router: Router,
-        private authService: AuthService,
     ) {
         super();
         breakpointObserver
@@ -130,19 +130,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     sendCode(): void {
-        this.authService.getUser().subscribe((user) => {
-            this.user = user;
-        });
-
         this.solution = {
-            userId: this.user.id,
-            userConnectionId: this.signalRService.connectionId,
-            challengeVersionId: this.challenge.id,
+            userConnectionId: this.signalRService.singleUserGroupId,
             language: this.selectedLanguage,
             userCode: this.initialSolution as string,
             tests: this.testCode,
         };
-        //
         this.challengeService.runTests(this.solution).subscribe();
     }
 
@@ -151,11 +144,9 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.signalRService.listenMessages((msg: string) => {
             const codeRunResults: ICodeRunResults = JSON.parse(msg) as ICodeRunResults;
 
-            if (codeRunResults.buildResults?.isSuccess) {
-                this.toastrService.showSuccess('code was compiled successfully');
-                if (codeRunResults.testRunResults) {
-                    this.showTestResults(codeRunResults.testRunResults);
-                }
+            if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults) {
+                this.toastrService.showSuccess('Code was compiled successfully');
+                this.showTestResults(codeRunResults.testRunResults);
             } else {
                 this.toastrService.showError(codeRunResults.buildResults?.buildMessage as string);
             }

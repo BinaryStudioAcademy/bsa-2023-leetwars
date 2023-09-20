@@ -12,12 +12,6 @@ namespace LeetWars.RabbitMQ.Extensions
         public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
-            services.AddSingleton(sp =>
-            {
-                var rabbitUri = new Uri(configuration["Rabbit"]);
-                var factory = new ConnectionFactory { Uri = rabbitUri };
-                return factory.CreateConnection();
-            });
             services.AddSingleton<IConsumerService, ConsumerService>();
             services.AddHostedService<MessageConsumerService>();
         }
@@ -27,6 +21,17 @@ namespace LeetWars.RabbitMQ.Extensions
             services.Configure<RabbitMQCodeConsumerSettings>(configuration.GetSection("RabbitMQCodeConsumer"));
             services.AddSingleton<INotifierCodeConsumerService, NotifierCodeConsumerService>();
             services.AddHostedService<CodeMessageConsumerService>();
+        }
+
+        public static void RegisterRabbit(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton(sp =>
+            {
+                var rabbitUri = new Uri(configuration["Rabbit"]);
+                var factory = new ConnectionFactory { Uri = rabbitUri };
+                return factory.CreateConnection();
+            });
+
         }
     }
 }
