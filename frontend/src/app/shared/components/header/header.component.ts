@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header-service';
@@ -27,6 +27,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ) {
         this.authService.getUser().subscribe((user) => {
             this.user = user;
+        });
+
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationStart) {
+                this.showMenu = false;
+            }
         });
     }
 
