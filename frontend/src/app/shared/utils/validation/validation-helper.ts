@@ -39,6 +39,9 @@ export function getFirebaseErrorMessage(errorCode: string): string | null {
         case 'auth/email-already-in-use':
             return firebaseValidationErrorMessages.emailAlreadyInUse;
 
+        case 'auth/account-exists-with-different-credential':
+            return firebaseValidationErrorMessages.differentCredential;
+
         default:
             return null;
     }
