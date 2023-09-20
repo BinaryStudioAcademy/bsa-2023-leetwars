@@ -64,10 +64,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         this.getUsers();
     }
 
-    public startCodeFight() {
-        // TODO: Send notification
-
-        this.openModal();
+    public startCodeFight(user: IUser) {
+        this.openModal(user);
     }
 
     public onScroll() {
@@ -106,10 +104,11 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
             });
     }
 
-    private openModal() {
+    private openModal(user: IUser) {
         const challengeSettingsSelect = this.modalService.open(ChallengeSelectionModalComponent);
 
         challengeSettingsSelect.componentInstance.languages = this.languages;
         challengeSettingsSelect.componentInstance.levels = this.levels;
+        challengeSettingsSelect.componentInstance.receiverId = user.id;
     }
 }

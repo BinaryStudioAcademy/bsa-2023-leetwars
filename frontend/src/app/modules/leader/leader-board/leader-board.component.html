@@ -13,7 +13,7 @@
                     <div class="user-name">{{ user.userName }}</div>
                     <div class="total-score">{{ user.totalScore }}</div>
                     <div class="start-fight">
-                        <button *ngIf="user.id !== currentUser.id" (click)="startCodeFight()">
+                        <button *ngIf="user.id !== currentUser.id" (click)="startCodeFight(user)">
                             <fa-icon [icon]="'user-ninja'"></fa-icon>
                             <span class="start-fight-text">Start Battle</span>
                         </button>

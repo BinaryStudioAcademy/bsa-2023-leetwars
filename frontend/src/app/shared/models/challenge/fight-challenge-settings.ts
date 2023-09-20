@@ -1,4 +1,4 @@
-export interface IFightChallengeSettings {
+export interface ICodeFightChallengeSettings {
     languageId: number;
     levelId: number;
 }
