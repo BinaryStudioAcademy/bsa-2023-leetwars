@@ -2,13 +2,18 @@
 <div class="creation-wrapper">
 <div class="d-flex gap-4 pt-4 buttons">
     <button 
-        *ngIf="!isEditMode"
+        *ngIf="!challengeId"
         [disabled]="currentStep !== ChallengeStep.Testcases"
         class="custom-button accent"
         (click)="onBtnCreateClick()"
     >Create challenge</button>
     <button
-        *ngIf="isEditMode"
+        *ngIf="challengeId"
+        class="custom-button delete"
+        (click)="onBtnDeleteClick()"
+    >Delete challenge</button>
+    <button
+        *ngIf="challengeId"
         class="custom-button accent"
         (click)="onBtnEditClick()"
     >Edit challenge</button>
