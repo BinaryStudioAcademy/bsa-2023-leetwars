@@ -54,4 +54,8 @@ export class ChallengeService {
     public createChallenge(challenge: INewChallenge): Observable<IChallenge> {
         return this.httpService.postRequest<IChallenge>(`${this.challengesRoute}`, challenge);
     }
+
+    public deleteChallenge(id: number): Observable<void> {
+        return this.httpService.deleteRequest(`${this.challengesRoute}/${id}`);
+    }
 }

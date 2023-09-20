@@ -44,6 +44,15 @@
             color: $lavender-ash
             background-color: $dark-olive-green
             border: 1px solid $dark-olive-green
+    &.delete
+        color: $white
+        background-color: $maroon
+        border: 1px solid $maroon
+        text-shadow: $dark-grey 1px 1px 1px
+        &:hover
+            color: $lavender-ash
+            background-color: $dark-maroon
+            border: 1px solid $dark-maroon
     &:disabled
         color: $lavender-ash
         background-color: $dark-olive-green
@@ -82,3 +91,15 @@
         color: $black
         background-color: $lavender-ash
         border: 1px solid $lavender-ash
+
+::ng-deep .delete-modal
+    .modal-content
+        background-color: $charcoal-grey
+    .modal-header
+        color: $green
+        .btn-close
+            background-color: $green
+    .modal-body, .modal-footer button
+        color: $white
+    
+        
