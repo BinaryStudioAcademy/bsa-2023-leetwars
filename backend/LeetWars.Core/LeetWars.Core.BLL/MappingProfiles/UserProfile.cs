@@ -16,6 +16,8 @@ namespace LeetWars.Core.BLL.MappingProfiles
         {
             CreateMap<User, UserDto>().ReverseMap();
 
+            CreateMap<User, BriefUserInfoDto>().ReverseMap();
+
             CreateMap<NewUserDto, User>();
 
             CreateMap<User, UserFullDto>()

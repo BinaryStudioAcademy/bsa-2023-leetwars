@@ -1,7 +1,9 @@
 /* eslint-disable no-empty-function */
 /* eslint-disable no-use-before-define */
-import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SecondsConstants } from '@shared/constants/second-constants';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
     selector: 'app-custom-input[Identifier]',
@@ -15,12 +17,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         },
     ],
 })
-export class CustomInputComponent implements ControlValueAccessor {
+export class CustomInputComponent implements ControlValueAccessor, OnInit {
+    ngOnInit(): void {
+        this.searchSubject
+            .pipe(debounceTime(SecondsConstants.Delay))
+            .subscribe((model) => {
+                this.InputValue = model;
+                this.InputValueChange.emit(model);
+            });
+    }
+
     onChange: (value: string) => void = () => {};
 
     onTouchedFn: () => void = () => {};
 
     private _value = '';
+
+    private searchSubject = new Subject<string>();
 
     get value(): string {
         return this._value;
@@ -69,8 +82,7 @@ export class CustomInputComponent implements ControlValueAccessor {
     showPassword = false;
 
     onInputChange(model: string) {
-        this.InputValue = model;
-        this.InputValueChange.emit(model);
+        this.searchSubject.next(model);
     }
 
     togglePasswordVisibility() {

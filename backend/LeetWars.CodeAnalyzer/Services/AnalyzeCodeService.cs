@@ -1,4 +1,5 @@
 ﻿using LeetWars.CodeAnalyzer.Interfaces;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.Common.DTO.CodeAnalysis;
 
 namespace LeetWars.CodeAnalyzer.Services
@@ -19,13 +20,13 @@ namespace LeetWars.CodeAnalyzer.Services
             string prompt = _openAiSettings.GetCodeAnalysisPrompt(requestDto.LanguageName, requestDto.CodeListing);
 
             var chatResponse = await _completionService.CreateCompletionAsync(prompt)
-                ?? throw new ArgumentNullException(nameof(requestDto));
+                ?? throw new NotFoundException(nameof(CodeRequestAnalysisDto));
 
             string response = chatResponse.ToString();
 
             if(string.IsNullOrWhiteSpace(response))
             {
-                throw new ArgumentNullException(nameof(requestDto));
+                throw new NotFoundException(nameof(CodeRequestAnalysisDto));
             }
 
             int qualityMark = int.Parse(response);

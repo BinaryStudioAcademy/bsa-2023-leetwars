@@ -1,10 +1,12 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class LanguageController : ControllerBase
     {

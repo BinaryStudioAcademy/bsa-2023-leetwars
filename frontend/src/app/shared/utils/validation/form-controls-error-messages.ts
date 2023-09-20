@@ -40,3 +40,7 @@ export const challengeLevelValidationErrorMessages: ControlErrorMessages = {
 export const challengeTagsValidationErrorMessages: ControlErrorMessages = {
     required: 'Please enter challenge tags',
 };
+
+export const firebaseValidationErrorMessages = {
+    emailAlreadyInUse: 'Error: This email address is already registered in the system.',
+};

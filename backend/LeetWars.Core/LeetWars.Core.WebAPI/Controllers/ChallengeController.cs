@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LeetWars.Core.WebAPI.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class ChallengeController : ControllerBase
     {
