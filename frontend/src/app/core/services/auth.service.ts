@@ -16,8 +16,6 @@ import { UserService } from './user.service';
     providedIn: 'root',
 })
 export class AuthService {
-    private providerName: string = 'firebase';
-
     public userSubject: BehaviorSubject<IUser | undefined>;
 
     private user: IUser | undefined;
@@ -25,6 +23,10 @@ export class AuthService {
     private userKeyName = 'userInfo';
 
     private tokenKeyName = 'userToken';
+
+    private providerName = 'firebase';
+
+    private popUpErrorMessage = 'auth/cancelled-popup-request';
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -51,8 +53,8 @@ export class AuthService {
             from(this.afAuth.createUserWithEmailAndPassword(user.email, user.password)).pipe(
                 first(),
                 tap(() => this.sendVerificationMail()),
-                catchError((error) => throwError(error.message)),
             ),
+            undefined,
             user.userName,
         );
     }
@@ -60,7 +62,6 @@ export class AuthService {
     public login(userDto: IUserLogin) {
         return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
             first(),
-            catchError((error) => throwError(error.message)),
             switchMap(() => this.userService.getCurrentUser()),
             tap((user) => this.setUserInfo(user)),
         );
@@ -79,11 +80,11 @@ export class AuthService {
     }
 
     public signInWithGoogle(isLogin: boolean = true) {
-        return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider())), isLogin);
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider()), true), isLogin);
     }
 
     public signInWithGitHub(isLogin: boolean = true) {
-        return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider())), isLogin);
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider()), true), isLogin);
     }
 
     // TODO: Implemented only firebase part
@@ -145,7 +146,11 @@ export class AuthService {
         });
     }
 
-    private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string | undefined = undefined) {
+    private createUser(
+        auth: Observable<firebase.auth.UserCredential>,
+        provider: boolean | undefined = false,
+        userName: string | undefined = undefined,
+    ) {
         return auth.pipe(
             switchMap((resp) =>
                 this.userService.createUser({
@@ -154,6 +159,7 @@ export class AuthService {
                     email: resp.user?.email ?? '',
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
+                    isWithProvider: provider ?? false,
                 })),
             tap((user) => this.setUserInfo(user)),
         );
@@ -178,7 +184,10 @@ export class AuthService {
                     message = error.message;
                 }
 
-                if (!message.toLowerCase().includes(this.providerName)) {
+                if (
+                    message.toLowerCase().includes(this.providerName) &&
+                    !message.toLowerCase().includes(this.popUpErrorMessage)
+                ) {
                     this.toastrNotification.showError(message);
                 }
 

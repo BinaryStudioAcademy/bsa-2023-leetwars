@@ -1,4 +1,7 @@
-﻿using LeetWars.RabbitMQ;
+﻿using LeetWars.Notifier.Hubs.Interfaces;
+using LeetWars.Notifier.Hubs;
+using LeetWars.RabbitMQ;
+using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client.Events;
 using System.Text;
 
@@ -7,24 +10,27 @@ namespace LeetWars.Notifier.WebAPI.Services
     public class MessageConsumerService : BackgroundService
     {
         private readonly IConsumerService _consumerService;
-
-        public MessageConsumerService(IConsumerService consumerService)
+        private readonly IHubContext<BroadcastHub, IBroadcastHubClient> _hubContext;
+        public MessageConsumerService(IConsumerService consumerService, IHubContext<BroadcastHub, IBroadcastHubClient> hubContext)
         {
-            _consumerService = consumerService; 
+            _consumerService = consumerService;
+            _hubContext = hubContext;
         }
 
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var handler = new EventHandler<BasicDeliverEventArgs>((model, args) =>
+            var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
                 var body = args.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine(message); //impement some logic here using signalR
+              
+                await _hubContext.Clients.All.BroadcastMessage(message);
+
                 _consumerService.SetAcknowledge(args.DeliveryTag, false);
             });
 
             _consumerService.Listen(handler);
-            return Task.CompletedTask;
+            await Task.CompletedTask;
         }
     }
 }

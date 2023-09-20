@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getNewChallengeVersion } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { NavigationTabType } from '@shared/enums/navigation-tab-type';
@@ -22,6 +22,8 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
     @Input() checkValidation = false;
 
     @Output() validationChange = new EventEmitter<boolean>();
+
+    @ViewChild('editorContainer') editorContainer: ElementRef;
 
     public editorContent: string;
 
@@ -123,13 +125,12 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
         }
     }
 
-    toggleMaximize() {
+    toggleMaximize(element: HTMLDivElement) {
         this.isMaximized = !this.isMaximized;
-
-        setTimeout(() => {
-            const resizeEvent = new Event('resize');
-
-            window.dispatchEvent(resizeEvent);
-        }, 50);
+        if (this.isMaximized) {
+            element.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
     }
 }

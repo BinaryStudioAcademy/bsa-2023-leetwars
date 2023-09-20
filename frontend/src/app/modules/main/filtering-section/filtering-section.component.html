@@ -19,8 +19,11 @@
             (selectedItemsChanged)="onStatusChange($event)" class="m-0-12px"></app-dropdown-select>
         <app-dropdown-select [isMultiSelection]="false" [title]="'By progress'" [items]="progressesNames"
             (selectedItemsChanged)="onProgressChange($event)" class="m-0-12px"></app-dropdown-select>
+        <app-dropdown-select [isMultiSelection]="false" [title]="'By difficulty'" [items]="difficultyNames"
+            (selectedItemsChanged)="onDifficultyChange($event)" class="m-0-12px"></app-dropdown-select>
         <app-dropdown-select [isMultiSelection]="true" [title]="'By tags'" [items]="tagsNames"
             (selectedItemsChanged)="onTagsChange($event)" class="m-0-12px mb-28px"></app-dropdown-select>
+        
     </div>
     <div class="challenges d-flex flex-column gap-2" infinite-scroll (scrolled)="onScroll()">
         <div class="d-flex text-center text-white text-opacity-50 mt-3" *ngIf="!challenges.length && !loading">
