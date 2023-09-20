@@ -4,6 +4,7 @@ import { IUser } from '@shared/models/user/user';
 import { IUserLogin } from '@shared/models/user/user-login';
 import { IUserRegister } from '@shared/models/user/user-register';
 import { AuthHelper } from '@shared/utils/auth.helper';
+import { getFirebaseErrorMessage } from '@shared/utils/validation/validation-helper';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
 import { BehaviorSubject, first, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
@@ -188,7 +189,7 @@ export class AuthService {
                     message.toLowerCase().includes(this.providerName) &&
                     !message.toLowerCase().includes(this.popUpErrorMessage)
                 ) {
-                    this.toastrNotification.showError(message);
+                    this.toastrNotification.showError(getFirebaseErrorMessage(message) ?? 'Something went wrong');
                 }
 
                 return of(undefined);

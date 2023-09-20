@@ -42,6 +42,7 @@
         color: $white
 
 .user
+    display: flex
     position: relative
     align-items: center
     cursor: pointer
@@ -55,9 +56,13 @@
 
 .username
     color: $transparent-grey
-    width: 100%
     font-family: "Open Sans", sans-serif
     font-size: 0.9rem
+    @media screen and (max-width: $large)
+        max-width: 100px
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
     @media screen and (max-width: $medium)
         display: none
 
@@ -86,15 +91,15 @@
             background-color: $green
 
 .navbar-nav
-    flex-direction: row 
+    flex-direction: row
     flex-wrap: nowrap
     @media screen and (max-width: $mobile)
         flex-wrap: wrap
 
-.navbar 
+.navbar
     justify-self: center
-  
-.nav.navbar-nav.tabset 
+
+.nav.navbar-nav.tabset
     list-style-type: none
     padding: 0
     gap: 30px
@@ -103,15 +108,15 @@
     @media screen and (max-width: $mobile)
         align-items: center
         justify-content: center
-  
-.nav.navbar-nav.tabset li 
+
+.nav.navbar-nav.tabset li
     display: inline-block
-    
-.nav.navbar-nav.tabset li.active a 
+
+.nav.navbar-nav.tabset li.active a
     color: $green
     border-bottom: 2px solid $green
 
-.nav.navbar-nav.tabset li a 
+.nav.navbar-nav.tabset li a
     font-size: 18px
     color: $white
     text-decoration: none
