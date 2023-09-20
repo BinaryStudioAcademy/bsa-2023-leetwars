@@ -102,11 +102,9 @@ namespace LeetWars.Core.WebAPI.Extentions
         public static IServiceCollection AddAzureBlobServices(
             this IServiceCollection services, IConfiguration configuration)
         {
-            var blobSettings = configuration.GetSection(BlobStorageSettings.Storage);
-            
-            var blobUrl = blobSettings["BlobUrl"];
-            var blobContainerName = blobSettings["BlobContainerName"];
-            var blobAccess = blobSettings["BlobAccess"];
+            var blobUrl = configuration["BLOB_URL"];
+            var blobContainerName = configuration["BLOB_CONTAINER_NAME"];
+            var blobAccess = configuration["BLOB_ACCESS"];
 
             var settings = new BlobStorageSettings(blobUrl, blobContainerName, blobAccess);
             var blobContainerClient = new BlobContainerClient(settings.BlobUrl, settings.BlobContainerName);

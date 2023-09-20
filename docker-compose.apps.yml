@@ -6,6 +6,9 @@ services:
       dockerfile: ./LeetWars.Core/Dockerfile
       args:
         - PROJECT_PORT=5050
+        - BLOB_URL=${BLOB_URL}
+        - BLOB_CONTAINER_NAME=${BLOB_CONTAINER_NAME}
+        - BLOB_ACCESS=${BLOB_ACCESS}
     container_name: "leetwars_core"
     restart: on-failure
     ports:
