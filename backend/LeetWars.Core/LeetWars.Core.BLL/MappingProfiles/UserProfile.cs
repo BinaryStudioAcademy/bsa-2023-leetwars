@@ -22,6 +22,8 @@ namespace LeetWars.Core.BLL.MappingProfiles
 
             CreateMap<NewUserDto, User>();
 
+            CreateMap<UpdateUserInfoDto, User>();
+
             CreateMap<User, UserFullDto>()
                 .ForMember(x => x.ImagePath, opt =>
                     opt.MapFrom<UserAvatarResolver>())

@@ -11,6 +11,7 @@ using LeetWars.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using LeetWars.Core.BLL.Extensions;
 using Bogus;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.AspNetCore.Http;
@@ -179,14 +180,13 @@ public class UserService : BaseService, IUserService
     {
         if (userInfoDto is null)
         {
-            throw new ArgumentNullException(nameof(userInfoDto));
+            throw new NotFoundException(nameof(UpdateUserInfoDto));
         }
 
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
-                            ?? throw new InvalidOperationException($"A user with id {_userGetter.CurrentUserId} is not found.");
+                            ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
         
-        currentUser.Email = userInfoDto.Email;
-        currentUser.UserName = userInfoDto.Username;
+        _mapper.Map(userInfoDto, currentUser);
         
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
@@ -201,7 +201,7 @@ public class UserService : BaseService, IUserService
         }
         
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
-                            ?? throw new InvalidOperationException($"A user with id {_userGetter.CurrentUserId} is not found.");
+                          ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
         
         var uniqueFileName = FileNameHelper.CreateUniqueFileName(image.FileName);
         await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
