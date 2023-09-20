@@ -1,8 +1,5 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal AS base
 ARG PROJECT_PORT
-ARG BLOB_URL
-
-ENV BLOB_URL=$BLOB_URL
 
 WORKDIR /app
 EXPOSE $PROJECT_PORT
