@@ -1,4 +1,4 @@
-<div class="component-container" [class.maximized]="isMaximized">
+<div class="component-container" [class.maximized]="isMaximized" #editorContainer>
     <div class="actions d-flex">
         <div class="actions-tabs d-flex">
             <tabset>
@@ -16,7 +16,7 @@
                 <div class="tab-text">Help</div>
             </div>
         </div>
-        <button class="maximize-btn" (click)="toggleMaximize()">
+        <button class="maximize-btn" (click)="toggleMaximize(editorContainer)">
             <fa-icon [icon]="isMaximized ? ['fas', 'compress'] : ['fas', 'maximize']"></fa-icon>
         </button>
     </div>
