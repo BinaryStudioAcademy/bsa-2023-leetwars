@@ -1,21 +1,18 @@
 using LeetWars.Builder.Services;
 using LeetWars.Builder.Interfaces;
-using LeetWars.Builder.RunnerDefaults;
 using LeetWars.Builder.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.RegisterConsumeMessagesServices(builder.Configuration);
 builder.Services.RegisterProduceMessagesServices(builder.Configuration);
 builder.Services.AddHostedService<ConsumeMessages>();
 builder.Services.AddSingleton<ISolutionRunnerService, SolutionRunnerService>();
+builder.Services.AddTransient<ICodeRunManagerService, CodeRunManagerService>();
+
+builder.Services.RegisterTestRunnerServices(builder.Configuration);
 
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello, world!");
-
-//Test
-app.MapGet("/docker/csharp", () => new SolutionRunnerService().RunCodeInContainerAsync(DefaultRunnerImageNames.CSharpImage, "csharp-test-container"));
-
-app.MapGet("/docker/js", () => new SolutionRunnerService().RunCodeInContainerAsync(DefaultRunnerImageNames.JSImage, "js-test-container"));
 
 app.Run();

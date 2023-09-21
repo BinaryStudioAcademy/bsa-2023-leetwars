@@ -1,94 +1,13 @@
+using LeetWars.RabbitMQ.Services;
+using LeetWars.RabbitMQ.Settings;
+using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
 namespace LeetWars.RabbitMQ;
-public class ConsumerService : IConsumerService
+public class ConsumerService : GeneralConsumerService, IConsumerService
 {
-    private readonly IConnection _connection;
-    private readonly IModel _channel;
-    private readonly ConsumerSettings _settings;
-    private bool disposedValue;
-
-    public ConsumerService(IConnection connection, ConsumerSettings settings)
+    public ConsumerService(IConnection connection, IOptions<ConsumerSettings> settings) : base(connection, settings)
     {
-        _connection = connection;
-        _settings = settings;
-        _channel = _connection.CreateModel();
-    }
-
-    public void Listen(EventHandler<BasicDeliverEventArgs> messageReceivedHandler)
-    {
-        SetupChannel();
-
-        var consumer = new EventingBasicConsumer(_channel);
-
-        consumer.Received += messageReceivedHandler;
-
-        if (_settings.SequentialFetch)
-        {
-            _channel.BasicQos(0, 1, false);
-        }
-
-        _channel.BasicConsume(_settings.QueueName, _settings.AutoAcknowledge, consumer);
-    }
-
-    public void ListenAsync(AsyncEventHandler<BasicDeliverEventArgs> messageReceivedHandler)
-    {
-        SetupChannel();
-
-        var consumer = new AsyncEventingBasicConsumer(_channel);
-
-        consumer.Received += messageReceivedHandler;
-
-        if (_settings.SequentialFetch)
-        {
-            _channel.BasicQos(0, 1, false);
-        }
-
-        _channel.BasicConsume(_settings.QueueName, _settings.AutoAcknowledge, consumer);
-    }
-
-    public void SetAcknowledge(ulong deliveryTag, bool processed)
-    {
-        if (processed)
-        {
-            _channel.BasicAck(deliveryTag, false);
-        }
-        else
-        {
-            _channel.BasicNack(deliveryTag, false, true);
-        }
-    }
-
-    
-    private void SetupChannel()
-    {
-        _channel.ExchangeDeclare(_settings.ExchangeName, _settings.ExchangeType);
-
-        _channel.QueueDeclare(_settings.QueueName, true, false, false);
-
-        _channel.QueueBind(_settings.QueueName, _settings.ExchangeName, _settings.RoutingKey);
-    }
-
-    protected virtual void Dispose(bool disposing)
-    {
-        if (!disposedValue)
-        {
-            if (disposing)
-            {
-                _channel.Dispose();
-                _connection.Dispose();
-            }
-
-            disposedValue = true;
-        }
-    }
-
-
-
-    public void Dispose()
-    {
-        Dispose(disposing: true);
-        GC.SuppressFinalize(this);
     }
 }

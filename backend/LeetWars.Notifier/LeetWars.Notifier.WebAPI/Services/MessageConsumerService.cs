@@ -1,8 +1,8 @@
+﻿using RabbitMQ.Client.Events;
 ﻿using LeetWars.Notifier.Hubs.Interfaces;
 using LeetWars.Notifier.Hubs;
 using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.SignalR;
-using RabbitMQ.Client.Events;
 using System.Text;
 
 namespace LeetWars.Notifier.WebAPI.Services
@@ -21,15 +21,18 @@ namespace LeetWars.Notifier.WebAPI.Services
         {
             var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
+                _consumerService.SetAcknowledge(args.DeliveryTag, true);
+
                 var body = args.Body.ToArray();
+
                 var message = Encoding.UTF8.GetString(body);
-              
+
                 await _hubContext.Clients.All.BroadcastMessage(message);
 
-                _consumerService.SetAcknowledge(args.DeliveryTag, false);
             });
 
             _consumerService.Listen(handler);
+
             await Task.CompletedTask;
         }
     }

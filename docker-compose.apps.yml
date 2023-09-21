@@ -36,7 +36,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     build:
       context: ./backend
-      dockerfile: /LeetWars.Builder/Dockerfile
+      dockerfile: ./LeetWars.Builder/Dockerfile
       args:
         - PROJECT_PORT=5090
     container_name: "leetwars_builder"
@@ -51,7 +51,7 @@ services:
   leetwars_emailer:
     build:
       context: ./backend
-      dockerfile: /LeetWars.Emailer/Dockerfile
+      dockerfile: ./LeetWars.Emailer/Dockerfile
       args:
         - PROJECT_PORT=5080
     container_name: "leetwars_emailer"
@@ -67,7 +67,7 @@ services:
   leetwars_codeanalyzer:
     build:
       context: ./backend
-      dockerfile: /LeetWars.CodeAnalyzer/Dockerfile
+      dockerfile: ./LeetWars.CodeAnalyzer/Dockerfile
       args:
         - PROJECT_PORT=5080
     container_name: "leetwars_codeanalyzer"

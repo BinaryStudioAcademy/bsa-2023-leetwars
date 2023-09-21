@@ -48,7 +48,6 @@ namespace LeetWars.Core.WebAPI.Extentions
                 var factory = new ConnectionFactory { Uri = rabbitUri };
                 return factory.CreateConnection();
             });
-            services.AddSingleton(sp => sp.GetRequiredService<IOptions<ProducerSettings>>().Value);
             services.AddSingleton<IProducerService, ProducerService>();
         }
 
