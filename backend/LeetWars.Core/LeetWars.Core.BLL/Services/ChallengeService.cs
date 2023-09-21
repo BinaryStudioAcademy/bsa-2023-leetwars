@@ -253,13 +253,13 @@ namespace LeetWars.Core.BLL.Services
                                             .Cast<LanguageLevel>()
                                             .ToArray();
 
-            var weeklyChallenges = levels.Select(level =>
+            levels.Select(level =>
             {
                 var challengesByLevel = _context.Challenges
                     .Where(x => x.Level != null && x.Level.SkillLevel == level)
                     .ToList();
 
-                var randomPosition = GetRandomInt(challengesByLevel.Count());
+                var randomPosition = GetRandomInt(challengesByLevel.Count);
                 var weeklyChallenge = challengesByLevel.Skip(GetRandomInt(randomPosition)).FirstOrDefault();
                 if (weeklyChallenge != null)
                 {
