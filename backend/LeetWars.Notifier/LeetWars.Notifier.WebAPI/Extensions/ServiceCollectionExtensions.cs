@@ -1,5 +1,7 @@
 ﻿using LeetWars.Notifier.WebAPI.Services;
-using Microsoft.Extensions.DependencyInjection;
+using LeetWars.RabbitMQ.Interfaces;
+using LeetWars.RabbitMQ.Services;
+using LeetWars.RabbitMQ.Settings;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 
@@ -10,6 +12,20 @@ namespace LeetWars.RabbitMQ.Extensions
         public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
+            services.AddSingleton<IConsumerService, ConsumerService>();
+            services.AddHostedService<MessageConsumerService>();
+            services.AddHostedService<NotificationConsumerService>();
+        }
+
+        public static void AddCodeConsumerRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<RabbitMQCodeConsumerSettings>(configuration.GetSection("RabbitMQCodeConsumer"));
+            services.AddSingleton<INotifierCodeConsumerService, NotifierCodeConsumerService>();
+            services.AddHostedService<CodeMessageConsumerService>();
+        }
+
+        public static void RegisterRabbit(this IServiceCollection services, IConfiguration configuration)
+        {
             services.AddSingleton(sp =>
             {
                 var rabbitUri = new Uri(configuration["Rabbit"]);

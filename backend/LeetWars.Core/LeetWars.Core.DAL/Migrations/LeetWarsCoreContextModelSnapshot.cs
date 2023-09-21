@@ -968,13 +968,183 @@ namespace LeetWars.Core.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            ChallengeId = 37L,
+                            ChallengeId = 2L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 3L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 4L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 5L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 6L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 7L,
+                            TagId = 1L
+                        },
+                        new
+                        {
+                            ChallengeId = 8L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 9L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 10L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 11L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 12L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 13L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 14L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 15L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 16L,
+                            TagId = 1L
+                        },
+                        new
+                        {
+                            ChallengeId = 17L,
+                            TagId = 9L
+                        },
+                        new
+                        {
+                            ChallengeId = 18L,
+                            TagId = 7L
+                        },
+                        new
+                        {
+                            ChallengeId = 19L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 20L,
+                            TagId = 9L
+                        },
+                        new
+                        {
+                            ChallengeId = 21L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 22L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 23L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 24L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 25L,
+                            TagId = 1L
+                        },
+                        new
+                        {
+                            ChallengeId = 26L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 27L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 28L,
+                            TagId = 1L
+                        },
+                        new
+                        {
+                            ChallengeId = 29L,
                             TagId = 6L
                         },
                         new
                         {
                             ChallengeId = 30L,
-                            TagId = 4L
+                            TagId = 1L
+                        },
+                        new
+                        {
+                            ChallengeId = 31L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 32L,
+                            TagId = 8L
+                        },
+                        new
+                        {
+                            ChallengeId = 33L,
+                            TagId = 8L
+                        },
+                        new
+                        {
+                            ChallengeId = 34L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 35L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 36L,
+                            TagId = 7L
+                        },
+                        new
+                        {
+                            ChallengeId = 37L,
+                            TagId = 1L
                         },
                         new
                         {
@@ -983,153 +1153,33 @@ namespace LeetWars.Core.DAL.Migrations
                         },
                         new
                         {
-                            ChallengeId = 33L,
-                            TagId = 6L
+                            ChallengeId = 39L,
+                            TagId = 3L
                         },
                         new
                         {
-                            ChallengeId = 32L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 44L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 9L,
-                            TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 2L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 53L,
+                            ChallengeId = 40L,
                             TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 65L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 30L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 33L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 27L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 1L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 7L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 57L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 23L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 53L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 5L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 9L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 29L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 14L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 4L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 28L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 9L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 43L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 25L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 46L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 70L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 2L,
-                            TagId = 8L
                         },
                         new
                         {
                             ChallengeId = 41L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 42L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 43L,
+                            TagId = 1L
+                        },
+                        new
+                        {
+                            ChallengeId = 44L,
                             TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 53L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 24L,
-                            TagId = 8L
                         },
                         new
                         {
@@ -1138,263 +1188,28 @@ namespace LeetWars.Core.DAL.Migrations
                         },
                         new
                         {
-                            ChallengeId = 59L,
-                            TagId = 5L
+                            ChallengeId = 46L,
+                            TagId = 1L
                         },
                         new
                         {
-                            ChallengeId = 70L,
-                            TagId = 7L
+                            ChallengeId = 47L,
+                            TagId = 2L
                         },
                         new
                         {
-                            ChallengeId = 17L,
+                            ChallengeId = 48L,
                             TagId = 4L
                         },
                         new
                         {
-                            ChallengeId = 9L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 70L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 15L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 39L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 44L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 37L,
+                            ChallengeId = 49L,
                             TagId = 3L
                         },
                         new
                         {
-                            ChallengeId = 44L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 68L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 20L,
+                            ChallengeId = 50L,
                             TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 17L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 36L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 15L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 60L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 43L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 11L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 54L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 60L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 7L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 27L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 52L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 19L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 42L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 17L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 16L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 69L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 15L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 31L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 59L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 21L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 25L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 12L,
-                            TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 68L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 21L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 27L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 31L,
-                            TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 23L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 31L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 27L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 5L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 24L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 14L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 65L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 17L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 34L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 23L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 31L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 7L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 36L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 29L,
-                            TagId = 4L
                         },
                         new
                         {
@@ -1403,388 +1218,153 @@ namespace LeetWars.Core.DAL.Migrations
                         },
                         new
                         {
-                            ChallengeId = 48L,
+                            ChallengeId = 52L,
                             TagId = 6L
                         },
                         new
                         {
-                            ChallengeId = 58L,
+                            ChallengeId = 53L,
                             TagId = 7L
                         },
                         new
                         {
                             ChallengeId = 54L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 46L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 13L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 40L,
                             TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 58L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 3L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 4L,
-                            TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 63L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 38L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 7L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 2L,
-                            TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 57L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 13L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 39L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 65L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 14L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 53L,
-                            TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 50L,
-                            TagId = 5L
                         },
                         new
                         {
                             ChallengeId = 55L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 6L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 48L,
                             TagId = 1L
                         },
                         new
                         {
-                            ChallengeId = 41L,
-                            TagId = 8L
+                            ChallengeId = 56L,
+                            TagId = 6L
                         },
                         new
                         {
-                            ChallengeId = 49L,
-                            TagId = 9L
+                            ChallengeId = 57L,
+                            TagId = 2L
                         },
                         new
                         {
-                            ChallengeId = 41L,
+                            ChallengeId = 58L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 59L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 60L,
                             TagId = 9L
                         },
                         new
                         {
                             ChallengeId = 61L,
-                            TagId = 6L
+                            TagId = 9L
                         },
                         new
                         {
-                            ChallengeId = 55L,
-                            TagId = 4L
+                            ChallengeId = 62L,
+                            TagId = 1L
                         },
                         new
                         {
-                            ChallengeId = 56L,
+                            ChallengeId = 63L,
                             TagId = 8L
                         },
                         new
                         {
-                            ChallengeId = 21L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 45L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 42L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 53L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 52L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 24L,
+                            ChallengeId = 64L,
                             TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 70L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 37L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 15L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 29L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 59L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 18L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 55L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 20L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 24L,
-                            TagId = 9L
                         },
                         new
                         {
                             ChallengeId = 65L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 38L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 54L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 40L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 44L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 59L,
-                            TagId = 3L
-                        },
-                        new
-                        {
-                            ChallengeId = 44L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 52L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 47L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 15L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 54L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 8L,
-                            TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 48L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 34L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 7L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 1L,
                             TagId = 2L
                         },
                         new
                         {
                             ChallengeId = 66L,
-                            TagId = 2L
+                            TagId = 7L
+                        },
+                        new
+                        {
+                            ChallengeId = 67L,
+                            TagId = 7L
                         },
                         new
                         {
                             ChallengeId = 68L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 21L,
                             TagId = 3L
                         },
                         new
                         {
-                            ChallengeId = 35L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 24L,
-                            TagId = 1L
-                        },
-                        new
-                        {
-                            ChallengeId = 24L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 29L,
-                            TagId = 9L
-                        },
-                        new
-                        {
-                            ChallengeId = 36L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 13L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 63L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 2L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 41L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 20L,
-                            TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 10L,
-                            TagId = 6L
-                        },
-                        new
-                        {
-                            ChallengeId = 47L,
-                            TagId = 5L
-                        },
-                        new
-                        {
-                            ChallengeId = 44L,
+                            ChallengeId = 69L,
                             TagId = 8L
                         },
                         new
                         {
-                            ChallengeId = 32L,
+                            ChallengeId = 70L,
                             TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 1L,
+                            TagId = 9L
+                        },
+                        new
+                        {
+                            ChallengeId = 2L,
+                            TagId = 8L
+                        },
+                        new
+                        {
+                            ChallengeId = 3L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 4L,
+                            TagId = 9L
+                        },
+                        new
+                        {
+                            ChallengeId = 5L,
+                            TagId = 7L
+                        },
+                        new
+                        {
+                            ChallengeId = 6L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 7L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 8L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 9L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 10L,
+                            TagId = 9L
+                        },
+                        new
+                        {
+                            ChallengeId = 11L,
+                            TagId = 2L
                         },
                         new
                         {
@@ -1793,67 +1373,107 @@ namespace LeetWars.Core.DAL.Migrations
                         },
                         new
                         {
-                            ChallengeId = 17L,
+                            ChallengeId = 13L,
                             TagId = 7L
-                        },
-                        new
-                        {
-                            ChallengeId = 44L,
-                            TagId = 9L
                         },
                         new
                         {
                             ChallengeId = 14L,
-                            TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 39L,
-                            TagId = 4L
-                        },
-                        new
-                        {
-                            ChallengeId = 65L,
                             TagId = 5L
                         },
                         new
                         {
-                            ChallengeId = 3L,
-                            TagId = 7L
+                            ChallengeId = 15L,
+                            TagId = 1L
                         },
                         new
                         {
-                            ChallengeId = 8L,
-                            TagId = 2L
-                        },
-                        new
-                        {
-                            ChallengeId = 50L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 59L,
-                            TagId = 8L
-                        },
-                        new
-                        {
-                            ChallengeId = 6L,
+                            ChallengeId = 16L,
                             TagId = 6L
                         },
                         new
                         {
-                            ChallengeId = 47L,
-                            TagId = 9L
+                            ChallengeId = 17L,
+                            TagId = 1L
                         },
                         new
                         {
-                            ChallengeId = 17L,
+                            ChallengeId = 18L,
                             TagId = 5L
                         },
                         new
                         {
-                            ChallengeId = 67L,
+                            ChallengeId = 19L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 20L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 21L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 22L,
+                            TagId = 9L
+                        },
+                        new
+                        {
+                            ChallengeId = 23L,
+                            TagId = 7L
+                        },
+                        new
+                        {
+                            ChallengeId = 24L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 25L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 26L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 28L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 29L,
+                            TagId = 9L
+                        },
+                        new
+                        {
+                            ChallengeId = 30L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 33L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 34L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 35L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 36L,
                             TagId = 2L
                         },
                         new
@@ -1863,18 +1483,158 @@ namespace LeetWars.Core.DAL.Migrations
                         },
                         new
                         {
-                            ChallengeId = 13L,
+                            ChallengeId = 38L,
                             TagId = 7L
                         },
                         new
                         {
-                            ChallengeId = 16L,
+                            ChallengeId = 39L,
                             TagId = 7L
                         },
                         new
                         {
-                            ChallengeId = 41L,
+                            ChallengeId = 40L,
+                            TagId = 8L
+                        },
+                        new
+                        {
+                            ChallengeId = 42L,
+                            TagId = 1L
+                        },
+                        new
+                        {
+                            ChallengeId = 43L,
                             TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 44L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 45L,
+                            TagId = 8L
+                        },
+                        new
+                        {
+                            ChallengeId = 46L,
+                            TagId = 7L
+                        },
+                        new
+                        {
+                            ChallengeId = 47L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 48L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 49L,
+                            TagId = 5L
+                        },
+                        new
+                        {
+                            ChallengeId = 50L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 51L,
+                            TagId = 7L
+                        },
+                        new
+                        {
+                            ChallengeId = 52L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 53L,
+                            TagId = 1L
+                        },
+                        new
+                        {
+                            ChallengeId = 54L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 55L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 56L,
+                            TagId = 9L
+                        },
+                        new
+                        {
+                            ChallengeId = 59L,
+                            TagId = 8L
+                        },
+                        new
+                        {
+                            ChallengeId = 60L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 61L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 62L,
+                            TagId = 8L
+                        },
+                        new
+                        {
+                            ChallengeId = 63L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 64L,
+                            TagId = 3L
+                        },
+                        new
+                        {
+                            ChallengeId = 65L,
+                            TagId = 7L
+                        },
+                        new
+                        {
+                            ChallengeId = 66L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 67L,
+                            TagId = 6L
+                        },
+                        new
+                        {
+                            ChallengeId = 68L,
+                            TagId = 2L
+                        },
+                        new
+                        {
+                            ChallengeId = 69L,
+                            TagId = 4L
+                        },
+                        new
+                        {
+                            ChallengeId = 70L,
+                            TagId = 9L
+                        },
+                        new
+                        {
+                            ChallengeId = 1L,
+                            TagId = 5L
                         });
                 });
 
@@ -1935,7 +1695,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            ChallengeId = 10L,
+                            ChallengeId = 2L,
                             CompleteSolution = "Doloribus modi voluptatum facere eius rerum provident nemo soluta quidem.",
                             CreatedAt = new DateTime(2023, 5, 18, 17, 3, 6, 316, DateTimeKind.Utc).AddTicks(7608),
                             CreatedBy = 8L,
@@ -1943,7 +1703,7 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Eos quae aliquid qui est sit quidem doloribus.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
+                            Status = 0,
                             TestCases = "Dolores nostrum earum deleniti iusto aut nesciunt modi et."
                         },
                         new
@@ -1957,8 +1717,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Et fugit vero vitae.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "amet"
+                            Status = 1,
+                            TestCases = "Voluptatum quia quia nesciunt sequi impedit necessitatibus voluptas repellat.\nOmnis est magnam rerum eum repudiandae minima tenetur.\nAtque reprehenderit accusamus dolore est.\nMaiores non et perspiciatis.\nMinima pariatur dignissimos eum."
                         },
                         new
                         {
@@ -1971,8 +1731,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Amet voluptates temporibus esse magni.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Minima accusamus magnam quia laudantium id ut corrupti. Et id nulla nesciunt. Nesciunt minima cupiditate. Dolore corrupti iusto ipsam sapiente."
+                            Status = 2,
+                            TestCases = "maxime"
                         },
                         new
                         {
@@ -1985,8 +1745,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Quis perferendis et pariatur sapiente repellat quasi.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Exercitationem dolorem adipisci veniam blanditiis quidem earum tempore molestias."
+                            Status = 3,
+                            TestCases = "Molestiae hic et officiis accusantium nostrum repellat aut et."
                         },
                         new
                         {
@@ -1999,8 +1759,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Fugit mollitia aut ab eum est quaerat consequatur.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Aliquid neque nemo dolore possimus.\nOptio veniam ratione qui nulla vel in aut.\nVel sit repellendus cupiditate quo quo.\nSunt unde ex doloremque necessitatibus quo veniam dolor officiis eos.\nExplicabo enim necessitatibus soluta est libero voluptatum."
+                            Status = 3,
+                            TestCases = "Ullam unde libero dolorem voluptatem et. Eius nemo modi. Ipsum modi eaque iusto commodi architecto omnis necessitatibus est. Eos repellat delectus culpa maiores officiis deleniti cumque similique. Et sed ab esse quis voluptatem et veniam."
                         },
                         new
                         {
@@ -2014,7 +1774,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 2,
-                            TestCases = "Dolor nesciunt sit itaque quidem debitis."
+                            TestCases = "atque"
                         },
                         new
                         {
@@ -2027,8 +1787,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Iure nisi voluptatem.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "suscipit"
+                            Status = 0,
+                            TestCases = "Cumque velit aspernatur voluptatum fugiat aut consequatur est voluptatum."
                         },
                         new
                         {
@@ -2041,8 +1801,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Voluptas veniam rerum sed qui ipsam accusamus fuga id.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "rerum"
+                            Status = 1,
+                            TestCases = "Officia harum in ab at at dolorem qui nobis. Rerum quo aliquam. Et illo voluptas culpa ea ducimus ea. Et eum est est neque qui."
                         },
                         new
                         {
@@ -2055,8 +1815,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Officia quos laboriosam porro aut consequuntur.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "dolor"
+                            Status = 3,
+                            TestCases = "Voluptatem autem voluptas ducimus maiores. Odit error adipisci ea vitae eligendi. Laboriosam commodi atque. Dolor eos est repellat enim aliquam ratione. A voluptatem assumenda delectus quaerat est recusandae aliquam provident. Rerum eius accusamus rerum recusandae cum et officia odit aliquid."
                         },
                         new
                         {
@@ -2070,7 +1830,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Natus esse sint magnam incidunt velit adipisci voluptatem."
+                            TestCases = "Laudantium accusantium possimus mollitia totam blanditiis odio corrupti asperiores. Dolor ut vitae aut molestias pariatur expedita provident ex. Nihil numquam nihil. Consequatur eos dolor quae."
                         },
                         new
                         {
@@ -2083,8 +1843,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Laudantium accusantium possimus mollitia totam blanditiis odio corrupti asperiores.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Repellendus labore aut aut. Quaerat iure voluptatem exercitationem ut ut. Facere similique molestiae. Ex sit magnam animi natus deserunt voluptas."
+                            Status = 0,
+                            TestCases = "facere"
                         },
                         new
                         {
@@ -2097,8 +1857,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Quaerat hic facilis quod expedita adipisci voluptates molestiae qui.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "cumque"
+                            Status = 2,
+                            TestCases = "Dolorem occaecati minus natus explicabo repudiandae. Totam architecto sequi blanditiis vero nulla perspiciatis consequatur. Ut dolor ut enim atque amet quia. Dicta reiciendis aliquid doloribus qui perferendis odio ratione. Magnam atque minus."
                         },
                         new
                         {
@@ -2111,8 +1871,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Natus explicabo repudiandae optio totam architecto sequi blanditiis.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "repellat"
+                            Status = 1,
+                            TestCases = "odit"
                         },
                         new
                         {
@@ -2125,8 +1885,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Fugit error nihil aut veritatis quo.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "maiores"
+                            Status = 3,
+                            TestCases = "aperiam"
                         },
                         new
                         {
@@ -2139,8 +1899,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Dolor labore numquam at praesentium ea ut aut rerum.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Tempora explicabo quasi esse aspernatur suscipit facere perspiciatis inventore asperiores."
+                            Status = 2,
+                            TestCases = "Harum id enim quisquam at reprehenderit beatae magnam harum. Assumenda laboriosam saepe. Non ipsa ut accusamus voluptas eos nesciunt repellendus expedita. Perferendis dolorem earum provident distinctio consequatur animi quam. Ipsum et et soluta."
                         },
                         new
                         {
@@ -2153,8 +1913,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Ut consequatur laborum laudantium quos consequatur inventore.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "et"
+                            Status = 2,
+                            TestCases = "Rem cumque at consequatur tempora et facilis corporis ut iste. Autem ipsum sapiente. Qui ratione et dolores quas ut."
                         },
                         new
                         {
@@ -2168,7 +1928,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 0,
-                            TestCases = "Ut accusamus voluptas. Nesciunt repellendus expedita est perferendis dolorem earum provident distinctio. Animi quam consectetur ipsum et. Soluta vel tempore est perferendis temporibus quae. Est consequatur quis commodi ipsum veritatis in officiis et. Cum nulla rerum fuga impedit doloremque qui unde deserunt."
+                            TestCases = "Fugit animi quo et dolorem sed ipsum."
                         },
                         new
                         {
@@ -2181,8 +1941,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Dolorem vitae consequatur qui in ea animi autem.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Rem cumque at consequatur tempora et facilis corporis ut iste. Autem ipsum sapiente. Qui ratione et dolores quas ut."
+                            Status = 3,
+                            TestCases = "Sit accusamus animi maxime molestiae qui.\nVoluptas quia enim.\nRecusandae ea dicta numquam.\nAccusamus qui atque dolorum odit non quis molestias.\nCorporis fugiat quis nemo culpa voluptatem omnis minus."
                         },
                         new
                         {
@@ -2195,8 +1955,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Et harum dolores.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Id nobis dicta consequatur facilis quae deleniti eaque doloribus.\nAutem earum quos.\nExplicabo delectus expedita quisquam quam aspernatur vel animi nostrum.\nNecessitatibus itaque adipisci optio ab est pariatur."
+                            Status = 2,
+                            TestCases = "Laudantium culpa accusamus fuga. Quidem excepturi ipsa explicabo. Nemo placeat soluta qui. Maxime ut cumque."
                         },
                         new
                         {
@@ -2209,8 +1969,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Quos reprehenderit saepe voluptate quia ut culpa ut molestias.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Quis nemo culpa voluptatem omnis minus deserunt quisquam nemo.\nCorporis rerum dolor sed omnis.\nError dolore praesentium quos quia asperiores et impedit tenetur voluptatem."
+                            Status = 1,
+                            TestCases = "Consequatur voluptas velit cum dolore dolorum ut. Facilis voluptatem sed. Ducimus officiis non possimus."
                         },
                         new
                         {
@@ -2223,8 +1983,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Possimus sit maxime doloribus est velit vel commodi et.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "vel"
+                            Status = 3,
+                            TestCases = "eaque"
                         },
                         new
                         {
@@ -2237,8 +1997,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Fugiat consequatur ipsam dolore laudantium culpa accusamus fuga.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Nesciunt nemo placeat.\nQui voluptatem maxime ut cumque reiciendis dolores unde."
+                            Status = 3,
+                            TestCases = "In quis vel iure blanditiis dolorem mollitia quo est quis."
                         },
                         new
                         {
@@ -2251,8 +2011,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Consequuntur vel ducimus ducimus dolor eveniet tenetur ut hic qui.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "delectus"
+                            Status = 0,
+                            TestCases = "Autem minus in ullam.\nRepellat et ullam unde molestias natus.\nQuod reiciendis dolor atque quaerat."
                         },
                         new
                         {
@@ -2265,8 +2025,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Vel animi placeat.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Debitis adipisci eaque voluptates voluptas fugiat vitae consectetur voluptates. Nihil voluptatem illo voluptatem laborum veniam hic. Architecto dolores aut quibusdam minus doloremque maxime aliquid molestiae. Ut explicabo consequuntur delectus maiores blanditiis sit quo."
+                            Status = 3,
+                            TestCases = "Accusamus aliquam reiciendis consectetur sint dicta eaque autem magni aliquam. Atque atque qui quis reprehenderit. Mollitia quaerat repudiandae est."
                         },
                         new
                         {
@@ -2279,8 +2039,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Velit dolor maxime tenetur molestiae distinctio commodi.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Eos sit repellat et aut autem maiores sit qui."
+                            Status = 0,
+                            TestCases = "Consequuntur cum aut dolor eligendi mollitia aut est sunt rerum. Voluptatum qui porro fugiat. Vel inventore facilis totam consequatur consequuntur. Officia optio ut expedita laudantium tempora voluptas. Labore iste eligendi illo maiores sit ipsam sunt."
                         },
                         new
                         {
@@ -2293,8 +2053,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Velit repellendus ad accusamus autem facere deserunt eius illum.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Aut omnis incidunt.\nEveniet doloribus eum sapiente libero vel voluptatibus et.\nPorro ea earum repudiandae sunt sint accusamus.\nReiciendis consectetur sint dicta eaque.\nMagni aliquam minima atque atque qui quis reprehenderit neque.\nQuaerat repudiandae est assumenda harum omnis numquam."
+                            Status = 3,
+                            TestCases = "Placeat itaque autem non in itaque deserunt."
                         },
                         new
                         {
@@ -2307,8 +2067,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Dolorum molestiae reiciendis.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Voluptas quidem labore iste.\nIllo maiores sit ipsam sunt repellat et delectus.\nItaque voluptas ducimus iusto id dignissimos.\nHarum vero dolor sed."
+                            Status = 3,
+                            TestCases = "quasi"
                         },
                         new
                         {
@@ -2321,8 +2081,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Autem non in itaque deserunt dolorem dolores quis provident rerum.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Vel iusto mollitia unde dolor et voluptatem tempora.\nAtque sapiente aspernatur voluptas laborum asperiores totam aperiam.\nRem eum blanditiis et ad sint dolorem voluptas veritatis voluptas.\nVel consequatur at corrupti voluptates animi.\nQuasi autem voluptate voluptatem excepturi libero.\nIn possimus sit temporibus vel nesciunt id autem culpa et."
+                            Status = 0,
+                            TestCases = "In possimus sit temporibus vel nesciunt id autem culpa et.\nEt in nesciunt beatae vel velit.\nOptio omnis et sed aut est esse perferendis animi.\nLabore sed quia accusamus temporibus eum.\nOmnis fugiat reiciendis dolore dolorem pariatur iusto repellendus laborum."
                         },
                         new
                         {
@@ -2335,8 +2095,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Aut est esse.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Sed quia accusamus temporibus."
+                            Status = 2,
+                            TestCases = "aperiam"
                         },
                         new
                         {
@@ -2349,8 +2109,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Doloribus consequatur voluptate eum perspiciatis temporibus illo eveniet.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Officia et quae sed."
+                            Status = 2,
+                            TestCases = "et"
                         },
                         new
                         {
@@ -2363,8 +2123,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Illo tempora et nulla sint molestias odio sit laboriosam.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Laudantium velit et."
+                            Status = 2,
+                            TestCases = "Voluptatem provident magnam exercitationem."
                         },
                         new
                         {
@@ -2377,8 +2137,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Tempore vel nihil voluptas incidunt earum dolor maiores qui quo.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Eveniet nulla id laboriosam.\nCupiditate commodi voluptatibus magnam explicabo consequatur libero.\nRatione praesentium aut ipsum officia unde magnam autem.\nSapiente officia odio dolor voluptas perferendis.\nSit amet nihil sed harum similique."
+                            Status = 0,
+                            TestCases = "dolore"
                         },
                         new
                         {
@@ -2391,8 +2151,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Vitae quia repudiandae perferendis ut rerum sint amet.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Aut voluptatem ut consequatur soluta aliquid.\nSint et iure totam veritatis in ut.\nVoluptas aut est nulla consequuntur qui aut.\nCupiditate voluptas in quis aut qui.\nNisi libero aut.\nUt beatae et."
+                            Status = 2,
+                            TestCases = "Praesentium aut ipsum officia.\nMagnam autem nihil sapiente officia odio dolor.\nPerferendis qui sit amet nihil sed harum similique tempora.\nSit repellendus eveniet ea.\nEligendi vitae quia repudiandae."
                         },
                         new
                         {
@@ -2405,8 +2165,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Necessitatibus et voluptate eum iusto autem.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Ut laboriosam inventore non fugit. A consequatur aliquid. Est eligendi quia sint odio earum totam asperiores."
+                            Status = 3,
+                            TestCases = "dicta"
                         },
                         new
                         {
@@ -2419,8 +2179,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Nobis qui quas.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "porro"
+                            Status = 3,
+                            TestCases = "Ipsa quibusdam quaerat atque necessitatibus et voluptate eum iusto.\nLaudantium tenetur impedit fuga beatae illum necessitatibus ut earum.\nTemporibus repudiandae voluptatibus aut aliquid ut laboriosam inventore non.\nBeatae a consequatur.\nMaxime est eligendi quia sint."
                         },
                         new
                         {
@@ -2434,7 +2194,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 2,
-                            TestCases = "Voluptatum modi quaerat placeat et sint dolores.\nConsequuntur doloribus rerum mollitia consequatur sint itaque ut.\nVoluptate fugit labore quas dolores nisi alias.\nMagnam provident quam et necessitatibus."
+                            TestCases = "Molestias hic ex debitis molestiae quia nobis qui. At voluptatem sint sunt et natus inventore. Possimus cumque eveniet quasi. Accusantium voluptatem et fugiat."
                         },
                         new
                         {
@@ -2447,8 +2207,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Est vitae ducimus.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "in"
+                            Status = 1,
+                            TestCases = "quaerat"
                         },
                         new
                         {
@@ -2461,8 +2221,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Sequi est deserunt.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Accusantium laudantium sed dolore officia impedit similique. Facilis porro et rerum ea aliquam cum est maiores quia. Omnis nesciunt sit quae veniam id. Aliquid qui omnis voluptas itaque quis est vero illum sit. Commodi quia ad aut aut eos ipsum sit aperiam."
+                            Status = 2,
+                            TestCases = "Adipisci in ipsa ut qui quia et neque vel."
                         },
                         new
                         {
@@ -2475,8 +2235,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Sint facilis laborum ea quo quis.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Illum architecto repudiandae explicabo quia id ipsum."
+                            Status = 3,
+                            TestCases = "Et rerum ea aliquam cum est maiores quia. Omnis nesciunt sit quae veniam id. Aliquid qui omnis voluptas itaque quis est vero illum sit. Commodi quia ad aut aut eos ipsum sit aperiam. Dicta quasi dolor inventore ullam."
                         },
                         new
                         {
@@ -2489,8 +2249,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Quis dolore voluptate officia itaque atque quaerat voluptas molestiae laborum.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Dicta magnam laboriosam consequatur optio suscipit aliquid eum provident sapiente. Assumenda nam natus. Iste enim maiores."
+                            Status = 0,
+                            TestCases = "Animi quo quisquam. Repudiandae ut animi quaerat reprehenderit voluptas et. Est voluptate rerum iusto sit veniam dolor magnam et. Illum architecto repudiandae explicabo quia id ipsum."
                         },
                         new
                         {
@@ -2504,7 +2264,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Possimus sed sit libero sequi quos molestiae a in fuga. Sunt et alias sunt ratione enim distinctio vel non quo. Harum omnis quaerat totam beatae voluptates. Et ex quia eum quam recusandae. Voluptatem est eaque molestiae."
+                            TestCases = "Iste fuga ipsum fuga inventore. Facilis soluta qui. Repellat dicta magnam. Consequatur optio suscipit aliquid eum."
                         },
                         new
                         {
@@ -2517,8 +2277,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Nesciunt quisquam nisi et error.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "perspiciatis"
+                            Status = 3,
+                            TestCases = "Omnis quaerat totam beatae voluptates in et ex."
                         },
                         new
                         {
@@ -2532,7 +2292,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Autem et dolores sunt consequatur sunt.\nVero soluta voluptas ipsa est veniam facere.\nQuo occaecati vel repellat quos sint ipsa officiis odio.\nIncidunt dolorum aperiam expedita quis aut rerum libero."
+                            TestCases = "Enim voluptas ab perferendis odit beatae ipsam."
                         },
                         new
                         {
@@ -2545,8 +2305,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Eum enim vitae cum doloribus perspiciatis placeat maxime inventore.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Sunt cupiditate voluptatem voluptatem dolor dolor odio earum autem. Aut non tempora ad aspernatur. Quia soluta quod."
+                            Status = 2,
+                            TestCases = "Nam sit nesciunt ducimus qui enim et enim autem sed."
                         },
                         new
                         {
@@ -2559,8 +2319,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Quia et non et tenetur autem aliquam ut provident corrupti.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Praesentium vero nam."
+                            Status = 3,
+                            TestCases = "Est facere nesciunt consequatur natus sequi. Molestiae est rerum dicta animi dolorem exercitationem asperiores veniam. Est sunt harum voluptas expedita explicabo temporibus eveniet. Atque laudantium autem et dolores sunt consequatur sunt. Vero soluta voluptas ipsa est veniam facere. Quo occaecati vel repellat quos sint ipsa officiis odio."
                         },
                         new
                         {
@@ -2573,8 +2333,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Nam repellendus eum et perferendis.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "explicabo"
+                            Status = 3,
+                            TestCases = "Sunt cupiditate voluptatem voluptatem dolor dolor odio earum autem. Aut non tempora ad aspernatur. Quia soluta quod."
                         },
                         new
                         {
@@ -2587,8 +2347,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Hic autem sit eius aliquam.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Quos neque corrupti commodi sit omnis doloremque recusandae repellat qui."
+                            Status = 3,
+                            TestCases = "Consequatur asperiores fuga nulla ratione distinctio corporis perferendis cupiditate iste."
                         },
                         new
                         {
@@ -2601,8 +2361,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Enim voluptatem veritatis aut accusamus omnis qui.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Recusandae repudiandae possimus aut id. Sequi nihil ut et. Deleniti perferendis possimus. Officiis dicta commodi quod."
+                            Status = 1,
+                            TestCases = "Hic omnis iste tempora voluptatibus."
                         },
                         new
                         {
@@ -2615,8 +2375,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Quam et blanditiis et asperiores.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Id dolorum sint velit et expedita facilis quod esse et.\nSit et inventore aliquid est dolorem debitis rerum nesciunt.\nMagni quasi et quas vero ducimus aut."
+                            Status = 3,
+                            TestCases = "Doloremque in illo id placeat iure et qui omnis."
                         },
                         new
                         {
@@ -2629,8 +2389,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Nihil iure facere sed similique cum animi quaerat ut.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Non minima ut impedit."
+                            Status = 1,
+                            TestCases = "Nihil modi repellendus voluptatem aut ut officiis eos.\nNon qui laudantium nihil animi dolorum aut aut eum exercitationem.\nRepudiandae possimus aut id adipisci sequi nihil ut et inventore.\nPerferendis possimus dolores officiis dicta commodi.\nConsequatur eveniet cum enim optio consequatur quis enim.\nEt blanditiis et asperiores dolorem consequatur."
                         },
                         new
                         {
@@ -2643,8 +2403,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Nobis corrupti porro cumque eius distinctio enim.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Explicabo ut explicabo quam.\nTempore temporibus quasi minima.\nBlanditiis consequatur quidem omnis incidunt sunt dolores odio."
+                            Status = 0,
+                            TestCases = "Inventore aliquid est dolorem debitis rerum nesciunt. Magni quasi et quas vero ducimus aut. Sed necessitatibus est et quia non molestiae iure architecto."
                         },
                         new
                         {
@@ -2657,8 +2417,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Totam ut tenetur dolor autem ut.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Sunt veritatis quaerat repudiandae. Qui dolorem quia autem qui natus illum omnis ratione. Sed illum possimus. Iure rerum itaque. Dolore quia rem similique ut."
+                            Status = 1,
+                            TestCases = "Quis sapiente debitis beatae quod. Hic quia quas est natus labore quae mollitia. Sunt nihil eos et nobis corrupti porro. Eius distinctio enim amet quia facilis quis modi."
                         },
                         new
                         {
@@ -2671,8 +2431,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Suscipit ad autem laudantium velit unde.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Labore perferendis aut excepturi mollitia.\nNesciunt error maxime libero.\nQuos tempore fuga dolores quidem blanditiis ut maxime recusandae.\nSimilique quo beatae consequatur."
+                            Status = 3,
+                            TestCases = "Esse et sint et soluta numquam eum totam.\nTenetur dolor autem ut repudiandae autem suscipit inventore aperiam impedit.\nLibero molestiae quod."
                         },
                         new
                         {
@@ -2685,8 +2445,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Consequatur iste amet tempore quia eveniet.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Qui voluptas quos temporibus."
+                            Status = 3,
+                            TestCases = "Sequi quia harum aut perferendis id nisi sit ut.\nRem sit at culpa.\nRepudiandae rem eaque.\nAutem fuga similique vel corrupti suscipit ad autem laudantium.\nUnde quo corporis delectus."
                         },
                         new
                         {
@@ -2699,8 +2459,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Eum nisi dolor iure iure similique aspernatur corporis.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Et sequi repellat et."
+                            Status = 2,
+                            TestCases = "nesciunt"
                         },
                         new
                         {
@@ -2713,8 +2473,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Similique ea optio.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Illum quia eos nihil similique qui voluptatem atque. Accusamus molestias nesciunt. Non tenetur earum."
+                            Status = 0,
+                            TestCases = "Sint reprehenderit a voluptatem sint dolorem necessitatibus mollitia harum."
                         },
                         new
                         {
@@ -2727,8 +2487,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Non eveniet in voluptates debitis.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Vel repellat nesciunt.\nQuis fuga sed est eveniet.\nQui voluptatum tenetur.\nVel quia voluptatibus illum delectus voluptas repellat dolores laudantium cupiditate.\nSed veniam optio vel molestias hic."
+                            Status = 3,
+                            TestCases = "et"
                         },
                         new
                         {
@@ -2742,7 +2502,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Ea doloremque rerum provident harum voluptates aliquam nisi. Incidunt reprehenderit ipsum eaque minima voluptatem autem. Delectus reiciendis sint voluptatem quis ut aliquam sapiente dicta. Aut qui tempora et rerum. Nihil autem eveniet cum non."
+                            TestCases = "A harum veniam sint at blanditiis est.\nDoloremque vel repellat nesciunt quis quis fuga sed.\nEveniet sed qui voluptatum tenetur recusandae vel.\nVoluptatibus illum delectus voluptas."
                         },
                         new
                         {
@@ -2755,8 +2515,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Culpa qui possimus minima dolorem facere at.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Et animi aliquam inventore aspernatur deleniti repellendus. At fuga dolores reiciendis alias. Excepturi ea quia tempora earum eos aut perferendis."
+                            Status = 3,
+                            TestCases = "Sunt ab ea provident modi pariatur suscipit.\nAt voluptatibus quia porro nisi necessitatibus.\nQuam fugit quos.\nSimilique unde culpa qui possimus minima dolorem facere."
                         },
                         new
                         {
@@ -2770,7 +2530,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 0,
-                            TestCases = "Ipsam ut qui sit consectetur voluptate.\nOdit atque et explicabo vel dolor omnis dolores aut ut.\nDolorum explicabo non eos sint et temporibus sapiente.\nQuod at possimus cumque aliquam consequuntur fugit dolores atque eum."
+                            TestCases = "quod"
                         },
                         new
                         {
@@ -2783,8 +2543,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Suscipit quisquam error eos.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "molestiae"
+                            Status = 0,
+                            TestCases = "Quam perferendis voluptas enim quo qui et molestiae. Consectetur voluptatibus et consequuntur nobis eum ipsa. Molestiae aut necessitatibus iste. Earum exercitationem qui consequatur et expedita molestias. Sint dolor occaecati voluptatum voluptatem enim."
                         },
                         new
                         {
@@ -2794,11 +2554,11 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2022, 10, 3, 6, 19, 36, 722, DateTimeKind.Utc).AddTicks(4888),
                             CreatedBy = 18L,
                             ExampleTestCases = "Velit et quas voluptas.",
-                            InitialSolution = "Enim laborum quae.",
+                            InitialSolution = "Voluptatibus nam explicabo saepe.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Veritatis quod veniam porro repellat ut perferendis. Modi voluptatibus nam explicabo saepe quasi. Perspiciatis ut et officia sint fugit tempore. Aut est nam natus. Quia id incidunt ut error reiciendis. Omnis ducimus est et quam dolores consequatur exercitationem quibusdam at."
+                            Status = 1,
+                            TestCases = "Officia sint fugit tempore velit aut est nam natus.\nQuia id incidunt ut error reiciendis.\nOmnis ducimus est et quam dolores consequatur exercitationem quibusdam at."
                         },
                         new
                         {
@@ -2812,7 +2572,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 0,
-                            TestCases = "est"
+                            TestCases = "optio"
                         },
                         new
                         {
@@ -2825,8 +2585,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Aliquam aperiam autem cumque voluptatibus illum sed.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Officia accusantium repellat. Magni et qui repellendus placeat qui voluptatum sapiente recusandae. Voluptas vitae ut consectetur neque tempora aut. Nisi quia maiores fugiat natus nisi."
+                            Status = 3,
+                            TestCases = "Enim tempora quod deserunt et aliquam aperiam autem cumque. Illum sed fugiat quam sint laudantium error ex dolorem voluptate. Aliquid nostrum non placeat quam. Nulla numquam rem accusamus commodi. Excepturi iusto soluta ut eius perspiciatis quo qui fugiat. Sunt officia accusantium repellat aut."
                         },
                         new
                         {
@@ -2839,8 +2599,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Nihil aut maiores et minus voluptates quia expedita dolores voluptatum.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Perferendis praesentium aliquam aut autem nesciunt at.\nHic nostrum est eum enim non fugit qui fuga."
+                            Status = 1,
+                            TestCases = "aut"
                         },
                         new
                         {
@@ -2853,8 +2613,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Eos eum et vitae aut.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Omnis sed dolores nulla. Occaecati molestiae et et aliquid commodi similique optio ut. Omnis cumque necessitatibus quas ut error delectus modi."
+                            Status = 2,
+                            TestCases = "rem"
                         },
                         new
                         {
@@ -2867,8 +2627,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Corporis dolor accusantium explicabo delectus expedita facilis ullam necessitatibus.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Dignissimos fuga commodi enim et consequatur quas vero.\nA consequatur laboriosam in ex ut.\nCulpa quae provident deleniti.\nAut qui odit est dolores nisi ut et maxime dolorem."
+                            Status = 3,
+                            TestCases = "amet"
                         },
                         new
                         {
@@ -2881,8 +2641,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Quo earum sint ea suscipit ipsa repellat qui fugiat aperiam.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Ut provident veritatis rerum.\nUt velit cupiditate labore ducimus quam est alias alias.\nVero ut dolores quo architecto iste et.\nCulpa sed quia.\nSed et fugit.\nAutem sed sunt sequi rerum accusamus saepe consectetur soluta rerum."
+                            Status = 0,
+                            TestCases = "Eum et vitae aut."
                         },
                         new
                         {
@@ -2895,8 +2655,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Iure voluptatem laborum perspiciatis.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Perferendis ipsum alias ea."
+                            Status = 3,
+                            TestCases = "Ut error delectus modi asperiores quasi perspiciatis.\nEa laboriosam nobis optio quisquam.\nConsequatur reprehenderit commodi eaque aliquam.\nVeritatis est velit eligendi.\nMaiores similique est saepe dignissimos sit ut ullam consequatur.\nNam vel ipsam."
                         },
                         new
                         {
@@ -2937,8 +2697,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Reiciendis in amet corporis enim.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Possimus ipsa non aliquam quo provident quis perferendis. Voluptatibus facilis perferendis expedita ea eum error. Repellendus recusandae harum ratione ullam veniam tempora sit."
+                            Status = 2,
+                            TestCases = "iure"
                         },
                         new
                         {
@@ -2951,8 +2711,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Et perferendis exercitationem id soluta blanditiis sunt enim.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Blanditiis omnis nihil molestiae suscipit inventore non. Recusandae odit voluptatum neque. Suscipit nemo sed doloremque aut minima et pariatur natus. Est omnis quasi aut ut qui aut. Quia aliquam voluptatem et ipsam distinctio."
+                            Status = 1,
+                            TestCases = "alias"
                         },
                         new
                         {
@@ -2965,8 +2725,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Facere nobis vel possimus.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Asperiores dolorem sint dolores consequuntur eos vel."
+                            Status = 2,
+                            TestCases = "Accusantium amet cum."
                         },
                         new
                         {
@@ -2979,8 +2739,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Et non odit tempore qui.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 2,
-                            TestCases = "Et consequatur assumenda eius. Accusamus aut ducimus aut et tempore rerum illum sint debitis. Delectus inventore delectus eum voluptates. Iste aut modi numquam non aliquid velit quibusdam."
+                            Status = 0,
+                            TestCases = "Nesciunt eligendi eum."
                         },
                         new
                         {
@@ -2994,7 +2754,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Velit aliquid accusantium itaque.\nEum doloribus nemo velit modi id quas nisi iste consectetur.\nOptio non mollitia laborum hic et quia hic.\nFacilis perspiciatis aut numquam sequi.\nPossimus fugiat perferendis mollitia accusamus eaque deserunt accusamus temporibus.\nQuos laborum nam aliquam et."
+                            TestCases = "Distinctio aut qui delectus ut."
                         },
                         new
                         {
@@ -3022,7 +2782,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Earum cumque ea."
+                            TestCases = "Nobis et perferendis exercitationem id soluta blanditiis sunt."
                         },
                         new
                         {
@@ -3049,8 +2809,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Quia officia et earum non iure necessitatibus.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Earum harum quas laboriosam corrupti natus ad sint dignissimos beatae. Aut quaerat consequuntur voluptatum sunt nemo explicabo. Assumenda non fugiat sunt."
+                            Status = 3,
+                            TestCases = "Animi libero dolor dolore ipsa omnis nesciunt vitae pariatur. Consequatur consequatur temporibus sit et non odit tempore qui. Officia illum qui. Et consequatur assumenda eius. Accusamus aut ducimus aut et tempore rerum illum sint debitis. Delectus inventore delectus eum voluptates."
                         },
                         new
                         {
@@ -3077,8 +2837,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Quidem occaecati totam.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Impedit sunt alias adipisci natus voluptatem accusamus. Corrupti sunt est voluptate enim. Est numquam neque cupiditate aut officiis necessitatibus inventore qui non. Occaecati unde cumque facere cupiditate cupiditate fugiat."
+                            Status = 0,
+                            TestCases = "Voluptatem eligendi odit veritatis aut ad praesentium magnam praesentium eligendi.\nEst rerum eaque assumenda.\nEt fuga similique quibusdam quaerat rerum sapiente voluptatem."
                         },
                         new
                         {
@@ -3092,7 +2852,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 2,
-                            TestCases = "Corporis aut et sit ut aliquid cupiditate nisi.\nAdipisci voluptatem saepe veniam.\nAutem alias sint molestiae at distinctio autem cumque ipsum.\nOmnis deserunt unde sit voluptatem et dolores mollitia vitae doloremque.\nSoluta culpa molestiae nostrum id beatae."
+                            TestCases = "Placeat et consequuntur ratione.\nEligendi deserunt laborum eos cupiditate nesciunt et ut molestiae."
                         },
                         new
                         {
@@ -3106,7 +2866,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 3,
-                            TestCases = "Nihil sunt harum dolore qui inventore voluptatem id."
+                            TestCases = "Placeat debitis deserunt quia. Et earum non iure necessitatibus culpa praesentium. Odio quos nisi accusantium et eligendi. Sit corrupti placeat fugit harum minima. Quod dignissimos vero illo consequatur eligendi soluta commodi non. Voluptatem nam quo."
                         },
                         new
                         {
@@ -3119,8 +2879,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Ducimus cumque itaque.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Occaecati natus ea laboriosam."
+                            Status = 3,
+                            TestCases = "Adipisci natus voluptatem.\nAliquam corrupti sunt est voluptate enim debitis est numquam.\nCupiditate aut officiis necessitatibus.\nQui non deserunt."
                         },
                         new
                         {
@@ -3133,8 +2893,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Atque est qui nihil illo eaque asperiores nihil.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Ea fuga cum aperiam suscipit vel sed aut. Qui voluptatem nihil rerum nam asperiores perspiciatis inventore fugiat nostrum. Illum aut accusantium qui."
+                            Status = 3,
+                            TestCases = "Eaque nostrum blanditiis eum nostrum ducimus sed voluptatem. Eum quam quia neque id at fugiat. Sunt ducimus hic quo magni aspernatur ducimus cumque. Consequatur commodi deleniti eos occaecati natus ea laboriosam harum et. Id reprehenderit iusto perspiciatis iusto molestiae."
                         },
                         new
                         {
@@ -3162,7 +2922,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 2,
-                            TestCases = "Totam iste non.\nCulpa eligendi voluptatum sint amet eveniet et.\nVitae vel rerum vitae saepe ratione ea aut quis.\nAb praesentium repellendus ab porro.\nNon corporis quod asperiores et corrupti perferendis ea aut."
+                            TestCases = "Illum aut accusantium qui."
                         },
                         new
                         {
@@ -3190,7 +2950,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 3,
-                            TestCases = "Nam ea porro sapiente voluptate ad ut aut asperiores.\nAut nostrum asperiores ab labore vel voluptatem beatae maxime.\nConsequuntur eaque saepe molestiae in deserunt dolor.\nMinus dolorem impedit ut et animi.\nVoluptatem ut omnis itaque autem rerum aliquid natus eius.\nAtque sint vitae nostrum sint soluta repudiandae repellendus."
+                            TestCases = "Libero impedit accusantium.\nIste non natus culpa eligendi voluptatum."
                         },
                         new
                         {
@@ -3218,7 +2978,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Et laudantium officiis.\nMolestias aliquid molestiae reprehenderit placeat voluptas."
+                            TestCases = "id"
                         },
                         new
                         {
@@ -3227,12 +2987,12 @@ namespace LeetWars.Core.DAL.Migrations
                             CompleteSolution = "Ratione velit consequatur aliquid nulla est dolorem nemo.",
                             CreatedAt = new DateTime(2023, 1, 8, 16, 17, 19, 406, DateTimeKind.Utc).AddTicks(6320),
                             CreatedBy = 3L,
-                            ExampleTestCases = "Iusto sed recusandae laborum nobis. Et laborum culpa. Ex voluptas et sint omnis eius quisquam. Ut atque consequuntur doloremque molestiae minus inventore qui impedit.",
-                            InitialSolution = "Nulla architecto et ipsam consequatur nobis et quae corporis dolorem.",
+                            ExampleTestCases = "nostrum",
+                            InitialSolution = "Aut eos assumenda.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "omnis"
+                            Status = 2,
+                            TestCases = "Consectetur nisi similique et ut officiis maxime. Occaecati ut voluptas sed nihil vel. In officia tenetur dolorem aliquid aut repudiandae asperiores laudantium. Cumque voluptas qui qui rem nam hic sint ut."
                         },
                         new
                         {
@@ -3246,7 +3006,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Velit non quae.\nVel doloribus incidunt."
+                            TestCases = "Minus dolorem impedit ut et animi.\nVoluptatem ut omnis itaque autem rerum aliquid natus eius.\nAtque sint vitae nostrum sint soluta repudiandae repellendus.\nLibero et molestias quis iure.\nQuos rerum consequatur dolorem magni officiis cum qui et."
                         },
                         new
                         {
@@ -3260,7 +3020,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Voluptas qui debitis accusamus illum quaerat a qui accusantium quasi."
+                            TestCases = "quia"
                         },
                         new
                         {
@@ -3288,7 +3048,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Rem libero et.\nNisi culpa consequatur et et tenetur.\nNihil laboriosam quidem nesciunt libero velit quidem quia.\nMolestiae voluptas rerum nulla praesentium.\nUt illum id maiores dolores et sequi quas."
+                            TestCases = "omnis"
                         },
                         new
                         {
@@ -3329,8 +3089,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Et ipsam iste et ut.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Aut eveniet nihil est harum qui perspiciatis asperiores. Molestiae aut et possimus ut. Repudiandae unde voluptas magni autem. Quisquam enim officiis eveniet et quod facere sit quia. Sit cum animi non ut et harum asperiores eos aut. Rerum totam sint aliquam exercitationem ut consequatur ex."
+                            Status = 0,
+                            TestCases = "Perspiciatis excepturi aut in occaecati illum."
                         },
                         new
                         {
@@ -3414,7 +3174,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 0,
-                            TestCases = "Aut est ut maiores veniam autem debitis ipsam voluptas."
+                            TestCases = "asperiores"
                         },
                         new
                         {
@@ -3427,8 +3187,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Rem aut repellat voluptatem quaerat.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "sapiente"
+                            Status = 2,
+                            TestCases = "Aliquid facilis autem assumenda omnis. Voluptate laboriosam laborum quo repellendus ut ea molestiae numquam. Nihil explicabo veritatis ullam ratione a exercitationem rerum amet."
                         },
                         new
                         {
@@ -3442,7 +3202,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 0,
-                            TestCases = "Officia suscipit in laudantium voluptatem.\nSed amet vel sequi non.\nSapiente est ut eligendi at dolorem.\nSed provident cupiditate nulla sit nobis expedita quis."
+                            TestCases = "Explicabo animi ea et impedit ea sint omnis.\nMolestiae ullam id."
                         },
                         new
                         {
@@ -3455,8 +3215,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Reiciendis officiis ut reiciendis aut id animi et cupiditate.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 3,
-                            TestCases = "Sequi cumque id itaque suscipit qui veritatis quos dolore dolor.\nVitae accusantium exercitationem pariatur est quae et a.\nQuis qui enim pariatur accusamus eum non explicabo voluptatem.\nAd molestiae quam eius.\nVoluptatem vel tempora ad enim possimus corrupti fuga.\nIpsam est impedit nemo qui sint eos perspiciatis assumenda."
+                            Status = 2,
+                            TestCases = "Adipisci atque quo ut magnam ut."
                         },
                         new
                         {
@@ -3539,8 +3299,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Eum eveniet inventore neque ut.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Quis tempora voluptatibus."
+                            Status = 2,
+                            TestCases = "Vitae illo cumque eos quo ex sint minima ipsum praesentium."
                         },
                         new
                         {
@@ -3554,7 +3314,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Officiis dolorem aut praesentium facere deserunt at corporis."
+                            TestCases = "Et atque consequatur minus quisquam qui quis."
                         },
                         new
                         {
@@ -3693,8 +3453,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Amet doloribus quisquam pariatur cum velit quisquam dolorem non.",
                             LanguageId = 2L,
                             PreloadedCode = "",
-                            Status = 0,
-                            TestCases = "Nemo adipisci autem inventore in."
+                            Status = 2,
+                            TestCases = "Optio molestiae blanditiis accusantium laboriosam qui ipsum molestiae.\nAccusantium recusandae quae sit distinctio.\nAut ipsa dignissimos dolore commodi est maiores cupiditate et voluptas.\nAut a molestiae commodi voluptatibus doloremque ab aspernatur enim ut."
                         },
                         new
                         {
@@ -3890,7 +3650,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 3,
-                            TestCases = "Id illum omnis consequatur eum animi labore et perferendis. Inventore aut sunt ut cum sunt. Amet dicta similique qui voluptatem sit nihil voluptatem ex aut. Velit ipsum repellat ut qui natus odit. Minima cum facere velit ad quibusdam qui. Aut consequatur dolorem et provident a vitae sed est."
+                            TestCases = "qui"
                         },
                         new
                         {
@@ -4039,12 +3799,12 @@ namespace LeetWars.Core.DAL.Migrations
                             CompleteSolution = "Et modi laborum quidem. Quia rerum consectetur doloremque et voluptate tempore non mollitia quae. Ut neque id enim maxime. Sint recusandae qui ipsam. Quod exercitationem sapiente perferendis aliquid animi alias aliquam.",
                             CreatedAt = new DateTime(2023, 7, 10, 20, 6, 26, 981, DateTimeKind.Utc).AddTicks(1105),
                             CreatedBy = 35L,
-                            ExampleTestCases = "Laudantium totam dolores perspiciatis repellendus quia neque.",
-                            InitialSolution = "Provident quo possimus error quae tempora inventore voluptate.",
+                            ExampleTestCases = "Exercitationem architecto sit dicta impedit similique.",
+                            InitialSolution = "Saepe et incidunt.",
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 0,
-                            TestCases = "adipisci"
+                            TestCases = "Repellat labore magni exercitationem illo.\nRerum recusandae iure voluptatem non illo voluptatem ut maxime placeat.\nDoloribus consequatur sit."
                         },
                         new
                         {
@@ -4058,11 +3818,11 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 2,
-                            TestCases = "cupiditate"
+                            TestCases = "Asperiores officiis voluptatem saepe neque qui ea laudantium eaque nemo. Repellendus dolore necessitatibus. Nam quaerat illo qui. Necessitatibus cumque beatae alias accusamus at suscipit. Unde expedita et sed nesciunt velit corrupti sit dolor. Necessitatibus atque amet deleniti sit aut nulla blanditiis."
                         },
                         new
                         {
-                            Id = 153L,
+                            Id = 140L,
                             ChallengeId = 1L,
                             CompleteSolution = "Eveniet dolorem similique animi. Officiis et sunt impedit fuga eos. Fugiat dolorum aliquam est non aliquam quia accusamus. Iste et neque. Consequatur eos explicabo et aut aut.",
                             CreatedAt = new DateTime(2023, 2, 23, 1, 57, 53, 343, DateTimeKind.Utc).AddTicks(1442),
@@ -4072,7 +3832,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 3,
-                            TestCases = "Qui ipsam incidunt est sequi quaerat quod eos. Aspernatur animi impedit nihil voluptatem. Et laboriosam aut nihil facilis modi laboriosam et. Consequuntur libero id ut ipsum minus. Nesciunt quasi consectetur saepe itaque quam error aut."
+                            TestCases = "Et asperiores quis sed ad temporibus officia et."
                         },
                         new
                         {
@@ -4113,8 +3873,8 @@ namespace LeetWars.Core.DAL.Migrations
                             InitialSolution = "Distinctio culpa aliquid.",
                             LanguageId = 1L,
                             PreloadedCode = "",
-                            Status = 1,
-                            TestCases = "Explicabo quas sed ut culpa quo alias reiciendis repudiandae. Distinctio tenetur voluptatem cum. Consequuntur corporis animi deleniti nobis deleniti voluptas dolore."
+                            Status = 3,
+                            TestCases = "Est et quo accusantium aut."
                         },
                         new
                         {
@@ -4128,7 +3888,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Animi quo autem incidunt ut magnam qui expedita. Dolore necessitatibus autem minima nihil porro et minima corporis ut. Et repellat explicabo est quas fuga nostrum voluptatem. Mollitia perferendis voluptatem qui et enim. Aut odit deserunt."
+                            TestCases = "Earum amet dicta similique qui voluptatem sit.\nVoluptatem ex aut est velit ipsum repellat ut.\nNatus odit provident minima cum facere.\nAd quibusdam qui quibusdam aut consequatur.\nEt provident a vitae sed est sit ex quo."
                         },
                         new
                         {
@@ -4212,7 +3972,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 1,
-                            TestCases = "Consequatur eaque et sed tempore et. Amet laborum sequi animi corrupti est autem eos inventore et. Perspiciatis facere illo praesentium. Quia optio eius ipsam rem eaque et. Fugiat amet aut tenetur commodi atque."
+                            TestCases = "Dicta nemo consequatur voluptatem accusamus est ut est eos sunt.\nIn nesciunt iure aut sit neque et alias voluptatem officiis.\nIpsa rem soluta placeat voluptas qui qui animi tempora."
                         },
                         new
                         {
@@ -4240,7 +4000,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 0,
-                            TestCases = "In ducimus qui.\nReprehenderit quo facere voluptas possimus recusandae delectus iste.\nQui et architecto voluptas rerum eum magni voluptatibus labore est.\nInventore ipsum ex dolores unde et expedita enim.\nVel sed vitae maiores.\nNisi vero id non alias totam quia qui at animi."
+                            TestCases = "Laboriosam et impedit debitis dignissimos nostrum.\nRepellendus impedit sint aspernatur nam.\nPerferendis eius aut dolor."
                         },
                         new
                         {
@@ -4254,7 +4014,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 1L,
                             PreloadedCode = "",
                             Status = 3,
-                            TestCases = "Aut ut et perferendis et animi aspernatur."
+                            TestCases = "Recusandae qui ipsam nobis quod exercitationem sapiente perferendis aliquid animi.\nAliquam sit adipisci."
                         },
                         new
                         {
@@ -4324,7 +4084,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 0,
-                            TestCases = "Eaque distinctio et temporibus est nulla cum est libero animi. Qui quas dolorem ipsam corrupti ipsum. Nemo possimus unde placeat tenetur a aut quas quod. Minima corporis sequi illum odit. Dolore ut qui et nesciunt ad possimus. Nesciunt corporis eveniet suscipit omnis qui et."
+                            TestCases = "Aut fugit illo.\nQuia doloribus dignissimos vel occaecati alias iste est iure molestiae.\nQuis qui id culpa ipsa perspiciatis.\nIusto commodi voluptatem nemo impedit perspiciatis quos dicta nostrum ex.\nDolore incidunt excepturi quia aut itaque.\nConsequatur fuga eos repellat."
                         },
                         new
                         {
@@ -4338,7 +4098,7 @@ namespace LeetWars.Core.DAL.Migrations
                             LanguageId = 2L,
                             PreloadedCode = "",
                             Status = 3,
-                            TestCases = "dignissimos"
+                            TestCases = "Minus similique corrupti consequatur omnis in sunt tenetur."
                         },
                         new
                         {
@@ -6689,7 +6449,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            ChallengeVersionId = 14L,
+                            ChallengeVersionId = 8L,
                             Code = "Fuga molestiae laborum architecto minus aut quisquam explicabo corporis.\nVeniam omnis et dolores temporibus voluptatem ea.\nIste odio quis delectus.\nDeleniti qui et consequatur.\nMinus illo quibusdam distinctio cumque nihil voluptate occaecati molestiae fuga.\nEx eos quibusdam ipsa nobis veritatis hic eaque.",
                             CreatedAt = new DateTime(2023, 8, 19, 13, 23, 54, 72, DateTimeKind.Utc).AddTicks(993),
                             CreatedBy = 30L,
@@ -6698,7 +6458,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            ChallengeVersionId = 90L,
+                            ChallengeVersionId = 55L,
                             Code = "odit",
                             CreatedAt = new DateTime(2023, 2, 2, 2, 35, 54, 653, DateTimeKind.Utc).AddTicks(2177),
                             CreatedBy = 27L,
@@ -6707,7 +6467,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 3L,
-                            ChallengeVersionId = 173L,
+                            ChallengeVersionId = 136L,
                             Code = "soluta",
                             CreatedAt = new DateTime(2021, 9, 11, 15, 30, 45, 336, DateTimeKind.Utc).AddTicks(6015),
                             CreatedBy = 29L,
@@ -6716,7 +6476,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 4L,
-                            ChallengeVersionId = 125L,
+                            ChallengeVersionId = 77L,
                             Code = "dolorem",
                             CreatedAt = new DateTime(2023, 7, 17, 14, 54, 11, 808, DateTimeKind.Utc).AddTicks(9899),
                             CreatedBy = 32L,
@@ -6725,7 +6485,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 5L,
-                            ChallengeVersionId = 185L,
+                            ChallengeVersionId = 155L,
                             Code = "Id quam velit corporis sunt.",
                             CreatedAt = new DateTime(2023, 5, 11, 12, 36, 7, 361, DateTimeKind.Utc).AddTicks(2905),
                             CreatedBy = 17L,
@@ -6734,7 +6494,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 6L,
-                            ChallengeVersionId = 47L,
+                            ChallengeVersionId = 29L,
                             Code = "Repellat neque temporibus iste magnam. Placeat sit temporibus rerum aut. Esse iusto autem vero odio necessitatibus et. Voluptatum in nesciunt officia voluptates ratione quo id harum quo.",
                             CreatedAt = new DateTime(2023, 9, 8, 2, 52, 12, 441, DateTimeKind.Utc).AddTicks(8173),
                             CreatedBy = 18L,
@@ -6743,7 +6503,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 7L,
-                            ChallengeVersionId = 100L,
+                            ChallengeVersionId = 61L,
                             Code = "Eaque et consequatur.",
                             CreatedAt = new DateTime(2022, 7, 23, 13, 24, 16, 102, DateTimeKind.Utc).AddTicks(3310),
                             CreatedBy = 38L,
@@ -6752,7 +6512,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 8L,
-                            ChallengeVersionId = 10L,
+                            ChallengeVersionId = 7L,
                             Code = "Rerum dolores consequuntur cumque reiciendis iste qui. Omnis animi alias sed facilis. Blanditiis perferendis cumque. Quo nulla consectetur. Quasi impedit qui quis vitae maxime quidem ut pariatur quis.",
                             CreatedAt = new DateTime(2023, 6, 19, 22, 17, 21, 358, DateTimeKind.Utc).AddTicks(9509),
                             CreatedBy = 11L,
@@ -6761,7 +6521,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 9L,
-                            ChallengeVersionId = 61L,
+                            ChallengeVersionId = 37L,
                             Code = "Soluta ducimus odit est assumenda vitae quo quam.\nIpsa voluptas ut rem architecto eligendi eum itaque.\nQuam debitis id.\nVoluptas est labore placeat harum voluptatem.\nPariatur facere ea assumenda laboriosam.\nQui dicta voluptatem.",
                             CreatedAt = new DateTime(2023, 8, 31, 20, 33, 11, 573, DateTimeKind.Utc).AddTicks(8541),
                             CreatedBy = 40L,
@@ -6770,7 +6530,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 10L,
-                            ChallengeVersionId = 39L,
+                            ChallengeVersionId = 24L,
                             Code = "Nemo corporis vel exercitationem ea hic quia quidem.",
                             CreatedAt = new DateTime(2023, 6, 5, 1, 13, 35, 876, DateTimeKind.Utc).AddTicks(2674),
                             CreatedBy = 6L,
@@ -6779,7 +6539,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 11L,
-                            ChallengeVersionId = 42L,
+                            ChallengeVersionId = 26L,
                             Code = "Sit qui nobis aut at nostrum.\nTotam magni ipsa exercitationem ullam tempore voluptas autem saepe expedita.\nEos vel itaque.\nLaboriosam autem commodi non sed.",
                             CreatedAt = new DateTime(2023, 6, 25, 11, 17, 37, 295, DateTimeKind.Utc).AddTicks(1300),
                             CreatedBy = 9L,
@@ -6788,7 +6548,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 12L,
-                            ChallengeVersionId = 115L,
+                            ChallengeVersionId = 70L,
                             Code = "Veniam quia corporis voluptas cupiditate velit eum quo dolore. Veritatis et est officiis in. Voluptatum aut totam aperiam. Est fugit necessitatibus maxime voluptas quia porro. Et eius quas fuga vero deleniti dolorum deserunt vel.",
                             CreatedAt = new DateTime(2021, 5, 23, 13, 40, 41, 832, DateTimeKind.Utc).AddTicks(8422),
                             CreatedBy = 40L,
@@ -6797,7 +6557,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 13L,
-                            ChallengeVersionId = 147L,
+                            ChallengeVersionId = 98L,
                             Code = "dicta",
                             CreatedAt = new DateTime(2023, 4, 9, 14, 11, 21, 279, DateTimeKind.Utc).AddTicks(5932),
                             CreatedBy = 36L,
@@ -6806,7 +6566,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 14L,
-                            ChallengeVersionId = 181L,
+                            ChallengeVersionId = 148L,
                             Code = "Quo voluptatem rerum corporis quidem veritatis velit explicabo. Labore nam vitae voluptas. Iste accusantium temporibus. Omnis similique distinctio ut quod aperiam. Cupiditate accusantium nesciunt aperiam ducimus non.",
                             CreatedAt = new DateTime(2023, 6, 16, 4, 44, 8, 823, DateTimeKind.Utc).AddTicks(4298),
                             CreatedBy = 8L,
@@ -6815,7 +6575,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 15L,
-                            ChallengeVersionId = 112L,
+                            ChallengeVersionId = 69L,
                             Code = "maiores",
                             CreatedAt = new DateTime(2023, 3, 13, 3, 39, 31, 346, DateTimeKind.Utc).AddTicks(3257),
                             CreatedBy = 23L,
@@ -6824,7 +6584,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 16L,
-                            ChallengeVersionId = 178L,
+                            ChallengeVersionId = 140L,
                             Code = "Sit sit quibusdam ab quia nobis.\nPariatur aperiam voluptatibus.\nQuia culpa id.",
                             CreatedAt = new DateTime(2021, 11, 21, 14, 10, 12, 459, DateTimeKind.Utc).AddTicks(3391),
                             CreatedBy = 2L,
@@ -6833,7 +6593,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 17L,
-                            ChallengeVersionId = 62L,
+                            ChallengeVersionId = 38L,
                             Code = "placeat",
                             CreatedAt = new DateTime(2022, 11, 22, 13, 1, 25, 647, DateTimeKind.Utc).AddTicks(1289),
                             CreatedBy = 36L,
@@ -6842,7 +6602,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 18L,
-                            ChallengeVersionId = 134L,
+                            ChallengeVersionId = 89L,
                             Code = "Incidunt unde eius.\nRerum dolorem magnam nihil reprehenderit qui.\nVoluptatibus ut ea beatae accusamus eius odit sit id eum.",
                             CreatedAt = new DateTime(2023, 9, 18, 18, 29, 11, 334, DateTimeKind.Utc).AddTicks(1503),
                             CreatedBy = 21L,
@@ -6851,7 +6611,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 19L,
-                            ChallengeVersionId = 101L,
+                            ChallengeVersionId = 62L,
                             Code = "Similique eos et cupiditate.\nEst vero corporis illum deserunt magni aut sit ut.\nVel veritatis enim quo iure incidunt.\nNam aperiam velit voluptas expedita error consequatur optio laudantium quis.\nEt dolores aliquam architecto qui dolor cumque.",
                             CreatedAt = new DateTime(2022, 3, 26, 14, 5, 9, 811, DateTimeKind.Utc).AddTicks(314),
                             CreatedBy = 3L,
@@ -6860,7 +6620,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 20L,
-                            ChallengeVersionId = 3L,
+                            ChallengeVersionId = 2L,
                             Code = "Atque ipsum ex laudantium expedita. Et tenetur cum voluptatum et quia eaque doloribus nostrum dolores. Magni voluptas rem. Assumenda et nemo est sunt.",
                             CreatedAt = new DateTime(2023, 5, 11, 6, 30, 46, 843, DateTimeKind.Utc).AddTicks(2533),
                             CreatedBy = 19L,
@@ -6869,7 +6629,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 21L,
-                            ChallengeVersionId = 176L,
+                            ChallengeVersionId = 137L,
                             Code = "inventore",
                             CreatedAt = new DateTime(2022, 7, 13, 21, 37, 52, 708, DateTimeKind.Utc).AddTicks(5570),
                             CreatedBy = 7L,
@@ -6878,7 +6638,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 22L,
-                            ChallengeVersionId = 92L,
+                            ChallengeVersionId = 56L,
                             Code = "Aut ut exercitationem aut.",
                             CreatedAt = new DateTime(2023, 8, 4, 0, 16, 42, 748, DateTimeKind.Utc).AddTicks(8855),
                             CreatedBy = 19L,
@@ -6887,7 +6647,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 23L,
-                            ChallengeVersionId = 43L,
+                            ChallengeVersionId = 26L,
                             Code = "impedit",
                             CreatedAt = new DateTime(2023, 2, 13, 2, 16, 8, 731, DateTimeKind.Utc).AddTicks(3152),
                             CreatedBy = 38L,
@@ -6905,7 +6665,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 25L,
-                            ChallengeVersionId = 48L,
+                            ChallengeVersionId = 30L,
                             Code = "Ea et quo iusto natus ducimus perspiciatis illum eveniet eaque. Voluptas dolores dolor voluptatem enim praesentium pariatur deleniti hic corporis. Quia et unde et accusantium deleniti praesentium laudantium. Autem labore esse recusandae laborum dolorum. Eveniet soluta mollitia necessitatibus ipsam.",
                             CreatedAt = new DateTime(2023, 6, 21, 3, 42, 17, 357, DateTimeKind.Utc).AddTicks(5233),
                             CreatedBy = 7L,
@@ -6914,7 +6674,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 26L,
-                            ChallengeVersionId = 125L,
+                            ChallengeVersionId = 79L,
                             Code = "Totam velit autem et fuga est.\nNon rerum quidem quam et.\nIusto harum excepturi dicta beatae.\nUt eligendi fugit tenetur.\nAliquid velit ex itaque eos eum veniam ex fuga.\nRepellat non alias.",
                             CreatedAt = new DateTime(2023, 7, 31, 17, 57, 47, 478, DateTimeKind.Utc).AddTicks(1205),
                             CreatedBy = 10L,
@@ -6923,7 +6683,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 27L,
-                            ChallengeVersionId = 85L,
+                            ChallengeVersionId = 52L,
                             Code = "Voluptatem provident provident aut est.\nVitae natus et voluptatem quo aliquid et.\nVoluptatem non suscipit eum quasi et aliquid.\nOdio nemo odio.",
                             CreatedAt = new DateTime(2023, 4, 10, 3, 3, 46, 693, DateTimeKind.Utc).AddTicks(1134),
                             CreatedBy = 19L,
@@ -6932,7 +6692,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 28L,
-                            ChallengeVersionId = 181L,
+                            ChallengeVersionId = 148L,
                             Code = "Et optio sed. Aut voluptatum sit voluptas corporis est molestiae corporis nisi. Delectus molestiae ea culpa voluptates et et sapiente.",
                             CreatedAt = new DateTime(2023, 4, 23, 13, 38, 42, 863, DateTimeKind.Utc).AddTicks(3046),
                             CreatedBy = 4L,
@@ -6941,7 +6701,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 29L,
-                            ChallengeVersionId = 15L,
+                            ChallengeVersionId = 9L,
                             Code = "Voluptatem dolorum ad et.",
                             CreatedAt = new DateTime(2023, 4, 17, 0, 57, 34, 478, DateTimeKind.Utc).AddTicks(2304),
                             CreatedBy = 28L,
@@ -6950,7 +6710,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 30L,
-                            ChallengeVersionId = 66L,
+                            ChallengeVersionId = 41L,
                             Code = "dignissimos",
                             CreatedAt = new DateTime(2023, 5, 9, 7, 38, 55, 882, DateTimeKind.Utc).AddTicks(3802),
                             CreatedBy = 3L,
@@ -6959,7 +6719,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 31L,
-                            ChallengeVersionId = 28L,
+                            ChallengeVersionId = 17L,
                             Code = "et",
                             CreatedAt = new DateTime(2023, 8, 17, 4, 53, 59, 550, DateTimeKind.Utc).AddTicks(69),
                             CreatedBy = 39L,
@@ -6968,7 +6728,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 32L,
-                            ChallengeVersionId = 68L,
+                            ChallengeVersionId = 42L,
                             Code = "Aut nihil dicta.",
                             CreatedAt = new DateTime(2023, 7, 5, 1, 45, 59, 976, DateTimeKind.Utc).AddTicks(9759),
                             CreatedBy = 28L,
@@ -6977,7 +6737,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 33L,
-                            ChallengeVersionId = 128L,
+                            ChallengeVersionId = 81L,
                             Code = "Distinctio aperiam ratione corporis soluta qui quos incidunt.",
                             CreatedAt = new DateTime(2023, 7, 15, 1, 13, 13, 917, DateTimeKind.Utc).AddTicks(1777),
                             CreatedBy = 17L,
@@ -6986,7 +6746,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 34L,
-                            ChallengeVersionId = 139L,
+                            ChallengeVersionId = 92L,
                             Code = "At officiis omnis. Inventore tenetur voluptatem est est. Occaecati similique ut minus voluptatem consequatur facere optio porro libero. Et odio occaecati dolor facilis et voluptas pariatur eaque.",
                             CreatedAt = new DateTime(2023, 5, 15, 13, 45, 54, 142, DateTimeKind.Utc).AddTicks(3174),
                             CreatedBy = 19L,
@@ -6995,7 +6755,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 35L,
-                            ChallengeVersionId = 73L,
+                            ChallengeVersionId = 45L,
                             Code = "Non sint minima est in eum nihil.",
                             CreatedAt = new DateTime(2023, 9, 11, 19, 54, 54, 193, DateTimeKind.Utc).AddTicks(7714),
                             CreatedBy = 36L,
@@ -7004,7 +6764,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 36L,
-                            ChallengeVersionId = 45L,
+                            ChallengeVersionId = 27L,
                             Code = "Itaque nam eligendi velit culpa.",
                             CreatedAt = new DateTime(2022, 6, 16, 10, 50, 29, 941, DateTimeKind.Utc).AddTicks(2774),
                             CreatedBy = 18L,
@@ -7013,7 +6773,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 37L,
-                            ChallengeVersionId = 11L,
+                            ChallengeVersionId = 7L,
                             Code = "esse",
                             CreatedAt = new DateTime(2022, 10, 23, 19, 11, 17, 305, DateTimeKind.Utc).AddTicks(1304),
                             CreatedBy = 32L,
@@ -7022,7 +6782,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 38L,
-                            ChallengeVersionId = 48L,
+                            ChallengeVersionId = 30L,
                             Code = "Aut nemo dolore aut beatae.",
                             CreatedAt = new DateTime(2023, 3, 21, 20, 4, 16, 608, DateTimeKind.Utc).AddTicks(4149),
                             CreatedBy = 38L,
@@ -7031,7 +6791,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 39L,
-                            ChallengeVersionId = 183L,
+                            ChallengeVersionId = 150L,
                             Code = "Beatae ex exercitationem et ea aut.",
                             CreatedAt = new DateTime(2023, 9, 18, 22, 47, 6, 30, DateTimeKind.Utc).AddTicks(7106),
                             CreatedBy = 40L,
@@ -7040,7 +6800,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 40L,
-                            ChallengeVersionId = 8L,
+                            ChallengeVersionId = 5L,
                             Code = "Beatae est quam et quisquam laudantium officia. Aut fugiat est quo magnam sint eos molestiae. Aliquam enim omnis totam ea. Aut repudiandae est molestiae rerum enim magnam laboriosam labore corrupti. Est iure qui omnis modi consequatur vero maxime. Cupiditate occaecati distinctio voluptatem quos illo rerum est id error.",
                             CreatedAt = new DateTime(2023, 8, 15, 5, 5, 20, 411, DateTimeKind.Utc).AddTicks(509),
                             CreatedBy = 29L,
@@ -7049,7 +6809,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 41L,
-                            ChallengeVersionId = 122L,
+                            ChallengeVersionId = 76L,
                             Code = "Sed cumque nihil.\nQuos sed ut perspiciatis autem rem id est aperiam.\nEt quisquam reprehenderit commodi veniam magnam dolores.\nFugiat commodi non id tempore ducimus.\nAlias officia quia animi ratione enim sequi voluptatem.\nAperiam maiores enim.",
                             CreatedAt = new DateTime(2023, 6, 21, 5, 11, 21, 327, DateTimeKind.Utc).AddTicks(5519),
                             CreatedBy = 24L,
@@ -7058,7 +6818,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 42L,
-                            ChallengeVersionId = 13L,
+                            ChallengeVersionId = 8L,
                             Code = "nihil",
                             CreatedAt = new DateTime(2021, 11, 6, 7, 45, 53, 846, DateTimeKind.Utc).AddTicks(5366),
                             CreatedBy = 15L,
@@ -7067,7 +6827,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 43L,
-                            ChallengeVersionId = 67L,
+                            ChallengeVersionId = 41L,
                             Code = "Cumque culpa aut et inventore.",
                             CreatedAt = new DateTime(2023, 8, 4, 0, 53, 58, 644, DateTimeKind.Utc).AddTicks(5329),
                             CreatedBy = 35L,
@@ -7076,7 +6836,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 44L,
-                            ChallengeVersionId = 23L,
+                            ChallengeVersionId = 14L,
                             Code = "In quia rerum tempora voluptas in quis sit ullam earum. Minus magnam voluptatem non ut laborum sit veniam cum sequi. Ut similique ipsum quis voluptatem est qui quia velit. Repudiandae cumque earum debitis illum fugiat aliquid hic. Odit doloremque possimus. Quis et aperiam aut doloribus magnam similique fuga.",
                             CreatedAt = new DateTime(2023, 4, 29, 1, 30, 4, 202, DateTimeKind.Utc).AddTicks(6603),
                             CreatedBy = 22L,
@@ -7085,7 +6845,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 45L,
-                            ChallengeVersionId = 38L,
+                            ChallengeVersionId = 23L,
                             Code = "Deleniti eos sint.",
                             CreatedAt = new DateTime(2023, 9, 10, 18, 13, 48, 857, DateTimeKind.Utc).AddTicks(4029),
                             CreatedBy = 22L,
@@ -7094,7 +6854,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 46L,
-                            ChallengeVersionId = 58L,
+                            ChallengeVersionId = 36L,
                             Code = "Et vitae omnis. Suscipit quidem ab voluptas qui officiis et tempore tempora ut. Officiis nulla architecto et. Esse expedita et omnis officiis consequatur cupiditate sint vero incidunt. Omnis et tenetur voluptatem et rem qui.",
                             CreatedAt = new DateTime(2023, 3, 15, 10, 57, 1, 651, DateTimeKind.Utc).AddTicks(63),
                             CreatedBy = 28L,
@@ -7103,7 +6863,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 47L,
-                            ChallengeVersionId = 52L,
+                            ChallengeVersionId = 32L,
                             Code = "dignissimos",
                             CreatedAt = new DateTime(2023, 5, 4, 14, 12, 15, 607, DateTimeKind.Utc).AddTicks(2497),
                             CreatedBy = 37L,
@@ -7112,7 +6872,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 48L,
-                            ChallengeVersionId = 137L,
+                            ChallengeVersionId = 91L,
                             Code = "corporis",
                             CreatedAt = new DateTime(2023, 7, 25, 19, 11, 21, 320, DateTimeKind.Utc).AddTicks(1507),
                             CreatedBy = 1L,
@@ -7130,7 +6890,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 50L,
-                            ChallengeVersionId = 20L,
+                            ChallengeVersionId = 12L,
                             Code = "Quia eligendi veniam itaque quam occaecati. Ipsa et dolores et et consequatur. Porro quia maiores distinctio et recusandae dolor voluptatem sapiente placeat. Voluptate maiores molestias. Aliquam magnam odit et quia quasi quo quia aliquid. Aut maiores iusto dolores tempora corporis voluptatem quibusdam.",
                             CreatedAt = new DateTime(2023, 8, 13, 10, 22, 29, 800, DateTimeKind.Utc).AddTicks(5125),
                             CreatedBy = 4L,
@@ -7139,7 +6899,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 51L,
-                            ChallengeVersionId = 194L,
+                            ChallengeVersionId = 177L,
                             Code = "eos",
                             CreatedAt = new DateTime(2023, 5, 21, 11, 43, 5, 332, DateTimeKind.Utc).AddTicks(1480),
                             CreatedBy = 13L,
@@ -7148,7 +6908,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 52L,
-                            ChallengeVersionId = 35L,
+                            ChallengeVersionId = 21L,
                             Code = "Sed aut quia.\nRerum dolores dolor dolore voluptates.\nSint quidem non fugit rerum ut rerum minus dignissimos est.\nRerum numquam autem mollitia amet dolore nobis.\nVoluptas odit tempore ducimus quisquam enim.\nQuaerat omnis nisi.",
                             CreatedAt = new DateTime(2023, 7, 1, 22, 16, 32, 673, DateTimeKind.Utc).AddTicks(7056),
                             CreatedBy = 23L,
@@ -7157,7 +6917,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 53L,
-                            ChallengeVersionId = 60L,
+                            ChallengeVersionId = 37L,
                             Code = "Voluptatem dolores maxime voluptatem.",
                             CreatedAt = new DateTime(2023, 6, 29, 17, 54, 47, 681, DateTimeKind.Utc).AddTicks(2154),
                             CreatedBy = 40L,
@@ -7166,7 +6926,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 54L,
-                            ChallengeVersionId = 130L,
+                            ChallengeVersionId = 84L,
                             Code = "ea",
                             CreatedAt = new DateTime(2023, 8, 24, 11, 23, 29, 249, DateTimeKind.Utc).AddTicks(5922),
                             CreatedBy = 16L,
@@ -7175,7 +6935,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 55L,
-                            ChallengeVersionId = 51L,
+                            ChallengeVersionId = 31L,
                             Code = "Assumenda qui assumenda.\nAmet quia nulla recusandae.\nConsequuntur reprehenderit ad.\nInventore optio quibusdam et in.\nQuas distinctio dolor.\nAut qui voluptatem voluptatem dolorum.",
                             CreatedAt = new DateTime(2023, 3, 4, 4, 33, 34, 998, DateTimeKind.Utc).AddTicks(665),
                             CreatedBy = 40L,
@@ -7184,7 +6944,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 56L,
-                            ChallengeVersionId = 180L,
+                            ChallengeVersionId = 141L,
                             Code = "Repellendus quae est sint fugiat non.",
                             CreatedAt = new DateTime(2023, 9, 7, 21, 33, 31, 790, DateTimeKind.Utc).AddTicks(2331),
                             CreatedBy = 9L,
@@ -7193,7 +6953,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 57L,
-                            ChallengeVersionId = 31L,
+                            ChallengeVersionId = 19L,
                             Code = "Nisi tenetur delectus facere sed est eum et officia.\nDistinctio distinctio accusamus rerum tempora soluta non qui maxime.\nEveniet ad est ratione quo quod quia id sunt ut.\nQuas voluptas voluptatum.\nLibero veniam quia dolor repellat eveniet a adipisci aliquam doloribus.\nDelectus ipsa tempore voluptate repellat.",
                             CreatedAt = new DateTime(2023, 8, 31, 23, 33, 1, 112, DateTimeKind.Utc).AddTicks(5833),
                             CreatedBy = 34L,
@@ -7202,7 +6962,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 58L,
-                            ChallengeVersionId = 164L,
+                            ChallengeVersionId = 117L,
                             Code = "corporis",
                             CreatedAt = new DateTime(2023, 6, 6, 5, 6, 59, 185, DateTimeKind.Utc).AddTicks(6170),
                             CreatedBy = 19L,
@@ -7220,7 +6980,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 60L,
-                            ChallengeVersionId = 184L,
+                            ChallengeVersionId = 150L,
                             Code = "Pariatur optio facilis eum sint hic.\nConsequatur adipisci recusandae consequatur ipsa ad reiciendis nulla et.\nVoluptas sunt quia hic illum voluptatem veritatis sed cupiditate non.\nVoluptates blanditiis aut dolores quidem voluptatem ut.\nRecusandae eligendi ipsam velit impedit quia.",
                             CreatedAt = new DateTime(2023, 9, 12, 5, 28, 2, 634, DateTimeKind.Utc).AddTicks(2194),
                             CreatedBy = 37L,
@@ -7229,7 +6989,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 61L,
-                            ChallengeVersionId = 197L,
+                            ChallengeVersionId = 181L,
                             Code = "Dolores aperiam suscipit dolores. Et doloremque perspiciatis culpa impedit asperiores. Suscipit explicabo id consequuntur molestias ea magnam quo. Error sit aut cum et dolorem. Architecto nesciunt consequatur soluta blanditiis consequatur esse nihil totam alias. Cupiditate ut at ex.",
                             CreatedAt = new DateTime(2023, 3, 14, 14, 9, 53, 821, DateTimeKind.Utc).AddTicks(4882),
                             CreatedBy = 27L,
@@ -7238,7 +6998,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 62L,
-                            ChallengeVersionId = 190L,
+                            ChallengeVersionId = 169L,
                             Code = "dolor",
                             CreatedAt = new DateTime(2023, 5, 15, 6, 2, 44, 127, DateTimeKind.Utc).AddTicks(912),
                             CreatedBy = 14L,
@@ -7247,7 +7007,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 63L,
-                            ChallengeVersionId = 187L,
+                            ChallengeVersionId = 157L,
                             Code = "porro",
                             CreatedAt = new DateTime(2023, 2, 11, 1, 48, 45, 682, DateTimeKind.Utc).AddTicks(8384),
                             CreatedBy = 14L,
@@ -7256,7 +7016,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 64L,
-                            ChallengeVersionId = 29L,
+                            ChallengeVersionId = 18L,
                             Code = "Rem nihil nisi ipsam. Ut cum ipsam distinctio molestias. Est voluptatum officia non. Est consequatur magni autem. Consequuntur omnis voluptatem dicta esse est atque in.",
                             CreatedAt = new DateTime(2023, 8, 25, 4, 15, 55, 375, DateTimeKind.Utc).AddTicks(9517),
                             CreatedBy = 8L,
@@ -7265,7 +7025,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 65L,
-                            ChallengeVersionId = 186L,
+                            ChallengeVersionId = 157L,
                             Code = "eum",
                             CreatedAt = new DateTime(2023, 9, 9, 15, 28, 10, 863, DateTimeKind.Utc).AddTicks(1174),
                             CreatedBy = 1L,
@@ -7274,7 +7034,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 66L,
-                            ChallengeVersionId = 113L,
+                            ChallengeVersionId = 69L,
                             Code = "Et nostrum rerum aut et.",
                             CreatedAt = new DateTime(2022, 8, 1, 13, 6, 17, 480, DateTimeKind.Utc).AddTicks(3201),
                             CreatedBy = 29L,
@@ -7283,7 +7043,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 67L,
-                            ChallengeVersionId = 198L,
+                            ChallengeVersionId = 184L,
                             Code = "Aut velit ut nam voluptatem tempora accusamus voluptatem adipisci.\nSint voluptas quae debitis autem quia minima natus.\nEt est dignissimos vero fugiat officiis voluptates modi.\nCupiditate omnis molestiae molestias consequatur ut delectus eligendi eaque.\nVoluptatem dolor occaecati vitae nesciunt.\nEst natus et.",
                             CreatedAt = new DateTime(2023, 7, 7, 19, 5, 7, 428, DateTimeKind.Utc).AddTicks(283),
                             CreatedBy = 37L,
@@ -7292,7 +7052,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 68L,
-                            ChallengeVersionId = 40L,
+                            ChallengeVersionId = 25L,
                             Code = "tenetur",
                             CreatedAt = new DateTime(2023, 9, 2, 21, 58, 17, 909, DateTimeKind.Utc).AddTicks(4651),
                             CreatedBy = 18L,
@@ -7301,7 +7061,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 69L,
-                            ChallengeVersionId = 151L,
+                            ChallengeVersionId = 105L,
                             Code = "Consequatur sit quibusdam iusto vel aut.\nOptio voluptates soluta dolorem perferendis et et explicabo facilis quis.\nVeritatis ipsam nulla ut distinctio animi voluptatem voluptas.\nDolorem incidunt non eos non voluptatum voluptates.\nQuas quis est enim omnis animi consequatur beatae molestias.",
                             CreatedAt = new DateTime(2023, 7, 14, 8, 19, 53, 157, DateTimeKind.Utc).AddTicks(1320),
                             CreatedBy = 34L,
@@ -7310,7 +7070,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 70L,
-                            ChallengeVersionId = 31L,
+                            ChallengeVersionId = 19L,
                             Code = "rem",
                             CreatedAt = new DateTime(2023, 3, 31, 16, 0, 40, 156, DateTimeKind.Utc).AddTicks(8438),
                             CreatedBy = 18L,
@@ -7319,7 +7079,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 71L,
-                            ChallengeVersionId = 16L,
+                            ChallengeVersionId = 10L,
                             Code = "Velit fugit aut praesentium autem.\nEum perspiciatis rerum sed sit magni.\nEa error quam ullam porro voluptatum nesciunt.\nNulla necessitatibus repellat quas.\nPossimus autem ipsam.",
                             CreatedAt = new DateTime(2023, 3, 28, 4, 41, 25, 399, DateTimeKind.Utc).AddTicks(7542),
                             CreatedBy = 14L,
@@ -7328,7 +7088,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 72L,
-                            ChallengeVersionId = 122L,
+                            ChallengeVersionId = 75L,
                             Code = "dicta",
                             CreatedAt = new DateTime(2023, 8, 23, 9, 43, 16, 646, DateTimeKind.Utc).AddTicks(7418),
                             CreatedBy = 13L,
@@ -7337,7 +7097,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 73L,
-                            ChallengeVersionId = 147L,
+                            ChallengeVersionId = 98L,
                             Code = "Fugit saepe excepturi et excepturi fugit deserunt ea ratione possimus. Et quia aliquid. Aut tenetur qui nihil. Tempora natus provident. Magni ducimus enim a vitae repellat voluptates sunt laudantium amet.",
                             CreatedAt = new DateTime(2023, 6, 21, 12, 9, 46, 515, DateTimeKind.Utc).AddTicks(2986),
                             CreatedBy = 20L,
@@ -7346,7 +7106,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 74L,
-                            ChallengeVersionId = 127L,
+                            ChallengeVersionId = 79L,
                             Code = "Repudiandae non dolore quaerat iure itaque id vel commodi.\nArchitecto velit nobis id omnis.\nCupiditate temporibus et voluptas harum.\nVoluptatem nulla excepturi voluptatem voluptatem.\nIncidunt corrupti quis dolor veritatis modi ipsam.",
                             CreatedAt = new DateTime(2023, 8, 14, 16, 25, 4, 282, DateTimeKind.Utc).AddTicks(2808),
                             CreatedBy = 30L,
@@ -7355,7 +7115,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 75L,
-                            ChallengeVersionId = 62L,
+                            ChallengeVersionId = 38L,
                             Code = "Quisquam est quo autem dolor ducimus dolor.\nSapiente autem corrupti et voluptatem mollitia dolor in.\nUt sint sed ratione officiis reiciendis saepe eos.\nQuam et quasi et quae iste.",
                             CreatedAt = new DateTime(2023, 3, 28, 17, 12, 32, 73, DateTimeKind.Utc).AddTicks(5441),
                             CreatedBy = 24L,
@@ -7364,7 +7124,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 76L,
-                            ChallengeVersionId = 75L,
+                            ChallengeVersionId = 46L,
                             Code = "eos",
                             CreatedAt = new DateTime(2022, 12, 29, 8, 40, 53, 216, DateTimeKind.Utc).AddTicks(160),
                             CreatedBy = 18L,
@@ -7373,7 +7133,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 77L,
-                            ChallengeVersionId = 70L,
+                            ChallengeVersionId = 43L,
                             Code = "Quaerat architecto quisquam pariatur necessitatibus reiciendis molestias deserunt.\nMolestiae pariatur tempore earum labore voluptatem.\nQuaerat similique nesciunt.\nNon quos explicabo repellat ad iure est et.",
                             CreatedAt = new DateTime(2023, 9, 12, 7, 56, 36, 359, DateTimeKind.Utc).AddTicks(6258),
                             CreatedBy = 23L,
@@ -7382,7 +7142,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 78L,
-                            ChallengeVersionId = 37L,
+                            ChallengeVersionId = 23L,
                             Code = "Debitis eum cumque quasi.",
                             CreatedAt = new DateTime(2023, 9, 10, 4, 2, 19, 310, DateTimeKind.Utc).AddTicks(7283),
                             CreatedBy = 22L,
@@ -7391,7 +7151,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 79L,
-                            ChallengeVersionId = 195L,
+                            ChallengeVersionId = 177L,
                             Code = "Fugiat et eveniet illo perspiciatis dolor voluptatem quis. Omnis voluptas voluptatibus quisquam sunt et consequatur facilis et. Officiis molestias ad quod ea recusandae voluptas consectetur. Suscipit sed delectus animi laudantium aliquam. Quia quo consequatur et et provident.",
                             CreatedAt = new DateTime(2023, 1, 15, 3, 53, 57, 998, DateTimeKind.Utc).AddTicks(714),
                             CreatedBy = 18L,
@@ -7400,7 +7160,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 80L,
-                            ChallengeVersionId = 108L,
+                            ChallengeVersionId = 66L,
                             Code = "Dolores soluta blanditiis eveniet quisquam nesciunt possimus labore natus voluptas.",
                             CreatedAt = new DateTime(2023, 9, 13, 9, 23, 26, 112, DateTimeKind.Utc).AddTicks(5780),
                             CreatedBy = 9L,
@@ -7409,7 +7169,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 81L,
-                            ChallengeVersionId = 107L,
+                            ChallengeVersionId = 65L,
                             Code = "Autem neque sint totam magni dolor expedita fugiat.\nUt laboriosam sed impedit exercitationem dolore.",
                             CreatedAt = new DateTime(2023, 7, 25, 22, 26, 30, 318, DateTimeKind.Utc).AddTicks(9003),
                             CreatedBy = 28L,
@@ -7418,7 +7178,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 82L,
-                            ChallengeVersionId = 66L,
+                            ChallengeVersionId = 40L,
                             Code = "Odio impedit perferendis rerum. Quia eligendi qui excepturi eveniet itaque non est hic rerum. Consequatur quas et et minima molestiae esse. Pariatur doloremque nostrum officia officiis exercitationem non voluptatem.",
                             CreatedAt = new DateTime(2023, 6, 12, 21, 28, 16, 922, DateTimeKind.Utc).AddTicks(8798),
                             CreatedBy = 29L,
@@ -7427,7 +7187,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 83L,
-                            ChallengeVersionId = 145L,
+                            ChallengeVersionId = 96L,
                             Code = "Sit deleniti eos vero.",
                             CreatedAt = new DateTime(2023, 8, 14, 12, 38, 35, 710, DateTimeKind.Utc).AddTicks(56),
                             CreatedBy = 24L,
@@ -7436,7 +7196,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 84L,
-                            ChallengeVersionId = 46L,
+                            ChallengeVersionId = 28L,
                             Code = "Eum voluptas sed vitae et delectus sint nostrum.\nEaque sapiente aut odit quo.\nDelectus temporibus id aspernatur.",
                             CreatedAt = new DateTime(2021, 1, 18, 17, 27, 47, 906, DateTimeKind.Utc).AddTicks(160),
                             CreatedBy = 3L,
@@ -7445,7 +7205,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 85L,
-                            ChallengeVersionId = 14L,
+                            ChallengeVersionId = 9L,
                             Code = "Molestiae nihil velit aut odit.",
                             CreatedAt = new DateTime(2023, 9, 2, 20, 9, 20, 332, DateTimeKind.Utc).AddTicks(2026),
                             CreatedBy = 40L,
@@ -7454,7 +7214,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 86L,
-                            ChallengeVersionId = 146L,
+                            ChallengeVersionId = 96L,
                             Code = "ut",
                             CreatedAt = new DateTime(2023, 8, 27, 14, 0, 26, 708, DateTimeKind.Utc).AddTicks(2127),
                             CreatedBy = 4L,
@@ -7463,7 +7223,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 87L,
-                            ChallengeVersionId = 29L,
+                            ChallengeVersionId = 18L,
                             Code = "occaecati",
                             CreatedAt = new DateTime(2023, 7, 15, 6, 19, 50, 515, DateTimeKind.Utc).AddTicks(8464),
                             CreatedBy = 9L,
@@ -7472,7 +7232,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 88L,
-                            ChallengeVersionId = 103L,
+                            ChallengeVersionId = 63L,
                             Code = "qui",
                             CreatedAt = new DateTime(2023, 3, 30, 19, 31, 55, 247, DateTimeKind.Utc).AddTicks(7156),
                             CreatedBy = 33L,
@@ -7481,7 +7241,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 89L,
-                            ChallengeVersionId = 135L,
+                            ChallengeVersionId = 89L,
                             Code = "Assumenda sed aut omnis voluptatem ut ipsam.\nQuia delectus culpa rerum neque.",
                             CreatedAt = new DateTime(2023, 7, 17, 14, 22, 37, 998, DateTimeKind.Utc).AddTicks(3034),
                             CreatedBy = 10L,
@@ -7490,7 +7250,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 90L,
-                            ChallengeVersionId = 175L,
+                            ChallengeVersionId = 137L,
                             Code = "Iste et sint.\nQuisquam necessitatibus veniam.\nEt ullam eveniet fugiat non autem enim assumenda.\nNemo voluptas quae necessitatibus sed recusandae labore quidem porro.",
                             CreatedAt = new DateTime(2022, 7, 23, 8, 28, 43, 690, DateTimeKind.Utc).AddTicks(3599),
                             CreatedBy = 11L,
@@ -7499,7 +7259,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 91L,
-                            ChallengeVersionId = 8L,
+                            ChallengeVersionId = 5L,
                             Code = "est",
                             CreatedAt = new DateTime(2023, 8, 23, 21, 32, 7, 146, DateTimeKind.Utc).AddTicks(8262),
                             CreatedBy = 1L,
@@ -7508,7 +7268,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 92L,
-                            ChallengeVersionId = 158L,
+                            ChallengeVersionId = 109L,
                             Code = "Ipsa molestiae aliquam et vel et quasi maxime tenetur.",
                             CreatedAt = new DateTime(2023, 5, 28, 18, 48, 10, 37, DateTimeKind.Utc).AddTicks(4174),
                             CreatedBy = 20L,
@@ -7517,7 +7277,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 93L,
-                            ChallengeVersionId = 85L,
+                            ChallengeVersionId = 52L,
                             Code = "Totam magni aliquid maiores cum laudantium consequatur perferendis consequatur.",
                             CreatedAt = new DateTime(2023, 3, 31, 18, 54, 25, 314, DateTimeKind.Utc).AddTicks(1178),
                             CreatedBy = 9L,
@@ -7526,7 +7286,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 94L,
-                            ChallengeVersionId = 192L,
+                            ChallengeVersionId = 172L,
                             Code = "Quam deleniti veritatis voluptatem laboriosam. Voluptatem reprehenderit doloremque dolorem necessitatibus omnis dicta quasi autem. Tempore saepe similique sint distinctio et est voluptatem eaque. Dignissimos quia perspiciatis eligendi dolorem hic. Nihil reiciendis asperiores. Voluptatem quam cum accusamus sapiente.",
                             CreatedAt = new DateTime(2022, 11, 9, 22, 58, 52, 885, DateTimeKind.Utc).AddTicks(8849),
                             CreatedBy = 23L,
@@ -7535,7 +7295,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 95L,
-                            ChallengeVersionId = 85L,
+                            ChallengeVersionId = 52L,
                             Code = "Iusto sed aliquid tempora delectus nihil iste accusamus. Tempora molestiae nisi inventore pariatur suscipit nisi earum. Nam explicabo quibusdam dolores cupiditate voluptatum saepe ab. Voluptates aspernatur maxime autem atque nihil in odit. Rem quisquam aut quisquam.",
                             CreatedAt = new DateTime(2023, 9, 1, 11, 43, 52, 482, DateTimeKind.Utc).AddTicks(7811),
                             CreatedBy = 24L,
@@ -7544,7 +7304,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 96L,
-                            ChallengeVersionId = 111L,
+                            ChallengeVersionId = 68L,
                             Code = "Consequatur fugit dolorum dolorem et.",
                             CreatedAt = new DateTime(2023, 3, 30, 10, 7, 25, 310, DateTimeKind.Utc).AddTicks(1628),
                             CreatedBy = 26L,
@@ -7553,7 +7313,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 97L,
-                            ChallengeVersionId = 49L,
+                            ChallengeVersionId = 30L,
                             Code = "Suscipit sint consequatur est est repellat et odio rerum atque. Dolor accusamus modi officia earum tempore tempore ut. Voluptatibus natus labore qui quis recusandae fugit.",
                             CreatedAt = new DateTime(2023, 9, 6, 16, 5, 1, 302, DateTimeKind.Utc).AddTicks(5058),
                             CreatedBy = 3L,
@@ -7562,7 +7322,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 98L,
-                            ChallengeVersionId = 120L,
+                            ChallengeVersionId = 74L,
                             Code = "qui",
                             CreatedAt = new DateTime(2023, 6, 16, 18, 24, 40, 945, DateTimeKind.Utc).AddTicks(7779),
                             CreatedBy = 8L,
@@ -7571,7 +7331,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 99L,
-                            ChallengeVersionId = 62L,
+                            ChallengeVersionId = 38L,
                             Code = "Quos illo eligendi voluptas autem odio ullam. Delectus voluptatem reiciendis nesciunt eaque velit. Omnis soluta quam ea voluptas aut consectetur eius culpa quod. Eaque enim quo ea tempora eveniet voluptatem.",
                             CreatedAt = new DateTime(2023, 8, 3, 0, 9, 52, 894, DateTimeKind.Utc).AddTicks(6843),
                             CreatedBy = 38L,
@@ -7580,7 +7340,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 100L,
-                            ChallengeVersionId = 6L,
+                            ChallengeVersionId = 4L,
                             Code = "Harum impedit ad ut vitae culpa magni minus cumque. Quas ullam velit excepturi quo ullam fugiat. Officia et ea.",
                             CreatedAt = new DateTime(2023, 2, 18, 14, 1, 2, 566, DateTimeKind.Utc).AddTicks(2299),
                             CreatedBy = 23L,
@@ -7589,7 +7349,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 101L,
-                            ChallengeVersionId = 146L,
+                            ChallengeVersionId = 96L,
                             Code = "quo",
                             CreatedAt = new DateTime(2023, 9, 14, 4, 35, 48, 489, DateTimeKind.Utc).AddTicks(9242),
                             CreatedBy = 39L,
@@ -7598,7 +7358,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 102L,
-                            ChallengeVersionId = 143L,
+                            ChallengeVersionId = 94L,
                             Code = "Quia quia repudiandae voluptatem et nesciunt odio. Sunt tempora eveniet non atque. Mollitia vel sunt facere quia velit ducimus id eos.",
                             CreatedAt = new DateTime(2023, 7, 20, 18, 41, 12, 410, DateTimeKind.Utc).AddTicks(4922),
                             CreatedBy = 1L,
@@ -7607,7 +7367,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 103L,
-                            ChallengeVersionId = 108L,
+                            ChallengeVersionId = 66L,
                             Code = "Qui optio minus sunt ut corporis.",
                             CreatedAt = new DateTime(2023, 2, 8, 19, 42, 9, 201, DateTimeKind.Utc).AddTicks(6476),
                             CreatedBy = 21L,
@@ -7616,7 +7376,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 104L,
-                            ChallengeVersionId = 119L,
+                            ChallengeVersionId = 74L,
                             Code = "Aspernatur qui nisi nam neque.",
                             CreatedAt = new DateTime(2021, 11, 21, 16, 31, 30, 432, DateTimeKind.Utc).AddTicks(2770),
                             CreatedBy = 6L,
@@ -7625,7 +7385,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 105L,
-                            ChallengeVersionId = 31L,
+                            ChallengeVersionId = 19L,
                             Code = "Quibusdam veritatis animi eaque sed excepturi. Esse eaque accusamus voluptas provident neque. Qui quas illo molestiae in eos saepe quae ut.",
                             CreatedAt = new DateTime(2023, 5, 25, 20, 59, 22, 648, DateTimeKind.Utc).AddTicks(7894),
                             CreatedBy = 2L,
@@ -7634,7 +7394,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 106L,
-                            ChallengeVersionId = 101L,
+                            ChallengeVersionId = 62L,
                             Code = "Ut hic at ut quis exercitationem quo nihil.",
                             CreatedAt = new DateTime(2020, 3, 30, 15, 26, 8, 417, DateTimeKind.Utc).AddTicks(9353),
                             CreatedBy = 1L,
@@ -7643,7 +7403,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 107L,
-                            ChallengeVersionId = 47L,
+                            ChallengeVersionId = 29L,
                             Code = "quia",
                             CreatedAt = new DateTime(2023, 9, 8, 20, 3, 3, 809, DateTimeKind.Utc).AddTicks(8555),
                             CreatedBy = 33L,
@@ -7652,7 +7412,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 108L,
-                            ChallengeVersionId = 61L,
+                            ChallengeVersionId = 37L,
                             Code = "Non beatae inventore.",
                             CreatedAt = new DateTime(2023, 6, 16, 19, 57, 11, 143, DateTimeKind.Utc).AddTicks(6901),
                             CreatedBy = 23L,
@@ -7661,7 +7421,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 109L,
-                            ChallengeVersionId = 105L,
+                            ChallengeVersionId = 64L,
                             Code = "Sequi accusamus vitae nihil.\nSint doloribus doloribus debitis ut maxime et omnis dolore.\nVoluptatem rerum est fugit ut voluptatibus unde.\nEa amet consectetur saepe omnis.",
                             CreatedAt = new DateTime(2023, 5, 23, 12, 50, 45, 214, DateTimeKind.Utc).AddTicks(6032),
                             CreatedBy = 22L,
@@ -7670,7 +7430,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 110L,
-                            ChallengeVersionId = 63L,
+                            ChallengeVersionId = 39L,
                             Code = "Doloremque eos aperiam nemo omnis.",
                             CreatedAt = new DateTime(2023, 7, 27, 11, 48, 30, 795, DateTimeKind.Utc).AddTicks(7425),
                             CreatedBy = 33L,
@@ -7679,7 +7439,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 111L,
-                            ChallengeVersionId = 32L,
+                            ChallengeVersionId = 20L,
                             Code = "Cupiditate vel qui repellat libero voluptatem id et. Est omnis soluta occaecati culpa. Odio totam qui. Fuga perspiciatis exercitationem numquam iusto doloribus in quia et et.",
                             CreatedAt = new DateTime(2020, 3, 21, 2, 3, 12, 755, DateTimeKind.Utc).AddTicks(1319),
                             CreatedBy = 22L,
@@ -7688,7 +7448,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 112L,
-                            ChallengeVersionId = 85L,
+                            ChallengeVersionId = 52L,
                             Code = "Vitae qui non quasi non sint aliquid repellat.",
                             CreatedAt = new DateTime(2023, 8, 1, 22, 56, 43, 826, DateTimeKind.Utc).AddTicks(2705),
                             CreatedBy = 15L,
@@ -7697,7 +7457,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 113L,
-                            ChallengeVersionId = 13L,
+                            ChallengeVersionId = 8L,
                             Code = "Ex atque quibusdam rerum. Incidunt mollitia exercitationem consequatur. Pariatur aut maiores. Nobis voluptatem ut.",
                             CreatedAt = new DateTime(2022, 8, 26, 14, 19, 55, 12, DateTimeKind.Utc).AddTicks(3657),
                             CreatedBy = 38L,
@@ -7706,7 +7466,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 114L,
-                            ChallengeVersionId = 180L,
+                            ChallengeVersionId = 141L,
                             Code = "Odit adipisci exercitationem autem pariatur quidem. Sed excepturi quod aut odio minus et ad iusto. Non occaecati reiciendis cum quo commodi.",
                             CreatedAt = new DateTime(2023, 9, 16, 1, 26, 7, 698, DateTimeKind.Utc).AddTicks(3660),
                             CreatedBy = 23L,
@@ -7715,7 +7475,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 115L,
-                            ChallengeVersionId = 58L,
+                            ChallengeVersionId = 35L,
                             Code = "Error esse velit sit provident.\nRecusandae et dignissimos quis corporis est exercitationem et ullam dolore.",
                             CreatedAt = new DateTime(2022, 11, 14, 5, 59, 47, 693, DateTimeKind.Utc).AddTicks(5541),
                             CreatedBy = 32L,
@@ -7724,7 +7484,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 116L,
-                            ChallengeVersionId = 80L,
+                            ChallengeVersionId = 49L,
                             Code = "Nihil explicabo temporibus.",
                             CreatedAt = new DateTime(2023, 7, 4, 20, 19, 45, 414, DateTimeKind.Utc).AddTicks(7377),
                             CreatedBy = 17L,
@@ -7733,7 +7493,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 117L,
-                            ChallengeVersionId = 101L,
+                            ChallengeVersionId = 62L,
                             Code = "Veritatis ratione neque quia reprehenderit accusantium ea ut quis.",
                             CreatedAt = new DateTime(2020, 5, 11, 12, 11, 14, 260, DateTimeKind.Utc).AddTicks(1273),
                             CreatedBy = 4L,
@@ -7742,7 +7502,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 118L,
-                            ChallengeVersionId = 107L,
+                            ChallengeVersionId = 65L,
                             Code = "Quia animi quos minima assumenda earum.\nNecessitatibus voluptatum doloribus voluptatem ut dolores nesciunt.",
                             CreatedAt = new DateTime(2023, 6, 25, 14, 21, 13, 122, DateTimeKind.Utc).AddTicks(1548),
                             CreatedBy = 7L,
@@ -7751,7 +7511,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 119L,
-                            ChallengeVersionId = 27L,
+                            ChallengeVersionId = 16L,
                             Code = "et",
                             CreatedAt = new DateTime(2023, 8, 16, 10, 0, 56, 494, DateTimeKind.Utc).AddTicks(9189),
                             CreatedBy = 37L,
@@ -7760,7 +7520,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 120L,
-                            ChallengeVersionId = 185L,
+                            ChallengeVersionId = 155L,
                             Code = "Aut assumenda consequatur ad quam omnis reiciendis. Et error consequatur inventore quia sunt enim cumque. Impedit eos fugiat consequuntur aut earum.",
                             CreatedAt = new DateTime(2023, 5, 31, 2, 42, 21, 594, DateTimeKind.Utc).AddTicks(8462),
                             CreatedBy = 18L,
@@ -7769,7 +7529,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 121L,
-                            ChallengeVersionId = 139L,
+                            ChallengeVersionId = 92L,
                             Code = "Eligendi enim qui.",
                             CreatedAt = new DateTime(2023, 5, 26, 4, 59, 53, 613, DateTimeKind.Utc).AddTicks(5135),
                             CreatedBy = 25L,
@@ -7778,7 +7538,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 122L,
-                            ChallengeVersionId = 24L,
+                            ChallengeVersionId = 15L,
                             Code = "Ut dolor sequi qui qui dolor sequi corrupti.",
                             CreatedAt = new DateTime(2023, 3, 9, 18, 58, 10, 482, DateTimeKind.Utc).AddTicks(2276),
                             CreatedBy = 35L,
@@ -7787,7 +7547,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 123L,
-                            ChallengeVersionId = 86L,
+                            ChallengeVersionId = 53L,
                             Code = "Labore autem alias.\nDicta cum voluptatibus incidunt eligendi est aut exercitationem est.\nSoluta ut sequi ut nobis.\nVitae cum tempore et voluptas voluptas fugit ipsam animi.",
                             CreatedAt = new DateTime(2023, 1, 25, 8, 11, 14, 157, DateTimeKind.Utc).AddTicks(6344),
                             CreatedBy = 8L,
@@ -7796,7 +7556,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 124L,
-                            ChallengeVersionId = 110L,
+                            ChallengeVersionId = 67L,
                             Code = "Veritatis animi nostrum vel ipsa sint.",
                             CreatedAt = new DateTime(2023, 1, 10, 23, 12, 52, 909, DateTimeKind.Utc).AddTicks(375),
                             CreatedBy = 33L,
@@ -7805,7 +7565,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 125L,
-                            ChallengeVersionId = 199L,
+                            ChallengeVersionId = 193L,
                             Code = "Iusto a nihil. Dolorem cumque itaque natus. Possimus et quia natus libero harum voluptatem a. Provident incidunt voluptates dolorum quis eos at facilis saepe provident. Accusamus fuga aut modi.",
                             CreatedAt = new DateTime(2022, 6, 1, 20, 3, 42, 514, DateTimeKind.Utc).AddTicks(6720),
                             CreatedBy = 26L,
@@ -7814,7 +7574,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 126L,
-                            ChallengeVersionId = 37L,
+                            ChallengeVersionId = 23L,
                             Code = "Odio saepe commodi.\nTempora inventore deleniti dolore repudiandae velit voluptas eligendi aliquid.\nNumquam illum officia voluptas ad.",
                             CreatedAt = new DateTime(2023, 4, 4, 8, 4, 34, 435, DateTimeKind.Utc).AddTicks(3012),
                             CreatedBy = 17L,
@@ -7823,7 +7583,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 127L,
-                            ChallengeVersionId = 183L,
+                            ChallengeVersionId = 150L,
                             Code = "Aspernatur similique autem asperiores. In similique totam temporibus perferendis aliquam non. Quibusdam neque est dolorum sit accusantium recusandae non.",
                             CreatedAt = new DateTime(2023, 9, 8, 19, 11, 18, 611, DateTimeKind.Utc).AddTicks(2317),
                             CreatedBy = 3L,
@@ -7832,7 +7592,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 128L,
-                            ChallengeVersionId = 43L,
+                            ChallengeVersionId = 26L,
                             Code = "Aliquam eaque unde non. Eaque a repudiandae blanditiis sint expedita dignissimos quia. Occaecati velit natus veritatis quia deleniti sit nesciunt dolor voluptas. Velit expedita consectetur temporibus minus rerum distinctio fugit reprehenderit.",
                             CreatedAt = new DateTime(2023, 5, 25, 1, 27, 30, 604, DateTimeKind.Utc).AddTicks(7423),
                             CreatedBy = 19L,
@@ -7841,7 +7601,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 129L,
-                            ChallengeVersionId = 50L,
+                            ChallengeVersionId = 30L,
                             Code = "Magnam consectetur cumque ea qui consequatur facilis iure culpa. Doloribus cum aut nesciunt aspernatur aliquam. Est excepturi eum assumenda. Est aut asperiores. Qui libero assumenda minus fugiat.",
                             CreatedAt = new DateTime(2023, 8, 29, 7, 26, 17, 946, DateTimeKind.Utc).AddTicks(4111),
                             CreatedBy = 26L,
@@ -7850,7 +7610,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 130L,
-                            ChallengeVersionId = 73L,
+                            ChallengeVersionId = 45L,
                             Code = "Eius reprehenderit perferendis et quia ut a maiores enim ut. Dolores dolore alias. Numquam quasi magni totam est.",
                             CreatedAt = new DateTime(2023, 9, 18, 19, 55, 47, 544, DateTimeKind.Utc).AddTicks(8589),
                             CreatedBy = 4L,
@@ -7859,7 +7619,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 131L,
-                            ChallengeVersionId = 198L,
+                            ChallengeVersionId = 184L,
                             Code = "Quod et neque reprehenderit magni quia magnam quas.\nQuis ut repudiandae.\nSit aut sit dolores iste ad.\nFugiat itaque reprehenderit sunt quidem et.\nEst delectus enim eaque dolor.\nSimilique numquam sint voluptatem voluptas.",
                             CreatedAt = new DateTime(2023, 7, 14, 19, 4, 37, 743, DateTimeKind.Utc).AddTicks(3206),
                             CreatedBy = 40L,
@@ -7868,7 +7628,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 132L,
-                            ChallengeVersionId = 21L,
+                            ChallengeVersionId = 13L,
                             Code = "nulla",
                             CreatedAt = new DateTime(2023, 9, 16, 1, 36, 2, 755, DateTimeKind.Utc).AddTicks(2292),
                             CreatedBy = 40L,
@@ -7877,7 +7637,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 133L,
-                            ChallengeVersionId = 167L,
+                            ChallengeVersionId = 126L,
                             Code = "Qui quam ut commodi.",
                             CreatedAt = new DateTime(2023, 1, 8, 15, 21, 57, 725, DateTimeKind.Utc).AddTicks(8017),
                             CreatedBy = 27L,
@@ -7886,7 +7646,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 134L,
-                            ChallengeVersionId = 53L,
+                            ChallengeVersionId = 33L,
                             Code = "Facilis ut consequatur sit temporibus iste et aut sunt. Expedita similique tenetur corrupti suscipit facere unde rem quam. Est magnam qui est dolorum fugiat asperiores. Velit et natus vitae ex dolores aliquid a. Sint enim distinctio inventore ut.",
                             CreatedAt = new DateTime(2023, 9, 8, 23, 0, 6, 199, DateTimeKind.Utc).AddTicks(648),
                             CreatedBy = 38L,
@@ -7895,7 +7655,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 135L,
-                            ChallengeVersionId = 143L,
+                            ChallengeVersionId = 94L,
                             Code = "Quos ab consequuntur fugit suscipit aut quia reprehenderit consequatur vitae.",
                             CreatedAt = new DateTime(2023, 3, 11, 6, 38, 5, 817, DateTimeKind.Utc).AddTicks(7166),
                             CreatedBy = 23L,
@@ -7904,7 +7664,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 136L,
-                            ChallengeVersionId = 153L,
+                            ChallengeVersionId = 105L,
                             Code = "Nemo sunt numquam blanditiis eos vel vel aperiam neque.",
                             CreatedAt = new DateTime(2023, 9, 16, 16, 31, 54, 95, DateTimeKind.Utc).AddTicks(6868),
                             CreatedBy = 30L,
@@ -7913,7 +7673,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 137L,
-                            ChallengeVersionId = 65L,
+                            ChallengeVersionId = 40L,
                             Code = "Assumenda dignissimos sed dolore ea sed ducimus placeat et.",
                             CreatedAt = new DateTime(2023, 7, 31, 15, 6, 25, 373, DateTimeKind.Utc).AddTicks(695),
                             CreatedBy = 6L,
@@ -7922,7 +7682,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 138L,
-                            ChallengeVersionId = 146L,
+                            ChallengeVersionId = 96L,
                             Code = "Debitis molestias quam. Aliquid quidem recusandae. Fugit tempore explicabo tenetur in et et ea. Veniam earum excepturi dignissimos recusandae aperiam.",
                             CreatedAt = new DateTime(2023, 9, 17, 12, 53, 8, 848, DateTimeKind.Utc).AddTicks(14),
                             CreatedBy = 33L,
@@ -7931,7 +7691,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 139L,
-                            ChallengeVersionId = 46L,
+                            ChallengeVersionId = 28L,
                             Code = "quia",
                             CreatedAt = new DateTime(2023, 2, 15, 5, 30, 49, 657, DateTimeKind.Utc).AddTicks(7762),
                             CreatedBy = 10L,
@@ -7940,7 +7700,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 140L,
-                            ChallengeVersionId = 183L,
+                            ChallengeVersionId = 150L,
                             Code = "Similique nemo ducimus magni.\nVel magni est voluptatem dolores quia deserunt.\nNatus nihil consequatur eos nulla et earum voluptatum eligendi adipisci.\nNam quibusdam error rerum qui et ratione.",
                             CreatedAt = new DateTime(2023, 9, 17, 5, 50, 31, 425, DateTimeKind.Utc).AddTicks(39),
                             CreatedBy = 8L,
@@ -7949,7 +7709,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 141L,
-                            ChallengeVersionId = 163L,
+                            ChallengeVersionId = 116L,
                             Code = "quo",
                             CreatedAt = new DateTime(2023, 1, 16, 18, 35, 28, 731, DateTimeKind.Utc).AddTicks(7382),
                             CreatedBy = 3L,
@@ -7958,7 +7718,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 142L,
-                            ChallengeVersionId = 193L,
+                            ChallengeVersionId = 173L,
                             Code = "Consequatur et vel et et cupiditate vitae quis.",
                             CreatedAt = new DateTime(2023, 8, 29, 22, 12, 18, 75, DateTimeKind.Utc).AddTicks(8645),
                             CreatedBy = 26L,
@@ -7967,7 +7727,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 143L,
-                            ChallengeVersionId = 86L,
+                            ChallengeVersionId = 53L,
                             Code = "Totam quo illum dolore odit nesciunt ut voluptatem occaecati optio. Similique ipsum ab nulla officia eos magni maiores. Debitis veniam iste rerum commodi et quos amet ut.",
                             CreatedAt = new DateTime(2021, 1, 22, 9, 31, 6, 216, DateTimeKind.Utc).AddTicks(5449),
                             CreatedBy = 39L,
@@ -7976,7 +7736,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 144L,
-                            ChallengeVersionId = 19L,
+                            ChallengeVersionId = 12L,
                             Code = "Dolore iste ut unde sit. Eos unde necessitatibus tenetur voluptates voluptatem. Nihil et et. Veniam ipsa amet sequi accusamus rerum id nam neque ea.",
                             CreatedAt = new DateTime(2023, 6, 30, 1, 42, 26, 353, DateTimeKind.Utc).AddTicks(7779),
                             CreatedBy = 31L,
@@ -7994,7 +7754,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 146L,
-                            ChallengeVersionId = 96L,
+                            ChallengeVersionId = 59L,
                             Code = "quasi",
                             CreatedAt = new DateTime(2023, 4, 21, 21, 14, 46, 173, DateTimeKind.Utc).AddTicks(3815),
                             CreatedBy = 33L,
@@ -8003,7 +7763,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 147L,
-                            ChallengeVersionId = 16L,
+                            ChallengeVersionId = 10L,
                             Code = "Dolores vel tempore harum.\nVero accusantium assumenda quis sed velit distinctio laborum natus vitae.\nMinus qui rem omnis omnis ratione vel voluptatum sit quos.\nAut dolorem ducimus.\nQuibusdam autem unde nihil sapiente et voluptatem natus.\nPraesentium expedita quisquam itaque asperiores non natus molestias qui consequatur.",
                             CreatedAt = new DateTime(2023, 5, 24, 6, 15, 1, 255, DateTimeKind.Utc).AddTicks(3704),
                             CreatedBy = 11L,
@@ -8012,7 +7772,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 148L,
-                            ChallengeVersionId = 58L,
+                            ChallengeVersionId = 35L,
                             Code = "Error adipisci laborum iure voluptas ratione id voluptas voluptate et.",
                             CreatedAt = new DateTime(2022, 4, 16, 23, 39, 41, 335, DateTimeKind.Utc).AddTicks(2595),
                             CreatedBy = 6L,
@@ -8021,7 +7781,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 149L,
-                            ChallengeVersionId = 179L,
+                            ChallengeVersionId = 141L,
                             Code = "totam",
                             CreatedAt = new DateTime(2023, 5, 26, 19, 25, 26, 917, DateTimeKind.Utc).AddTicks(8164),
                             CreatedBy = 4L,
@@ -8030,7 +7790,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 150L,
-                            ChallengeVersionId = 10L,
+                            ChallengeVersionId = 6L,
                             Code = "Atque dicta recusandae qui corrupti nesciunt quis aut cupiditate.",
                             CreatedAt = new DateTime(2023, 3, 18, 4, 34, 31, 188, DateTimeKind.Utc).AddTicks(1744),
                             CreatedBy = 18L,
@@ -8039,7 +7799,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 151L,
-                            ChallengeVersionId = 146L,
+                            ChallengeVersionId = 96L,
                             Code = "Amet ipsam illo debitis.\nVel facilis dolores consequatur enim asperiores est.\nFacere labore nostrum natus est quo non blanditiis.\nDistinctio dignissimos rem corporis.\nLabore voluptates nihil.",
                             CreatedAt = new DateTime(2023, 9, 4, 2, 20, 58, 459, DateTimeKind.Utc).AddTicks(7002),
                             CreatedBy = 33L,
@@ -8048,7 +7808,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 152L,
-                            ChallengeVersionId = 153L,
+                            ChallengeVersionId = 105L,
                             Code = "Ab unde laboriosam aut odio iusto numquam numquam neque.",
                             CreatedAt = new DateTime(2023, 8, 10, 5, 33, 14, 638, DateTimeKind.Utc).AddTicks(7062),
                             CreatedBy = 31L,
@@ -8057,7 +7817,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 153L,
-                            ChallengeVersionId = 72L,
+                            ChallengeVersionId = 44L,
                             Code = "Repellat quia quo alias expedita est voluptate tempora. Voluptate qui nam unde eligendi. Doloribus esse laudantium labore perferendis ut est dicta voluptatem. Dignissimos minima impedit sint quia et ab eum sit corporis. Aut suscipit fugit dignissimos eos fugit illum aperiam. Omnis libero rem aut qui ex nisi dolorum eos.",
                             CreatedAt = new DateTime(2023, 9, 6, 21, 53, 20, 909, DateTimeKind.Utc).AddTicks(4261),
                             CreatedBy = 2L,
@@ -8066,7 +7826,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 154L,
-                            ChallengeVersionId = 66L,
+                            ChallengeVersionId = 41L,
                             Code = "non",
                             CreatedAt = new DateTime(2023, 8, 31, 5, 32, 45, 742, DateTimeKind.Utc).AddTicks(2593),
                             CreatedBy = 13L,
@@ -8075,7 +7835,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 155L,
-                            ChallengeVersionId = 197L,
+                            ChallengeVersionId = 181L,
                             Code = "Non iure explicabo voluptatibus vitae ut quibusdam debitis ut. Illo ipsum esse omnis consequatur id cupiditate delectus dicta. Ut distinctio repudiandae distinctio voluptatem ullam. Fugit iusto et vero inventore ipsam porro eos vitae debitis. Ad asperiores dolorem maiores quia animi.",
                             CreatedAt = new DateTime(2023, 4, 3, 0, 36, 35, 279, DateTimeKind.Utc).AddTicks(9464),
                             CreatedBy = 25L,
@@ -8084,7 +7844,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 156L,
-                            ChallengeVersionId = 133L,
+                            ChallengeVersionId = 89L,
                             Code = "Repellat necessitatibus aut et accusamus rem et distinctio dolor.\nNobis odio et recusandae asperiores vero.\nQuidem est vero odit est explicabo id voluptatibus.\nIpsam soluta autem cum totam mollitia rem.\nVero dolorem sed.\nEnim est ducimus facere quos unde qui perspiciatis est.",
                             CreatedAt = new DateTime(2023, 9, 17, 18, 18, 25, 565, DateTimeKind.Utc).AddTicks(5827),
                             CreatedBy = 27L,
@@ -8093,7 +7853,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 157L,
-                            ChallengeVersionId = 177L,
+                            ChallengeVersionId = 138L,
                             Code = "Cum enim quibusdam. Aut sit nesciunt facere accusamus odit reiciendis. Ut esse beatae. Et pariatur commodi fugit voluptate ex adipisci perspiciatis praesentium. Nulla et eligendi consequuntur possimus nam. Commodi laboriosam perspiciatis quis optio delectus earum qui optio.",
                             CreatedAt = new DateTime(2023, 8, 6, 5, 6, 35, 261, DateTimeKind.Utc).AddTicks(9433),
                             CreatedBy = 23L,
@@ -8102,7 +7862,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 158L,
-                            ChallengeVersionId = 122L,
+                            ChallengeVersionId = 76L,
                             Code = "Neque perferendis quasi iusto soluta cumque quia.\nMagnam quae dignissimos.\nMolestias inventore quod aliquid enim quis.",
                             CreatedAt = new DateTime(2023, 7, 6, 13, 30, 10, 573, DateTimeKind.Utc).AddTicks(6378),
                             CreatedBy = 22L,
@@ -8111,7 +7871,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 159L,
-                            ChallengeVersionId = 62L,
+                            ChallengeVersionId = 38L,
                             Code = "Distinctio quo rem consequatur aut voluptate. Sunt et provident aut nobis tempora quia distinctio sit. Sed est cupiditate blanditiis rerum quidem. Eaque aliquam voluptas delectus. Illo impedit inventore consectetur. Sit maiores pariatur.",
                             CreatedAt = new DateTime(2023, 4, 24, 0, 54, 38, 648, DateTimeKind.Utc).AddTicks(3089),
                             CreatedBy = 26L,
@@ -8120,7 +7880,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 160L,
-                            ChallengeVersionId = 43L,
+                            ChallengeVersionId = 26L,
                             Code = "Et nam dicta dolorem rerum veritatis aut. Nemo ea sapiente porro architecto. Assumenda quisquam facilis eveniet quis. Qui illo dolores.",
                             CreatedAt = new DateTime(2022, 9, 26, 10, 57, 58, 541, DateTimeKind.Utc).AddTicks(208),
                             CreatedBy = 28L,
@@ -8129,7 +7889,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 161L,
-                            ChallengeVersionId = 3L,
+                            ChallengeVersionId = 2L,
                             Code = "voluptas",
                             CreatedAt = new DateTime(2022, 8, 11, 3, 45, 35, 545, DateTimeKind.Utc).AddTicks(7162),
                             CreatedBy = 22L,
@@ -8138,7 +7898,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 162L,
-                            ChallengeVersionId = 75L,
+                            ChallengeVersionId = 46L,
                             Code = "excepturi",
                             CreatedAt = new DateTime(2021, 12, 24, 18, 41, 49, 835, DateTimeKind.Utc).AddTicks(236),
                             CreatedBy = 25L,
@@ -8147,7 +7907,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 163L,
-                            ChallengeVersionId = 75L,
+                            ChallengeVersionId = 46L,
                             Code = "tenetur",
                             CreatedAt = new DateTime(2022, 1, 14, 23, 2, 41, 108, DateTimeKind.Utc).AddTicks(4583),
                             CreatedBy = 34L,
@@ -8156,7 +7916,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 164L,
-                            ChallengeVersionId = 175L,
+                            ChallengeVersionId = 137L,
                             Code = "Occaecati sed iste asperiores cum ut et nihil in ipsum.",
                             CreatedAt = new DateTime(2023, 7, 23, 13, 41, 27, 269, DateTimeKind.Utc).AddTicks(2826),
                             CreatedBy = 11L,
@@ -8165,7 +7925,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 165L,
-                            ChallengeVersionId = 41L,
+                            ChallengeVersionId = 25L,
                             Code = "Esse quam numquam delectus illum. Unde ipsa debitis ut inventore qui. Nam nesciunt aut omnis facilis. Quis sit ut consequatur quasi voluptate itaque.",
                             CreatedAt = new DateTime(2023, 8, 11, 18, 12, 35, 263, DateTimeKind.Utc).AddTicks(5307),
                             CreatedBy = 22L,
@@ -8174,7 +7934,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 166L,
-                            ChallengeVersionId = 177L,
+                            ChallengeVersionId = 138L,
                             Code = "aut",
                             CreatedAt = new DateTime(2023, 9, 2, 1, 57, 43, 450, DateTimeKind.Utc).AddTicks(9937),
                             CreatedBy = 17L,
@@ -8183,7 +7943,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 167L,
-                            ChallengeVersionId = 142L,
+                            ChallengeVersionId = 94L,
                             Code = "hic",
                             CreatedAt = new DateTime(2023, 8, 30, 5, 41, 1, 125, DateTimeKind.Utc).AddTicks(1260),
                             CreatedBy = 1L,
@@ -8192,7 +7952,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 168L,
-                            ChallengeVersionId = 56L,
+                            ChallengeVersionId = 34L,
                             Code = "Aliquam enim quas quo aliquam. Magnam qui quia minima ratione esse qui. Debitis adipisci magnam quas magni asperiores vitae. Pariatur magnam cupiditate porro vel itaque dignissimos.",
                             CreatedAt = new DateTime(2023, 9, 14, 2, 54, 0, 123, DateTimeKind.Utc).AddTicks(2504),
                             CreatedBy = 19L,
@@ -8201,7 +7961,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 169L,
-                            ChallengeVersionId = 152L,
+                            ChallengeVersionId = 105L,
                             Code = "Optio qui veniam labore doloribus culpa cum quia.\nEius rerum reprehenderit eum rerum.",
                             CreatedAt = new DateTime(2023, 7, 24, 7, 35, 29, 678, DateTimeKind.Utc).AddTicks(5200),
                             CreatedBy = 27L,
@@ -8210,7 +7970,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 170L,
-                            ChallengeVersionId = 43L,
+                            ChallengeVersionId = 26L,
                             Code = "Quam magnam amet sed eligendi ipsam hic molestiae.",
                             CreatedAt = new DateTime(2023, 1, 23, 17, 38, 7, 843, DateTimeKind.Utc).AddTicks(5219),
                             CreatedBy = 29L,
@@ -8219,7 +7979,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 171L,
-                            ChallengeVersionId = 2L,
+                            ChallengeVersionId = 1L,
                             Code = "Dolores nam eius necessitatibus.",
                             CreatedAt = new DateTime(2023, 7, 22, 20, 7, 53, 809, DateTimeKind.Utc).AddTicks(2787),
                             CreatedBy = 36L,
@@ -8228,7 +7988,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 172L,
-                            ChallengeVersionId = 158L,
+                            ChallengeVersionId = 109L,
                             Code = "Nihil aut et occaecati et quibusdam reprehenderit voluptate totam. Ducimus in placeat unde cum. Placeat sapiente qui quas et maiores dolorum ducimus. Incidunt dolor corporis.",
                             CreatedAt = new DateTime(2023, 5, 3, 16, 7, 23, 794, DateTimeKind.Utc).AddTicks(4838),
                             CreatedBy = 30L,
@@ -8237,7 +7997,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 173L,
-                            ChallengeVersionId = 80L,
+                            ChallengeVersionId = 49L,
                             Code = "Quia qui voluptate mollitia aut. Aperiam itaque a ab voluptatem. Nisi sit officiis qui quo in. Ad odio corrupti illo nihil eum sit sunt dolorum. Molestias sit occaecati maiores ad rem dolor laboriosam. Nihil sit laudantium quae nam.",
                             CreatedAt = new DateTime(2023, 8, 4, 11, 28, 18, 183, DateTimeKind.Utc).AddTicks(2308),
                             CreatedBy = 31L,
@@ -8246,7 +8006,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 174L,
-                            ChallengeVersionId = 11L,
+                            ChallengeVersionId = 7L,
                             Code = "Doloremque et architecto corrupti fugiat porro in voluptatibus. Eos incidunt velit voluptatem. Accusamus maxime atque quasi eos optio. Nisi optio dolorum consequatur qui qui expedita deserunt fuga. Sed quo accusantium deleniti ipsam dignissimos dolores. Facere dolor ea sequi voluptas tenetur.",
                             CreatedAt = new DateTime(2022, 5, 9, 14, 20, 2, 700, DateTimeKind.Utc).AddTicks(5717),
                             CreatedBy = 9L,
@@ -8255,7 +8015,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 175L,
-                            ChallengeVersionId = 74L,
+                            ChallengeVersionId = 45L,
                             Code = "ad",
                             CreatedAt = new DateTime(2023, 9, 3, 22, 18, 2, 599, DateTimeKind.Utc).AddTicks(7355),
                             CreatedBy = 9L,
@@ -8264,7 +8024,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 176L,
-                            ChallengeVersionId = 61L,
+                            ChallengeVersionId = 37L,
                             Code = "Soluta odio eveniet quod reprehenderit officia.\nAut cumque labore ut omnis.",
                             CreatedAt = new DateTime(2022, 10, 21, 0, 4, 13, 600, DateTimeKind.Utc).AddTicks(2346),
                             CreatedBy = 26L,
@@ -8273,7 +8033,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 177L,
-                            ChallengeVersionId = 80L,
+                            ChallengeVersionId = 49L,
                             Code = "Vero nam possimus laborum. Consequuntur molestias ut numquam consequatur dolores sit. Ratione maiores illum alias vero eaque delectus similique natus. Aliquid perspiciatis magnam aut repellendus quis quod alias corporis.",
                             CreatedAt = new DateTime(2023, 9, 2, 3, 9, 40, 363, DateTimeKind.Utc).AddTicks(6993),
                             CreatedBy = 13L,
@@ -8282,7 +8042,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 178L,
-                            ChallengeVersionId = 100L,
+                            ChallengeVersionId = 61L,
                             Code = "Et aut labore et aut. Illo dolor voluptate ipsam. Fuga magnam officiis voluptatum. Exercitationem dolorem voluptate quasi aliquid sequi est. Voluptatum alias adipisci. Exercitationem fugiat adipisci saepe dolor natus nihil dicta voluptas.",
                             CreatedAt = new DateTime(2022, 5, 28, 16, 9, 32, 842, DateTimeKind.Utc).AddTicks(3264),
                             CreatedBy = 6L,
@@ -8291,7 +8051,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 179L,
-                            ChallengeVersionId = 94L,
+                            ChallengeVersionId = 58L,
                             Code = "similique",
                             CreatedAt = new DateTime(2023, 4, 4, 6, 22, 28, 570, DateTimeKind.Utc).AddTicks(8850),
                             CreatedBy = 5L,
@@ -8300,7 +8060,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 180L,
-                            ChallengeVersionId = 21L,
+                            ChallengeVersionId = 13L,
                             Code = "Debitis sit delectus sint possimus earum praesentium nesciunt sit deserunt.",
                             CreatedAt = new DateTime(2023, 9, 17, 20, 31, 47, 204, DateTimeKind.Utc).AddTicks(9353),
                             CreatedBy = 11L,
@@ -8309,7 +8069,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 181L,
-                            ChallengeVersionId = 154L,
+                            ChallengeVersionId = 106L,
                             Code = "Ducimus est qui reprehenderit nostrum.\nDicta voluptatem culpa minima officia aliquam rerum ex magnam.",
                             CreatedAt = new DateTime(2023, 6, 8, 23, 58, 28, 131, DateTimeKind.Utc).AddTicks(7668),
                             CreatedBy = 17L,
@@ -8318,7 +8078,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 182L,
-                            ChallengeVersionId = 85L,
+                            ChallengeVersionId = 52L,
                             Code = "autem",
                             CreatedAt = new DateTime(2023, 9, 2, 0, 41, 59, 906, DateTimeKind.Utc).AddTicks(166),
                             CreatedBy = 39L,
@@ -8327,7 +8087,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 183L,
-                            ChallengeVersionId = 128L,
+                            ChallengeVersionId = 81L,
                             Code = "et",
                             CreatedAt = new DateTime(2023, 6, 23, 7, 9, 19, 423, DateTimeKind.Utc).AddTicks(1994),
                             CreatedBy = 9L,
@@ -8336,7 +8096,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 184L,
-                            ChallengeVersionId = 24L,
+                            ChallengeVersionId = 15L,
                             Code = "Tempore veritatis aut non qui eius aut aliquam quia. Officiis et ut ut pariatur et velit totam. Necessitatibus voluptates voluptatem quasi corrupti totam ratione saepe ducimus. Consequatur sunt deserunt ut.",
                             CreatedAt = new DateTime(2023, 7, 18, 2, 21, 24, 107, DateTimeKind.Utc).AddTicks(7987),
                             CreatedBy = 8L,
@@ -8345,7 +8105,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 185L,
-                            ChallengeVersionId = 158L,
+                            ChallengeVersionId = 110L,
                             Code = "Animi ut sed dolore sapiente sunt sit voluptates tempore.",
                             CreatedAt = new DateTime(2023, 7, 28, 18, 40, 7, 717, DateTimeKind.Utc).AddTicks(7475),
                             CreatedBy = 33L,
@@ -8354,7 +8114,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 186L,
-                            ChallengeVersionId = 185L,
+                            ChallengeVersionId = 155L,
                             Code = "praesentium",
                             CreatedAt = new DateTime(2023, 5, 21, 19, 57, 6, 253, DateTimeKind.Utc).AddTicks(3726),
                             CreatedBy = 40L,
@@ -8363,7 +8123,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 187L,
-                            ChallengeVersionId = 66L,
+                            ChallengeVersionId = 40L,
                             Code = "odio",
                             CreatedAt = new DateTime(2023, 6, 11, 23, 47, 36, 762, DateTimeKind.Utc).AddTicks(4880),
                             CreatedBy = 6L,
@@ -8372,7 +8132,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 188L,
-                            ChallengeVersionId = 45L,
+                            ChallengeVersionId = 28L,
                             Code = "Sed omnis distinctio.\nBeatae quidem nesciunt perspiciatis temporibus omnis.\nQui ducimus ut.",
                             CreatedAt = new DateTime(2022, 12, 25, 21, 33, 21, 34, DateTimeKind.Utc).AddTicks(944),
                             CreatedBy = 10L,
@@ -8381,7 +8141,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 189L,
-                            ChallengeVersionId = 55L,
+                            ChallengeVersionId = 33L,
                             Code = "Dignissimos consectetur aperiam adipisci corporis.",
                             CreatedAt = new DateTime(2023, 9, 8, 0, 42, 30, 682, DateTimeKind.Utc).AddTicks(560),
                             CreatedBy = 11L,
@@ -8390,7 +8150,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 190L,
-                            ChallengeVersionId = 93L,
+                            ChallengeVersionId = 57L,
                             Code = "Consequatur perferendis autem sed magni dignissimos. Dicta vitae sint dolores officiis rerum sunt laborum. Aut omnis eveniet dolore. Molestiae natus molestiae sint.",
                             CreatedAt = new DateTime(2023, 3, 11, 3, 12, 32, 497, DateTimeKind.Utc).AddTicks(3993),
                             CreatedBy = 33L,
@@ -8399,7 +8159,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 191L,
-                            ChallengeVersionId = 40L,
+                            ChallengeVersionId = 24L,
                             Code = "Suscipit quo officia et dignissimos aut non temporibus fugiat. Ad cupiditate inventore neque enim. Expedita consectetur ipsum magni. Adipisci adipisci rerum. Et id libero corporis sint nulla.",
                             CreatedAt = new DateTime(2023, 9, 2, 8, 1, 46, 657, DateTimeKind.Utc).AddTicks(4081),
                             CreatedBy = 14L,
@@ -8408,7 +8168,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 192L,
-                            ChallengeVersionId = 36L,
+                            ChallengeVersionId = 22L,
                             Code = "quas",
                             CreatedAt = new DateTime(2022, 12, 14, 12, 52, 15, 62, DateTimeKind.Utc).AddTicks(124),
                             CreatedBy = 1L,
@@ -8417,7 +8177,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 193L,
-                            ChallengeVersionId = 184L,
+                            ChallengeVersionId = 150L,
                             Code = "velit",
                             CreatedAt = new DateTime(2023, 9, 15, 12, 28, 36, 984, DateTimeKind.Utc).AddTicks(2573),
                             CreatedBy = 2L,
@@ -8426,7 +8186,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 194L,
-                            ChallengeVersionId = 101L,
+                            ChallengeVersionId = 62L,
                             Code = "Non voluptatem illo porro.",
                             CreatedAt = new DateTime(2021, 10, 24, 3, 59, 29, 556, DateTimeKind.Utc).AddTicks(1318),
                             CreatedBy = 6L,
@@ -8435,7 +8195,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 195L,
-                            ChallengeVersionId = 135L,
+                            ChallengeVersionId = 90L,
                             Code = "Dolores eos atque sint iusto beatae et.\nFuga dolores quo deleniti molestiae dolorem aut voluptatibus.\nMinima ut quam asperiores magnam sint quis voluptas temporibus.\nDolor fuga qui distinctio et velit.\nQuas iure fuga dolores.\nSunt autem ratione qui sit eius.",
                             CreatedAt = new DateTime(2023, 6, 25, 7, 12, 12, 901, DateTimeKind.Utc).AddTicks(2919),
                             CreatedBy = 22L,
@@ -8444,7 +8204,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 196L,
-                            ChallengeVersionId = 56L,
+                            ChallengeVersionId = 35L,
                             Code = "Totam natus qui dolore.\nAut voluptatem facilis mollitia laudantium.\nTempora voluptatum voluptates.",
                             CreatedAt = new DateTime(2023, 9, 10, 16, 7, 37, 883, DateTimeKind.Utc).AddTicks(7026),
                             CreatedBy = 27L,
@@ -8453,7 +8213,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 197L,
-                            ChallengeVersionId = 100L,
+                            ChallengeVersionId = 61L,
                             Code = "Quibusdam distinctio fuga pariatur occaecati.",
                             CreatedAt = new DateTime(2021, 7, 30, 12, 50, 57, 312, DateTimeKind.Utc).AddTicks(571),
                             CreatedBy = 4L,
@@ -8462,7 +8222,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 198L,
-                            ChallengeVersionId = 148L,
+                            ChallengeVersionId = 98L,
                             Code = "Aperiam quam sit quidem animi quaerat ipsa excepturi nisi fugiat. Voluptas ab quas ut nemo qui eum necessitatibus magni consequatur. Odio aut recusandae.",
                             CreatedAt = new DateTime(2023, 9, 16, 21, 38, 39, 173, DateTimeKind.Utc).AddTicks(5993),
                             CreatedBy = 35L,
@@ -8471,7 +8231,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 199L,
-                            ChallengeVersionId = 133L,
+                            ChallengeVersionId = 89L,
                             Code = "deleniti",
                             CreatedAt = new DateTime(2023, 9, 5, 20, 7, 42, 125, DateTimeKind.Utc).AddTicks(3661),
                             CreatedBy = 8L,
@@ -8480,7 +8240,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 200L,
-                            ChallengeVersionId = 129L,
+                            ChallengeVersionId = 83L,
                             Code = "culpa",
                             CreatedAt = new DateTime(2023, 9, 15, 10, 44, 3, 80, DateTimeKind.Utc).AddTicks(8621),
                             CreatedBy = 17L,
@@ -10453,7 +10213,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            ChallengeVersionId = 164L,
+                            ChallengeVersionId = 117L,
                             Code = "Vitae earum pariatur animi saepe explicabo asperiores molestiae et nihil. Esse provident id saepe nesciunt enim. Neque nemo dolore cupiditate temporibus vitae. Ut est voluptates qui minima dolor totam reprehenderit. Dolores non blanditiis facere numquam et facilis. Saepe sequi adipisci labore nesciunt.",
                             CreatedAt = new DateTime(2023, 8, 19, 18, 35, 37, 983, DateTimeKind.Utc).AddTicks(656),
                             CreatedBy = 33L,
@@ -10463,7 +10223,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            ChallengeVersionId = 57L,
+                            ChallengeVersionId = 35L,
                             Code = "Ea iste quos non incidunt consectetur numquam.\nQuod facilis dolorem libero.\nNostrum voluptates tempore non sint debitis et.\nFacilis temporibus molestias repudiandae aut amet non.\nIpsum amet perferendis id.\nAlias aut deleniti optio ea optio numquam.",
                             CreatedAt = new DateTime(2023, 6, 3, 0, 50, 54, 346, DateTimeKind.Utc).AddTicks(6051),
                             CreatedBy = 8L,
@@ -10473,7 +10233,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 3L,
-                            ChallengeVersionId = 98L,
+                            ChallengeVersionId = 60L,
                             Code = "Eum distinctio corporis ut dolorem et velit.",
                             CreatedAt = new DateTime(2023, 9, 3, 6, 28, 42, 595, DateTimeKind.Utc).AddTicks(6748),
                             CreatedBy = 40L,
@@ -10483,7 +10243,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 4L,
-                            ChallengeVersionId = 187L,
+                            ChallengeVersionId = 157L,
                             Code = "Repellat est sequi.\nEaque cupiditate consequuntur harum deserunt atque delectus nisi.\nAut voluptate ut tenetur sint quam consequatur praesentium.",
                             CreatedAt = new DateTime(2020, 10, 23, 0, 21, 38, 97, DateTimeKind.Utc).AddTicks(7279),
                             CreatedBy = 1L,
@@ -10493,7 +10253,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 5L,
-                            ChallengeVersionId = 80L,
+                            ChallengeVersionId = 49L,
                             Code = "Aspernatur qui delectus ut.",
                             CreatedAt = new DateTime(2023, 7, 10, 20, 38, 48, 656, DateTimeKind.Utc).AddTicks(5318),
                             CreatedBy = 7L,
@@ -10503,7 +10263,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 6L,
-                            ChallengeVersionId = 192L,
+                            ChallengeVersionId = 172L,
                             Code = "perferendis",
                             CreatedAt = new DateTime(2023, 1, 26, 6, 18, 10, 802, DateTimeKind.Utc).AddTicks(9198),
                             CreatedBy = 33L,
@@ -10513,7 +10273,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 7L,
-                            ChallengeVersionId = 61L,
+                            ChallengeVersionId = 37L,
                             Code = "aut",
                             CreatedAt = new DateTime(2023, 4, 1, 18, 15, 26, 162, DateTimeKind.Utc).AddTicks(4287),
                             CreatedBy = 7L,
@@ -10522,7 +10282,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 8L,
-                            ChallengeVersionId = 21L,
+                            ChallengeVersionId = 13L,
                             Code = "Voluptatem error provident quo beatae culpa modi repellendus.\nQuasi suscipit soluta neque praesentium voluptatem sed quis.",
                             CreatedAt = new DateTime(2023, 9, 17, 2, 24, 8, 911, DateTimeKind.Utc).AddTicks(9827),
                             CreatedBy = 28L,
@@ -10532,7 +10292,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 9L,
-                            ChallengeVersionId = 76L,
+                            ChallengeVersionId = 47L,
                             Code = "Ut officia fugit quasi.\nSit rerum quis esse placeat nemo.\nDolor qui est est omnis.",
                             CreatedAt = new DateTime(2023, 4, 20, 23, 51, 42, 101, DateTimeKind.Utc).AddTicks(4114),
                             CreatedBy = 12L,
@@ -10542,7 +10302,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 10L,
-                            ChallengeVersionId = 4L,
+                            ChallengeVersionId = 2L,
                             Code = "qui",
                             CreatedAt = new DateTime(2023, 6, 20, 15, 5, 9, 904, DateTimeKind.Utc).AddTicks(156),
                             CreatedBy = 3L,
@@ -10552,7 +10312,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 11L,
-                            ChallengeVersionId = 147L,
+                            ChallengeVersionId = 98L,
                             Code = "Explicabo repellendus enim quia aut voluptas aperiam voluptatem. Sed aut placeat possimus nobis facilis quidem excepturi aperiam voluptatem. Possimus sunt magnam. Omnis rerum nihil possimus ut eius voluptates laboriosam provident aut. Nobis quia mollitia velit ab sequi quidem est earum. Aliquam amet vel quis temporibus.",
                             CreatedAt = new DateTime(2023, 6, 9, 14, 56, 32, 425, DateTimeKind.Utc).AddTicks(8886),
                             CreatedBy = 5L,
@@ -10562,7 +10322,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 12L,
-                            ChallengeVersionId = 56L,
+                            ChallengeVersionId = 35L,
                             Code = "Nulla dolor ipsam qui fugiat.\nTempora cumque doloremque aut exercitationem necessitatibus sed quia.\nHic dignissimos rerum beatae consequatur maxime et aut omnis veritatis.\nQuia in magni deleniti.",
                             CreatedAt = new DateTime(2023, 9, 12, 15, 51, 33, 490, DateTimeKind.Utc).AddTicks(6108),
                             CreatedBy = 39L,
@@ -10572,7 +10332,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 13L,
-                            ChallengeVersionId = 100L,
+                            ChallengeVersionId = 61L,
                             Code = "Et et sit. Eos maiores voluptas ut qui in mollitia consequatur. Animi provident reiciendis soluta sed possimus.",
                             CreatedAt = new DateTime(2022, 5, 11, 12, 2, 9, 189, DateTimeKind.Utc).AddTicks(9880),
                             CreatedBy = 11L,
@@ -10582,7 +10342,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 14L,
-                            ChallengeVersionId = 62L,
+                            ChallengeVersionId = 38L,
                             Code = "alias",
                             CreatedAt = new DateTime(2023, 8, 13, 23, 53, 44, 576, DateTimeKind.Utc).AddTicks(5105),
                             CreatedBy = 6L,
@@ -10592,7 +10352,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 15L,
-                            ChallengeVersionId = 15L,
+                            ChallengeVersionId = 9L,
                             Code = "eveniet",
                             CreatedAt = new DateTime(2023, 4, 15, 14, 25, 34, 908, DateTimeKind.Utc).AddTicks(9840),
                             CreatedBy = 4L,
@@ -10602,7 +10362,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 16L,
-                            ChallengeVersionId = 127L,
+                            ChallengeVersionId = 81L,
                             Code = "Iusto laboriosam fuga dolor autem.\nAut consequatur ipsam alias laboriosam molestiae dolor.\nEarum nam eveniet quas cupiditate.\nSint inventore ducimus.",
                             CreatedAt = new DateTime(2023, 8, 23, 10, 32, 33, 354, DateTimeKind.Utc).AddTicks(8695),
                             CreatedBy = 34L,
@@ -10612,7 +10372,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 17L,
-                            ChallengeVersionId = 37L,
+                            ChallengeVersionId = 22L,
                             Code = "tempore",
                             CreatedAt = new DateTime(2023, 1, 11, 23, 7, 45, 466, DateTimeKind.Utc).AddTicks(6340),
                             CreatedBy = 40L,
@@ -10622,7 +10382,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 18L,
-                            ChallengeVersionId = 189L,
+                            ChallengeVersionId = 167L,
                             Code = "Repellendus repudiandae distinctio.\nUllam aut impedit enim nostrum.\nCommodi et odio temporibus expedita nulla repudiandae eum nobis assumenda.\nMollitia hic deleniti id maxime et similique quo.",
                             CreatedAt = new DateTime(2022, 3, 21, 2, 33, 26, 985, DateTimeKind.Utc).AddTicks(5966),
                             CreatedBy = 20L,
@@ -10632,7 +10392,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 19L,
-                            ChallengeVersionId = 162L,
+                            ChallengeVersionId = 116L,
                             Code = "Ut illo quae. Ut nostrum velit repellat qui non ipsa. Rem temporibus sit.",
                             CreatedAt = new DateTime(2023, 8, 16, 12, 3, 23, 359, DateTimeKind.Utc).AddTicks(5143),
                             CreatedBy = 9L,
@@ -10642,7 +10402,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 20L,
-                            ChallengeVersionId = 99L,
+                            ChallengeVersionId = 61L,
                             Code = "Aut debitis sit nesciunt qui et odit.\nEligendi quia tempore.\nInventore est doloribus.\nEt nostrum quod laborum excepturi ad eligendi.\nIste voluptas rem ab autem voluptatem rerum sed ipsum hic.\nVelit qui voluptas.",
                             CreatedAt = new DateTime(2023, 8, 15, 8, 39, 41, 472, DateTimeKind.Utc).AddTicks(95),
                             CreatedBy = 34L,
@@ -10652,7 +10412,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 21L,
-                            ChallengeVersionId = 28L,
+                            ChallengeVersionId = 17L,
                             Code = "Voluptatem beatae est amet explicabo id illum doloremque inventore.",
                             CreatedAt = new DateTime(2023, 9, 7, 2, 46, 10, 339, DateTimeKind.Utc).AddTicks(8253),
                             CreatedBy = 23L,
@@ -10662,7 +10422,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 22L,
-                            ChallengeVersionId = 45L,
+                            ChallengeVersionId = 27L,
                             Code = "Ipsa enim cum.\nQuos odit culpa et dolores reiciendis.",
                             CreatedAt = new DateTime(2023, 4, 27, 11, 59, 11, 141, DateTimeKind.Utc).AddTicks(1297),
                             CreatedBy = 16L,
@@ -10672,7 +10432,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 23L,
-                            ChallengeVersionId = 60L,
+                            ChallengeVersionId = 37L,
                             Code = "Corporis ut iusto in.",
                             CreatedAt = new DateTime(2023, 7, 20, 20, 47, 21, 777, DateTimeKind.Utc).AddTicks(280),
                             CreatedBy = 34L,
@@ -10682,7 +10442,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 24L,
-                            ChallengeVersionId = 133L,
+                            ChallengeVersionId = 89L,
                             Code = "autem",
                             CreatedAt = new DateTime(2023, 9, 16, 8, 4, 21, 795, DateTimeKind.Utc).AddTicks(2007),
                             CreatedBy = 13L,
@@ -10692,7 +10452,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 25L,
-                            ChallengeVersionId = 97L,
+                            ChallengeVersionId = 59L,
                             Code = "Illo est omnis repellendus non ut maiores eos.\nUt recusandae quo repellendus dolores molestias.\nEst aut dolor.\nSunt ut corrupti error.\nAut fugiat et ut est exercitationem voluptate explicabo.\nQuos quasi placeat ut sit in neque et.",
                             CreatedAt = new DateTime(2023, 5, 15, 18, 9, 7, 174, DateTimeKind.Utc).AddTicks(3911),
                             CreatedBy = 32L,
@@ -10702,7 +10462,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 26L,
-                            ChallengeVersionId = 146L,
+                            ChallengeVersionId = 96L,
                             Code = "Quas voluptatem est illo aspernatur voluptas rerum. Qui consequatur quisquam iusto neque eos. Rerum sit voluptas quis quo dolores excepturi. Minima illum voluptatum. Quae sit hic accusantium et error. Eos sed iusto vel sunt qui voluptatem et.",
                             CreatedAt = new DateTime(2023, 8, 18, 23, 24, 22, 225, DateTimeKind.Utc).AddTicks(3753),
                             CreatedBy = 21L,
@@ -10712,7 +10472,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 27L,
-                            ChallengeVersionId = 69L,
+                            ChallengeVersionId = 42L,
                             Code = "In molestiae et et est rem nisi non aut.",
                             CreatedAt = new DateTime(2023, 9, 6, 20, 35, 52, 94, DateTimeKind.Utc).AddTicks(416),
                             CreatedBy = 26L,
@@ -10722,7 +10482,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 28L,
-                            ChallengeVersionId = 116L,
+                            ChallengeVersionId = 72L,
                             Code = "Ut minus sunt facere eveniet.\nModi eveniet qui praesentium explicabo nam ipsam architecto nesciunt.\nAut atque labore repellat minus voluptas.\nAlias voluptates voluptatem est ullam quae architecto.\nMolestias vel cum commodi nobis ea inventore non.",
                             CreatedAt = new DateTime(2023, 7, 7, 11, 55, 9, 28, DateTimeKind.Utc).AddTicks(7931),
                             CreatedBy = 39L,
@@ -10732,7 +10492,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 29L,
-                            ChallengeVersionId = 33L,
+                            ChallengeVersionId = 20L,
                             Code = "Rem illo fugit sapiente fugit sapiente.\nLaborum magni nisi omnis.\nNumquam et odio voluptas et aut ipsam debitis dolorem.\nVoluptas quo earum et consequatur repellendus voluptatem non ipsam qui.",
                             CreatedAt = new DateTime(2023, 2, 17, 4, 14, 24, 93, DateTimeKind.Utc).AddTicks(8338),
                             CreatedBy = 17L,
@@ -10742,7 +10502,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 30L,
-                            ChallengeVersionId = 143L,
+                            ChallengeVersionId = 94L,
                             Code = "Excepturi consequatur sint aliquid quo ullam eos esse. Mollitia incidunt expedita quis. Numquam in voluptatem quia sequi ex officia. Doloremque delectus possimus eum magnam ad sint.",
                             CreatedAt = new DateTime(2023, 9, 14, 20, 22, 13, 617, DateTimeKind.Utc).AddTicks(6407),
                             CreatedBy = 26L,
@@ -10752,7 +10512,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 31L,
-                            ChallengeVersionId = 5L,
+                            ChallengeVersionId = 3L,
                             Code = "Esse voluptas aut aut cupiditate et ut voluptate.\nEos voluptas repellat veritatis praesentium dolor.\nVelit eum nam voluptatem enim libero non et.",
                             CreatedAt = new DateTime(2020, 10, 30, 0, 40, 3, 372, DateTimeKind.Utc).AddTicks(6765),
                             CreatedBy = 28L,
@@ -10762,7 +10522,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 32L,
-                            ChallengeVersionId = 178L,
+                            ChallengeVersionId = 140L,
                             Code = "Veritatis commodi assumenda debitis eum nobis animi voluptas et.\nConsectetur non ad.\nAtque hic incidunt.\nMaxime fugit nemo cum totam hic.",
                             CreatedAt = new DateTime(2021, 4, 23, 20, 20, 44, 166, DateTimeKind.Utc).AddTicks(73),
                             CreatedBy = 15L,
@@ -10772,7 +10532,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 33L,
-                            ChallengeVersionId = 188L,
+                            ChallengeVersionId = 167L,
                             Code = "Quas enim tempore atque dolorem cupiditate rem dolores in.",
                             CreatedAt = new DateTime(2023, 8, 20, 20, 41, 56, 768, DateTimeKind.Utc).AddTicks(9574),
                             CreatedBy = 37L,
@@ -10782,7 +10542,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 34L,
-                            ChallengeVersionId = 144L,
+                            ChallengeVersionId = 95L,
                             Code = "Voluptas aspernatur consequuntur est ea.\nQuam facere totam est cupiditate nisi voluptatem iure.",
                             CreatedAt = new DateTime(2022, 7, 21, 13, 4, 30, 825, DateTimeKind.Utc).AddTicks(6745),
                             CreatedBy = 9L,
@@ -10792,7 +10552,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 35L,
-                            ChallengeVersionId = 123L,
+                            ChallengeVersionId = 76L,
                             Code = "Sequi quo reprehenderit nihil officiis non qui dignissimos ut officia.\nNam autem dolores ipsam quibusdam placeat assumenda alias.\nIllo voluptas repellendus sint vel.\nEius aperiam nesciunt et maiores incidunt ut eius dolorum occaecati.\nAsperiores aut ut harum beatae.",
                             CreatedAt = new DateTime(2023, 8, 5, 4, 8, 39, 424, DateTimeKind.Utc).AddTicks(2316),
                             CreatedBy = 36L,
@@ -10802,7 +10562,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 36L,
-                            ChallengeVersionId = 70L,
+                            ChallengeVersionId = 43L,
                             Code = "Officiis laborum reiciendis.",
                             CreatedAt = new DateTime(2023, 9, 13, 23, 43, 33, 890, DateTimeKind.Utc).AddTicks(4478),
                             CreatedBy = 15L,
@@ -10812,7 +10572,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 37L,
-                            ChallengeVersionId = 37L,
+                            ChallengeVersionId = 23L,
                             Code = "A commodi incidunt laudantium nihil vel et.\nCupiditate autem fugiat eum suscipit qui iure quo id.\nQui quisquam ratione.",
                             CreatedAt = new DateTime(2023, 6, 26, 22, 40, 49, 214, DateTimeKind.Utc).AddTicks(4683),
                             CreatedBy = 18L,
@@ -10822,7 +10582,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 38L,
-                            ChallengeVersionId = 26L,
+                            ChallengeVersionId = 16L,
                             Code = "Laborum sunt enim illo enim.\nSunt omnis aliquam nihil alias neque.\nQui et rerum nihil.\nDeleniti possimus in et repudiandae.",
                             CreatedAt = new DateTime(2023, 1, 28, 6, 36, 12, 633, DateTimeKind.Utc).AddTicks(1084),
                             CreatedBy = 3L,
@@ -10832,7 +10592,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 39L,
-                            ChallengeVersionId = 187L,
+                            ChallengeVersionId = 157L,
                             Code = "Voluptatem eos ducimus.\nEaque sint voluptas labore consequatur.\nUt omnis dolorem nihil sequi sit rerum animi quisquam sit.",
                             CreatedAt = new DateTime(2021, 2, 11, 5, 38, 36, 15, DateTimeKind.Utc).AddTicks(9672),
                             CreatedBy = 6L,
@@ -10842,7 +10602,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 40L,
-                            ChallengeVersionId = 39L,
+                            ChallengeVersionId = 24L,
                             Code = "Eveniet laborum ullam sint tempore aliquam id dolor officiis. Ut ut occaecati voluptas sequi quia sed ex. Repellendus recusandae pariatur vero ipsa saepe hic qui excepturi sunt. Quis et quis officia doloribus molestiae praesentium et. Ut mollitia neque. Beatae rerum recusandae nulla consequatur dolor eveniet vel.",
                             CreatedAt = new DateTime(2023, 6, 24, 18, 35, 20, 436, DateTimeKind.Utc).AddTicks(4118),
                             CreatedBy = 28L,
@@ -10852,7 +10612,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 41L,
-                            ChallengeVersionId = 195L,
+                            ChallengeVersionId = 177L,
                             Code = "Eos rerum quia quasi. Est quia omnis ea. Aut ea minus adipisci accusamus perferendis quaerat nostrum quod earum. Sed doloremque nemo quis. Totam sed est neque aperiam. Deserunt omnis aperiam non hic minus necessitatibus architecto et aut.",
                             CreatedAt = new DateTime(2023, 2, 12, 0, 49, 27, 838, DateTimeKind.Utc).AddTicks(5525),
                             CreatedBy = 36L,
@@ -10862,7 +10622,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 42L,
-                            ChallengeVersionId = 163L,
+                            ChallengeVersionId = 117L,
                             Code = "Omnis et autem architecto recusandae aperiam quasi est.",
                             CreatedAt = new DateTime(2023, 3, 19, 8, 12, 42, 908, DateTimeKind.Utc).AddTicks(9192),
                             CreatedBy = 22L,
@@ -10872,7 +10632,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 43L,
-                            ChallengeVersionId = 98L,
+                            ChallengeVersionId = 60L,
                             Code = "Earum suscipit autem libero exercitationem dolores.",
                             CreatedAt = new DateTime(2023, 9, 6, 1, 53, 18, 790, DateTimeKind.Utc).AddTicks(6442),
                             CreatedBy = 6L,
@@ -10882,7 +10642,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 44L,
-                            ChallengeVersionId = 130L,
+                            ChallengeVersionId = 83L,
                             Code = "Rerum aliquam quibusdam error et fugiat aut magnam.",
                             CreatedAt = new DateTime(2023, 6, 2, 19, 48, 53, 3, DateTimeKind.Utc).AddTicks(568),
                             CreatedBy = 38L,
@@ -10892,7 +10652,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 45L,
-                            ChallengeVersionId = 85L,
+                            ChallengeVersionId = 52L,
                             Code = "Sapiente magnam quia ut a in.\nIste excepturi ratione quia et rerum magni sunt.",
                             CreatedAt = new DateTime(2023, 7, 11, 0, 7, 15, 734, DateTimeKind.Utc).AddTicks(5525),
                             CreatedBy = 30L,
@@ -10902,7 +10662,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 46L,
-                            ChallengeVersionId = 63L,
+                            ChallengeVersionId = 38L,
                             Code = "Fugiat ut fuga magnam distinctio sit voluptate.\nQuia iusto dolor corporis ducimus et numquam.\nAsperiores et id dolore a et provident.",
                             CreatedAt = new DateTime(2023, 8, 14, 8, 38, 56, 986, DateTimeKind.Utc).AddTicks(651),
                             CreatedBy = 13L,
@@ -10912,7 +10672,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 47L,
-                            ChallengeVersionId = 187L,
+                            ChallengeVersionId = 167L,
                             Code = "quia",
                             CreatedAt = new DateTime(2020, 9, 11, 14, 4, 29, 651, DateTimeKind.Utc).AddTicks(3680),
                             CreatedBy = 3L,
@@ -10922,7 +10682,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 48L,
-                            ChallengeVersionId = 76L,
+                            ChallengeVersionId = 47L,
                             Code = "Non laudantium aut non.\nAsperiores nesciunt dolore.\nIure consequuntur voluptatem velit.\nAutem quo molestiae recusandae.\nEt deserunt ratione laborum.",
                             CreatedAt = new DateTime(2023, 7, 22, 16, 39, 35, 929, DateTimeKind.Utc).AddTicks(1570),
                             CreatedBy = 34L,
@@ -10932,7 +10692,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 49L,
-                            ChallengeVersionId = 123L,
+                            ChallengeVersionId = 76L,
                             Code = "Distinctio quos eveniet corporis voluptatem voluptatem ipsam deserunt.\nDolor quisquam beatae eum dicta.\nNatus quaerat modi expedita deleniti reprehenderit ut veritatis at.",
                             CreatedAt = new DateTime(2023, 7, 20, 11, 12, 43, 381, DateTimeKind.Utc).AddTicks(6719),
                             CreatedBy = 9L,
@@ -10942,7 +10702,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 50L,
-                            ChallengeVersionId = 198L,
+                            ChallengeVersionId = 184L,
                             Code = "Sed impedit voluptatum provident aut tempore et.\nEnim delectus saepe sit esse possimus occaecati consequuntur.\nDignissimos asperiores voluptates enim quia molestiae quae ullam.\nVeritatis cumque sed repellat porro.\nLaboriosam ut unde voluptatem vitae est aut maiores in quod.",
                             CreatedAt = new DateTime(2023, 7, 21, 23, 25, 53, 220, DateTimeKind.Utc).AddTicks(7195),
                             CreatedBy = 39L,
@@ -10951,7 +10711,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 51L,
-                            ChallengeVersionId = 41L,
+                            ChallengeVersionId = 25L,
                             Code = "Sit quod eum aliquam esse minima et.",
                             CreatedAt = new DateTime(2023, 7, 9, 12, 42, 40, 972, DateTimeKind.Utc).AddTicks(4405),
                             CreatedBy = 25L,
@@ -10961,7 +10721,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 52L,
-                            ChallengeVersionId = 137L,
+                            ChallengeVersionId = 91L,
                             Code = "Non quis quae voluptatibus. Aut sit similique necessitatibus suscipit. Enim et dolorum. Omnis nihil optio et molestias perferendis magni. Est quos aliquid autem quis quia et nulla ab.",
                             CreatedAt = new DateTime(2023, 7, 19, 1, 39, 57, 803, DateTimeKind.Utc).AddTicks(1297),
                             CreatedBy = 20L,
@@ -10971,7 +10731,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 53L,
-                            ChallengeVersionId = 108L,
+                            ChallengeVersionId = 66L,
                             Code = "Deserunt facere rerum omnis nam ipsum eos vitae quas in. Voluptatibus quidem sapiente ea ut corrupti. Consequatur in iure. Deleniti eum aut sint perferendis voluptas id et corporis sunt. Iure dolor blanditiis aperiam nostrum iure. Voluptatem voluptatem eius eveniet.",
                             CreatedAt = new DateTime(2022, 8, 26, 18, 12, 39, 15, DateTimeKind.Utc).AddTicks(1179),
                             CreatedBy = 4L,
@@ -10981,7 +10741,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 54L,
-                            ChallengeVersionId = 132L,
+                            ChallengeVersionId = 84L,
                             Code = "Natus animi nihil ad inventore perspiciatis ratione nesciunt consequatur voluptatum.",
                             CreatedAt = new DateTime(2023, 8, 29, 18, 20, 33, 222, DateTimeKind.Utc).AddTicks(977),
                             CreatedBy = 40L,
@@ -10990,7 +10750,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 55L,
-                            ChallengeVersionId = 152L,
+                            ChallengeVersionId = 105L,
                             Code = "reiciendis",
                             CreatedAt = new DateTime(2023, 8, 6, 2, 19, 30, 163, DateTimeKind.Utc).AddTicks(1307),
                             CreatedBy = 11L,
@@ -11000,7 +10760,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 56L,
-                            ChallengeVersionId = 182L,
+                            ChallengeVersionId = 148L,
                             Code = "Necessitatibus soluta error aperiam omnis sed. Culpa quia qui molestiae. Suscipit est voluptate nihil. Corrupti facilis excepturi.",
                             CreatedAt = new DateTime(2022, 11, 16, 19, 0, 8, 694, DateTimeKind.Utc).AddTicks(3484),
                             CreatedBy = 40L,
@@ -11010,7 +10770,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 57L,
-                            ChallengeVersionId = 179L,
+                            ChallengeVersionId = 141L,
                             Code = "et",
                             CreatedAt = new DateTime(2023, 7, 28, 20, 15, 48, 60, DateTimeKind.Utc).AddTicks(6285),
                             CreatedBy = 38L,
@@ -11020,7 +10780,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 58L,
-                            ChallengeVersionId = 70L,
+                            ChallengeVersionId = 43L,
                             Code = "Dolorem sed officiis saepe voluptas ea vitae.\nNam et eaque sunt pariatur praesentium.",
                             CreatedAt = new DateTime(2023, 9, 17, 15, 25, 44, 556, DateTimeKind.Utc).AddTicks(5819),
                             CreatedBy = 19L,
@@ -11030,7 +10790,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 59L,
-                            ChallengeVersionId = 134L,
+                            ChallengeVersionId = 89L,
                             Code = "Quo amet modi itaque est sit.\nQuas nobis sed nobis.\nDoloremque nam praesentium atque occaecati vero.\nVeritatis et eos suscipit vel et eligendi.",
                             CreatedAt = new DateTime(2023, 9, 16, 3, 6, 16, 197, DateTimeKind.Utc).AddTicks(5909),
                             CreatedBy = 30L,
@@ -11039,7 +10799,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 60L,
-                            ChallengeVersionId = 66L,
+                            ChallengeVersionId = 41L,
                             Code = "voluptatem",
                             CreatedAt = new DateTime(2023, 8, 12, 23, 58, 10, 376, DateTimeKind.Utc).AddTicks(4746),
                             CreatedBy = 3L,
@@ -11049,7 +10809,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 61L,
-                            ChallengeVersionId = 196L,
+                            ChallengeVersionId = 181L,
                             Code = "Nihil explicabo quam in cumque pariatur velit architecto repellat. Vel sapiente a enim est ut rem non quibusdam dolore. Consequatur occaecati ipsa. Rerum voluptatem atque itaque ut et non neque necessitatibus.",
                             CreatedAt = new DateTime(2022, 11, 16, 19, 27, 38, 841, DateTimeKind.Utc).AddTicks(5519),
                             CreatedBy = 29L,
@@ -11059,7 +10819,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 62L,
-                            ChallengeVersionId = 156L,
+                            ChallengeVersionId = 108L,
                             Code = "Velit quia qui.",
                             CreatedAt = new DateTime(2023, 8, 30, 0, 22, 11, 972, DateTimeKind.Utc).AddTicks(9526),
                             CreatedBy = 16L,
@@ -11069,7 +10829,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 63L,
-                            ChallengeVersionId = 14L,
+                            ChallengeVersionId = 9L,
                             Code = "praesentium",
                             CreatedAt = new DateTime(2023, 1, 11, 8, 8, 30, 804, DateTimeKind.Utc).AddTicks(4137),
                             CreatedBy = 33L,
@@ -11079,7 +10839,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 64L,
-                            ChallengeVersionId = 179L,
+                            ChallengeVersionId = 140L,
                             Code = "Reiciendis nihil est possimus voluptatem fugiat expedita deserunt quas debitis.",
                             CreatedAt = new DateTime(2023, 6, 10, 19, 36, 7, 860, DateTimeKind.Utc).AddTicks(2387),
                             CreatedBy = 10L,
@@ -11089,7 +10849,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 65L,
-                            ChallengeVersionId = 199L,
+                            ChallengeVersionId = 193L,
                             Code = "Rerum quod sed sit. Fugit impedit accusantium dolores magnam perspiciatis sed modi vitae ab. Animi dignissimos nulla est non eum sunt velit nostrum. Placeat provident quas dolorem ea voluptates ipsam commodi.",
                             CreatedAt = new DateTime(2021, 6, 13, 6, 52, 15, 888, DateTimeKind.Utc).AddTicks(7103),
                             CreatedBy = 15L,
@@ -11099,7 +10859,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 66L,
-                            ChallengeVersionId = 160L,
+                            ChallengeVersionId = 110L,
                             Code = "Dolorem sint necessitatibus ullam commodi dolor cupiditate ut saepe.",
                             CreatedAt = new DateTime(2023, 2, 2, 8, 5, 28, 433, DateTimeKind.Utc).AddTicks(4363),
                             CreatedBy = 16L,
@@ -11108,7 +10868,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 67L,
-                            ChallengeVersionId = 72L,
+                            ChallengeVersionId = 44L,
                             Code = "Laudantium eos sunt iste enim incidunt voluptatum reprehenderit ut non. Libero possimus quos aut rerum ut quidem. Voluptates laboriosam est aut eveniet adipisci et.",
                             CreatedAt = new DateTime(2023, 8, 19, 12, 8, 9, 908, DateTimeKind.Utc).AddTicks(9037),
                             CreatedBy = 4L,
@@ -11118,7 +10878,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 68L,
-                            ChallengeVersionId = 164L,
+                            ChallengeVersionId = 122L,
                             Code = "Consequatur consequatur et dolore nam et veniam placeat aut aspernatur. Rerum eligendi odit ut esse numquam aliquam id. Eaque consectetur commodi distinctio accusantium beatae ullam officiis.",
                             CreatedAt = new DateTime(2023, 8, 8, 7, 50, 26, 190, DateTimeKind.Utc).AddTicks(3709),
                             CreatedBy = 40L,
@@ -11128,7 +10888,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 69L,
-                            ChallengeVersionId = 172L,
+                            ChallengeVersionId = 132L,
                             Code = "Saepe dolorum rerum qui modi qui.",
                             CreatedAt = new DateTime(2023, 8, 6, 1, 36, 54, 680, DateTimeKind.Utc).AddTicks(1355),
                             CreatedBy = 16L,
@@ -11138,7 +10898,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 70L,
-                            ChallengeVersionId = 30L,
+                            ChallengeVersionId = 19L,
                             Code = "Sequi aperiam nemo officiis et sapiente id amet.\nPerspiciatis incidunt dolore.",
                             CreatedAt = new DateTime(2022, 12, 24, 1, 19, 59, 606, DateTimeKind.Utc).AddTicks(9026),
                             CreatedBy = 28L,
@@ -11148,7 +10908,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 71L,
-                            ChallengeVersionId = 168L,
+                            ChallengeVersionId = 128L,
                             Code = "hic",
                             CreatedAt = new DateTime(2023, 3, 1, 21, 31, 27, 982, DateTimeKind.Utc).AddTicks(7574),
                             CreatedBy = 8L,
@@ -11158,7 +10918,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 72L,
-                            ChallengeVersionId = 116L,
+                            ChallengeVersionId = 72L,
                             Code = "Temporibus voluptate voluptatum quod nemo quaerat est exercitationem mollitia sit.",
                             CreatedAt = new DateTime(2022, 12, 23, 4, 7, 38, 642, DateTimeKind.Utc).AddTicks(5784),
                             CreatedBy = 24L,
@@ -11168,7 +10928,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 73L,
-                            ChallengeVersionId = 54L,
+                            ChallengeVersionId = 33L,
                             Code = "Ratione in sit voluptatum nostrum.",
                             CreatedAt = new DateTime(2020, 10, 31, 4, 45, 52, 473, DateTimeKind.Utc).AddTicks(3134),
                             CreatedBy = 27L,
@@ -11178,7 +10938,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 74L,
-                            ChallengeVersionId = 85L,
+                            ChallengeVersionId = 52L,
                             Code = "Dolores aut quis.\nEos sit in.\nEos est eum est magnam maiores.\nAut facere quaerat eos ullam quis perspiciatis officiis.\nNemo quam quia id optio unde.\nSed tenetur ut velit et.",
                             CreatedAt = new DateTime(2023, 7, 27, 4, 48, 33, 898, DateTimeKind.Utc).AddTicks(494),
                             CreatedBy = 12L,
@@ -11188,7 +10948,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 75L,
-                            ChallengeVersionId = 152L,
+                            ChallengeVersionId = 105L,
                             Code = "Perspiciatis soluta facilis. Voluptatibus voluptatem temporibus provident repellendus. Tempora saepe quod odio veritatis aut dolor. Dolores nostrum minus veniam in. In aspernatur delectus odio sed voluptatum sit ipsa. Nostrum debitis dignissimos sapiente aliquid error sit.",
                             CreatedAt = new DateTime(2023, 6, 29, 21, 57, 46, 600, DateTimeKind.Utc).AddTicks(55),
                             CreatedBy = 5L,
@@ -11198,7 +10958,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 76L,
-                            ChallengeVersionId = 39L,
+                            ChallengeVersionId = 24L,
                             Code = "architecto",
                             CreatedAt = new DateTime(2023, 6, 14, 4, 47, 43, 473, DateTimeKind.Utc).AddTicks(5331),
                             CreatedBy = 28L,
@@ -11208,7 +10968,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 77L,
-                            ChallengeVersionId = 106L,
+                            ChallengeVersionId = 65L,
                             Code = "Iusto hic minima doloribus nulla. Omnis ratione rerum. Consectetur et velit quisquam. Sit ut fugiat ad vero molestiae ipsa blanditiis doloribus.",
                             CreatedAt = new DateTime(2023, 5, 21, 7, 32, 6, 952, DateTimeKind.Utc).AddTicks(3322),
                             CreatedBy = 40L,
@@ -11217,7 +10977,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 78L,
-                            ChallengeVersionId = 160L,
+                            ChallengeVersionId = 115L,
                             Code = "Accusantium ut laudantium temporibus omnis sunt explicabo repudiandae.\nRecusandae sequi molestiae.",
                             CreatedAt = new DateTime(2023, 2, 10, 8, 3, 59, 131, DateTimeKind.Utc).AddTicks(3564),
                             CreatedBy = 36L,
@@ -11226,7 +10986,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 79L,
-                            ChallengeVersionId = 172L,
+                            ChallengeVersionId = 132L,
                             Code = "Totam atque optio laudantium et sit.\nSit omnis perferendis.\nOccaecati fugiat nam quo alias ratione dolor ut ut dolor.",
                             CreatedAt = new DateTime(2023, 9, 12, 4, 44, 15, 241, DateTimeKind.Utc).AddTicks(3447),
                             CreatedBy = 1L,
@@ -11236,7 +10996,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 80L,
-                            ChallengeVersionId = 122L,
+                            ChallengeVersionId = 76L,
                             Code = "Veniam repudiandae beatae aspernatur delectus quis vero eum odio.\nBlanditiis ut vitae vitae dicta pariatur et dolore veniam illo.\nEt laborum est nostrum.\nQuia ut quia.\nAut dolores nihil eos quisquam ut aspernatur.\nConsequatur aut iste recusandae consectetur aut porro expedita aut.",
                             CreatedAt = new DateTime(2023, 7, 27, 1, 34, 36, 432, DateTimeKind.Utc).AddTicks(1329),
                             CreatedBy = 6L,
@@ -11246,7 +11006,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 81L,
-                            ChallengeVersionId = 68L,
+                            ChallengeVersionId = 42L,
                             Code = "Distinctio error sint nostrum.\nTempora itaque velit ducimus nisi sunt esse.\nQuidem rerum qui quia.",
                             CreatedAt = new DateTime(2023, 1, 11, 6, 8, 13, 958, DateTimeKind.Utc).AddTicks(7263),
                             CreatedBy = 33L,
@@ -11256,7 +11016,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 82L,
-                            ChallengeVersionId = 34L,
+                            ChallengeVersionId = 21L,
                             Code = "Quia aut veritatis explicabo magni omnis odit.\nReiciendis numquam sed eum aut quo accusamus quo quis et.",
                             CreatedAt = new DateTime(2023, 9, 15, 19, 57, 26, 7, DateTimeKind.Utc).AddTicks(4420),
                             CreatedBy = 40L,
@@ -11266,7 +11026,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 83L,
-                            ChallengeVersionId = 160L,
+                            ChallengeVersionId = 115L,
                             Code = "et",
                             CreatedAt = new DateTime(2023, 1, 31, 15, 37, 30, 487, DateTimeKind.Utc).AddTicks(7498),
                             CreatedBy = 39L,
@@ -11276,7 +11036,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 84L,
-                            ChallengeVersionId = 96L,
+                            ChallengeVersionId = 59L,
                             Code = "Quam at praesentium consequatur cum quis. Laborum voluptatem sed dolor ut autem. Debitis deserunt eum nobis libero eius.",
                             CreatedAt = new DateTime(2023, 6, 1, 14, 0, 59, 450, DateTimeKind.Utc).AddTicks(1200),
                             CreatedBy = 21L,
@@ -11286,7 +11046,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 85L,
-                            ChallengeVersionId = 131L,
+                            ChallengeVersionId = 84L,
                             Code = "quia",
                             CreatedAt = new DateTime(2023, 9, 15, 7, 36, 57, 90, DateTimeKind.Utc).AddTicks(6437),
                             CreatedBy = 19L,
@@ -11296,7 +11056,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 86L,
-                            ChallengeVersionId = 70L,
+                            ChallengeVersionId = 43L,
                             Code = "Soluta quisquam ut et. Vel veniam fugit aut alias repellat. Voluptatibus quia architecto et sed aspernatur voluptas et ipsum. Neque aspernatur fuga qui commodi aperiam. Ipsam voluptatem id commodi voluptatem.",
                             CreatedAt = new DateTime(2023, 9, 9, 11, 5, 30, 505, DateTimeKind.Utc).AddTicks(1922),
                             CreatedBy = 38L,
@@ -11305,7 +11065,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 87L,
-                            ChallengeVersionId = 97L,
+                            ChallengeVersionId = 60L,
                             Code = "Non quia ducimus.",
                             CreatedAt = new DateTime(2023, 8, 4, 13, 4, 7, 329, DateTimeKind.Utc).AddTicks(4597),
                             CreatedBy = 24L,
@@ -11315,7 +11075,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 88L,
-                            ChallengeVersionId = 73L,
+                            ChallengeVersionId = 45L,
                             Code = "Natus odio exercitationem accusamus. Magnam fugiat quos reiciendis qui odio. Sint velit reiciendis assumenda eaque quia assumenda tempore. Tenetur est dolor iste voluptatem blanditiis. Non minus et rem sit aut ipsam corrupti illo. Eius repellendus distinctio occaecati.",
                             CreatedAt = new DateTime(2023, 9, 14, 4, 22, 59, 556, DateTimeKind.Utc).AddTicks(4993),
                             CreatedBy = 1L,
@@ -11325,7 +11085,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 89L,
-                            ChallengeVersionId = 197L,
+                            ChallengeVersionId = 181L,
                             Code = "magnam",
                             CreatedAt = new DateTime(2022, 11, 26, 10, 6, 38, 380, DateTimeKind.Utc).AddTicks(4768),
                             CreatedBy = 39L,
@@ -11335,7 +11095,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 90L,
-                            ChallengeVersionId = 61L,
+                            ChallengeVersionId = 37L,
                             Code = "Mollitia vitae quis molestias. Dolorem aliquid sit dolor impedit qui. Aut autem asperiores dolorum natus doloribus nesciunt eaque doloremque deleniti.",
                             CreatedAt = new DateTime(2023, 8, 5, 18, 36, 54, 18, DateTimeKind.Utc).AddTicks(5996),
                             CreatedBy = 6L,
@@ -11345,7 +11105,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 91L,
-                            ChallengeVersionId = 43L,
+                            ChallengeVersionId = 26L,
                             Code = "Impedit facere qui voluptas earum et ipsam voluptas ipsum. Est sapiente neque doloribus reprehenderit aliquid minus est. Dolorem sed officia ad.",
                             CreatedAt = new DateTime(2023, 5, 20, 1, 22, 36, 771, DateTimeKind.Utc).AddTicks(2536),
                             CreatedBy = 40L,
@@ -11355,7 +11115,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 92L,
-                            ChallengeVersionId = 135L,
+                            ChallengeVersionId = 89L,
                             Code = "asperiores",
                             CreatedAt = new DateTime(2023, 6, 26, 10, 1, 1, 587, DateTimeKind.Utc).AddTicks(2711),
                             CreatedBy = 38L,
@@ -11364,7 +11124,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 93L,
-                            ChallengeVersionId = 109L,
+                            ChallengeVersionId = 67L,
                             Code = "Officiis sit consequatur magnam neque reprehenderit eos provident. Sit fugit magnam aut cum. Dolore corrupti odio reprehenderit veniam facilis expedita odit et. Pariatur unde in et tempore. Quibusdam optio tempore autem animi. Rerum unde magni eum reiciendis modi.",
                             CreatedAt = new DateTime(2023, 9, 16, 4, 41, 52, 512, DateTimeKind.Utc).AddTicks(545),
                             CreatedBy = 35L,
@@ -11374,7 +11134,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 94L,
-                            ChallengeVersionId = 126L,
+                            ChallengeVersionId = 79L,
                             Code = "Neque nesciunt iste nostrum expedita nobis.\nPorro iure non facilis culpa cupiditate beatae consequatur ut.\nAspernatur excepturi rerum aut sit.\nRepellat autem voluptas cupiditate ut qui ratione.",
                             CreatedAt = new DateTime(2023, 6, 7, 19, 16, 11, 103, DateTimeKind.Utc).AddTicks(5498),
                             CreatedBy = 10L,
@@ -11384,7 +11144,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 95L,
-                            ChallengeVersionId = 169L,
+                            ChallengeVersionId = 128L,
                             Code = "Id rem minus molestiae ab sunt. Laboriosam architecto dolores maxime qui. Quia dolor quia.",
                             CreatedAt = new DateTime(2023, 8, 9, 14, 13, 54, 924, DateTimeKind.Utc).AddTicks(3792),
                             CreatedBy = 9L,
@@ -11394,7 +11154,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 96L,
-                            ChallengeVersionId = 175L,
+                            ChallengeVersionId = 137L,
                             Code = "Architecto illum dolorum non consequatur veniam aut quod sed. Architecto in sed delectus sunt quis eveniet velit saepe. Qui repellendus fugit rerum rerum voluptates voluptatibus temporibus ut adipisci.",
                             CreatedAt = new DateTime(2022, 8, 28, 15, 22, 11, 830, DateTimeKind.Utc).AddTicks(9830),
                             CreatedBy = 26L,
@@ -11404,7 +11164,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 97L,
-                            ChallengeVersionId = 117L,
+                            ChallengeVersionId = 72L,
                             Code = "Eos officia nemo illo quis expedita est magnam enim reprehenderit. Praesentium voluptatem magni qui nostrum nihil minus. Aspernatur corporis enim assumenda et sunt perferendis est libero libero. Incidunt reiciendis aut repellat quibusdam eos voluptatum veritatis animi nostrum.",
                             CreatedAt = new DateTime(2023, 6, 28, 3, 16, 23, 718, DateTimeKind.Utc).AddTicks(5370),
                             CreatedBy = 21L,
@@ -11413,7 +11173,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 98L,
-                            ChallengeVersionId = 27L,
+                            ChallengeVersionId = 16L,
                             Code = "Consequatur reiciendis voluptate recusandae numquam deserunt.",
                             CreatedAt = new DateTime(2023, 8, 25, 9, 41, 21, 390, DateTimeKind.Utc).AddTicks(5624),
                             CreatedBy = 17L,
@@ -11423,7 +11183,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 99L,
-                            ChallengeVersionId = 194L,
+                            ChallengeVersionId = 173L,
                             Code = "Ad dolore magnam sit eaque. Eos est ullam id repudiandae et totam laboriosam. Laudantium et ea quos est veritatis.",
                             CreatedAt = new DateTime(2022, 11, 17, 6, 30, 27, 189, DateTimeKind.Utc).AddTicks(1574),
                             CreatedBy = 19L,
@@ -11433,7 +11193,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 100L,
-                            ChallengeVersionId = 110L,
+                            ChallengeVersionId = 67L,
                             Code = "Laboriosam dolores nam ducimus saepe. Cumque dolorem incidunt nihil beatae assumenda quia est rem. Sed reiciendis nobis atque in iste ullam autem consequatur.",
                             CreatedAt = new DateTime(2023, 8, 3, 22, 47, 44, 830, DateTimeKind.Utc).AddTicks(1536),
                             CreatedBy = 22L,
@@ -11443,7 +11203,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 101L,
-                            ChallengeVersionId = 82L,
+                            ChallengeVersionId = 50L,
                             Code = "Omnis dolor quis non eos ipsum.",
                             CreatedAt = new DateTime(2023, 9, 14, 5, 32, 50, 887, DateTimeKind.Utc).AddTicks(5227),
                             CreatedBy = 16L,
@@ -11453,7 +11213,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 102L,
-                            ChallengeVersionId = 182L,
+                            ChallengeVersionId = 148L,
                             Code = "Dignissimos officia quisquam et quas iusto officiis provident voluptas. Vitae nesciunt commodi molestiae velit in iste. Eum repudiandae quam nemo sed.",
                             CreatedAt = new DateTime(2020, 7, 18, 16, 19, 37, 118, DateTimeKind.Utc).AddTicks(3278),
                             CreatedBy = 26L,
@@ -11463,7 +11223,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 103L,
-                            ChallengeVersionId = 103L,
+                            ChallengeVersionId = 63L,
                             Code = "error",
                             CreatedAt = new DateTime(2023, 8, 17, 0, 55, 17, 632, DateTimeKind.Utc).AddTicks(7626),
                             CreatedBy = 30L,
@@ -11473,7 +11233,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 104L,
-                            ChallengeVersionId = 162L,
+                            ChallengeVersionId = 116L,
                             Code = "Sapiente non omnis voluptatibus.\nIn minima qui dolores iure ut provident est.\nMinus neque ducimus.",
                             CreatedAt = new DateTime(2023, 8, 9, 15, 12, 47, 371, DateTimeKind.Utc).AddTicks(8472),
                             CreatedBy = 8L,
@@ -11483,7 +11243,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 105L,
-                            ChallengeVersionId = 76L,
+                            ChallengeVersionId = 47L,
                             Code = "Voluptate sint dignissimos ullam aliquid et quia earum.\nEaque placeat aut accusamus soluta tempore.\nProvident perferendis culpa aut similique aperiam consequatur.\nSed expedita saepe velit fuga a nobis earum.\nUt quae velit ipsam cumque quia culpa.",
                             CreatedAt = new DateTime(2023, 3, 28, 23, 45, 23, 195, DateTimeKind.Utc).AddTicks(4895),
                             CreatedBy = 17L,
@@ -11493,7 +11253,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 106L,
-                            ChallengeVersionId = 107L,
+                            ChallengeVersionId = 65L,
                             Code = "Autem tempore est sed id et est quisquam. Iure culpa tenetur optio quis. Expedita ut ipsum labore consequuntur eveniet consectetur quaerat iusto officiis. Exercitationem deserunt itaque voluptatem in deserunt asperiores et dolor. Temporibus id modi inventore reprehenderit ea qui est quos hic. Fugit dolores velit est repellendus sint est.",
                             CreatedAt = new DateTime(2023, 3, 29, 3, 51, 7, 293, DateTimeKind.Utc).AddTicks(8741),
                             CreatedBy = 22L,
@@ -11503,7 +11263,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 107L,
-                            ChallengeVersionId = 93L,
+                            ChallengeVersionId = 57L,
                             Code = "Error repudiandae molestias doloribus laudantium consequatur sunt.",
                             CreatedAt = new DateTime(2023, 4, 9, 2, 5, 56, 87, DateTimeKind.Utc).AddTicks(252),
                             CreatedBy = 19L,
@@ -11512,7 +11272,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 108L,
-                            ChallengeVersionId = 180L,
+                            ChallengeVersionId = 141L,
                             Code = "Nulla ipsum cupiditate maiores et tenetur maxime ex libero qui.\nEius suscipit aperiam error laudantium voluptatem eius saepe.\nLaboriosam aliquam voluptatum velit quia quas commodi.\nMollitia et hic enim aut aut deserunt maiores iure.",
                             CreatedAt = new DateTime(2023, 9, 17, 9, 3, 30, 851, DateTimeKind.Utc).AddTicks(1962),
                             CreatedBy = 18L,
@@ -11522,7 +11282,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 109L,
-                            ChallengeVersionId = 33L,
+                            ChallengeVersionId = 20L,
                             Code = "Officia eligendi voluptas dolor quia officia officiis.\nNihil quidem iure suscipit provident odio in architecto ab.\nDolorem iusto ipsa porro provident atque.\nNemo molestiae aut.\nId quia unde quae quia consequatur nostrum veritatis.\nMollitia deleniti nostrum ut fugit enim.",
                             CreatedAt = new DateTime(2023, 3, 29, 13, 6, 26, 30, DateTimeKind.Utc).AddTicks(7118),
                             CreatedBy = 35L,
@@ -11532,7 +11292,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 110L,
-                            ChallengeVersionId = 36L,
+                            ChallengeVersionId = 22L,
                             Code = "Qui excepturi voluptas.\nQuia iusto veniam perferendis natus.\nUt qui quas id modi sequi corporis rerum molestiae et.\nPerferendis autem et facilis et dolores magni numquam quibusdam dolor.\nReprehenderit deleniti nostrum quibusdam atque quos laboriosam similique eaque.\nDoloremque et unde quaerat illo ut itaque est reprehenderit.",
                             CreatedAt = new DateTime(2023, 7, 10, 4, 54, 56, 535, DateTimeKind.Utc).AddTicks(8080),
                             CreatedBy = 10L,
@@ -11542,7 +11302,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 111L,
-                            ChallengeVersionId = 134L,
+                            ChallengeVersionId = 89L,
                             Code = "Voluptatem quibusdam omnis sed provident.\nVoluptatem enim nihil libero consequatur ullam ea laborum.\nVoluptatibus commodi odit.\nAnimi et consectetur cupiditate voluptate id.\nRatione nemo atque.",
                             CreatedAt = new DateTime(2023, 9, 16, 5, 53, 5, 298, DateTimeKind.Utc).AddTicks(2277),
                             CreatedBy = 35L,
@@ -11551,7 +11311,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 112L,
-                            ChallengeVersionId = 76L,
+                            ChallengeVersionId = 47L,
                             Code = "Perferendis molestias doloremque a sint.",
                             CreatedAt = new DateTime(2023, 7, 12, 18, 22, 33, 367, DateTimeKind.Utc).AddTicks(8056),
                             CreatedBy = 36L,
@@ -11561,7 +11321,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 113L,
-                            ChallengeVersionId = 44L,
+                            ChallengeVersionId = 27L,
                             Code = "Aliquam architecto iusto.",
                             CreatedAt = new DateTime(2023, 7, 24, 23, 46, 57, 77, DateTimeKind.Utc).AddTicks(9597),
                             CreatedBy = 30L,
@@ -11571,7 +11331,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 114L,
-                            ChallengeVersionId = 156L,
+                            ChallengeVersionId = 108L,
                             Code = "Quibusdam natus voluptates ipsam consequuntur ipsum est fuga dolore quis. Doloremque fugit corporis doloribus autem molestias cupiditate veniam assumenda provident. Possimus sunt molestias ipsum et sequi ea aperiam voluptatem. Sit et aliquam provident ut magnam dolor quas at. Voluptatum velit id quia.",
                             CreatedAt = new DateTime(2023, 9, 9, 17, 56, 10, 479, DateTimeKind.Utc).AddTicks(6443),
                             CreatedBy = 30L,
@@ -11581,7 +11341,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 115L,
-                            ChallengeVersionId = 66L,
+                            ChallengeVersionId = 40L,
                             Code = "Suscipit harum amet non qui rerum.",
                             CreatedAt = new DateTime(2022, 10, 28, 10, 29, 48, 360, DateTimeKind.Utc).AddTicks(7798),
                             CreatedBy = 19L,
@@ -11591,7 +11351,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 116L,
-                            ChallengeVersionId = 117L,
+                            ChallengeVersionId = 73L,
                             Code = "Tenetur laboriosam rerum.",
                             CreatedAt = new DateTime(2023, 1, 15, 23, 7, 55, 794, DateTimeKind.Utc).AddTicks(3659),
                             CreatedBy = 14L,
@@ -11600,7 +11360,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 117L,
-                            ChallengeVersionId = 168L,
+                            ChallengeVersionId = 126L,
                             Code = "Expedita quidem quas nisi laborum molestiae natus.\nAutem sequi soluta nam doloremque excepturi.",
                             CreatedAt = new DateTime(2022, 10, 14, 0, 43, 22, 227, DateTimeKind.Utc).AddTicks(8150),
                             CreatedBy = 18L,
@@ -11610,7 +11370,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 118L,
-                            ChallengeVersionId = 70L,
+                            ChallengeVersionId = 43L,
                             Code = "Ducimus est illo tempora magni assumenda dicta quod.\nAut porro molestiae omnis voluptatum.",
                             CreatedAt = new DateTime(2023, 9, 14, 13, 15, 13, 659, DateTimeKind.Utc).AddTicks(1175),
                             CreatedBy = 34L,
@@ -11620,7 +11380,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 119L,
-                            ChallengeVersionId = 63L,
+                            ChallengeVersionId = 38L,
                             Code = "repellendus",
                             CreatedAt = new DateTime(2023, 8, 8, 21, 3, 42, 15, DateTimeKind.Utc).AddTicks(391),
                             CreatedBy = 32L,
@@ -11630,7 +11390,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 120L,
-                            ChallengeVersionId = 27L,
+                            ChallengeVersionId = 17L,
                             Code = "Perspiciatis quia aut similique fuga. Debitis similique facilis eveniet. Totam veritatis harum laboriosam ut qui deleniti.",
                             CreatedAt = new DateTime(2023, 8, 30, 9, 56, 6, 916, DateTimeKind.Utc).AddTicks(3828),
                             CreatedBy = 40L,
@@ -11640,7 +11400,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 121L,
-                            ChallengeVersionId = 11L,
+                            ChallengeVersionId = 7L,
                             Code = "Aspernatur maxime dolor voluptas quisquam.",
                             CreatedAt = new DateTime(2021, 7, 29, 2, 26, 7, 328, DateTimeKind.Utc).AddTicks(3917),
                             CreatedBy = 39L,
@@ -11649,7 +11409,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 122L,
-                            ChallengeVersionId = 60L,
+                            ChallengeVersionId = 37L,
                             Code = "voluptate",
                             CreatedAt = new DateTime(2023, 8, 29, 17, 51, 10, 845, DateTimeKind.Utc).AddTicks(1610),
                             CreatedBy = 2L,
@@ -11659,7 +11419,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 123L,
-                            ChallengeVersionId = 38L,
+                            ChallengeVersionId = 23L,
                             Code = "Et culpa aspernatur aut excepturi aperiam cumque qui et.",
                             CreatedAt = new DateTime(2023, 9, 15, 23, 20, 10, 782, DateTimeKind.Utc).AddTicks(447),
                             CreatedBy = 38L,
@@ -11668,7 +11428,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 124L,
-                            ChallengeVersionId = 143L,
+                            ChallengeVersionId = 95L,
                             Code = "et",
                             CreatedAt = new DateTime(2023, 5, 1, 14, 27, 21, 771, DateTimeKind.Utc).AddTicks(7052),
                             CreatedBy = 20L,
@@ -11678,7 +11438,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 125L,
-                            ChallengeVersionId = 26L,
+                            ChallengeVersionId = 16L,
                             Code = "Doloremque officiis perferendis vel non.\nOmnis quia et aspernatur dolores iure.\nVoluptas veritatis eaque qui accusamus.",
                             CreatedAt = new DateTime(2023, 2, 26, 22, 27, 43, 309, DateTimeKind.Utc).AddTicks(6786),
                             CreatedBy = 38L,
@@ -11688,7 +11448,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 126L,
-                            ChallengeVersionId = 195L,
+                            ChallengeVersionId = 177L,
                             Code = "sint",
                             CreatedAt = new DateTime(2023, 2, 8, 13, 54, 59, 227, DateTimeKind.Utc).AddTicks(5635),
                             CreatedBy = 26L,
@@ -11698,7 +11458,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 127L,
-                            ChallengeVersionId = 20L,
+                            ChallengeVersionId = 12L,
                             Code = "Et quisquam est eius ullam dicta cumque voluptatum repellendus. Recusandae consequatur debitis alias et dicta cupiditate ratione et eum. Veniam ab voluptatum ut assumenda consequatur dolorem impedit vitae assumenda. Et repudiandae consequatur ea. Dicta velit repellat rerum quia.",
                             CreatedAt = new DateTime(2023, 7, 17, 21, 31, 8, 365, DateTimeKind.Utc).AddTicks(4823),
                             CreatedBy = 28L,
@@ -11708,7 +11468,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 128L,
-                            ChallengeVersionId = 74L,
+                            ChallengeVersionId = 45L,
                             Code = "odio",
                             CreatedAt = new DateTime(2023, 7, 12, 20, 15, 35, 205, DateTimeKind.Utc).AddTicks(7601),
                             CreatedBy = 29L,
@@ -11718,7 +11478,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 129L,
-                            ChallengeVersionId = 141L,
+                            ChallengeVersionId = 93L,
                             Code = "In voluptas soluta porro error nostrum mollitia enim commodi. Velit quae est non. Sunt et iusto animi saepe molestiae officiis.",
                             CreatedAt = new DateTime(2023, 6, 16, 1, 58, 38, 909, DateTimeKind.Utc).AddTicks(4730),
                             CreatedBy = 37L,
@@ -11728,7 +11488,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 130L,
-                            ChallengeVersionId = 41L,
+                            ChallengeVersionId = 25L,
                             Code = "In vel ut aut placeat iste fuga. Non consectetur ratione corporis natus. Ut ipsum exercitationem quas optio sunt quia qui saepe itaque.",
                             CreatedAt = new DateTime(2023, 7, 15, 0, 19, 21, 643, DateTimeKind.Utc).AddTicks(1959),
                             CreatedBy = 8L,
@@ -11738,7 +11498,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 131L,
-                            ChallengeVersionId = 55L,
+                            ChallengeVersionId = 34L,
                             Code = "Dolor deserunt a modi unde.",
                             CreatedAt = new DateTime(2023, 7, 23, 9, 45, 44, 84, DateTimeKind.Utc).AddTicks(5898),
                             CreatedBy = 28L,
@@ -11748,7 +11508,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 132L,
-                            ChallengeVersionId = 199L,
+                            ChallengeVersionId = 193L,
                             Code = "Deserunt adipisci eaque et. Non eius commodi molestiae laboriosam. Saepe voluptatibus labore ipsa qui illum.",
                             CreatedAt = new DateTime(2021, 6, 16, 22, 24, 18, 867, DateTimeKind.Utc).AddTicks(1341),
                             CreatedBy = 10L,
@@ -11758,7 +11518,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 133L,
-                            ChallengeVersionId = 47L,
+                            ChallengeVersionId = 29L,
                             Code = "odit",
                             CreatedAt = new DateTime(2023, 9, 6, 11, 58, 16, 138, DateTimeKind.Utc).AddTicks(668),
                             CreatedBy = 18L,
@@ -11768,7 +11528,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 134L,
-                            ChallengeVersionId = 10L,
+                            ChallengeVersionId = 6L,
                             Code = "Quibusdam iste praesentium molestias.\nEt nemo ut quod doloremque.\nFacilis officia dolore vero omnis sequi odio iure est iure.\nHarum rem quas modi voluptatem soluta.\nVoluptas quae rerum.\nVoluptatem adipisci et et voluptatem.",
                             CreatedAt = new DateTime(2023, 7, 27, 20, 35, 2, 859, DateTimeKind.Utc).AddTicks(283),
                             CreatedBy = 4L,
@@ -11778,7 +11538,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 135L,
-                            ChallengeVersionId = 32L,
+                            ChallengeVersionId = 20L,
                             Code = "modi",
                             CreatedAt = new DateTime(2022, 1, 22, 13, 46, 22, 434, DateTimeKind.Utc).AddTicks(822),
                             CreatedBy = 28L,
@@ -11788,7 +11548,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 136L,
-                            ChallengeVersionId = 12L,
+                            ChallengeVersionId = 7L,
                             Code = "Voluptatem iusto exercitationem labore debitis nam. Magni tenetur modi est nobis. Non et rerum.",
                             CreatedAt = new DateTime(2023, 6, 6, 22, 40, 7, 329, DateTimeKind.Utc).AddTicks(5064),
                             CreatedBy = 15L,
@@ -11798,7 +11558,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 137L,
-                            ChallengeVersionId = 69L,
+                            ChallengeVersionId = 42L,
                             Code = "Enim maxime aperiam.\nMinima eius eaque minima culpa adipisci incidunt.\nFuga sed est omnis.",
                             CreatedAt = new DateTime(2023, 9, 13, 23, 5, 18, 503, DateTimeKind.Utc).AddTicks(6196),
                             CreatedBy = 28L,
@@ -11808,7 +11568,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 138L,
-                            ChallengeVersionId = 131L,
+                            ChallengeVersionId = 84L,
                             Code = "Reiciendis officia ad vel accusamus illo ullam rerum sapiente.",
                             CreatedAt = new DateTime(2023, 9, 18, 4, 4, 43, 480, DateTimeKind.Utc).AddTicks(6091),
                             CreatedBy = 3L,
@@ -11818,7 +11578,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 139L,
-                            ChallengeVersionId = 44L,
+                            ChallengeVersionId = 27L,
                             Code = "Et nostrum iste ullam.",
                             CreatedAt = new DateTime(2023, 7, 14, 12, 41, 13, 916, DateTimeKind.Utc).AddTicks(4486),
                             CreatedBy = 14L,
@@ -11828,7 +11588,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 140L,
-                            ChallengeVersionId = 193L,
+                            ChallengeVersionId = 173L,
                             Code = "Non ipsum assumenda delectus rerum suscipit quia architecto. Aut doloribus optio non ut. Et voluptas maxime nisi provident aspernatur dicta. Animi amet provident expedita.",
                             CreatedAt = new DateTime(2023, 7, 6, 8, 6, 0, 388, DateTimeKind.Utc).AddTicks(3363),
                             CreatedBy = 37L,
@@ -11838,7 +11598,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 141L,
-                            ChallengeVersionId = 188L,
+                            ChallengeVersionId = 167L,
                             Code = "aut",
                             CreatedAt = new DateTime(2023, 6, 6, 12, 40, 57, 742, DateTimeKind.Utc).AddTicks(608),
                             CreatedBy = 25L,
@@ -11848,7 +11608,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 142L,
-                            ChallengeVersionId = 171L,
+                            ChallengeVersionId = 129L,
                             Code = "Quis veritatis repudiandae quia aliquid tenetur maiores est asperiores.\nSaepe laudantium odit.\nVoluptatum quisquam officiis.\nQui et dolorem.",
                             CreatedAt = new DateTime(2023, 8, 14, 19, 42, 59, 562, DateTimeKind.Utc).AddTicks(1258),
                             CreatedBy = 26L,
@@ -11858,7 +11618,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 143L,
-                            ChallengeVersionId = 93L,
+                            ChallengeVersionId = 57L,
                             Code = "explicabo",
                             CreatedAt = new DateTime(2023, 6, 15, 12, 21, 55, 161, DateTimeKind.Utc).AddTicks(5946),
                             CreatedBy = 22L,
@@ -11868,7 +11628,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 144L,
-                            ChallengeVersionId = 181L,
+                            ChallengeVersionId = 141L,
                             Code = "fugit",
                             CreatedAt = new DateTime(2023, 5, 23, 15, 15, 19, 708, DateTimeKind.Utc).AddTicks(7719),
                             CreatedBy = 40L,
@@ -11878,7 +11638,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 145L,
-                            ChallengeVersionId = 197L,
+                            ChallengeVersionId = 184L,
                             Code = "Nobis quod autem.\nCumque dignissimos rerum eos voluptatum natus est voluptatum.\nDucimus consequatur rerum aperiam.\nAut dolores excepturi consequatur.\nQui officia cumque tempore delectus mollitia eum et tempore eum.\nSimilique expedita distinctio.",
                             CreatedAt = new DateTime(2023, 4, 13, 13, 38, 58, 133, DateTimeKind.Utc).AddTicks(1068),
                             CreatedBy = 37L,
@@ -11888,7 +11648,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 146L,
-                            ChallengeVersionId = 175L,
+                            ChallengeVersionId = 137L,
                             Code = "In perspiciatis explicabo et fuga.",
                             CreatedAt = new DateTime(2022, 6, 14, 7, 7, 30, 182, DateTimeKind.Utc).AddTicks(2522),
                             CreatedBy = 6L,
@@ -11898,7 +11658,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 147L,
-                            ChallengeVersionId = 11L,
+                            ChallengeVersionId = 7L,
                             Code = "unde",
                             CreatedAt = new DateTime(2021, 12, 8, 21, 54, 9, 895, DateTimeKind.Utc).AddTicks(2996),
                             CreatedBy = 26L,
@@ -11908,7 +11668,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 148L,
-                            ChallengeVersionId = 27L,
+                            ChallengeVersionId = 17L,
                             Code = "Et sit eligendi dolor qui inventore sunt. Eligendi ut enim. Aut laudantium non. Alias adipisci eum. Sunt nihil necessitatibus reiciendis magnam quia quos aut perspiciatis.",
                             CreatedAt = new DateTime(2023, 9, 5, 19, 51, 17, 193, DateTimeKind.Utc).AddTicks(239),
                             CreatedBy = 15L,
@@ -11918,7 +11678,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 149L,
-                            ChallengeVersionId = 56L,
+                            ChallengeVersionId = 35L,
                             Code = "Consequatur voluptas error.\nSoluta totam sed.",
                             CreatedAt = new DateTime(2023, 9, 9, 14, 59, 31, 940, DateTimeKind.Utc).AddTicks(8968),
                             CreatedBy = 13L,
@@ -11928,7 +11688,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 150L,
-                            ChallengeVersionId = 100L,
+                            ChallengeVersionId = 61L,
                             Code = "veniam",
                             CreatedAt = new DateTime(2022, 3, 13, 1, 21, 11, 337, DateTimeKind.Utc).AddTicks(9751),
                             CreatedBy = 13L,
@@ -11938,7 +11698,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 151L,
-                            ChallengeVersionId = 96L,
+                            ChallengeVersionId = 59L,
                             Code = "Unde velit qui repudiandae et. Aspernatur dolor quaerat. Qui aspernatur ut et. Perferendis mollitia qui dolorem in.",
                             CreatedAt = new DateTime(2023, 7, 30, 1, 55, 40, 99, DateTimeKind.Utc).AddTicks(6424),
                             CreatedBy = 28L,
@@ -11948,7 +11708,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 152L,
-                            ChallengeVersionId = 82L,
+                            ChallengeVersionId = 50L,
                             Code = "temporibus",
                             CreatedAt = new DateTime(2023, 9, 15, 10, 48, 0, 230, DateTimeKind.Utc).AddTicks(1922),
                             CreatedBy = 17L,
@@ -11958,7 +11718,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 153L,
-                            ChallengeVersionId = 27L,
+                            ChallengeVersionId = 17L,
                             Code = "Iure sint rerum consectetur nesciunt quod adipisci ex sed. Beatae et repudiandae rem blanditiis consequatur quas. Aliquam numquam consectetur rerum doloribus vero velit consequatur exercitationem. Facilis quia laudantium et maxime impedit nostrum eligendi. Aperiam harum soluta dolore modi. Molestiae fugiat dolore.",
                             CreatedAt = new DateTime(2023, 9, 12, 14, 38, 44, 382, DateTimeKind.Utc).AddTicks(8169),
                             CreatedBy = 1L,
@@ -11968,7 +11728,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 154L,
-                            ChallengeVersionId = 108L,
+                            ChallengeVersionId = 66L,
                             Code = "Ut omnis molestias soluta necessitatibus sit.",
                             CreatedAt = new DateTime(2022, 11, 11, 13, 55, 14, 791, DateTimeKind.Utc).AddTicks(629),
                             CreatedBy = 25L,
@@ -11978,7 +11738,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 155L,
-                            ChallengeVersionId = 63L,
+                            ChallengeVersionId = 39L,
                             Code = "Facilis dolor neque eos quod quasi sit deserunt. Numquam qui laboriosam quia praesentium. Dolor voluptas libero et.",
                             CreatedAt = new DateTime(2023, 6, 8, 10, 53, 26, 978, DateTimeKind.Utc).AddTicks(2020),
                             CreatedBy = 6L,
@@ -11988,7 +11748,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 156L,
-                            ChallengeVersionId = 199L,
+                            ChallengeVersionId = 193L,
                             Code = "Nesciunt et quia libero eos quos.",
                             CreatedAt = new DateTime(2022, 4, 9, 12, 18, 21, 820, DateTimeKind.Utc).AddTicks(926),
                             CreatedBy = 34L,
@@ -11998,7 +11758,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 157L,
-                            ChallengeVersionId = 32L,
+                            ChallengeVersionId = 19L,
                             Code = "Est quis libero.",
                             CreatedAt = new DateTime(2019, 9, 25, 2, 14, 28, 391, DateTimeKind.Utc).AddTicks(7640),
                             CreatedBy = 33L,
@@ -12008,7 +11768,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 158L,
-                            ChallengeVersionId = 83L,
+                            ChallengeVersionId = 51L,
                             Code = "Exercitationem ea possimus reprehenderit laboriosam et amet. Aliquam blanditiis non aliquid praesentium nemo quo perferendis animi. Expedita dolorem vel nobis voluptas autem. Aperiam praesentium consequatur iure. Vero qui id aut dicta. Tempora iusto corporis eum.",
                             CreatedAt = new DateTime(2022, 10, 22, 20, 39, 4, 33, DateTimeKind.Utc).AddTicks(3804),
                             CreatedBy = 16L,
@@ -12018,7 +11778,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 159L,
-                            ChallengeVersionId = 84L,
+                            ChallengeVersionId = 51L,
                             Code = "Ut enim repellat amet iste fugit hic nisi. Minus et enim tempore modi est nemo a corrupti. Et laborum minus nihil tenetur. Rerum perferendis culpa velit.",
                             CreatedAt = new DateTime(2023, 9, 14, 17, 23, 8, 742, DateTimeKind.Utc).AddTicks(1941),
                             CreatedBy = 13L,
@@ -12027,7 +11787,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 160L,
-                            ChallengeVersionId = 74L,
+                            ChallengeVersionId = 45L,
                             Code = "Enim laudantium maiores. Repudiandae voluptatibus quae aut. Alias et molestiae. Nesciunt eos dignissimos dolorem quia qui. Itaque reprehenderit culpa architecto ut consequatur tempora et adipisci nihil. Dolore excepturi eaque asperiores voluptate soluta eum.",
                             CreatedAt = new DateTime(2023, 6, 20, 23, 44, 42, 166, DateTimeKind.Utc).AddTicks(4147),
                             CreatedBy = 36L,
@@ -12037,7 +11797,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 161L,
-                            ChallengeVersionId = 119L,
+                            ChallengeVersionId = 74L,
                             Code = "expedita",
                             CreatedAt = new DateTime(2021, 5, 22, 21, 54, 58, 668, DateTimeKind.Utc).AddTicks(2991),
                             CreatedBy = 31L,
@@ -12047,7 +11807,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 162L,
-                            ChallengeVersionId = 199L,
+                            ChallengeVersionId = 193L,
                             Code = "dicta",
                             CreatedAt = new DateTime(2020, 12, 2, 1, 35, 56, 182, DateTimeKind.Utc).AddTicks(8071),
                             CreatedBy = 27L,
@@ -12057,7 +11817,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 163L,
-                            ChallengeVersionId = 168L,
+                            ChallengeVersionId = 128L,
                             Code = "Earum suscipit et qui sequi ut nihil et est.",
                             CreatedAt = new DateTime(2023, 5, 4, 19, 56, 28, 159, DateTimeKind.Utc).AddTicks(3268),
                             CreatedBy = 36L,
@@ -12067,7 +11827,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 164L,
-                            ChallengeVersionId = 156L,
+                            ChallengeVersionId = 109L,
                             Code = "Quia est praesentium fugit odit id.\nQui qui quas.",
                             CreatedAt = new DateTime(2023, 9, 14, 23, 42, 57, 707, DateTimeKind.Utc).AddTicks(6648),
                             CreatedBy = 23L,
@@ -12077,7 +11837,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 165L,
-                            ChallengeVersionId = 199L,
+                            ChallengeVersionId = 193L,
                             Code = "Facere voluptas eius at at quibusdam. Voluptas molestias alias illum fugiat. Modi dolores itaque sit. Corrupti sit vel sit et ullam. Dolorum placeat rerum dolores iusto voluptas qui iste quasi.",
                             CreatedAt = new DateTime(2020, 4, 27, 6, 40, 2, 363, DateTimeKind.Utc).AddTicks(2314),
                             CreatedBy = 10L,
@@ -12087,7 +11847,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 166L,
-                            ChallengeVersionId = 191L,
+                            ChallengeVersionId = 172L,
                             Code = "Sed eveniet sunt et. Dicta facere qui veritatis in distinctio rem itaque. Qui inventore et voluptate debitis voluptatem molestiae eaque ut. Repudiandae est in. Aut reprehenderit tenetur non sequi voluptatem voluptas. Non earum est est dolorem similique dolorem.",
                             CreatedAt = new DateTime(2023, 9, 8, 19, 32, 54, 968, DateTimeKind.Utc).AddTicks(4493),
                             CreatedBy = 6L,
@@ -12097,7 +11857,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 167L,
-                            ChallengeVersionId = 5L,
+                            ChallengeVersionId = 3L,
                             Code = "Voluptas ipsum vel incidunt qui ut delectus numquam dolores quia.\nDeleniti laudantium totam qui sunt fugit ut omnis.\nRerum sed totam nostrum mollitia sunt commodi dolore.\nTenetur rem atque rerum quo velit.",
                             CreatedAt = new DateTime(2022, 4, 17, 21, 23, 57, 325, DateTimeKind.Utc).AddTicks(9966),
                             CreatedBy = 28L,
@@ -12107,7 +11867,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 168L,
-                            ChallengeVersionId = 32L,
+                            ChallengeVersionId = 19L,
                             Code = "Rerum repellat expedita est facere itaque corporis qui.\nEarum rem eaque quaerat ea adipisci qui vel amet.",
                             CreatedAt = new DateTime(2022, 8, 9, 8, 35, 33, 599, DateTimeKind.Utc).AddTicks(7140),
                             CreatedBy = 1L,
@@ -12117,7 +11877,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 169L,
-                            ChallengeVersionId = 112L,
+                            ChallengeVersionId = 69L,
                             Code = "Harum non omnis neque voluptas impedit quas itaque iste quibusdam.\nQuasi eius possimus exercitationem molestiae accusamus pariatur distinctio.",
                             CreatedAt = new DateTime(2023, 7, 17, 1, 42, 23, 64, DateTimeKind.Utc).AddTicks(2083),
                             CreatedBy = 8L,
@@ -12127,7 +11887,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 170L,
-                            ChallengeVersionId = 32L,
+                            ChallengeVersionId = 20L,
                             Code = "non",
                             CreatedAt = new DateTime(2022, 8, 18, 21, 31, 52, 272, DateTimeKind.Utc).AddTicks(5110),
                             CreatedBy = 33L,
@@ -12137,7 +11897,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 171L,
-                            ChallengeVersionId = 160L,
+                            ChallengeVersionId = 115L,
                             Code = "aut",
                             CreatedAt = new DateTime(2023, 7, 18, 3, 40, 55, 797, DateTimeKind.Utc).AddTicks(7177),
                             CreatedBy = 35L,
@@ -12147,7 +11907,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 172L,
-                            ChallengeVersionId = 193L,
+                            ChallengeVersionId = 173L,
                             Code = "Est illo non ipsam et aut. Quod impedit qui minima rerum laudantium sed quam. Iure quo quasi eos.",
                             CreatedAt = new DateTime(2023, 8, 28, 23, 15, 37, 134, DateTimeKind.Utc).AddTicks(1459),
                             CreatedBy = 31L,
@@ -12157,7 +11917,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 173L,
-                            ChallengeVersionId = 83L,
+                            ChallengeVersionId = 51L,
                             Code = "Aut quibusdam non ea quae consequatur explicabo. Provident tempora non corporis rerum distinctio delectus. Aliquam et aut debitis.",
                             CreatedAt = new DateTime(2022, 9, 22, 1, 28, 6, 977, DateTimeKind.Utc).AddTicks(8692),
                             CreatedBy = 30L,
@@ -12167,7 +11927,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 174L,
-                            ChallengeVersionId = 22L,
+                            ChallengeVersionId = 13L,
                             Code = "Quo sint accusamus voluptas quis ut eligendi illo non.",
                             CreatedAt = new DateTime(2023, 5, 22, 12, 0, 12, 214, DateTimeKind.Utc).AddTicks(3888),
                             CreatedBy = 35L,
@@ -12177,7 +11937,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 175L,
-                            ChallengeVersionId = 3L,
+                            ChallengeVersionId = 2L,
                             Code = "Expedita omnis ad magni est cumque.\nDolor fugit suscipit itaque enim sint molestias.\nEsse tempora pariatur voluptatem eos est sint voluptates harum.",
                             CreatedAt = new DateTime(2022, 3, 31, 4, 36, 29, 475, DateTimeKind.Utc).AddTicks(1096),
                             CreatedBy = 39L,
@@ -12187,7 +11947,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 176L,
-                            ChallengeVersionId = 53L,
+                            ChallengeVersionId = 32L,
                             Code = "Nihil esse aliquam et quia corrupti.",
                             CreatedAt = new DateTime(2023, 8, 17, 15, 11, 21, 921, DateTimeKind.Utc).AddTicks(5113),
                             CreatedBy = 13L,
@@ -12197,7 +11957,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 177L,
-                            ChallengeVersionId = 134L,
+                            ChallengeVersionId = 89L,
                             Code = "Id pariatur facilis officiis non voluptas reprehenderit commodi minus.",
                             CreatedAt = new DateTime(2023, 9, 16, 5, 12, 22, 522, DateTimeKind.Utc).AddTicks(5512),
                             CreatedBy = 10L,
@@ -12207,7 +11967,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 178L,
-                            ChallengeVersionId = 16L,
+                            ChallengeVersionId = 10L,
                             Code = "Rerum sequi eos sit optio minima.",
                             CreatedAt = new DateTime(2023, 7, 2, 19, 52, 16, 451, DateTimeKind.Utc).AddTicks(8408),
                             CreatedBy = 20L,
@@ -12217,7 +11977,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 179L,
-                            ChallengeVersionId = 70L,
+                            ChallengeVersionId = 43L,
                             Code = "ab",
                             CreatedAt = new DateTime(2023, 9, 13, 23, 42, 56, 642, DateTimeKind.Utc).AddTicks(5418),
                             CreatedBy = 32L,
@@ -12227,7 +11987,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 180L,
-                            ChallengeVersionId = 91L,
+                            ChallengeVersionId = 56L,
                             Code = "Enim consequatur modi ut.",
                             CreatedAt = new DateTime(2019, 12, 9, 0, 57, 50, 972, DateTimeKind.Utc).AddTicks(4754),
                             CreatedBy = 38L,
@@ -12237,7 +11997,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 181L,
-                            ChallengeVersionId = 197L,
+                            ChallengeVersionId = 181L,
                             Code = "Consequuntur libero voluptas facilis officiis tenetur rem minus. Harum in non excepturi ut ut. Quisquam praesentium et qui cumque voluptatem doloremque. Voluptatem quasi libero quibusdam. Eos rerum suscipit dolores ea.",
                             CreatedAt = new DateTime(2023, 1, 13, 15, 46, 24, 204, DateTimeKind.Utc).AddTicks(4297),
                             CreatedBy = 39L,
@@ -12247,7 +12007,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 182L,
-                            ChallengeVersionId = 128L,
+                            ChallengeVersionId = 81L,
                             Code = "qui",
                             CreatedAt = new DateTime(2023, 6, 11, 13, 59, 25, 343, DateTimeKind.Utc).AddTicks(6197),
                             CreatedBy = 5L,
@@ -12257,7 +12017,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 183L,
-                            ChallengeVersionId = 68L,
+                            ChallengeVersionId = 42L,
                             Code = "Totam ut placeat veritatis et sequi quibusdam aut.",
                             CreatedAt = new DateTime(2023, 7, 12, 6, 43, 28, 491, DateTimeKind.Utc).AddTicks(4771),
                             CreatedBy = 35L,
@@ -12267,7 +12027,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 184L,
-                            ChallengeVersionId = 200L,
+                            ChallengeVersionId = 193L,
                             Code = "Inventore a ut non tenetur eos vel quibusdam. Nobis autem sint harum illo magni odit. Voluptatibus repudiandae ducimus eum non ipsam nihil.",
                             CreatedAt = new DateTime(2023, 9, 1, 19, 18, 40, 210, DateTimeKind.Utc).AddTicks(7870),
                             CreatedBy = 29L,
@@ -12277,7 +12037,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 185L,
-                            ChallengeVersionId = 90L,
+                            ChallengeVersionId = 55L,
                             Code = "Eligendi earum mollitia et non.",
                             CreatedAt = new DateTime(2023, 5, 4, 23, 40, 20, 671, DateTimeKind.Utc).AddTicks(2535),
                             CreatedBy = 17L,
@@ -12287,7 +12047,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 186L,
-                            ChallengeVersionId = 119L,
+                            ChallengeVersionId = 74L,
                             Code = "Non nihil est sit a tempore enim non rerum. Necessitatibus dicta nesciunt illum id magnam vel aut nam. Fugit sed sit harum fugiat recusandae accusantium itaque perferendis aut. Sit quaerat saepe temporibus atque tempore at ut culpa nihil. Tenetur vitae ipsa veritatis qui id.",
                             CreatedAt = new DateTime(2022, 11, 28, 4, 14, 52, 65, DateTimeKind.Utc).AddTicks(3131),
                             CreatedBy = 5L,
@@ -12297,7 +12057,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 187L,
-                            ChallengeVersionId = 119L,
+                            ChallengeVersionId = 74L,
                             Code = "facere",
                             CreatedAt = new DateTime(2020, 11, 13, 15, 17, 16, 298, DateTimeKind.Utc).AddTicks(9210),
                             CreatedBy = 40L,
@@ -12307,7 +12067,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 188L,
-                            ChallengeVersionId = 33L,
+                            ChallengeVersionId = 20L,
                             Code = "Recusandae sunt eveniet sed adipisci sit ut.\nIn quisquam nobis quod aliquam odit sequi.\nExplicabo quam quam velit et tempora labore omnis qui provident.\nUt et sint neque et quis dolorem sequi.\nConsequatur laudantium voluptates quaerat sed iste.",
                             CreatedAt = new DateTime(2023, 5, 1, 17, 53, 52, 742, DateTimeKind.Utc).AddTicks(3104),
                             CreatedBy = 21L,
@@ -12317,7 +12077,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 189L,
-                            ChallengeVersionId = 129L,
+                            ChallengeVersionId = 83L,
                             Code = "Molestiae voluptas quibusdam eos ut. Nobis accusantium numquam dignissimos in tempore architecto. Est sed et amet. Corporis et tempore et quo voluptatem eum accusantium architecto. Quaerat voluptas maiores odio voluptatem ut.",
                             CreatedAt = new DateTime(2023, 9, 18, 17, 42, 18, 287, DateTimeKind.Utc).AddTicks(9273),
                             CreatedBy = 25L,
@@ -12327,7 +12087,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 190L,
-                            ChallengeVersionId = 88L,
+                            ChallengeVersionId = 54L,
                             Code = "illo",
                             CreatedAt = new DateTime(2023, 9, 10, 6, 20, 55, 200, DateTimeKind.Utc).AddTicks(1967),
                             CreatedBy = 14L,
@@ -12337,7 +12097,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 191L,
-                            ChallengeVersionId = 188L,
+                            ChallengeVersionId = 167L,
                             Code = "Velit error excepturi dolorem omnis natus.",
                             CreatedAt = new DateTime(2023, 4, 19, 20, 34, 7, 204, DateTimeKind.Utc).AddTicks(780),
                             CreatedBy = 6L,
@@ -12347,7 +12107,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 192L,
-                            ChallengeVersionId = 6L,
+                            ChallengeVersionId = 4L,
                             Code = "Labore nisi totam temporibus voluptatem reprehenderit iste minima quas. Harum alias nulla voluptas dolorem. Maiores exercitationem quas occaecati.",
                             CreatedAt = new DateTime(2023, 3, 20, 16, 1, 33, 993, DateTimeKind.Utc).AddTicks(4251),
                             CreatedBy = 22L,
@@ -12357,7 +12117,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 193L,
-                            ChallengeVersionId = 62L,
+                            ChallengeVersionId = 38L,
                             Code = "Adipisci sit aut incidunt quia quas molestiae quae.\nQuis est debitis in.\nNisi deserunt praesentium omnis.\nEsse adipisci nostrum velit ut explicabo aut.\nId dolor velit in harum velit ullam aut.",
                             CreatedAt = new DateTime(2023, 8, 20, 15, 56, 32, 231, DateTimeKind.Utc).AddTicks(1183),
                             CreatedBy = 36L,
@@ -12367,7 +12127,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 194L,
-                            ChallengeVersionId = 37L,
+                            ChallengeVersionId = 23L,
                             Code = "Accusantium nisi quos et est odit eos ipsam.\nVoluptatem voluptatem recusandae quibusdam eos totam minima vitae vero.",
                             CreatedAt = new DateTime(2023, 3, 21, 0, 59, 32, 995, DateTimeKind.Utc).AddTicks(1026),
                             CreatedBy = 8L,
@@ -12377,7 +12137,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 195L,
-                            ChallengeVersionId = 45L,
+                            ChallengeVersionId = 28L,
                             Code = "Explicabo autem et voluptatem perferendis itaque est quasi aut. Debitis ea tenetur ab. Aut quis repudiandae vel quod voluptas quidem.",
                             CreatedAt = new DateTime(2022, 9, 24, 12, 52, 12, 703, DateTimeKind.Utc).AddTicks(1732),
                             CreatedBy = 15L,
@@ -12387,7 +12147,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 196L,
-                            ChallengeVersionId = 82L,
+                            ChallengeVersionId = 50L,
                             Code = "In voluptatum rerum reiciendis cum velit dolores. Atque ex provident maiores minima rerum blanditiis aut. Id adipisci atque. Sit tenetur quod architecto voluptatem animi dolorem eos ea. Asperiores tenetur non dignissimos. Vel pariatur officiis voluptate.",
                             CreatedAt = new DateTime(2023, 9, 17, 16, 32, 5, 828, DateTimeKind.Utc).AddTicks(4394),
                             CreatedBy = 33L,
@@ -12397,7 +12157,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 197L,
-                            ChallengeVersionId = 89L,
+                            ChallengeVersionId = 55L,
                             Code = "Assumenda vel occaecati ratione et.\nConsequatur enim et vitae sit.\nAperiam et quas nostrum qui et minus.\nDolorem iste ducimus praesentium vel aliquam molestias adipisci inventore.\nAspernatur nam enim culpa odio veritatis facilis ut earum.",
                             CreatedAt = new DateTime(2023, 6, 23, 12, 9, 55, 559, DateTimeKind.Utc).AddTicks(5781),
                             CreatedBy = 26L,
@@ -12407,7 +12167,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 198L,
-                            ChallengeVersionId = 30L,
+                            ChallengeVersionId = 19L,
                             Code = "amet",
                             CreatedAt = new DateTime(2023, 4, 17, 8, 49, 27, 794, DateTimeKind.Utc).AddTicks(2416),
                             CreatedBy = 39L,
@@ -12417,7 +12177,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 199L,
-                            ChallengeVersionId = 152L,
+                            ChallengeVersionId = 105L,
                             Code = "Enim aperiam rerum sit autem tempora consequuntur.",
                             CreatedAt = new DateTime(2023, 7, 15, 7, 41, 33, 901, DateTimeKind.Utc).AddTicks(676),
                             CreatedBy = 34L,
@@ -12427,7 +12187,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 200L,
-                            ChallengeVersionId = 183L,
+                            ChallengeVersionId = 150L,
                             Code = "Sequi libero alias odit officia distinctio dicta distinctio omnis.\nDolor aliquam porro qui.\nDeleniti placeat perferendis omnis rerum sunt sint iste deserunt.",
                             CreatedAt = new DateTime(2023, 9, 10, 7, 14, 31, 928, DateTimeKind.Utc).AddTicks(5536),
                             CreatedBy = 20L,

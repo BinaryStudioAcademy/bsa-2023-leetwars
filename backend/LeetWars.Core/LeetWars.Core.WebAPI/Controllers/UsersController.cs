@@ -102,4 +102,20 @@ public class UsersController : ControllerBase
         var user = await _userService.UpdateFriendshipRequest(updateFriendshipDto);
         return Ok(user);
     }
+    
+    [HttpPut]
+    public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserInfoDto updateUserInfoDto)
+    {
+        var updatedUser = await _userService.UpdateUserInfo(updateUserInfoDto);
+        
+        return Ok(updatedUser);
+    }
+    
+    [HttpPost("avatar")]
+    public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatar([FromForm] IFormFile avatar)
+    {
+        var newAvatarUrl = await _userService.UpdateUserAvatar(avatar);
+        
+        return Ok(newAvatarUrl);
+    }
 }

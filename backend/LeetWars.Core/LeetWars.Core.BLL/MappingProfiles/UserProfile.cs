@@ -15,7 +15,10 @@ namespace LeetWars.Core.BLL.MappingProfiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<User, UserDto>()
+                .ForMember(x => x.ImagePath, opt =>
+                    opt.MapFrom<UserAvatarResolver>())
+                .ReverseMap();
 
             CreateMap<User, BriefUserInfoDto>().ReverseMap();
             
@@ -26,7 +29,11 @@ namespace LeetWars.Core.BLL.MappingProfiles
 
             CreateMap<NewUserDto, User>();
 
+            CreateMap<UpdateUserInfoDto, User>();
+
             CreateMap<User, UserFullDto>()
+                .ForMember(x => x.ImagePath, opt =>
+                    opt.MapFrom<UserAvatarResolver>())
                 .ForMember(x => x.Badges, opt =>
                     opt.MapFrom(x => x.UserBadges)).ReverseMap();
             CreateMap<Subscription, SubscriptionDto>();

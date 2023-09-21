@@ -88,7 +88,7 @@ namespace LeetWars.Core.DAL.Context
                 .UseSeed(SeedDefaults.ChallengeVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
-                .RuleFor(e => e.ChallengeId, f => f.PickRandom(challenges).Id)
+                .RuleFor(e => e.ChallengeId, f => (f.IndexGlobal % challenges.Count) + 1)
                 .RuleFor(e => e.Status, f => f.PickRandom<ChallengeStatus>())
                 .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
@@ -96,18 +96,20 @@ namespace LeetWars.Core.DAL.Context
                     var challenge = challenges.ToList().Find(a => a.Id == e.ChallengeId);
                     return f.Date.Between(challenge?.CreatedAt ?? DateTime.Now, DateTime.Now);
                 })
-                .Generate(count);
+                .Generate(count)
+                .DistinctBy(challengeversion => new { challengeversion.ChallengeId, challengeversion.LanguageId })
+                .ToList();
         }
 
         private static ICollection<ChallengeTag> GenerateChallengeTags(ICollection<Challenge> challenges)
         {
-            int count = challenges.Count * 3;
+            int count = challenges.Count * 2;
             Faker.GlobalUniqueIndex = 0;
 
             var challengeTags = new Faker<ChallengeTag>()
                 .CustomInstantiator(f => new ChallengeTag())
                 .UseSeed(SeedDefaults.ChallengeTagSeed)
-                .RuleFor(e => e.ChallengeId, f => f.PickRandom(challenges).Id)
+                .RuleFor(e => e.ChallengeId, f => (f.IndexGlobal % challenges.Count) + 1)
                 .RuleFor(e => e.TagId, f => f.PickRandom(SeedDefaults.Tags.AsEnumerable()).Id)
                 .Generate(count);
 

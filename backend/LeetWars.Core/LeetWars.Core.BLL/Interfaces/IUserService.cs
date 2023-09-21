@@ -4,6 +4,7 @@ using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using System.Linq.Expressions;
+using Microsoft.AspNetCore.Http;
 
 namespace LeetWars.Core.BLL.Interfaces;
 
@@ -22,4 +23,6 @@ public interface IUserService
     public Task<List<UserDto>> GetFriendsLeaderBoardAsync(PageSettingsDto? page);
     public Task<UserDto> SendFriendshipRequest(NewFriendshipDto newFriendshipDto);
     public Task<UserDto> UpdateFriendshipRequest(UpdateFriendshipDto updateFriendshipDto);
+    public Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto);
+    public Task<UserAvatarDto> UpdateUserAvatar(IFormFile image);
 }

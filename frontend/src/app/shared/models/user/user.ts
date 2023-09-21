@@ -9,7 +9,7 @@ export interface IUser {
     country?: Country;
     email?: string;
     userName?: string;
-    image?: string;
+    imagePath?: string;
     sex: Sex;
     userStatus: UserStatus;
     birthDate?: Date;

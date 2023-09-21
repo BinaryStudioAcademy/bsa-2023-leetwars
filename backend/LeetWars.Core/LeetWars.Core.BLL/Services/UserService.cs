@@ -11,11 +11,12 @@ using LeetWars.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using LeetWars.Core.BLL.Extensions;
 using Bogus;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
 using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.DAL.Enums;
-using LeetWars.Core.BLL.Exceptions;
+using Microsoft.AspNetCore.Http;
 using LeetWars.Core.Common.DTO.Notifications;
 
 namespace LeetWars.Core.BLL.Services;
@@ -24,15 +25,19 @@ public class UserService : BaseService, IUserService
 {
     private readonly IUserGetter _userGetter;
     private readonly IMessageSenderService _messageSenderService;
+    private readonly IBlobService _blobService;
     private const int REPUTATION_DIVIDER = 10;
 
     public UserService(LeetWarsCoreContext context,
                        IMapper mapper,
                        IUserGetter userGetter,
-                       IMessageSenderService messageSenderService) : base(context, mapper)
+                       IMessageSenderService messageSenderService,
+                       IBlobService blobService
+                       ) : base(context, mapper)
     {
         _userGetter = userGetter;
         _messageSenderService = messageSenderService;
+        _blobService = blobService;
     }
 
     public async Task<UserDto> CreateUserAsync(NewUserDto userDto)
@@ -297,6 +302,45 @@ public class UserService : BaseService, IUserService
         var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
 
         return user ?? throw new NotFoundException(nameof(User));
+    }
+
+    public async Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto)
+    {
+        if (userInfoDto is null)
+        {
+            throw new NotFoundException(nameof(UpdateUserInfoDto));
+        }
+
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                            ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
+        
+        _mapper.Map(userInfoDto, currentUser);
+        
+        _context.Users.Update(currentUser);
+        await _context.SaveChangesAsync();
+        return _mapper.Map<UserDto>(currentUser);
+    }
+
+    public async Task<UserAvatarDto> UpdateUserAvatar(IFormFile image)
+    {
+        if (image is null)
+        {
+            throw new ArgumentNullException(nameof(image));
+        }
+        
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                          ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
+        
+        var uniqueFileName = FileNameHelper.CreateUniqueFileName(image.FileName);
+        await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
+            uniqueFileName);
+        currentUser.ImagePath = uniqueFileName;
+        
+        _context.Users.Update(currentUser);
+        await _context.SaveChangesAsync();
+        
+        var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
+        return newUserAvatar;
     }
 
     private async Task<int> GetRewardFromChallenge(long challengeId)

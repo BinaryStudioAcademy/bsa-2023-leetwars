@@ -4,7 +4,7 @@ using LeetWars.Core.DAL.Enums;
 
 namespace LeetWars.Core.Common.DTO.User
 {
-    public class UserDto : Entity<long>
+    public class UserDto : Entity<long>, IDtoWithImage
     {
         public Country? Country { get; set; }
         public int Timezone { get; set; }

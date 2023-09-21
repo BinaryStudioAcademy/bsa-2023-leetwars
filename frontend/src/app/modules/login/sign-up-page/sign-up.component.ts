@@ -52,6 +52,8 @@ export class SignUpComponent {
     });
 
     public getErrorMessage(formControlName: string) {
+        this.validationError = null;
+
         return getErrorMessage(formControlName, this.registrationForm);
     }
 

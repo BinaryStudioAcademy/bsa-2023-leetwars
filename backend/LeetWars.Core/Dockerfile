@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal AS base
 ARG PROJECT_PORT
+
 WORKDIR /app
 EXPOSE $PROJECT_PORT
 

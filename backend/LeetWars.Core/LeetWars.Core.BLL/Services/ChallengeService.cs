@@ -6,6 +6,7 @@ using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
 using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Filters;
@@ -22,8 +23,8 @@ namespace LeetWars.Core.BLL.Services
 {
     public class ChallengeService : BaseService, IChallengeService
     {
-        private readonly IUserGetter _userGetter;
         private readonly IMessageSenderService _messageSenderService;
+        private readonly IUserGetter _userGetter;
         private readonly IUserService _userService;
 
         public ChallengeService(
@@ -243,7 +244,6 @@ namespace LeetWars.Core.BLL.Services
 
             _messageSenderService.SendMessageToRabbitMQ(newNotification);
         }
-
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
@@ -260,6 +260,12 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
+        }
+        public async Task DeleteChallengeAsync(long challengeId)
+        {
+            var challenge = await GetChallengeByIdAsync(challengeId);
+            _context.Challenges.Remove(challenge);
+            await _context.SaveChangesAsync();
         }
 
         private async Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings)
@@ -427,6 +433,10 @@ namespace LeetWars.Core.BLL.Services
 
                 return randomValue % maxValue;
             }
+        }
+        public void SendCodeRunRequest(CodeRunRequestDto request)
+        {
+            _messageSenderService.SendMessageToRabbitMQ(request);
         }
     }
 }
