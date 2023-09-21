@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NewFriendship } from '@shared/models/friendship/new-friendship';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IEditUser } from '@shared/models/user/edit-user';
 import { INewUser } from '@shared/models/user/new-user';
@@ -55,5 +56,13 @@ export class UserService {
 
     public updateUserRank(userDto: IEditUser): Observable<IUserFull> {
         return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
+    }
+
+    public sendFriendshipRequest(newFriendship: NewFriendship): Observable<IUser> {
+        return this.httpService.postRequest<IUser>(`${this.baseUrl}/send-friendship-request`, newFriendship);
+    }
+
+    public updateFriendshipRequest(newFriendship: NewFriendship): Observable<IUser> {
+        return this.httpService.postRequest<IUser>(`${this.baseUrl}/update-friendship-request`, newFriendship);
     }
 }

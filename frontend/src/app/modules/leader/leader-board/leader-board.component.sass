@@ -1,3 +1,4 @@
+@use 'three-dots' with ($dot-width: 5px, $dot-height: 5px )
 @import 'color-variables'
 @import 'screen-sizes-variables'
 
@@ -5,7 +6,7 @@
     margin-top: 30px
     display: flex
     justify-content: center
-    align-items: center
+    align-items: start
     height: 100%
 
 .board
@@ -14,7 +15,8 @@
 .board-wrapper
     display: flex
     background-color: $midnight-gray
-    margin: auto
+    flex-direction: column
+    margin: 0 auto
     padding: 25px
     border-radius: 15px
     width: 40%
@@ -66,16 +68,48 @@
 .add-friend 
     width: 7%
     min-width: 25px
+    justify-content: start
+    align-items: center
     
-.user-plus-icon-btn 
-    padding: 0 4px
+.user-icon-btn 
+    padding: 0 3px
     &:active
         scale: 93%
 
-.user-plus-icon
+.user-plus-btn
+    padding: 0 4px
+
+.user-icon        
     cursor: pointer
+    color: $cornflower
+    &:hover
+        color: $transparent-cornflower
+
+.user-plus-icon
+    color: inherit
     &:hover
         color: $silver
 
 .user:nth-child(even) 
   background-color: $transparent-yellow
+
+.dot-flashing
+    padding: 0 !important
+    margin-left: 7.5px
+
+.form-check-input
+    cursor: pointer
+
+.form-check-label
+    color: $silver
+    cursor: pointer
+    user-select: none
+
+.form-check-input
+    &:focus
+        border-color: $green
+        box-shadow: none
+
+.form-check-input:checked
+    background-color: $green
+    border-color: $emerald-green

@@ -16,7 +16,6 @@ using LeetWars.Core.DAL.Extensions;
 using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.BLL.Exceptions;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace LeetWars.Core.BLL.Services;
 
