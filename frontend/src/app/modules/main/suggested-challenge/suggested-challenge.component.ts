@@ -35,7 +35,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
 
     suggestionSettings: ISuggestionSettings = {
         languageId: 0,
-        suggestionType: SuggestionType.Fundamentals,
+        suggestionType: SuggestionType.Weekly,
     };
 
     constructor(

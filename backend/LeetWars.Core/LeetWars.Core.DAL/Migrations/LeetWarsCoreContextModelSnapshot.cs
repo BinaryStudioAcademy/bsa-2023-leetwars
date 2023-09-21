@@ -130,6 +130,13 @@ namespace LeetWars.Core.DAL.Migrations
                             Icon = "/static/images/badges/2023-12.png",
                             IconGif = "/static/images/badges/2023-12.gif",
                             Name = "Dec LeetWars Challenge Badge"
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            Icon = "/static/images/badges/weekly.png",
+                            IconGif = "/static/images/badges/weekly.gif",
+                            Name = "Weekly LeetWars Challenge Badge"
                         });
                 });
 
@@ -162,6 +169,9 @@ namespace LeetWars.Core.DAL.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("isWeekly")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedBy");
@@ -179,7 +189,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 19L,
                             Instructions = "Perspiciatis cum et et laudantium.",
                             LevelId = 1L,
-                            Title = "We need to input the online SCSI firewall!"
+                            Title = "We need to input the online SCSI firewall!",
+                            isWeekly = false
                         },
                         new
                         {
@@ -189,7 +200,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 17L,
                             Instructions = "quis",
                             LevelId = 2L,
-                            Title = "Use the open-source SMS driver, then you can input"
+                            Title = "Use the open-source SMS driver, then you can input",
+                            isWeekly = false
                         },
                         new
                         {
@@ -199,7 +211,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 34L,
                             Instructions = "Aut rerum consectetur veniam distinctio officiis praesentium.\nAperiam quis qui animi omnis.\nMolestiae laboriosam exercitationem similique amet dolores quibusdam aspernatur consequatur quia.\nSuscipit consequuntur eos laborum facilis culpa.",
                             LevelId = 1L,
-                            Title = "If we back up the application, we can get to the G"
+                            Title = "If we back up the application, we can get to the G",
+                            isWeekly = false
                         },
                         new
                         {
@@ -209,7 +222,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 20L,
                             Instructions = "Suscipit quia modi nobis ad eos voluptatum est.",
                             LevelId = 2L,
-                            Title = "Use the haptic JBOD transmitter, then you can hack"
+                            Title = "Use the haptic JBOD transmitter, then you can hack",
+                            isWeekly = false
                         },
                         new
                         {
@@ -219,7 +233,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 33L,
                             Instructions = "Voluptatem possimus iure impedit enim provident incidunt molestiae earum.",
                             LevelId = 2L,
-                            Title = "I'll transmit the wireless USB driver, that should"
+                            Title = "I'll transmit the wireless USB driver, that should",
+                            isWeekly = false
                         },
                         new
                         {
@@ -229,7 +244,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 28L,
                             Instructions = "Distinctio rerum voluptatem aut iure nesciunt aut eos voluptatem molestias. Molestias reprehenderit tenetur hic. Esse repudiandae voluptatem quae impedit sed voluptates ratione minus in.",
                             LevelId = 3L,
-                            Title = "If we parse the feed, we can get to the SSL feed t"
+                            Title = "If we parse the feed, we can get to the SSL feed t",
+                            isWeekly = false
                         },
                         new
                         {
@@ -239,7 +255,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 40L,
                             Instructions = "Molestiae quis nihil similique autem nemo numquam. Et ut ratione vel. Aperiam harum perferendis ad consequuntur.",
                             LevelId = 1L,
-                            Title = "We need to calculate the auxiliary HTTP applicatio"
+                            Title = "We need to calculate the auxiliary HTTP applicatio",
+                            isWeekly = false
                         },
                         new
                         {
@@ -249,7 +266,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 26L,
                             Instructions = "et",
                             LevelId = 2L,
-                            Title = "I'll index the back-end RSS driver, that should dr"
+                            Title = "I'll index the back-end RSS driver, that should dr",
+                            isWeekly = false
                         },
                         new
                         {
@@ -259,7 +277,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 3L,
                             Instructions = "Quas maxime esse et dolores accusamus doloremque in magnam quos.\nSaepe incidunt modi recusandae saepe ut et.\nAccusamus sed maiores doloremque aut et aut praesentium quae.\nQui magni eum autem architecto accusamus dolore inventore expedita.\nEos velit optio asperiores dolores voluptas amet voluptatum deserunt.",
                             LevelId = 4L,
-                            Title = "The SAS pixel is down, hack the mobile pixel so we"
+                            Title = "The SAS pixel is down, hack the mobile pixel so we",
+                            isWeekly = false
                         },
                         new
                         {
@@ -269,7 +288,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 6L,
                             Instructions = "Doloremque velit maiores unde at commodi.",
                             LevelId = 3L,
-                            Title = "You can't synthesize the firewall without transmit"
+                            Title = "You can't synthesize the firewall without transmit",
+                            isWeekly = false
                         },
                         new
                         {
@@ -279,7 +299,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 40L,
                             Instructions = "Doloribus eveniet non aut fuga et.",
                             LevelId = 4L,
-                            Title = "Try to calculate the SMTP bus, maybe it will calcu"
+                            Title = "Try to calculate the SMTP bus, maybe it will calcu",
+                            isWeekly = false
                         },
                         new
                         {
@@ -289,7 +310,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 40L,
                             Instructions = "Est molestiae voluptatem eos assumenda et libero voluptatem et.\nAb maxime fuga nemo ad.\nNon illum ut iste ea perspiciatis.",
                             LevelId = 3L,
-                            Title = "The ADP array is down, generate the bluetooth arra"
+                            Title = "The ADP array is down, generate the bluetooth arra",
+                            isWeekly = false
                         },
                         new
                         {
@@ -299,7 +321,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 5L,
                             Instructions = "iure",
                             LevelId = 4L,
-                            Title = "The SMS driver is down, hack the optical driver so"
+                            Title = "The SMS driver is down, hack the optical driver so",
+                            isWeekly = false
                         },
                         new
                         {
@@ -309,7 +332,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 30L,
                             Instructions = "Nostrum sit quia consequatur eos dolorem quo vel libero ut.\nIusto error quia ab.\nAutem quam et quia eum ea molestias eum dolore consequuntur.\nEligendi rerum nisi aspernatur et commodi libero cupiditate.\nMollitia molestias eaque quia dignissimos voluptas porro voluptas.",
                             LevelId = 3L,
-                            Title = "Try to copy the IB program, maybe it will copy the"
+                            Title = "Try to copy the IB program, maybe it will copy the",
+                            isWeekly = false
                         },
                         new
                         {
@@ -319,7 +343,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 5L,
                             Instructions = "Recusandae molestias id.",
                             LevelId = 3L,
-                            Title = "Use the wireless SDD circuit, then you can navigat"
+                            Title = "Use the wireless SDD circuit, then you can navigat",
+                            isWeekly = false
                         },
                         new
                         {
@@ -329,7 +354,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 13L,
                             Instructions = "Corporis veniam vel et voluptas. Rerum quod facilis est nihil qui et rerum et non. Rerum culpa deserunt adipisci vero iure corporis. Quam odit reprehenderit. Atque cupiditate aut minus minus reprehenderit eos. Ipsam et aut nostrum assumenda explicabo rem.",
                             LevelId = 1L,
-                            Title = "If we bypass the port, we can get to the USB port "
+                            Title = "If we bypass the port, we can get to the USB port ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -339,7 +365,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 18L,
                             Instructions = "ratione",
                             LevelId = 4L,
-                            Title = "calculating the panel won't do anything, we need t"
+                            Title = "calculating the panel won't do anything, we need t",
+                            isWeekly = false
                         },
                         new
                         {
@@ -349,7 +376,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 17L,
                             Instructions = "et",
                             LevelId = 4L,
-                            Title = "If we hack the program, we can get to the PCI prog"
+                            Title = "If we hack the program, we can get to the PCI prog",
+                            isWeekly = false
                         },
                         new
                         {
@@ -359,7 +387,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 20L,
                             Instructions = "Sint doloribus sit aut ipsam maiores voluptatum voluptas in.",
                             LevelId = 3L,
-                            Title = "compressing the sensor won't do anything, we need "
+                            Title = "compressing the sensor won't do anything, we need ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -369,7 +398,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 38L,
                             Instructions = "perspiciatis",
                             LevelId = 2L,
-                            Title = "I'll override the redundant AGP card, that should "
+                            Title = "I'll override the redundant AGP card, that should ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -379,7 +409,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 23L,
                             Instructions = "Quisquam cum aut sunt sit suscipit similique voluptatem maxime qui. Quia aut exercitationem est provident enim rerum maiores. Voluptatem aut fugiat sunt exercitationem. Corrupti vitae ea eos enim similique. Fuga et enim ad laboriosam quaerat ut et. Et sed dolorum sunt quisquam incidunt et explicabo et.",
                             LevelId = 4L,
-                            Title = "Use the open-source EXE array, then you can connec"
+                            Title = "Use the open-source EXE array, then you can connec",
+                            isWeekly = false
                         },
                         new
                         {
@@ -389,7 +420,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 2L,
                             Instructions = "Id consequuntur nesciunt laudantium quaerat et suscipit quaerat recusandae nobis. Id corrupti vitae. Hic quisquam cumque aliquam qui. Quasi porro quisquam dicta voluptatibus.",
                             LevelId = 2L,
-                            Title = "The IB transmitter is down, quantify the optical t"
+                            Title = "The IB transmitter is down, quantify the optical t",
+                            isWeekly = false
                         },
                         new
                         {
@@ -399,7 +431,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 35L,
                             Instructions = "Odit laudantium quibusdam nostrum fugiat dolores.",
                             LevelId = 4L,
-                            Title = "Use the back-end SMTP bus, then you can override t"
+                            Title = "Use the back-end SMTP bus, then you can override t",
+                            isWeekly = false
                         },
                         new
                         {
@@ -409,7 +442,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 20L,
                             Instructions = "Sed voluptate iusto vel ad ea voluptates iure.\nAccusantium saepe iusto dolorum necessitatibus necessitatibus.",
                             LevelId = 3L,
-                            Title = "We need to reboot the haptic USB protocol!"
+                            Title = "We need to reboot the haptic USB protocol!",
+                            isWeekly = false
                         },
                         new
                         {
@@ -419,7 +453,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 11L,
                             Instructions = "eum",
                             LevelId = 4L,
-                            Title = "You can't reboot the bus without parsing the redun"
+                            Title = "You can't reboot the bus without parsing the redun",
+                            isWeekly = false
                         },
                         new
                         {
@@ -429,7 +464,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 18L,
                             Instructions = "Amet qui vel dignissimos maxime quo recusandae provident. Accusamus expedita delectus praesentium nam dolores accusamus. Mollitia iste unde voluptatem.",
                             LevelId = 1L,
-                            Title = "You can't calculate the program without hacking th"
+                            Title = "You can't calculate the program without hacking th",
+                            isWeekly = false
                         },
                         new
                         {
@@ -439,7 +475,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 19L,
                             Instructions = "necessitatibus",
                             LevelId = 4L,
-                            Title = "I'll index the open-source JSON card, that should "
+                            Title = "I'll index the open-source JSON card, that should ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -449,7 +486,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 23L,
                             Instructions = "Modi blanditiis aut sunt qui ut.\nVeritatis dignissimos deleniti.\nQuod ut aliquid voluptatum dolorem error.",
                             LevelId = 1L,
-                            Title = "If we parse the driver, we can get to the PNG driv"
+                            Title = "If we parse the driver, we can get to the PNG driv",
+                            isWeekly = false
                         },
                         new
                         {
@@ -459,7 +497,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 17L,
                             Instructions = "numquam",
                             LevelId = 3L,
-                            Title = "The PNG pixel is down, bypass the haptic pixel so "
+                            Title = "The PNG pixel is down, bypass the haptic pixel so ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -469,7 +508,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 2L,
                             Instructions = "ut",
                             LevelId = 2L,
-                            Title = "The GB firewall is down, reboot the 1080p firewall"
+                            Title = "The GB firewall is down, reboot the 1080p firewall",
+                            isWeekly = false
                         },
                         new
                         {
@@ -479,7 +519,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 19L,
                             Instructions = "Eum ea sequi voluptas praesentium hic.\nVoluptatum voluptatem dolor consequatur distinctio et.\nAutem officia ut unde delectus repudiandae eum animi consectetur omnis.",
                             LevelId = 2L,
-                            Title = "You can't index the transmitter without compressin"
+                            Title = "You can't index the transmitter without compressin",
+                            isWeekly = false
                         },
                         new
                         {
@@ -489,7 +530,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 13L,
                             Instructions = "quia",
                             LevelId = 4L,
-                            Title = "We need to back up the virtual SQL feed!"
+                            Title = "We need to back up the virtual SQL feed!",
+                            isWeekly = false
                         },
                         new
                         {
@@ -499,7 +541,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 9L,
                             Instructions = "Sunt et est aliquam aut unde blanditiis.\nRepellendus dolorem autem.\nEos nihil veniam quia ipsa.\nOdit fuga illum nobis voluptatum deserunt in.",
                             LevelId = 2L,
-                            Title = "Try to program the COM alarm, maybe it will progra"
+                            Title = "Try to program the COM alarm, maybe it will progra",
+                            isWeekly = false
                         },
                         new
                         {
@@ -509,7 +552,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 7L,
                             Instructions = "Culpa voluptatem est sequi in sit quam.",
                             LevelId = 3L,
-                            Title = "The XSS matrix is down, transmit the cross-platfor"
+                            Title = "The XSS matrix is down, transmit the cross-platfor",
+                            isWeekly = false
                         },
                         new
                         {
@@ -519,7 +563,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 34L,
                             Instructions = "Quisquam voluptate sequi magni soluta soluta qui voluptatem reprehenderit quo.",
                             LevelId = 1L,
-                            Title = "We need to navigate the digital RAM pixel!"
+                            Title = "We need to navigate the digital RAM pixel!",
+                            isWeekly = false
                         },
                         new
                         {
@@ -529,7 +574,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 4L,
                             Instructions = "Voluptatem quia ut ut doloribus ut et ratione suscipit. Est sunt veritatis. Quis ducimus laboriosam.",
                             LevelId = 1L,
-                            Title = "Try to input the JBOD driver, maybe it will input "
+                            Title = "Try to input the JBOD driver, maybe it will input ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -539,7 +585,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 38L,
                             Instructions = "iusto",
                             LevelId = 3L,
-                            Title = "The COM array is down, program the virtual array s"
+                            Title = "The COM array is down, program the virtual array s",
+                            isWeekly = false
                         },
                         new
                         {
@@ -549,7 +596,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 6L,
                             Instructions = "Omnis et et eum eum tempora nostrum a iure voluptatem. Expedita itaque quos quia soluta repellat quas perspiciatis. Sed consequatur numquam maxime. Enim quaerat ratione rerum sed quis. Ea dolores dolor eum vitae dolores vitae.",
                             LevelId = 3L,
-                            Title = "Use the solid state IB transmitter, then you can h"
+                            Title = "Use the solid state IB transmitter, then you can h",
+                            isWeekly = false
                         },
                         new
                         {
@@ -559,7 +607,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 13L,
                             Instructions = "Expedita labore omnis omnis delectus doloremque possimus esse fugit.\nQui quasi pariatur et sed aliquam aut quo temporibus animi.\nNihil esse similique molestiae voluptas molestiae eum.\nImpedit et in nihil nihil et.",
                             LevelId = 4L,
-                            Title = "If we navigate the hard drive, we can get to the P"
+                            Title = "If we navigate the hard drive, we can get to the P",
+                            isWeekly = false
                         },
                         new
                         {
@@ -569,7 +618,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 27L,
                             Instructions = "Adipisci sint quibusdam.",
                             LevelId = 4L,
-                            Title = "bypassing the matrix won't do anything, we need to"
+                            Title = "bypassing the matrix won't do anything, we need to",
+                            isWeekly = false
                         },
                         new
                         {
@@ -579,7 +629,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 23L,
                             Instructions = "Non non ea ab maxime est ratione. Et voluptate iusto ut. Minima nihil qui quaerat ratione aut.",
                             LevelId = 3L,
-                            Title = "I'll parse the virtual SCSI transmitter, that shou"
+                            Title = "I'll parse the virtual SCSI transmitter, that shou",
+                            isWeekly = false
                         },
                         new
                         {
@@ -589,7 +640,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 23L,
                             Instructions = "Eos provident laborum placeat reprehenderit voluptatem.",
                             LevelId = 1L,
-                            Title = "indexing the hard drive won't do anything, we need"
+                            Title = "indexing the hard drive won't do anything, we need",
+                            isWeekly = false
                         },
                         new
                         {
@@ -599,7 +651,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 23L,
                             Instructions = "Et dolor error quo doloremque harum explicabo.\nSed qui facere corporis sunt omnis voluptas corporis perspiciatis ut.\nEst rerum ad necessitatibus voluptatem.\nLaboriosam cupiditate dolorem eaque perspiciatis et.",
                             LevelId = 4L,
-                            Title = "You can't copy the port without parsing the wirele"
+                            Title = "You can't copy the port without parsing the wirele",
+                            isWeekly = false
                         },
                         new
                         {
@@ -609,7 +662,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 21L,
                             Instructions = "Aut ex quis.\nEnim nulla eligendi est quam iusto.\nCumque harum saepe velit consequatur eligendi odit ut vero.\nDolorem sit vel sed nemo modi consequatur.",
                             LevelId = 2L,
-                            Title = "You can't parse the firewall without backing up th"
+                            Title = "You can't parse the firewall without backing up th",
+                            isWeekly = false
                         },
                         new
                         {
@@ -619,7 +673,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 35L,
                             Instructions = "Ut qui non dolores sunt enim fugiat quisquam cupiditate distinctio. Officiis reprehenderit quidem qui quis quia asperiores quaerat sapiente. Quia quia voluptatem magni et enim iure. Dolorum ut minus.",
                             LevelId = 2L,
-                            Title = "If we bypass the transmitter, we can get to the AI"
+                            Title = "If we bypass the transmitter, we can get to the AI",
+                            isWeekly = false
                         },
                         new
                         {
@@ -629,7 +684,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 7L,
                             Instructions = "Officia iusto rerum placeat temporibus corrupti et aut cumque.\nCommodi voluptatem laborum amet consequatur.\nA ducimus est ut reprehenderit.\nSit odit consequuntur.\nTempore magni nihil velit quos sed deleniti aliquid.\nEligendi nesciunt error mollitia et consequatur.",
                             LevelId = 1L,
-                            Title = "compressing the bus won't do anything, we need to "
+                            Title = "compressing the bus won't do anything, we need to ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -639,7 +695,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 10L,
                             Instructions = "Earum laudantium molestias quam sed fuga explicabo vel corrupti in. Quibusdam et ut voluptatem facere. Magni qui pariatur reiciendis eveniet.",
                             LevelId = 1L,
-                            Title = "I'll parse the back-end XML protocol, that should "
+                            Title = "I'll parse the back-end XML protocol, that should ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -649,7 +706,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 15L,
                             Instructions = "Sed rerum molestiae ad.\nItaque quas vel sint voluptas maxime assumenda.\nHic debitis tempore minus et quos quia repudiandae.\nUt laudantium ut.",
                             LevelId = 4L,
-                            Title = "We need to synthesize the haptic THX bandwidth!"
+                            Title = "We need to synthesize the haptic THX bandwidth!",
+                            isWeekly = false
                         },
                         new
                         {
@@ -659,7 +717,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 34L,
                             Instructions = "vel",
                             LevelId = 1L,
-                            Title = "Use the wireless AI card, then you can back up the"
+                            Title = "Use the wireless AI card, then you can back up the",
+                            isWeekly = false
                         },
                         new
                         {
@@ -669,7 +728,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 34L,
                             Instructions = "Cum in ex nulla doloremque nostrum nemo quos.\nLaudantium corporis ut hic sapiente dolore sed architecto.\nIusto expedita rerum et pariatur optio ex aperiam dolorem placeat.\nAssumenda nesciunt nostrum pariatur corporis et doloribus quae.",
                             LevelId = 3L,
-                            Title = "You can't copy the sensor without navigating the d"
+                            Title = "You can't copy the sensor without navigating the d",
+                            isWeekly = false
                         },
                         new
                         {
@@ -679,7 +739,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 38L,
                             Instructions = "Voluptatem iure quia labore pariatur id quia qui expedita quos.\nLaudantium natus dolorem rerum nemo perferendis quam est explicabo aliquam.\nIncidunt et qui.",
                             LevelId = 2L,
-                            Title = "The XML monitor is down, compress the 1080p monito"
+                            Title = "The XML monitor is down, compress the 1080p monito",
+                            isWeekly = false
                         },
                         new
                         {
@@ -689,7 +750,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 16L,
                             Instructions = "Fugiat illo alias error eligendi voluptatem.",
                             LevelId = 2L,
-                            Title = "You can't transmit the system without connecting t"
+                            Title = "You can't transmit the system without connecting t",
+                            isWeekly = false
                         },
                         new
                         {
@@ -699,7 +761,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 29L,
                             Instructions = "Distinctio adipisci sequi vitae nulla. Corporis in labore nobis vel laudantium accusantium minus nihil quas. Sapiente quam vitae ea asperiores cum. Et illum temporibus placeat itaque et aliquam nostrum tempore ratione. Quia modi facere quia. Quaerat nostrum voluptatem.",
                             LevelId = 4L,
-                            Title = "Use the wireless GB protocol, then you can synthes"
+                            Title = "Use the wireless GB protocol, then you can synthes",
+                            isWeekly = false
                         },
                         new
                         {
@@ -709,7 +772,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 33L,
                             Instructions = "Necessitatibus libero sint ad culpa accusantium sed omnis praesentium.",
                             LevelId = 2L,
-                            Title = "Use the open-source ADP pixel, then you can input "
+                            Title = "Use the open-source ADP pixel, then you can input ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -719,7 +783,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 31L,
                             Instructions = "Aut ut ut voluptates tempora ut commodi quos id. Dolores rerum eveniet quaerat dolores eligendi hic ipsum sit. Impedit fugiat numquam ad rerum atque tempore vero ipsa ab. Consequatur vitae hic omnis cumque perspiciatis consequatur ex omnis.",
                             LevelId = 1L,
-                            Title = "overriding the port won't do anything, we need to "
+                            Title = "overriding the port won't do anything, we need to ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -729,7 +794,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 26L,
                             Instructions = "Sunt ut fugit minima facere optio accusantium.\nDeserunt molestias ducimus omnis voluptatibus quos aut rerum.\nQuibusdam ratione qui illum quam modi.",
                             LevelId = 4L,
-                            Title = "I'll bypass the digital XSS pixel, that should pix"
+                            Title = "I'll bypass the digital XSS pixel, that should pix",
+                            isWeekly = false
                         },
                         new
                         {
@@ -739,7 +805,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 15L,
                             Instructions = "Minus quo dolores rerum pariatur nisi.\nDolorem dolore laborum corporis reiciendis dignissimos in.\nEos enim vel placeat minus voluptatem consequuntur totam corporis et.",
                             LevelId = 2L,
-                            Title = "Try to generate the SMTP application, maybe it wil"
+                            Title = "Try to generate the SMTP application, maybe it wil",
+                            isWeekly = false
                         },
                         new
                         {
@@ -749,7 +816,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 40L,
                             Instructions = "aut",
                             LevelId = 4L,
-                            Title = "Use the solid state SMS alarm, then you can bypass"
+                            Title = "Use the solid state SMS alarm, then you can bypass",
+                            isWeekly = false
                         },
                         new
                         {
@@ -759,7 +827,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 8L,
                             Instructions = "Veniam rerum repudiandae sint eos delectus qui veniam id consequatur.",
                             LevelId = 2L,
-                            Title = "We need to synthesize the open-source CSS driver!"
+                            Title = "We need to synthesize the open-source CSS driver!",
+                            isWeekly = false
                         },
                         new
                         {
@@ -769,7 +838,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 22L,
                             Instructions = "Quia fugiat voluptatem nihil vitae molestias.",
                             LevelId = 4L,
-                            Title = "I'll connect the bluetooth RSS feed, that should f"
+                            Title = "I'll connect the bluetooth RSS feed, that should f",
+                            isWeekly = false
                         },
                         new
                         {
@@ -779,7 +849,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 2L,
                             Instructions = "Accusamus beatae omnis totam maxime autem in et et.\nEt ducimus ea quia a excepturi a aut.\nExplicabo illo blanditiis illo eum qui itaque natus modi.",
                             LevelId = 4L,
-                            Title = "You can't generate the protocol without indexing t"
+                            Title = "You can't generate the protocol without indexing t",
+                            isWeekly = false
                         },
                         new
                         {
@@ -789,7 +860,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 13L,
                             Instructions = "Voluptatem veniam ut autem enim. Architecto nihil ut rerum aut nihil eos aut. Esse voluptatem reprehenderit perferendis aut ut dolor voluptas.",
                             LevelId = 4L,
-                            Title = "If we quantify the program, we can get to the FTP "
+                            Title = "If we quantify the program, we can get to the FTP ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -799,7 +871,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 26L,
                             Instructions = "Est consectetur voluptatem.\nPlaceat et eos.\nSunt quo et qui eius qui dolor numquam numquam nulla.\nSed nulla sint delectus alias.",
                             LevelId = 3L,
-                            Title = "If we bypass the circuit, we can get to the RSS ci"
+                            Title = "If we bypass the circuit, we can get to the RSS ci",
+                            isWeekly = false
                         },
                         new
                         {
@@ -809,7 +882,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 10L,
                             Instructions = "ut",
                             LevelId = 4L,
-                            Title = "parsing the matrix won't do anything, we need to c"
+                            Title = "parsing the matrix won't do anything, we need to c",
+                            isWeekly = false
                         },
                         new
                         {
@@ -819,7 +893,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 24L,
                             Instructions = "Suscipit iusto quas est quaerat molestiae nostrum tempora aliquam tempora.\nRem dolorem ut voluptas voluptate.\nQuo magnam eligendi.\nIpsum tenetur praesentium earum.",
                             LevelId = 2L,
-                            Title = "Try to connect the XSS feed, maybe it will connect"
+                            Title = "Try to connect the XSS feed, maybe it will connect",
+                            isWeekly = false
                         },
                         new
                         {
@@ -829,7 +904,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 33L,
                             Instructions = "Quae aliquid quod error nesciunt.",
                             LevelId = 3L,
-                            Title = "Use the online IB panel, then you can synthesize t"
+                            Title = "Use the online IB panel, then you can synthesize t",
+                            isWeekly = false
                         },
                         new
                         {
@@ -839,7 +915,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 39L,
                             Instructions = "Autem est neque deleniti quae.\nCum vitae ut id voluptate est aut enim.\nAlias tenetur commodi cumque explicabo est.\nCommodi blanditiis tenetur sapiente dolores atque tempore.\nAut modi officiis neque consequatur.",
                             LevelId = 1L,
-                            Title = "You can't transmit the application without quantif"
+                            Title = "You can't transmit the application without quantif",
+                            isWeekly = false
                         },
                         new
                         {
@@ -849,7 +926,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 19L,
                             Instructions = "Est dolores id tempore vel.",
                             LevelId = 4L,
-                            Title = "If we override the circuit, we can get to the HDD "
+                            Title = "If we override the circuit, we can get to the HDD ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -859,7 +937,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 7L,
                             Instructions = "Aut quibusdam amet at facilis rerum.\nUt veritatis commodi aspernatur doloremque quia quidem.",
                             LevelId = 1L,
-                            Title = "Use the cross-platform AGP firewall, then you can "
+                            Title = "Use the cross-platform AGP firewall, then you can ",
+                            isWeekly = false
                         },
                         new
                         {
@@ -869,7 +948,8 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedBy = 37L,
                             Instructions = "Natus aut officia qui consequatur.",
                             LevelId = 4L,
-                            Title = "Try to navigate the THX system, maybe it will navi"
+                            Title = "Try to navigate the THX system, maybe it will navi",
+                            isWeekly = false
                         });
                 });
 

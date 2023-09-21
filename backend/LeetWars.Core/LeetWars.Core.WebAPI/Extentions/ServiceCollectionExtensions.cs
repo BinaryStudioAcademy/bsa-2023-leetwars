@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using LeetWars.RabbitMQ;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Options;
+using Hangfire;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -32,11 +33,10 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddScoped<IUserService, UserService>();
-            
+
             services.AddScoped<UserStorage>();
             services.AddTransient<IUserSetter>(s => s.GetService<UserStorage>()!);
             services.AddTransient<IUserGetter>(s => s.GetService<UserStorage>()!);
-
         }
 
         public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
@@ -115,6 +115,17 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddScoped<IBlobService, BlobService>();
 
             return services;
+        }
+
+        public static void RegisterHengfire(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHangfire(globalCongig => globalCongig
+            .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseRecommendedSerializerSettings()
+            .UseSqlServerStorage(configuration.GetConnectionString("LeetWarsCoreDBConnection")));
+
+            services.AddHangfireServer();
         }
     }
 }

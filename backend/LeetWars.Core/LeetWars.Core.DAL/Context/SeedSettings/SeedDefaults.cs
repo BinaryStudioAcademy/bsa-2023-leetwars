@@ -64,6 +64,7 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
             new Badge("Oct LeetWars Challenge Badge", "/static/images/badges/2023-10.png", "/static/images/badges/2023-10.gif"){Id = 10},
             new Badge("Nov LeetWars Challenge Badge", "/static/images/badges/2023-11.png", "/static/images/badges/2023-11.gif"){Id = 11},
             new Badge("Dec LeetWars Challenge Badge", "/static/images/badges/2023-12.png", "/static/images/badges/2023-12.gif"){Id = 12},
+            new Badge("Weekly LeetWars Challenge Badge", "/static/images/badges/weekly.png", "/static/images/badges/weekly.gif"){Id = 13},
         });
 
     }

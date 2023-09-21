@@ -88,7 +88,7 @@ namespace LeetWars.Core.BLL.Services
 
             if(filters.DifficultyLevel is not null)
             {
-                challenges = challenges.Where(challenge => 
+                challenges = challenges.Where(challenge =>
                 challenge.Level != null && challenge.Level.Name.Equals(filters.DifficultyLevel));
             }
 
@@ -245,6 +245,47 @@ namespace LeetWars.Core.BLL.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task SetWeeklyChallenges()
+        {
+            await ResetLastWeeklyChallenge();
+
+            var levels = Enum.GetValues(typeof(LanguageLevel))
+                                            .Cast<LanguageLevel>()
+                                            .ToArray();
+
+            var weeklyChallenges = levels.Select(level =>
+            {
+                var challengesByLevel = _context.Challenges
+                    .Where(x => x.Level != null && x.Level.SkillLevel == level)
+                    .ToList();
+
+                var randomPosition = GetRandomInt(challengesByLevel.Count());
+                var weeklyChallenge = challengesByLevel.Skip(GetRandomInt(randomPosition)).FirstOrDefault();
+                if (weeklyChallenge != null)
+                {
+                    weeklyChallenge.isWeekly = true;
+                    _context.Update(weeklyChallenge);
+                }
+                return weeklyChallenge;
+            }).ToList();
+            await _context.SaveChangesAsync();
+        }
+
+        private async Task ResetLastWeeklyChallenge()
+        {
+            var weeklyChallengesToReset = await _context.Challenges
+                .Where(x => x.isWeekly)
+                .ToListAsync();
+
+            var lasWeeklyChallenges = weeklyChallengesToReset.Select(challenge =>
+            {
+                challenge.isWeekly = false;
+                return challenge;
+            });
+            _context.UpdateRange(lasWeeklyChallenges);
+            await _context.SaveChangesAsync();
+        }
+
         private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
         {
             var challenge = await _context.Challenges
@@ -363,9 +404,12 @@ namespace LeetWars.Core.BLL.Services
                     challenge.Level != null && challenge.Level.SkillLevel == userNextLevel),
                 SuggestionType.PracticeAndRepeat => challenges.Where(challenge => challenge.Versions.Any(version =>
                     version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId))),
+                SuggestionType.Weekly => challenges.Where(challenge =>
+                    challenge.Level != null && challenge.Level.SkillLevel == userLevel && challenge.isWeekly),
                 _ => challenges
             };
         }
+
         private static IOrderedQueryable<Challenge> SortByProperty(IQueryable<Challenge> challenges, SortingModel? sortingModel)
         {
             return sortingModel switch
