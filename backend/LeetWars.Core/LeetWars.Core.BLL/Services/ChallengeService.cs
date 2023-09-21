@@ -86,10 +86,10 @@ namespace LeetWars.Core.BLL.Services
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
 
-            if(filters.DifficultyLevel is not null)
+            if(filters.SkillLevel is not null)
             {
                 challenges = challenges.Where(challenge => 
-                challenge.Level != null && challenge.Level.Name.Equals(filters.DifficultyLevel));
+                challenge.Level != null && challenge.Level.SkillLevel == filters.SkillLevel);
             }
 
             challenges = SortByProperty(challenges, sortingModel);
@@ -325,7 +325,7 @@ namespace LeetWars.Core.BLL.Services
                 .Where(userLevel => userLevel.User != null && userLevel.User.Uid == userId && userLevel.LanguageId == languageId)
                 .FirstOrDefaultAsync();
 
-            return userLevel?.Level ?? LanguageLevel.FirstSteps;
+            return userLevel?.Level ?? LanguageLevel.Easy;
         }
 
         private IQueryable<Challenge> FilterChallengesByProgress(IQueryable<Challenge> challenges, ChallengesProgress? progress)
