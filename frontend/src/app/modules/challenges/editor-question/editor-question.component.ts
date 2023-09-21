@@ -116,10 +116,10 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             return;
         }
 
-        this.challenge.level = this.allLevels.find((item) => item.difficultyLevel === value);
+        this.challenge.level = this.allLevels.find((item) => item.skillLevel === value);
         this.challenge.levelId = this.challenge.level?.id!;
 
-        this.inputForm.controls.level.setValue(this.challenge.level?.difficultyLevel ?? '');
+        this.inputForm.controls.level.setValue(this.challenge.level?.skillLevel ?? '');
         this.validationChange.emit(this.inputForm.valid);
     }
 

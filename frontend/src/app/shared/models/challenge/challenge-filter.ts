@@ -1,6 +1,6 @@
 import { ChallengeProgress } from '@shared/enums/challenge-progress';
 import { ChallengeStatus } from '@shared/enums/challenge-status';
-import { SkillLevel } from '@shared/enums/skill-level';
+import { LanguageLevel } from '@shared/enums/language-level';
 
 export interface IChallengeFilter {
     title: string,
@@ -8,5 +8,5 @@ export interface IChallengeFilter {
     languageId?: number,
     tagsIds: number[],
     progress?: ChallengeProgress,
-    difficultyLevel?: SkillLevel | null,
+    skillLevel?: LanguageLevel | null,
 }

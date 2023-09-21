@@ -9,7 +9,7 @@ import {
     SORTING_PROPERTIES,
     STATUS_NAMES_MAP,
 } from '@modules/main/filtering-section/filtering-section.utils';
-import { SkillLevel } from '@shared/enums/skill-level';
+import { LanguageLevel } from '@shared/enums/language-level';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
@@ -78,7 +78,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
         this.statusesNames = this.statuses.map((item) => item.name);
         this.progressesNames = this.progresses.map((item) => item.name);
-        this.difficultyNames = Object.values(SkillLevel).filter(value => value !== SkillLevel.None);
+        this.difficultyNames = Object.values(LanguageLevel).filter(value => value !== LanguageLevel.None);
     }
 
     public onScroll() {
@@ -147,7 +147,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             return;
         }
 
-        this.filter.difficultyLevel = this.getEnumValue(SkillLevel, value);
+        this.filter.skillLevel = this.getEnumValue(LanguageLevel, value);
         this.resetChallengesData();
     }
 
