@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 
+import { UserInfoEditorComponent } from './user-info-editor/user-info-editor.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
     {
         path: 'profile',
         component: UserProfileComponent,
-        children: [
-            {
-                path: '**',
-                component: NotFoundComponent,
-                pathMatch: 'full',
-            },
-        ],
+    },
+    {
+        path: 'profile/edit',
+        component: UserInfoEditorComponent,
     },
 ];
 

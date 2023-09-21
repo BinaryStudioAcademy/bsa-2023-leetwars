@@ -25,10 +25,8 @@
                     *ngIf="registrationForm.controls['email'].touched && registrationForm.get('email')?.invalid">
                     <div>{{ getErrorMessage('email') }}</div>
                 </div>
-                <div
-                    *ngIf="registrationForm.get('email')?.hasError('emailAlreadyExists')"
-                    class="invalid-feedback d-block">
-                    A user with this e-mail is already registered, please enter another one.
+                <div class="invalid-feedback d-block" *ngIf="validationError">
+                    <div>{{ validationError }}</div>
                 </div>
             </div>
             <div class="mb-2 form-group">

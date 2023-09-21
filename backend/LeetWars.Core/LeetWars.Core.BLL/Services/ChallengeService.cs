@@ -5,8 +5,10 @@ using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.Common.DTO.Tag;
 using LeetWars.Core.DAL.Context;
@@ -19,14 +21,20 @@ namespace LeetWars.Core.BLL.Services
 {
     public class ChallengeService : BaseService, IChallengeService
     {
+        private readonly IMessageSenderService _messageSenderService;
         private readonly IUserGetter _userGetter;
+        private readonly IUserService _userService;
 
         public ChallengeService(
+            IMessageSenderService messageSenderService,
             LeetWarsCoreContext context,
             IMapper mapper,
-            IUserGetter userGetter
+            IUserGetter userGetter,
+            IUserService userService
         ) : base(context, mapper)
         {
+            _userService = userService;
+            _messageSenderService = messageSenderService;
             _userGetter = userGetter;
         }
 
@@ -136,8 +144,20 @@ namespace LeetWars.Core.BLL.Services
 
                 if (await _context.ChallengeStars.AnyAsync(delegateToCheckChallengeStar))
                 {
-                    throw new ArgumentNullException(nameof(challengeStarDto));
+                    throw new NotFoundException(nameof(ChallengeStar));
                 }
+
+                var briefChallenge = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id);
+
+                var newNotification = new NewNotificationDto()
+                {
+                    ReceiverId = briefChallenge.Author.Id.ToString(),
+                    Sender = await _userService.GetBriefUserInfoById(challengeStarDto.AuthorId),
+                    TypeNotification = TypeNotifications.LikeChallenge,
+                    Challenge = briefChallenge
+                };
+
+                _messageSenderService.SendMessageToRabbitMQ(newNotification);
 
                 await _context.ChallengeStars.AddAsync(challengeStar);
             }
@@ -147,7 +167,7 @@ namespace LeetWars.Core.BLL.Services
 
                 if (challengeStar is null)
                 {
-                    throw new ArgumentNullException(nameof(challengeStarDto));
+                    throw new NotFoundException(nameof(ChallengeStar));
                 }
 
                 _context.ChallengeStars.Remove(challengeStar);
@@ -192,16 +212,23 @@ namespace LeetWars.Core.BLL.Services
             _context.ChallengeVersions.AddRange(challengeVersions);
 
             await _context.SaveChangesAsync();
+            
+            var newNotification = new NewNotificationDto()
+            {
+                TypeNotification = TypeNotifications.NewChallenge,
+                Message = "New challenge!",
+            };
+
+            _messageSenderService.SendMessageToRabbitMQ(newNotification);
 
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
-
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
             if (currentUser.Id != challengeEditDto.CreatedBy)
             {
-                throw new InvalidOperationException("The user cannot modify this challenge");
+                throw new AccessDeniedException();
             }
 
             var challenge = await GetChallengeByIdAsync(challengeEditDto.Id);
@@ -212,6 +239,21 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
+        }
+        public async Task DeleteChallengeAsync(long challengeId)
+        {
+            var challenge = await GetChallengeByIdAsync(challengeId);
+            _context.Challenges.Remove(challenge);
+            await _context.SaveChangesAsync();
+        }
+
+        private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
+        {
+            var challenge = await _context.Challenges
+                .Include(x => x.Author)
+                .FirstOrDefaultAsync(challenge => challenge.Id == challengeId);
+
+            return _mapper.Map<BriefChallengeInfoDto>(challenge);
         }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)
@@ -242,6 +284,7 @@ namespace LeetWars.Core.BLL.Services
                 }).ToList();
 
             _context.ChallengeTags.AddRange(editedChallengeTags);
+
         }
 
         private async Task<Challenge> GetChallengeByIdAsync(long challengeId)
@@ -263,7 +306,7 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(star => star.Author)
                 .SingleOrDefaultAsync(challenge => challenge.Id == challengeId);
 
-            return challenge ?? throw new NotFoundException(nameof(Challenge));
+            return challenge ?? throw new NotFoundException(nameof(Challenge), challengeId);
         }
 
         private async Task<ChallengeStar?> GetChallengeStarAsync(Expression<Func<ChallengeStar, bool>> condition)
@@ -338,7 +381,7 @@ namespace LeetWars.Core.BLL.Services
                 { Property: SortingProperty.CreatedAt, Order: SortingOrder.Ascending } => challenges.OrderBy(x => x.CreatedAt),
                 { Property: SortingProperty.CreatedAt, Order: SortingOrder.Descending } => challenges.OrderByDescending(x => x.CreatedAt),
 
-                _ => throw new ArgumentException("Unsuporting sorting type")
+                _ => throw new NotFoundException(nameof(SortingProperty))
             };
         }
 
@@ -357,6 +400,10 @@ namespace LeetWars.Core.BLL.Services
 
                 return randomValue % maxValue;
             }
+        }
+        public void SendCodeRunRequest(CodeRunRequestDto request)
+        {
+            _messageSenderService.SendMessageToRabbitMQ(request);
         }
     }
 }

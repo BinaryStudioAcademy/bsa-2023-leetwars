@@ -6,7 +6,10 @@ using LeetWars.Core.WebAPI.Validators;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 using LeetWars.Core.WebAPI.Logic;
+using LeetWars.Core.WebAPI.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using LeetWars.RabbitMQ;
@@ -45,7 +48,6 @@ namespace LeetWars.Core.WebAPI.Extentions
                 var factory = new ConnectionFactory { Uri = rabbitUri };
                 return factory.CreateConnection();
             });
-            services.AddSingleton(sp => sp.GetRequiredService<IOptions<ProducerSettings>>().Value);
             services.AddSingleton<IProducerService, ProducerService>();
         }
 
@@ -94,6 +96,25 @@ namespace LeetWars.Core.WebAPI.Extentions
                         ValidateLifetime = true
                     };
                 });
+        }
+        
+        public static IServiceCollection AddAzureBlobServices(
+            this IServiceCollection services, IConfiguration configuration)
+        {
+            var blobUrl = configuration["BLOB_URL"];
+            var blobContainerName = configuration["BlobContainerName"];
+            var blobAccess = configuration["BlobAccess"];
+
+            var settings = new BlobStorageSettings(blobUrl, blobContainerName, blobAccess);
+            var blobContainerClient = new BlobContainerClient(settings.BlobUrl, settings.BlobContainerName);
+            
+            services.AddSingleton(_ => settings);
+
+            services.AddSingleton(_ => blobContainerClient);
+
+            services.AddScoped<IBlobService, BlobService>();
+
+            return services;
         }
     }
 }

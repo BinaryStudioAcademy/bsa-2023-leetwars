@@ -25,7 +25,6 @@ import { AppRoutingModule } from './app-routing.module';
         ToastrModule.forRoot(),
         NgxChartsModule,
         SharedModule,
-        CoreModule,
         AngularFireModule.initializeApp(environment.firebaseConfig, 'leetwars'),
         AngularFireAuthModule,
         MonacoEditorModule.forRoot(),

@@ -11,8 +11,10 @@ using LeetWars.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using LeetWars.Core.BLL.Extensions;
 using Bogus;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -20,22 +22,26 @@ public class UserService : BaseService, IUserService
 {
     private readonly IUserGetter _userGetter;
     private readonly IMessageSenderService _messageSenderService;
+    private readonly IBlobService _blobService;
     private const int REPUTATION_DIVIDER = 10;
 
     public UserService(LeetWarsCoreContext context,
                        IMapper mapper,
                        IUserGetter userGetter,
-                       IMessageSenderService messageSenderService) : base(context, mapper)
+                       IMessageSenderService messageSenderService,
+                       IBlobService blobService
+                       ) : base(context, mapper)
     {
         _userGetter = userGetter;
         _messageSenderService = messageSenderService;
+        _blobService = blobService;
     }
 
     public async Task<UserDto> CreateUserAsync(NewUserDto userDto)
     {
         if (userDto is null)
         {
-            throw new ArgumentNullException(nameof(userDto));
+            throw new NotFoundException(nameof(User));
         }
 
         var user = await _context.Users.SingleOrDefaultAsync(u => u.Uid == userDto.Uid);
@@ -49,14 +55,16 @@ public class UserService : BaseService, IUserService
 
         if (isExistingEmail)
         {
-            throw new InvalidOperationException($"A user with email {userDto.Email} is already registered.");
+            throw new InvalidUsernameOrPasswordException($"Error: A user with email {userDto.Email} is already registered.");
         }
 
         bool isExistingUserName = await CheckIsExistingUserNameAsync(userDto.UserName);
 
         if (isExistingUserName)
         {
-            userDto.UserName = await GenerateUniqueUsername(userDto.Email);
+            userDto.UserName = userDto.IsWithProvider
+                ? await GenerateUniqueUsername(userDto.Email)
+                : throw new InvalidUsernameOrPasswordException($"Error: This username is already registered in the system.");
         }
 
         var newUser = _mapper.Map<NewUserDto, User>(userDto);
@@ -78,8 +86,13 @@ public class UserService : BaseService, IUserService
         return isExistingEmail;
     }
 
-    public async Task<bool> CheckIsExistingUserNameAsync(string userName)
+    public async Task<bool> CheckIsExistingUserNameAsync(string? userName)
     {
+        if (string.IsNullOrEmpty((userName)))
+        {
+            return false;
+        }
+
         bool isExistingUserName = await _context.Users.AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
         return isExistingUserName;
     }
@@ -107,13 +120,25 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(user);
     }
 
-    public async Task<UserFullDto> GetFullUserAsync(long id)
+    public async Task<BriefUserInfoDto> GetBriefUserInfoById(long id)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == id);
 
         if (user is null)
         {
             throw new ArgumentNullException("Not Found", new Exception("User was not found"));
+        }
+
+        return _mapper.Map<User, BriefUserInfoDto>(user);
+    }
+
+    public async Task<UserFullDto> GetFullUserAsync(long id)
+    {
+        var user = await GetUserByExpressionAsync(user => user.Id == id);
+
+        if (user is null)
+        {
+            throw new NotFoundException(nameof(User), id);
         }
 
         return _mapper.Map<User, UserFullDto>(user);
@@ -146,7 +171,7 @@ public class UserService : BaseService, IUserService
     public async Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == userDto.Id)
-            ?? throw new ArgumentNullException(nameof(userDto));
+            ?? throw new NotFoundException(nameof(User), userDto.Id);
 
         user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallengeId);
         user.Reputation = user.TotalScore / REPUTATION_DIVIDER;
@@ -170,6 +195,45 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<List<UserDto>>(await users.ToListAsync());
     }
 
+    public async Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto)
+    {
+        if (userInfoDto is null)
+        {
+            throw new NotFoundException(nameof(UpdateUserInfoDto));
+        }
+
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                            ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
+        
+        _mapper.Map(userInfoDto, currentUser);
+        
+        _context.Users.Update(currentUser);
+        await _context.SaveChangesAsync();
+        return _mapper.Map<UserDto>(currentUser);
+    }
+
+    public async Task<UserAvatarDto> UpdateUserAvatar(IFormFile image)
+    {
+        if (image is null)
+        {
+            throw new ArgumentNullException(nameof(image));
+        }
+        
+        var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                          ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
+        
+        var uniqueFileName = FileNameHelper.CreateUniqueFileName(image.FileName);
+        await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
+            uniqueFileName);
+        currentUser.ImagePath = uniqueFileName;
+        
+        _context.Users.Update(currentUser);
+        await _context.SaveChangesAsync();
+        
+        var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
+        return newUserAvatar;
+    }
+
     private async Task<int> GetRewardFromChallenge(long challengeId)
     {
         var challengeLevel = await _context.Challenges
@@ -181,7 +245,7 @@ public class UserService : BaseService, IUserService
             .SingleOrDefaultAsync(level => level.ChallengeId == challengeId);
 
         return challengeLevel?.Reward
-            ?? throw new ArgumentNullException(nameof(challengeId));
+            ?? throw new NotFoundException(nameof(Challenge), challengeId);
     }
 
     private async Task<string> GenerateUniqueUsername(string email)

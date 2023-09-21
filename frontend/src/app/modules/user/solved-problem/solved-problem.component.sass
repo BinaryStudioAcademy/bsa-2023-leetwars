@@ -1,16 +1,16 @@
-@import 'src/styles/color-variables'
+@import 'color-variables'
+@import 'screen-sizes-variables'
 
-.container
+.wrapper-container
   padding: 0
-  height: 100%
-  width: 100%
+  height: 186px
+  min-width: 410px
 
 .main-container
   height: 100%
   width: 100%
   background-color: $deep-dark-grey
-  padding-top: 16px
-  padding-left: 6px
+  padding: 16px
   border-radius: 8px
   font-family: Inter
 
@@ -22,12 +22,10 @@
   color: $light-blue-grey
 
 .statistics
-  margin-left: 18px
   display: flex
   background-color: transparent
-  max-height: 170px
-  height: fit-content
-  padding-bottom: 30px
+  height: 100%
+  padding-bottom: 16px
 
 .circle
   width: 100px
@@ -35,10 +33,10 @@
   margin-top: 32px
   position: relative
   align-items: center
-  
+
 .levels
   overflow-y: auto
-  overflow-x: hidden  
+  overflow-x: hidden
   display: flex
   flex-direction: column
   margin-left: 32px
@@ -47,9 +45,32 @@
   align-items: flex-start
 
 .level-card
-  width: 97%
+  width: 100%
   height: 36px
-  
+  padding-right: 5px
+
   &:not(:first-child)
     height: 52px
     padding-top: 16px
+
+@media screen and (max-width: $medium)
+  .wrapper-container
+    height: auto
+  .statistics
+    flex-direction: column
+    align-items: center
+  .circle
+    margin-top: 12px
+  .levels
+    padding-left: 0
+  .statistics,
+  .levels
+    margin-left: 0
+
+@media screen and (max-width: $small-medium)
+  .wrapper-container
+    min-width: 240px
+
+@media screen and (max-width: $small)
+  .wrapper-container
+    min-width: 90vw

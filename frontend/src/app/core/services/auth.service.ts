@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { IEditUserInfo } from '@shared/models/user/edit-user-info';
 import { IUser } from '@shared/models/user/user';
 import { IUserLogin } from '@shared/models/user/user-login';
 import { IUserRegister } from '@shared/models/user/user-register';
 import { AuthHelper } from '@shared/utils/auth.helper';
+import { getFirebaseErrorMessage } from '@shared/utils/validation/validation-helper';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
 import { BehaviorSubject, first, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
@@ -16,15 +18,17 @@ import { UserService } from './user.service';
     providedIn: 'root',
 })
 export class AuthService {
-    private providerName: string = 'firebase';
-
     public userSubject: BehaviorSubject<IUser | undefined>;
 
-    private user: IUser | undefined;
+    public currentUser$: Observable<IUser | undefined>;
 
     private userKeyName = 'userInfo';
 
     private tokenKeyName = 'userToken';
+
+    private providerName = 'firebase';
+
+    private popUpErrorMessage = 'auth/cancelled-popup-request';
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -33,6 +37,7 @@ export class AuthService {
         private authHelper: AuthHelper,
     ) {
         this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
+        this.currentUser$ = this.userSubject.asObservable();
         afAuth.authState.subscribe(async (user) => {
             if (user) {
                 localStorage.setItem(this.tokenKeyName, await user.getIdToken());
@@ -51,16 +56,19 @@ export class AuthService {
             from(this.afAuth.createUserWithEmailAndPassword(user.email, user.password)).pipe(
                 first(),
                 tap(() => this.sendVerificationMail()),
-                catchError((error) => throwError(error.message)),
             ),
+            undefined,
             user.userName,
         );
     }
 
     public login(userDto: IUserLogin) {
         return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
+            switchMap(() => this.afAuth.idToken),
             first(),
-            catchError((error) => throwError(error.message)),
+            tap((token) => {
+                this.setIdToken(token!);
+            }),
             switchMap(() => this.userService.getCurrentUser()),
             tap((user) => this.setUserInfo(user)),
         );
@@ -68,7 +76,6 @@ export class AuthService {
 
     public logout() {
         this.removeUserInfo();
-        this.user = undefined;
         this.userSubject.next(undefined);
 
         return from(this.afAuth.signOut());
@@ -79,11 +86,11 @@ export class AuthService {
     }
 
     public signInWithGoogle(isLogin: boolean = true) {
-        return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider())), isLogin);
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider()), true), isLogin);
     }
 
     public signInWithGitHub(isLogin: boolean = true) {
-        return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider())), isLogin);
+        return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider()), true), isLogin);
     }
 
     // TODO: Implemented only firebase part
@@ -109,6 +116,20 @@ export class AuthService {
                 }
 
                 throw new Error('User is not authorized');
+            }),
+        );
+    }
+
+    public updateUserEmail(email: string) {
+        return this.afAuth.authState.subscribe(async (user) => {
+            user?.updateEmail(email);
+        });
+    }
+
+    public updateUserInfo(editUserInfo: IEditUserInfo): Observable<IUser> {
+        return this.userService.updateUser(editUserInfo).pipe(
+            tap((user) => {
+                this.updateUserEmail(user.email!);
             }),
         );
     }
@@ -145,7 +166,11 @@ export class AuthService {
         });
     }
 
-    private createUser(auth: Observable<firebase.auth.UserCredential>, userName: string | undefined = undefined) {
+    private createUser(
+        auth: Observable<firebase.auth.UserCredential>,
+        provider: boolean | undefined = false,
+        userName: string | undefined = undefined,
+    ) {
         return auth.pipe(
             switchMap((resp) =>
                 this.userService.createUser({
@@ -154,6 +179,7 @@ export class AuthService {
                     email: resp.user?.email ?? '',
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
+                    isWithProvider: provider ?? false,
                 })),
             tap((user) => this.setUserInfo(user)),
         );
@@ -178,8 +204,11 @@ export class AuthService {
                     message = error.message;
                 }
 
-                if (!message.toLowerCase().includes(this.providerName)) {
-                    this.toastrNotification.showError(message);
+                if (
+                    message.toLowerCase().includes(this.providerName) &&
+                    !message.toLowerCase().includes(this.popUpErrorMessage)
+                ) {
+                    this.toastrNotification.showError(getFirebaseErrorMessage(message) ?? 'Something went wrong');
                 }
 
                 return of(undefined);
@@ -187,10 +216,13 @@ export class AuthService {
         );
     }
 
-    private setUserInfo(user: IUser) {
+    private setIdToken(token: string) {
+        localStorage.setItem(this.tokenKeyName, token);
+    }
+
+    public setUserInfo(user: IUser) {
         localStorage.setItem(this.userKeyName, JSON.stringify(user));
         this.userSubject.next(user);
-        this.user = user;
     }
 
     private removeUserInfo() {
