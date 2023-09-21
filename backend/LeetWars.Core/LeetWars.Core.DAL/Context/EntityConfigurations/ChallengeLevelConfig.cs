@@ -8,10 +8,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
     public class ChallengeLevelConfig : IEntityTypeConfiguration<ChallengeLevel>
     {
         public void Configure(EntityTypeBuilder<ChallengeLevel> builder)
-        {
-            builder.Property(e => e.Name)
-                .HasMaxLength(EntitySettings.MaxGeneralNameLength);
-            
+        {   
             builder.HasKey(t => t.Id).HasName("PK_ChallengeLevel");
         }
     }

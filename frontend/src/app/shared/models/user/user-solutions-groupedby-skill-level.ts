@@ -1,4 +1,4 @@
-import { LanguageLevel } from '@shared/enums/languageLevel';
+import { LanguageLevel } from '@shared/enums/language-level';
 
 import { ITaskCount } from './task-count';
 
