@@ -10,6 +10,8 @@ import { INotificationModel } from '@shared/models/notifications/notifications';
 export class NotificationService {
     private notifications: INotificationModel[] = [];
 
+    private strongNotifications: TypeNotification[] = [TypeNotification.CodeFight, TypeNotification.FriendRequest];
+
     private notificationModal: NgbModalRef;
 
     constructor(private modalService: NgbModal) {}
@@ -28,7 +30,7 @@ export class NotificationService {
         this.notificationModal.componentInstance.notifications = this.notifications;
 
         this.notificationModal.hidden.subscribe(() => {
-            this.notifications = this.notifications.filter((n) => n.typeNotification === TypeNotification.CodeFight);
+            this.filterCurrentNotifications(this.strongNotifications);
         });
 
         this.notificationModal.closed.subscribe((nofitications: INotificationModel[]) => {
@@ -42,5 +44,9 @@ export class NotificationService {
 
     public get countNotification() {
         return this.notifications.length;
+    }
+
+    private filterCurrentNotifications(notificationTypes: TypeNotification[]) {
+        this.notifications = this.notifications.filter((n) => notificationTypes.includes(n.typeNotification));
     }
 }

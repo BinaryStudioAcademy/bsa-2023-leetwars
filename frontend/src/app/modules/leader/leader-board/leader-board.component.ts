@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { EventService } from '@core/services/event.service';
 import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
-import { FriendshipStatus } from '@shared/enums/friendship-status';
-import { NewFriendship } from '@shared/models/friendship/new-friendship';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { NewFriendship } from '@shared/models/friendship/new-friendship';
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
@@ -34,6 +35,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
     public isLastPage = false;
 
+    public isLastFriendsPage = false;
+
     public loading = false;
 
     private languages: ILanguage[];
@@ -45,6 +48,11 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         pageSize: 30,
     };
 
+    private friendsPage: IPageSettings = {
+        pageNumber: 0,
+        pageSize: 30,
+    };
+
     constructor(
         private userService: UserService,
         private authService: AuthService,
@@ -52,6 +60,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         private challengeService: ChallengeService,
         private toastrNotification: ToastrNotificationsService,
         private modalService: NgbModal,
+        private eventService: EventService,
     ) {
         super();
     }
@@ -71,6 +80,15 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
         this.getUsers();
         this.getCurrentUser();
+        this.eventService.userChangedEvent$.pipe(takeUntil(this.unsubscribe$)).subscribe({
+            next: (user) => {
+                this.currentUser.friendships = user.friendships;
+                this.userFriendsIds = user.friendships.map((f) => f.friendId);
+            },
+            error: () => {
+                this.toastrNotification.showError('Server connection error');
+            },
+        });
     }
 
     public startCodeFight(user: IUser) {
@@ -78,11 +96,14 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     }
 
     public onScroll() {
-        if (this.isLastPage) {
-            return;
-        }
+        const isFriendsScroll = this.isMyFriendsChecked && !this.isLastFriendsPage;
+        const isUsersScroll = !this.isMyFriendsChecked && !this.isLastPage;
 
-        this.getUsers();
+        if (isFriendsScroll) {
+            this.getFriends();
+        } else if (isUsersScroll) {
+            this.getUsers();
+        }
     }
 
     private getUsers() {
@@ -106,6 +127,34 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
                     }
                     this.users = [...this.users, ...users];
                     this.usersToShow = this.users;
+                },
+                error: () => {
+                    this.loading = false;
+                    this.toastrNotification.showError('Server connection error');
+                },
+            });
+    }
+
+    private getFriends() {
+        if (this.isLastFriendsPage) {
+            return;
+        }
+
+        this.friendsPage.pageNumber++;
+        this.loading = true;
+
+        this.userService
+            .getFriendsLeaderBoard(this.friendsPage)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (users) => {
+                    this.loading = false;
+                    if (!users.length) {
+                        this.isLastFriendsPage = true;
+
+                        return;
+                    }
+                    this.usersToShow = users;
                 },
                 error: () => {
                     this.loading = false;
@@ -177,7 +226,9 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         this.isMyFriendsChecked = !this.isMyFriendsChecked;
 
         if (this.isMyFriendsChecked) {
-            this.usersToShow = this.users.filter((u) => this.isAcceptedFriendship(u));
+            this.friendsPage.pageNumber = 0;
+            this.isLastFriendsPage = false;
+            this.getFriends();
         } else {
             this.usersToShow = this.users;
         }

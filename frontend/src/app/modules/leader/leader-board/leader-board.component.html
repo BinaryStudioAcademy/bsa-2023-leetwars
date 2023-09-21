@@ -11,7 +11,6 @@
                 <div class="user-name">User Name</div>
                 <div class="total-score">Score</div>
                 <div class="add-friend"></div>
-                <div class="start-fight"></div>
             </div>
             <div class="scrollable" infinite-scroll (scrolled)="onScroll()">
                 <div class="user d-flex" *ngFor="let user of usersToShow; let i = index">
@@ -27,12 +26,6 @@
                         </div>
                         <button class="user-icon-btn" *ngIf="isAcceptedFriendship(user)">
                             <fa-icon class="user-icon" [icon]="['fas', 'user-group']"></fa-icon>
-                        </button>
-                    </div>
-                    <div class="start-fight">
-                        <button *ngIf="user.id !== currentUser.id" (click)="startCodeFight(user)">
-                            <fa-icon [icon]="'user-ninja'"></fa-icon>
-                            <span class="start-fight-text">Start Battle</span>
                         </button>
                     </div>
                 </div>
