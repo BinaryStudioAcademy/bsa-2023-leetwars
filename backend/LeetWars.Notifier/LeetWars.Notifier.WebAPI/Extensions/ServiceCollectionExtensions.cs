@@ -13,7 +13,6 @@ namespace LeetWars.RabbitMQ.Extensions
         {
             services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
             services.AddSingleton<IConsumerService, ConsumerService>();
-            services.AddHostedService<MessageConsumerService>();
             services.AddHostedService<NotificationConsumerService>();
         }
 
