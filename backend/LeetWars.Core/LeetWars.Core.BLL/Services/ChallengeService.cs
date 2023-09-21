@@ -263,7 +263,7 @@ namespace LeetWars.Core.BLL.Services
                 var weeklyChallenge = challengesByLevel.Skip(GetRandomInt(randomPosition)).FirstOrDefault();
                 if (weeklyChallenge != null)
                 {
-                    weeklyChallenge.isWeekly = true;
+                    weeklyChallenge.IsWeekly = true;
                     _context.Update(weeklyChallenge);
                 }
             }
@@ -273,12 +273,12 @@ namespace LeetWars.Core.BLL.Services
         private async Task ResetLastWeeklyChallenge()
         {
             var weeklyChallengesToReset = await _context.Challenges
-                .Where(x => x.isWeekly)
+                .Where(x => x.IsWeekly)
                 .ToListAsync();
 
             var lasWeeklyChallenges = weeklyChallengesToReset.Select(challenge =>
             {
-                challenge.isWeekly = false;
+                challenge.IsWeekly = false;
                 return challenge;
             });
             _context.UpdateRange(lasWeeklyChallenges);
@@ -404,7 +404,7 @@ namespace LeetWars.Core.BLL.Services
                 SuggestionType.PracticeAndRepeat => challenges.Where(challenge => challenge.Versions.Any(version =>
                     version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId))),
                 SuggestionType.Weekly => challenges.Where(challenge =>
-                    challenge.Level != null && challenge.Level.SkillLevel == userLevel && challenge.isWeekly),
+                    challenge.Level != null && challenge.Level.SkillLevel == userLevel && challenge.IsWeekly),
                 _ => challenges
             };
         }
