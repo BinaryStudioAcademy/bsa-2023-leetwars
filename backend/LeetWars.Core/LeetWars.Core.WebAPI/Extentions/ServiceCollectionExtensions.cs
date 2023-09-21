@@ -120,11 +120,11 @@ namespace LeetWars.Core.WebAPI.Extentions
         public static void RegisterHengfire(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHangfire(globalCongig => globalCongig
-            .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-            .UseSimpleAssemblyNameTypeSerializer()
-            .UseRecommendedSerializerSettings()
-            .UseSqlServerStorage(configuration.GetConnectionString("LeetWarsCoreDBConnection")));
-
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(configuration.GetConnectionString("LeetWarsCoreDBConnection")));
+           
             services.AddHangfireServer();
         }
     }

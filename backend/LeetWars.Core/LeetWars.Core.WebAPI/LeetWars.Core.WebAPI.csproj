@@ -34,8 +34,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Static\Images\Badges\weekly.gif" />
-  </ItemGroup>
-  
 </Project>

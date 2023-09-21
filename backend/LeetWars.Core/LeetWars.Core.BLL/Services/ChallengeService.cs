@@ -257,11 +257,11 @@ namespace LeetWars.Core.BLL.Services
             {
                 var challengesByLevel = _context.Challenges
                     .Where(x => x.Level != null && x.Level.SkillLevel == level)
-                    .ToList();
+                    .AsQueryable();
 
-                var randomPosition = GetRandomInt(challengesByLevel.Count);
-                var weeklyChallenge = challengesByLevel.Skip(GetRandomInt(randomPosition)).FirstOrDefault();
-                if (weeklyChallenge != null)
+                var randomPosition = GetRandomInt(challengesByLevel.Count());
+                var weeklyChallenge = challengesByLevel.Skip(randomPosition).FirstOrDefault();
+                if (weeklyChallenge is not null)
                 {
                     weeklyChallenge.IsWeekly = true;
                     _context.Update(weeklyChallenge);
@@ -276,12 +276,10 @@ namespace LeetWars.Core.BLL.Services
                 .Where(x => x.IsWeekly)
                 .ToListAsync();
 
-            var lasWeeklyChallenges = weeklyChallengesToReset.Select(challenge =>
-            {
-                challenge.IsWeekly = false;
-                return challenge;
-            });
-            _context.UpdateRange(lasWeeklyChallenges);
+            weeklyChallengesToReset
+                .ForEach(challenge => challenge.IsWeekly = false);
+
+            _context.UpdateRange(weeklyChallengesToReset);
             await _context.SaveChangesAsync();
         }
 
