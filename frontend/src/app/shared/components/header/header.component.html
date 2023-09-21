@@ -13,15 +13,18 @@
         </ul>
     </nav>
     <div class="user-menu align-items-center d-flex">
-        <div class="notification"  (click)="showNotifications()">
+        <div class="notification" (click)="showNotifications()">
             <fa-layers size="2x">
                 <fa-icon [icon]="['far', 'bell']"></fa-icon>
-                <fa-layers-counter  *ngIf="countNotification" [classes]="['change-color']" content={{countNotification}}></fa-layers-counter>
+                <fa-layers-counter
+                    *ngIf="countNotification"
+                    [classes]="['change-color']"
+                    content="{{ countNotification }}"></fa-layers-counter>
             </fa-layers>
         </div>
         <div class="user" (click)="showMenu = !showMenu">
             <img
-                [src]="user.image ? user.image : '/assets/images/default-profile-img.jpg'"
+                [src]="user.imagePath ? user.imagePath : '/assets/images/default-profile-img.jpg'"
                 alt="User Logo"
                 class="user-logo" />
             <span class="username">

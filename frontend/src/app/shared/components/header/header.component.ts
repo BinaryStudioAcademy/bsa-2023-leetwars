@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
+import { BaseComponent } from '@core/base/base.component';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header-service';
@@ -7,6 +8,7 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IUser } from '@shared/models/user/user';
+import { takeUntil } from 'rxjs';
 
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { NotificationsComponent } from '../notifications/notifications.component';
@@ -16,7 +18,7 @@ import { NotificationsComponent } from '../notifications/notifications.component
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.sass'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy {
     constructor(
         private authService: AuthService,
         private modalService: NgbModal,
@@ -25,8 +27,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private toastrService: ToastrNotificationsService,
         private notificationHub: NotificationHubService,
     ) {
-        this.authService.getUser().subscribe((user) => {
-            this.user = user;
+        super();
+        this.authService.currentUser$.pipe(takeUntil(this.unsubscribe$)).subscribe((user) => {
+            this.user = user!;
         });
 
         this.router.events.subscribe((event) => {
@@ -99,7 +102,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    override ngOnDestroy() {
         this.notificationHub.stop();
+        super.ngOnDestroy();
     }
 }

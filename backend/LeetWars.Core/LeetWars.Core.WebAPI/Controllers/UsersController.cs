@@ -80,4 +80,20 @@ public class UsersController : ControllerBase
         var updatedUser = await _userService.UpdateUserRankAsync(userDto);
         return Ok(updatedUser);
     }
+    
+    [HttpPut]
+    public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserInfoDto updateUserInfoDto)
+    {
+        var updatedUser = await _userService.UpdateUserInfo(updateUserInfoDto);
+        
+        return Ok(updatedUser);
+    }
+    
+    [HttpPost("avatar")]
+    public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatar([FromForm] IFormFile avatar)
+    {
+        var newAvatarUrl = await _userService.UpdateUserAvatar(avatar);
+        
+        return Ok(newAvatarUrl);
+    }
 }
