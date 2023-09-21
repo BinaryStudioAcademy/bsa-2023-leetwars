@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
+import { HttpResponse } from '@microsoft/signalr';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
@@ -9,6 +10,7 @@ import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { IStar } from '@shared/models/challenge-star/star';
+import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
@@ -45,6 +47,10 @@ export class ChallengeService {
 
     public updateStar(star: IStar): Observable<IChallengePreview> {
         return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
+    }
+
+    public runTests(request: ICodeRunRequest): Observable<HttpResponse> {
+        return this.httpService.postRequest<HttpResponse>(`${this.challengesRoute}/test`, request);
     }
 
     public updateChallenge(challenge: IEditChallenge): Observable<IChallenge> {

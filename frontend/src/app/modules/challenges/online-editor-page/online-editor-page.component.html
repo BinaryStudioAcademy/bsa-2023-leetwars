@@ -1,6 +1,6 @@
 <div class="page-container">
     <div class="actions">
-        <button class="custom-button cancel-btn">Run sample tests</button>
+        <button class="custom-button cancel-btn" (click)="sendCode()">Run sample tests</button>
         <button class="custom-button accent">Submit</button>
     </div>
     <as-split [direction]="splitDirection" [gutterSize]="8">
@@ -45,7 +45,7 @@
                     </div>
                     <fa-icon (click)="toggleFullScreen(editorContainer)" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
                 </div>
-                <app-code-editor class="my-code-editor" [initText]="initialSolution!" [language]="selectedLanguage"
+                <app-code-editor class="my-code-editor" [initText]="initialSolution!" [language]="selectedLanguage" [(ngModel)]="initialSolution" (codeChanged)="onCodeChanged($event)"
                     [options]="editorOptions"></app-code-editor>
             </div>
 
@@ -56,10 +56,10 @@
                     </div>
                     <fa-icon (click)="toggleFullScreen(editorTestContainer)" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
                 </div>
-                <div class="editor-test">
-                    <app-code-editor class="my-code-editor" [options]="editorOptions" [language]="selectedLanguage"
-                            [initText]="testCode!"></app-code-editor>
-                    </div>
+                <div class="editor-test" #editorTestContainer>
+                    <app-code-editor class="my-code-editor" [options]="editorOptions" [language]="selectedLanguage" [(ngModel)]="testCode" (codeChanged)="onTestChanged($event)"
+                        [initText]="testCode!"></app-code-editor>
+                </div>
             </div>
         </as-split-area>
     </as-split>
