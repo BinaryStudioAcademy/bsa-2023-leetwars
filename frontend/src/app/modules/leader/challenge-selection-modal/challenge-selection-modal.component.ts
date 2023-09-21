@@ -27,8 +27,8 @@ export class ChallengeSelectionModalComponent implements OnInit {
     private currentUser: IUser;
 
     private fightChallengeSettings: ICodeFightChallengeSettings = {
-        languageId: 0,
-        levelId: 0,
+        languageId: 1,
+        levelId: 1,
     };
 
     constructor(
@@ -46,8 +46,6 @@ export class ChallengeSelectionModalComponent implements OnInit {
     }
 
     public confirmCodeFightRequest() {
-        //TODO: send notification
-
         const codeFightRequest: ICodeFightRequest = {
             challengeSettings: this.fightChallengeSettings,
             receiverId: this.receiverId,

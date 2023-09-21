@@ -11,6 +11,7 @@ import { ISuggestionSettings } from '@shared/models/challenge/suggestion-setting
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { IStar } from '@shared/models/challenge-star/star';
 import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
+import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
@@ -49,8 +50,12 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/${id}`);
     }
 
-    public sendCodeFightRequest(codeFight: ICodeFightRequest): Observable<IChallenge> {
-        return this.httpService.postRequest<IChallenge>(`${this.challengesRoute}/codefight`, codeFight);
+    public sendCodeFightRequest(codeFight: ICodeFightRequest): Observable<void> {
+        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightrequest`, codeFight);
+    }
+
+    public sendCodeFightRedirect(notification: INotificationModel): Observable<void> {
+        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightredirect`, notification);
     }
 
     public updateStar(star: IStar): Observable<IChallengePreview> {

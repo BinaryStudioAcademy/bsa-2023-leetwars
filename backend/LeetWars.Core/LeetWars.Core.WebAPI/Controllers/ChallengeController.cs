@@ -3,6 +3,7 @@ using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -59,10 +60,17 @@ namespace LeetWars.Core.WebAPI.Controllers
             return NoContent();
         }
 
-        [HttpPost("codefight")]
+        [HttpPost("codefightrequest")]
         public async Task<ActionResult<ChallengeFullDto>> SendCodeFightChallengeAsync([FromBody] CodeFightRequestDto requestDto)
         {
             await _challengeService.SendCodeFightRequest(requestDto);
+            return NoContent();
+        }
+
+        [HttpPost("codefightredirect")]
+        public ActionResult<ChallengeFullDto> SendCodeFightRedirectAsync([FromBody] NewNotificationDto notificationDto)
+        {
+            _challengeService.SendCodeFightRedirect(notificationDto);
             return NoContent();
         }
 

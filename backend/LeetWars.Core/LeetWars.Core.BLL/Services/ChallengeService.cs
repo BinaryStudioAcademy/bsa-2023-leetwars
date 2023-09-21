@@ -237,11 +237,16 @@ namespace LeetWars.Core.BLL.Services
                 DateSending = DateTime.UtcNow,
                 ReceiverId = requestDto.ReceiverId.ToString(),
                 Sender = await _userService.GetBriefUserInfoById(requestDto.SenderId),
-                TypeNotification = TypeNotifications.CodeFight,
+                TypeNotification = TypeNotifications.CodeFightRequest,
                 Message = "Code Fight. Are you in?"
             };
 
             _messageSenderService.SendMessageToRabbitMQ(newNotification);
+        }
+
+        public void SendCodeFightRedirect(NewNotificationDto notificationDto)
+        {
+            _messageSenderService.SendMessageToRabbitMQ(notificationDto);
         }
 
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
@@ -265,13 +270,15 @@ namespace LeetWars.Core.BLL.Services
         private async Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings)
         {
             var challenges = _context.Challenges
+                .Include(challenge => challenge.Author)
                 .Include(challenge => challenge.Versions)
                 .Where(challenge => challenge.LevelId == settings.LevelId &&
                        challenge.Versions.Any(challengeversion => challengeversion.LanguageId == settings.LanguageId));
 
             var randomPosition = GetRandomInt(challenges.Count());
 
-            return _mapper.Map<BriefChallengeInfoDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
+            return _mapper.Map<BriefChallengeInfoDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync() ??
+                await GetChallengeByIdAsync(1));
         }
 
         private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)

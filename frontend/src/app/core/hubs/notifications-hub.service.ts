@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { HubConnection } from '@microsoft/signalr';
+import { ICodeFightRedirect } from '@shared/models/codefight/code-fight-redirect';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { Subject, Subscription } from 'rxjs';
 
@@ -20,7 +22,11 @@ export class NotificationHubService {
 
     private hubConnectionId: string;
 
-    constructor(private hubFactory: SignalRHubFactoryService, private authservice: AuthService) {}
+    constructor(
+        private hubFactory: SignalRHubFactoryService,
+        private authservice: AuthService,
+        private router: Router,
+    ) {}
 
     async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
@@ -48,6 +54,10 @@ export class NotificationHubService {
 
         this.hubConnection.on('SendNotification', (msg: INotificationModel) => {
             this.messages.next(msg);
+        });
+
+        this.hubConnection.on('RedirectToCodeFight', (redirect: ICodeFightRedirect) => {
+            this.router.navigateByUrl(`/challenges/${redirect.challengeId}`);
         });
 
         await this.hubConnection.invoke('OnConnectAsync', `${this.authservice.userSubject.value?.id}`);

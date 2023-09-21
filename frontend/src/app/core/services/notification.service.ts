@@ -28,7 +28,9 @@ export class NotificationService {
         this.notificationModal.componentInstance.notifications = this.notifications;
 
         this.notificationModal.hidden.subscribe(() => {
-            this.notifications = this.notifications.filter((n) => n.typeNotification === TypeNotification.CodeFight);
+            this.notifications = this.notifications.filter(
+                (n) => n.typeNotification === TypeNotification.CodeFightRequest,
+            );
         });
 
         this.notificationModal.closed.subscribe((nofitications: INotificationModel[]) => {

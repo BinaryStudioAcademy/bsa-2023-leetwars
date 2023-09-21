@@ -6,6 +6,7 @@ using LeetWars.Notifier.WebAPI.Hubs;
 using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using System.Text.Json;
 using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Core.Common.DTO.CodeFight;
 
 namespace LeetWars.Notifier.WebAPI.Services
 {
@@ -50,10 +51,25 @@ namespace LeetWars.Notifier.WebAPI.Services
                     await _hubContext.Clients.All.SendNotification(notificationDto);
                     break;
                 case TypeNotifications.LikeChallenge:
-                case TypeNotifications.CodeFight:
+                case TypeNotifications.CodeFightRequest:
                     if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
                     {
                         await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotification(notificationDto);
+                    }
+                    break;
+                case TypeNotifications.CodeFightRedirect:
+                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId) 
+                        && notificationDto.Sender is not null 
+                        && notificationDto.Challenge is not null)
+                    {
+                        var redirectDto = new CodeFightRedirectDto()
+                        {
+                            ReceiverId = notificationDto.ReceiverId,
+                            SenderId = notificationDto.Sender.Id.ToString(),
+                            ChallengeId = notificationDto.Challenge.Id
+                        };
+
+                        await _hubContext.Clients.Groups(redirectDto.ReceiverId, redirectDto.SenderId).RedirectToCodeFight(redirectDto);
                     }
                     break;
                 default:
