@@ -2,7 +2,6 @@
 {
     public enum LanguageLevel
     {
-        None,
         Easy,
         Medium,
         Difficult,

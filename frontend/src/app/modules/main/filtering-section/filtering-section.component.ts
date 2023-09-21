@@ -78,7 +78,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
         this.statusesNames = this.statuses.map((item) => item.name);
         this.progressesNames = this.progresses.map((item) => item.name);
-        this.difficultyNames = Object.values(LanguageLevel).filter(value => value !== LanguageLevel.None);
+        this.difficultyNames = Object.values(LanguageLevel);
     }
 
     public onScroll() {
@@ -147,18 +147,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             return;
         }
 
-        this.filter.skillLevel = this.getEnumValue(LanguageLevel, value);
+        this.filter.skillLevel = LanguageLevel[value as keyof typeof LanguageLevel];
         this.resetChallengesData();
-    }
-
-    getEnumValue<T extends object, K extends keyof T>(
-        enumType: T,
-        enumString: string,
-    ): T[K] | null {
-        const keys = Object.keys(enumType) as Array<K>;
-        const key = keys.find((k) => (enumType[k] as unknown as string) === enumString);
-
-        return key !== undefined ? enumType[key] : null;
     }
 
     private getChalenges() {
