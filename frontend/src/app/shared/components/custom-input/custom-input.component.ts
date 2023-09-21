@@ -77,6 +77,8 @@ export class CustomInputComponent implements ControlValueAccessor, OnInit {
 
     @Input() InputPlaceholder?: string;
 
+    @Input() disabled: boolean;
+
     @Output() InputValueChange = new EventEmitter<string>();
 
     showPassword = false;

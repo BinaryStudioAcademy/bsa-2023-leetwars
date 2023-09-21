@@ -22,6 +22,7 @@
                         [Width]="'100%'"
                         [InputLabel]="'Email'"
                         [InputPlaceholder]="'Enter your email'"
+                        [disabled]="true"
                         formControlName="email"
                         [InputValue]="userInfoForm.value.email"
                         (InputValueChange)="userInfoForm.controls['email'].setValue($event)">
