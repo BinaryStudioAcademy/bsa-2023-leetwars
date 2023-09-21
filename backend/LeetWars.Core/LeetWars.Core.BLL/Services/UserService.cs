@@ -24,19 +24,22 @@ namespace LeetWars.Core.BLL.Services;
 public class UserService : BaseService, IUserService
 {
     private readonly IUserGetter _userGetter;
-    private readonly IMessageSenderService _messageSenderService;
+    private readonly INotificationSenderService _notificationSenderService;
+    private readonly IEmailSenderService _emailSenderService;
     private readonly IBlobService _blobService;
     private const int REPUTATION_DIVIDER = 10;
 
     public UserService(LeetWarsCoreContext context,
                        IMapper mapper,
                        IUserGetter userGetter,
-                       IMessageSenderService messageSenderService,
+                       INotificationSenderService notificationSenderService,
+                       IEmailSenderService emailSenderService,
                        IBlobService blobService
                        ) : base(context, mapper)
     {
         _userGetter = userGetter;
-        _messageSenderService = messageSenderService;
+        _notificationSenderService = notificationSenderService;
+        _emailSenderService = emailSenderService;
         _blobService = blobService;
     }
 
@@ -78,7 +81,7 @@ public class UserService : BaseService, IUserService
         await _context.SaveChangesAsync();
 
         var welcomeEmail = EmailGenerator.GenerateWelcomeEmail(createdUser.UserName, createdUser.Email);
-        _messageSenderService.SendMessageToRabbitMQ(welcomeEmail);
+        _emailSenderService.SendEmailMessageToRabbitMQ(welcomeEmail);
 
         return _mapper.Map<UserDto>(createdUser);
     }
@@ -261,7 +264,7 @@ public class UserService : BaseService, IUserService
             UpdateFriendship = new UpdateFriendshipDto(currentUser.Id, friendship.Id, friendship.Status)
         };
 
-        _messageSenderService.SendMessageToRabbitMQ(newNotification);
+        _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
 
         return _mapper.Map<UserDto>(senderUserFriendship.User);
     }

@@ -23,12 +23,14 @@ namespace LeetWars.Core.BLL.Services
 {
     public class ChallengeService : BaseService, IChallengeService
     {
-        private readonly IMessageSenderService _messageSenderService;
+        private readonly INotificationSenderService _notificationSenderService;
+        private readonly IBuilderSenderService _builderSenderService;
         private readonly IUserGetter _userGetter;
         private readonly IUserService _userService;
 
         public ChallengeService(
-            IMessageSenderService messageSenderService,
+            INotificationSenderService notificationSenderService,
+            IBuilderSenderService builderSenderService,
             LeetWarsCoreContext context,
             IMapper mapper,
             IUserGetter userGetter,
@@ -36,7 +38,8 @@ namespace LeetWars.Core.BLL.Services
         ) : base(context, mapper)
         {
             _userService = userService;
-            _messageSenderService = messageSenderService;
+            _notificationSenderService = notificationSenderService;
+            _builderSenderService = builderSenderService;
             _userGetter = userGetter;
         }
 
@@ -162,7 +165,7 @@ namespace LeetWars.Core.BLL.Services
                     Challenge = briefChallenge
                 };
 
-                _messageSenderService.SendMessageToRabbitMQ(newNotification);
+                _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
 
                 await _context.ChallengeStars.AddAsync(challengeStar);
             }
@@ -227,7 +230,7 @@ namespace LeetWars.Core.BLL.Services
                 Message = "New challenge!",
             };
 
-            _messageSenderService.SendMessageToRabbitMQ(newNotification);
+            _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
         }
 
         public async Task SendCodeFightRequest(CodeFightRequestDto requestDto)
@@ -242,7 +245,7 @@ namespace LeetWars.Core.BLL.Services
                 Message = "Code Fight. Are you in?"
             };
 
-            _messageSenderService.SendMessageToRabbitMQ(newNotification);
+            _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
         }
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
         {
@@ -436,7 +439,7 @@ namespace LeetWars.Core.BLL.Services
         }
         public void SendCodeRunRequest(CodeRunRequestDto request)
         {
-            _messageSenderService.SendMessageToRabbitMQ(request);
+            _builderSenderService.SendNotificationToRabbitMQ(request);
         }
     }
 }
