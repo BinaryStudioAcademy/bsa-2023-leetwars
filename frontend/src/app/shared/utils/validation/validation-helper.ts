@@ -1,8 +1,11 @@
 import { FormGroup } from '@angular/forms';
 import {
-    challengeDescriptionValidationErrorMessages, challengeLevelValidationErrorMessages,
-    challengeNameValidationErrorMessages, challengeTagsValidationErrorMessages,
+    challengeDescriptionValidationErrorMessages,
+    challengeLevelValidationErrorMessages,
+    challengeNameValidationErrorMessages,
+    challengeTagsValidationErrorMessages,
     emailValidationErrorMessages,
+    firebaseValidationErrorMessages,
     passwordValidationErrorMessages,
     usernameValidationErrorMessages,
 } from '@shared/utils/validation/form-controls-error-messages';
@@ -29,4 +32,17 @@ export function getErrorMessage(formControlName: string, form: FormGroup): strin
     }
 
     return null;
+}
+
+export function getFirebaseErrorMessage(errorCode: string): string | null {
+    switch (errorCode) {
+        case 'auth/email-already-in-use':
+            return firebaseValidationErrorMessages.emailAlreadyInUse;
+
+        case 'auth/account-exists-with-different-credential':
+            return firebaseValidationErrorMessages.differentCredential;
+
+        default:
+            return null;
+    }
 }

@@ -20,6 +20,8 @@ namespace LeetWars.Core.BLL.MappingProfiles
                     opt.MapFrom<UserAvatarResolver>())
                 .ReverseMap();
 
+            CreateMap<User, BriefUserInfoDto>().ReverseMap();
+
             CreateMap<NewUserDto, User>();
 
             CreateMap<UpdateUserInfoDto, User>();

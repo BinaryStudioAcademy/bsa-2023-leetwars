@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using LeetWars.Core.WebAPI.Extentions;
+using LeetWars.Core.WebAPI.Filters;
 using LeetWars.Core.WebAPI.Middlewares;
 using LeetWars.Core.WebAPI.Settings;
 using Microsoft.Extensions.FileProviders;
@@ -15,9 +16,8 @@ builder.Configuration
     .AddEnvironmentVariables()
     .Build();
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(options => options.Filters.Add<CustomExceptionFilterAttribute>())
     .AddNewtonsoftJson(x => x.SerializerSettings.Converters.Add(new StringEnumConverter()));
-builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddLeetWarsCoreContext(builder.Configuration);
 builder.Services.AddRabbitMqServices(builder.Configuration);

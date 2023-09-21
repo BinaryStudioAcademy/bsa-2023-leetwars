@@ -13,7 +13,6 @@ export class AuthHelper {
     ) { }
 
     public handleAuthError(form: FormGroup) {
-        this.toastrNotification.showError('Something went wrong');
         form.markAsUntouched();
     }
 

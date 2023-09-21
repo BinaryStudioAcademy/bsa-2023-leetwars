@@ -1,17 +1,21 @@
 <div class="main-wrapper">
-    <div class="content_wrp" *ngIf="fullUser">
+    <div class="content-wrapper d-flex" *ngIf="fullUser">
         <div class="user_profile">
             <app-profile-page-main-info [user]="fullUser" [userSolutions]="userSolutions"></app-profile-page-main-info>
         </div>
-        <div class="solved" *ngIf="bars?.length">
-            <app-solved-problem [bars]="bars"></app-solved-problem>
+        <div class="d-flex flex-column main-info">
+            <div class="d-flex solved-and-badges">
+                <div class="solved" *ngIf="bars?.length">
+                    <app-solved-problem [bars]="bars"></app-solved-problem>
+                </div>
+                <div class="badges">
+                    <app-badge [badges]="fullUser.badges"></app-badge>
+                </div>
+            </div>
+            <div class="submission-chart">
+                <app-submissions-chart [solutions]="fullUser.solutions" class="custom-chart"></app-submissions-chart>
+            </div>
         </div>
-        <div class="badges">
-            <app-badge [badges]="fullUser.badges"></app-badge>
-        </div>
-        <div class="submission_chart">
-            <app-submissions-chart [solutions]="fullUser.solutions" class="custom-chart"></app-submissions-chart>
-        </div>
-        <div class="submissions" id="background-color"></div>
     </div>
 </div>
+<div class="empty-container"></div>

@@ -43,10 +43,10 @@ export class BadgeComponent implements OnInit {
             startPosition: this.startPosition,
             responsive: {
                 0: {
-                    items: 3,
+                    items: 1,
                 },
-                435: {
-                    items: 5,
+                240: {
+                    items: 3,
                 },
             },
         };
