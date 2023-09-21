@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
@@ -45,6 +46,7 @@ export class UserInfoEditorComponent implements OnInit {
         private userService: UserService,
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
+        private router: Router,
     ) {}
 
     ngOnInit(): void {
@@ -81,6 +83,10 @@ export class UserInfoEditorComponent implements OnInit {
         this.userInfoForm.patchValue({ avatar: file });
 
         this.updateAvatarPreview(event.target as HTMLInputElement);
+    }
+
+    onReturnToProfile() {
+        this.router.navigate(['user/profile']);
     }
 
     public getErrorMessage(formControlName: string) {
