@@ -102,7 +102,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
     }
 
-    ngOnDestroy() {
+    override ngOnDestroy() {
         this.notificationHub.stop();
         super.ngOnDestroy();
     }
