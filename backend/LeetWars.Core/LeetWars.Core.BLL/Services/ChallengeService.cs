@@ -253,7 +253,7 @@ namespace LeetWars.Core.BLL.Services
                                             .Cast<LanguageLevel>()
                                             .ToArray();
 
-            levels.Select(level =>
+            foreach(var level in levels) 
             {
                 var challengesByLevel = _context.Challenges
                     .Where(x => x.Level != null && x.Level.SkillLevel == level)
@@ -266,8 +266,7 @@ namespace LeetWars.Core.BLL.Services
                     weeklyChallenge.isWeekly = true;
                     _context.Update(weeklyChallenge);
                 }
-                return weeklyChallenge;
-            }).ToList();
+            }
             await _context.SaveChangesAsync();
         }
 
