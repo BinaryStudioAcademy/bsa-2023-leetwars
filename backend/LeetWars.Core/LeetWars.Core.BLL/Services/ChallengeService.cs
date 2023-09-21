@@ -100,8 +100,6 @@ namespace LeetWars.Core.BLL.Services
                     .Take(page.PageSize);
             }
 
-            var checker = await challenges.ToListAsync();
-
             return _mapper.Map<List<ChallengePreviewDto>>(await challenges.ToListAsync());
         }
 
