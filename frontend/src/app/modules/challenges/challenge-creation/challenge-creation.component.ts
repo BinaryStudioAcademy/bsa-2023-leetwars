@@ -22,6 +22,8 @@ import {
     stepIsAllowed,
 } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { StepData } from '@modules/challenges/challenge-creation/step-data';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModalComponent } from '@shared/components/confirmation-modal/confirmation-modal.component';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
@@ -45,6 +47,8 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public currentStep: ChallengeStep = ChallengeStep.Question;
 
+    public challengeId: number;
+
     public challenge: INewChallenge | IEditChallenge;
 
     public challengeVersion: INewChallengeVersion | IEditChallengeVersion;
@@ -61,8 +65,6 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public editorOptions = editorOptions;
 
-    public isEditMode: boolean = false;
-
     public canOpenDropdown = true;
 
     protected readonly ChallengeStep = ChallengeStep;
@@ -75,6 +77,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         private toastrService: ToastrNotificationsService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
+        private modalService: NgbModal,
     ) {
         super();
         this.steps = this.stepsData.map((s) => s.step);
@@ -84,18 +87,16 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     ngOnInit(): void {
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-            const challengeId = +params.get('id')!;
+            this.challengeId = +params.get('id')!;
 
-            this.isEditMode = !!challengeId;
-
-            this.stepsData = getInitStepsData(this.isEditMode);
+            this.stepsData = getInitStepsData(!!this.challengeId);
 
             this.getTags();
             this.getChallengeLevels();
             this.getLanguages();
 
-            if (this.isEditMode) {
-                this.loadChallenge(challengeId);
+            if (this.challengeId) {
+                this.loadChallenge(this.challengeId);
             }
         });
     }
@@ -171,6 +172,28 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         }
     }
 
+    public onBtnDeleteClick() {
+        const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'delete-modal' });
+
+        modalRef.componentInstance.titleText = 'Do you really want to delete challenge?';
+        modalRef.componentInstance.bodyText = 'After confirmation, the challenge will be permanently deleted and cannot be recovered.';
+        modalRef.componentInstance.buttons = [
+            {
+                text: 'Yes',
+                handler: () => {
+                    this.deleteChallenge();
+                    modalRef.close();
+                },
+            },
+            {
+                text: 'Cancel',
+                handler: () => {
+                    modalRef.dismiss();
+                },
+            },
+        ];
+    }
+
     public onBtnCancelClick() {
         this.router.navigate(['/']);
     }
@@ -189,6 +212,21 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public getStepChecking(step: ChallengeStep) {
         return getStepChecking(this.stepsData, step);
+    }
+
+    private deleteChallenge() {
+        this.challengeService
+            .deleteChallenge(this.challengeId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: () => {
+                    this.toastrService.showSuccess('Challenge was successfully deleted');
+                    this.router.navigate(['/']);
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
     }
 
     private getLanguages() {

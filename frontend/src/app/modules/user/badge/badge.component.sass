@@ -1,0 +1,63 @@
+@import 'color-variables'
+@import 'screen-sizes-variables'
+
+.badges-container
+    background-color: $deep-dark-grey
+    height: 186px
+    width: 410px
+    padding: 16px
+    border-radius: 8px
+    color: $white
+
+.text-label-1
+    font-size: 12px
+    color: $light-blue-grey
+
+.text-label-2
+    font-size: 24px
+    line-height: 18px
+    margin-top: 6px
+
+fa-icon
+    color: $light-blue-grey
+    cursor: pointer
+
+img
+    height: 100%
+    width: 100%
+    object-fit: contain
+
+.badge
+    height: 56px !important
+    width: 56px !important
+    padding: 0px
+    margin: auto
+    transition: all 0.6s
+
+.active-badge
+    transition: height 0.6s
+    height: 72px !important
+    width: 72px !important
+    padding: 0px
+    margin: auto
+
+:host::ng-deep .owl-item
+    display: flex
+    align-items: center
+
+:host::ng-deep .owl-stage
+    display: flex !important
+    height: 72px
+
+.carousel-container
+    width: 65%
+    margin: auto
+
+@media screen and (max-width: $small-medium)
+    .badges-container
+        width: 256px
+        height: auto
+
+@media screen and (max-width: $small)
+    .badges-container
+        width: 90vw

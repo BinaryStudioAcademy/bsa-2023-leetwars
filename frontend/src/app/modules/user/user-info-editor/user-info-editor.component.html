@@ -1,0 +1,54 @@
+<div class="page-wrapper d-flex justify-content-center">
+    <div class="form-wrapper d-flex flex-column flex-grow-1">
+        <button
+            [disabled]="userInfoForm.invalid"
+            class="submit-button d-flex justify-content-center align-items-center align-self-end"
+            (click)="onSave()">
+            Save
+        </button>
+        <form class="edit-user-info-form d-flex flex-column" [formGroup]="userInfoForm">
+            <p>INFORMATION</p>
+            <div class="form-data d-flex justify-content-center align-items-center flex-grow-1">
+                <div class="avatar">
+                    <label class="h-100">
+                        <img [src]="avatarPreview" />
+                        <input type="file" style="display: none" (change)="onImagePicked($event)" />
+                    </label>
+                </div>
+                <div class="d-flex flex-column justify-content-between right-form-data flex-grow-1">
+                    <app-custom-input
+                        [InputType]="'email'"
+                        [Identifier]="'email'"
+                        [Width]="'100%'"
+                        [InputLabel]="'Email'"
+                        [InputPlaceholder]="'Enter your email'"
+                        formControlName="email"
+                        [InputValue]="userInfoForm.value.email"
+                        (InputValueChange)="userInfoForm.controls['email'].setValue($event)">
+                    </app-custom-input>
+                    <div
+                        class="invalid-feedback d-block"
+                        *ngIf="userInfoForm.controls['email'].touched && userInfoForm.get('email')?.invalid">
+                        <div>{{ getErrorMessage('email') }}</div>
+                    </div>
+
+                    <app-custom-input
+                        [InputType]="'text'"
+                        [Identifier]="'text'"
+                        [Width]="'100%'"
+                        [InputLabel]="'Username'"
+                        [InputPlaceholder]="'Enter your username'"
+                        [InputValue]="userInfoForm.value.username"
+                        formControlName="username"
+                        (InputValueChange)="userInfoForm.controls['username'].setValue($event)">
+                    </app-custom-input>
+                    <div
+                        class="invalid-feedback d-block"
+                        *ngIf="userInfoForm.controls['username'].touched && userInfoForm.get('username')?.invalid">
+                        <div>{{ getErrorMessage('username') }}</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

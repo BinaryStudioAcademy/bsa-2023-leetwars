@@ -38,6 +38,7 @@
         "angular-split": "14.0.0",
         "bootstrap": "5.2.0",
         "eslint-plugin-prettier": "^4.2.1",
+        "guid-typescript": "^1.0.9",
         "moment": "^2.29.4",
         "monaco-editor": "0.33.0",
         "ngx-bootstrap": "9.0.0",

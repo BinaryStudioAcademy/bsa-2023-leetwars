@@ -1,6 +1,6 @@
 @import 'color-variables'
 
-.profile-main-info-wrapper 
+.profile-main-info-wrapper
     height: 100%
     font-family: 'Inter', sans-serif
     background-color: $deep-dark-grey
@@ -9,29 +9,31 @@
     border-radius: 8px
     padding: 21px 16px 28px 16px
 
-.profile-main-info-header 
+.profile-main-info-header
     padding: 0 0 16px 0 !important
 
 .user-info-container
     gap: 16px
 
-.user-avatar-container 
+.user-avatar-container
     width: 80px
     height: 80px
 
 .user-avatar
     height: inherit
     border-radius: 8px
+    object-fit: cover
+    width: inherit
 
-.user-info 
+.user-info
     justify-content: space-between
 
-.username 
+.username
     font-weight: 600
     line-height: 160%
     font-size: 15px
 
-.user-rank 
+.user-rank
     font-size: 14px
     line-height: 171%
     font-weight: 500
@@ -40,7 +42,7 @@
         font-weight: 400
         color: $transparent-light-grey
 
-.edit-profile-btn 
+.edit-profile-btn
     background-color: $green
     width: 100%
     padding: 7px 0px
@@ -52,16 +54,16 @@
     &:hover
         background-color: $dark-olive-green
 
-.community-stats-list 
+.community-stats-list
     gap: 16px
 
 .community-stats-list-item-container
     gap: 8px
 
-.community-stats-list-item 
+.community-stats-list-item
     gap: 4px
 
-.list-item-main-text 
+.list-item-main-text
     color: $transparent-light-grey
     font-size: 12px
     line-height: 175%
@@ -70,7 +72,7 @@
         color: $white
         margin-left: 9px
 
-.last-week-stats 
+.last-week-stats
     font-size: 10px
     line-height: 160%
     color: $light-blue-grey
@@ -81,7 +83,7 @@
 
 .views fa-icon
     color: $vivid-blue
-    
+
 .solution fa-icon
     color: $sky-blue
 
@@ -96,18 +98,18 @@
 
 .skills-list
     gap: 16px
-    
-.skills-list-item-container 
+
+.skills-list-item-container
     gap: 12px
 
-.skills-list-item-text 
+.skills-list-item-text
     font-weight: 500
     line-height: 16px
     font-size: 11px
     margin-left: 10px
     position: relative
 
-.skills-list-item-text::before 
+.skills-list-item-text::before
     content: ''
     display: inline-block
     width: 4px
@@ -118,23 +120,23 @@
     top: 50%
     transform: translateY(-50%)
 
-.skills-list-item-text.advanced::before 
+.skills-list-item-text.advanced::before
     background-color: $vibrant-red
 
-.skills-list-item-text.intermediate::before 
+.skills-list-item-text.intermediate::before
     background-color: $brigth-yellow
 
-.skills-list-item-text.fundamental::before 
+.skills-list-item-text.fundamental::before
     background-color: $fresh-green
 
 // =====shared=====
 
-.not-enough-data 
+.not-enough-data
     font-size: 11px
     line-height: 145.455%
     color: $delicate-lavender
     text-align: center
-    
+
 .languages-item-container
     display: flex
     flex-direction: row
@@ -144,8 +146,8 @@
     text-align: start
     font-size: 11px
     color: $white
-    
-.content-section-name 
+
+.content-section-name
     font-size: 15px
     font-weight: 500
     line-height: 160%
@@ -171,7 +173,7 @@
 
 .scroll-container
     max-height: 50px
-    overflow-y: auto 
+    overflow-y: auto
 
 .skills-item
     border:  1px solid $black

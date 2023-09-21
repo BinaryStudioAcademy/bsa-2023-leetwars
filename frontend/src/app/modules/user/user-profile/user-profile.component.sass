@@ -1,4 +1,5 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
 
 .main-wrapper
     margin-top: 30px
@@ -6,38 +7,33 @@
     justify-content: center
     align-items: center
 
-.content_wrp  
-    display: grid
-    grid-template-columns: repeat(3, 1fr)
-    grid-template-rows: repeat(4, 1fr)
-    grid-column-gap: 16px
-    grid-row-gap: 16px
+.content-wrapper,
+.main-info,
+.solved-and-badges
+    gap: 16px
 
 .custom-chart
     padding-top: 15px
-    height: 100%
-    width: 100%
+    height: 180px
 
-.user_profile  
-    grid-area: 1 / 1 / 5 / 2
-
-.solved 
-    grid-area: 1 / 2 / 2 / 3
-    min-width: 400px
-
-.badges   
-    grid-area: 1 / 3 / 2 / 4
-    background-color: $deep-dark-grey 
+.badges
+    background-color: $deep-dark-grey
     padding: 0
     border-radius: 8px
 
-.submission_chart   
-    grid-area: 2 / 2 / 3 / 4
+.empty-container
+    height: 20px
 
-.submissions   
-    grid-area: 3 / 2 / 5 / 4
-    border-radius: 8px
+@media screen and (max-width: $small-large)
+    .solved-and-badges
+        flex-direction: column
 
-#background-color   
-    background-color:$deep-dark-grey 
-            
+@media screen and (max-width: $small-medium)
+    .solved, .badges, .submission-chart
+        max-width: 256px
+
+@media screen and (max-width: $small)
+    .content-wrapper
+        flex-direction: column
+    .solved, .badges, .submission-chart
+        max-width: 90vw

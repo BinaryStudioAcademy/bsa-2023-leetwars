@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
+import { HttpResponse } from '@microsoft/signalr';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
@@ -10,6 +11,7 @@ import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { IStar } from '@shared/models/challenge-star/star';
+import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IPageSettings } from '@shared/models/page-settings';
@@ -62,11 +64,19 @@ export class ChallengeService {
         return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
     }
 
+    public runTests(request: ICodeRunRequest): Observable<HttpResponse> {
+        return this.httpService.postRequest<HttpResponse>(`${this.challengesRoute}/test`, request);
+    }
+
     public updateChallenge(challenge: IEditChallenge): Observable<IChallenge> {
         return this.httpService.putRequest<IChallenge>(`${this.challengesRoute}/edit`, challenge);
     }
 
     public createChallenge(challenge: INewChallenge): Observable<IChallenge> {
         return this.httpService.postRequest<IChallenge>(`${this.challengesRoute}`, challenge);
+    }
+
+    public deleteChallenge(id: number): Observable<void> {
+        return this.httpService.deleteRequest(`${this.challengesRoute}/${id}`);
     }
 }

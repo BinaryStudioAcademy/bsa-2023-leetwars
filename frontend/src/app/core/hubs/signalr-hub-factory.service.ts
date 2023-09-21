@@ -27,6 +27,7 @@ export class SignalRHubFactoryService {
                 transport: HttpTransportType.WebSockets,
             })
             .configureLogging(LogLevel.Information)
+            .withAutomaticReconnect()
             .build();
     }
 

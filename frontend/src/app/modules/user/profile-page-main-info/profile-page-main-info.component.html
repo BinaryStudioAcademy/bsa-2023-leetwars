@@ -2,14 +2,14 @@
     <div class="profile-main-info-header info-container">
         <div class="user-info-container d-flex flex-row">
             <div class="user-avatar-container">
-                <img src="assets/images/default-profile-img.jpg" alt="User avatar" class="user-avatar">
+                <img [src]="user?.imagePath ?? 'assets/images/default-profile-img.jpg'" alt="User avatar" class="user-avatar">
             </div>
             <div class="user-info d-flex flex-column">
                 <p class="username">{{user.userName}}</p>
                 <p class="user-rank"><span>Rank</span>{{user.totalScore}}</p>
             </div>
         </div>
-        <button class="edit-profile-btn">Edit Profile</button>
+        <button class="edit-profile-btn" (click)="onEditProfile()">Edit Profile</button>
     </div>
     <div class="profile-main-info-content">
         <div class="community-stats-container info-container">
