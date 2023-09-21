@@ -184,7 +184,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengePreviewDto>(challenge);
         }
 
-        public async Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto)
+        public async Task CreateChallengeAsync(NewChallengeDto challengeDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
             var challenge = _mapper.Map<Challenge>(challengeDto);
@@ -216,16 +216,17 @@ namespace LeetWars.Core.BLL.Services
             _context.ChallengeVersions.AddRange(challengeVersions);
 
             await _context.SaveChangesAsync();
-            
+
+            var briefChallenge = await GetBriefChallengeInfoById(challenge.Id);
+
             var newNotification = new NewNotificationDto()
             {
                 TypeNotification = TypeNotifications.NewChallenge,
+                Challenge = briefChallenge,
                 Message = "New challenge!",
             };
 
             _messageSenderService.SendMessageToRabbitMQ(newNotification);
-
-            return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
 
         public async Task SendCodeFightRequest(CodeFightRequestDto requestDto)

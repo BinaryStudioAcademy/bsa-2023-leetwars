@@ -4,8 +4,7 @@
         <div *ngIf="notification.typeNotification === typeNotification.NewChallenge">
             <p>
                 A new challenge
-                <a routerLink="/challenges/{{ notification.challenge.id }}"> {{ notification.challenge.title }}</a> from
-                {{ notification.sender.userName }}
+                <a routerLink="/challenges/{{ notification.challenge.id }}"> {{ notification.challenge.title }}</a>
             </p>
         </div>
         <div *ngIf="notification.typeNotification === typeNotification.LikeChallenge">
@@ -16,6 +15,8 @@
         </div>
         <div *ngIf="notification.typeNotification === typeNotification.CodeFight">
             <p>{{ notification.message }}</p>
+            <button (click)="onYes(notification)">Yes</button>
+            <button>No</button>
         </div>
     </div>
 </div>

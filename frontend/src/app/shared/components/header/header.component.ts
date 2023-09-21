@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header-service';
+import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IUser } from '@shared/models/user/user';
 
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-import { NotificationsComponent } from '../notifications/notifications.component';
 
 @Component({
     selector: 'app-header',
@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private router: Router,
         private headerService: HeaderService,
         private toastrService: ToastrNotificationsService,
+        private notificationService: NotificationService,
         private notificationHub: NotificationHubService,
     ) {
         this.authService.getUser().subscribe((user) => {
@@ -34,25 +35,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     public user: IUser;
 
-    private notifications: INotificationModel[] = [];
-
     async ngOnInit() {
         await this.notificationHub.start();
         this.listeningHub();
     }
 
     showNotifications() {
-        const modalRef = this.modalService.open(NotificationsComponent);
-
-        modalRef.componentInstance.notifications = this.notifications;
-
-        modalRef.hidden.subscribe(() => {
-            this.notifications = [];
-        });
+        this.notificationService.showNotifications();
     }
 
     get countNotification() {
-        return this.notifications.length;
+        return this.notificationService.countNotification;
     }
 
     onLogOut() {
@@ -89,7 +82,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     private listeningHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
-            this.notifications = [...this.notifications, msg];
+            this.notificationService.addNotification(msg);
         });
     }
 
