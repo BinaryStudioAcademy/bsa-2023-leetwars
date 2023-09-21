@@ -3,6 +3,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
+import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
@@ -60,6 +61,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
         private router: Router,
+        private authService: AuthService,
     ) {
         super();
         breakpointObserver
@@ -90,6 +92,11 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
             this.loadChallenge(challengeId);
         });
+
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.user = user;
+        });
+
         this.subscribeToMessageQueue();
     }
 
@@ -131,7 +138,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     sendCode(): void {
         this.solution = {
-            userConnectionId: this.signalRService.singleUserGroupId,
+            userConnectionId: this.user.id.toString(),
             language: this.selectedLanguage,
             userCode: this.initialSolution as string,
             tests: this.testCode,
@@ -141,14 +148,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     subscribeToMessageQueue(): void {
         this.signalRService.start();
-        this.signalRService.listenMessages((msg: string) => {
-            const codeRunResults: ICodeRunResults = JSON.parse(msg) as ICodeRunResults;
-
-            if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults) {
+        this.signalRService.listenMessages((msg: ICodeRunResults) => {
+            if (msg.buildResults?.isSuccess && msg.testRunResults) {
                 this.toastrService.showSuccess('Code was compiled successfully');
-                this.showTestResults(codeRunResults.testRunResults);
+                this.showTestResults(msg.testRunResults);
             } else {
-                this.toastrService.showError(codeRunResults.buildResults?.buildMessage as string);
+                this.toastrService.showError(msg.buildResults?.buildMessage as string);
             }
         });
     }
