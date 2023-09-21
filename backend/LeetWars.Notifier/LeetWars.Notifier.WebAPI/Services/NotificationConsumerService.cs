@@ -51,6 +51,7 @@ namespace LeetWars.Notifier.WebAPI.Services
                     break;
                 case TypeNotifications.LikeChallenge:
                 case TypeNotifications.CodeFight:
+                case TypeNotifications.FriendRequest:
                     if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
                     {
                         await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotification(notificationDto);

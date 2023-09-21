@@ -72,6 +72,13 @@ public class UsersController : ControllerBase
     {
         var users = await _userService.GetLeaderBoardAsync(page);
         return Ok(users);
+    }    
+    
+    [HttpGet("friends-leader-board")]
+    public async Task<ActionResult<List<UserDto>>> GetFriendsLeaderBoardAsync([FromQuery] PageSettingsDto page)
+    {
+        var users = await _userService.GetFriendsLeaderBoardAsync(page);
+        return Ok(users);
     }
 
     [HttpPut]

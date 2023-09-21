@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using System.Text.Json.Serialization;
 
@@ -12,6 +13,8 @@ namespace LeetWars.Core.Common.DTO.Notifications
         public BriefUserInfoDto? Sender { get; set; }
 
         public BriefChallengeInfoDto? Challenge { get; set; }
+
+        public UpdateFriendshipDto? UpdateFriendship { get; set; }
 
         public string? ReceiverId { get; set; }
 

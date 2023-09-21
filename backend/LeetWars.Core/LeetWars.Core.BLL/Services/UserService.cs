@@ -16,6 +16,7 @@ using LeetWars.Core.DAL.Extensions;
 using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.BLL.Exceptions;
+using LeetWars.Core.Common.DTO.Notifications;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -194,13 +195,34 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<List<UserDto>>(await users.ToListAsync());
     }
 
+    public async Task<List<UserDto>> GetFriendsLeaderBoardAsync(PageSettingsDto? page)
+    {
+        var currentUser = await GetCurrentUserEntityAsync();
+        var currentUserDto = _mapper.Map<UserDto>(currentUser);
+
+        var currentUserFriendsIds = currentUserDto.Friendships?
+            .Where(f => f.FriendshipStatus is FriendshipStatus.Accepted)
+            .Select(f => f.FriendId) ?? throw new NotFoundException(nameof(List<User>));
+
+        var friendsEntities = _context.Users
+            .Where(u => currentUserFriendsIds.Contains(u.Id))
+            .OrderByDescending(u => u.TotalScore).AsQueryable();
+
+        if (page is not null)
+        {
+            friendsEntities = friendsEntities
+                .Skip(page.PageSize * (page.PageNumber - 1))
+                .Take(page.PageSize);
+        }
+
+        return _mapper.Map<List<UserDto>>(await friendsEntities.ToListAsync());
+    }
+
     public async Task<UserDto> SendFriendshipRequest(NewFriendshipDto newFriendshipDto)
     {
         var senderId = newFriendshipDto.SenderId;
         var recipientId = newFriendshipDto.RecipientId;
         var currentUser = await GetCurrentUserEntityAsync();
-
-        ThrowIfIsNotMatchingIds(senderId, currentUser.Id);
 
         var friendshipGroups = currentUser.Friendships.SelectMany(f => f.UserFriendships).GroupBy(uf => uf.FriendshipId);
         var hasSuchFriendship = friendshipGroups.Any(group => group.Any(uf => uf.UserId == recipientId));
@@ -223,6 +245,19 @@ public class UserService : BaseService, IUserService
         _context.UserFriendships.Add(recipientUserFriendship);
 
         await _context.SaveChangesAsync();
+
+        var newNotification = new NewNotificationDto
+        {
+            DateSending = DateTime.UtcNow,
+            ReceiverId = recipientId.ToString(),
+            Sender = await GetBriefUserInfoById(currentUser.Id),
+            TypeNotification = TypeNotifications.FriendRequest,
+            Message = $"User {currentUser.UserName} sent you a friend request. Do you accept?",
+            UpdateFriendship = new UpdateFriendshipDto(currentUser.Id, friendship.Id, friendship.Status)
+        };
+
+        _messageSenderService.SendMessageToRabbitMQ(newNotification);
+
         return _mapper.Map<UserDto>(senderUserFriendship.User);
     }
 
@@ -235,7 +270,7 @@ public class UserService : BaseService, IUserService
 
         ThrowIfIsNotMatchingIds(userId, currentUser.Id);
 
-        var friendshipToUpdate = currentUser.Friendships.FirstOrDefault(f => f.Id == friendshipId) 
+        var friendshipToUpdate = currentUser.Friendships.FirstOrDefault(f => f.Id == friendshipId)
             ?? throw new NotFoundException(nameof(Friendship), (int)friendshipId);
 
         switch (friendshipStatus)
