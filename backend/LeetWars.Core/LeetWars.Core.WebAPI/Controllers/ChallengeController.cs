@@ -7,6 +7,7 @@ using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using LeetWars.Core.Common.DTO.ChallengeRequest;
 
 namespace LeetWars.Core.WebAPI.Controllers
 {
@@ -16,8 +17,8 @@ namespace LeetWars.Core.WebAPI.Controllers
     public class ChallengeController : ControllerBase
     {
         private readonly IChallengeService _challengeService;
-
-        public ChallengeController(IChallengeService challengeService)
+        
+        public ChallengeController(IChallengeService challengeService, )
         {
             _challengeService = challengeService;
         }
@@ -40,7 +41,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeFullDto>> GetById(long id)
         {
-            
+
             var challenges = await _challengeService.GetChallengeFullDtoByIdAsync(id);
             return Ok(challenges);
         }
@@ -77,5 +78,6 @@ namespace LeetWars.Core.WebAPI.Controllers
             await _challengeService.DeleteChallengeAsync(id);
             return NoContent();
         }
+
     }
 }
