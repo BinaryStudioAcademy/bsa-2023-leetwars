@@ -2,10 +2,9 @@
 {
     public enum LanguageLevel
     {
-        FirstSteps,
-        AdvancedBeginner,
-        Competent,
-        Proficient,
-        Master
+        Easy,
+        Medium,
+        Difficult,
+        Extreme,
     }
 }
