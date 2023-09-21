@@ -3,6 +3,7 @@
     public enum TypeNotifications
     {
         LikeChallenge,
-        NewChallenge
+        NewChallenge,
+        CodeFight
     }
 }

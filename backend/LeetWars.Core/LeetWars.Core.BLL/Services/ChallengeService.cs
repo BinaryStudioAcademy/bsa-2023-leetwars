@@ -4,8 +4,10 @@ using AutoMapper;
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
+using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
@@ -85,9 +87,9 @@ namespace LeetWars.Core.BLL.Services
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
 
-            if(filters.DifficultyLevel is not null)
+            if (filters.DifficultyLevel is not null)
             {
-                challenges = challenges.Where(challenge => 
+                challenges = challenges.Where(challenge =>
                 challenge.Level != null && challenge.Level.Name.Equals(filters.DifficultyLevel));
             }
 
@@ -127,6 +129,11 @@ namespace LeetWars.Core.BLL.Services
         {
             var challenge = await GetChallengeByIdAsync(id);
             return _mapper.Map<ChallengeFullDto>(challenge);
+        }
+
+        public async Task<List<ChallengeLevelDto>> GetChallengesLevelsAsync()
+        {
+            return _mapper.Map<List<ChallengeLevelDto>>(await _context.ChallengeLevels.ToListAsync());
         }
 
         public async Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto)
@@ -177,7 +184,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengePreviewDto>(challenge);
         }
 
-        public async Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto)
+        public async Task CreateChallengeAsync(NewChallengeDto challengeDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
             var challenge = _mapper.Map<Challenge>(challengeDto);
@@ -209,16 +216,32 @@ namespace LeetWars.Core.BLL.Services
             _context.ChallengeVersions.AddRange(challengeVersions);
 
             await _context.SaveChangesAsync();
-            
+
+            var briefChallenge = await GetBriefChallengeInfoById(challenge.Id);
+
             var newNotification = new NewNotificationDto()
             {
                 TypeNotification = TypeNotifications.NewChallenge,
+                Challenge = briefChallenge,
                 Message = "New challenge!",
             };
 
             _messageSenderService.SendMessageToRabbitMQ(newNotification);
+        }
 
-            return await GetChallengeFullDtoByIdAsync(challenge.Id);
+        public async Task SendCodeFightRequest(CodeFightRequestDto requestDto)
+        {
+            var newNotification = new NewNotificationDto
+            {
+                Challenge = await GetCodeFightChallengeAsync(requestDto.ChallengeSettings),
+                DateSending = DateTime.UtcNow,
+                ReceiverId = requestDto.ReceiverId.ToString(),
+                Sender = await _userService.GetBriefUserInfoById(requestDto.SenderId),
+                TypeNotification = TypeNotifications.CodeFight,
+                Message = "Code Fight. Are you in?"
+            };
+
+            _messageSenderService.SendMessageToRabbitMQ(newNotification);
         }
 
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
@@ -237,6 +260,18 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
+        }
+
+        private async Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings)
+        {
+            var challenges = _context.Challenges
+                .Include(challenge => challenge.Versions)
+                .Where(challenge => challenge.LevelId == settings.LevelId &&
+                       challenge.Versions.Any(challengeversion => challengeversion.LanguageId == settings.LanguageId));
+
+            var randomPosition = GetRandomInt(challenges.Count());
+
+            return _mapper.Map<BriefChallengeInfoDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
 
         private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)

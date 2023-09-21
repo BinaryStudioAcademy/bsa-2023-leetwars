@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
+import { AuthService } from '@core/services/auth.service';
+import { ChallengeService } from '@core/services/challenge.service';
+import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { NewFriendship } from '@shared/models/friendship/new-friendship';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
+
+import { ChallengeSelectionModalComponent } from '../challenge-selection-modal/challenge-selection-modal.component';
 
 @Component({
     selector: 'app-leader-board',
@@ -28,18 +36,45 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
     public loading = false;
 
+    private languages: ILanguage[];
+
+    private levels: IChallengeLevel[];
+
     private page: IPageSettings = {
         pageNumber: 0,
         pageSize: 30,
     };
 
-    constructor(private userService: UserService, private toastrNotification: ToastrNotificationsService) {
+    constructor(
+        private userService: UserService,
+        private authService: AuthService,
+        private languageService: LanguageService,
+        private challengeService: ChallengeService,
+        private toastrNotification: ToastrNotificationsService,
+        private modalService: NgbModal,
+    ) {
         super();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.currentUser = user;
+        });
+
+        this.languageService.getLanguages().subscribe((languages: ILanguage[]) => {
+            this.languages = languages;
+        });
+
+        this.challengeService.getChallengeLevels().subscribe((levels: IChallengeLevel[]) => {
+            this.levels = levels;
+        });
+
         this.getUsers();
         this.getCurrentUser();
+    }
+
+    public startCodeFight(user: IUser) {
+        this.openModal(user);
     }
 
     public onScroll() {
@@ -146,5 +181,13 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         } else {
             this.usersToShow = this.users;
         }
+    }
+
+    private openModal(user: IUser) {
+        const challengeSettingsSelect = this.modalService.open(ChallengeSelectionModalComponent);
+
+        challengeSettingsSelect.componentInstance.languages = this.languages;
+        challengeSettingsSelect.componentInstance.levels = this.levels;
+        challengeSettingsSelect.componentInstance.receiverId = user.id;
     }
 }

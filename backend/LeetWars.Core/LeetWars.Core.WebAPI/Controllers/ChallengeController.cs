@@ -1,6 +1,7 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeStar;
+using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
@@ -35,7 +36,7 @@ namespace LeetWars.Core.WebAPI.Controllers
             var challenge = await _challengeService.GetChallengeSuggestionAsync(settings);
             return Ok(challenge);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeFullDto>> GetById(long id)
         {
@@ -43,11 +44,26 @@ namespace LeetWars.Core.WebAPI.Controllers
             return Ok(challenges);
         }
 
+        [HttpGet("levels")]
+        public async Task<ActionResult<ChallengePreviewDto>> GetChallengeLevelsAsync()
+        {
+            var challengeLevels = await _challengeService.GetChallengesLevelsAsync();
+
+            return Ok(challengeLevels);
+        }
+
         [HttpPost]
         public async Task<ActionResult<ChallengeFullDto>> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
-            var challenge = await _challengeService.CreateChallengeAsync(challengeDto);
-            return Ok(challenge);
+            await _challengeService.CreateChallengeAsync(challengeDto);
+            return NoContent();
+        }
+
+        [HttpPost("codefight")]
+        public async Task<ActionResult<ChallengeFullDto>> SendCodeFightChallengeAsync([FromBody] CodeFightRequestDto requestDto)
+        {
+            await _challengeService.SendCodeFightRequest(requestDto);
+            return NoContent();
         }
 
         [HttpPut("edit")]

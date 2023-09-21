@@ -2,10 +2,21 @@
     <div *ngIf="!notifications.length">You do not have notifications</div>
     <div *ngFor="let notification of notifications" class="notification">
         <div *ngIf="notification.typeNotification === typeNotification.NewChallenge">
-            <p>A new challenge <a routerLink="/challenges/{{notification.challenge.id}}"> {{notification.challenge.title}}</a> from {{notification.sender.userName}}</p>
+            <p>
+                A new challenge
+                <a routerLink="/challenges/{{ notification.challenge.id }}"> {{ notification.challenge.title }}</a>
+            </p>
         </div>
-        <div *ngIf="notification.typeNotification === typeNotification.LikeChallenge ">
-            <p>User {{notification.sender.userName}} liked your challenge <a routerLink="/challenges/{{notification.challenge.id}}">{{notification.challenge.title}}</a> </p>
+        <div *ngIf="notification.typeNotification === typeNotification.LikeChallenge">
+            <p>
+                User {{ notification.sender.userName }} liked your challenge
+                <a routerLink="/challenges/{{ notification.challenge.id }}">{{ notification.challenge.title }}</a>
+            </p>
+        </div>
+        <div *ngIf="notification.typeNotification === typeNotification.CodeFight">
+            <p>{{ notification.message }}</p>
+            <button (click)="onYes(notification)">Yes</button>
+            <button>No</button>
         </div>
     </div>
 </div>
