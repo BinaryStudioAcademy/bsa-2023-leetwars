@@ -4,8 +4,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>e0295497-f79f-4c7d-a0b3-0caebcd03f17</UserSecretsId>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LeetWars.Core\LeetWars.Core.Common\LeetWars.Core.Common.csproj" />
-    <ProjectReference Include="..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
+    <ProjectReference Include="..\..\LeetWars.Core\LeetWars.Core.Common\LeetWars.Core.Common.csproj" />
+    <ProjectReference Include="..\..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>
