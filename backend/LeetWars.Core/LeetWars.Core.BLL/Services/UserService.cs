@@ -128,7 +128,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(user);
     }
 
-    public async Task<BriefUserInfoDto> GetBriefUserInfoById(long id)
+    public async Task<BriefUserInfoDto> GetBriefUserInfoByIdAsync(long id)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == id);
 
@@ -226,7 +226,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<List<UserDto>>(await friendsEntities.ToListAsync());
     }
 
-    public async Task<UserDto> SendFriendshipRequest(NewFriendshipDto newFriendshipDto)
+    public async Task<UserDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto)
     {
         var senderId = newFriendshipDto.SenderId;
         var recipientId = newFriendshipDto.RecipientId;
@@ -258,7 +258,7 @@ public class UserService : BaseService, IUserService
         {
             DateSending = DateTime.UtcNow,
             ReceiverId = recipientId.ToString(),
-            Sender = await GetBriefUserInfoById(currentUser.Id),
+            Sender = await GetBriefUserInfoByIdAsync(currentUser.Id),
             TypeNotification = TypeNotifications.FriendRequest,
             Message = $"User {currentUser.UserName} sent you a friend request. Do you accept?",
             UpdateFriendship = new UpdateFriendshipDto(currentUser.Id, friendship.Id, friendship.Status)
@@ -269,7 +269,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(senderUserFriendship.User);
     }
 
-    public async Task<UserDto> UpdateFriendshipRequest(UpdateFriendshipDto updateFriendshipDto)
+    public async Task<UserDto> UpdateFriendshipRequestAsync(UpdateFriendshipDto updateFriendshipDto)
     {
         var userId = updateFriendshipDto.UserId;
         var friendshipId = updateFriendshipDto.FriendshipId;
@@ -307,7 +307,7 @@ public class UserService : BaseService, IUserService
         return user ?? throw new NotFoundException(nameof(User));
     }
 
-    public async Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto)
+    public async Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto)
     {
         if (userInfoDto is null)
         {
@@ -324,7 +324,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(currentUser);
     }
 
-    public async Task<UserAvatarDto> UpdateUserAvatar(IFormFile image)
+    public async Task<UserAvatarDto> UpdateUserAvatarAsync(IFormFile image)
     {
         if (image is null)
         {

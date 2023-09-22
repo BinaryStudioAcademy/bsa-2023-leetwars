@@ -90,23 +90,23 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("send-friendship-request")]
-    public async Task<ActionResult<UserDto>> SendFriendshipRequest([FromBody] NewFriendshipDto newFriendshipDto)
+    public async Task<ActionResult<UserDto>> SendFriendshipRequestAsync([FromBody] NewFriendshipDto newFriendshipDto)
     {
-        var user = await _userService.SendFriendshipRequest(newFriendshipDto);
+        var user = await _userService.SendFriendshipRequestAsync(newFriendshipDto);
         return Ok(user);
     }
 
     [HttpPut("update-friendship-request")]
-    public async Task<ActionResult<UserDto>> UpdateFriendshipRequest([FromBody] UpdateFriendshipDto updateFriendshipDto)
+    public async Task<ActionResult<UserDto>> UpdateFriendshipRequestAsync([FromBody] UpdateFriendshipDto updateFriendshipDto)
     {
-        var user = await _userService.UpdateFriendshipRequest(updateFriendshipDto);
+        var user = await _userService.UpdateFriendshipRequestAsync(updateFriendshipDto);
         return Ok(user);
     }
     
     [HttpPut]
     public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserInfoDto updateUserInfoDto)
     {
-        var updatedUser = await _userService.UpdateUserInfo(updateUserInfoDto);
+        var updatedUser = await _userService.UpdateUserInfoAsync(updateUserInfoDto);
         
         return Ok(updatedUser);
     }
@@ -114,7 +114,7 @@ public class UsersController : ControllerBase
     [HttpPost("avatar")]
     public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatar([FromForm] IFormFile avatar)
     {
-        var newAvatarUrl = await _userService.UpdateUserAvatar(avatar);
+        var newAvatarUrl = await _userService.UpdateUserAvatarAsync(avatar);
         
         return Ok(newAvatarUrl);
     }

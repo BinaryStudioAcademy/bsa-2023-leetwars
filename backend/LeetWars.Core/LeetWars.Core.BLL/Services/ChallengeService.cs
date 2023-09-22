@@ -159,7 +159,7 @@ namespace LeetWars.Core.BLL.Services
                 var newNotification = new NewNotificationDto()
                 {
                     ReceiverId = briefChallenge.Author.Id.ToString(),
-                    Sender = await _userService.GetBriefUserInfoById(challengeStarDto.AuthorId),
+                    Sender = await _userService.GetBriefUserInfoByIdAsync(challengeStarDto.AuthorId),
                     TypeNotification = TypeNotifications.LikeChallenge,
                     Challenge = briefChallenge
                 };

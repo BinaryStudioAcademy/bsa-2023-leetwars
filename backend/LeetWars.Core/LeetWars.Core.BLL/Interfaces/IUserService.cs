@@ -18,11 +18,11 @@ public interface IUserService
     public Task<UserFullDto> GetFullUserAsync(long id);
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId);
     public Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto);
-    public Task<BriefUserInfoDto> GetBriefUserInfoById(long id);
+    public Task<BriefUserInfoDto> GetBriefUserInfoByIdAsync(long id);
     public Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page);
     public Task<List<UserDto>> GetFriendsLeaderBoardAsync(PageSettingsDto? page);
-    public Task<UserDto> SendFriendshipRequest(NewFriendshipDto newFriendshipDto);
-    public Task<UserDto> UpdateFriendshipRequest(UpdateFriendshipDto updateFriendshipDto);
-    public Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto);
-    public Task<UserAvatarDto> UpdateUserAvatar(IFormFile image);
+    public Task<UserDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto);
+    public Task<UserDto> UpdateFriendshipRequestAsync(UpdateFriendshipDto updateFriendshipDto);
+    public Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto);
+    public Task<UserAvatarDto> UpdateUserAvatarAsync(IFormFile image);
 }
