@@ -6,6 +6,7 @@ using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace LeetWars.Core.DAL.Context
 {
@@ -273,18 +274,15 @@ namespace LeetWars.Core.DAL.Context
             Faker.GlobalUniqueIndex = 0;
 
             var userFriendships = new List<UserFriendship>();
-
-            foreach (var friendship in friendships)
+            foreach (var (friendship, recipientUser, senderUserFriendship) in from friendship in friendships
+                                                                              let faker = new Faker()
+                                                                              let senderUser = faker.PickRandom(users)
+                                                                              let recipientUsers = users.Where(u => u.Id != senderUser.Id).ToList()
+                                                                              let recipientUser = faker.PickRandom(recipientUsers)
+                                                                              let senderUserFriendship = new UserFriendship(senderUser.Id, friendship.Id, true)
+                                                                              select (friendship, recipientUser, senderUserFriendship))
             {
-                var faker = new Faker();
-
-                var senderUser = faker.PickRandom(users);
-                var recipientUsers = users.Where(u => u.Id != senderUser.Id).ToList();
-                var recipientUser = faker.PickRandom(recipientUsers);
-
-                var senderUserFriendship = new UserFriendship(senderUser.Id, friendship.Id, true);
                 userFriendships.Add(senderUserFriendship);
-
                 var recipientUserFriendship = new UserFriendship(recipientUser.Id, friendship.Id, false);
                 userFriendships.Add(recipientUserFriendship);
             }

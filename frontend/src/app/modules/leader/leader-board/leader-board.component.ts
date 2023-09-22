@@ -41,6 +41,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         pageSize: 30,
     };
 
+    private readonly initialPageNumber = 1;
+
     constructor(
         private userService: UserService,
         private toastrNotification: ToastrNotificationsService,
@@ -117,13 +119,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (users) => {
-                    this.loading = false;
-                    if (!users.length) {
-                        this.isLastFriendsPage = true;
-
-                        return;
-                    }
-                    this.usersToShow = users;
+                    this.handleFriendsUpdate(users);
                 },
                 error: () => {
                     this.loading = false;
@@ -201,5 +197,20 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         } else {
             this.usersToShow = this.users;
         }
+    }
+
+    private handleFriendsUpdate(friends: IUser[]) {
+        this.loading = false;
+        if (!friends.length && this.friendsPage.pageNumber === this.initialPageNumber) {
+            this.usersToShow = [];
+
+            return;
+        }
+        if (!friends.length) {
+            this.isLastFriendsPage = true;
+
+            return;
+        }
+        this.usersToShow = friends;
     }
 }
