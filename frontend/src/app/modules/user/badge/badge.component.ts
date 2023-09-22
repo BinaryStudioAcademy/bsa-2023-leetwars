@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { environment } from '@env/environment';
 import { Badge } from '@shared/models/badge/badge';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 
@@ -53,8 +52,6 @@ export class BadgeComponent implements OnInit {
     }
 
     getIconUrl(item: Badge): string {
-        const url = this.isCentered(item) ? item.iconGif : item.icon;
-
-        return `${environment.coreUrl}${url}`;
+        return this.isCentered(item) ? item.iconGif : item.icon;
     }
 }
