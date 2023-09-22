@@ -13,6 +13,8 @@ import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
@@ -37,6 +39,8 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         MonacoEditorModule,
         InfiniteScrollModule,
         ProgressbarModule,
+        NgxPageScrollCoreModule.forRoot(),
+        NgxPageScrollModule,
         MarkdownModule.forRoot(),
         AngularMarkdownEditorModule.forRoot({ iconlibrary: 'fa' }),
     ],
@@ -73,6 +77,8 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         MarkdownModule,
         AngularMarkdownEditorModule,
         InfiniteScrollModule,
+        NgxPageScrollCoreModule,
+        NgxPageScrollModule,
     ],
     providers: [TabsetConfig],
 })
