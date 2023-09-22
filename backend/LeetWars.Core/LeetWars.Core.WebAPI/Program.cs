@@ -54,12 +54,6 @@ app.UseCors(opt => opt
 
 app.UseHttpsRedirection();
 
-app.UseStaticFiles(new StaticFileOptions()
-{
-    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Static")),
-    RequestPath = new PathString("/static")
-});
-
 app.UseRouting();
 
 app.UseAuthentication();

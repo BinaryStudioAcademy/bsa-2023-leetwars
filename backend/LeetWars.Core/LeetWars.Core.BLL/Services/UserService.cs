@@ -21,19 +21,19 @@ namespace LeetWars.Core.BLL.Services;
 public class UserService : BaseService, IUserService
 {
     private readonly IUserGetter _userGetter;
-    private readonly IMessageSenderService _messageSenderService;
+    private readonly IEmailSenderService _emailSenderService;
     private readonly IBlobService _blobService;
     private const int REPUTATION_DIVIDER = 10;
 
     public UserService(LeetWarsCoreContext context,
                        IMapper mapper,
                        IUserGetter userGetter,
-                       IMessageSenderService messageSenderService,
+                       IEmailSenderService emailSenderService,
                        IBlobService blobService
                        ) : base(context, mapper)
     {
         _userGetter = userGetter;
-        _messageSenderService = messageSenderService;
+        _emailSenderService = emailSenderService;
         _blobService = blobService;
     }
 
@@ -75,7 +75,7 @@ public class UserService : BaseService, IUserService
         await _context.SaveChangesAsync();
 
         var welcomeEmail = EmailGenerator.GenerateWelcomeEmail(createdUser.UserName, createdUser.Email);
-        _messageSenderService.SendMessageToRabbitMQ(welcomeEmail);
+        _emailSenderService.SendEmailMessageToRabbitMQ(welcomeEmail);
 
         return _mapper.Map<UserDto>(createdUser);
     }
@@ -113,9 +113,7 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserDto> GetCurrentUserAsync()
     {
-        var userStringId = _userGetter.CurrentUserId;
-
-        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
+        var user = await GetCurrentUserEntityAsync();
 
         return _mapper.Map<UserDto>(user);
     }
@@ -189,10 +187,19 @@ public class UserService : BaseService, IUserService
         if (page is not null)
         {
             users = users.Skip(page.PageSize * (page.PageNumber - 1))
-                .Take(page.PageSize);
+                         .Take(page.PageSize);
         }
 
         return _mapper.Map<List<UserDto>>(await users.ToListAsync());
+    }
+
+
+    private async Task<User> GetCurrentUserEntityAsync()
+    {
+        var userStringId = _userGetter.CurrentUserId;
+        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
+
+        return user ?? throw new NotFoundException(nameof(User));
     }
 
     public async Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto)
