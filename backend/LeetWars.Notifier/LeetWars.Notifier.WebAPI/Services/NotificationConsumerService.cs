@@ -39,7 +39,6 @@ namespace LeetWars.Notifier.WebAPI.Services
             });
 
             _consumerService.Listen(handler);
-            return;
         }
 
         private async Task SendNotificationAsync(NewNotificationDto notificationDto)
