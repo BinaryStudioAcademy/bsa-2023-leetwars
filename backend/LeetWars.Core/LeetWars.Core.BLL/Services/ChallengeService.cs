@@ -259,7 +259,7 @@ namespace LeetWars.Core.BLL.Services
                     .Where(x => x.Level != null && x.Level.SkillLevel == level)
                     .AsQueryable();
 
-                var randomPosition = GetRandomInt(challengesByLevel.Count());
+                var randomPosition = GetRandomInt(await challengesByLevel.CountAsync());
                 var weeklyChallenge = await challengesByLevel.Skip(randomPosition).FirstOrDefaultAsync();
                 if (weeklyChallenge is not null)
                 {
