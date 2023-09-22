@@ -1,7 +1,8 @@
 using System.Runtime.CompilerServices;
 using LeetWars.Core.BLL.Services;
+using LeetWars.Core.Common.Extensions;
+using LeetWars.Core.Common.Filters;
 using LeetWars.Core.WebAPI.Extentions;
-using LeetWars.Core.WebAPI.Filters;
 using LeetWars.Core.WebAPI.Middlewares;
 using LeetWars.Core.WebAPI.Settings;
 using Microsoft.Extensions.FileProviders;
@@ -45,7 +46,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseMiddleware<GenericExceptionHandlerMiddleware>();
+app.ConfigureCustomExceptionMiddleware();
 
 app.UseCors(opt => opt
     .AllowAnyHeader()

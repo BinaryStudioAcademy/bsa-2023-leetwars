@@ -1,6 +1,7 @@
 using LeetWars.Core.Common.DTO.Mail;
 using LeetWars.Emailer.Extensions;
 using LeetWars.Emailer.Interfaces;
+using LeetWars.Core.Common.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ app.UseCors(opt => opt
     .AllowAnyOrigin());
 
 app.UseHttpsRedirection();
+
+app.ConfigureCustomExceptionMiddleware();
 
 app.MapPost("/emailer/sendEmail", (IMailService mailService, MailDto mailDto) =>
 {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
-using LeetWars.Core.WebAPI.Extentions;
+using LeetWars.Core.Common.Extentions;
 
-namespace LeetWars.Core.WebAPI.Filters
+namespace LeetWars.Core.Common.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class CustomExceptionFilterAttribute : ExceptionFilterAttribute

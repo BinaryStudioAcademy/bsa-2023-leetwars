@@ -1,4 +1,9 @@
-﻿namespace LeetWars.Core.WebAPI.Middlewares
+﻿using LeetWars.Core.BLL.Exceptions;
+using LeetWars.Core.Common.Exceptions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+namespace LeetWars.Core.Common.GlobalMiddlewares
 {
     public class GenericExceptionHandlerMiddleware
     {
@@ -34,6 +39,9 @@
             context.Response.StatusCode = exception switch
             {
                 ArgumentNullException => 400,
+                AccessDeniedException => 401,
+                NotFoundException => 404,
+                InvalidTokenException => 498,
                 _ => 500
             };
 

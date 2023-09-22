@@ -1,4 +1,4 @@
-﻿namespace LeetWars.Core.BLL.Extensions
+﻿namespace LeetWars.Core.Common.Extensions
 {
     public static class StringExtensions
     {

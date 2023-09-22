@@ -2,7 +2,7 @@
 using LeetWars.Core.DAL.Enums;
 using System.Net;
 
-namespace LeetWars.Core.WebAPI.Extentions
+namespace LeetWars.Core.Common.Extentions
 {
     public static class ExceptionFilterExtensions
     {

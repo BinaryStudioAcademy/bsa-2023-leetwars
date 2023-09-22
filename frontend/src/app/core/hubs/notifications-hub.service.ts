@@ -46,7 +46,7 @@ export class NotificationHubService {
             .then(() => console.info(`"${this.hubFactory}" successfully started.`))
             .catch(() => console.info(`"${this.hubFactory}" failed.`));
 
-        this.hubConnection.on('SendNotification', (msg: INotificationModel) => {
+        this.hubConnection.on('SendNotificationAsync', (msg: INotificationModel) => {
             this.messages.next(msg);
         });
 

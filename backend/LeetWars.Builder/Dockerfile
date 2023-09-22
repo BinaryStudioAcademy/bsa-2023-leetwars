@@ -7,6 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
 COPY ["LeetWars.Builder/Leetwars.Builder.WebAPI/LeetWars.Builder.WebAPI.csproj", "LeetWars.Builder/Leetwars.Builder.WebAPI/"]
 COPY ["LeetWars.Core/LeetWars.Core.Common/LeetWars.Core.Common.csproj", "LeetWars.Core/LeetWars.Core.Common/"]
+COPY ["LeetWars.RabbitMQ/LeetWars.RabbitMQ.csproj", "LeetWars.RabbitMQ/"]
 
 RUN dotnet restore "LeetWars.Builder/Leetwars.Builder.WebAPI/LeetWars.Builder.WebAPI.csproj"
 COPY . .
