@@ -117,9 +117,13 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(version => version.Language)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
-                        .ThenInclude(solution => solution.User)
-                .Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId))
+                        .ThenInclude(solution => solution.User)  
                 .AsQueryable();
+
+            if (settings.LanguageId is not 0)
+            {
+                challenges = challenges.Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId));
+            }
 
             challenges = await FilterChallengesBySuggestionTypeAsync(challenges, settings);
 
