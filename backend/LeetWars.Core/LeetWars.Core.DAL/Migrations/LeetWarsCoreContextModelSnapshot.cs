@@ -881,11 +881,6 @@ namespace LeetWars.Core.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<int>("Reward")
                         .HasColumnType("int");
 
@@ -901,30 +896,26 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            Name = "Easy",
                             Reward = 10,
                             SkillLevel = 0
                         },
                         new
                         {
                             Id = 2L,
-                            Name = "Medium",
                             Reward = 20,
-                            SkillLevel = 0
+                            SkillLevel = 1
                         },
                         new
                         {
                             Id = 3L,
-                            Name = "Difficult",
                             Reward = 30,
-                            SkillLevel = 0
+                            SkillLevel = 2
                         },
                         new
                         {
                             Id = 4L,
-                            Name = "Extreme",
                             Reward = 40,
-                            SkillLevel = 0
+                            SkillLevel = 3
                         });
                 });
 

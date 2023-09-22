@@ -256,7 +256,6 @@ namespace LeetWars.Core.DAL.Context
                 .RuleFor(p => p.RegisteredAt, f => f.Date.Between(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc), DateTime.Now))
                 .Generate(count);
         }
-
         private static ICollection<Friendship> GenerateFriendships(int count = 30)
         {
             Faker.GlobalUniqueIndex = 0;

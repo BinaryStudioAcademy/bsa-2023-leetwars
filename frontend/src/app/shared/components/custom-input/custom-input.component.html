@@ -13,6 +13,7 @@
             (blur)="onTouchedFn()"
             (ngModelChange)="onInputChange($event)"
             (keydown)="onPasswordKeyDown($event)"
+            [disabled]="disabled"
             required
             placeholder="{{ InputPlaceholder }}"/>
         <button *ngIf="Identifier === 'password'" class="hide-password" (click)="togglePasswordVisibility()">
