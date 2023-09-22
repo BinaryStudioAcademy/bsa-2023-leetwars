@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsComponent } from '@shared/components/notifications/notifications.component';
+import { TypeNotification } from '@shared/enums/type-notification';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 
 @Injectable({
@@ -8,6 +9,8 @@ import { INotificationModel } from '@shared/models/notifications/notifications';
 })
 export class NotificationService {
     private notifications: INotificationModel[] = [];
+
+    private strongNotifications: TypeNotification[] = [TypeNotification.FriendRequest];
 
     private notificationModal: NgbModalRef;
 
@@ -27,7 +30,7 @@ export class NotificationService {
         this.notificationModal.componentInstance.notifications = this.notifications;
 
         this.notificationModal.hidden.subscribe(() => {
-            this.notifications = [];
+            this.filterCurrentNotifications(this.strongNotifications);
         });
 
         this.notificationModal.closed.subscribe((nofitications: INotificationModel[]) => {
@@ -41,5 +44,9 @@ export class NotificationService {
 
     public get countNotification() {
         return this.notifications.length;
+    }
+
+    private filterCurrentNotifications(notificationTypes: TypeNotification[]) {
+        this.notifications = this.notifications.filter((n) => notificationTypes.includes(n.typeNotification));
     }
 }

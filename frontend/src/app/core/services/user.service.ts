@@ -1,5 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { INewFriendship } from '@shared/models/friendship/new-friendship';
+import { IUpdateFriendship } from '@shared/models/friendship/update-friendship';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IEditUser } from '@shared/models/user/edit-user';
 import { IEditUserInfo } from '@shared/models/user/edit-user-info';
@@ -63,7 +65,23 @@ export class UserService {
         return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/leader-board`, httpParams);
     }
 
+    public getFriendsLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
+        let httpParams = new HttpParams();
+
+        httpParams = setParams<IPageSettings>(httpParams, page);
+
+        return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/friends-leader-board`, httpParams);
+    }
+
     public updateUserRank(userDto: IEditUser): Observable<IUserFull> {
         return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
+    }
+
+    public sendFriendshipRequest(newFriendship: INewFriendship): Observable<IUser> {
+        return this.httpService.postRequest<IUser>(`${this.baseUrl}/send-friendship-request`, newFriendship);
+    }
+
+    public updateFriendshipRequest(updateFriendship: IUpdateFriendship): Observable<IUser> {
+        return this.httpService.putRequest<IUser>(`${this.baseUrl}/update-friendship-request`, updateFriendship);
     }
 }
