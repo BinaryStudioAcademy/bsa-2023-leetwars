@@ -18,9 +18,6 @@
     cursor: pointer
     padding-left: 20px
 
-.user-menu
-    justify-self: end
-
 .notification
     margin-right: 2rem
     cursor: pointer
@@ -41,12 +38,20 @@
     .modal-body, .modal-footer, button
         color: $white
 
+.user-menu
+    justify-self: end
+    gap: 20px
+
 .user
     display: flex
+    gap: 5px
     position: relative
     align-items: center
     cursor: pointer
     padding-right: 1rem
+
+.icon-bell
+    color: $white
 
 .user-logo
   width: 50px
@@ -56,9 +61,11 @@
   object-fit: cover
 
 .username
-    color: $transparent-grey
+    color: $white
     font-family: "Open Sans", sans-serif
     font-size: 0.9rem
+    &:hover
+        color: $green
     @media screen and (max-width: $large)
         max-width: 100px
         white-space: nowrap
