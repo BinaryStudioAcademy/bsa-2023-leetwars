@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ColorConstants } from '@shared/constants/color-constants';
-import { LanguageLevel } from '@shared/enums/languageLevel';
+import { LanguageLevel } from '@shared/enums/language-level';
 
 export interface IBar {
     Label: LanguageLevel;
