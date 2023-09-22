@@ -28,6 +28,8 @@ namespace LeetWars.Core.DAL.Entities
         public ICollection<Challenge> Challenges { get; } = new List<Challenge>();
         public ICollection<ChallengeVersion> ChallengeVersions { get; } = new List<ChallengeVersion>();
         public ICollection<UserBadge> UserBadges { get; } = new List<UserBadge>();
+        public ICollection<Friendship> Friendships { get; } = new List<Friendship>();
+        public ICollection<UserFriendship> UserFriendships { get; } = new List<UserFriendship>();
 
         public User() { }
 

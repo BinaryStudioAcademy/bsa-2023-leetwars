@@ -2,7 +2,7 @@ using System.Security.Claims;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
-
+using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -73,6 +73,13 @@ public class UsersController : ControllerBase
         var users = await _userService.GetLeaderBoardAsync(page);
         return Ok(users);
     }    
+    
+    [HttpGet("friends-leader-board")]
+    public async Task<ActionResult<List<UserDto>>> GetFriendsLeaderBoardAsync([FromQuery] PageSettingsDto page)
+    {
+        var users = await _userService.GetFriendsLeaderBoardAsync(page);
+        return Ok(users);
+    }
 
     [HttpPut]
     [Route("rank")]
@@ -80,6 +87,20 @@ public class UsersController : ControllerBase
     {
         var updatedUser = await _userService.UpdateUserRankAsync(userDto);
         return Ok(updatedUser);
+    }
+
+    [HttpPost("send-friendship-request")]
+    public async Task<ActionResult<UserDto>> SendFriendshipRequest([FromBody] NewFriendshipDto newFriendshipDto)
+    {
+        var user = await _userService.SendFriendshipRequest(newFriendshipDto);
+        return Ok(user);
+    }
+
+    [HttpPut("update-friendship-request")]
+    public async Task<ActionResult<UserDto>> UpdateFriendshipRequest([FromBody] UpdateFriendshipDto updateFriendshipDto)
+    {
+        var user = await _userService.UpdateFriendshipRequest(updateFriendshipDto);
+        return Ok(user);
     }
     
     [HttpPut]

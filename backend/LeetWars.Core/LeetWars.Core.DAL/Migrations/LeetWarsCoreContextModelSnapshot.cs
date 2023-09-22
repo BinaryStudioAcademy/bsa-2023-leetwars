@@ -4161,7 +4161,208 @@ namespace LeetWars.Core.DAL.Migrations
                             Status = 0,
                             TestCases = "dolor"
                         });
-                });     
+                });
+
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.Friendship", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Friendships");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2023, 9, 16, 3, 58, 40, 588, DateTimeKind.Local).AddTicks(5138),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2023, 9, 9, 15, 35, 4, 989, DateTimeKind.Local).AddTicks(6127),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2023, 9, 17, 0, 28, 4, 313, DateTimeKind.Local).AddTicks(4787),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedAt = new DateTime(2023, 9, 12, 17, 43, 56, 387, DateTimeKind.Local).AddTicks(7631),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreatedAt = new DateTime(2023, 9, 17, 22, 43, 43, 210, DateTimeKind.Local).AddTicks(5168),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CreatedAt = new DateTime(2023, 9, 10, 14, 7, 26, 335, DateTimeKind.Local).AddTicks(3288),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CreatedAt = new DateTime(2023, 9, 17, 21, 3, 41, 977, DateTimeKind.Local).AddTicks(5268),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CreatedAt = new DateTime(2023, 9, 12, 23, 8, 42, 364, DateTimeKind.Local).AddTicks(7410),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CreatedAt = new DateTime(2023, 9, 12, 9, 16, 13, 343, DateTimeKind.Local).AddTicks(4768),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CreatedAt = new DateTime(2023, 9, 9, 3, 44, 16, 994, DateTimeKind.Local).AddTicks(9071),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            CreatedAt = new DateTime(2023, 9, 15, 14, 57, 26, 562, DateTimeKind.Local).AddTicks(2977),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            CreatedAt = new DateTime(2023, 9, 17, 16, 29, 59, 104, DateTimeKind.Local).AddTicks(369),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            CreatedAt = new DateTime(2023, 9, 15, 21, 55, 43, 180, DateTimeKind.Local).AddTicks(1840),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            CreatedAt = new DateTime(2023, 9, 13, 23, 53, 12, 452, DateTimeKind.Local).AddTicks(984),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            CreatedAt = new DateTime(2023, 9, 10, 20, 58, 16, 813, DateTimeKind.Local).AddTicks(4098),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            CreatedAt = new DateTime(2023, 9, 9, 6, 16, 13, 230, DateTimeKind.Local).AddTicks(2882),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            CreatedAt = new DateTime(2023, 9, 18, 2, 38, 6, 294, DateTimeKind.Local).AddTicks(1542),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            CreatedAt = new DateTime(2023, 9, 13, 6, 4, 46, 85, DateTimeKind.Local).AddTicks(3201),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 19L,
+                            CreatedAt = new DateTime(2023, 9, 16, 1, 46, 6, 411, DateTimeKind.Local).AddTicks(4170),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            CreatedAt = new DateTime(2023, 9, 11, 3, 32, 56, 253, DateTimeKind.Local).AddTicks(4294),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 21L,
+                            CreatedAt = new DateTime(2023, 9, 18, 1, 36, 46, 264, DateTimeKind.Local).AddTicks(7480),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 22L,
+                            CreatedAt = new DateTime(2023, 9, 16, 17, 11, 34, 190, DateTimeKind.Local).AddTicks(2458),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 23L,
+                            CreatedAt = new DateTime(2023, 9, 14, 10, 54, 59, 247, DateTimeKind.Local).AddTicks(1863),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 24L,
+                            CreatedAt = new DateTime(2023, 9, 11, 7, 1, 49, 486, DateTimeKind.Local).AddTicks(4872),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 25L,
+                            CreatedAt = new DateTime(2023, 9, 15, 9, 2, 27, 41, DateTimeKind.Local).AddTicks(2980),
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 26L,
+                            CreatedAt = new DateTime(2023, 9, 9, 17, 15, 59, 165, DateTimeKind.Local).AddTicks(6348),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 27L,
+                            CreatedAt = new DateTime(2023, 9, 13, 19, 35, 52, 87, DateTimeKind.Local).AddTicks(7274),
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = 28L,
+                            CreatedAt = new DateTime(2023, 9, 18, 19, 15, 58, 384, DateTimeKind.Local).AddTicks(5294),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 29L,
+                            CreatedAt = new DateTime(2023, 9, 17, 7, 55, 33, 861, DateTimeKind.Local).AddTicks(3360),
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 30L,
+                            CreatedAt = new DateTime(2023, 9, 17, 13, 21, 47, 801, DateTimeKind.Local).AddTicks(6090),
+                            Status = 0
+                        });
+                });
 
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.HelperEntities.ChallengeVersionLanguageVersion", b =>
                 {
@@ -9227,6 +9428,386 @@ namespace LeetWars.Core.DAL.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserFriendship", b =>
+                {
+                    b.Property<long>("FriendshipId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsSender")
+                        .HasColumnType("bit");
+
+                    b.HasKey("FriendshipId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserFriendships");
+
+                    b.HasData(
+                        new
+                        {
+                            FriendshipId = 1L,
+                            UserId = 29L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 1L,
+                            UserId = 11L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 2L,
+                            UserId = 38L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 2L,
+                            UserId = 27L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 3L,
+                            UserId = 26L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 3L,
+                            UserId = 35L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 4L,
+                            UserId = 13L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 4L,
+                            UserId = 6L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 5L,
+                            UserId = 12L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 5L,
+                            UserId = 17L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 6L,
+                            UserId = 13L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 6L,
+                            UserId = 40L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 7L,
+                            UserId = 20L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 7L,
+                            UserId = 35L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 8L,
+                            UserId = 10L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 8L,
+                            UserId = 27L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 9L,
+                            UserId = 32L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 9L,
+                            UserId = 33L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 10L,
+                            UserId = 20L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 10L,
+                            UserId = 35L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 11L,
+                            UserId = 29L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 11L,
+                            UserId = 11L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 12L,
+                            UserId = 40L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 12L,
+                            UserId = 21L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 13L,
+                            UserId = 18L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 13L,
+                            UserId = 32L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 14L,
+                            UserId = 22L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 14L,
+                            UserId = 2L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 15L,
+                            UserId = 2L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 15L,
+                            UserId = 39L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 16L,
+                            UserId = 22L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 16L,
+                            UserId = 2L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 17L,
+                            UserId = 18L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 17L,
+                            UserId = 14L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 18L,
+                            UserId = 4L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 18L,
+                            UserId = 17L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 19L,
+                            UserId = 31L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 19L,
+                            UserId = 34L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 20L,
+                            UserId = 40L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 20L,
+                            UserId = 12L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 21L,
+                            UserId = 33L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 21L,
+                            UserId = 20L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 22L,
+                            UserId = 23L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 22L,
+                            UserId = 37L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 23L,
+                            UserId = 37L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 23L,
+                            UserId = 2L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 24L,
+                            UserId = 27L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 24L,
+                            UserId = 9L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 25L,
+                            UserId = 38L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 25L,
+                            UserId = 27L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 26L,
+                            UserId = 27L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 26L,
+                            UserId = 5L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 27L,
+                            UserId = 3L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 27L,
+                            UserId = 37L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 28L,
+                            UserId = 23L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 28L,
+                            UserId = 9L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 29L,
+                            UserId = 12L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 29L,
+                            UserId = 8L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 30L,
+                            UserId = 27L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 30L,
+                            UserId = 18L,
+                            IsSender = false
+                        });
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserLanguageLevel", b =>
                 {
                     b.Property<long>("UserId")
@@ -11432,6 +12013,25 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserFriendship", b =>
+                {
+                    b.HasOne("LeetWars.Core.DAL.Entities.Friendship", "Friendship")
+                        .WithMany("UserFriendships")
+                        .HasForeignKey("FriendshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "User")
+                        .WithMany("UserFriendships")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Friendship");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserLanguageLevel", b =>
                 {
                     b.HasOne("LeetWars.Core.DAL.Entities.Language", "Language")
@@ -11502,6 +12102,11 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("Solutions");
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.Friendship", b =>
+                {
+                    b.Navigation("UserFriendships");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.Language", b =>
                 {
                     b.Navigation("LanguageVersions");
@@ -11525,6 +12130,8 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("Subscriptions");
 
                     b.Navigation("UserBadges");
+
+                    b.Navigation("UserFriendships");
                 });
 #pragma warning restore 612, 618
         }

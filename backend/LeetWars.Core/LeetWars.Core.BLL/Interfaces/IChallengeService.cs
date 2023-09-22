@@ -17,6 +17,7 @@ namespace LeetWars.Core.BLL.Interfaces
         Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto);
         Task DeleteChallengeAsync(long challengeId);
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
+        Task<List<ChallengeLevelDto>> GetChallengesLevelsAsync();
         Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto);
     }
 }
