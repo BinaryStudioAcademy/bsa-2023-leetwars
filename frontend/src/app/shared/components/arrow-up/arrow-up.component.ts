@@ -26,10 +26,6 @@ export class ArrowUpComponent implements OnInit {
     public updateArrowButton() {
         const currentScrollHeight = window.scrollY;
 
-        if (currentScrollHeight > this.heightWhereScrollAppears) {
-            this.showArrowButton = true;
-        } else {
-            this.showArrowButton = false;
-        }
+        this.showArrowButton = currentScrollHeight > this.heightWhereScrollAppears;
     }
 }
