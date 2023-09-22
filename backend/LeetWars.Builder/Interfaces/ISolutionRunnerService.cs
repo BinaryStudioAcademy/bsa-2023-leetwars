@@ -5,7 +5,7 @@ namespace LeetWars.Builder.Interfaces
 {
     public interface ISolutionRunnerService
     {
-        Task<string> RunSolutionBuild(ContainerDataDto data);
+        Task<string> RunSolutionBuildAsync(ContainerDataDto data);
         Task<TestsOutput?> RunSolutionTestsAsync(ContainerDataDto data);
     }
 }

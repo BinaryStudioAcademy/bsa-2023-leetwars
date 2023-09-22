@@ -39,7 +39,7 @@ namespace LeetWars.Builder.Services
 
                 if (request != null && Languages.AvailableLanguages.Contains(request.Language))
                 {
-                    var result = await _codeRunManagerService.Run(request);
+                    var result = await _codeRunManagerService.RunAsync(request);
 
                     var settings = new JsonSerializerSettings
                     {

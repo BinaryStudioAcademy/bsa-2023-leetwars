@@ -9,6 +9,5 @@ namespace LeetWars.RabbitMQ.Interfaces;
 public interface IGeneralConsumerService : IDisposable
 {
     void Listen(EventHandler<BasicDeliverEventArgs> messageReceivedHandler);
-    void ListenAsync(AsyncEventHandler<BasicDeliverEventArgs> messageReceivedHandler);
     void SetAcknowledge(ulong deliveryTag, bool processed);
 }

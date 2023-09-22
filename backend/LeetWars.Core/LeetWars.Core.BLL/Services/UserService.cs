@@ -118,7 +118,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(user);
     }
 
-    public async Task<BriefUserInfoDto> GetBriefUserInfoById(long id)
+    public async Task<BriefUserInfoDto> GetBriefUserInfoByIdAsync(long id)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == id);
 
@@ -202,7 +202,7 @@ public class UserService : BaseService, IUserService
         return user ?? throw new NotFoundException(nameof(User));
     }
 
-    public async Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto)
+    public async Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto)
     {
         if (userInfoDto is null)
         {
@@ -219,7 +219,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(currentUser);
     }
 
-    public async Task<UserAvatarDto> UpdateUserAvatar(IFormFile image)
+    public async Task<UserAvatarDto> UpdateUserAvatarAsync(IFormFile image)
     {
         if (image is null)
         {

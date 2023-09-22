@@ -20,7 +20,7 @@ namespace LeetWars.Builder.Services
             _tarManagementService = tarManagementService;
         }
 
-        public async Task<string> RunSolutionBuild(ContainerDataDto data)
+        public async Task<string> RunSolutionBuildAsync(ContainerDataDto data)
         {
             return data.Language switch 
             {

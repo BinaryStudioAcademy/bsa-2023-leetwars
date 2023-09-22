@@ -38,9 +38,8 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ChallengeFullDto>> GetById(long id)
+        public async Task<ActionResult<ChallengeFullDto>> GetByIdAsync(long id)
         {
-            
             var challenges = await _challengeService.GetChallengeFullDtoByIdAsync(id);
             return Ok(challenges);
         }
@@ -60,19 +59,19 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpPut("edit")]
-        public async Task<ActionResult<ChallengePreviewDto>> EditChallenge([FromBody] ChallengeEditDto challengeEditDto)
+        public async Task<ActionResult<ChallengePreviewDto>> EditChallengeAsync([FromBody] ChallengeEditDto challengeEditDto)
         {
             return Ok(await _challengeService.EditChallengeAsync(challengeEditDto));
         }
 
         [HttpPut]
-        public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
+        public async Task<ActionResult<ChallengePreviewDto>> UpdateStarAsync([FromBody] ChallengeStarDto challengeStarDto)
         {
             return Ok(await _challengeService.UpdateStarAsync(challengeStarDto));
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteChallenge(long id)
+        public async Task<ActionResult> DeleteChallengeAsync(long id)
         {
             await _challengeService.DeleteChallengeAsync(id);
             return NoContent();

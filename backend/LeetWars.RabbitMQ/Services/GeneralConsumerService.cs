@@ -24,11 +24,6 @@ public class GeneralConsumerService : IGeneralConsumerService
         ConsumerSetupHelperService.ListenSetup(messageReceivedHandler, _channel, _settings);
     }
 
-    public void ListenAsync(AsyncEventHandler<BasicDeliverEventArgs> messageReceivedHandler)
-    {
-        ConsumerSetupHelperService.ListenAsyncSetup(messageReceivedHandler, _channel, _settings);
-    }
-
     public void SetAcknowledge(ulong deliveryTag, bool processed)
     {
         ConsumerSetupHelperService.SetAcknowledgeSetup(deliveryTag, processed, _channel);

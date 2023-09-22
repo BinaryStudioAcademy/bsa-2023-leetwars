@@ -21,14 +21,6 @@ namespace LeetWars.Emailer.Services
             _sendGridClient = new SendGridClient(apiKey);
         }
 
-        private async Task SendEmailAsync(MailDto mailDto)
-        {
-            var senderEmail = new EmailAddress(_configuration["Email"], _configuration["EmailSenderName"]);
-            var receiverEmail = new EmailAddress(mailDto.ReceiverEmail);
-            var message = MailHelper.CreateSingleEmail(senderEmail, receiverEmail, mailDto.Subject, mailDto.Content, mailDto.Content);
-            await _sendGridClient.SendEmailAsync(message);
-        }
-
         public async Task<IResult> SendWithValidationCheckAsync(MailDto mailDto)
         {
             ValidationResult validationResult = await _validator.ValidateAsync(mailDto);
@@ -39,6 +31,14 @@ namespace LeetWars.Emailer.Services
 
             await SendEmailAsync(mailDto);
             return Results.Created($"/{mailDto.ReceiverEmail}", mailDto);
+        }
+
+        private async Task SendEmailAsync(MailDto mailDto)
+        {
+            var senderEmail = new EmailAddress(_configuration["Email"], _configuration["EmailSenderName"]);
+            var receiverEmail = new EmailAddress(mailDto.ReceiverEmail);
+            var message = MailHelper.CreateSingleEmail(senderEmail, receiverEmail, mailDto.Subject, mailDto.Content, mailDto.Content);
+            await _sendGridClient.SendEmailAsync(message);
         }
     }
 }

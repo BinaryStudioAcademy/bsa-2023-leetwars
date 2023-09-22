@@ -44,9 +44,14 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
     public user: IUser;
 
-    async ngOnInit() {
+    public async ngOnInit() {
         await this.notificationHub.start();
         this.listeningHub();
+    }
+
+    public override ngOnDestroy() {
+        this.notificationHub.stop();
+        super.ngOnDestroy();
     }
 
     showNotifications() {
@@ -93,10 +98,5 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.notificationHub.listenMessages((msg: INotificationModel) => {
             this.notificationService.addNotification(msg);
         });
-    }
-
-    override ngOnDestroy() {
-        this.notificationHub.stop();
-        super.ngOnDestroy();
     }
 }

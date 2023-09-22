@@ -19,7 +19,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             _hubContext = hubContext;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
@@ -39,6 +39,8 @@ namespace LeetWars.Notifier.WebAPI.Services
             });
 
             _consumerService.Listen(handler);
+
+            return Task.CompletedTask;
         }
 
         private async Task SendNotificationAsync(NewNotificationDto notificationDto)
@@ -46,12 +48,12 @@ namespace LeetWars.Notifier.WebAPI.Services
             switch (notificationDto.TypeNotification)
             {
                 case TypeNotifications.NewChallenge:
-                    await _hubContext.Clients.All.SendNotification(notificationDto);
+                    await _hubContext.Clients.All.SendNotificationAsync(notificationDto);
                     break;
                 case TypeNotifications.LikeChallenge:
                     if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
                     {
-                        await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotification(notificationDto);
+                        await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotificationAsync(notificationDto);
                     }
                     break;
                 default:

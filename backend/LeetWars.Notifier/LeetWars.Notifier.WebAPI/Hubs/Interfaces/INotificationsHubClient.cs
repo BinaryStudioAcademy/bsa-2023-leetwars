@@ -4,6 +4,6 @@ namespace LeetWars.Notifier.WebAPI.Hubs.Interfaces
 {
     public interface INotificationsHubClient
     {
-        Task SendNotification(NewNotificationDto newNotification);
+        Task SendNotificationAsync(NewNotificationDto newNotification);
     }
 }

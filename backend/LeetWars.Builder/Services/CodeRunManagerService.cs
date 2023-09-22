@@ -16,7 +16,7 @@ namespace LeetWars.Builder.Services
             _solutionRunner = solutionRunner;
         }
 
-        public async Task<CodeRunResults> Run(CodeRunRequest request)
+        public async Task<CodeRunResults> RunAsync(CodeRunRequest request)
         {
             var result = new CodeRunResults
             {
@@ -35,7 +35,7 @@ namespace LeetWars.Builder.Services
         {
             string buildProcessName = request.UserConnectionId + DateTime.UtcNow.Ticks + "-build";
 
-            var buildLog = await _solutionRunner.RunSolutionBuild(new ContainerDataDto(buildProcessName, request.Language, request.UserCode, request.Tests ?? "", request.Preloaded ?? ""));
+            var buildLog = await _solutionRunner.RunSolutionBuildAsync(new ContainerDataDto(buildProcessName, request.Language, request.UserCode, request.Tests ?? "", request.Preloaded ?? ""));
 
             _buildResultBuilder.BuildResults(buildLog, result, result.Language);
 

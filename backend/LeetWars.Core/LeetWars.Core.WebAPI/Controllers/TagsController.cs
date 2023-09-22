@@ -10,6 +10,8 @@ namespace LeetWars.Core.WebAPI.Controllers
     [Route("[controller]")]
     public class TagsController : ControllerBase
     {
+        private readonly ITagService _tagService;
+
         public TagsController(ITagService tagService)
         {
             _tagService = tagService;
@@ -21,7 +23,5 @@ namespace LeetWars.Core.WebAPI.Controllers
             var tags = await _tagService.GetAllTagsAsync();
             return Ok(tags);
         }
-
-        private readonly ITagService _tagService;
     }
 }

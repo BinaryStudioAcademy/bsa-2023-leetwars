@@ -10,6 +10,8 @@ namespace LeetWars.Core.WebAPI.Controllers
     [Route("[controller]")]
     public class LanguageController : ControllerBase
     {
+        private readonly ILanguageService _languageService;
+
         public LanguageController(ILanguageService languageService)
         {
             _languageService = languageService;
@@ -21,7 +23,5 @@ namespace LeetWars.Core.WebAPI.Controllers
             var languages = await _languageService.GetAllLanguageAsync();
             return Ok(languages);
         }
-
-        private readonly ILanguageService _languageService;
     }
 }

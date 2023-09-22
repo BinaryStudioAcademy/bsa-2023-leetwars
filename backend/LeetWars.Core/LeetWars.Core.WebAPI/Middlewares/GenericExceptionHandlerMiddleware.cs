@@ -23,11 +23,11 @@
                 _logger.LogError($"Something went wrong: {ex}");
                 #pragma warning restore CA2254
 
-                await HandleException(context, ex);
+                await HandleExceptionAsync(context, ex);
             }
         }
 
-        private static Task HandleException(HttpContext context, Exception exception)
+        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             context.Response.ContentType = "application/json";
 

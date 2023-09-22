@@ -40,19 +40,18 @@ namespace LeetWars.Core.WebAPI.Logic
             return _user ?? throw new InvalidTokenException(_id);
         }
 
-        public async Task SetUserId(string userId)
+        public async Task SetUserIdAsync(string userId)
         {
             if (_id != userId)
             {
-                _user = await GetCurrentUserEntity(userId);
+                _user = await GetCurrentUserEntityAsync(userId);
                 _id = _user?.Uid ?? "";
             }
         }
         
-        private async Task<User?> GetCurrentUserEntity(string uid)
+        private async Task<User?> GetCurrentUserEntityAsync(string uid)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Uid == uid);
         }
-
     }
 }

@@ -4,6 +4,6 @@ namespace LeetWars.Builder.Interfaces
 {
     public interface ICodeRunManagerService
     {
-        Task<CodeRunResults> Run(CodeRunRequest request);
+        Task<CodeRunResults> RunAsync(CodeRunRequest request);
     }
 }

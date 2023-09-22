@@ -17,7 +17,7 @@ namespace LeetWars.Core.WebAPI.Middlewares
             
             if (userId is not null)
             {
-                await userSetter.SetUserId(userId);
+                await userSetter.SetUserIdAsync(userId);
             }
 
             await _next.Invoke(context);
