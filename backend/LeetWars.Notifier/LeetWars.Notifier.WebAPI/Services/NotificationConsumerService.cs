@@ -28,28 +28,36 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 var notificationDto = JsonSerializer.Deserialize<NewNotificationDto>(message);
 
-                if (notificationDto != null)
+                if(notificationDto is null)
                 {
-                    await SendNotificationAsync(notificationDto);
+                    return;
                 }
 
-                _consumerService.SetAcknowledge(args.DeliveryTag, false);
+                await SendNotificationAsync(notificationDto!);
+
+                _consumerService.SetAcknowledge(args.DeliveryTag, true);
             });
 
             _consumerService.Listen(handler);
-            await Task.CompletedTask;
         }
 
         private async Task SendNotificationAsync(NewNotificationDto notificationDto)
         {
-            await (notificationDto?.TypeNotification switch
+            switch (notificationDto.TypeNotification)
             {
-                TypeNotifications.NewChallenge => 
-                    _hubContext.Clients.All.SendNotification(notificationDto),
-                TypeNotifications.LikeChallenge when notificationDto.ReceiverId != null => 
-                    _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotification(notificationDto),
-                _ => Task.CompletedTask
-            });
+                case TypeNotifications.NewChallenge:
+                    await _hubContext.Clients.All.SendNotification(notificationDto);
+                    break;
+                case TypeNotifications.LikeChallenge:
+                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
+                    {
+                        await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotification(notificationDto);
+                    }
+                    break;
+                default:
+                    await Task.CompletedTask;
+                    break;
+            }
         }
     }
 }

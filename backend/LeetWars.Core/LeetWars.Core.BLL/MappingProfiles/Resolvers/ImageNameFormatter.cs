@@ -8,17 +8,15 @@ using LeetWars.Core.WebAPI.Settings;
 
 namespace LeetWars.Core.BLL.MappingProfiles.Resolvers;
 
-public class UserAvatarResolver : IValueResolver<User, IDtoWithImage, string?>
+public class ImageNameFormatter : IValueConverter<string, string> 
 {
     private readonly BlobStorageSettings _blobStorageSettings;
 
-    public UserAvatarResolver(BlobStorageSettings blobStorageSettings)
+    public ImageNameFormatter(BlobStorageSettings blobStorageSettings)
     {
         _blobStorageSettings = blobStorageSettings;
     }
     
-    public string Resolve(User source, IDtoWithImage destination, string? destMember, ResolutionContext context)
-    {
-        return string.IsNullOrEmpty(source.ImagePath) ? null! : $"{_blobStorageSettings.BlobAccess}{source.ImagePath}";
-    }
+    public string Convert(string source, ResolutionContext context)
+        => string.IsNullOrEmpty(source) ? null! : $"{_blobStorageSettings.BlobAccess}{source}";
 }
