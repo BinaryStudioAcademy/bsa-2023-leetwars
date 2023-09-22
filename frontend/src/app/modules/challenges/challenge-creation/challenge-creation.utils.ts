@@ -2,8 +2,8 @@ import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { CategoryType } from '@shared/enums/category-type';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { languageNameMap } from '@shared/mappings/language-map';
-import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
+import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { IDropdownItem } from '@shared/models/dropdown-item';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';
@@ -134,9 +134,9 @@ export function mapLanguageName(language: string): string {
 export const editorOptions: EditorOptions = {
     theme: 'vs-dark',
     language: '',
-    minimap: { enabled: false },
-    automaticLayout: true,
-    useShadows: false,
+    minimap: { isEnabled: false },
+    hasAutomaticLayout: true,
+    hasShadows: false,
     wordWrap: 'on',
     lineNumbers: 'on',
 };

@@ -40,9 +40,9 @@ export class CodeEditorComponent implements OnChanges, AfterViewInit, OnInit {
         this.editorOptions = {
             theme: this.options?.theme,
             language: this.options?.language,
-            minimap: { enabled: this.options?.minimap?.enabled },
-            automaticLayout: this.options?.automaticLayout,
-            useShadows: this.options?.useShadows,
+            minimap: { isEnabled: this.options?.minimap?.isEnabled },
+            hasAutomaticLayout: this.options?.hasAutomaticLayout,
+            hasShadows: this.options?.hasShadows,
             wordWrap: this.options?.wordWrap,
             lineNumbers: this.options?.lineNumbers,
         };
