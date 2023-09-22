@@ -18,5 +18,7 @@ public class ImageNameFormatter : IValueConverter<string, string>
     }
     
     public string Convert(string source, ResolutionContext context)
-        => string.IsNullOrEmpty(source) ? null! : $"{_blobStorageSettings.BlobAccess}{source}";
+    {
+        return string.IsNullOrEmpty(source) ? null! : $"{_blobStorageSettings.BlobAccess}{source}";
+    }
 }

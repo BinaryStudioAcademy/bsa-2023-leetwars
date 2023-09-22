@@ -49,42 +49,6 @@ namespace LeetWars.Core.WebAPI.Extentions
             RegisterBuilderProducerService(services, configuration);
         }
 
-        private static void RegisterNotificationProducerService(IServiceCollection services, IConfiguration configuration)
-        {
-            var settings = configuration
-                .GetSection("RabbitMQProducers:Emailer")
-                .Get<ProducerSettings>();
-
-            services.AddSingleton<IEmailSenderService>(provider =>
-                new EmailSenderService(new ProducerService(
-                    provider.GetRequiredService<IConnection>(),
-                    settings)));
-        }        
-        
-        private static void RegisterBuilderProducerService(IServiceCollection services, IConfiguration configuration)
-        {
-            var settings = configuration
-                .GetSection("RabbitMQProducers:Builder")
-                .Get<ProducerSettings>();
-
-            services.AddSingleton<IBuilderSenderService>(provider =>
-                new BuilderSenderService(new ProducerService(
-                    provider.GetRequiredService<IConnection>(),
-                    settings)));
-        }
-
-        private static void RegisterEmailerProducer(IServiceCollection services, IConfiguration configuration)
-        {
-            var settings = configuration
-                .GetSection("RabbitMQProducers:Notifier")
-                .Get<ProducerSettings>();
-
-            services.AddSingleton<INotificationSenderService>(provider =>
-                new NotificationSenderService(new ProducerService(
-                    provider.GetRequiredService<IConnection>(),
-                    settings)));
-        }
-
         public static void AddAutoMapper(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetAssembly(typeof(SampleProfile)));
@@ -149,6 +113,42 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddScoped<IBlobService, BlobService>();
 
             return services;
+        }
+
+        private static void RegisterNotificationProducerService(IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = configuration
+                .GetSection("RabbitMQProducers:Emailer")
+                .Get<ProducerSettings>();
+
+            services.AddSingleton<IEmailSenderService>(provider =>
+                new EmailSenderService(new ProducerService(
+                    provider.GetRequiredService<IConnection>(),
+                    settings)));
+        }
+
+        private static void RegisterBuilderProducerService(IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = configuration
+                .GetSection("RabbitMQProducers:Builder")
+                .Get<ProducerSettings>();
+
+            services.AddSingleton<IBuilderSenderService>(provider =>
+                new BuilderSenderService(new ProducerService(
+                    provider.GetRequiredService<IConnection>(),
+                    settings)));
+        }
+
+        private static void RegisterEmailerProducer(IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = configuration
+                .GetSection("RabbitMQProducers:Notifier")
+                .Get<ProducerSettings>();
+
+            services.AddSingleton<INotificationSenderService>(provider =>
+                new NotificationSenderService(new ProducerService(
+                    provider.GetRequiredService<IConnection>(),
+                    settings)));
         }
     }
 }

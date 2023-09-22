@@ -21,6 +21,7 @@ namespace LeetWars.Core.WebAPI.Logic
         {
             get => _id;
         }
+
         public User? CurrentUser
         {
             get => _user;
@@ -35,6 +36,7 @@ namespace LeetWars.Core.WebAPI.Logic
 
             return _id;
         }
+
         public User GetCurrentUserOrThrow()
         {
             return _user ?? throw new InvalidTokenException(_id);

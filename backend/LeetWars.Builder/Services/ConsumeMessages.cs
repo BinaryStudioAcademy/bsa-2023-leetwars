@@ -13,10 +13,9 @@ namespace LeetWars.Builder.Services
     public class ConsumeMessages : BackgroundService
     {
         private readonly IConsumerService _consumerService;
-
         private readonly ICodeRunManagerService _codeRunManagerService;
-
         private readonly IProducerService _producerService;
+
         public ConsumeMessages(IConsumerService consumerService, ICodeRunManagerService codeRunManagerService, IProducerService producerService)
         {
             _consumerService = consumerService;

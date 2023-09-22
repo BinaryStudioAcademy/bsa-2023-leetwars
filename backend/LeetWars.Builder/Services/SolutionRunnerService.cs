@@ -59,6 +59,17 @@ namespace LeetWars.Builder.Services
             };
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            _client?.Dispose();
+        }
+
         private async Task<TestsOutput> RunCSharpSolutionTestsAsync(ContainerDataDto data)
         {
             var volumeName = data.ProcessName + "-volume";
@@ -155,17 +166,6 @@ namespace LeetWars.Builder.Services
             {
                 await _client.Volumes.RemoveAsync(volumeName);
             }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            _client?.Dispose();
         }
     }
 }

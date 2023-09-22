@@ -193,15 +193,6 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<List<UserDto>>(await users.ToListAsync());
     }
 
-
-    private async Task<User> GetCurrentUserEntityAsync()
-    {
-        var userStringId = _userGetter.CurrentUserId;
-        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
-
-        return user ?? throw new NotFoundException(nameof(User));
-    }
-
     public async Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto)
     {
         if (userInfoDto is null)
@@ -239,6 +230,14 @@ public class UserService : BaseService, IUserService
         
         var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
+    }
+
+    private async Task<User> GetCurrentUserEntityAsync()
+    {
+        var userStringId = _userGetter.CurrentUserId;
+        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
+
+        return user ?? throw new NotFoundException(nameof(User));
     }
 
     private async Task<int> GetRewardFromChallenge(long challengeId)
