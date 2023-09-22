@@ -260,7 +260,7 @@ namespace LeetWars.Core.BLL.Services
                     .AsQueryable();
 
                 var randomPosition = GetRandomInt(challengesByLevel.Count());
-                var weeklyChallenge = challengesByLevel.Skip(randomPosition).FirstOrDefault();
+                var weeklyChallenge = await challengesByLevel.Skip(randomPosition).FirstOrDefaultAsync();
                 if (weeklyChallenge is not null)
                 {
                     weeklyChallenge.IsWeekly = true;
