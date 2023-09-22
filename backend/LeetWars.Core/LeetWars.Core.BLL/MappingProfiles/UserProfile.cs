@@ -2,7 +2,6 @@
 using LeetWars.Core.BLL.MappingProfiles.Resolvers;
 using LeetWars.Core.Common.DTO.Badge;
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.Language;
 using LeetWars.Core.Common.DTO.Subscription;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.Common.DTO.UserLanguageLevel;
@@ -12,7 +11,7 @@ using LeetWars.Core.WebAPI.Settings;
 
 namespace LeetWars.Core.BLL.MappingProfiles
 {
-    public sealed class UserProfile:Profile
+    public sealed class UserProfile : Profile
     {
         public UserProfile()
         {
@@ -34,7 +33,7 @@ namespace LeetWars.Core.BLL.MappingProfiles
                         .ConvertUsing<ImageNameFormatter, string>(src=>src.ImagePath!))
                 .ForMember(x => x.Badges, opt =>
                     opt.MapFrom(x => x.UserBadges)).ReverseMap();
-            CreateMap<Subscription,SubscriptionDto>();
+            CreateMap<Subscription, SubscriptionDto>();
 
             CreateMap<UserLanguageLevel, UserLanguageLevelDto>();
             CreateMap<UserSolution, UserSolutionDto>();

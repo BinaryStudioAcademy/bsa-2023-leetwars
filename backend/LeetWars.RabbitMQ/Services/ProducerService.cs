@@ -10,10 +10,10 @@ public class ProducerService : IProducerService
     private readonly ProducerSettings _producerSettings;
     private bool disposedValue;
 
-    public ProducerService(IConnection connection, IOptions<ProducerSettings> producerSettings)
+    public ProducerService(IConnection connection, ProducerSettings producerSettings)
     {
         _connection = connection;
-        _producerSettings = producerSettings.Value;
+        _producerSettings = producerSettings;
     }
 
     public void Send(object obj, string? type)
