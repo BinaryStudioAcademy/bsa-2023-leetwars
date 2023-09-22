@@ -7,7 +7,7 @@ using RabbitMQ.Client.Events;
 namespace LeetWars.RabbitMQ.Services;
 public class NotifierCodeConsumerService : GeneralConsumerService, INotifierCodeConsumerService
 {
-    public NotifierCodeConsumerService(IConnection connection, IOptions<RabbitMQCodeConsumerSettings> settings) : base(connection, settings)
+    public NotifierCodeConsumerService(IConnection connection, RabbitMQCodeConsumerSettings settings) : base(connection, settings)
     {
     }
 }

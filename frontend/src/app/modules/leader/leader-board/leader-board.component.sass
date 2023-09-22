@@ -1,10 +1,11 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
 
 .wrapper
     margin-top: 30px
     display: flex
     justify-content: center
-    align-items: center
+    align-items: start
     height: 100%
 
 .board
@@ -13,11 +14,16 @@
 .board-wrapper
     display: flex
     background-color: $midnight-gray
-    margin: auto
-    padding: 35px
+    flex-direction: column
+    margin: 0 auto
+    padding: 25px
     border-radius: 15px
     width: 40%
     min-width: 600px
+    @media (max-width: $small-medium)
+        min-width: 95%
+    @media (max-width: $small)
+        padding: 15px
 
 .header
     gap: 16px
@@ -35,6 +41,9 @@
     min-width: 100px
     &.position-item
         padding-left: 15px
+    @media (max-width: $small)
+        min-width: 70px
+
 .user
     gap: 16px
     color: $white
@@ -46,11 +55,14 @@
         padding-bottom: 11px
 
 .user-name
-    width: 75%
+    width: 70%
 
 .total-score
-    width: 15%
+    width: 13%
     min-width: 50px
+    text-align: center
+    @media (max-width: $mobile)
+        text-align: start
 
 .user:nth-child(even)
   background-color: $transparent-yellow
