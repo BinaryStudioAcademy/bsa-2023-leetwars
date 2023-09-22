@@ -77,10 +77,10 @@ namespace LeetWars.Core.WebAPI.Controllers
             return NoContent();
         }
 
-        [HttpPost("codefightredirect")]
-        public ActionResult<ChallengeFullDto> SendCodeFightRedirectAsync([FromBody] NewNotificationDto notificationDto)
+        [HttpPost("codefightstart")]
+        public ActionResult<ChallengeFullDto> SendCodeFightStartAsync([FromBody] NewNotificationDto notificationDto)
         {
-            _challengeService.SendCodeFightRedirect(notificationDto);
+            _challengeService.SendCodeFightStart(notificationDto);
             return NoContent();
         }
 

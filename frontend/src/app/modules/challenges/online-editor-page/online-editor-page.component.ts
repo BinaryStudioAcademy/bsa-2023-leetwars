@@ -5,6 +5,7 @@ import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { CodeRunService } from '@core/services/code-run.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
@@ -12,7 +13,6 @@ import { IChallengeVersion } from '@shared/models/challenge-version/challenge-ve
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { EditorOptions } from '@shared/models/options/editor-options';
-import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
 
@@ -54,14 +54,17 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     private isFullscreen = false;
 
+    private isCodeFight = false;
+
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
         private breakpointObserver: BreakpointObserver,
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
-        private router: Router,
+        private codeRunService: CodeRunService,
         private authService: AuthService,
+        private router: Router,
     ) {
         super();
         breakpointObserver
@@ -98,15 +101,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         });
 
         this.subscribeToMessageQueue();
-    }
-
-    showTestResults(testResults: ITestsOutput) {
-        if (testResults.isSuccess) {
-            this.toastrService.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
-        } else {
-            this.toastrService.showError(`Tests failed \n Tests failed: ${testResults.failedCount}
-            out of ${testResults.passedCount + testResults.failedCount}`);
-        }
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
@@ -146,15 +140,14 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.challengeService.runTests(this.solution).subscribe();
     }
 
+    submitSolution(): void {
+        this.sendCode();
+    }
+
     subscribeToMessageQueue(): void {
         this.signalRService.start();
         this.signalRService.listenMessages((msg: ICodeRunResults) => {
-            if (msg.buildResults?.isSuccess && msg.testRunResults) {
-                this.toastrService.showSuccess('Code was compiled successfully');
-                this.showTestResults(msg.testRunResults);
-            } else {
-                this.toastrService.showError(msg.buildResults?.buildMessage as string);
-            }
+            this.codeRunService.getCodeRunResults(msg);
         });
     }
 

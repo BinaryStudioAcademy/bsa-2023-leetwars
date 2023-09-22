@@ -5,6 +5,7 @@
         LikeChallenge,
         NewChallenge,
         CodeFightRequest,
-        CodeFightRedirect
+        CodeFightStart,
+        CodeFightEnd,
     }
 }

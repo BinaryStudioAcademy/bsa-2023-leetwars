@@ -6,6 +6,6 @@ namespace LeetWars.Notifier.WebAPI.Hubs.Interfaces
     public interface INotificationsHubClient
     {
         Task SendNotification(NewNotificationDto newNotification);
-        Task RedirectToCodeFight(CodeFightRedirectDto codeFightDto);
+        Task StartCodeFight(CodeFightStartDto codeFightDto);
     }
 }

@@ -56,8 +56,8 @@ export class ChallengeService {
         return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightrequest`, codeFight);
     }
 
-    public sendCodeFightRedirect(notification: INotificationModel): Observable<void> {
-        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightredirect`, notification);
+    public sendCodeFightStart(notification: INotificationModel): Observable<void> {
+        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightstart`, notification);
     }
 
     public updateStar(star: IStar): Observable<IChallengePreview> {

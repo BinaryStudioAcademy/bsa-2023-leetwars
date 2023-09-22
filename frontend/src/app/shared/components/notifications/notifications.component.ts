@@ -18,7 +18,6 @@ export class NotificationsComponent {
 
     public onCodeFightStart(notification: INotificationModel) {
         this.notificationService.removeNotification(notification);
-
         this.notificationService.hideNofitications();
 
         this.codeFightService.startCodeFight(notification);
