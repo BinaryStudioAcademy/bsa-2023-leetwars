@@ -64,6 +64,10 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         return this.notifications.length;
     }
 
+    reloadPage() {
+        window.location.reload();
+    }
+
     onLogOut() {
         const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'log-out-modal' });
 
