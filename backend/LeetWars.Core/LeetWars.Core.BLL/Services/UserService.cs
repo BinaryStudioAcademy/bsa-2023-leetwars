@@ -24,6 +24,7 @@ namespace LeetWars.Core.BLL.Services;
 public class UserService : BaseService, IUserService
 {
     private readonly IUserGetter _userGetter;
+    private readonly INotificationSenderService _notificationSenderService;
     private readonly IEmailSenderService _emailSenderService;
     private readonly IBlobService _blobService;
     private const int REPUTATION_DIVIDER = 10;
@@ -31,11 +32,13 @@ public class UserService : BaseService, IUserService
     public UserService(LeetWarsCoreContext context,
                        IMapper mapper,
                        IUserGetter userGetter,
+                       INotificationSenderService notificationSenderService,
                        IEmailSenderService emailSenderService,
                        IBlobService blobService
                        ) : base(context, mapper)
     {
         _userGetter = userGetter;
+        _notificationSenderService = notificationSenderService;
         _emailSenderService = emailSenderService;
         _blobService = blobService;
     }
