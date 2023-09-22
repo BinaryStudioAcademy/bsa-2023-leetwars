@@ -12,10 +12,10 @@ public class GeneralConsumerService : IGeneralConsumerService
     protected readonly GeneralConsumerSettings _settings;
     protected bool disposedValue;
 
-    public GeneralConsumerService(IConnection connection, IOptions<GeneralConsumerSettings> settings)
+    public GeneralConsumerService(IConnection connection, GeneralConsumerSettings settings)
     {
         _connection = connection;
-        _settings = settings.Value;
+        _settings = settings;
         _channel = _connection.CreateModel();
     }
 
