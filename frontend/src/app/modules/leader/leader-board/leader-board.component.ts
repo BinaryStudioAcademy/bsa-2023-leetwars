@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
-import { ArrowUpService } from '@core/services/arrow-up.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
-import { takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-leader-board',
@@ -19,7 +18,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
     public loading = false;
 
-    public showArrowButton = false;
+    public scrollEventSubject = new Subject<void>();
 
     private page: IPageSettings = {
         pageNumber: 0,
@@ -29,7 +28,6 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     constructor(
         private userService: UserService,
         private toastrNotification: ToastrNotificationsService,
-        private scrollService: ArrowUpService,
     ) {
         super();
     }
@@ -39,19 +37,13 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     }
 
     public onScroll() {
-        this.scrollService.updateArrowButton().subscribe((toShow: boolean) => {
-            this.showArrowButton = toShow;
-        });
+        this.scrollEventSubject.next();
 
         if (this.isLastPage) {
             return;
         }
 
         this.getUsers();
-    }
-
-    public afterScroll() {
-        this.showArrowButton = false;
     }
 
     private getUsers() {
