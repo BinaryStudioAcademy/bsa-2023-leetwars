@@ -7,7 +7,7 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { TypeNotification } from '@shared/enums/type-notification';
-import { UpdateFriendship } from '@shared/models/friendship/update-friendship';
+import { IUpdateFriendship } from '@shared/models/friendship/update-friendship';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
@@ -48,12 +48,6 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
 
     typeNotification = TypeNotification;
 
-    public onYes(notification: INotificationModel) {
-        this.notificationService.removeNotification(notification);
-
-        this.notificationService.hideNofitications();
-    }
-
     public acceptFriendship(notification: INotificationModel) {
         const updateRequest = notification.updateFriendship;
 
@@ -79,7 +73,7 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
         this.notificationService.hideNofitications();
     }
 
-    private updateFriendship(updateRequest: UpdateFriendship) {
+    private updateFriendship(updateRequest: IUpdateFriendship) {
         this.userService
             .updateFriendshipRequest(updateRequest)
             .pipe(takeUntil(this.unsubscribe$))

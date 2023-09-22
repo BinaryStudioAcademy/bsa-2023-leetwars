@@ -4,7 +4,6 @@
     {
         LikeChallenge,
         NewChallenge,
-        CodeFight,
         FriendRequest
     }
 }

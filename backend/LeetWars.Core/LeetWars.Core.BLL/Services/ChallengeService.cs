@@ -8,7 +8,6 @@ using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
-using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
@@ -233,20 +232,6 @@ namespace LeetWars.Core.BLL.Services
             _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
         }
 
-        public async Task SendCodeFightRequest(CodeFightRequestDto requestDto)
-        {
-            var newNotification = new NewNotificationDto
-            {
-                Challenge = await GetCodeFightChallengeAsync(requestDto.ChallengeSettings),
-                DateSending = DateTime.UtcNow,
-                ReceiverId = requestDto.ReceiverId.ToString(),
-                Sender = await _userService.GetBriefUserInfoById(requestDto.SenderId),
-                TypeNotification = TypeNotifications.CodeFight,
-                Message = "Code Fight. Are you in?"
-            };
-
-            _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
-        }
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
@@ -264,23 +249,12 @@ namespace LeetWars.Core.BLL.Services
             await _context.SaveChangesAsync();
             return await GetChallengeFullDtoByIdAsync(challenge.Id);
         }
+
         public async Task DeleteChallengeAsync(long challengeId)
         {
             var challenge = await GetChallengeByIdAsync(challengeId);
             _context.Challenges.Remove(challenge);
             await _context.SaveChangesAsync();
-        }
-
-        private async Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings)
-        {
-            var challenges = _context.Challenges
-                .Include(challenge => challenge.Versions)
-                .Where(challenge => challenge.LevelId == settings.LevelId &&
-                       challenge.Versions.Any(challengeversion => challengeversion.LanguageId == settings.LanguageId));
-
-            var randomPosition = GetRandomInt(challenges.Count());
-
-            return _mapper.Map<BriefChallengeInfoDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
 
         private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
@@ -404,6 +378,7 @@ namespace LeetWars.Core.BLL.Services
                 _ => challenges
             };
         }
+
         private static IOrderedQueryable<Challenge> SortByProperty(IQueryable<Challenge> challenges, SortingModel? sortingModel)
         {
             return sortingModel switch

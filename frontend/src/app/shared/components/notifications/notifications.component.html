@@ -20,10 +20,5 @@
                 <button (click)="declineFriendship(notification)" class="friend-request-decline-button">No</button>
             </div>
         </div>
-        <div *ngIf="notification.typeNotification === typeNotification.CodeFight">
-            <p>{{ notification.message }}</p>
-            <button (click)="onYes(notification)">Yes</button>
-            <button>No</button>
-        </div>
     </div>
 </div>

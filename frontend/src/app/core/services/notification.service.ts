@@ -10,7 +10,7 @@ import { INotificationModel } from '@shared/models/notifications/notifications';
 export class NotificationService {
     private notifications: INotificationModel[] = [];
 
-    private strongNotifications: TypeNotification[] = [TypeNotification.CodeFight, TypeNotification.FriendRequest];
+    private strongNotifications: TypeNotification[] = [TypeNotification.FriendRequest];
 
     private notificationModal: NgbModalRef;
 

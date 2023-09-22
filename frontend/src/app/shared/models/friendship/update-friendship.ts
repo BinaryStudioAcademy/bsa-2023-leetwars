@@ -1,6 +1,6 @@
 import { FriendshipStatus } from '@shared/enums/friendship-status';
 
-export interface UpdateFriendship {
+export interface IUpdateFriendship {
     userId: number;
     friendshipId: number;
     friendshipStatus: FriendshipStatus;
