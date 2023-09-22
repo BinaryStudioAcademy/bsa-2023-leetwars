@@ -30,7 +30,7 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 if(notificationDto is null)
                 {
-                    await Task.CompletedTask;
+                    return;
                 }
 
                 await SendNotificationAsync(notificationDto!);
@@ -39,7 +39,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             });
 
             _consumerService.Listen(handler);
-            await Task.CompletedTask;
+            return;
         }
 
         private async Task SendNotificationAsync(NewNotificationDto notificationDto)
