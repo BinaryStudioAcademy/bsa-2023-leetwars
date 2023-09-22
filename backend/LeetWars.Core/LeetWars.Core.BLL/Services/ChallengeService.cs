@@ -134,11 +134,6 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengeFullDto>(challenge);
         }
 
-        public async Task<List<ChallengeLevelDto>> GetChallengesLevelsAsync()
-        {
-            return _mapper.Map<List<ChallengeLevelDto>>(await _context.ChallengeLevels.ToListAsync());
-        }
-
         public async Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto)
         {
             Expression<Func<ChallengeStar, bool>> delegateToCheckChallengeStar =
