@@ -1,5 +1,7 @@
 # BSA 2023 | .NET | LeetWars
 
+Leetwars is a platform that helps you learn, train, and improve your coding skills by solving challenges of many types and difficulty levels. You choose how you would like to learn. Do you want to take on increasingly difficult challenges? Maybe you prefer training through repetition and by improving your solutions. After solving a task, get a special code analysis by AI system. Improve your rank submitting challenges, participating in code battles and don't forget to make new friends! 
+
 **Technologies:**
 
 Backend:
@@ -17,7 +19,7 @@ Frontend:
 
 ## Links:
 
-- [Website]()
+- [Website](https://leetwars.uksouth.cloudapp.azure.com)
 - [Trello Board](https://trello.com/b/vd3GZpS8/leetwars)
 
 ## Building sources
@@ -57,22 +59,27 @@ erDiagram
         oathToken nvarchar
         isSubscribed boolean
         isBanned boolean
+        uid nvarchar
+        reputation int
     }
     Users ||--o{ Challenges : authors_of
     Users ||--o{ UserSolutions : authors_of
     Users ||--o{ UsersPreferredLanguages : users
     Users ||--o{ UsersLanguagesLevels : users
+    Users ||--o{ Badges : users
 
     Challenges {
         id bigint PK
-        authorId bigint FK
+        createdBy bigint FK
         title nvarchar
         instructions string
         levelId int FK
         createdAt datetime
+        category int
     }
     Challenges ||--o{ ChallengeVersions : challenge_versions
     Challenges ||--o{ ChallengeTags : challenge
+    Challenges ||--o{ ChallengeStars : challenge
 
     ChallengeVersions{
         id bigint PK
@@ -82,6 +89,10 @@ erDiagram
         completeSolution string
         status int
         createdAt datetime
+        createdBy bigint FK
+        prealodedCode nvarchar
+        exampleTestCases nvarchar
+        testCases nvarchar
     }
     ChallengeVersions ||--o{ ChallengeVersionLanguageVersions : challenge_version
     ChallengeVersions ||--o{ UserSolutions : challenge_version_solutions
@@ -89,7 +100,7 @@ erDiagram
 
     UserSolutions{
         id bigint PK
-        userId bigint FK
+        createdBy bigint FK
         challengeVersionId bigint FK
         code string
         output string
@@ -103,6 +114,7 @@ erDiagram
         code string
         isPublic bool
         createdAt datetime
+        createdBy bigint FK
     }
 
     Subscriptions{
@@ -153,15 +165,28 @@ erDiagram
 
     ChallengeLevels{
         id int PK
-        name nvarchar
+        skilllevel int
         reward int
     }
     ChallengeLevels ||--o{ Challenges : levels
+
+    Badges{
+        id int PK
+        name nvarchar
+        icon nvarchar
+        icongif nvarchar
+    }
 
     %%Junction
     ChallengeTags{
         challengeId bigint PK
         tagId int PK
+    }
+
+    ChallengeStars{
+        id int PK
+        challengeId bigint FK
+        authorId bigint FK
     }
 
     UsersLanguagesLevels{
