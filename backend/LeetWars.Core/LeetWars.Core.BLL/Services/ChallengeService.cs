@@ -160,7 +160,6 @@ namespace LeetWars.Core.BLL.Services
 
         public async Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
-            var currentUser = _userGetter.GetCurrentUserOrThrow();
             var challenge = _mapper.Map<Challenge>(challengeDto);
 
             _context.Challenges.Add(challenge);
@@ -216,6 +215,7 @@ namespace LeetWars.Core.BLL.Services
                 .Select(version =>
                 {
                     version.ChallengeId = challenge.Id;
+                    version.CreatedBy = currentUserId;
                     return version;
                 }).ToList();
 
