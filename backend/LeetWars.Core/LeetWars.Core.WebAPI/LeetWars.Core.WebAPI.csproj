@@ -28,10 +28,4 @@
     <ProjectReference Include="..\LeetWars.Core.Common\LeetWars.Core.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="Static\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
