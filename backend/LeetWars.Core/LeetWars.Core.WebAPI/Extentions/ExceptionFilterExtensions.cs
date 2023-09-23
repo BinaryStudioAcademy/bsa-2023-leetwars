@@ -16,7 +16,7 @@ namespace LeetWars.Core.WebAPI.Extentions
                 AccessDeniedException _ => (HttpStatusCode.Forbidden, ErrorCode.Forbidden),
                 BadOperationException _ => (HttpStatusCode.BadRequest, ErrorCode.BadRequest),
                 _ => (HttpStatusCode.InternalServerError, ErrorCode.General),
-            }; ;
+            };
         }
     }
 }
