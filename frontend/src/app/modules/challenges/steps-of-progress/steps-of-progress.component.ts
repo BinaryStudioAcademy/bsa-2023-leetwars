@@ -1,6 +1,13 @@
 import {
-    AfterViewInit, ChangeDetectorRef, Component, ElementRef,
-    EventEmitter, HostListener, Input, OnChanges, Output,
+    AfterViewInit,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    HostListener,
+    Input,
+    OnChanges,
+    Output,
 } from '@angular/core';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 
@@ -33,11 +40,11 @@ export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
     constructor(private el: ElementRef, private cdr: ChangeDetectorRef) {}
 
     @HostListener('window:resize')
-    onResize() {
+    public onResize() {
         this.updateProgressBarWidth();
     }
 
-    ngAfterViewInit() {
+    public ngAfterViewInit() {
         const currentIndex = this.getCurrentStepIndex();
 
         if (currentIndex >= this.steps.length) {
@@ -51,7 +58,7 @@ export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
         this.updateProgressBarWidth();
     }
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.updateProgressBarWidth();
     }
 

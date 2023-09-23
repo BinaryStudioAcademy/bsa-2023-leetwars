@@ -26,7 +26,7 @@ export class ChallengeComponent implements OnInit {
 
     private user: IUser;
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.authService.getUser().subscribe((user) => {
             this.user = user;
             this.canEdit = this.challenge.createdBy === this.user.id;

@@ -6,7 +6,7 @@ import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level'
     providedIn: 'root',
 })
 export class ChallengeLevelService {
-    public baseUrl = '/challengelevel';
+    private baseUrl = '/challengelevel';
 
     constructor(private httpService: HttpInternalService) { }
 

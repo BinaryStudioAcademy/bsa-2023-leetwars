@@ -19,7 +19,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class ChallengeService {
-    public challengesRoute = '/challenge';
+    private challengesRoute = '/challenge';
 
     constructor(private httpService: HttpInternalService) {}
 

@@ -6,7 +6,7 @@ import { ITag } from '@shared/models/tag/tag';
     providedIn: 'root',
 })
 export class TagService {
-    public baseUrl = '/tags';
+    private baseUrl = '/tags';
 
     constructor(private httpService: HttpInternalService) { }
 

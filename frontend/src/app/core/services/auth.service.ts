@@ -30,6 +30,8 @@ export class AuthService {
 
     private popUpErrorMessage = 'auth/cancelled-popup-request';
 
+    private notAuthorizedErrorMessage = 'User is not authorized';
+
     constructor(
         private afAuth: AngularFireAuth,
         private userService: UserService,
@@ -93,7 +95,6 @@ export class AuthService {
         return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider()), true), isLogin);
     }
 
-    // TODO: Implemented only firebase part
     public changePassword(password: string): Observable<void> {
         return from(this.afAuth.currentUser).pipe(
             first(),
@@ -102,12 +103,12 @@ export class AuthService {
                     return user.updatePassword(password);
                 }
 
-                throw new Error('User is not authorized');
+                throw new Error(this.notAuthorizedErrorMessage);
             }),
         );
     }
 
-    public sendVerificationMail(): Observable<void> {
+    public sendVerificationMail() {
         return from(this.afAuth.currentUser).pipe(
             first(),
             switchMap((user) => {
@@ -115,7 +116,7 @@ export class AuthService {
                     return user.sendEmailVerification();
                 }
 
-                throw new Error('User is not authorized');
+                throw new Error(this.notAuthorizedErrorMessage);
             }),
         );
     }
@@ -134,7 +135,6 @@ export class AuthService {
         );
     }
 
-    // TODO: Implemented only firebase part
     public forgotPassword(passwordResetEmail: string): Observable<void> {
         return from(this.afAuth.sendPasswordResetEmail(passwordResetEmail)).pipe(first());
     }
@@ -147,11 +147,26 @@ export class AuthService {
         return from(this.afAuth.confirmPasswordReset(code, newPassword)).pipe(first());
     }
 
-    public getUser() {
+    public getUserInfo(): IUser | undefined {
+        const userInfo = localStorage.getItem(this.userKeyName);
+
+        if (userInfo) {
+            return JSON.parse(userInfo);
+        }
+
+        return undefined;
+    }
+
+    public getUser(): Observable<IUser> {
         return of(this.getUserInfo()!);
     }
 
-    private signInWithProvider(provider: firebase.auth.AuthProvider) {
+    public setUserInfo(user: IUser) {
+        localStorage.setItem(this.userKeyName, JSON.stringify(user));
+        this.userSubject.next(user);
+    }
+
+    private signInWithProvider(provider: firebase.auth.AuthProvider): Observable<firebase.auth.UserCredential> {
         return from(this.afAuth.signInWithPopup(provider)).pipe(
             first(),
             catchError((error) => throwError(error.message)),
@@ -185,16 +200,6 @@ export class AuthService {
         );
     }
 
-    public getUserInfo(): IUser | undefined {
-        const userInfo = localStorage.getItem(this.userKeyName);
-
-        if (userInfo) {
-            return JSON.parse(userInfo);
-        }
-
-        return undefined;
-    }
-
     private catchAuthWithProviderError(auth: Observable<IUser | undefined>): Observable<IUser | undefined> {
         return auth.pipe(
             catchError((error: string | Error) => {
@@ -218,11 +223,6 @@ export class AuthService {
 
     private setIdToken(token: string) {
         localStorage.setItem(this.tokenKeyName, token);
-    }
-
-    public setUserInfo(user: IUser) {
-        localStorage.setItem(this.userKeyName, JSON.stringify(user));
-        this.userSubject.next(user);
     }
 
     private removeUserInfo() {

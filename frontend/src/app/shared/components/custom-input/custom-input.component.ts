@@ -18,47 +18,6 @@ import { debounceTime, Subject } from 'rxjs';
     ],
 })
 export class CustomInputComponent implements ControlValueAccessor, OnInit {
-    ngOnInit(): void {
-        this.searchSubject
-            .pipe(debounceTime(SecondsConstants.Delay))
-            .subscribe((model) => {
-                this.InputValue = model;
-                this.InputValueChange.emit(model);
-            });
-    }
-
-    onChange: (value: string) => void = () => {};
-
-    onTouchedFn: () => void = () => {};
-
-    private _value = '';
-
-    private searchSubject = new Subject<string>();
-
-    get value(): string {
-        return this._value;
-    }
-
-    set value(v: string) {
-        this._value = v;
-        if (this.onChange) {
-            this.onChange(this._value);
-        }
-    }
-
-    registerOnChange(fn: (value: string) => void) {
-        this.onChange = fn;
-        this.onChange(this._value);
-    }
-
-    registerOnTouched(fn: () => void) {
-        this.onTouchedFn = fn;
-    }
-
-    writeValue(value: string) {
-        this.value = value;
-    }
-
     @Input() InputType: string = 'text';
 
     @Input() Identifier: string = 'text';
@@ -81,18 +40,59 @@ export class CustomInputComponent implements ControlValueAccessor, OnInit {
 
     @Output() InputValueChange = new EventEmitter<string>();
 
-    showPassword = false;
+    public showPassword = false;
 
-    onInputChange(model: string) {
+    private _value = '';
+
+    private searchSubject = new Subject<string>();
+
+    public ngOnInit(): void {
+        this.searchSubject
+            .pipe(debounceTime(SecondsConstants.Delay))
+            .subscribe((model) => {
+                this.InputValue = model;
+                this.InputValueChange.emit(model);
+            });
+    }
+
+    public onChange: (value: string) => void = () => {};
+
+    public onTouchedFn: () => void = () => {};
+
+    public get value(): string {
+        return this._value;
+    }
+
+    public set value(v: string) {
+        this._value = v;
+        if (this.onChange) {
+            this.onChange(this._value);
+        }
+    }
+
+    public registerOnChange(fn: (value: string) => void) {
+        this.onChange = fn;
+        this.onChange(this._value);
+    }
+
+    public registerOnTouched(fn: () => void) {
+        this.onTouchedFn = fn;
+    }
+
+    public writeValue(value: string) {
+        this.value = value;
+    }
+
+    public onInputChange(model: string) {
         this.searchSubject.next(model);
     }
 
-    togglePasswordVisibility() {
+    public togglePasswordVisibility() {
         this.InputType = this.InputType === 'password' ? 'text' : 'password';
         this.showPassword = !this.showPassword;
     }
 
-    onPasswordKeyDown(event: KeyboardEvent) {
+    public onPasswordKeyDown(event: KeyboardEvent) {
         if (event.key === 'Enter') {
             event.preventDefault();
         }

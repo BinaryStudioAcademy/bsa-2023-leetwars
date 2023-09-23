@@ -6,7 +6,7 @@ import { ILanguage } from '@shared/models/language/language';
     providedIn: 'root',
 })
 export class LanguageService {
-    public baseUrl = '/language';
+    private baseUrl = '/language';
 
     constructor(private httpService: HttpInternalService) { }
 

@@ -85,7 +85,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.challengeVersion = getNewChallengeVersion();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             this.challengeId = +params.get('id')!;
 
@@ -99,22 +99,6 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                 this.loadChallenge(this.challengeId);
             }
         });
-    }
-
-    private loadChallenge(challengeId: number) {
-        this.challengeService
-            .getChallengeById(challengeId)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (challenge) => {
-                    this.challenge = { ...challenge };
-                    [this.challengeVersion] = this.challenge.versions;
-                    this.loadActualLanguages();
-                },
-                error: () => {
-                    this.toastrService.showError('Server connection error');
-                },
-            });
     }
 
     public onStepClick(step: ChallengeStep) {
@@ -212,6 +196,22 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     public getStepChecking(step: ChallengeStep) {
         return getStepChecking(this.stepsData, step);
+    }
+
+    private loadChallenge(challengeId: number) {
+        this.challengeService
+            .getChallengeById(challengeId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (challenge) => {
+                    this.challenge = { ...challenge };
+                    [this.challengeVersion] = this.challenge.versions;
+                    this.loadActualLanguages();
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
     }
 
     private deleteChallenge() {

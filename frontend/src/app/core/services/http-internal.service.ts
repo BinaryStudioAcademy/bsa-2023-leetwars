@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class HttpInternalService {
-    public baseUrl: string = environment.coreUrl;
+    private baseUrl: string = environment.coreUrl;
 
-    public headers = new HttpHeaders();
+    private headers = new HttpHeaders();
 
     constructor(private http: HttpClient) {}
 

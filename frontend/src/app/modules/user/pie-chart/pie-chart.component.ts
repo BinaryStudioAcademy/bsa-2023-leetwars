@@ -16,18 +16,18 @@ export class PieChartComponent implements OnChanges {
 
     @Input() activeColor: string;
 
-    single: PieChartData[] = [];
+    public single: PieChartData[] = [];
 
-    colorScheme: Color = {
+    public colorScheme: Color = {
         name: 'myScheme',
         selectable: true,
         group: ScaleType.Ordinal,
         domain: [ColorConstants.pieChartActiveColor, ColorConstants.inactiveColor],
     };
 
-    view: [number, number] = [140, 140];
+    public view: [number, number] = [140, 140];
 
-    ngOnChanges({ currentNumber, totalNumber }: SimpleChanges): void {
+    public ngOnChanges({ currentNumber, totalNumber }: SimpleChanges): void {
         if (currentNumber && !!totalNumber) {
             this.single = [
                 {

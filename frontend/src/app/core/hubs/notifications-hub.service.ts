@@ -10,11 +10,11 @@ import { SignalRHubFactoryService } from './signalr-hub-factory.service';
     providedIn: 'root',
 })
 export class NotificationHubService {
-    readonly hubUrl = 'notificationHub';
+    private readonly hubUrl = 'notificationHub';
 
     private hubConnection: HubConnection;
 
-    readonly messages = new Subject<INotificationModel>();
+    private readonly messages = new Subject<INotificationModel>();
 
     private subscriptions: Subscription[] = [];
 
@@ -22,16 +22,16 @@ export class NotificationHubService {
 
     constructor(private hubFactory: SignalRHubFactoryService, private authservice: AuthService) {}
 
-    async start() {
+    public async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
         await this.init();
     }
 
-    listenMessages(action: (msg: INotificationModel) => void) {
+    public listenMessages(action: (msg: INotificationModel) => void) {
         this.subscriptions = [...this.subscriptions, this.messages.subscribe({ next: action })];
     }
 
-    async stop() {
+    public async stop() {
         await this.hubConnection?.stop();
         this.subscriptions.forEach((s) => s.unsubscribe());
     }

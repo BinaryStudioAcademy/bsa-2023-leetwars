@@ -8,7 +8,7 @@ import { HeaderService } from '@core/services/header-service';
 export class HeaderGuard implements CanActivate {
     constructor(private headerService: HeaderService) {}
 
-    public canActivate(): boolean {
+    public canActivate() {
         this.headerService.setShowHeader(true);
 
         return true;

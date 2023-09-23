@@ -12,23 +12,27 @@ export class BadgeComponent implements OnInit {
 
     @Input() startPosition: number = 0;
 
-    activeSlides: SlidesOutputData;
+    public customOptions: OwlOptions;
 
-    customOptions: OwlOptions;
+    private activeSlides: SlidesOutputData;
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.loadCarouselOptions();
     }
 
-    onTranslated(data: SlidesOutputData) {
+    public onTranslated(data: SlidesOutputData) {
         this.activeSlides = data;
     }
 
-    isCentered(item: Badge) {
+    public isCentered(item: Badge) {
         return this.activeSlides.slides?.some((x) => x.center && item.id === +x.id);
     }
 
-    loadCarouselOptions(): void {
+    public getIconUrl(item: Badge): string {
+        return this.isCentered(item) ? item.iconGif : item.icon;
+    }
+
+    private loadCarouselOptions(): void {
         this.customOptions = {
             loop: true,
             mouseDrag: true,
@@ -49,9 +53,5 @@ export class BadgeComponent implements OnInit {
                 },
             },
         };
-    }
-
-    getIconUrl(item: Badge): string {
-        return this.isCentered(item) ? item.iconGif : item.icon;
     }
 }

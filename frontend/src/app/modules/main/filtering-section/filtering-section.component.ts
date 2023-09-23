@@ -71,7 +71,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         super();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.getChalenges();
         this.getLanguages();
         this.getTags();

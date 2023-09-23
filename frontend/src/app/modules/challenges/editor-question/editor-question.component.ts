@@ -35,15 +35,6 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
 
     public selectedLevelName = '';
 
-    inputForm = new FormGroup({
-        name: new FormControl(this.challenge.title, [Validators.required]),
-        description: new FormControl(this.challenge.instructions, [Validators.required]),
-        tags: new FormControl(this.selectedTagsNames, [Validators.required]),
-        level: new FormControl(this.selectedLevelName, [Validators.required]),
-    });
-
-    private bsEditorInstance: EditorInstance;
-
     public selectedTab: TabType = TabType.Description;
 
     public CategoryType = CategoryType;
@@ -56,6 +47,15 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
 
     public customInputWidth = '100%';
 
+    public inputForm = new FormGroup({
+        name: new FormControl(this.challenge.title, [Validators.required]),
+        description: new FormControl(this.challenge.instructions, [Validators.required]),
+        tags: new FormControl(this.selectedTagsNames, [Validators.required]),
+        level: new FormControl(this.selectedLevelName, [Validators.required]),
+    });
+
+    private bsEditorInstance: EditorInstance;
+
     constructor(private markdownService: MarkdownService) {}
 
     public ngOnInit() {
@@ -66,6 +66,28 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
                 this.bsEditorInstance = edInstance;
             },
         };
+    }
+
+    public ngOnChanges({ checkValidation, challenge, allTags, allLevels }: SimpleChanges): void {
+        if (checkValidation && checkValidation.currentValue) {
+            this.inputForm.markAllAsTouched();
+        }
+        if (allTags) {
+            this.allTagsNames = this.allTags.map((t) => t.name);
+        }
+        if (allLevels) {
+            this.allLevelsNames = this.allLevels.map((t) => t.skillLevel);
+        }
+        if (challenge) {
+            this.selectedTagsNames = this.challenge.tags.map((t) => t.name);
+            this.inputForm.controls.tags.setValue(this.selectedTagsNames);
+
+            this.selectedLevelName = this.challenge.level?.skillLevel ?? '';
+            this.inputForm.controls.level.setValue(this.selectedLevelName);
+
+            this.inputForm.controls.name.setValue(this.challenge.title);
+            this.inputForm.controls.description.setValue(this.challenge.instructions);
+        }
     }
 
     public editMarkDown() {
@@ -125,27 +147,5 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
 
     public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.inputForm);
-    }
-
-    ngOnChanges({ checkValidation, challenge, allTags, allLevels }: SimpleChanges): void {
-        if (checkValidation && checkValidation.currentValue) {
-            this.inputForm.markAllAsTouched();
-        }
-        if (allTags) {
-            this.allTagsNames = this.allTags.map((t) => t.name);
-        }
-        if (allLevels) {
-            this.allLevelsNames = this.allLevels.map((t) => t.skillLevel);
-        }
-        if (challenge) {
-            this.selectedTagsNames = this.challenge.tags.map((t) => t.name);
-            this.inputForm.controls.tags.setValue(this.selectedTagsNames);
-
-            this.selectedLevelName = this.challenge.level?.skillLevel ?? '';
-            this.inputForm.controls.level.setValue(this.selectedLevelName);
-
-            this.inputForm.controls.name.setValue(this.challenge.title);
-            this.inputForm.controls.description.setValue(this.challenge.instructions);
-        }
     }
 }

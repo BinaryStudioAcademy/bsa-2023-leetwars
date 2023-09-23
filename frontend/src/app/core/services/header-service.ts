@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
 export class HeaderService {
     private showHeader: boolean = false;
 
-    setShowHeader(value: boolean) {
-        this.showHeader = value;
+    public getShowHeader() {
+        return this.showHeader;
     }
 
-    getShowHeader() {
-        return this.showHeader;
+    public setShowHeader(value: boolean) {
+        this.showHeader = value;
     }
 }

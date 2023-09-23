@@ -76,7 +76,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     @ViewChild('editorTestContainer') editorTestContainer: ElementRef;
 
-    toggleFullScreen(element: HTMLDivElement) {
+    public toggleFullScreen(element: HTMLDivElement) {
         this.isFullscreen = !this.isFullscreen;
         if (this.isFullscreen) {
             element.requestFullscreen();
@@ -85,7 +85,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         }
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.splitDirection = 'horizontal';
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const challengeId = +params.get('id')!;
@@ -100,7 +100,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.subscribeToMessageQueue();
     }
 
-    showTestResults(testResults: ITestsOutput) {
+    public override ngOnDestroy() {
+        this.signalRService.stop();
+        super.ngOnDestroy();
+    }
+
+    public showTestResults(testResults: ITestsOutput) {
         if (testResults.isSuccess) {
             this.toastrService.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
         } else {
@@ -109,7 +114,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         }
     }
 
-    onSelectedLanguageChanged($event: string | string[]): void {
+    public onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
 
         this.selectedLanguage = selectedLang;
@@ -120,23 +125,23 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         [this.selectedLanguageVersion] = this.languageVersions;
     }
 
-    onCodeChanged(newCode: string) {
+    public onCodeChanged(newCode: string) {
         this.initialSolution = newCode;
     }
 
-    onTestChanged(newTests: string) {
+    public onTestChanged(newTests: string) {
         this.testCode = newTests;
     }
 
-    selectTab(title: string): void {
+    public selectTab(title: string): void {
         this.activeTab = title;
     }
 
-    isSelected(title: string): boolean {
+    public isSelected(title: string): boolean {
         return this.activeTab === title;
     }
 
-    sendCode(): void {
+    public sendCode(): void {
         this.solution = {
             userConnectionId: this.signalRService.singleUserGroupId,
             language: this.selectedLanguage,
@@ -146,7 +151,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.challengeService.runTests(this.solution).subscribe();
     }
 
-    subscribeToMessageQueue(): void {
+    public subscribeToMessageQueue(): void {
         this.signalRService.start();
         this.signalRService.listenMessages((result: ICodeRunResults) => {
             if (result.buildResults?.isSuccess && result.testRunResults) {
@@ -224,10 +229,5 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return this.challenge.versions
             .filter((version) => this.mapLanguageName(version.language.name) === language)
             .flatMap((version) => version.language.languageVersions.map((languageVersion) => languageVersion.version));
-    }
-
-    override ngOnDestroy() {
-        this.signalRService.stop();
-        super.ngOnDestroy();
     }
 }

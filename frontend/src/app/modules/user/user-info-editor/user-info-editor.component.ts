@@ -23,7 +23,7 @@ import { map, of, switchMap } from 'rxjs';
     styleUrls: ['./user-info-editor.component.sass'],
 })
 export class UserInfoEditorComponent implements OnInit {
-    userInfoForm: FormGroup = new FormGroup({
+    public userInfoForm: FormGroup = new FormGroup({
         email: new FormControl('', [
             Validators.required,
             Validators.maxLength(emailMaxLength),
@@ -38,9 +38,9 @@ export class UserInfoEditorComponent implements OnInit {
         avatar: new FormControl<File>(null!),
     });
 
-    avatarPreview: string;
+    public avatarPreview: string;
 
-    user: IUser;
+    private user: IUser;
 
     constructor(
         private userService: UserService,
@@ -49,7 +49,7 @@ export class UserInfoEditorComponent implements OnInit {
         private router: Router,
     ) {}
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.loadData();
     }
 
@@ -85,7 +85,7 @@ export class UserInfoEditorComponent implements OnInit {
         this.updateAvatarPreview(event.target as HTMLInputElement);
     }
 
-    onReturnToProfile() {
+    public onReturnToProfile() {
         this.router.navigate(['user/profile']);
     }
 

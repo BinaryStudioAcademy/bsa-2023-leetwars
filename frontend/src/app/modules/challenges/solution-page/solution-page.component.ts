@@ -36,6 +36,19 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         this.editorContent = this.challengeVersion.completeSolution;
     }
 
+    public ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
+        if (checkValidation && checkValidation.currentValue) {
+            this.inputForm.markAllAsTouched();
+        }
+
+        if (challengeVersion) {
+            this.inputForm.controls.completeSolution.setValue(this.challengeVersion.completeSolution);
+            this.inputForm.controls.initialSolution.setValue(this.challengeVersion.initialSolution);
+        }
+
+        this.updateEditorContent();
+    }
+
     public onCodeChange(code: string) {
         this.editorContent = code;
 
@@ -62,7 +75,7 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         }
     }
 
-    switchTab(tab: NavigationTab): void {
+    public switchTab(tab: NavigationTab): void {
         this.currentTab = tab;
         this.updateEditorContent();
     }
@@ -83,20 +96,7 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         }
     }
 
-    ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
-        if (checkValidation && checkValidation.currentValue) {
-            this.inputForm.markAllAsTouched();
-        }
-
-        if (challengeVersion) {
-            this.inputForm.controls.completeSolution.setValue(this.challengeVersion.completeSolution);
-            this.inputForm.controls.initialSolution.setValue(this.challengeVersion.initialSolution);
-        }
-
-        this.updateEditorContent();
-    }
-
-    getTabClass(tab: NavigationTab) {
+    public getTabClass(tab: NavigationTab) {
         let inputError = false;
 
         switch (tab.type) {
@@ -116,7 +116,7 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         return inputError ? 'input-error' : '';
     }
 
-    editorFocusOut() {
+    public editorFocusOut() {
         switch (this.currentTab.type) {
             case NavigationTabType.Complete:
                 this.inputForm.controls.completeSolution.markAsTouched();

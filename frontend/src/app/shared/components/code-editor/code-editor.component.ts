@@ -15,25 +15,25 @@ export class CodeEditorComponent implements OnChanges, AfterViewInit, OnInit {
 
     @Input() options: EditorOptions;
 
-    editorOptions: EditorOptions;
+    public editorOptions: EditorOptions;
 
-    ngAfterViewInit(): void {
+    public ngOnInit(): void {
         this.updateEditorOptions();
     }
 
-    public onCodeChange(model: string) {
-        this.initText = model;
-        this.codeChanged.emit(model);
+    public ngAfterViewInit(): void {
+        this.updateEditorOptions();
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
+    public ngOnChanges(changes: SimpleChanges): void {
         if (changes['language']) {
             this.updateEditorOptions();
         }
     }
 
-    ngOnInit(): void {
-        this.updateEditorOptions();
+    public onCodeChange(model: string) {
+        this.initText = model;
+        this.codeChanged.emit(model);
     }
 
     private updateEditorOptions(): void {

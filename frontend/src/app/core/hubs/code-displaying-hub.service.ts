@@ -13,27 +13,27 @@ import { SignalRHubFactoryService } from './signalr-hub-factory.service';
 export class CodeDisplayingHubService {
     public singleUserGroupId: string;
 
-    readonly hubUrl = 'codeDisplayingHub';
+    private readonly hubUrl = 'codeDisplayingHub';
 
     private hubConnection: HubConnection;
 
-    readonly messages = new Subject<ICodeRunResults>();
+    private readonly messages = new Subject<ICodeRunResults>();
 
     private subscriptions: Subscription[] = [];
 
     constructor(private hubFactory: SignalRHubFactoryService, private authService: AuthService) {}
 
-    async start() {
+    public async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
         this.singleUserGroupId = Guid.create().toString();
         await this.init();
     }
 
-    listenMessages(action: (msg: ICodeRunResults) => void) {
+    public listenMessages(action: (msg: ICodeRunResults) => void) {
         this.subscriptions = [...this.subscriptions, this.messages.subscribe({ next: action })];
     }
 
-    async stop() {
+    public async stop() {
         await this.hubConnection?.stop();
         this.subscriptions.forEach((s) => s.unsubscribe());
     }

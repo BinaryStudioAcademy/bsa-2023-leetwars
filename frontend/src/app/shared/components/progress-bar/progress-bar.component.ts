@@ -16,13 +16,13 @@ export class ProgressBarComponent implements OnInit {
 
     @Input() level: LanguageLevel;
 
-    progressBarColor: string;
+    public progressBarColor: string;
 
-    backgroundBarColor: string;
+    public backgroundBarColor: string;
 
-    labelName: string;
+    public labelName: string;
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.labelName = LanguageLevel[this.level];
         this.progressBarColor = LevelColorMapper[this.level].activeColor;
         this.backgroundBarColor = LevelColorMapper[this.level].inactiveColor;

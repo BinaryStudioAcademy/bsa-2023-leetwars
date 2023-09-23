@@ -18,11 +18,11 @@ export class SolvedProblemComponent implements OnChanges {
 
     @Input() bars: IBar[] = [];
 
-    totalTasks: number;
+    public totalTasks: number;
 
-    totalTasksCompleted: number;
+    public totalTasksCompleted: number;
 
-    ngOnChanges({ bars }: SimpleChanges) {
+    public ngOnChanges({ bars }: SimpleChanges) {
         if (bars && this.bars) {
             this.totalTasks = this.bars.reduce((acc, bar) => acc + bar.Total, 0);
             this.totalTasksCompleted = this.bars.reduce((acc, bar) => acc + bar.Done, 0);

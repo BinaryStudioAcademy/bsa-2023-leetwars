@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserManagementActions } from '@shared/constants/user-management-constants';
@@ -8,16 +9,14 @@ import { createCompareValidator } from '@shared/utils/validation/compare.validat
 import { passwordMaxLength, passwordMinLength } from '@shared/utils/validation/form-control-validator-options';
 import { passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
-import { catchError, Subject, takeUntil } from 'rxjs';
+import { catchError, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-change-password',
     templateUrl: './change-password.component.html',
     styleUrls: ['./change-password.component.sass'],
 })
-export class ChangePasswordComponent implements OnInit, OnDestroy {
-    private destroy$ = new Subject<void>();
-
+export class ChangePasswordComponent extends BaseComponent implements OnInit, OnDestroy {
     public resetPasswordForm = new FormGroup({
         password: new FormControl('', [
             Validators.required,
@@ -28,7 +27,7 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
         confirmPassword: new FormControl(''),
     });
 
-    oobCode: string;
+    private oobCode: string;
 
     constructor(
         private router: Router,
@@ -36,11 +35,12 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
         private authService: AuthService,
         private toastrService: ToastrNotificationsService,
     ) {
+        super();
         this.addValidators();
     }
 
-    ngOnInit() {
-        this.activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe((params) => {
+    public ngOnInit() {
+        this.activatedRoute.queryParams.pipe(takeUntil(this.unsubscribe$)).subscribe((params) => {
             if (!params || params['mode'] !== UserManagementActions.resetPassword) {
                 this.router.navigate(['']);
             }
@@ -78,10 +78,5 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
                 this.resetPasswordForm.get('confirmPassword')!,
             ),
         );
-    }
-
-    ngOnDestroy(): void {
-        this.destroy$.next();
-        this.destroy$.complete();
     }
 }

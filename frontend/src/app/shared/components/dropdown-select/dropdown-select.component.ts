@@ -27,19 +27,19 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
 
     public fieldText = '';
 
-    ngOnChanges({ selectedItem, selectedItems }: SimpleChanges): void {
+    private allSelectionName = 'All';
+
+    public ngOnInit() {
+        this.updateSelectedIcon();
+    }
+
+    public ngOnChanges({ selectedItem, selectedItems }: SimpleChanges): void {
         if (selectedItem) {
             this.setInitialValue();
         }
         if (selectedItems) {
             this.fieldText = this.selectedItems.join(', ');
         }
-    }
-
-    private allSelectionName = 'All';
-
-    public ngOnInit() {
-        this.updateSelectedIcon();
     }
 
     public isSelectedTextNotDefault() {

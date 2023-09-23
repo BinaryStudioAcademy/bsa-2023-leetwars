@@ -48,8 +48,21 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
         exampleTestCases: new FormControl('', [Validators.required]),
     });
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.editorContent = this.challengeVersion.testCases;
+    }
+
+    public ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
+        if (checkValidation && checkValidation.currentValue) {
+            this.inputForm.markAllAsTouched();
+        }
+
+        if (challengeVersion) {
+            this.inputForm.controls.testCases.setValue(this.challengeVersion.testCases);
+            this.inputForm.controls.exampleTestCases.setValue(this.challengeVersion.exampleTestCases);
+        }
+
+        this.updateEditorContent();
     }
 
     public onCodeChange(code: string) {
@@ -72,7 +85,7 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
         this.validationChange.emit(this.inputForm.valid);
     }
 
-    switchTab(tab: NavigationTab): void {
+    public switchTab(tab: NavigationTab): void {
         this.currentTab = tab;
         this.updateEditorContent();
     }
@@ -90,20 +103,7 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
         }
     }
 
-    ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
-        if (checkValidation && checkValidation.currentValue) {
-            this.inputForm.markAllAsTouched();
-        }
-
-        if (challengeVersion) {
-            this.inputForm.controls.testCases.setValue(this.challengeVersion.testCases);
-            this.inputForm.controls.exampleTestCases.setValue(this.challengeVersion.exampleTestCases);
-        }
-
-        this.updateEditorContent();
-    }
-
-    getTabClass(tab: NavigationTab) {
+    public getTabClass(tab: NavigationTab) {
         let inputError = false;
 
         switch (tab.type) {
@@ -122,7 +122,7 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
         return inputError ? 'input-error' : '';
     }
 
-    editorFocusOut() {
+    public editorFocusOut() {
         switch (this.currentTab.type) {
             case NavigationTabType.TestCases:
                 this.inputForm.controls.testCases.markAsTouched();
@@ -135,7 +135,7 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
         }
     }
 
-    toggleMaximize(element: HTMLDivElement) {
+    public toggleMaximize(element: HTMLDivElement) {
         this.isMaximized = !this.isMaximized;
         if (this.isMaximized) {
             element.requestFullscreen();

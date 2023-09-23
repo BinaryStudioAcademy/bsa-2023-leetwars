@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { IUser } from '@shared/models/user/user';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
-import { Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
 
@@ -16,26 +17,27 @@ import { getInactiveBars } from './user-profile.utils';
     templateUrl: './user-profile.component.html',
     styleUrls: ['./user-profile.component.sass'],
 })
-export class UserProfileComponent implements OnInit {
-    user?: IUser | null;
+export class UserProfileComponent extends BaseComponent implements OnInit {
+    public fullUser: IUserFull;
 
-    fullUser: IUserFull;
+    public userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
 
-    userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
+    public bars: IBar[] = [];
 
-    bars: IBar[] = [];
-
-    private unsubscribe$ = new Subject<void>();
+    private user: IUser;
 
     constructor(
         private userService: UserService,
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
     ) {
-        this.user = this.authService.getUserInfo();
+        super();
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.user = user;
+        });
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.getUserInfo();
         this.getUserChallenges();
     }

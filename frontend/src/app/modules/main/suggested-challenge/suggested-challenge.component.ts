@@ -21,19 +21,19 @@ import { takeUntil } from 'rxjs';
     styleUrls: ['./suggested-challenge.component.sass'],
 })
 export class SuggestedChallengeComponent extends BaseComponent implements OnInit {
-    challenge?: IChallengePreview;
+    public challenge?: IChallengePreview;
 
-    languagesNames: string[] = [];
+    public languagesNames: string[] = [];
 
-    languages: ILanguage[] = [];
+    public suggestionTypesNames: string[];
 
-    suggestionTypesNames: string[];
+    public suggestionTypes = SUGGESTION_TYPE_NAMES;
 
-    suggestionTypes = SUGGESTION_TYPE_NAMES;
+    public suggestionIcons = ICONS;
 
-    suggestionIcons = ICONS;
+    private languages: ILanguage[] = [];
 
-    suggestionSettings: ISuggestionSettings = {
+    private suggestionSettings: ISuggestionSettings = {
         languageId: 0,
         suggestionType: SuggestionType.Fundamentals,
     };

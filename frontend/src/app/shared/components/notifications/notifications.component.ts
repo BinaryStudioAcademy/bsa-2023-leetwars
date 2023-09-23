@@ -11,5 +11,5 @@ import { INotificationModel } from '@shared/models/notifications/notifications';
 export class NotificationsComponent extends BaseComponent {
     @Input() notifications: INotificationModel[];
 
-    typeNotification = TypeNotification;
+    public typeNotification = TypeNotification;
 }
