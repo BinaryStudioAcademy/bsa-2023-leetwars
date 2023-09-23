@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
 import { HttpResponse } from '@microsoft/signalr';
+import { IStar } from '@shared/models/challenge-star/star';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
@@ -9,11 +10,8 @@ import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
-import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
-import { IStar } from '@shared/models/challenge-star/star';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
-import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
@@ -42,10 +40,6 @@ export class ChallengeService {
         httpParams = setParams<ISuggestionSettings>(httpParams, settings);
 
         return this.httpService.getRequest<IChallengePreview>(`${this.challengesRoute}/suggestion`, httpParams);
-    }
-
-    public getChallengeLevels(): Observable<IChallengeLevel[]> {
-        return this.httpService.getRequest<IChallengeLevel[]>(`${this.challengesRoute}/levels`);
     }
 
     public getChallengeById(id: number): Observable<IChallenge> {

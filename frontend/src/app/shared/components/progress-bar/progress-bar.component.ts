@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LevelColorMapper } from '@modules/user/user-profile/user-profile.utils';
-import { LanguageLevel } from '@shared/enums/languageLevel';
-import { mapLanguageLevelToEnum } from '@shared/utils/enum-mappers/language-level-mapper.utils';
+import { LanguageLevel } from '@shared/enums/language-level';
 
 @Component({
     selector: 'app-progress-bar',
@@ -24,7 +23,7 @@ export class ProgressBarComponent implements OnInit {
     labelName: string;
 
     ngOnInit(): void {
-        this.labelName = mapLanguageLevelToEnum(this.level);
+        this.labelName = LanguageLevel[this.level];
         this.progressBarColor = LevelColorMapper[this.level].activeColor;
         this.backgroundBarColor = LevelColorMapper[this.level].inactiveColor;
     }

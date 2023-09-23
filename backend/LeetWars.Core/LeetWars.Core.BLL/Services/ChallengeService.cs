@@ -8,7 +8,6 @@ using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
-using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
@@ -23,12 +22,14 @@ namespace LeetWars.Core.BLL.Services
 {
     public class ChallengeService : BaseService, IChallengeService
     {
-        private readonly IMessageSenderService _messageSenderService;
+        private readonly INotificationSenderService _notificationSenderService;
+        private readonly IBuilderSenderService _builderSenderService;
         private readonly IUserGetter _userGetter;
         private readonly IUserService _userService;
 
         public ChallengeService(
-            IMessageSenderService messageSenderService,
+            INotificationSenderService notificationSenderService,
+            IBuilderSenderService builderSenderService,
             LeetWarsCoreContext context,
             IMapper mapper,
             IUserGetter userGetter,
@@ -36,7 +37,8 @@ namespace LeetWars.Core.BLL.Services
         ) : base(context, mapper)
         {
             _userService = userService;
-            _messageSenderService = messageSenderService;
+            _notificationSenderService = notificationSenderService;
+            _builderSenderService = builderSenderService;
             _userGetter = userGetter;
         }
 
@@ -88,10 +90,10 @@ namespace LeetWars.Core.BLL.Services
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
 
-            if (filters.DifficultyLevel is not null)
+            if(filters.SkillLevel is not null)
             {
-                challenges = challenges.Where(challenge =>
-                challenge.Level != null && challenge.Level.Name.Equals(filters.DifficultyLevel));
+                challenges = challenges.Where(challenge => 
+                challenge.Level != null && challenge.Level.SkillLevel == filters.SkillLevel);
             }
 
             challenges = SortByProperty(challenges, sortingModel);
@@ -132,11 +134,6 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengeFullDto>(challenge);
         }
 
-        public async Task<List<ChallengeLevelDto>> GetChallengesLevelsAsync()
-        {
-            return _mapper.Map<List<ChallengeLevelDto>>(await _context.ChallengeLevels.ToListAsync());
-        }
-
         public async Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto)
         {
             Expression<Func<ChallengeStar, bool>> delegateToCheckChallengeStar =
@@ -162,7 +159,7 @@ namespace LeetWars.Core.BLL.Services
                     Challenge = briefChallenge
                 };
 
-                _messageSenderService.SendMessageToRabbitMQ(newNotification);
+                _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
 
                 await _context.ChallengeStars.AddAsync(challengeStar);
             }
@@ -227,22 +224,7 @@ namespace LeetWars.Core.BLL.Services
                 Message = "New challenge!",
             };
 
-            _messageSenderService.SendMessageToRabbitMQ(newNotification);
-        }
-
-        public async Task SendCodeFightRequest(CodeFightRequestDto requestDto)
-        {
-            var newNotification = new NewNotificationDto
-            {
-                Challenge = await GetCodeFightChallengeAsync(requestDto.ChallengeSettings),
-                DateSending = DateTime.UtcNow,
-                ReceiverId = requestDto.ReceiverId.ToString(),
-                Sender = await _userService.GetBriefUserInfoById(requestDto.SenderId),
-                TypeNotification = TypeNotifications.CodeFightRequest,
-                Message = "Code Fight. Are you in?"
-            };
-
-            _messageSenderService.SendMessageToRabbitMQ(newNotification);
+            _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
         }
 
         public void SendCodeFightStart(NewNotificationDto notificationDto)
@@ -275,11 +257,6 @@ namespace LeetWars.Core.BLL.Services
             var challenge = await GetChallengeByIdAsync(challengeId);
             _context.Challenges.Remove(challenge);
             await _context.SaveChangesAsync();
-        }
-
-        public void SendCodeRunRequest(CodeRunRequestDto request)
-        {
-            _messageSenderService.SendMessageToRabbitMQ(request);
         }
 
         private async Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings)
@@ -376,7 +353,7 @@ namespace LeetWars.Core.BLL.Services
                 .Where(userLevel => userLevel.User != null && userLevel.User.Uid == userId && userLevel.LanguageId == languageId)
                 .FirstOrDefaultAsync();
 
-            return userLevel?.Level ?? LanguageLevel.FirstSteps;
+            return userLevel?.Level ?? LanguageLevel.Easy;
         }
 
         private IQueryable<Challenge> FilterChallengesByProgress(IQueryable<Challenge> challenges, ChallengesProgress? progress)
@@ -417,6 +394,7 @@ namespace LeetWars.Core.BLL.Services
                 _ => challenges
             };
         }
+
         private static IOrderedQueryable<Challenge> SortByProperty(IQueryable<Challenge> challenges, SortingModel? sortingModel)
         {
             return sortingModel switch
@@ -449,6 +427,10 @@ namespace LeetWars.Core.BLL.Services
 
                 return randomValue % maxValue;
             }
+        }
+        public void SendCodeRunRequest(CodeRunRequestDto request)
+        {
+            _builderSenderService.SendNotificationToRabbitMQ(request);
         }
     }
 }

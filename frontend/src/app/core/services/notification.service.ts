@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsComponent } from '@shared/components/notifications/notifications.component';
-import { TypeNotification } from '@shared/enums/type-notification';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 
 @Injectable({
@@ -28,9 +27,7 @@ export class NotificationService {
         this.notificationModal.componentInstance.notifications = this.notifications;
 
         this.notificationModal.hidden.subscribe(() => {
-            this.notifications = this.notifications.filter(
-                (n) => n.typeNotification === TypeNotification.CodeFightRequest,
-            );
+            this.notifications = [];
         });
 
         this.notificationModal.closed.subscribe((nofitications: INotificationModel[]) => {
