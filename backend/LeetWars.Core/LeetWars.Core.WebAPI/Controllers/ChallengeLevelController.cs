@@ -18,10 +18,15 @@ public class ChallengeLevelController : ControllerBase
         _challengeLevelService = challengeLevelService;
     }
 
+    /// <summary>
+    /// Get all challenge levels
+    /// </summary>
+    /// <returns>Collection of challenge levels</returns>
     [HttpGet]
     public async Task<ActionResult<ICollection<ChallengeLevelDto>>> GetAllAsync()
     {
         var levels = await _challengeLevelService.GetAllLevelsAsync();
+
         return Ok(levels);
     }
 }

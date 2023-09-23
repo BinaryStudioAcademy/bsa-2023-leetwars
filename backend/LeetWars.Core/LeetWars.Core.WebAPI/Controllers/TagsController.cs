@@ -17,10 +17,15 @@ namespace LeetWars.Core.WebAPI.Controllers
             _tagService = tagService;
         }
 
+        /// <summary>
+        /// Get all challenge tags
+        /// </summary>
+        /// <returns>Collection of challenge tags</returns>
         [HttpGet]
         public async Task<ActionResult<ICollection<TagDto>>> GetAllAsync()
         {
             var tags = await _tagService.GetAllTagsAsync();
+
             return Ok(tags);
         }
     }
