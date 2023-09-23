@@ -1,13 +1,18 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
+import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
+import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
+import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { EditorOptions } from '@shared/models/options/editor-options';
+import { ITestsOutput } from '@shared/models/tests-output/tests-output';
+import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -15,7 +20,7 @@ import { takeUntil } from 'rxjs';
     templateUrl: './online-editor-page.component.html',
     styleUrls: ['./online-editor-page.component.sass'],
 })
-export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
+export class OnlineEditorPageComponent extends BaseComponent implements OnDestroy, OnInit {
     activeTab: string = 'Description';
 
     splitDirection: 'horizontal' | 'vertical';
@@ -40,12 +45,19 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
     editorOptions: EditorOptions;
 
+    solution: ICodeRunRequest;
+
+    user: IUser;
+
+    userId: string;
+
     private isFullscreen = false;
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
         private breakpointObserver: BreakpointObserver,
+        private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
         private router: Router,
     ) {
@@ -78,15 +90,35 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
             this.loadChallenge(challengeId);
         });
+        this.subscribeToMessageQueue();
+    }
+
+    showTestResults(testResults: ITestsOutput) {
+        if (testResults.isSuccess) {
+            this.toastrService.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
+        } else {
+            this.toastrService.showError(`Tests failed \n Tests failed: ${testResults.failedCount}
+            out of ${testResults.passedCount + testResults.failedCount}`);
+        }
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
 
+        this.selectedLanguage = selectedLang;
+
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
 
         this.languageVersions = this.getLanguageVersionsByLanguage(selectedLang);
         [this.selectedLanguageVersion] = this.languageVersions;
+    }
+
+    onCodeChanged(newCode: string) {
+        this.initialSolution = newCode;
+    }
+
+    onTestChanged(newTests: string) {
+        this.testCode = newTests;
     }
 
     selectTab(title: string): void {
@@ -95,6 +127,30 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
 
     isSelected(title: string): boolean {
         return this.activeTab === title;
+    }
+
+    sendCode(): void {
+        this.solution = {
+            userConnectionId: this.signalRService.singleUserGroupId,
+            language: this.selectedLanguage,
+            userCode: this.initialSolution as string,
+            tests: this.testCode,
+        };
+        this.challengeService.runTests(this.solution).subscribe();
+    }
+
+    subscribeToMessageQueue(): void {
+        this.signalRService.start();
+        this.signalRService.listenMessages((msg: string) => {
+            const codeRunResults: ICodeRunResults = JSON.parse(msg) as ICodeRunResults;
+
+            if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults) {
+                this.toastrService.showSuccess('Code was compiled successfully');
+                this.showTestResults(codeRunResults.testRunResults);
+            } else {
+                this.toastrService.showError(codeRunResults.buildResults?.buildMessage as string);
+            }
+        });
     }
 
     private loadChallenge(challengeId: number) {
@@ -163,5 +219,10 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnInit {
         return this.challenge.versions
             .filter((version) => this.mapLanguageName(version.language.name) === language)
             .flatMap((version) => version.language.languageVersions.map((languageVersion) => languageVersion.version));
+    }
+
+    override ngOnDestroy() {
+        this.signalRService.stop();
+        super.ngOnDestroy();
     }
 }

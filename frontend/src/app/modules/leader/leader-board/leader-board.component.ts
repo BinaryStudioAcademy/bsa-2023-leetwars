@@ -14,6 +14,10 @@ import { takeUntil } from 'rxjs';
 export class LeaderBoardComponent extends BaseComponent implements OnInit {
     public users: IUser[] = [];
 
+    public currentUser: IUser;
+
+    public usersToShow: IUser[] = [];
+
     public isLastPage = false;
 
     public loading = false;
@@ -27,7 +31,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         super();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.getUsers();
     }
 
@@ -59,6 +63,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
                         return;
                     }
                     this.users = [...this.users, ...users];
+                    this.usersToShow = this.users;
                 },
                 error: () => {
                     this.loading = false;

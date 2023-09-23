@@ -1,9 +1,8 @@
+using LeetWars.RabbitMQ.Interfaces;
 using RabbitMQ.Client.Events;
 
 namespace LeetWars.RabbitMQ;
-public interface IConsumerService : IDisposable
+public interface IConsumerService : IGeneralConsumerService
 {
-    void Listen(EventHandler<BasicDeliverEventArgs> messageReceivedHandler);
-    void ListenAsync(AsyncEventHandler<BasicDeliverEventArgs> messageReceivedHandler);
-    void SetAcknowledge(ulong deliveryTag, bool processed);
+
 }

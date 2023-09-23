@@ -6,7 +6,9 @@ using LeetWars.Core.WebAPI.Validators;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Azure.Storage.Blobs;
 using LeetWars.Core.WebAPI.Logic;
+using LeetWars.Core.WebAPI.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using LeetWars.RabbitMQ;
@@ -14,6 +16,7 @@ using RabbitMQ.Client;
 using Microsoft.Extensions.Options;
 using LeetWars.Core.DAL.Providers;
 using LeetWars.Core.DAL.Interfaces;
+
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -25,31 +28,68 @@ namespace LeetWars.Core.WebAPI.Extentions
                 .AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            services.AddScoped<IMessageSenderService, MessageSenderService>();
             services.AddTransient<IChallengeService, ChallengeService>();
             services.AddTransient<IChallengeLevelService, ChallengeLevelService>();
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddScoped<IUserService, UserService>();
+
             services.AddScoped<UidProvider>();
             services.AddTransient<IUidProvider>(s => s.GetService<UidProvider>()!);
+
             services.AddScoped<UserStorage>();
             services.AddTransient<IUserSetter>(s => s.GetService<UserStorage>()!);
             services.AddTransient<IUserGetter>(s => s.GetService<UserStorage>()!);
-
         }
 
         public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<ProducerSettings>(configuration.GetSection("RabbitMQProducer"));
             services.AddSingleton(sp =>
             {
                 var rabbitUri = new Uri(configuration["Rabbit"]);
                 var factory = new ConnectionFactory { Uri = rabbitUri };
                 return factory.CreateConnection();
             });
-            services.AddSingleton(sp => sp.GetRequiredService<IOptions<ProducerSettings>>().Value);
-            services.AddSingleton<IProducerService, ProducerService>();
+
+            RegisterEmailerProducer(services, configuration);
+            RegisterNotificationProducerService(services, configuration);
+            RegisterBuilderProducerService(services, configuration);
+        }
+
+        private static void RegisterNotificationProducerService(IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = configuration
+                .GetSection("RabbitMQProducers:Emailer")
+                .Get<ProducerSettings>();
+
+            services.AddSingleton<IEmailSenderService>(provider =>
+                new EmailSenderService(new ProducerService(
+                    provider.GetRequiredService<IConnection>(),
+                    settings)));
+        }        
+        
+        private static void RegisterBuilderProducerService(IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = configuration
+                .GetSection("RabbitMQProducers:Builder")
+                .Get<ProducerSettings>();
+
+            services.AddSingleton<IBuilderSenderService>(provider =>
+                new BuilderSenderService(new ProducerService(
+                    provider.GetRequiredService<IConnection>(),
+                    settings)));
+        }
+
+        private static void RegisterEmailerProducer(IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = configuration
+                .GetSection("RabbitMQProducers:Notifier")
+                .Get<ProducerSettings>();
+
+            services.AddSingleton<INotificationSenderService>(provider =>
+                new NotificationSenderService(new ProducerService(
+                    provider.GetRequiredService<IConnection>(),
+                    settings)));
         }
 
         public static void AddAutoMapper(this IServiceCollection services)
@@ -97,6 +137,25 @@ namespace LeetWars.Core.WebAPI.Extentions
                         ValidateLifetime = true
                     };
                 });
+        }
+
+        public static IServiceCollection AddAzureBlobServices(
+            this IServiceCollection services, IConfiguration configuration)
+        {
+            var blobUrl = configuration["BLOB_URL"];
+            var blobContainerName = configuration["BlobContainerName"];
+            var blobAccess = configuration["BlobAccess"];
+
+            var settings = new BlobStorageSettings(blobUrl, blobContainerName, blobAccess);
+            var blobContainerClient = new BlobContainerClient(settings.BlobUrl, settings.BlobContainerName);
+
+            services.AddSingleton(_ => settings);
+
+            services.AddSingleton(_ => blobContainerClient);
+
+            services.AddScoped<IBlobService, BlobService>();
+
+            return services;
         }
     }
 }

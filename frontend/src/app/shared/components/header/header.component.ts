@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { BaseComponent } from '@core/base/base.component';
+import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header-service';
+import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IUser } from '@shared/models/user/user';
+import { takeUntil } from 'rxjs';
 
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
@@ -13,21 +18,43 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.sass'],
 })
-export class HeaderComponent {
-    public showMenu: boolean = false;
-
-    public user: IUser;
-
+export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy {
     constructor(
         private authService: AuthService,
         private modalService: NgbModal,
         private router: Router,
         private headerService: HeaderService,
         private toastrService: ToastrNotificationsService,
+        private notificationService: NotificationService,
+        private notificationHub: NotificationHubService,
     ) {
-        this.authService.getUser().subscribe((user) => {
-            this.user = user;
+        super();
+        this.authService.currentUser$.pipe(takeUntil(this.unsubscribe$)).subscribe((user) => {
+            this.user = user!;
         });
+
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationStart) {
+                this.showMenu = false;
+            }
+        });
+    }
+
+    public showMenu: boolean = false;
+
+    public user: IUser;
+
+    async ngOnInit() {
+        await this.notificationHub.start();
+        this.listeningHub();
+    }
+
+    showNotifications() {
+        this.notificationService.showNotifications();
+    }
+
+    get countNotification() {
+        return this.notificationService.countNotification;
     }
 
     onLogOut() {
@@ -60,5 +87,16 @@ export class HeaderComponent {
     public goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
+    }
+
+    private listeningHub() {
+        this.notificationHub.listenMessages((msg: INotificationModel) => {
+            this.notificationService.addNotification(msg);
+        });
+    }
+
+    override ngOnDestroy() {
+        this.notificationHub.stop();
+        super.ngOnDestroy();
     }
 }

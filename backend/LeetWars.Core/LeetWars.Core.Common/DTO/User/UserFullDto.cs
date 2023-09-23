@@ -9,7 +9,7 @@ using LeetWars.Core.DAL.Enums;
 
 namespace LeetWars.Core.Common.DTO.User
 {
-    public class UserFullDto : Entity<long>
+    public class UserFullDto : Entity<long>, IDtoWithImage
     {
         public Country Country { get; set; }
         public int Timezone { get; set; }
@@ -20,7 +20,7 @@ namespace LeetWars.Core.Common.DTO.User
         public string LastName { get; set; } = string.Empty;
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string ImagePath { get; set; } = string.Empty;
+        public string? ImagePath { get; set; }
         public long TotalScore { get; set; }
         public long Reputation { get; set; }
         public DateTime RegisteredAt { get; set; }

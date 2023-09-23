@@ -7,7 +7,7 @@ public static class LanguageLevelExtension
     public static LanguageLevel GetNextLevel(this LanguageLevel source)
     {
 
-        if (source == LanguageLevel.Master)
+        if (source == LanguageLevel.Extreme)
         {
             return source;
         }

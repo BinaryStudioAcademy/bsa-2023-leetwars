@@ -1,7 +1,8 @@
 using System.Security.Claims;
-using LeetWars.Core.BLL.Services;
+using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
+
 using LeetWars.Core.Common.DTO.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -71,7 +72,7 @@ public class UsersController : ControllerBase
     {
         var users = await _userService.GetLeaderBoardAsync(page);
         return Ok(users);
-    }
+    }    
 
     [HttpPut]
     [Route("rank")]
@@ -79,5 +80,21 @@ public class UsersController : ControllerBase
     {
         var updatedUser = await _userService.UpdateUserRankAsync(userDto);
         return Ok(updatedUser);
+    }
+    
+    [HttpPut]
+    public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserInfoDto updateUserInfoDto)
+    {
+        var updatedUser = await _userService.UpdateUserInfo(updateUserInfoDto);
+        
+        return Ok(updatedUser);
+    }
+    
+    [HttpPost("avatar")]
+    public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatar([FromForm] IFormFile avatar)
+    {
+        var newAvatarUrl = await _userService.UpdateUserAvatar(avatar);
+        
+        return Ok(newAvatarUrl);
     }
 }

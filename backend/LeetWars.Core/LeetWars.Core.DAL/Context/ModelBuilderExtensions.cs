@@ -5,6 +5,7 @@ using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace LeetWars.Core.DAL.Context
 {
@@ -77,11 +78,11 @@ namespace LeetWars.Core.DAL.Context
             Faker.GlobalUniqueIndex = 0;
 
             return new Faker<ChallengeVersion>()
-                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text(),"", f.Lorem.Text(), f.Lorem.Text()))
+                .CustomInstantiator(f => new ChallengeVersion(f.Lorem.Sentence(), f.Lorem.Text(), "", f.Lorem.Text(), f.Lorem.Text()))
                 .UseSeed(SeedDefaults.ChallengeVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
-                .RuleFor(e => e.ChallengeId, f => f.PickRandom(challenges).Id)
+                .RuleFor(e => e.ChallengeId, f => (f.IndexGlobal % challenges.Count) + 1)
                 .RuleFor(e => e.Status, f => f.PickRandom<ChallengeStatus>())
                 .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
@@ -89,18 +90,20 @@ namespace LeetWars.Core.DAL.Context
                     var challenge = challenges.ToList().Find(a => a.Id == e.ChallengeId);
                     return f.Date.Between(challenge?.CreatedAt ?? DateTime.Now, DateTime.Now);
                 })
-                .Generate(count);
+                .Generate(count)
+                .DistinctBy(challengeversion => new { challengeversion.ChallengeId, challengeversion.LanguageId })
+                .ToList();
         }
-        
+
         private static ICollection<ChallengeTag> GenerateChallengeTags(ICollection<Challenge> challenges)
         {
-            int count = challenges.Count * 3;
+            int count = challenges.Count * 2;
             Faker.GlobalUniqueIndex = 0;
 
             var challengeTags = new Faker<ChallengeTag>()
                 .CustomInstantiator(f => new ChallengeTag())
                 .UseSeed(SeedDefaults.ChallengeTagSeed)
-                .RuleFor(e => e.ChallengeId, f => f.PickRandom(challenges).Id)
+                .RuleFor(e => e.ChallengeId, f => (f.IndexGlobal % challenges.Count) + 1)
                 .RuleFor(e => e.TagId, f => f.PickRandom(SeedDefaults.Tags.AsEnumerable()).Id)
                 .Generate(count);
 
@@ -112,7 +115,7 @@ namespace LeetWars.Core.DAL.Context
             Faker.GlobalUniqueIndex = 0;
 
             return new Faker<LanguageVersion>()
-                .CustomInstantiator( f => new LanguageVersion(f.System.Version().ToString().LimitLength(EntitySettings.MaxShortNameLength)))
+                .CustomInstantiator(f => new LanguageVersion(f.System.Version().ToString().LimitLength(EntitySettings.MaxShortNameLength)))
                 .UseSeed(SeedDefaults.LanguageVersionSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
@@ -208,7 +211,7 @@ namespace LeetWars.Core.DAL.Context
                 })
                 .Generate(count);
         }
-        
+
         private static ICollection<UserBadge> GenerateUserBadges(ICollection<User> users, int count = 80)
         {
             Faker.GlobalUniqueIndex = 0;
@@ -247,6 +250,5 @@ namespace LeetWars.Core.DAL.Context
                 .RuleFor(p => p.RegisteredAt, f => f.Date.Between(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc), DateTime.Now))
                 .Generate(count);
         }
-
     }
 }
