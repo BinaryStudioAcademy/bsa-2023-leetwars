@@ -90,14 +90,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (users) => {
-                    this.loading = false;
-                    if (!users.length) {
-                        this.isLastPage = true;
-
-                        return;
-                    }
-                    this.users = [...this.users, ...users];
-                    this.usersToShow = this.users;
+                    this.handleUsersUpdate(users);
                 },
                 error: () => {
                     this.loading = false;
@@ -181,8 +174,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
                     this.currentUser.friendships = userDto.friendships;
                     this.userFriendsIds = userDto.friendships.map((f) => f.friendId);
                 },
-                error: () => {
-                    this.toastrNotification.showError('Server connection error');
+                error: (error) => {
+                    this.toastrNotification.showError(error);
                 },
             });
     }
@@ -212,5 +205,16 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
             return;
         }
         this.usersToShow = friends;
+    }
+
+    private handleUsersUpdate(users: IUser[]) {
+        this.loading = false;
+        if (!users.length) {
+            this.isLastPage = true;
+
+            return;
+        }
+        this.users = [...this.users, ...users];
+        this.usersToShow = this.users;
     }
 }

@@ -24,6 +24,10 @@ export class NotificationService {
         this.notifications = this.notifications.filter((n) => n !== notification);
     }
 
+    public updateNotificationsModal() {
+        this.notificationModal.componentInstance.notifications = this.notifications;
+    }
+
     public showNotifications() {
         this.notificationModal = this.modalService.open(NotificationsComponent);
 

@@ -1,4 +1,6 @@
-﻿namespace LeetWars.Core.WebAPI.Middlewares
+﻿using LeetWars.Core.Common.Exceptions;
+
+namespace LeetWars.Core.WebAPI.Middlewares
 {
     public class GenericExceptionHandlerMiddleware
     {
@@ -34,6 +36,7 @@
             context.Response.StatusCode = exception switch
             {
                 ArgumentNullException => 400,
+                BadOperationException => 400,
                 _ => 500
             };
 

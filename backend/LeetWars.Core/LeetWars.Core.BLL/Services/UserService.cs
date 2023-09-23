@@ -18,6 +18,7 @@ using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.DAL.Enums;
 using Microsoft.AspNetCore.Http;
 using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Core.Common.Exceptions;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -237,7 +238,7 @@ public class UserService : BaseService, IUserService
 
         if (hasSuchFriendship)
         {
-            throw new InvalidOperationException($"User #{senderId} already has a friendship with user #{recipientId}");
+            throw new BadOperationException($"You can't send a friendship request to this user");
         }
 
         var currentDateTime = DateTime.UtcNow;
@@ -260,7 +261,7 @@ public class UserService : BaseService, IUserService
             ReceiverId = recipientId.ToString(),
             Sender = await GetBriefUserInfoByIdAsync(currentUser.Id),
             TypeNotification = TypeNotifications.FriendRequest,
-            Message = $"User {currentUser.UserName} sent you a friend request. Do you accept?",
+            Message = $"{currentUser.UserName} sent you a friend request",
             UpdateFriendship = new UpdateFriendshipDto(currentUser.Id, friendship.Id, friendship.Status)
         };
 
@@ -284,7 +285,7 @@ public class UserService : BaseService, IUserService
         switch (friendshipStatus)
         {
             case FriendshipStatus.Pending:
-                throw new InvalidOperationException("You cannot update a friendship status as 'Pending'");
+                throw new BadOperationException("You cannot update a friendship status as 'Pending'");
             case FriendshipStatus.Declined:
                 _context.Friendships.Remove(friendshipToUpdate);
                 break;
@@ -292,7 +293,7 @@ public class UserService : BaseService, IUserService
                 friendshipToUpdate.Status = friendshipStatus;
                 break;
             default:
-                throw new InvalidOperationException("Not expected friendship status value");
+                throw new BadOperationException("Not expected friendship status value");
         }
 
         await _context.SaveChangesAsync();
@@ -377,7 +378,7 @@ public class UserService : BaseService, IUserService
     {
         if (userId != currentUserId)
         {
-            throw new InvalidOperationException($"User id: {userId} should match with current user id: {currentUserId}");
+            throw new BadOperationException($"User id: {userId} should match with current user id: {currentUserId}");
         }
     }
 }

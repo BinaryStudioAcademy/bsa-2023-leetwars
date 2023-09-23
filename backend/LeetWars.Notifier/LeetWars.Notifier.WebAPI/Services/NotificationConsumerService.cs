@@ -19,7 +19,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             _hubContext = hubContext;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
@@ -39,6 +39,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             });
 
             _consumerService.Listen(handler);
+            return Task.CompletedTask;
         }
 
         private async Task SendNotificationAsync(NewNotificationDto notificationDto)
@@ -56,8 +57,7 @@ namespace LeetWars.Notifier.WebAPI.Services
                     }
                     break;
                 default:
-                    await Task.CompletedTask;
-                    break;
+                    return;
             }
         }
     }
