@@ -22,7 +22,7 @@ namespace LeetWars.Builder.Services
 
         public async Task<string> RunSolutionBuildAsync(ContainerDataDto data)
         {
-            return data.Language switch 
+            return data.Language switch
             {
                 Languages.csharp => await RunCSharpBuildAsync(data),
                 Languages.javascript => await RunJSBuildAsync(data),
@@ -98,7 +98,7 @@ namespace LeetWars.Builder.Services
             var volumes = await _client.Volumes.ListAsync();
             var volume = volumes.Volumes.FirstOrDefault(v => v.Name == volumeName);
 
-            if(volume is not null)
+            if (volume is not null)
             {
                 await _client.Volumes.RemoveAsync(volumeName, true);
             }

@@ -1,5 +1,4 @@
 ﻿using LeetWars.CodeAnalyzer.Interfaces;
-using LeetWars.CodeAnalyzer.OpenAISettings;
 using OpenAI_API;
 using OpenAI_API.Chat;
 using OpenAI_API.Models;

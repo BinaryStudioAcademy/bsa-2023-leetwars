@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.BLL.MappingProfiles.Resolvers;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeLevel;

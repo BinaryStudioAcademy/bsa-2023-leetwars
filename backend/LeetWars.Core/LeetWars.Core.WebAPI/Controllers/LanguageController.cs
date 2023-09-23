@@ -1,5 +1,4 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
-using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Language;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

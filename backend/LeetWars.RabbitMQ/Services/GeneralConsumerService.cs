@@ -1,8 +1,7 @@
 ﻿using LeetWars.RabbitMQ.Interfaces;
-using RabbitMQ.Client.Events;
-using RabbitMQ.Client;
 using LeetWars.RabbitMQ.Settings;
-using Microsoft.Extensions.Options;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace LeetWars.RabbitMQ.Services;
 public class GeneralConsumerService : IGeneralConsumerService

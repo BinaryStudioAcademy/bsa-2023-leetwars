@@ -2,8 +2,8 @@
 using FluentValidation.Results;
 using LeetWars.Core.Common.DTO.Mail;
 using LeetWars.Emailer.Interfaces;
-using SendGrid.Helpers.Mail;
 using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace LeetWars.Emailer.Services
 {

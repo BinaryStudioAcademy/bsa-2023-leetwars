@@ -4,7 +4,7 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
 {
     public class OpenAiSettings : IOpenAiSettings
     {
-        public string GetCodeAnalysisPrompt(string languageName, string codeListing) => 
+        public string GetCodeAnalysisPrompt(string languageName, string codeListing) =>
             $"You are a software Architect, as a software architect for implementing high quality {languageName} application, " +
             "your goal is to analyze the code and provide overall quality mark (from 0 to 100) for this code. " +
             "Give 20 marks for functionality of this code. Code must build and run. " +
@@ -16,7 +16,7 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
             "Give 10 marks for documentation and useful comments. Code must not have useless comments, TODO statements, etc. " +
             "Give 10 marks for formatting. Code must not have superfluous spaces or code in one string, etc." +
             "Your answer must contain only percent of overall quality mark. (Without any text and '%' symbol). " +
-            "Don't provide additional info, only a number." + 
+            "Don't provide additional info, only a number." +
             $"Code listing: \n ${codeListing}";
     }
 }

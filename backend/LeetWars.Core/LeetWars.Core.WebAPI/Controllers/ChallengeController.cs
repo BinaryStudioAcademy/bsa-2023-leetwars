@@ -1,12 +1,12 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
-using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.ChallengeStar;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
+using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
 {
@@ -36,7 +36,7 @@ namespace LeetWars.Core.WebAPI.Controllers
 
             return Ok(challenges);
         }
-        
+
         /// <summary>
         /// Get challenge suggestion
         /// </summary>
@@ -86,7 +86,7 @@ namespace LeetWars.Core.WebAPI.Controllers
 
             return Ok();
         }
-        
+
         /// <summary>
         /// Update stars on challenge
         /// </summary>

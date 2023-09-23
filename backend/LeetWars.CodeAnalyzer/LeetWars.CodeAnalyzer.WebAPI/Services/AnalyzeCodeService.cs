@@ -24,7 +24,7 @@ namespace LeetWars.CodeAnalyzer.Services
 
             string response = chatResponse.ToString();
 
-            if(string.IsNullOrWhiteSpace(response))
+            if (string.IsNullOrWhiteSpace(response))
             {
                 throw new NotFoundException(nameof(CodeRequestAnalysisDto));
             }

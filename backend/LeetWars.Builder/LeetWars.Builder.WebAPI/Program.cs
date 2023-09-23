@@ -1,6 +1,6 @@
-using LeetWars.Builder.Services;
-using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Extensions;
+using LeetWars.Builder.Interfaces;
+using LeetWars.Builder.Services;
 using LeetWars.Core.Common.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

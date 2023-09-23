@@ -24,9 +24,9 @@ namespace LeetWars.Core.Common.GlobalMiddlewares
             }
             catch (Exception ex)
             {
-                #pragma warning disable CA2254
+#pragma warning disable CA2254
                 _logger.LogError($"Something went wrong: {ex}");
-                #pragma warning restore CA2254
+#pragma warning restore CA2254
 
                 await HandleExceptionAsync(context, ex);
             }

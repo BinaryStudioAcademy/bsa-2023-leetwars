@@ -5,8 +5,6 @@ using LeetWars.Emailer.Services;
 using LeetWars.Emailer.Validators;
 using LeetWars.RabbitMQ;
 using LeetWars.RabbitMQ.Settings;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 
 namespace LeetWars.Emailer.Extensions

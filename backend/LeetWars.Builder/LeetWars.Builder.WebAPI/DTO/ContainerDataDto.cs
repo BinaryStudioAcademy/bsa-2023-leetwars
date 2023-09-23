@@ -8,8 +8,8 @@
         public string Tests { get; set; }
         public string Preloaded { get; set; }
 
-        public ContainerDataDto(string processName, string language, string code, string tests, string preloaded = "") 
-        { 
+        public ContainerDataDto(string processName, string language, string code, string tests, string preloaded = "")
+        {
             ProcessName = processName;
             Language = language;
             Code = code;

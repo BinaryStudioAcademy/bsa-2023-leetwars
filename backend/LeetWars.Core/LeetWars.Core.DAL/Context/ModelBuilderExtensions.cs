@@ -6,7 +6,6 @@ using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace LeetWars.Core.DAL.Context
 {

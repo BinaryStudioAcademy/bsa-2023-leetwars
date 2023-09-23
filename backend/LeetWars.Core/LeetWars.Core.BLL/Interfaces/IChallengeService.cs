@@ -1,5 +1,4 @@
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;

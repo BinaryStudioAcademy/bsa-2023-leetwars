@@ -1,9 +1,9 @@
 ﻿using LeetWars.Core.Common.DTO.Mail;
 using LeetWars.Emailer.Interfaces;
 using LeetWars.RabbitMQ;
-using System.Text.Json;
 using RabbitMQ.Client.Events;
 using System.Text;
+using System.Text.Json;
 
 namespace LeetWars.Emailer.Services
 {

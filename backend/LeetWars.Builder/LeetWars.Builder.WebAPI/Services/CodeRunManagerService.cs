@@ -2,7 +2,6 @@
 using LeetWars.Builder.Helpers.BuildResultReader;
 using LeetWars.Builder.Interfaces;
 using LeetWars.Builder.Models;
-using System.Globalization;
 
 namespace LeetWars.Builder.Services
 {
@@ -43,14 +42,14 @@ namespace LeetWars.Builder.Services
 
         private async Task TestCode(CodeRunRequest request, CodeRunResults result)
         {
-            if (result.BuildResults?.IsSuccess ?? false) 
-            { 
+            if (result.BuildResults?.IsSuccess ?? false)
+            {
                 string testProcessName = request.UserConnectionId + DateTime.UtcNow.Ticks + "-testing";
 
                 var testRunResults = await _solutionRunner.RunSolutionTestsAsync(new ContainerDataDto(testProcessName, request.Language, request.UserCode, request.Tests ?? "", request.Preloaded ?? ""));
 
                 result.TestRunResults = testRunResults;
             }
-        }       
+        }
     }
 }

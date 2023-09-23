@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using LeetWars.Core.Common.Extentions;
 using Microsoft.AspNetCore.Mvc;
-using LeetWars.Core.Common.Extentions;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace LeetWars.Core.Common.Filters
 {

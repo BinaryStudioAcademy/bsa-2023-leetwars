@@ -50,7 +50,7 @@ namespace LeetWars.Core.WebAPI.Logic
                 _id = _user?.Uid ?? "";
             }
         }
-        
+
         private async Task<User?> GetCurrentUserEntityAsync(string uid)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Uid == uid);

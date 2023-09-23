@@ -1,7 +1,7 @@
 using LeetWars.Core.Common.DTO.Mail;
+using LeetWars.Core.Common.Extensions;
 using LeetWars.Emailer.Extensions;
 using LeetWars.Emailer.Interfaces;
-using LeetWars.Core.Common.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

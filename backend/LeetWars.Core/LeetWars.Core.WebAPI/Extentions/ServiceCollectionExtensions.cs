@@ -1,18 +1,18 @@
-﻿using LeetWars.Core.BLL.MappingProfiles;
+﻿using Azure.Storage.Blobs;
+using FluentValidation.AspNetCore;
+using LeetWars.Core.BLL.Interfaces;
+using LeetWars.Core.BLL.MappingProfiles;
 using LeetWars.Core.BLL.Services;
 using LeetWars.Core.DAL.Context;
-using LeetWars.Core.BLL.Interfaces;
-using LeetWars.Core.WebAPI.Validators;
-using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-using Azure.Storage.Blobs;
 using LeetWars.Core.WebAPI.Logic;
 using LeetWars.Core.WebAPI.Settings;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using LeetWars.Core.WebAPI.Validators;
 using LeetWars.RabbitMQ;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RabbitMQ.Client;
+using System.Reflection;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {

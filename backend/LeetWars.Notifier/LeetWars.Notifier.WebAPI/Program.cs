@@ -1,6 +1,6 @@
+using LeetWars.Core.Common.Extensions;
 using LeetWars.Notifier.WebAPI.Extensions;
 using LeetWars.Notifier.WebAPI.Hubs;
-using LeetWars.Core.Common.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

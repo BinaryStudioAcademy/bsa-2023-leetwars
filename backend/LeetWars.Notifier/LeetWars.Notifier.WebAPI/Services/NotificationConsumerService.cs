@@ -1,11 +1,11 @@
-﻿using LeetWars.RabbitMQ;
+﻿using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Notifier.WebAPI.Hubs;
+using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
+using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client.Events;
 using System.Text;
-using LeetWars.Notifier.WebAPI.Hubs;
-using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using System.Text.Json;
-using LeetWars.Core.Common.DTO.Notifications;
 
 namespace LeetWars.Notifier.WebAPI.Services
 {
@@ -28,7 +28,7 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 var notificationDto = JsonSerializer.Deserialize<NewNotificationDto>(message);
 
-                if(notificationDto is null)
+                if (notificationDto is null)
                 {
                     return;
                 }

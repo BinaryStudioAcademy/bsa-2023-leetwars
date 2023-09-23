@@ -1,6 +1,4 @@
-﻿using LeetWars.Core.Common.DTO.Challenge;
-
-namespace LeetWars.Core.Common.DTO.User
+﻿namespace LeetWars.Core.Common.DTO.User
 {
     public class EditUserDto
     {

@@ -50,7 +50,7 @@ namespace LeetWars.Builder.Services
 
         public TestsOutput ParseJSTestResult(string xmlTestResult)
         {
-            if(string.IsNullOrEmpty(xmlTestResult))
+            if (string.IsNullOrEmpty(xmlTestResult))
             {
                 return new TestsOutput(false, string.Empty, new List<Test>(), 0, 0);
             }
