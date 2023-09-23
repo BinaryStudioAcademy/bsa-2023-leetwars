@@ -163,8 +163,6 @@ namespace LeetWars.Core.BLL.Services
             var currentUser = _userGetter.GetCurrentUserOrThrow();
             var challenge = _mapper.Map<Challenge>(challengeDto);
 
-            challenge.CreatedAt = DateTime.UtcNow;
-            challenge.CreatedBy = currentUser.Id;
             _context.Challenges.Add(challenge);
 
             await _context.SaveChangesAsync();
@@ -182,8 +180,6 @@ namespace LeetWars.Core.BLL.Services
                 .Select(version =>
                 {
                     version.ChallengeId = challenge.Id;
-                    version.CreatedAt = DateTime.UtcNow;
-                    version.CreatedBy = currentUser.Id;
                     return version;
                 }).ToList();
 
@@ -220,7 +216,6 @@ namespace LeetWars.Core.BLL.Services
                 .Select(version =>
                 {
                     version.ChallengeId = challenge.Id;
-                    version.CreatedBy = currentUserId;
                     return version;
                 }).ToList();
 

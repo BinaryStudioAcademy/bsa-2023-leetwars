@@ -12,6 +12,8 @@ using Microsoft.IdentityModel.Tokens;
 using LeetWars.RabbitMQ;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Options;
+using LeetWars.Core.DAL.Providers;
+using LeetWars.Core.DAL.Interfaces;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -29,7 +31,8 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddScoped<IUserService, UserService>();
-            
+            services.AddScoped<UidProvider>();
+            services.AddTransient<IUidProvider>(s => s.GetService<UidProvider>()!);
             services.AddScoped<UserStorage>();
             services.AddTransient<IUserSetter>(s => s.GetService<UserStorage>()!);
             services.AddTransient<IUserGetter>(s => s.GetService<UserStorage>()!);
