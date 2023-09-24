@@ -19,5 +19,5 @@ RUN dotnet publish "LeetWars.Emailer.WebAPI.csproj" -c Release -o /app/publish /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENV ASPNETCORE_URLS http://*:5100
+ENV ASPNETCORE_URLS http://*:5080
 ENTRYPOINT ["dotnet", "LeetWars.Emailer.WebAPI.dll"]
