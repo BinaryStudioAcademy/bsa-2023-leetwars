@@ -36,7 +36,6 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
     suggestionIcons = ICONS;
 
     suggestionSettings: ISuggestionSettings = {
-        languageId: 0,
         suggestionType: SuggestionType.Fundamentals,
     };
 

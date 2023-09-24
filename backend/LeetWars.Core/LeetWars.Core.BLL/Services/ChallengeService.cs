@@ -120,7 +120,7 @@ namespace LeetWars.Core.BLL.Services
                         .ThenInclude(solution => solution.User)  
                 .AsQueryable();
 
-            if (settings.LanguageId is not 0)
+            if (settings.LanguageId is not null)
             {
                 challenges = challenges.Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId));
             }
@@ -327,7 +327,7 @@ namespace LeetWars.Core.BLL.Services
                     .SingleOrDefaultAsync(condition);
         }
 
-        private async Task<LanguageLevel> GetUserLevelAsync(long languageId)
+        private async Task<LanguageLevel> GetUserLevelAsync(long? languageId)
         {
             var userId = _userGetter.CurrentUserId;
             var userLevel = await _context
