@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
 import { HttpResponse } from '@microsoft/signalr';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { IStar } from '@shared/models/challenge-star/star';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
@@ -33,6 +34,10 @@ export class ChallengeService {
         httpParams = setParams<ISortedModel>(httpParams, sortingModel);
 
         return this.httpService.getRequest<IChallengePreview[]>(this.challengesRoute, httpParams);
+    }
+
+    public getChallengeLevels(): Observable<IChallengeLevel[]> {
+        return this.httpService.getRequest<IChallengeLevel[]>(`${this.challengesRoute}/levels`);
     }
 
     public getChallengeSuggestion(settings: ISuggestionSettings) {

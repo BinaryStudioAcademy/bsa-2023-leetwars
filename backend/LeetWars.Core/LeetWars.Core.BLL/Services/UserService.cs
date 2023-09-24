@@ -106,9 +106,9 @@ public class UserService : BaseService, IUserService
             .Include(user => user.Solutions)
             .Include(user => user.Challenges)
             .Include(user => user.UserBadges)
-            .ThenInclude(badge => badge.Badge)
+                .ThenInclude(badge => badge.Badge)
             .Include(user => user.ChallengeVersions)
-            .SingleOrDefaultAsync(expression);
+            .FirstOrDefaultAsync(expression);
     }
 
     public async Task<UserDto> GetCurrentUserAsync()

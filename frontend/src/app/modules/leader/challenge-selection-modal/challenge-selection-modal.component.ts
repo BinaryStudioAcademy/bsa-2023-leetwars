@@ -3,7 +3,7 @@ import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
-import { ICodeFightChallengeSettings } from '@shared/models/challenge/fight-challenge-settings';
+import { ICodeFightChallengeSettings } from '@shared/models/codefight/code-fight-challenge-settings';
 import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
 import { ILanguage } from '@shared/models/language/language';
 import { IUser } from '@shared/models/user/user';
@@ -39,7 +39,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
 
     public ngOnInit(): void {
         this.languagesNames = this.languages.map((item) => item.name);
-        this.levelsNames = this.levels.map((item) => item.name);
+        this.levelsNames = this.levels.map((item) => item.skillLevel);
         this.authService.getUser().subscribe((user: IUser) => {
             this.currentUser = user;
         });
@@ -70,6 +70,6 @@ export class ChallengeSelectionModalComponent implements OnInit {
             return;
         }
 
-        this.fightChallengeSettings.levelId = this.levels.find((level) => level.name === value)?.id ?? 0;
+        this.fightChallengeSettings.levelId = this.levels.find((level) => level.skillLevel === value)?.id ?? 0;
     }
 }

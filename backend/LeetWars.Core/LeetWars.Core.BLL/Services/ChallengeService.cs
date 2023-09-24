@@ -228,6 +228,23 @@ namespace LeetWars.Core.BLL.Services
             _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
         }
 
+        public async Task SendCodeFightRequest(CodeFightRequestDto requestDto)
+        {
+            var challenge = await GetCodeFightChallengeAsync(requestDto.ChallengeSettings);
+
+            var notification = new NewNotificationDto
+            {
+                DateSending = DateTime.UtcNow,
+                ReceiverId = requestDto.ReceiverId.ToString(),
+                Sender = await _userService.GetBriefUserInfoById(requestDto.SenderId),
+                Challenge = challenge,
+                TypeNotification = TypeNotifications.CodeFightRequest,
+                Message = "Code fight. Are you in?"
+            };
+
+            _notificationSenderService.SendNotificationToRabbitMQ(notification);
+        }
+
         public void SendCodeFightStart(NewNotificationDto notificationDto)
         {
             notificationDto.TypeNotification = TypeNotifications.CodeFightStart;
@@ -260,7 +277,7 @@ namespace LeetWars.Core.BLL.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ICollection<ChallengeLevelDto>> GetChallengeLevelsAsync()
+        public async Task<List<ChallengeLevelDto>> GetChallengeLevelsAsync()
         {
             return _mapper.Map<List<ChallengeLevelDto>>(await _context.ChallengeLevels.ToListAsync());
         }
@@ -316,7 +333,6 @@ namespace LeetWars.Core.BLL.Services
                 }).ToList();
 
             _context.ChallengeTags.AddRange(editedChallengeTags);
-
         }
 
         private async Task<Challenge> GetChallengeByIdAsync(long challengeId)

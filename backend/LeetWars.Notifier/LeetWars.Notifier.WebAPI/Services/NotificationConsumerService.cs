@@ -48,13 +48,13 @@ namespace LeetWars.Notifier.WebAPI.Services
             switch (notificationDto.TypeNotification)
             {
                 case TypeNotifications.NewChallenge:
-                    await _hubContext.Clients.All.SendNotification(notificationDto);
+                    await _hubContext.Clients.All.SendNotificationAsync(notificationDto);
                     break;
                 case TypeNotifications.LikeChallenge:
                 case TypeNotifications.CodeFightRequest:
                     if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
                     {
-                        await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotification(notificationDto);
+                        await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotificationAsync(notificationDto);
                     }
                     break;
                 case TypeNotifications.CodeFightStart:
@@ -70,7 +70,7 @@ namespace LeetWars.Notifier.WebAPI.Services
                             Notification = notificationDto
                         };
 
-                        await _hubContext.Clients.Groups(redirectDto.ReceiverId, redirectDto.SenderId).StartCodeFight(redirectDto);
+                        await _hubContext.Clients.Groups(redirectDto.ReceiverId, redirectDto.SenderId).StartCodeFightAsync(redirectDto);
                     }
                     break;
                 default:

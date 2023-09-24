@@ -6,6 +6,7 @@ using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
+using LeetWars.Core.Common.DTO.CodeFight;
 
 namespace LeetWars.Core.BLL.Interfaces
 {
@@ -19,7 +20,8 @@ namespace LeetWars.Core.BLL.Interfaces
         Task DeleteChallengeAsync(long challengeId);
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
         Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto);
-        Task<ICollection<ChallengeLevelDto>> GetChallengeLevelsAsync();
+        Task<List<ChallengeLevelDto>> GetChallengeLevelsAsync();
+        Task SendCodeFightRequest(CodeFightRequestDto requestDto);
         void SendCodeFightStart(NewNotificationDto notificationDto);
     }
 }

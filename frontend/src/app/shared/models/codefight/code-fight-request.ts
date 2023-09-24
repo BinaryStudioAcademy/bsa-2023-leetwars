@@ -1,8 +1,7 @@
-import { INotificationModel } from '../notifications/notifications';
+import { ICodeFightChallengeSettings } from './code-fight-challenge-settings';
 
 export interface ICodeFightRequest {
-    senderId: string;
-    receiverId: string;
-    challengeId: number;
-    notification: INotificationModel;
+    senderId: number;
+    receiverId: number;
+    challengeSettings: ICodeFightChallengeSettings;
 }

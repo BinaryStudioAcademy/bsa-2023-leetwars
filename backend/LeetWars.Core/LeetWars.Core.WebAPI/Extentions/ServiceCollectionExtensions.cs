@@ -24,11 +24,10 @@ namespace LeetWars.Core.WebAPI.Extentions
                 .AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IChallengeService, ChallengeService>();
-            services.AddTransient<IChallengeLevelService, ChallengeLevelService>();
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
-            services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<UserStorage>();
             services.AddTransient<IUserSetter>(s => s.GetService<UserStorage>()!);

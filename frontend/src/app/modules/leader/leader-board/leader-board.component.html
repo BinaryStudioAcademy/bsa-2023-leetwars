@@ -5,12 +5,19 @@
                 <div class="position">Position</div>
                 <div class="user-name">User Name</div>
                 <div class="total-score">Score</div>
+                <div class="start-fight"></div>
             </div>
             <div class="scrollable" infinite-scroll (scrolled)="onScroll()">
                 <div class="user d-flex" *ngFor="let user of usersToShow; let i = index">
                     <div class="position position-item">#{{ i + 1 }}</div>
                     <div class="user-name">{{ user.userName }}</div>
                     <div class="total-score">{{ user.totalScore }}</div>
+                    <div class="start-fight">
+                        <button *ngIf="user.id !== currentUser.id" (click)="startCodeFight(user)">
+                            <fa-icon [icon]="'user-ninja'"></fa-icon>
+                            <span class="start-fight-text">Start Battle</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

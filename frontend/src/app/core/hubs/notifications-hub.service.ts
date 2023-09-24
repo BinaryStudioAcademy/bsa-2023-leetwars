@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { HubConnection } from '@microsoft/signalr';
-import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
+import { ICodeFightStart } from '@shared/models/codefight/code-fight-start';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { Subject, Subscription } from 'rxjs';
 
@@ -52,11 +52,11 @@ export class NotificationHubService {
             .then(() => console.info(`"${this.hubFactory}" successfully started.`))
             .catch(() => console.info(`"${this.hubFactory}" failed.`));
 
-        this.hubConnection.on('SendNotification', (msg: INotificationModel) => {
+        this.hubConnection.on('SendNotificationAsync', (msg: INotificationModel) => {
             this.messages.next(msg);
         });
 
-        this.hubConnection.on('StartCodeFight', (codeFight: ICodeFightRequest) => {
+        this.hubConnection.on('StartCodeFightAsync', (codeFight: ICodeFightStart) => {
             this.router.navigateByUrl(`/challenges/${codeFight.challengeId}`);
             this.messages.next(codeFight.notification);
         });
