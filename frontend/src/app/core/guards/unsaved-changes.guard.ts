@@ -14,30 +14,35 @@ export class UnsavedChangesGuard<T extends HasUnsavedChanges> implements CanDeac
 
     canDeactivate(component: T): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
-            if (component.unsavedChanges) {
-                const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'delete-modal' });
+            resolve(component.unsavedChanges
+                ? this.showConfirmationModal()
+                : true);
+        });
+    }
 
-                modalRef.componentInstance.titleText = 'Are you sure you want to leave this page?';
-                modalRef.componentInstance.bodyText = 'All unsaved data will be lost.';
-                modalRef.componentInstance.buttons = [
-                    {
-                        text: 'Yes',
-                        handler: () => {
-                            resolve(true);
-                            modalRef.close();
-                        },
+    private showConfirmationModal(): Promise<boolean> {
+        const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'delete-modal' });
+
+        modalRef.componentInstance.titleText = 'Are you sure you want to leave this page?';
+        modalRef.componentInstance.bodyText = 'All unsaved data will be lost.';
+
+        return new Promise<boolean>((resolve) => {
+            modalRef.componentInstance.buttons = [
+                {
+                    text: 'Yes',
+                    handler: () => {
+                        resolve(true);
+                        modalRef.close();
                     },
-                    {
-                        text: 'Cancel',
-                        handler: () => {
-                            resolve(false);
-                            modalRef.close();
-                        },
+                },
+                {
+                    text: 'Cancel',
+                    handler: () => {
+                        resolve(false);
+                        modalRef.close();
                     },
-                ];
-            } else {
-                resolve(true);
-            }
+                },
+            ];
         });
     }
 }
