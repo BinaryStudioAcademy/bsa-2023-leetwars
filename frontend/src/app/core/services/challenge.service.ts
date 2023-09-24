@@ -12,6 +12,7 @@ import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
+import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IPageSettings } from '@shared/models/page-settings';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';

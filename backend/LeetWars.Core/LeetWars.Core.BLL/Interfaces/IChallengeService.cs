@@ -2,10 +2,6 @@ using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.ChallengeStar;
-using LeetWars.Core.Common.DTO.CodeFight;
-using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.CodeRunRequest;
-﻿using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
@@ -23,6 +19,7 @@ namespace LeetWars.Core.BLL.Interfaces
         Task DeleteChallengeAsync(long challengeId);
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
         Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto);
+        Task<ICollection<ChallengeLevelDto>> GetChallengeLevelsAsync();
         void SendCodeFightStart(NewNotificationDto notificationDto);
     }
 }

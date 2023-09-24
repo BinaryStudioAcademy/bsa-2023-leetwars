@@ -51,7 +51,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         [HttpGet("levels")]
         public async Task<ActionResult<ChallengePreviewDto>> GetChallengeLevelsAsync()
         {
-            var challengeLevels = await _challengeService.GetChallengesLevelsAsync();
+            var challengeLevels = await _challengeService.GetChallengeLevelsAsync();
 
             return Ok(challengeLevels);
         }
@@ -67,13 +67,6 @@ namespace LeetWars.Core.WebAPI.Controllers
         public async Task<ActionResult<ChallengeFullDto>> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
             await _challengeService.CreateChallengeAsync(challengeDto);
-            return NoContent();
-        }
-
-        [HttpPost("codefightrequest")]
-        public async Task<ActionResult<ChallengeFullDto>> SendCodeFightChallengeAsync([FromBody] CodeFightRequestDto requestDto)
-        {
-            await _challengeService.SendCodeFightRequest(requestDto);
             return NoContent();
         }
 

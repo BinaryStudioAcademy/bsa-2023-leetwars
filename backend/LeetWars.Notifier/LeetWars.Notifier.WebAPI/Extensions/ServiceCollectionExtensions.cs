@@ -9,21 +9,6 @@ namespace LeetWars.Notifier.WebAPI.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.Configure<ConsumerSettings>(configuration.GetSection("RabbitMQConsumer"));
-            services.AddSingleton<IConsumerService, ConsumerService>();
-            services.AddHostedService<MessageConsumerService>();
-            services.AddHostedService<NotificationConsumerService>();
-        }
-
-        public static void AddCodeConsumerRabbitMqServices(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.Configure<RabbitMQCodeConsumerSettings>(configuration.GetSection("RabbitMQCodeConsumer"));
-            services.AddSingleton<INotifierCodeConsumerService, NotifierCodeConsumerService>();
-            services.AddHostedService<CodeMessageConsumerService>();
-        }
-
         public static void RegisterRabbit(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton(sp =>

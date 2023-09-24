@@ -17,6 +17,7 @@ using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
+using LeetWars.Core.Common.DTO.CodeFight;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -231,7 +232,7 @@ namespace LeetWars.Core.BLL.Services
         {
             notificationDto.TypeNotification = TypeNotifications.CodeFightStart;
 
-            _messageSenderService.SendMessageToRabbitMQ(notificationDto);
+            _notificationSenderService.SendNotificationToRabbitMQ(notificationDto);
         }
 
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
@@ -257,6 +258,11 @@ namespace LeetWars.Core.BLL.Services
             var challenge = await GetChallengeByIdAsync(challengeId);
             _context.Challenges.Remove(challenge);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<ICollection<ChallengeLevelDto>> GetChallengeLevelsAsync()
+        {
+            return _mapper.Map<List<ChallengeLevelDto>>(await _context.ChallengeLevels.ToListAsync());
         }
 
         private async Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings)

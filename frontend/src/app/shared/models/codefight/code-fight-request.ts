@@ -1,6 +1,6 @@
 import { INotificationModel } from '../notifications/notifications';
 
-export interface ICodeFightStart {
+export interface ICodeFightRequest {
     senderId: string;
     receiverId: string;
     challengeId: number;
