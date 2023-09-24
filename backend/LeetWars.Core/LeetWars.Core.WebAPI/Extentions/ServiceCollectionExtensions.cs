@@ -1,11 +1,11 @@
 ﻿using Azure.Storage.Blobs;
 using FluentValidation.AspNetCore;
+using LeetWars.Core.BLL.Helpers.BlobStorage;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.BLL.MappingProfiles;
 using LeetWars.Core.BLL.Services;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.WebAPI.Logic;
-using LeetWars.Core.WebAPI.Settings;
 using LeetWars.Core.WebAPI.Validators;
 using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

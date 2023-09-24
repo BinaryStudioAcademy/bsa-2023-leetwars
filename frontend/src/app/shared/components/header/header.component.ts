@@ -3,7 +3,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
-import { HeaderService } from '@core/services/header-service';
+import { HeaderService } from '@core/services/header.service';
 import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

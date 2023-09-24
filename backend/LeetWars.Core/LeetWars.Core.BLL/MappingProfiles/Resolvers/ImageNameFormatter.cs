@@ -1,5 +1,5 @@
 using AutoMapper;
-using LeetWars.Core.WebAPI.Settings;
+using LeetWars.Core.BLL.Helpers.BlobStorage;
 
 namespace LeetWars.Core.BLL.MappingProfiles.Resolvers;
 
