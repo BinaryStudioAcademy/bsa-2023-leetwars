@@ -10,6 +10,6 @@ export class CodeFightService {
     constructor(private challengeService: ChallengeService) {}
 
     public startCodeFight(notification: INotificationModel) {
-        this.challengeService.sendCodeFightStart(notification).subscribe();
+        return this.challengeService.sendCodeFightStart(notification);
     }
 }

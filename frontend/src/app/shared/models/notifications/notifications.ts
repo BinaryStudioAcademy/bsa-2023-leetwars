@@ -9,4 +9,5 @@ export interface INotificationModel {
     challenge: IBriefChallengeInfo;
     message: string;
     dateSending: Date;
+    showFor?: number;
 }

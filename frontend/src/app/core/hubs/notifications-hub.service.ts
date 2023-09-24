@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
+import { NotificationService } from '@core/services/notification.service';
 import { HubConnection } from '@microsoft/signalr';
 import { ICodeFightStart } from '@shared/models/codefight/code-fight-start';
 import { INotificationModel } from '@shared/models/notifications/notifications';
@@ -25,6 +26,7 @@ export class NotificationHubService {
     constructor(
         private hubFactory: SignalRHubFactoryService,
         private authservice: AuthService,
+        private notificationService: NotificationService,
         private router: Router,
     ) {}
 
@@ -53,6 +55,12 @@ export class NotificationHubService {
             .catch(() => console.info(`"${this.hubFactory}" failed.`));
 
         this.hubConnection.on('SendNotificationAsync', (msg: INotificationModel) => {
+            if (msg.showFor) {
+                setTimeout(() => {
+                    this.notificationService.removeNotification(msg);
+                }, msg.showFor);
+            }
+
             this.messages.next(msg);
         });
 

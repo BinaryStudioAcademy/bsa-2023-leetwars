@@ -1,8 +1,10 @@
-﻿namespace LeetWars.Core.Common.DTO.CodeFight
+﻿using LeetWars.Core.DAL.Enums;
+
+namespace LeetWars.Core.Common.DTO.CodeFight
 {
     public class CodeFightChallengeSettingsDto
     {
-        public long LevelId { get; set; }
+        public LanguageLevel Level { get; set; }
         public long LanguageId { get; set; }
     }
 }

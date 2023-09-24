@@ -232,14 +232,22 @@ namespace LeetWars.Core.BLL.Services
         {
             var challenge = await GetCodeFightChallengeAsync(requestDto.ChallengeSettings);
 
+            var language = await _context.Languages.FirstAsync(language => language.Id == requestDto.ChallengeSettings.LanguageId);
+
+            var sender = await _userService.GetBriefUserInfoById(requestDto.SenderId);
+
+            const long TIME_FOR_NOTIFICATION_TO_SHOW = 10 * 1000;
+
             var notification = new NewNotificationDto
             {
                 DateSending = DateTime.UtcNow,
                 ReceiverId = requestDto.ReceiverId.ToString(),
-                Sender = await _userService.GetBriefUserInfoById(requestDto.SenderId),
+                Sender = sender,
                 Challenge = challenge,
                 TypeNotification = TypeNotifications.CodeFightRequest,
-                Message = "Code fight. Are you in?"
+                Message = $"You received code fight from {sender.UserName}! {requestDto.ChallengeSettings.Level} challenge from " +
+                $"{language.Name}. Are you in?",
+                ShowFor = TIME_FOR_NOTIFICATION_TO_SHOW
             };
 
             _notificationSenderService.SendNotificationToRabbitMQ(notification);
@@ -287,7 +295,9 @@ namespace LeetWars.Core.BLL.Services
             var challenges = _context.Challenges
                 .Include(challenge => challenge.Author)
                 .Include(challenge => challenge.Versions)
-                .Where(challenge => challenge.LevelId == settings.LevelId &&
+                    .ThenInclude(challengeVersion => challengeVersion.Language)
+                .Include(challenge => challenge.Level)
+                .Where(challenge => challenge.Level!.SkillLevel == settings.Level &&
                        challenge.Versions.Any(challengeversion => challengeversion.LanguageId == settings.LanguageId));
 
             var randomPosition = GetRandomInt(challenges.Count());

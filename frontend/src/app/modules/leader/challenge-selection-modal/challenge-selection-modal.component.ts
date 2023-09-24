@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { LanguageLevel } from '@shared/enums/language-level';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { ICodeFightChallengeSettings } from '@shared/models/codefight/code-fight-challenge-settings';
 import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
@@ -28,7 +29,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
 
     private fightChallengeSettings: ICodeFightChallengeSettings = {
         languageId: 1,
-        levelId: 1,
+        level: LanguageLevel.Easy,
     };
 
     constructor(
@@ -70,6 +71,6 @@ export class ChallengeSelectionModalComponent implements OnInit {
             return;
         }
 
-        this.fightChallengeSettings.levelId = this.levels.find((level) => level.skillLevel === value)?.id ?? 0;
+        this.fightChallengeSettings.level = this.levels.find((level) => level.skillLevel === value)?.skillLevel ?? LanguageLevel.Easy;
     }
 }
