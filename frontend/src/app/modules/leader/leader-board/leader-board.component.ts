@@ -73,9 +73,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
             this.getFriends();
         } else if (!this.isMyFriendsChecked && !this.isLastPage) {
             this.getUsers();
-          
-        this.scrollEventSubject.next();
         }
+        this.scrollEventSubject.next();
     }
 
     private getUsers() {
