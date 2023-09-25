@@ -88,9 +88,9 @@ public class UserService : BaseService, IUserService
 
     public async Task<bool> CheckIsExistingUserNameAsync(string? userName)
     {
-        if (string.IsNullOrEmpty((userName)))
+        if (string.IsNullOrEmpty(userName))
         {
-            return false;
+            return true;
         }
 
         bool isExistingUserName = await _context.Users.AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
