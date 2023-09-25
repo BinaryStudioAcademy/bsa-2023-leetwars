@@ -10,7 +10,7 @@ import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level'
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
-import { takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 import { ChallengeSelectionModalComponent } from '../challenge-selection-modal/challenge-selection-modal.component';
 
@@ -29,6 +29,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     public isLastPage = false;
 
     public loading = false;
+
+    public scrollEventSubject = new Subject<void>();
 
     private page: IPageSettings = {
         pageNumber: 0,
@@ -67,6 +69,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     }
 
     public onScroll() {
+        this.scrollEventSubject.next();
+
         if (this.isLastPage) {
             return;
         }
