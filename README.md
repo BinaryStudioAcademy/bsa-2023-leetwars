@@ -215,9 +215,10 @@ Also, there are some best practices for frontend development: [Angular](https://
 
 1. Make sure you have [Docker](https://www.docker.com) and [Docker Compose](https://docs.docker.com/compose/install).
 2. Pull this repo to your machine.
-3. You can build and run all application containers via `docker-compose -f docker-compose.apps.yml up -d` command.
-4. You can pull and run all 3rd-party services (MSSQL Server, RabbitMQ) via `docker-compose -f docker-compose.services.yml up -d` command.
-5. Happy coding! :sunglasses:
+3. You can build all build-in application containers via `docker-compose -f docker-compose.code-runners.yml build` command.
+4. You can build and run all application containers via `docker-compose -f docker-compose.apps.yml up -d` command.
+5. You can pull and run all 3rd-party services (MSSQL Server, RabbitMQ) via `docker-compose -f docker-compose.services.yml up -d` command.
+6. Happy coding! :sunglasses:
 
 #### Setup environment for local development:
 
