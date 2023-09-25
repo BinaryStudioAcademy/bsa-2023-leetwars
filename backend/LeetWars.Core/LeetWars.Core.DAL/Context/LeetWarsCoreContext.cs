@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.DAL.Entities;
+using LeetWars.Core.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.DAL.Context
@@ -23,8 +24,12 @@ namespace LeetWars.Core.DAL.Context
         public DbSet<Badge> Badges => Set<Badge>();
         public DbSet<UserBadge> UserBadges => Set<UserBadge>();
 
-        public LeetWarsCoreContext(DbContextOptions<LeetWarsCoreContext> options) : base(options)
+        private readonly IUidProvider _userUidProvider;
+
+        private long? _creatorId;
+        public LeetWarsCoreContext(DbContextOptions<LeetWarsCoreContext> options, IUidProvider userUidProvider) : base(options)
         {
+            _userUidProvider = userUidProvider;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,6 +37,48 @@ namespace LeetWars.Core.DAL.Context
             modelBuilder.Configure();
 
             modelBuilder.Seed();
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            SetAuditEntityData();
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
+        public override int SaveChanges()
+        {
+            SetAuditEntityData();
+
+            return base.SaveChanges();
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            SetAuditEntityData();
+
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        private void SetAuditEntityData()
+        {
+            ChangeTracker.DetectChanges();
+            var added = this.ChangeTracker.Entries()
+                        .Where(t => t.State == EntityState.Added && t.Entity is AuditEntity<long>)
+                        .ToArray();
+
+            foreach (var entity in added)
+            {
+                var auditEntity = entity.Entity as AuditEntity<long>;
+
+                _creatorId ??= Users.SingleOrDefault(e => e.Uid == _userUidProvider.Uid)?.Id;
+                if (auditEntity is not null)
+                {
+                    auditEntity.CreatedAt = DateTime.UtcNow;
+                    auditEntity.CreatedBy = _creatorId;
+                }
+            }
+
         }
     }
 }

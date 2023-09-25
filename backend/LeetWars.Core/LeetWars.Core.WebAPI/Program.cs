@@ -60,6 +60,7 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+app.UseMiddleware<DbContextCreatorUidProvider>();
 app.UseMiddleware<UserSaverMiddleware>();
 
 app.UseEndpoints(endpoinds =>

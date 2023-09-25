@@ -1,5 +1,4 @@
 ﻿using Bogus;
-using LeetWars.Core.DAL.Context.EntityConfigurations;
 using LeetWars.Core.DAL.Context.SeedSettings;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Entities.HelperEntities;
@@ -14,7 +13,7 @@ namespace LeetWars.Core.DAL.Context
 
         public static void Configure(this ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityConfig<long>).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ChallengeConfig).Assembly);
         }
 
         public static void Seed(this ModelBuilder modelBuilder)
