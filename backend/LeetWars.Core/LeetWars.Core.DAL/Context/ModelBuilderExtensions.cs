@@ -263,9 +263,10 @@ namespace LeetWars.Core.DAL.Context
 
             return new Faker<Friendship>()
                 .CustomInstantiator(f => new Friendship())
+                .UseSeed(SeedDefaults.Friendship)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
                 .RuleFor(e => e.Status, f => f.PickRandom<FriendshipStatus>())
-                .RuleFor(e => e.CreatedAt, f => f.Date.Recent(10))
+                .RuleFor(e => e.CreatedAt, f => f.Date.Between(new DateTime(2023, 6, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(2022, 8, 1, 0, 0, 0, DateTimeKind.Utc)))
                 .Generate(count);
         }
 

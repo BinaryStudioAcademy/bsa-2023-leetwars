@@ -28,6 +28,12 @@ export class NotificationsComponent extends BaseComponent implements OnInit, Aft
         super();
     }
 
+    private currentUser: IUser;
+
+    public typeNotification = TypeNotification;
+
+    @Input() public notifications: INotificationModel[];
+
     private readonly TOP_OFFSET = 40;
 
     private readonly RIGHT_OFFSET = 300;
@@ -35,8 +41,6 @@ export class NotificationsComponent extends BaseComponent implements OnInit, Aft
     private readonly HALF = 2;
 
     private readonly NEGATIVE = -1;
-
-    @Input() public notifications: INotificationModel[];
 
     @ViewChild('notificationsContainer') public notificationsContainer: ElementRef;
 
@@ -65,9 +69,15 @@ export class NotificationsComponent extends BaseComponent implements OnInit, Aft
         this.notificationsContainer.nativeElement.style.right = `${rightValue}px`;
     }
 
-    private currentUser: IUser;
-
     public ngOnInit(): void {
+        this.getCurrentUser();
+
+        this.notificationService.currentNotifications.subscribe((notifications: INotificationModel[]) => {
+            this.notifications = notifications;
+        });
+    }
+
+    private getCurrentUser() {
         this.authService
             .getUser()
             .pipe(takeUntil(this.unsubscribe$))
@@ -81,34 +91,22 @@ export class NotificationsComponent extends BaseComponent implements OnInit, Aft
             });
     }
 
-    typeNotification = TypeNotification;
-
-    public acceptFriendship(notification: INotificationModel) {
+    public updateFriendshipStatus(notification: INotificationModel, status: FriendshipStatus) {
         const updateRequest = notification.updateFriendship;
 
-        updateRequest.friendshipStatus = FriendshipStatus.Accepted;
+        updateRequest.friendshipStatus = status;
         updateRequest.userId = this.currentUser.id;
 
         this.updateFriendship(updateRequest);
-        this.removeAndUpdate(notification);
+        this.notificationService.removeNotification(notification);
+    }
+
+    public acceptFriendship(notification: INotificationModel) {
+        this.updateFriendshipStatus(notification, FriendshipStatus.Accepted);
     }
 
     public declineFriendship(notification: INotificationModel) {
-        const updateRequest = notification.updateFriendship;
-
-        updateRequest.friendshipStatus = FriendshipStatus.Declined;
-        updateRequest.userId = this.currentUser.id;
-
-        this.updateFriendship(updateRequest);
-        this.removeAndUpdate(notification);
-    }
-
-    private removeAndUpdate(notification: INotificationModel) {
-        this.notificationService.removeNotification(notification);
-        this.notificationService.updateNotificationsModal();
-        setTimeout(() => {
-            this.calculateTopPosition();
-        }, 50);
+        this.updateFriendshipStatus(notification, FriendshipStatus.Declined);
     }
 
     private updateFriendship(updateRequest: IUpdateFriendship) {

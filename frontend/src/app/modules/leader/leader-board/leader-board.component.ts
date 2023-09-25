@@ -67,12 +67,9 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     }
 
     public onScroll() {
-        const isFriendsScroll = this.isMyFriendsChecked && !this.isLastFriendsPage;
-        const isUsersScroll = !this.isMyFriendsChecked && !this.isLastPage;
-
-        if (isFriendsScroll) {
+        if (this.isMyFriendsChecked && !this.isLastFriendsPage) {
             this.getFriends();
-        } else if (isUsersScroll) {
+        } else if (!this.isMyFriendsChecked && !this.isLastPage) {
             this.getUsers();
         }
     }

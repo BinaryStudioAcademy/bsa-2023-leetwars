@@ -3,6 +3,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsComponent } from '@shared/components/notifications/notifications.component';
 import { TypeNotification } from '@shared/enums/type-notification';
 import { INotificationModel } from '@shared/models/notifications/notifications';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -12,20 +13,24 @@ export class NotificationService {
 
     private strongNotifications: TypeNotification[] = [TypeNotification.FriendRequest];
 
+    private notificationSubject = new BehaviorSubject(this.notifications);
+
+    public currentNotifications = this.notificationSubject.asObservable();
+
     private notificationModal: NgbModalRef;
 
     constructor(private modalService: NgbModal) {}
 
     public addNotification(notification: INotificationModel) {
         this.notifications = [...this.notifications, notification];
+
+        this.notificationSubject.next(this.notifications);
     }
 
     public removeNotification(notification: INotificationModel) {
         this.notifications = this.notifications.filter((n) => n !== notification);
-    }
 
-    public updateNotificationsModal() {
-        this.notificationModal.componentInstance.notifications = this.notifications;
+        this.notificationSubject.next(this.notifications);
     }
 
     public showNotifications() {
