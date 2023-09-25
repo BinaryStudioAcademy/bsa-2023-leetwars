@@ -7,7 +7,7 @@ import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { INewFriendship } from '@shared/models/friendship/new-friendship';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
-import { takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-leader-board',
@@ -31,6 +31,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
     public loading = false;
 
+    public scrollEventSubject = new Subject<void>();
+
     private page: IPageSettings = {
         pageNumber: 0,
         pageSize: 30,
@@ -44,9 +46,9 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     private readonly initialPageNumber = 1;
 
     constructor(
+        private eventService: EventService,
         private userService: UserService,
         private toastrNotification: ToastrNotificationsService,
-        private eventService: EventService,
     ) {
         super();
     }
@@ -71,6 +73,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
             this.getFriends();
         } else if (!this.isMyFriendsChecked && !this.isLastPage) {
             this.getUsers();
+          
+        this.scrollEventSubject.next();
         }
     }
 
