@@ -13,8 +13,10 @@ import { IStar } from '@shared/models/challenge-star/star';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
+import { IUserCodeFight } from '@shared/models/codefight/user-code-fight';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IPageSettings } from '@shared/models/page-settings';
+import { IUser } from '@shared/models/user/user';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
 
@@ -52,8 +54,16 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/${id}`);
     }
 
-    public sendCodeFightRequest(codeFight: ICodeFightRequest): Observable<void> {
-        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightrequest`, codeFight);
+    public sendCodeFightRequest(codeFight: ICodeFightRequest): Observable<IUser[]> {
+        return this.httpService.postRequest<IUser[]>(`${this.challengesRoute}/codefightrequest`, codeFight);
+    }
+
+    public sendCodeFightStartRequest(notification: INotificationModel): Observable<void> {
+        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightrequeststart`, notification);
+    }
+
+    public sendCodeFightEndRequest(notification: INotificationModel): Observable<void> {
+        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightrequestend`, notification);
     }
 
     public sendCodeFightStart(notification: INotificationModel): Observable<void> {
@@ -62,6 +72,10 @@ export class ChallengeService {
 
     public sendCodeFightEnd(codeFightEnd: ICodeFightEnd): Observable<void> {
         return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightend`, codeFightEnd);
+    }
+
+    public updateUserCodeFightStatus(codeFightDto: IUserCodeFight): Observable<IUser[]> {
+        return this.httpService.putRequest<IUser[]>(`${this.challengesRoute}/codeFightStatus`, codeFightDto);
     }
 
     public updateStar(star: IStar): Observable<IChallengePreview> {

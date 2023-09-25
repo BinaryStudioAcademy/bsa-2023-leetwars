@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { EventService } from '@core/services/event.service';
 import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CodeFightStatus } from '@shared/enums/code-fight-status';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
@@ -24,13 +26,15 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
     public currentUser: IUser;
 
-    public usersToShow: IUser[] = [];
-
     public isLastPage = false;
 
     public loading = false;
 
     public scrollEventSubject = new Subject<void>();
+
+    public isCodeFightRequestSent = false;
+
+    public CodeFightStatus = CodeFightStatus;
 
     private page: IPageSettings = {
         pageNumber: 0,
@@ -46,6 +50,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         private authService: AuthService,
         private languageService: LanguageService,
         private challengeService: ChallengeService,
+        private eventService: EventService,
         private toastrNotification: ToastrNotificationsService,
         private modalService: NgbModal,
     ) {
@@ -64,6 +69,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         this.challengeService.getChallengeLevels().subscribe((levels: IChallengeLevel[]) => {
             this.levels = levels;
         });
+
+        this.updateUsersStatuses();
 
         this.getUsers();
     }
@@ -102,7 +109,6 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
                         return;
                     }
                     this.users = [...this.users, ...users];
-                    this.usersToShow = this.users;
                 },
                 error: () => {
                     this.loading = false;
@@ -117,5 +123,28 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         challengeSettingsSelect.componentInstance.languages = this.languages;
         challengeSettingsSelect.componentInstance.levels = this.levels;
         challengeSettingsSelect.componentInstance.receiverId = user.id;
+
+        challengeSettingsSelect.closed.subscribe((users: IUser[]) => {
+            this.eventService.usersStatusesChanged(users);
+        });
+    }
+
+    private updateUsersStatuses() {
+        this.eventService.usersChangedEvent$.pipe(takeUntil(this.unsubscribe$)).subscribe({
+            next: (users: IUser[]) => {
+                this.users = this.users.map((user) => {
+                    const matchingUser = users.find((updatedUser: IUser) => updatedUser.id === user.id);
+
+                    if (matchingUser) {
+                        return { ...user, codeFightStatus: matchingUser.codeFightStatus };
+                    }
+
+                    return user;
+                });
+            },
+            error: () => {
+                this.toastrNotification.showError('Server connection error');
+            },
+        });
     }
 }

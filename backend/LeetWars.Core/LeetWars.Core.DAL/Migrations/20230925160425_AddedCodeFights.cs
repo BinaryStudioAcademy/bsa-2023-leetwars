@@ -8,6 +8,13 @@ namespace LeetWars.Core.DAL.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<int>(
+                name: "CodeFightStatus",
+                table: "Users",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
+
             migrationBuilder.CreateTable(
                 name: "CodeFights",
                 columns: table => new
@@ -50,6 +57,10 @@ namespace LeetWars.Core.DAL.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CodeFights");
+
+            migrationBuilder.DropColumn(
+                name: "CodeFightStatus",
+                table: "Users");
         }
     }
 }

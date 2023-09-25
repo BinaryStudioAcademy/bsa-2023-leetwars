@@ -30,13 +30,14 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
             this.user = user;
         });
 
-        const modalRef = this.modalService.open(ConfirmationModalComponent);
+        const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'code-fight-modal' });
 
         modalRef.componentInstance.titleText = 'Do you really wish to give up?';
         modalRef.componentInstance.bodyText = 'After confirmation you will lose this code fight';
         modalRef.componentInstance.buttons = [
             {
                 text: 'Yes',
+                class: 'confirm',
                 handler: () => {
                     const codeFightEnd: ICodeFightEnd = {
                         isWinner: false,
@@ -54,6 +55,7 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
             },
             {
                 text: 'No',
+                class: 'close',
                 handler: () => {
                     modalRef.dismiss();
                 },

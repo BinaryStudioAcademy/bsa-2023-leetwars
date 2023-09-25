@@ -5,6 +5,8 @@ using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Http;
+using LeetWars.Core.DAL.Enums;
+using LeetWars.Core.Common.DTO.CodeFight;
 
 namespace LeetWars.Core.BLL.Interfaces;
 
@@ -15,6 +17,7 @@ public interface IUserService
     public Task<bool> CheckIsExistingUserNameAsync(string userName);
     public Task<User?> GetUserByExpressionAsync(Expression<Func<User, bool>> expression);
     public Task<UserDto> GetCurrentUserAsync();
+    public Task<UserDto> GetUserAsync(long id);
     public Task<UserFullDto> GetFullUserAsync(long id);
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId);
     public Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto);

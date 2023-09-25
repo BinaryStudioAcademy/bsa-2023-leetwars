@@ -37,8 +37,12 @@ export class UserService {
         return this.httpService.getRequest<boolean>(`${this.baseUrl}/is-existing-username?username=${userName}`);
     }
 
+    public getUser(id: number): Observable<IUser> {
+        return this.httpService.getRequest<IUser>(`${this.baseUrl}/${id}`);
+    }
+
     public getFullUser(id: number): Observable<IUserFull> {
-        return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/${id}`);
+        return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/full/${id}`);
     }
 
     public updateUser(editUserInfo: IEditUserInfo): Observable<IUser> {

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeetWars.Core.DAL.Migrations
 {
     [DbContext(typeof(LeetWarsCoreContext))]
-    [Migration("20230925102731_AddedCodeFights")]
+    [Migration("20230925160425_AddedCodeFights")]
     partial class AddedCodeFights
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -5457,6 +5457,9 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Property<DateTime?>("BirthDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CodeFightStatus")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Country")
                         .HasColumnType("int");
 
@@ -5528,6 +5531,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 1L,
                             BirthDate = new DateTime(1991, 5, 8, 14, 17, 47, 307, DateTimeKind.Utc).AddTicks(4649),
+                            CodeFightStatus = 0,
                             Country = 8,
                             Email = "Josue41@hotmail.com",
                             FirstName = "Grayson",
@@ -5549,6 +5553,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 2L,
                             BirthDate = new DateTime(1984, 5, 30, 8, 42, 31, 222, DateTimeKind.Utc).AddTicks(9633),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Amely_Murphy71@hotmail.com",
                             FirstName = "Ford",
@@ -5570,6 +5575,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 3L,
                             BirthDate = new DateTime(1993, 7, 25, 6, 0, 59, 61, DateTimeKind.Utc).AddTicks(456),
+                            CodeFightStatus = 0,
                             Country = 28,
                             Email = "Regan.Larson42@hotmail.com",
                             FirstName = "Rupert",
@@ -5591,6 +5597,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 4L,
                             BirthDate = new DateTime(1989, 7, 7, 0, 1, 37, 619, DateTimeKind.Utc).AddTicks(4666),
+                            CodeFightStatus = 0,
                             Country = 27,
                             Email = "Nelle24@yahoo.com",
                             FirstName = "Pansy",
@@ -5612,6 +5619,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 5L,
                             BirthDate = new DateTime(1995, 6, 17, 22, 37, 8, 128, DateTimeKind.Utc).AddTicks(7960),
+                            CodeFightStatus = 0,
                             Country = 18,
                             Email = "Maurice.Thiel45@gmail.com",
                             FirstName = "Earnestine",
@@ -5633,6 +5641,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 6L,
                             BirthDate = new DateTime(1993, 9, 26, 9, 32, 5, 895, DateTimeKind.Utc).AddTicks(5444),
+                            CodeFightStatus = 0,
                             Country = 1,
                             Email = "Onie_Donnelly@hotmail.com",
                             FirstName = "Simone",
@@ -5654,6 +5663,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 7L,
                             BirthDate = new DateTime(1983, 7, 26, 8, 51, 33, 259, DateTimeKind.Utc).AddTicks(9753),
+                            CodeFightStatus = 0,
                             Country = 51,
                             Email = "Jordon51@hotmail.com",
                             FirstName = "Abigail",
@@ -5675,6 +5685,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 8L,
                             BirthDate = new DateTime(1998, 4, 20, 15, 42, 17, 513, DateTimeKind.Utc).AddTicks(1989),
+                            CodeFightStatus = 0,
                             Country = 43,
                             Email = "Sydni.Carter66@hotmail.com",
                             FirstName = "Blanca",
@@ -5696,6 +5707,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 9L,
                             BirthDate = new DateTime(1995, 4, 25, 0, 45, 14, 388, DateTimeKind.Utc).AddTicks(7786),
+                            CodeFightStatus = 0,
                             Country = 2,
                             Email = "Hettie.Runte@yahoo.com",
                             FirstName = "Arnoldo",
@@ -5717,6 +5729,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 10L,
                             BirthDate = new DateTime(1995, 5, 25, 7, 0, 28, 701, DateTimeKind.Utc).AddTicks(1905),
+                            CodeFightStatus = 0,
                             Country = 57,
                             Email = "Zula.Jakubowski67@gmail.com",
                             FirstName = "Leonardo",
@@ -5738,6 +5751,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 11L,
                             BirthDate = new DateTime(1995, 4, 5, 8, 18, 27, 362, DateTimeKind.Utc).AddTicks(1964),
+                            CodeFightStatus = 0,
                             Country = 26,
                             Email = "Richie_Feeney@yahoo.com",
                             FirstName = "Enola",
@@ -5759,6 +5773,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 12L,
                             BirthDate = new DateTime(1984, 4, 28, 17, 5, 53, 844, DateTimeKind.Utc).AddTicks(6728),
+                            CodeFightStatus = 0,
                             Country = 44,
                             Email = "Jaylon_Schamberger68@yahoo.com",
                             FirstName = "Beatrice",
@@ -5780,6 +5795,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 13L,
                             BirthDate = new DateTime(1990, 12, 2, 11, 48, 22, 614, DateTimeKind.Utc).AddTicks(5448),
+                            CodeFightStatus = 0,
                             Country = 10,
                             Email = "Susie.Sauer@gmail.com",
                             FirstName = "Lorenzo",
@@ -5801,6 +5817,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 14L,
                             BirthDate = new DateTime(1998, 12, 12, 2, 49, 5, 942, DateTimeKind.Utc).AddTicks(5586),
+                            CodeFightStatus = 0,
                             Country = 16,
                             Email = "Hans_Toy94@hotmail.com",
                             FirstName = "Jazmin",
@@ -5822,6 +5839,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 15L,
                             BirthDate = new DateTime(1996, 6, 14, 0, 11, 22, 542, DateTimeKind.Utc).AddTicks(9487),
+                            CodeFightStatus = 0,
                             Country = 35,
                             Email = "Pietro_Bradtke68@hotmail.com",
                             FirstName = "Imani",
@@ -5843,6 +5861,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 16L,
                             BirthDate = new DateTime(1990, 9, 30, 11, 37, 15, 847, DateTimeKind.Utc).AddTicks(3302),
+                            CodeFightStatus = 0,
                             Country = 49,
                             Email = "Josh.Mueller@hotmail.com",
                             FirstName = "Frankie",
@@ -5864,6 +5883,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 17L,
                             BirthDate = new DateTime(1995, 4, 25, 3, 35, 40, 382, DateTimeKind.Utc).AddTicks(8040),
+                            CodeFightStatus = 0,
                             Country = 47,
                             Email = "Emily.OReilly@yahoo.com",
                             FirstName = "Abigail",
@@ -5885,6 +5905,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 18L,
                             BirthDate = new DateTime(1999, 7, 7, 14, 33, 58, 925, DateTimeKind.Utc).AddTicks(478),
+                            CodeFightStatus = 0,
                             Country = 33,
                             Email = "Maeve_Watsica26@hotmail.com",
                             FirstName = "Glennie",
@@ -5906,6 +5927,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 19L,
                             BirthDate = new DateTime(1995, 7, 16, 18, 36, 41, 301, DateTimeKind.Utc).AddTicks(6700),
+                            CodeFightStatus = 0,
                             Country = 17,
                             Email = "Lisette93@gmail.com",
                             FirstName = "Immanuel",
@@ -5927,6 +5949,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 20L,
                             BirthDate = new DateTime(1998, 8, 9, 4, 58, 20, 690, DateTimeKind.Utc).AddTicks(797),
+                            CodeFightStatus = 0,
                             Country = 49,
                             Email = "Delores.Weimann@hotmail.com",
                             FirstName = "Tanya",
@@ -5948,6 +5971,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 21L,
                             BirthDate = new DateTime(1993, 10, 31, 14, 35, 47, 700, DateTimeKind.Utc).AddTicks(3580),
+                            CodeFightStatus = 0,
                             Country = 39,
                             Email = "Heidi57@yahoo.com",
                             FirstName = "Jaydon",
@@ -5969,6 +5993,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 22L,
                             BirthDate = new DateTime(1980, 11, 14, 4, 38, 15, 242, DateTimeKind.Utc).AddTicks(9462),
+                            CodeFightStatus = 0,
                             Country = 28,
                             Email = "Mikel21@hotmail.com",
                             FirstName = "Candelario",
@@ -5990,6 +6015,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 23L,
                             BirthDate = new DateTime(1989, 1, 22, 8, 46, 41, 321, DateTimeKind.Utc).AddTicks(5466),
+                            CodeFightStatus = 0,
                             Country = 6,
                             Email = "Carlo61@gmail.com",
                             FirstName = "Perry",
@@ -6011,6 +6037,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 24L,
                             BirthDate = new DateTime(1999, 8, 18, 11, 6, 17, 868, DateTimeKind.Utc).AddTicks(7529),
+                            CodeFightStatus = 0,
                             Country = 18,
                             Email = "Laurie.Wilderman86@yahoo.com",
                             FirstName = "Javon",
@@ -6032,6 +6059,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 25L,
                             BirthDate = new DateTime(1991, 9, 13, 4, 27, 55, 562, DateTimeKind.Utc).AddTicks(7424),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Evalyn_Crona66@gmail.com",
                             FirstName = "Eugene",
@@ -6053,6 +6081,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 26L,
                             BirthDate = new DateTime(1980, 12, 8, 12, 21, 7, 274, DateTimeKind.Utc).AddTicks(2574),
+                            CodeFightStatus = 0,
                             Country = 31,
                             Email = "Deven34@yahoo.com",
                             FirstName = "Hank",
@@ -6074,6 +6103,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 27L,
                             BirthDate = new DateTime(1994, 2, 11, 22, 59, 8, 450, DateTimeKind.Utc).AddTicks(2210),
+                            CodeFightStatus = 0,
                             Country = 11,
                             Email = "Trystan.Jacobson8@gmail.com",
                             FirstName = "Mallie",
@@ -6095,6 +6125,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 28L,
                             BirthDate = new DateTime(1982, 7, 16, 16, 27, 0, 682, DateTimeKind.Utc).AddTicks(6739),
+                            CodeFightStatus = 0,
                             Country = 29,
                             Email = "Hester_Dibbert12@yahoo.com",
                             FirstName = "Ayla",
@@ -6116,6 +6147,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 29L,
                             BirthDate = new DateTime(1983, 8, 16, 22, 13, 6, 897, DateTimeKind.Utc).AddTicks(8679),
+                            CodeFightStatus = 0,
                             Country = 57,
                             Email = "Brant38@gmail.com",
                             FirstName = "Emory",
@@ -6137,6 +6169,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 30L,
                             BirthDate = new DateTime(1985, 8, 16, 8, 34, 58, 912, DateTimeKind.Utc).AddTicks(3608),
+                            CodeFightStatus = 0,
                             Country = 44,
                             Email = "Mathilde_Shields@hotmail.com",
                             FirstName = "Clifford",
@@ -6158,6 +6191,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 31L,
                             BirthDate = new DateTime(1981, 9, 7, 22, 34, 15, 418, DateTimeKind.Utc).AddTicks(2863),
+                            CodeFightStatus = 0,
                             Country = 53,
                             Email = "Addison8@hotmail.com",
                             FirstName = "Aisha",
@@ -6179,6 +6213,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 32L,
                             BirthDate = new DateTime(1989, 3, 25, 9, 41, 23, 12, DateTimeKind.Utc).AddTicks(2976),
+                            CodeFightStatus = 0,
                             Country = 5,
                             Email = "Emerald.Schaefer@hotmail.com",
                             FirstName = "David",
@@ -6200,6 +6235,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 33L,
                             BirthDate = new DateTime(1986, 9, 3, 1, 30, 16, 31, DateTimeKind.Utc).AddTicks(8206),
+                            CodeFightStatus = 0,
                             Country = 55,
                             Email = "Mustafa_Jast@hotmail.com",
                             FirstName = "Rogelio",
@@ -6221,6 +6257,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 34L,
                             BirthDate = new DateTime(1984, 2, 9, 18, 52, 0, 505, DateTimeKind.Utc).AddTicks(4957),
+                            CodeFightStatus = 0,
                             Country = 26,
                             Email = "Faye28@hotmail.com",
                             FirstName = "Leon",
@@ -6242,6 +6279,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 35L,
                             BirthDate = new DateTime(1995, 5, 4, 12, 34, 2, 318, DateTimeKind.Utc).AddTicks(9374),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Don77@gmail.com",
                             FirstName = "Betsy",
@@ -6263,6 +6301,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 36L,
                             BirthDate = new DateTime(1994, 1, 23, 3, 43, 9, 490, DateTimeKind.Utc).AddTicks(7686),
+                            CodeFightStatus = 0,
                             Country = 56,
                             Email = "Lonie.Conroy22@yahoo.com",
                             FirstName = "Ophelia",
@@ -6284,6 +6323,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 37L,
                             BirthDate = new DateTime(1993, 10, 29, 2, 6, 21, 56, DateTimeKind.Utc).AddTicks(4494),
+                            CodeFightStatus = 0,
                             Country = 5,
                             Email = "Margot_Erdman5@gmail.com",
                             FirstName = "Mackenzie",
@@ -6305,6 +6345,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 38L,
                             BirthDate = new DateTime(1989, 10, 24, 0, 36, 24, 452, DateTimeKind.Utc).AddTicks(1234),
+                            CodeFightStatus = 0,
                             Country = 20,
                             Email = "Kayli_Johns57@yahoo.com",
                             FirstName = "Elda",
@@ -6326,6 +6367,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 39L,
                             BirthDate = new DateTime(1984, 11, 3, 12, 25, 37, 675, DateTimeKind.Utc).AddTicks(4462),
+                            CodeFightStatus = 0,
                             Country = 40,
                             Email = "Lela.Howell95@hotmail.com",
                             FirstName = "Orion",
@@ -6347,6 +6389,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 40L,
                             BirthDate = new DateTime(1994, 2, 19, 7, 53, 27, 731, DateTimeKind.Utc).AddTicks(2229),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Erna43@yahoo.com",
                             FirstName = "Marjolaine",

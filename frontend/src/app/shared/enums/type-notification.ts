@@ -1,8 +1,9 @@
 export enum TypeNotification {
     LikeChallenge = 'LikeChallenge',
     NewChallenge = 'NewChallenge',
-    CodeFightRequest = 'CodeFightRequest',
+    SendCodeFightRequest = 'SendCodeFightRequest',
+    CodeFightRequestStart = 'CodeFightRequestStart',
+    CodeFightRequestEnd = 'CodeFightRequestEnd',
     CodeFightStart = 'CodeFightStart',
-    CodeFightEndWinner = 'CodeFightEndWinner',
-    CodeFightEndLooser = 'CodeFightEndLooser',
+    CodeFightEnd = 'CodeFightEnd',
 }

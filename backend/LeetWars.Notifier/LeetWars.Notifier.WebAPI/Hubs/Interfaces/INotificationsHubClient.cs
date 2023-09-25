@@ -1,5 +1,6 @@
 ﻿using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Core.Common.DTO.User;
 
 namespace LeetWars.Notifier.WebAPI.Hubs.Interfaces
 {
@@ -9,5 +10,7 @@ namespace LeetWars.Notifier.WebAPI.Hubs.Interfaces
         Task StartCodeFightAsync(CodeFightStartDto codeFightDto);
         Task WinCodeFightAsync(NewNotificationDto newNotification);
         Task LoseCodeFightAsync(NewNotificationDto newNotification);
+        Task AddRequestAsync(CodeFightRequestEndDto endRequestDto);
+        Task RemoveRequestAsync(CodeFightRequestEndDto endRequestDto);
     }
 }

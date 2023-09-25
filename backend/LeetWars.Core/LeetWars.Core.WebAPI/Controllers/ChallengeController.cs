@@ -9,6 +9,8 @@ using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using LeetWars.Core.BLL.Services;
+using LeetWars.Core.Common.DTO.User;
 
 namespace LeetWars.Core.WebAPI.Controllers
 {
@@ -71,9 +73,25 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpPost("codefightrequest")]
-        public async Task<ActionResult> SendCodeFightRequestAsync([FromBody] CodeFightRequestDto requestDto)
+        public async Task<ActionResult<List<UserDto>>> SendCodeFightRequestAsync([FromBody] CodeFightRequestDto requestDto)
         {
-            await _challengeService.SendCodeFightRequest(requestDto);
+            var users = await _challengeService.SendCodeFightRequestAsync(requestDto);
+
+            return Ok(users);
+        }
+
+        [HttpPost("codefightrequeststart")]
+        public async Task<ActionResult> SendCodeFightRequestStartAsync([FromBody] NewNotificationDto notification)
+        {
+            await _challengeService.SendCodeFightRequestStartAsync(notification);
+
+            return NoContent();
+        }
+
+        [HttpPost("codefightrequestend")]
+        public async Task<ActionResult> SendCodeFightRequestEndAsync([FromBody] NewNotificationDto notification)
+        {
+            await _challengeService.SendCodeFightRequestEndAsync(notification);
 
             return NoContent();
         }
@@ -104,6 +122,14 @@ namespace LeetWars.Core.WebAPI.Controllers
         public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
         {
             return Ok(await _challengeService.UpdateStarAsync(challengeStarDto));
+        }
+
+        [HttpPut("codeFightStatus")]
+        public async Task<ActionResult<List<UserDto>>> UpdateUserCodeFightStatusAsync([FromBody] UserCodeFightDto userCodeFightDto)
+        {
+            var users = await _challengeService.UpdateCodeFightStatusAsync(userCodeFightDto);
+
+            return Ok(users);
         }
 
         [HttpDelete("{id}")]

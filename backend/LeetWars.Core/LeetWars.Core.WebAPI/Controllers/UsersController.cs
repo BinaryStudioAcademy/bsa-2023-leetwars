@@ -1,8 +1,7 @@
-using System.Security.Claims;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
+using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Filters;
-
 using LeetWars.Core.Common.DTO.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,9 +38,18 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<UserFullDto>> GetUser(int id)
+    public async Task<ActionResult<UserFullDto>> GetUser(long id)
+    {
+        var user = await _userService.GetUserAsync(id);
+
+        return Ok(user);
+    }
+
+    [HttpGet("full/{id}")]
+    public async Task<ActionResult<UserFullDto>> GetFullUser(long id)
     {
         var user = await _userService.GetFullUserAsync(id);
+
         return Ok(user);
     }
 
@@ -72,7 +80,15 @@ public class UsersController : ControllerBase
     {
         var users = await _userService.GetLeaderBoardAsync(page);
         return Ok(users);
-    }    
+    }
+
+    [HttpPut]
+    public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserInfoDto updateUserInfoDto)
+    {
+        var updatedUser = await _userService.UpdateUserInfo(updateUserInfoDto);
+
+        return Ok(updatedUser);
+    }
 
     [HttpPut]
     [Route("rank")]
@@ -81,15 +97,7 @@ public class UsersController : ControllerBase
         var updatedUser = await _userService.UpdateUserRankAsync(userDto);
         return Ok(updatedUser);
     }
-    
-    [HttpPut]
-    public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserInfoDto updateUserInfoDto)
-    {
-        var updatedUser = await _userService.UpdateUserInfo(updateUserInfoDto);
-        
-        return Ok(updatedUser);
-    }
-    
+
     [HttpPost("avatar")]
     public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatar([FromForm] IFormFile avatar)
     {

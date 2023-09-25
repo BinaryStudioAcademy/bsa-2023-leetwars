@@ -15,6 +15,8 @@ using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.AspNetCore.Http;
+using LeetWars.Core.DAL.Enums;
+using LeetWars.Core.Common.DTO.CodeFight;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -130,6 +132,18 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<User, BriefUserInfoDto>(user);
     }
 
+    public async Task<UserDto> GetUserAsync(long id)
+    {
+        var user = await GetUserByExpressionAsync(user => user.Id == id);
+
+        if (user is null)
+        {
+            throw new NotFoundException(nameof(User), id);
+        }
+
+        return _mapper.Map<User, UserDto>(user);
+    }
+
     public async Task<UserFullDto> GetFullUserAsync(long id)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == id);
@@ -211,9 +225,9 @@ public class UserService : BaseService, IUserService
 
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
                             ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
-        
+
         _mapper.Map(userInfoDto, currentUser);
-        
+
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
         return _mapper.Map<UserDto>(currentUser);
@@ -225,18 +239,18 @@ public class UserService : BaseService, IUserService
         {
             throw new ArgumentNullException(nameof(image));
         }
-        
+
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
                           ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
-        
+
         var uniqueFileName = FileNameHelper.CreateUniqueFileName(image.FileName);
         await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
             uniqueFileName);
         currentUser.ImagePath = uniqueFileName;
-        
+
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
-        
+
         var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
     }
