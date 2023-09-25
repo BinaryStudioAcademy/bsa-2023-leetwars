@@ -15,7 +15,7 @@ import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { IUser } from '@shared/models/user/user';
-import { takeUntil } from 'rxjs';
+import { Observable, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -56,6 +56,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     public isCodeFight: boolean;
 
     private isFullscreen = false;
+
+    private isSampleTests: boolean;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -133,33 +135,54 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return this.activeTab === title;
     }
 
-    sendCode(): void {
+    public giveUpCodeFight() {
+        const codeFightEnd: ICodeFightEnd = {
+            isWinner: false,
+            senderId: this.user.id,
+        };
+
+        this.challengeService.sendCodeFightEnd(codeFightEnd).subscribe();
+    }
+
+    public runSampleTests(): void {
+        this.sendCode().subscribe();
+
+        this.isSampleTests = true;
+    }
+
+    public submitSolution(): void {
+        this.sendCode().subscribe();
+
+        this.isSampleTests = false;
+    }
+
+    subscribeToMessageQueue(): void {
+        this.signalRService.start();
+        this.signalRService.listenMessages((codeRunResults: ICodeRunResults) => {
+            this.codeRunService.getCodeRunResults(codeRunResults);
+
+            if (this.isCodeFight && !this.isSampleTests) {
+                const codeFightEnd: ICodeFightEnd = {
+                    isWinner: true,
+                    senderId: this.user.id,
+                };
+
+                if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults?.isSuccess) {
+                    this.challengeService.sendCodeFightEnd(codeFightEnd).subscribe();
+                }
+            }
+        });
+    }
+
+    private sendCode(): Observable<void> {
         this.solution = {
             userConnectionId: this.user.id.toString(),
             language: this.selectedLanguage,
             userCode: this.initialSolution as string,
             tests: this.testCode,
         };
-        this.challengeService.runTests(this.solution).subscribe();
-    }
 
-    submitSolution(): void {
-        this.sendCode();
-    }
-
-    subscribeToMessageQueue(): void {
-        this.signalRService.start();
-        this.signalRService.listenMessages((msg: ICodeRunResults) => {
-            this.codeRunService.getCodeRunResults(msg);
-        });
-    }
-
-    public giveUpCodeFight() {
-        const codeFightEnd: ICodeFightEnd = {
-            senderId: this.user.id,
-        };
-
-        this.challengeService.sendCodeFightEnd(codeFightEnd).subscribe();
+        return this.challengeService.runTests(this.solution);
     }
 
     private loadChallenge(challengeId: number) {

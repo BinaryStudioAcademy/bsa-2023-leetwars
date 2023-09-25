@@ -283,11 +283,13 @@ namespace LeetWars.Core.BLL.Services
             var senderCodeFight = await GetCodeFightChallengeByExpressionAsync(cf => cf.SenderId == codeFightEndDto.SenderId);
             var receiverCodeFight = await GetCodeFightChallengeByExpressionAsync(cf => cf.ReceiverId == codeFightEndDto.SenderId);
 
-            bool isWinner = senderCodeFight is null && receiverCodeFight is not null;
-
             var codeFight = senderCodeFight ?? receiverCodeFight;
 
-            if(codeFight is null)
+            bool isWinner = codeFightEndDto.IsWinner 
+                ? codeFightEndDto.IsWinner && senderCodeFight is not null 
+                : receiverCodeFight is not null;
+
+            if (codeFight is null)
             {
                 throw new NotFoundException(nameof(CodeFight));
             }

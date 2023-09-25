@@ -77,7 +77,7 @@ export class NotificationHubService {
         });
 
         this.hubConnection.on('LoseCodeFightAsync', () => {
-            this.toastrService.showError('You have lost the code fight!');
+            this.toastrService.showWarning('You have lost the code fight!');
             this.router.navigateByUrl('/leader/board', { state: { canLeave: true } });
         });
 

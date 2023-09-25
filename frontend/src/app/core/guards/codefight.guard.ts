@@ -39,6 +39,7 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
                 text: 'Yes',
                 handler: () => {
                     const codeFightEnd: ICodeFightEnd = {
+                        isWinner: false,
                         senderId: this.user.id,
                     };
 
