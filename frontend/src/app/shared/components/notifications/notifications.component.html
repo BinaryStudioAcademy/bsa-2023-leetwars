@@ -16,7 +16,7 @@
         <div *ngIf="notification.typeNotification === typeNotification.CodeFightRequest">
             <p>{{ notification.message }}</p>
             <button (click)="onCodeFightStart(notification)">Yes</button>
-            <button>No</button>
+            <button (click)="onCodeFightRefuse(notification)">No</button>
         </div>
     </div>
 </div>

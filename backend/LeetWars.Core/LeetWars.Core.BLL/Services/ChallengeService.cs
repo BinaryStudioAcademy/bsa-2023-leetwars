@@ -260,6 +260,16 @@ namespace LeetWars.Core.BLL.Services
             _notificationSenderService.SendNotificationToRabbitMQ(notificationDto);
         }
 
+        public void SendCodeFightEnd(CodeFightEndDto codeFightEndDto)
+        {
+            codeFightEndDto.Notification.TypeNotification = codeFightEndDto.IsSenderWinner
+                ? TypeNotifications.CodeFightEndWinner
+                : TypeNotifications.CodeFightEndLoser;
+
+            _notificationSenderService.SendNotificationToRabbitMQ(codeFightEndDto.Notification);
+            _notificationSenderService.SendNotificationToRabbitMQ(codeFightEndDto.Notification);
+        }
+
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();

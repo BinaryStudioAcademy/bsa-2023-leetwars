@@ -3,5 +3,6 @@ export enum TypeNotification {
     NewChallenge = 'NewChallenge',
     CodeFightRequest = 'CodeFightRequest',
     CodeFightStart = 'CodeFightStart',
-    CodeFightEnd = 'CodeFightEnd',
+    CodeFightEndWinner = 'CodeFightEndWinner',
+    CodeFightEndLooser = 'CodeFightEndLooser',
 }

@@ -12,6 +12,7 @@ import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
+import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
@@ -52,9 +53,9 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     userId: string;
 
-    private isFullscreen = false;
+    public isCodeFight: boolean;
 
-    private isCodeFight = false;
+    private isFullscreen = false;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -99,6 +100,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.authService.getUser().subscribe((user: IUser) => {
             this.user = user;
         });
+
+        this.isCodeFight = this.router.url.includes('codefight');
 
         this.subscribeToMessageQueue();
     }
@@ -149,6 +152,15 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.signalRService.listenMessages((msg: ICodeRunResults) => {
             this.codeRunService.getCodeRunResults(msg);
         });
+    }
+
+    public giveUpCodeFight() {
+        const codeFightEnd: ICodeFightEnd = {
+            isWinner: false,
+            sender: this.user,
+        };
+
+        this.challengeService.sendCodeFightEnd(codeFightEnd).subscribe();
     }
 
     private loadChallenge(challengeId: number) {

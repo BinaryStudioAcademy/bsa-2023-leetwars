@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { NotificationService } from '@core/services/notification.service';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { HubConnection } from '@microsoft/signalr';
 import { ICodeFightStart } from '@shared/models/codefight/code-fight-start';
 import { INotificationModel } from '@shared/models/notifications/notifications';
-import { Subject, Subscription } from 'rxjs';
+import { Subject, Subscription, timer } from 'rxjs';
 
 import { SignalRHubFactoryService } from './signalr-hub-factory.service';
 
@@ -27,6 +28,7 @@ export class NotificationHubService {
         private hubFactory: SignalRHubFactoryService,
         private authservice: AuthService,
         private notificationService: NotificationService,
+        private toastrService: ToastrNotificationsService,
         private router: Router,
     ) {}
 
@@ -56,17 +58,17 @@ export class NotificationHubService {
 
         this.hubConnection.on('SendNotificationAsync', (msg: INotificationModel) => {
             if (msg.showFor) {
-                setTimeout(() => {
+                timer(msg.showFor).subscribe(() => {
                     this.notificationService.removeNotification(msg);
-                }, msg.showFor);
+                });
             }
 
             this.messages.next(msg);
         });
 
         this.hubConnection.on('StartCodeFightAsync', (codeFight: ICodeFightStart) => {
-            this.router.navigateByUrl(`/challenges/${codeFight.challengeId}`);
-            this.messages.next(codeFight.notification);
+            this.toastrService.showSuccess('Your code fight is about to start! Get ready!');
+            this.router.navigateByUrl(`/challenges/codefight/${codeFight.challengeId}`);
         });
 
         await this.hubConnection.invoke('OnConnectAsync', `${this.authservice.userSubject.value?.id}`);

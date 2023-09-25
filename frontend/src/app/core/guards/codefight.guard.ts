@@ -25,21 +25,17 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
                 text: 'Yes',
                 handler: () => {
                     this.toastrService.showInfo('You have lost the code fight');
-                    modalRef.close(true);
+                    modalRef.close();
 
                     modalRef.closed.subscribe(() => {
                         this.router.navigate(['/']);
                     });
-
-                    return true;
                 },
             },
             {
                 text: 'No',
                 handler: () => {
                     modalRef.dismiss();
-
-                    return false;
                 },
             },
         ];

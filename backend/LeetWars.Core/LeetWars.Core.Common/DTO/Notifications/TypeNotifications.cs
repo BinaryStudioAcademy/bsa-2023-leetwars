@@ -6,6 +6,7 @@
         NewChallenge,
         CodeFightRequest,
         CodeFightStart,
-        CodeFightEnd,
+        CodeFightEndWinner,
+        CodeFightEndLoser,
     }
 }

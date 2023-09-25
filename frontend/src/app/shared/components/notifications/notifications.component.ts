@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CodeFightService } from '@core/services/code-fight.service';
+import { ChallengeService } from '@core/services/challenge.service';
 import { NotificationService } from '@core/services/notification.service';
 import { TypeNotification } from '@shared/enums/type-notification';
 import { INotificationModel } from '@shared/models/notifications/notifications';
@@ -14,7 +14,7 @@ export class NotificationsComponent implements OnInit {
 
     public typeNotification = TypeNotification;
 
-    constructor(private notificationService: NotificationService, private codeFightService: CodeFightService) {}
+    constructor(private notificationService: NotificationService, private challengeService: ChallengeService) {}
 
     public ngOnInit(): void {
         this.notificationService.currentNotifications.subscribe((notifications: INotificationModel[]) => {
@@ -26,6 +26,10 @@ export class NotificationsComponent implements OnInit {
         this.notificationService.removeNotification(notification);
         this.notificationService.hideNofitications();
 
-        this.codeFightService.startCodeFight(notification).subscribe();
+        this.challengeService.sendCodeFightStart(notification).subscribe();
+    }
+
+    public onCodeFightRefuse(notification: INotificationModel) {
+        this.notificationService.removeNotification(notification);
     }
 }

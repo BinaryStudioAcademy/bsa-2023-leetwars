@@ -1,6 +1,8 @@
 <div class="modal-header">
     <h4 class="modal-title">Select challenge</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <fa-icon [icon]="'close'" [size]="'lg'"></fa-icon>
+    </button>
 </div>
 <div class="modal-body">
     <p class="modal-body-text">Choose programming language and level of the challenge</p>

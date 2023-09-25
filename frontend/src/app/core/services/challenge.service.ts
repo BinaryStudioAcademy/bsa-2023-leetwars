@@ -2,8 +2,6 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
 import { HttpResponse } from '@microsoft/signalr';
-import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
-import { IStar } from '@shared/models/challenge-star/star';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
@@ -11,7 +9,10 @@ import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { IStar } from '@shared/models/challenge-star/star';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
+import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IPageSettings } from '@shared/models/page-settings';
@@ -58,6 +59,10 @@ export class ChallengeService {
 
     public sendCodeFightStart(notification: INotificationModel): Observable<void> {
         return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightstart`, notification);
+    }
+
+    public sendCodeFightEnd(codeFightEnd: ICodeFightEnd): Observable<void> {
+        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightend`, codeFightEnd);
     }
 
     public updateStar(star: IStar): Observable<IChallengePreview> {

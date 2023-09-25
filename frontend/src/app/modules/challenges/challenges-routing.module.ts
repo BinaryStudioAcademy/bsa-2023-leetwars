@@ -17,6 +17,10 @@ const routes: Routes = [
     {
         path: ':id',
         component: OnlineEditorPageComponent,
+    },
+    {
+        path: 'codefight/:id',
+        component: OnlineEditorPageComponent,
         canDeactivate: [CodefightGuard],
     },
 ];

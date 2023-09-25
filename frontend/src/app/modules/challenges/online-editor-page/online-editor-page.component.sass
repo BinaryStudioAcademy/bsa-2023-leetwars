@@ -1,4 +1,5 @@
-@import 'src/styles/color-variables'
+@import 'color-variables'
+@import 'screen-sizes-variables'
 
 .page-container
     padding: 8px
@@ -140,6 +141,11 @@ button span
     justify-content: flex-end
     gap: 10px
     margin-bottom: 10px
+    @media screen and ( max-width: $mobile)
+        flex-direction: column
+        justify-content: center
+        text-align: center
+
 
 .custom-button
     font-weight: 600
@@ -166,3 +172,8 @@ button span
         background-color: $dark-olive-green
         border: 1px solid $dark-olive-green
         pointer-events: none
+
+    &.giveup-btn
+        background-color: $light-red
+        &:hover, &:active
+            background-color: $maroon

@@ -1,5 +1,6 @@
 <div class="page-container">
     <div class="actions">
+        <button class="custom-button giveup-btn" *ngIf="isCodeFight" (click)="giveUpCodeFight()">Give up</button>
         <button class="custom-button cancel-btn" (click)="sendCode()">Run sample tests</button>
         <button class="custom-button accent" (click)="submitSolution()">Submit</button>
     </div>

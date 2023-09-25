@@ -23,5 +23,6 @@ namespace LeetWars.Core.BLL.Interfaces
         Task<List<ChallengeLevelDto>> GetChallengeLevelsAsync();
         Task SendCodeFightRequest(CodeFightRequestDto requestDto);
         void SendCodeFightStart(NewNotificationDto notificationDto);
+        void SendCodeFightEnd(CodeFightEndDto codeFightEndDto);
     }
 }
