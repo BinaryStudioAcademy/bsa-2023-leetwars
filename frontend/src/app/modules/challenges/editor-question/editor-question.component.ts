@@ -116,10 +116,10 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             return;
         }
 
-        this.challenge.level = this.allLevels.find((item) => item.name === value);
+        this.challenge.level = this.allLevels.find((item) => item.skillLevel === value);
         this.challenge.levelId = this.challenge.level?.id!;
 
-        this.inputForm.controls.level.setValue(this.challenge.level?.name ?? '');
+        this.inputForm.controls.level.setValue(this.challenge.level?.skillLevel ?? '');
         this.validationChange.emit(this.inputForm.valid);
     }
 
@@ -135,13 +135,13 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             this.allTagsNames = this.allTags.map((t) => t.name);
         }
         if (allLevels) {
-            this.allLevelsNames = this.allLevels.map((t) => t.name);
+            this.allLevelsNames = this.allLevels.map((t) => t.skillLevel);
         }
         if (challenge) {
             this.selectedTagsNames = this.challenge.tags.map((t) => t.name);
             this.inputForm.controls.tags.setValue(this.selectedTagsNames);
 
-            this.selectedLevelName = this.challenge.level?.name ?? '';
+            this.selectedLevelName = this.challenge.level?.skillLevel ?? '';
             this.inputForm.controls.level.setValue(this.selectedLevelName);
 
             this.inputForm.controls.name.setValue(this.challenge.title);

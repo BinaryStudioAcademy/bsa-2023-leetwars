@@ -4,7 +4,7 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
-import { takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-leader-board',
@@ -14,24 +14,35 @@ import { takeUntil } from 'rxjs';
 export class LeaderBoardComponent extends BaseComponent implements OnInit {
     public users: IUser[] = [];
 
+    public currentUser: IUser;
+
+    public usersToShow: IUser[] = [];
+
     public isLastPage = false;
 
     public loading = false;
+
+    public scrollEventSubject = new Subject<void>();
 
     private page: IPageSettings = {
         pageNumber: 0,
         pageSize: 30,
     };
 
-    constructor(private userService: UserService, private toastrNotification: ToastrNotificationsService) {
+    constructor(
+        private userService: UserService,
+        private toastrNotification: ToastrNotificationsService,
+    ) {
         super();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.getUsers();
     }
 
     public onScroll() {
+        this.scrollEventSubject.next();
+
         if (this.isLastPage) {
             return;
         }
@@ -59,6 +70,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
                         return;
                     }
                     this.users = [...this.users, ...users];
+                    this.usersToShow = this.users;
                 },
                 error: () => {
                     this.loading = false;

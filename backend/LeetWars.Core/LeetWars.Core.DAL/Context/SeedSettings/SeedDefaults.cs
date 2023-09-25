@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.DAL.Entities;
+using LeetWars.Core.DAL.Enums;
 using System.Collections.Immutable;
 
 namespace LeetWars.Core.DAL.Context.SeedSettings
@@ -23,6 +24,8 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
 
         public static readonly int LanguageVersionSeed = 8901;
 
+        public static readonly int BadgeSeed = 1337;
+
         public static readonly ImmutableArray<Tag> Tags = ImmutableArray.CreateRange(new Tag[]
         {
             new Tag("Arrays"){ Id = 1 },
@@ -38,10 +41,10 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
 
         public static readonly ImmutableArray<ChallengeLevel> ChallengeLevels = ImmutableArray.CreateRange(new ChallengeLevel[]
         {
-            new ChallengeLevel("Easy"){ Id = 1, Reward = 10 },
-            new ChallengeLevel("Medium"){ Id = 2, Reward = 20 },
-            new ChallengeLevel("Difficult"){ Id = 3, Reward = 30 },
-            new ChallengeLevel("Extreme"){ Id = 4, Reward = 40 }
+            new ChallengeLevel(){ Id = 1, Reward = 10, SkillLevel = LanguageLevel.Easy },
+            new ChallengeLevel(){ Id = 2, Reward = 20, SkillLevel = LanguageLevel.Medium },
+            new ChallengeLevel(){ Id = 3, Reward = 30, SkillLevel = LanguageLevel.Difficult },
+            new ChallengeLevel(){ Id = 4, Reward = 40, SkillLevel = LanguageLevel.Extreme }
         });
 
         public static readonly ImmutableArray<Language> Languages = ImmutableArray.CreateRange(new Language[]
@@ -52,18 +55,18 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
         
         public static readonly ImmutableArray<Badge> Badges = ImmutableArray.CreateRange(new Badge[]
         {
-            new Badge("Jan LeetWars Challenge Badge", "/static/images/badges/2023-01.png", "/static/images/badges/2023-01.gif"){Id = 1},
-            new Badge("Feb LeetWars Challenge Badge", "/static/images/badges/2023-02.png", "/static/images/badges/2023-02.gif"){Id = 2},
-            new Badge("Mar LeetWars Challenge Badge", "/static/images/badges/2023-03.png", "/static/images/badges/2023-03.gif"){Id = 3},
-            new Badge("Apr LeetWars Challenge Badge", "/static/images/badges/2023-04.png", "/static/images/badges/2023-04.gif"){Id = 4},
-            new Badge("May LeetWars Challenge Badge", "/static/images/badges/2023-05.png", "/static/images/badges/2023-05.gif"){Id = 5},
-            new Badge("Jun LeetWars Challenge Badge", "/static/images/badges/2023-06.png", "/static/images/badges/2023-06.gif"){Id = 6},
-            new Badge("Jul LeetWars Challenge Badge", "/static/images/badges/2023-07.png", "/static/images/badges/2023-07.gif"){Id = 7},
-            new Badge("Aug LeetWars Challenge Badge", "/static/images/badges/2023-08.png", "/static/images/badges/2023-08.gif"){Id = 8},
-            new Badge("Sep LeetWars Challenge Badge", "/static/images/badges/2023-09.png", "/static/images/badges/2023-09.gif"){Id = 9},
-            new Badge("Oct LeetWars Challenge Badge", "/static/images/badges/2023-10.png", "/static/images/badges/2023-10.gif"){Id = 10},
-            new Badge("Nov LeetWars Challenge Badge", "/static/images/badges/2023-11.png", "/static/images/badges/2023-11.gif"){Id = 11},
-            new Badge("Dec LeetWars Challenge Badge", "/static/images/badges/2023-12.png", "/static/images/badges/2023-12.gif"){Id = 12},
+            new Badge("Jan LeetWars Challenge Badge", "2023-01.png", "2023-01.gif"){Id = 1},
+            new Badge("Feb LeetWars Challenge Badge", "2023-02.png", "2023-02.gif"){Id = 2},
+            new Badge("Mar LeetWars Challenge Badge", "2023-03.png", "2023-03.gif"){Id = 3},
+            new Badge("Apr LeetWars Challenge Badge", "2023-04.png", "2023-04.gif"){Id = 4},
+            new Badge("May LeetWars Challenge Badge", "2023-05.png", "2023-05.gif"){Id = 5},
+            new Badge("Jun LeetWars Challenge Badge", "2023-06.png", "2023-06.gif"){Id = 6},
+            new Badge("Jul LeetWars Challenge Badge", "2023-07.png", "2023-07.gif"){Id = 7},
+            new Badge("Aug LeetWars Challenge Badge", "2023-08.png", "2023-08.gif"){Id = 8},
+            new Badge("Sep LeetWars Challenge Badge", "2023-09.png", "2023-09.gif"){Id = 9},
+            new Badge("Oct LeetWars Challenge Badge", "2023-10.png", "2023-10.gif"){Id = 10},
+            new Badge("Nov LeetWars Challenge Badge", "2023-11.png", "2023-11.gif"){Id = 11},
+            new Badge("Dec LeetWars Challenge Badge", "2023-12.png", "2023-12.gif"){Id = 12},
         });
 
     }

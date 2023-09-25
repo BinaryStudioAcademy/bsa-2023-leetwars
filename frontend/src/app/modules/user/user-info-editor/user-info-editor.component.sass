@@ -22,7 +22,9 @@
     min-height: 344px
     padding: 26px 36px 26px 29px
 
-.avatar
+.user-avatar-container
+    position: relative
+    cursor: pointer
     width: 160px
     height: 160px
     img
@@ -32,6 +34,34 @@
         border-radius: 15px
         border: 5px solid $white
         height: 100%
+        border-radius: 8px
+
+    &:hover::before
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: $medium-black
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 8px
+
+.edit-photo
+    display: none
+    flex-direction: column
+    align-items: center
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    color: $white
+    gap: 10px
+
+.user-avatar-container:hover .edit-photo
+    display: flex
 
 .form-data
     gap: 77px
@@ -44,3 +74,6 @@
 
 :host::ng-deep .input-form-container
     height: 100% !important
+
+fa-icon
+    cursor: pointer
