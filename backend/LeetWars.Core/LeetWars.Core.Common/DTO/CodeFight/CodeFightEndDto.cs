@@ -5,7 +5,6 @@ namespace LeetWars.Core.Common.DTO.CodeFight
 {
     public class CodeFightEndDto
     {
-        public bool IsWinner { get; set; }
-        public UserDto Sender { get; set; } = null!;
+        public long SenderId { get; set; }
     }
 }

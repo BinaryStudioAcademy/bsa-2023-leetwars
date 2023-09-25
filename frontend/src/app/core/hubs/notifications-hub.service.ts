@@ -71,6 +71,16 @@ export class NotificationHubService {
             this.router.navigateByUrl(`/challenges/codefight/${codeFight.challengeId}`);
         });
 
+        this.hubConnection.on('WinCodeFightAsync', () => {
+            this.toastrService.showSuccess('You have won the code fight!');
+            this.router.navigateByUrl('/leader/board', { state: { canLeave: true } });
+        });
+
+        this.hubConnection.on('LoseCodeFightAsync', () => {
+            this.toastrService.showError('You have lost the code fight!');
+            this.router.navigateByUrl('/leader/board', { state: { canLeave: true } });
+        });
+
         await this.hubConnection.invoke('OnConnectAsync', `${this.authservice.userSubject.value?.id}`);
     }
 }

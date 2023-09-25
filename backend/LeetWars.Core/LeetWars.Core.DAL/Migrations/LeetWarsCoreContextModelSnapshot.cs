@@ -2763,6 +2763,34 @@ namespace LeetWars.Core.DAL.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.CodeFight", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("ChallengeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ReceiverId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("SenderId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiverId")
+                        .IsUnique();
+
+                    b.HasIndex("SenderId")
+                        .IsUnique();
+
+                    b.ToTable("CodeFights");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.HelperEntities.ChallengeVersionLanguageVersion", b =>
                 {
                     b.Property<long>("ChallengeVersionId")
@@ -8064,6 +8092,25 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("Author");
 
                     b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.CodeFight", b =>
+                {
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "Receiver")
+                        .WithOne()
+                        .HasForeignKey("LeetWars.Core.DAL.Entities.CodeFight", "ReceiverId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "Sender")
+                        .WithOne()
+                        .HasForeignKey("LeetWars.Core.DAL.Entities.CodeFight", "SenderId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.HelperEntities.ChallengeVersionLanguageVersion", b =>

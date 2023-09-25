@@ -156,8 +156,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     public giveUpCodeFight() {
         const codeFightEnd: ICodeFightEnd = {
-            isWinner: false,
-            sender: this.user,
+            senderId: this.user.id,
         };
 
         this.challengeService.sendCodeFightEnd(codeFightEnd).subscribe();

@@ -79,9 +79,10 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpPost("codefightstart")]
-        public ActionResult SendCodeFightStart([FromBody] NewNotificationDto notificationDto)
+        public async Task<ActionResult> SendCodeFightStartAsync([FromBody] NewNotificationDto notificationDto)
         {
-            _challengeService.SendCodeFightStart(notificationDto);
+            await _challengeService.SendCodeFightStartAsync(notificationDto);
+
             return NoContent();
         }
 

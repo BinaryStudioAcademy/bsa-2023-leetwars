@@ -22,7 +22,7 @@ namespace LeetWars.Core.BLL.Interfaces
         Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto);
         Task<List<ChallengeLevelDto>> GetChallengeLevelsAsync();
         Task SendCodeFightRequest(CodeFightRequestDto requestDto);
-        void SendCodeFightStart(NewNotificationDto notificationDto);
+        Task SendCodeFightStartAsync(NewNotificationDto notificationDto);
         Task SendCodeFightEndAsync(CodeFightEndDto codeFightEndDto);
     }
 }
