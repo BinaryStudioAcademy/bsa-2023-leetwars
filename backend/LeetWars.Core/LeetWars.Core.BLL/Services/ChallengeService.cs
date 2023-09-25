@@ -260,14 +260,25 @@ namespace LeetWars.Core.BLL.Services
             _notificationSenderService.SendNotificationToRabbitMQ(notificationDto);
         }
 
-        public void SendCodeFightEnd(CodeFightEndDto codeFightEndDto)
+        public async Task SendCodeFightEndAsync(CodeFightEndDto codeFightEndDto)
         {
-            codeFightEndDto.Notification.TypeNotification = codeFightEndDto.IsSenderWinner
-                ? TypeNotifications.CodeFightEndWinner
-                : TypeNotifications.CodeFightEndLoser;
+            var codeFight = await _context.CodeFights.FirstAsync(cf => cf.SenderId == codeFightEndDto.Sender.Id);
 
-            _notificationSenderService.SendNotificationToRabbitMQ(codeFightEndDto.Notification);
-            _notificationSenderService.SendNotificationToRabbitMQ(codeFightEndDto.Notification);
+            var challenge = await GetBriefChallengeInfoById(codeFight.ChallengeId);
+
+            var sender = await _userService.GetBriefUserInfoById(codeFightEndDto.Sender.Id);
+            var receiver = await _userService.GetBriefUserInfoById(codeFight.ReceiverId);
+
+            var notification = new NewNotificationDto
+            {
+                TypeNotification = TypeNotifications.CodeFightEnd,
+                Challenge = challenge,
+                ReceiverId = codeFightEndDto.IsWinner ? codeFight.ReceiverId.ToString() : sender.Id.ToString(),
+                DateSending = DateTime.UtcNow,
+                Sender = codeFightEndDto.IsWinner ? sender : receiver,
+            };
+
+            _notificationSenderService.SendNotificationToRabbitMQ(notification);
         }
 
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)

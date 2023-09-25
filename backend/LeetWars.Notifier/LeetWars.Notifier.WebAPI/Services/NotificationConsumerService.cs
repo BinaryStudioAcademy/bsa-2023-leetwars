@@ -73,6 +73,14 @@ namespace LeetWars.Notifier.WebAPI.Services
                         await _hubContext.Clients.Groups(redirectDto.ReceiverId, redirectDto.SenderId).StartCodeFightAsync(redirectDto);
                     }
                     break;
+                case TypeNotifications.CodeFightEnd:
+                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
+                        && notificationDto.Sender is not null)
+                    {
+                        await _hubContext.Clients.Groups(notificationDto.Sender.Id.ToString()).WinCodeFightAsync(notificationDto);
+                        await _hubContext.Clients.Groups(notificationDto.ReceiverId).LoseCodeFightAsync(notificationDto);
+                    }
+                    break;                   
                 default:
                     await Task.CompletedTask;
                     break;

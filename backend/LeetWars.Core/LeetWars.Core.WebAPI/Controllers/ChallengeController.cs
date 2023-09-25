@@ -86,9 +86,10 @@ namespace LeetWars.Core.WebAPI.Controllers
         }
 
         [HttpPost("codefightend")]
-        public ActionResult SendCodeFightEnd([FromBody] CodeFightEndDto codeFightEndDto)
+        public async Task<ActionResult> SendCodeFightEndAsync([FromBody] CodeFightEndDto codeFightEndDto)
         {
-            _challengeService.SendCodeFightEnd(codeFightEndDto);
+            await _challengeService.SendCodeFightEndAsync(codeFightEndDto);
+
             return NoContent();
         }
 

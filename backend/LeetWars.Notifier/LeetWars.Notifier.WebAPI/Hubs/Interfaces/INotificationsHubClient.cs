@@ -7,5 +7,7 @@ namespace LeetWars.Notifier.WebAPI.Hubs.Interfaces
     {
         Task SendNotificationAsync(NewNotificationDto newNotification);
         Task StartCodeFightAsync(CodeFightStartDto codeFightDto);
+        Task WinCodeFightAsync(NewNotificationDto newNotification);
+        Task LoseCodeFightAsync(NewNotificationDto newNotification);
     }
 }
