@@ -8,15 +8,15 @@ import { AuthService } from '@core/services/auth.service';
 export class AuthorizedGuard implements CanActivate, CanActivateChild, CanMatch {
     constructor(private router: Router, private authService: AuthService) {}
 
-    public canActivate() {
+    canActivate() {
         return this.checkActivation();
     }
 
-    public canActivateChild() {
+    canActivateChild() {
         return this.checkActivation();
     }
 
-    public canMatch() {
+    canMatch() {
         return !!this.authService.isAuthorized();
     }
 

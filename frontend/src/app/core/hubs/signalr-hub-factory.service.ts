@@ -8,7 +8,7 @@ import { HttpTransportType, HubConnection, HubConnectionBuilder, LogLevel } from
 export class SignalRHubFactoryService {
     private hubLookup = new Map<string, HubConnection>();
 
-    public createHub(hubUrl: string) {
+    createHub(hubUrl: string) {
         if (this.hubLookup.has(hubUrl)) {
             return this.hubLookup.get(hubUrl)!;
         }

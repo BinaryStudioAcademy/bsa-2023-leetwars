@@ -10,19 +10,15 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
     styleUrls: ['./forget-password.component.sass'],
 })
 export class ForgetPasswordComponent {
-    public resetPasswordForm = new FormGroup({
+    resetPasswordForm = new FormGroup({
         email: new FormControl('', [Validators.required]),
     });
 
-    public isSubmitted = false;
+    isSubmitted = false;
 
-    constructor(
-        private auth: AuthService,
-        private router: Router,
-        private toastrService: ToastrNotificationsService,
-    ) {}
+    constructor(private auth: AuthService, private router: Router, private toastrService: ToastrNotificationsService) {}
 
-    public resetPassword() {
+    resetPassword() {
         this.auth.forgotPassword(this.resetPasswordForm.value.email!).subscribe({
             error: () => {
                 this.toastrService.showError('Something went wrong');
@@ -33,7 +29,7 @@ export class ForgetPasswordComponent {
         });
     }
 
-    public returnToSignIn() {
+    returnToSignIn() {
         this.router.navigate(['auth/login']);
     }
 }

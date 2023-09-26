@@ -7,19 +7,19 @@ import { SpinnerService } from '@core/services/spinner.service';
     styleUrls: ['./landing-page.component.sass'],
 })
 export class LandingPageComponent {
-    public isScrolled = false;
+    isScrolled = false;
 
-    public isNavShown = false;
+    isNavShown = false;
 
     private windowWidth: number;
 
     @HostListener('window:scroll', [])
-    public onWindowScroll() {
+    onWindowScroll() {
         this.isScrolled = window.scrollY > 0;
     }
 
     @HostListener('window:resize', ['$event'])
-    public onWindowResize(event: Event) {
+    onWindowResize(event: Event) {
         const target = event.target as Window;
 
         if (target.innerWidth > 650 && this.isNavShown) {
@@ -33,7 +33,7 @@ export class LandingPageComponent {
         this.windowWidth = window.innerWidth;
     }
 
-    public updateNavVisibility() {
+    updateNavVisibility() {
         if (!this.isNavShown) {
             this.renderer.setStyle(this.dropdownNavigation.nativeElement, 'display', 'flex');
             this.isNavShown = true;

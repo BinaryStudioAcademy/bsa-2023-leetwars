@@ -17,7 +17,7 @@ import { catchError, takeUntil } from 'rxjs';
     styleUrls: ['./change-password.component.sass'],
 })
 export class ChangePasswordComponent extends BaseComponent implements OnInit, OnDestroy {
-    public resetPasswordForm = new FormGroup({
+    resetPasswordForm = new FormGroup({
         password: new FormControl('', [
             Validators.required,
             Validators.minLength(passwordMinLength),
@@ -39,7 +39,7 @@ export class ChangePasswordComponent extends BaseComponent implements OnInit, On
         this.addValidators();
     }
 
-    public ngOnInit() {
+    ngOnInit() {
         this.activatedRoute.queryParams.pipe(takeUntil(this.unsubscribe$)).subscribe((params) => {
             if (!params || params['mode'] !== UserManagementActions.resetPassword) {
                 this.router.navigate(['']);
@@ -50,7 +50,7 @@ export class ChangePasswordComponent extends BaseComponent implements OnInit, On
         });
     }
 
-    public changePassword() {
+    changePassword() {
         this.authService
             .confirmPasswordReset(this.oobCode, this.resetPasswordForm.value.password!)
             .pipe(catchError(() => this.router.navigate([''])))
@@ -60,7 +60,7 @@ export class ChangePasswordComponent extends BaseComponent implements OnInit, On
             });
     }
 
-    public getErrorMessage(formControlName: string) {
+    getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.resetPasswordForm);
     }
 

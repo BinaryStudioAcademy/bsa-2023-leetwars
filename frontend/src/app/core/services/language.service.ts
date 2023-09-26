@@ -8,9 +8,9 @@ import { ILanguage } from '@shared/models/language/language';
 export class LanguageService {
     private baseUrl = '/language';
 
-    constructor(private httpService: HttpInternalService) { }
+    constructor(private httpService: HttpInternalService) {}
 
-    public getLanguages() {
+    getLanguages() {
         return this.httpService.getRequest<ILanguage[]>(this.baseUrl);
     }
 }

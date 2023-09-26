@@ -3,9 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getNewChallenge } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { CategoryType } from '@shared/enums/category-type';
 import { TabType } from '@shared/enums/tab-type';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
-import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { ITag } from '@shared/models/tag/tag';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { EditorInstance, EditorOption } from 'angular-markdown-editor';
@@ -27,27 +27,27 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
 
     @Output() validationChange = new EventEmitter<boolean>();
 
-    public allTagsNames: string[] = [];
+    allTagsNames: string[] = [];
 
-    public selectedTagsNames: string[] = [];
+    selectedTagsNames: string[] = [];
 
-    public allLevelsNames: string[] = [];
+    allLevelsNames: string[] = [];
 
-    public selectedLevelName = '';
+    selectedLevelName = '';
 
-    public selectedTab: TabType = TabType.Description;
+    selectedTab: TabType = TabType.Description;
 
-    public CategoryType = CategoryType;
+    CategoryType = CategoryType;
 
-    public TabType = TabType;
+    TabType = TabType;
 
-    public editorOptions: EditorOption;
+    editorOptions: EditorOption;
 
-    public customInputHeight = '48px';
+    customInputHeight = '48px';
 
-    public customInputWidth = '100%';
+    customInputWidth = '100%';
 
-    public inputForm = new FormGroup({
+    inputForm = new FormGroup({
         name: new FormControl(this.challenge.title, [Validators.required]),
         description: new FormControl(this.challenge.instructions, [Validators.required]),
         tags: new FormControl(this.selectedTagsNames, [Validators.required]),
@@ -58,7 +58,7 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
 
     constructor(private markdownService: MarkdownService) {}
 
-    public ngOnInit() {
+    ngOnInit() {
         this.editorOptions = {
             parser: (val) => this.markdownService.parse(val.trim()),
             onChange: (e) => this.onDescriptionChange(e.getContent()),
@@ -68,7 +68,7 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
         };
     }
 
-    public ngOnChanges({ checkValidation, challenge, allTags, allLevels }: SimpleChanges): void {
+    ngOnChanges({ checkValidation, challenge, allTags, allLevels }: SimpleChanges): void {
         if (checkValidation && checkValidation.currentValue) {
             this.inputForm.markAllAsTouched();
         }
@@ -90,39 +90,39 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
         }
     }
 
-    public editMarkDown() {
+    editMarkDown() {
         this.selectedTab = TabType.Description;
         this.bsEditorInstance.hidePreview();
     }
 
-    public previewMarkDown() {
+    previewMarkDown() {
         this.selectedTab = TabType.Preview;
         this.bsEditorInstance.showPreview();
     }
 
-    public submitQuestion() {
+    submitQuestion() {
         this.selectedTab = TabType.Help;
     }
 
-    public onNameChange(value: string) {
+    onNameChange(value: string) {
         this.challenge.title = value;
 
         this.inputForm.controls.name.setValue(value);
         this.validationChange.emit(this.inputForm.valid);
     }
 
-    public onDescriptionChange(value: string) {
+    onDescriptionChange(value: string) {
         this.challenge.instructions = value;
 
         this.inputForm.controls.description.setValue(value);
         this.validationChange.emit(this.inputForm.valid);
     }
 
-    public onCategoryChange(value: CategoryType) {
+    onCategoryChange(value: CategoryType) {
         this.challenge.category = value;
     }
 
-    public onTagsChange(value: string | string[]) {
+    onTagsChange(value: string | string[]) {
         if (typeof value === 'string') {
             return;
         }
@@ -133,7 +133,7 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
         this.validationChange.emit(this.inputForm.valid);
     }
 
-    public onLevelChange(value: string | string[]) {
+    onLevelChange(value: string | string[]) {
         if (typeof value !== 'string') {
             return;
         }
@@ -145,7 +145,7 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
         this.validationChange.emit(this.inputForm.valid);
     }
 
-    public getErrorMessage(formControlName: string) {
+    getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.inputForm);
     }
 }

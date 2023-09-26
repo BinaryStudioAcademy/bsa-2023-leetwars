@@ -5,9 +5,9 @@ import { BehaviorSubject } from 'rxjs';
 export class SpinnerService {
     private isLoading$$ = new BehaviorSubject<boolean>(false);
 
-    public isLoading$ = this.isLoading$$.asObservable();
+    isLoading$ = this.isLoading$$.asObservable();
 
-    public show = () => this.isLoading$$.next(true);
+    show = () => this.isLoading$$.next(true);
 
-    public hide = () => this.isLoading$$.next(false);
+    hide = () => this.isLoading$$.next(false);
 }

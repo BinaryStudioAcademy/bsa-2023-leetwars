@@ -40,29 +40,29 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
     }
 
-    public showMenu: boolean = false;
+    showMenu: boolean = false;
 
-    public user: IUser;
+    user: IUser;
 
-    public async ngOnInit() {
+    async ngOnInit() {
         await this.notificationHub.start();
         this.listeningHub();
     }
 
-    public override ngOnDestroy() {
+    override ngOnDestroy() {
         this.notificationHub.stop();
         super.ngOnDestroy();
     }
 
-    public showNotifications() {
+    showNotifications() {
         this.notificationService.showNotifications();
     }
 
-    public get countNotification() {
+    get countNotification() {
         return this.notificationService.countNotification;
     }
 
-    public onLogOut() {
+    onLogOut() {
         const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'log-out-modal' });
 
         modalRef.componentInstance.titleText = 'Do you really wish to log out?';
@@ -89,7 +89,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         ];
     }
 
-    public goToProfile() {
+    goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
     }

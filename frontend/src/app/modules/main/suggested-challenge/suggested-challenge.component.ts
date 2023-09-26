@@ -21,15 +21,15 @@ import { takeUntil } from 'rxjs';
     styleUrls: ['./suggested-challenge.component.sass'],
 })
 export class SuggestedChallengeComponent extends BaseComponent implements OnInit {
-    public challenge?: IChallengePreview;
+    challenge?: IChallengePreview;
 
-    public languagesNames: string[] = [];
+    languagesNames: string[] = [];
 
-    public suggestionTypesNames: string[];
+    suggestionTypesNames: string[];
 
-    public suggestionTypes = SUGGESTION_TYPE_NAMES;
+    suggestionTypes = SUGGESTION_TYPE_NAMES;
 
-    public suggestionIcons = ICONS;
+    suggestionIcons = ICONS;
 
     private languages: ILanguage[] = [];
 
@@ -46,13 +46,13 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         super();
     }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.getLanguages();
 
         this.suggestionTypesNames = this.suggestionTypes.map((item) => item.name);
     }
 
-    public onLanguageChanged(value: string | string[]) {
+    onLanguageChanged(value: string | string[]) {
         if (typeof value !== 'string') {
             return;
         }
@@ -60,7 +60,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         this.getChallenge();
     }
 
-    public onSuggestionTypeChanged(value: string | string[]) {
+    onSuggestionTypeChanged(value: string | string[]) {
         if (typeof value !== 'string') {
             return;
         }
@@ -68,7 +68,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         this.getChallenge();
     }
 
-    public onMouseWheel(event: WheelEvent): void {
+    onMouseWheel(event: WheelEvent): void {
         const container = document.querySelector('.tags');
 
         if (container) {
@@ -77,7 +77,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         }
     }
 
-    public getChallenge() {
+    getChallenge() {
         this.challengeService
             .getChallengeSuggestion(this.suggestionSettings)
             .pipe(takeUntil(this.unsubscribe$))

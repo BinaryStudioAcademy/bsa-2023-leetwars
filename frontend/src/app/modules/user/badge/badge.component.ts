@@ -12,23 +12,23 @@ export class BadgeComponent implements OnInit {
 
     @Input() startPosition: number = 0;
 
-    public customOptions: OwlOptions;
+    customOptions: OwlOptions;
 
     private activeSlides: SlidesOutputData;
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.loadCarouselOptions();
     }
 
-    public onTranslated(data: SlidesOutputData) {
+    onTranslated(data: SlidesOutputData) {
         this.activeSlides = data;
     }
 
-    public isCentered(item: Badge) {
+    isCentered(item: Badge) {
         return this.activeSlides.slides?.some((x) => x.center && item.id === +x.id);
     }
 
-    public getIconUrl(item: Badge): string {
+    getIconUrl(item: Badge): string {
         return this.isCentered(item) ? item.iconGif : item.icon;
     }
 

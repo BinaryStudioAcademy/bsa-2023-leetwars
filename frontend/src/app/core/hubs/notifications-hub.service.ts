@@ -22,21 +22,21 @@ export class NotificationHubService {
 
     constructor(private hubFactory: SignalRHubFactoryService, private authservice: AuthService) {}
 
-    public async start() {
+    async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
         await this.init();
     }
 
-    public listenMessages(action: (msg: INotificationModel) => void) {
+    listenMessages(action: (msg: INotificationModel) => void) {
         this.subscriptions = [...this.subscriptions, this.messages.subscribe({ next: action })];
     }
 
-    public async stop() {
+    async stop() {
         await this.hubConnection?.stop();
         this.subscriptions.forEach((s) => s.unsubscribe());
     }
 
-    public getConnectionId() {
+    getConnectionId() {
         return this.hubConnectionId;
     }
 

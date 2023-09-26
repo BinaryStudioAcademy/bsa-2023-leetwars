@@ -27,24 +27,20 @@ export class HttpInternalService {
         this.headers = this.headers.delete(key);
     }
 
-    public getRequest<T>(url: string, httpParams?: HttpParams): Observable<T> {
-        return this.http
-            .get<T>(this.buildUrl(url), { headers: this.getHeaders(), params: httpParams });
+    getRequest<T>(url: string, httpParams?: HttpParams): Observable<T> {
+        return this.http.get<T>(this.buildUrl(url), { headers: this.getHeaders(), params: httpParams });
     }
 
-    public postRequest<T>(url: string, payload: object, httpParams?: HttpParams): Observable<T> {
-        return this.http
-            .post<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), params: httpParams });
+    postRequest<T>(url: string, payload: object, httpParams?: HttpParams): Observable<T> {
+        return this.http.post<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), params: httpParams });
     }
 
-    public putRequest<T>(url: string, payload: object, httpParams?: HttpParams): Observable<T> {
-        return this.http
-            .put<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), params: httpParams });
+    putRequest<T>(url: string, payload: object, httpParams?: HttpParams): Observable<T> {
+        return this.http.put<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), params: httpParams });
     }
 
-    public deleteRequest<T>(url: string, httpParams?: HttpParams): Observable<T> {
-        return this.http
-            .delete<T>(this.buildUrl(url), { headers: this.getHeaders(), params: httpParams });
+    deleteRequest<T>(url: string, httpParams?: HttpParams): Observable<T> {
+        return this.http.delete<T>(this.buildUrl(url), { headers: this.getHeaders(), params: httpParams });
     }
 
     private buildUrl(url: string): string {

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
-import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { IStar } from '@shared/models/challenge-star/star';
+import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { IUser } from '@shared/models/user/user';
 import { getLanguageIconUrl } from '@shared/utils/language-icons';
 
@@ -16,24 +16,24 @@ export class ChallengeComponent implements OnInit {
 
     @Input() challenge: IChallengePreview;
 
-    public challengePositiveFeedbacksPercent = 0;
+    challengePositiveFeedbacksPercent = 0;
 
-    public isChallengeUpdated = true;
+    isChallengeUpdated = true;
 
-    public getLanguageIconUrl = getLanguageIconUrl;
+    getLanguageIconUrl = getLanguageIconUrl;
 
-    public canEdit: boolean;
+    canEdit: boolean;
 
     private user: IUser;
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.authService.getUser().subscribe((user) => {
             this.user = user;
             this.canEdit = this.challenge.createdBy === this.user.id;
         });
     }
 
-    public starChange() {
+    starChange() {
         this.isChallengeUpdated = false;
 
         const star: IStar = {

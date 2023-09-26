@@ -15,7 +15,7 @@ export class ChallengesDropdownSelectComponent {
 
     @Output() selectedItemChanged: EventEmitter<IDropdownItem> = new EventEmitter<IDropdownItem>();
 
-    public selectItem(item: IDropdownItem) {
+    selectItem(item: IDropdownItem) {
         this.selectedItem = item;
         this.selectedItemChanged.emit(this.selectedItem);
     }

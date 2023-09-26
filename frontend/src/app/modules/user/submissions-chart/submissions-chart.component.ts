@@ -11,21 +11,21 @@ import { IMonthChartData } from '@shared/models/submission-chart/month-chart-dat
 export class SubmissionsChartComponent implements OnInit, OnChanges {
     @Input() solutions: IUserSolution[] | undefined = [];
 
-    public chartData: IMonthChartData[] = [];
+    chartData: IMonthChartData[] = [];
 
-    public totalSubmissions = 0;
+    totalSubmissions = 0;
 
-    public totalActiveDays = 0;
+    totalActiveDays = 0;
 
-    public maxStreak = 0;
+    maxStreak = 0;
 
-    public currentStreak = 0;
+    currentStreak = 0;
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.updateChartData();
     }
 
-    public ngOnChanges(): void {
+    ngOnChanges(): void {
         this.updateChartData();
     }
 

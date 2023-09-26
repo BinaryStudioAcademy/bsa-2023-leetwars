@@ -17,13 +17,13 @@ import { ChallengeStep } from '@shared/enums/challenge-step';
     styleUrls: ['./steps-of-progress.component.sass'],
 })
 export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
-    @Input() public steps: ChallengeStep[] = [];
+    @Input() steps: ChallengeStep[] = [];
 
-    @Input() public currentStep: ChallengeStep;
+    @Input() currentStep: ChallengeStep;
 
     @Output() stepClick = new EventEmitter<ChallengeStep>();
 
-    public progressWidth = 0;
+    progressWidth = 0;
 
     private progressBarLine!: Element;
 
@@ -40,11 +40,11 @@ export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
     constructor(private el: ElementRef, private cdr: ChangeDetectorRef) {}
 
     @HostListener('window:resize')
-    public onResize() {
+    onResize() {
         this.updateProgressBarWidth();
     }
 
-    public ngAfterViewInit() {
+    ngAfterViewInit() {
         const currentIndex = this.getCurrentStepIndex();
 
         if (currentIndex >= this.steps.length) {
@@ -58,16 +58,16 @@ export class StepsOfProgressComponent implements AfterViewInit, OnChanges {
         this.updateProgressBarWidth();
     }
 
-    public ngOnChanges(): void {
+    ngOnChanges(): void {
         this.updateProgressBarWidth();
     }
 
-    public onClick(step: ChallengeStep) {
+    onClick(step: ChallengeStep) {
         this.stepClick.emit(step);
     }
 
     private getCurrentStepIndex() {
-        return this.steps.findIndex(s => s === this.currentStep);
+        return this.steps.findIndex((s) => s === this.currentStep);
     }
 
     private updateProgressBarWidth() {

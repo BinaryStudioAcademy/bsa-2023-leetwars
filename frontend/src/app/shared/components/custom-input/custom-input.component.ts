@@ -1,10 +1,10 @@
-/* eslint-disable no-empty-function */
-/* eslint-disable no-use-before-define */
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SecondsConstants } from '@shared/constants/second-constants';
 import { debounceTime, Subject } from 'rxjs';
 
+/* eslint-disable no-empty-function */
+/* eslint-disable no-use-before-define */
 @Component({
     selector: 'app-custom-input[Identifier]',
     templateUrl: './custom-input.component.html',
@@ -40,59 +40,57 @@ export class CustomInputComponent implements ControlValueAccessor, OnInit {
 
     @Output() InputValueChange = new EventEmitter<string>();
 
-    public showPassword = false;
+    showPassword = false;
 
     private _value = '';
 
     private searchSubject = new Subject<string>();
 
-    public ngOnInit(): void {
-        this.searchSubject
-            .pipe(debounceTime(SecondsConstants.Delay))
-            .subscribe((model) => {
-                this.InputValue = model;
-                this.InputValueChange.emit(model);
-            });
+    ngOnInit(): void {
+        this.searchSubject.pipe(debounceTime(SecondsConstants.Delay)).subscribe((model) => {
+            this.InputValue = model;
+            this.InputValueChange.emit(model);
+        });
     }
 
-    public onChange: (value: string) => void = () => {};
+    onChange: (value: string) => void = () => {};
 
-    public onTouchedFn: () => void = () => {};
+    onTouchedFn: () => void = () => {};
 
-    public get value(): string {
+    get value(): string {
         return this._value;
     }
 
-    public set value(v: string) {
+    set value(v: string) {
         this._value = v;
         if (this.onChange) {
             this.onChange(this._value);
         }
     }
 
-    public registerOnChange(fn: (value: string) => void) {
+    registerOnChange(fn: (value: string) => void) {
         this.onChange = fn;
         this.onChange(this._value);
     }
 
-    public registerOnTouched(fn: () => void) {
+    registerOnTouched(fn: () => void) {
         this.onTouchedFn = fn;
     }
 
-    public writeValue(value: string) {
+    writeValue(value: string) {
         this.value = value;
     }
 
-    public onInputChange(model: string) {
+    onInputChange(model: string) {
         this.searchSubject.next(model);
     }
 
-    public togglePasswordVisibility() {
+    togglePasswordVisibility() {
         this.InputType = this.InputType === 'password' ? 'text' : 'password';
         this.showPassword = !this.showPassword;
     }
 
-    public onPasswordKeyDown(event: KeyboardEvent) {
+    onPasswordKeyDown(event: KeyboardEvent) {
         if (event.key === 'Enter') {
             event.preventDefault();
         }

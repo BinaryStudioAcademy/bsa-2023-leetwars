@@ -8,9 +8,9 @@ import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level'
 export class ChallengeLevelService {
     private baseUrl = '/challengelevel';
 
-    constructor(private httpService: HttpInternalService) { }
+    constructor(private httpService: HttpInternalService) {}
 
-    public getLevels() {
+    getLevels() {
         return this.httpService.getRequest<IChallengeLevel[]>(this.baseUrl);
     }
 }

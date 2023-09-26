@@ -7,8 +7,8 @@ import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
-import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
+import { IChallenge } from '@shared/models/challenge/challenge';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { EditorOptions } from '@shared/models/options/editor-options';
@@ -76,7 +76,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     @ViewChild('editorTestContainer') editorTestContainer: ElementRef;
 
-    public toggleFullScreen(element: HTMLDivElement) {
+    toggleFullScreen(element: HTMLDivElement) {
         this.isFullscreen = !this.isFullscreen;
         if (this.isFullscreen) {
             element.requestFullscreen();
@@ -85,7 +85,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         }
     }
 
-    public ngOnInit() {
+    ngOnInit() {
         this.splitDirection = 'horizontal';
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const challengeId = +params.get('id')!;
@@ -100,12 +100,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.subscribeToMessageQueue();
     }
 
-    public override ngOnDestroy() {
+    override ngOnDestroy() {
         this.signalRService.stop();
         super.ngOnDestroy();
     }
 
-    public showTestResults(testResults: ITestsOutput) {
+    showTestResults(testResults: ITestsOutput) {
         if (testResults.isSuccess) {
             this.toastrService.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
         } else {
@@ -114,7 +114,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         }
     }
 
-    public onSelectedLanguageChanged($event: string | string[]): void {
+    onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
 
         this.selectedLanguage = selectedLang;
@@ -125,23 +125,23 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         [this.selectedLanguageVersion] = this.languageVersions;
     }
 
-    public onCodeChanged(newCode: string) {
+    onCodeChanged(newCode: string) {
         this.initialSolution = newCode;
     }
 
-    public onTestChanged(newTests: string) {
+    onTestChanged(newTests: string) {
         this.testCode = newTests;
     }
 
-    public selectTab(title: string): void {
+    selectTab(title: string): void {
         this.activeTab = title;
     }
 
-    public isSelected(title: string): boolean {
+    isSelected(title: string): boolean {
         return this.activeTab === title;
     }
 
-    public sendCode(): void {
+    sendCode(): void {
         this.solution = {
             userConnectionId: this.signalRService.singleUserGroupId,
             language: this.selectedLanguage,
@@ -151,7 +151,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.challengeService.runTests(this.solution).subscribe();
     }
 
-    public subscribeToMessageQueue(): void {
+    subscribeToMessageQueue(): void {
         this.signalRService.start();
         this.signalRService.listenMessages((result: ICodeRunResults) => {
             if (result.buildResults?.isSuccess && result.testRunResults) {
@@ -190,7 +190,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     private extractLanguageVersions(versions: IChallengeVersion[]) {
         return versions.flatMap((version) =>
-            version.language.languageVersions.map((languageVersion) => languageVersion.version));
+            version.language.languageVersions.map((languageVersion) => languageVersion.version),
+        );
     }
 
     private setupEditorOptions() {

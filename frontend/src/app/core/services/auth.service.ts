@@ -18,9 +18,9 @@ import { UserService } from './user.service';
     providedIn: 'root',
 })
 export class AuthService {
-    public userSubject: BehaviorSubject<IUser | undefined>;
+    userSubject: BehaviorSubject<IUser | undefined>;
 
-    public currentUser$: Observable<IUser | undefined>;
+    currentUser$: Observable<IUser | undefined>;
 
     private userKeyName = 'userInfo';
 
@@ -49,11 +49,11 @@ export class AuthService {
         });
     }
 
-    public isAuthorized() {
+    isAuthorized() {
         return this.getUserToken() && this.getUserInfo();
     }
 
-    public register(user: IUserRegister) {
+    register(user: IUserRegister) {
         return this.createUser(
             from(this.afAuth.createUserWithEmailAndPassword(user.email, user.password)).pipe(
                 first(),
@@ -64,7 +64,7 @@ export class AuthService {
         );
     }
 
-    public login(userDto: IUserLogin) {
+    login(userDto: IUserLogin) {
         return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
             switchMap(() => this.afAuth.idToken),
             first(),
@@ -76,26 +76,26 @@ export class AuthService {
         );
     }
 
-    public logout() {
+    logout() {
         this.removeUserInfo();
         this.userSubject.next(undefined);
 
         return from(this.afAuth.signOut());
     }
 
-    public getUserToken(): string | null {
+    getUserToken(): string | null {
         return localStorage.getItem(this.tokenKeyName);
     }
 
-    public signInWithGoogle(isLogin: boolean = true) {
+    signInWithGoogle(isLogin: boolean = true) {
         return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider()), true), isLogin);
     }
 
-    public signInWithGitHub(isLogin: boolean = true) {
+    signInWithGitHub(isLogin: boolean = true) {
         return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider()), true), isLogin);
     }
 
-    public changePassword(password: string): Observable<void> {
+    changePassword(password: string): Observable<void> {
         return from(this.afAuth.currentUser).pipe(
             first(),
             switchMap((user) => {
@@ -108,7 +108,7 @@ export class AuthService {
         );
     }
 
-    public sendVerificationMail() {
+    sendVerificationMail() {
         return from(this.afAuth.currentUser).pipe(
             first(),
             switchMap((user) => {
@@ -121,13 +121,13 @@ export class AuthService {
         );
     }
 
-    public updateUserEmail(email: string) {
+    updateUserEmail(email: string) {
         return this.afAuth.authState.subscribe(async (user) => {
             user?.updateEmail(email);
         });
     }
 
-    public updateUserInfo(editUserInfo: IEditUserInfo): Observable<IUser> {
+    updateUserInfo(editUserInfo: IEditUserInfo): Observable<IUser> {
         return this.userService.updateUser(editUserInfo).pipe(
             tap((user) => {
                 this.updateUserEmail(user.email!);
@@ -135,19 +135,19 @@ export class AuthService {
         );
     }
 
-    public forgotPassword(passwordResetEmail: string): Observable<void> {
+    forgotPassword(passwordResetEmail: string): Observable<void> {
         return from(this.afAuth.sendPasswordResetEmail(passwordResetEmail)).pipe(first());
     }
 
-    public verifyPasswordResetCode(code: string): Observable<string | void> {
+    verifyPasswordResetCode(code: string): Observable<string | void> {
         return from(this.afAuth.verifyPasswordResetCode(code)).pipe(first());
     }
 
-    public confirmPasswordReset(code: string, newPassword: string): Observable<void> {
+    confirmPasswordReset(code: string, newPassword: string): Observable<void> {
         return from(this.afAuth.confirmPasswordReset(code, newPassword)).pipe(first());
     }
 
-    public getUserInfo(): IUser | undefined {
+    getUserInfo(): IUser | undefined {
         const userInfo = localStorage.getItem(this.userKeyName);
 
         if (userInfo) {
@@ -157,11 +157,11 @@ export class AuthService {
         return undefined;
     }
 
-    public getUser(): Observable<IUser> {
+    getUser(): Observable<IUser> {
         return of(this.getUserInfo()!);
     }
 
-    public setUserInfo(user: IUser) {
+    setUserInfo(user: IUser) {
         localStorage.setItem(this.userKeyName, JSON.stringify(user));
         this.userSubject.next(user);
     }

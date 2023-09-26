@@ -23,7 +23,7 @@ import { map, of, switchMap } from 'rxjs';
     styleUrls: ['./user-info-editor.component.sass'],
 })
 export class UserInfoEditorComponent implements OnInit {
-    public userInfoForm: FormGroup = new FormGroup({
+    userInfoForm: FormGroup = new FormGroup({
         email: new FormControl('', [
             Validators.required,
             Validators.maxLength(emailMaxLength),
@@ -38,7 +38,7 @@ export class UserInfoEditorComponent implements OnInit {
         avatar: new FormControl<File>(null!),
     });
 
-    public avatarPreview: string;
+    avatarPreview: string;
 
     private user: IUser;
 
@@ -49,11 +49,11 @@ export class UserInfoEditorComponent implements OnInit {
         private router: Router,
     ) {}
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.loadData();
     }
 
-    public onSave() {
+    onSave() {
         const editUserInfo: IEditUserInfo = {
             email: this.userInfoForm.value.email,
             username: this.userInfoForm.value.username,
@@ -73,7 +73,7 @@ export class UserInfoEditorComponent implements OnInit {
             });
     }
 
-    public onImagePicked(event: Event) {
+    onImagePicked(event: Event) {
         const file = (event.target as HTMLInputElement).files![0];
 
         if (!validatePictureFileName(file.name)) {
@@ -85,11 +85,11 @@ export class UserInfoEditorComponent implements OnInit {
         this.updateAvatarPreview(event.target as HTMLInputElement);
     }
 
-    public onReturnToProfile() {
+    onReturnToProfile() {
         this.router.navigate(['user/profile']);
     }
 
-    public getErrorMessage(formControlName: string) {
+    getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.userInfoForm);
     }
 

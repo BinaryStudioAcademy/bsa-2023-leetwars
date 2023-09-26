@@ -21,22 +21,22 @@ export class SolutionPageComponent implements OnInit, OnChanges {
 
     @Output() validationChange = new EventEmitter<boolean>();
 
-    public editorContent: string;
+    editorContent: string;
 
-    public tabs = tabs;
+    tabs = tabs;
 
-    public currentTab = tabs[0];
+    currentTab = tabs[0];
 
-    public inputForm = new FormGroup({
+    inputForm = new FormGroup({
         completeSolution: new FormControl('', [Validators.required]),
         initialSolution: new FormControl('', [Validators.required]),
     });
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.editorContent = this.challengeVersion.completeSolution;
     }
 
-    public ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
+    ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
         if (checkValidation && checkValidation.currentValue) {
             this.inputForm.markAllAsTouched();
         }
@@ -49,7 +49,7 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         this.updateEditorContent();
     }
 
-    public onCodeChange(code: string) {
+    onCodeChange(code: string) {
         this.editorContent = code;
 
         switch (this.currentTab.type) {
@@ -75,12 +75,12 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         }
     }
 
-    public switchTab(tab: NavigationTab): void {
+    switchTab(tab: NavigationTab): void {
         this.currentTab = tab;
         this.updateEditorContent();
     }
 
-    public updateEditorContent() {
+    updateEditorContent() {
         switch (this.currentTab.type) {
             case NavigationTabType.Complete:
                 this.editorContent = this.challengeVersion.completeSolution;
@@ -96,7 +96,7 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         }
     }
 
-    public getTabClass(tab: NavigationTab) {
+    getTabClass(tab: NavigationTab) {
         let inputError = false;
 
         switch (tab.type) {
@@ -116,7 +116,7 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         return inputError ? 'input-error' : '';
     }
 
-    public editorFocusOut() {
+    editorFocusOut() {
         switch (this.currentTab.type) {
             case NavigationTabType.Complete:
                 this.inputForm.controls.completeSolution.markAsTouched();

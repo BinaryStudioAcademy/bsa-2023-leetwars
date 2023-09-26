@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class JwtInterceptor implements HttpInterceptor {
     constructor(private firebaseAuthService: AuthService) {}
 
-    public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         const userToken = this.firebaseAuthService.getUserToken();
 
         if (!userToken) {

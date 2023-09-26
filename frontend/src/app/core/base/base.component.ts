@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
 export class BaseComponent implements OnDestroy {
     protected unsubscribe$ = new Subject<void>();
 
-    public ngOnDestroy() {
+    ngOnDestroy() {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
     }

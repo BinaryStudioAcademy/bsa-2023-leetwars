@@ -9,7 +9,6 @@ import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solu
 import { takeUntil } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
-
 import { getInactiveBars } from './user-profile.utils';
 
 @Component({
@@ -18,11 +17,11 @@ import { getInactiveBars } from './user-profile.utils';
     styleUrls: ['./user-profile.component.sass'],
 })
 export class UserProfileComponent extends BaseComponent implements OnInit {
-    public fullUser: IUserFull;
+    fullUser: IUserFull;
 
-    public userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
+    userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
 
-    public bars: IBar[] = [];
+    bars: IBar[] = [];
 
     private user: IUser;
 
@@ -37,7 +36,7 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
         });
     }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.getUserInfo();
         this.getUserChallenges();
     }
@@ -47,8 +46,12 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
             .getFullUser(this.user!.id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: (result) => { this.fullUser = result; },
-                error: () => { this.toastrNotification.showError('User not found'); },
+                next: (result) => {
+                    this.fullUser = result;
+                },
+                error: () => {
+                    this.toastrNotification.showError('User not found');
+                },
             });
     }
 
@@ -68,7 +71,9 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                         ...getInactiveBars(result),
                     ];
                 },
-                error: () => { this.toastrNotification.showError('Server connection error'); },
+                error: () => {
+                    this.toastrNotification.showError('Server connection error');
+                },
             });
     }
 }
