@@ -130,6 +130,13 @@ namespace LeetWars.Core.DAL.Migrations
                             Icon = "2023-12.png",
                             IconGif = "2023-12.gif",
                             Name = "Dec LeetWars Challenge Badge"
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            Icon = "weekly.png",
+                            IconGif = "weekly.gif",
+                            Name = "Weekly LeetWars Challenge Badge"
                         });
                 });
 
@@ -6476,7 +6483,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 6L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2023, 6, 12, 21, 31, 58, 222, DateTimeKind.Utc).AddTicks(8241),
                             UserId = 1L
                         },
@@ -6490,14 +6497,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 8L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2022, 3, 2, 3, 57, 59, 794, DateTimeKind.Utc).AddTicks(8114),
                             UserId = 35L
                         },
                         new
                         {
                             Id = 9L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 9, 5, 21, 54, 24, 918, DateTimeKind.Utc).AddTicks(4773),
                             UserId = 30L
                         },
@@ -6511,35 +6518,35 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 11L,
-                            BadgeId = 8L,
+                            BadgeId = 9L,
                             CreatedAt = new DateTime(2023, 6, 14, 7, 3, 12, 1, DateTimeKind.Utc).AddTicks(9745),
                             UserId = 32L
                         },
                         new
                         {
                             Id = 12L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2023, 2, 3, 12, 50, 4, 70, DateTimeKind.Utc).AddTicks(278),
                             UserId = 21L
                         },
                         new
                         {
                             Id = 13L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2022, 6, 22, 17, 31, 44, 60, DateTimeKind.Utc).AddTicks(430),
                             UserId = 22L
                         },
                         new
                         {
                             Id = 14L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2022, 4, 4, 4, 58, 1, 140, DateTimeKind.Utc).AddTicks(348),
                             UserId = 5L
                         },
                         new
                         {
                             Id = 15L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2023, 4, 10, 0, 36, 51, 717, DateTimeKind.Utc).AddTicks(5962),
                             UserId = 4L
                         },
@@ -6553,7 +6560,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 17L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2023, 2, 23, 21, 47, 9, 929, DateTimeKind.Utc).AddTicks(4464),
                             UserId = 31L
                         },
@@ -6581,7 +6588,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 21L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2022, 7, 17, 11, 0, 12, 330, DateTimeKind.Utc).AddTicks(796),
                             UserId = 21L
                         },
@@ -6595,14 +6602,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 23L,
-                            BadgeId = 3L,
+                            BadgeId = 4L,
                             CreatedAt = new DateTime(2022, 11, 10, 20, 38, 20, 998, DateTimeKind.Utc).AddTicks(4303),
                             UserId = 14L
                         },
                         new
                         {
                             Id = 24L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 7, 10, 0, 54, 36, 307, DateTimeKind.Utc).AddTicks(1150),
                             UserId = 6L
                         },
@@ -6616,7 +6623,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 26L,
-                            BadgeId = 10L,
+                            BadgeId = 11L,
                             CreatedAt = new DateTime(2022, 8, 1, 21, 7, 46, 271, DateTimeKind.Utc).AddTicks(8576),
                             UserId = 12L
                         },
@@ -6637,7 +6644,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 29L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 7, 7, 19, 39, 14, 712, DateTimeKind.Utc).AddTicks(9364),
                             UserId = 5L
                         },
@@ -6651,7 +6658,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 31L,
-                            BadgeId = 4L,
+                            BadgeId = 5L,
                             CreatedAt = new DateTime(2022, 7, 15, 11, 37, 34, 125, DateTimeKind.Utc).AddTicks(1228),
                             UserId = 22L
                         },
@@ -6665,21 +6672,21 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 33L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2022, 2, 1, 13, 56, 38, 86, DateTimeKind.Utc).AddTicks(4669),
                             UserId = 33L
                         },
                         new
                         {
                             Id = 34L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2023, 6, 30, 22, 35, 13, 853, DateTimeKind.Utc).AddTicks(4954),
                             UserId = 6L
                         },
                         new
                         {
                             Id = 35L,
-                            BadgeId = 8L,
+                            BadgeId = 9L,
                             CreatedAt = new DateTime(2022, 9, 11, 21, 53, 46, 244, DateTimeKind.Utc).AddTicks(5370),
                             UserId = 34L
                         },
@@ -6707,7 +6714,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 39L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 10, 18, 1, 10, 52, 611, DateTimeKind.Utc).AddTicks(2144),
                             UserId = 6L
                         },
@@ -6735,14 +6742,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 43L,
-                            BadgeId = 9L,
+                            BadgeId = 10L,
                             CreatedAt = new DateTime(2022, 4, 6, 11, 0, 58, 769, DateTimeKind.Utc).AddTicks(9807),
                             UserId = 40L
                         },
                         new
                         {
                             Id = 44L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 5, 18, 15, 3, 5, 382, DateTimeKind.Utc).AddTicks(3229),
                             UserId = 2L
                         },
@@ -6763,7 +6770,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 47L,
-                            BadgeId = 9L,
+                            BadgeId = 10L,
                             CreatedAt = new DateTime(2023, 3, 25, 20, 34, 1, 783, DateTimeKind.Utc).AddTicks(5416),
                             UserId = 19L
                         },
@@ -6784,7 +6791,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 50L,
-                            BadgeId = 10L,
+                            BadgeId = 11L,
                             CreatedAt = new DateTime(2022, 3, 1, 6, 27, 11, 443, DateTimeKind.Utc).AddTicks(7468),
                             UserId = 27L
                         },
@@ -6798,7 +6805,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 52L,
-                            BadgeId = 10L,
+                            BadgeId = 11L,
                             CreatedAt = new DateTime(2022, 11, 27, 5, 21, 31, 101, DateTimeKind.Utc).AddTicks(5287),
                             UserId = 1L
                         },
@@ -6812,63 +6819,63 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 54L,
-                            BadgeId = 5L,
+                            BadgeId = 6L,
                             CreatedAt = new DateTime(2023, 7, 6, 19, 8, 3, 296, DateTimeKind.Utc).AddTicks(7334),
                             UserId = 12L
                         },
                         new
                         {
                             Id = 55L,
-                            BadgeId = 9L,
+                            BadgeId = 10L,
                             CreatedAt = new DateTime(2022, 3, 9, 12, 8, 7, 222, DateTimeKind.Utc).AddTicks(8856),
                             UserId = 15L
                         },
                         new
                         {
                             Id = 56L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2023, 3, 19, 6, 54, 55, 16, DateTimeKind.Utc).AddTicks(8204),
                             UserId = 13L
                         },
                         new
                         {
                             Id = 57L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2022, 6, 14, 8, 48, 11, 942, DateTimeKind.Utc).AddTicks(971),
                             UserId = 1L
                         },
                         new
                         {
                             Id = 58L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2023, 2, 19, 14, 16, 42, 531, DateTimeKind.Utc).AddTicks(3930),
                             UserId = 32L
                         },
                         new
                         {
                             Id = 59L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2023, 7, 15, 3, 26, 59, 154, DateTimeKind.Utc).AddTicks(4099),
                             UserId = 10L
                         },
                         new
                         {
                             Id = 60L,
-                            BadgeId = 10L,
+                            BadgeId = 11L,
                             CreatedAt = new DateTime(2023, 4, 25, 2, 19, 39, 28, DateTimeKind.Utc).AddTicks(1424),
                             UserId = 26L
                         },
                         new
                         {
                             Id = 61L,
-                            BadgeId = 4L,
+                            BadgeId = 5L,
                             CreatedAt = new DateTime(2023, 5, 27, 22, 9, 16, 284, DateTimeKind.Utc).AddTicks(7956),
                             UserId = 30L
                         },
                         new
                         {
                             Id = 62L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 2, 28, 17, 55, 45, 455, DateTimeKind.Utc).AddTicks(8867),
                             UserId = 3L
                         },
@@ -6882,14 +6889,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 64L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2023, 3, 1, 18, 48, 53, 525, DateTimeKind.Utc).AddTicks(3390),
                             UserId = 3L
                         },
                         new
                         {
                             Id = 65L,
-                            BadgeId = 2L,
+                            BadgeId = 3L,
                             CreatedAt = new DateTime(2022, 6, 11, 5, 48, 2, 850, DateTimeKind.Utc).AddTicks(3289),
                             UserId = 28L
                         },
@@ -6910,14 +6917,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 68L,
-                            BadgeId = 8L,
+                            BadgeId = 9L,
                             CreatedAt = new DateTime(2023, 6, 19, 7, 25, 57, 440, DateTimeKind.Utc).AddTicks(3545),
                             UserId = 25L
                         },
                         new
                         {
                             Id = 69L,
-                            BadgeId = 9L,
+                            BadgeId = 10L,
                             CreatedAt = new DateTime(2022, 8, 14, 4, 50, 37, 885, DateTimeKind.Utc).AddTicks(7902),
                             UserId = 33L
                         },
@@ -6938,7 +6945,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 72L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2022, 2, 23, 10, 44, 20, 702, DateTimeKind.Utc).AddTicks(5714),
                             UserId = 8L
                         },
@@ -6959,7 +6966,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 75L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2023, 5, 19, 21, 46, 33, 696, DateTimeKind.Utc).AddTicks(4907),
                             UserId = 19L
                         },
@@ -6994,7 +7001,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 80L,
-                            BadgeId = 3L,
+                            BadgeId = 4L,
                             CreatedAt = new DateTime(2023, 2, 22, 11, 44, 5, 583, DateTimeKind.Utc).AddTicks(3095),
                             UserId = 39L
                         });
