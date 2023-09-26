@@ -1,9 +1,10 @@
-﻿using LeetWars.RabbitMQ;
+﻿using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Notifier.WebAPI.Hubs;
+using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
+using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client.Events;
 using System.Text;
-using LeetWars.Notifier.WebAPI.Hubs;
-using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using System.Text.Json;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.CodeFight;
@@ -40,6 +41,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             });
 
             _consumerService.Listen(handler);
+
             return Task.CompletedTask;
         }
 

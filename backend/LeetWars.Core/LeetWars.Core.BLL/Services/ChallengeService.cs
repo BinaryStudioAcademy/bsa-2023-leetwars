@@ -1,13 +1,10 @@
-using System.Linq.Expressions;
-using System.Security.Cryptography;
 using AutoMapper;
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
-using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
@@ -18,6 +15,8 @@ using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
 using LeetWars.Core.Common.DTO.CodeFight;
+using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -118,9 +117,13 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(version => version.Language)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
-                        .ThenInclude(solution => solution.User)
-                .Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId))
+                        .ThenInclude(solution => solution.User)  
                 .AsQueryable();
+
+            if (settings.LanguageId is not null)
+            {
+                challenges = challenges.Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId));
+            }
 
             challenges = await FilterChallengesBySuggestionTypeAsync(challenges, settings);
 
@@ -155,7 +158,7 @@ namespace LeetWars.Core.BLL.Services
                 var newNotification = new NewNotificationDto()
                 {
                     ReceiverId = briefChallenge.Author.Id.ToString(),
-                    Sender = await _userService.GetBriefUserInfoById(challengeStarDto.AuthorId),
+                    Sender = await _userService.GetBriefUserInfoByIdAsync(challengeStarDto.AuthorId),
                     TypeNotification = TypeNotifications.LikeChallenge,
                     Challenge = briefChallenge
                 };
@@ -350,7 +353,7 @@ namespace LeetWars.Core.BLL.Services
                     .SingleOrDefaultAsync(condition);
         }
 
-        private async Task<LanguageLevel> GetUserLevelAsync(long languageId)
+        private async Task<LanguageLevel> GetUserLevelAsync(long? languageId)
         {
             var userId = _userGetter.CurrentUserId;
             var userLevel = await _context

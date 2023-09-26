@@ -1,11 +1,6 @@
 ﻿using FluentValidation;
 using LeetWars.Core.Common.DTO.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace LeetWars.Core.WebAPI.Validators.User
 {

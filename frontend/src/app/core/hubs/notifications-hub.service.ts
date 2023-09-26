@@ -20,11 +20,11 @@ import { SignalRHubFactoryService } from './signalr-hub-factory.service';
     providedIn: 'root',
 })
 export class NotificationHubService {
-    readonly hubUrl = 'notificationHub';
+    private readonly hubUrl = 'notificationHub';
 
     private hubConnection: HubConnection;
 
-    readonly messages = new Subject<INotificationModel>();
+    private readonly messages = new Subject<INotificationModel>();
 
     private subscriptions: Subscription[] = [];
 
@@ -65,7 +65,7 @@ export class NotificationHubService {
         this.subscriptions.forEach((s) => s.unsubscribe());
     }
 
-    public getConnectionId() {
+    getConnectionId() {
         return this.hubConnectionId;
     }
 

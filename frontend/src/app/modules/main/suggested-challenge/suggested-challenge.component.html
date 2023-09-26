@@ -28,7 +28,11 @@
     <div
         class="description d-flex justify-content-center align-items-center text-center text-white text-opacity-50"
         *ngIf="!challenge">
-        <div>
+        <div *ngIf="suggestionSettings.suggestionType === suggestionType.PracticeAndRepeat">
+            <h4>You have no completed challenges</h4>
+            <p>Please select other variants</p>
+        </div>
+        <div *ngIf="suggestionSettings.suggestionType !== suggestionType.PracticeAndRepeat">
             <h4>No suggestions</h4>
             <p>Please select other variants</p>
         </div>

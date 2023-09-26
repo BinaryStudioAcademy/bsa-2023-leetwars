@@ -10,11 +10,13 @@ import { SignalRHubFactoryService } from './signalr-hub-factory.service';
     providedIn: 'root',
 })
 export class CodeDisplayingHubService {
-    readonly hubUrl = 'codeDisplayingHub';
+    singleUserGroupId: string;
+
+    private readonly hubUrl = 'codeDisplayingHub';
 
     private hubConnection: HubConnection;
 
-    readonly messages = new Subject<ICodeRunResults>();
+    private readonly messages = new Subject<ICodeRunResults>();
 
     private subscriptions: Subscription[] = [];
 
@@ -40,7 +42,7 @@ export class CodeDisplayingHubService {
             .then(() => console.info(`"${this.hubFactory}" successfully started.`))
             .catch(() => console.info(`"${this.hubFactory}" failed.`));
 
-        this.hubConnection.on('BroadcastMessage', (msg: ICodeRunResults) => {
+        this.hubConnection.on('BroadcastMessageAsync', (msg: ICodeRunResults) => {
             this.messages.next(msg);
         });
 

@@ -5,19 +5,19 @@ EXPOSE $PROJECT_PORT
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
-COPY ["LeetWars.Emailer/LeetWars.Emailer.csproj", "LeetWars.Emailer/"]
+COPY ["LeetWars.Emailer/LeetWars.Emailer.WebAPI/LeetWars.Emailer.WebAPI.csproj", "LeetWars.Emailer/LeetWars.Emailer.WebAPI/"]
 COPY ["LeetWars.Core/LeetWars.Core.Common/LeetWars.Core.Common.csproj", "LeetWars.Core/LeetWars.Core.Common/"]
 
-RUN dotnet restore "LeetWars.Emailer/LeetWars.Emailer.csproj"
+RUN dotnet restore "LeetWars.Emailer/LeetWars.Emailer.WebAPI/LeetWars.Emailer.WebAPI.csproj"
 COPY . .
-WORKDIR "/src/LeetWars.Emailer"
-RUN dotnet build "LeetWars.Emailer.csproj" -c Release -o /app/build
+WORKDIR "/src/LeetWars.Emailer/LeetWars.Emailer.WebAPI"
+RUN dotnet build "LeetWars.Emailer.WebAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "LeetWars.Emailer.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "LeetWars.Emailer.WebAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENV ASPNETCORE_URLS http://*:5080
-ENTRYPOINT ["dotnet", "LeetWars.Emailer.dll"]
+ENTRYPOINT ["dotnet", "LeetWars.Emailer.WebAPI.dll"]

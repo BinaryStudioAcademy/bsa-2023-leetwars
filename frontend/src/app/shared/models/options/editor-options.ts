@@ -2,10 +2,10 @@ export interface EditorOptions {
     language: string;
     theme: string;
     minimap: {
-        enabled: boolean;
+        isEnabled: boolean;
     };
-    automaticLayout: boolean;
-    useShadows: boolean;
+    hasAutomaticLayout: boolean;
+    hasShadows: boolean;
     wordWrap: string;
     lineNumbers: string;
 }

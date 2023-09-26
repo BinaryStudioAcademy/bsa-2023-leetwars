@@ -70,6 +70,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private codeRunService: CodeRunService,
         private authService: AuthService,
         private router: Router,
+        private authService: AuthService,
     ) {
         super();
         breakpointObserver
@@ -108,6 +109,20 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.isCodeFight = this.router.url.includes('codefight');
 
         this.subscribeToMessageQueue();
+    }
+
+    override ngOnDestroy() {
+        this.signalRService.stop();
+        super.ngOnDestroy();
+    }
+
+    showTestResults(testResults: ITestsOutput) {
+        if (testResults.isSuccess) {
+            this.toastrService.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
+        } else {
+            this.toastrService.showError(`Tests failed \n Tests failed: ${testResults.failedCount}
+            out of ${testResults.passedCount + testResults.failedCount}`);
+        }
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
@@ -223,9 +238,9 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.editorOptions = {
             theme: 'vs-dark',
             language: this.mapLanguageName(this.selectedLanguage),
-            minimap: { enabled: false },
-            automaticLayout: true,
-            useShadows: false,
+            minimap: { isEnabled: false },
+            hasAutomaticLayout: true,
+            hasShadows: false,
             wordWrap: 'on',
             lineNumbers: 'on',
         };
@@ -253,10 +268,5 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return this.challenge.versions
             .filter((version) => this.mapLanguageName(version.language.name) === language)
             .flatMap((version) => version.language.languageVersions.map((languageVersion) => languageVersion.version));
-    }
-
-    override ngOnDestroy() {
-        this.signalRService.stop();
-        super.ngOnDestroy();
     }
 }

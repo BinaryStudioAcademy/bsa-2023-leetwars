@@ -22,17 +22,19 @@ import { ChallengeSelectionModalComponent } from '../challenge-selection-modal/c
     styleUrls: ['./leader-board.component.sass'],
 })
 export class LeaderBoardComponent extends ScrollComponent implements OnInit {
-    public users: IUser[] = [];
+    users: IUser[] = [];
 
-    public currentUser: IUser;
+    currentUser: IUser;
 
-    public isLastPage = false;
+    usersToShow: IUser[] = [];
 
-    public loading = false;
+    isLastPage = false;
 
-    public isCodeFightRequestSent = false;
+    loading = false;
 
-    public CodeFightStatus = CodeFightStatus;
+    isCodeFightRequestSent = false;
+
+    CodeFightStatus = CodeFightStatus;
 
     private page: IPageSettings = {
         pageNumber: 0,
@@ -55,7 +57,7 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
         super();
     }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.authService.getUser().subscribe((user: IUser) => {
             this.currentUser = user;
         });
@@ -73,7 +75,7 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
         this.getUsers();
     }
 
-    public onScroll() {
+    onScroll() {
         if (this.isLastPage) {
             return;
         }
@@ -81,7 +83,7 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
         this.getUsers();
     }
 
-    public startCodeFight(user: IUser) {
+    startCodeFight(user: IUser) {
         if (this.isCurrentUserAbleToCodeFight()) {
             this.openModal(user);
         }

@@ -17,7 +17,7 @@ export const STATUS_NAMES_MAP = [
     { status: ChallengeStatus.Beta, name: 'Beta' },
 ];
 
-export const SORTING_PROPERTIES = [
+export const SORTING_PROPERTIES: ISortedModel[] = [
     { property: SortingProperty.Title, order: SortingOrder.Ascending, label: 'Name A-Z' },
     { property: SortingProperty.Title, order: SortingOrder.Descending, label: 'Name Z-A' },
     { property: SortingProperty.Level, order: SortingOrder.Ascending, label: 'Easy' },
@@ -26,4 +26,4 @@ export const SORTING_PROPERTIES = [
     { property: SortingProperty.Stars, order: SortingOrder.Ascending, label: 'Unpopular' },
     { property: SortingProperty.CreatedAt, order: SortingOrder.Descending, label: 'Newest' },
     { property: SortingProperty.CreatedAt, order: SortingOrder.Ascending, label: 'Oldest' },
-] as ISortedModel[];
+];

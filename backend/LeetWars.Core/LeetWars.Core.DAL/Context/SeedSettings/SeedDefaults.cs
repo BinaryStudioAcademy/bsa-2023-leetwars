@@ -52,7 +52,7 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
             new Language("Javascript"){Id = 1},
             new Language("C#"){Id = 2}
         });
-        
+
         public static readonly ImmutableArray<Badge> Badges = ImmutableArray.CreateRange(new Badge[]
         {
             new Badge("Jan LeetWars Challenge Badge", "2023-01.png", "2023-01.gif"){Id = 1},

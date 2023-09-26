@@ -18,19 +18,19 @@ export class NotificationService {
 
     constructor(private modalService: NgbModal) {}
 
-    public addNotification(notification: INotificationModel) {
+    addNotification(notification: INotificationModel) {
         this.notifications = [...this.notifications, notification];
 
         this.notificationSubject.next(this.notifications);
     }
 
-    public removeNotification(notification: INotificationModel) {
+    removeNotification(notification: INotificationModel) {
         this.notifications = this.notifications.filter((n) => n !== notification);
 
         this.notificationSubject.next(this.notifications);
     }
 
-    public showNotifications() {
+    showNotifications() {
         this.notificationModal = this.modalService.open(NotificationsComponent);
 
         this.notificationModal.componentInstance.notifications = this.notifications;
@@ -44,11 +44,11 @@ export class NotificationService {
         });
     }
 
-    public hideNofitications() {
+    hideNofitications() {
         this.notificationModal.close(this.notifications);
     }
 
-    public get countNotification() {
+    get countNotification() {
         return this.notifications.length;
     }
 }
