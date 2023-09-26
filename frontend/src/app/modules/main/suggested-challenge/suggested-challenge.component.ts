@@ -36,7 +36,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
     private languages: ILanguage[] = [];
 
     suggestionSettings: ISuggestionSettings = {
-        suggestionType: SuggestionType.Fundamentals,
+        suggestionType: SuggestionType.Weekly,
     };
 
     constructor(

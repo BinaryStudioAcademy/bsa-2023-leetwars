@@ -11,6 +11,7 @@ namespace LeetWars.Core.DAL.Entities
 
         public ChallengeCategory Category { get; set; }
         public User? Author { get; set; }
+        public bool IsWeekly { get; set; }
         public ICollection<Tag> Tags { get; } = new List<Tag>();
 
         public ICollection<ChallengeTag> ChallengeTags { get; } = new List<ChallengeTag>();
