@@ -308,7 +308,7 @@ namespace LeetWars.Core.BLL.Services
                 .Where(challenge => challenge.Level!.SkillLevel == settings.Level &&
                        challenge.Versions.Any(challengeversion => challengeversion.LanguageId == settings.LanguageId));
 
-            if (await challenges.AnyAsync())
+            if (!await challenges.AnyAsync())
             {
                 var randomPositionWhenNochallenges = GetRandomInt(await _context.Challenges.CountAsync());
 
