@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
-import { ChallengeService } from '@core/services/challenge.service';
+import { CodeFightService } from '@core/services/code-fight.service';
 import { EventService } from '@core/services/event.service';
 import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
@@ -40,7 +40,7 @@ export class NotificationHubService {
         private hubFactory: SignalRHubFactoryService,
         private authservice: AuthService,
         private userService: UserService,
-        private challengeService: ChallengeService,
+        private codeFightService: CodeFightService,
         private eventService: EventService,
         private notificationService: NotificationService,
         private toastrService: ToastrNotificationsService,
@@ -91,52 +91,48 @@ export class NotificationHubService {
                 codeFightRequest.notification.showFor
             ) {
                 timer(codeFightRequest.notification.showFor).subscribe(() => {
-                    this.challengeService
-                        .sendCodeFightRequestEnd(codeFightRequest.notification)
-                        .subscribe((users: IUser[]) => {
-                            this.eventService.usersStatusesChanged(users);
-                        });
+                    this.updateUsersAfterRequestEnded(codeFightRequest.notification);
                 });
             }
 
-            const senderObservable = this.userService.getUser(codeFightRequest.senderId);
-            const receiverObservable = this.userService.getUser(codeFightRequest.receiverId);
-
-            forkJoin([senderObservable, receiverObservable]).subscribe(([senderUser, receiverUser]: [IUser, IUser]) => {
-                this.sender = senderUser;
-                this.receiver = receiverUser;
-
-                this.eventService.usersStatusesChanged([this.sender, this.receiver]);
-            });
+            this.updateUsersAfterRequestStarted(codeFightRequest);
         });
 
         this.hubConnection.on('StartCodeFightAsync', (codeFight: ICodeFightStart) => {
             this.toastrService.showSuccess('Your code fight is about to start! Get ready!');
             this.router.navigateByUrl(`/challenges/codefight/${codeFight.challengeId}`);
 
-            this.challengeService.sendCodeFightRequestEnd(codeFight.notification).subscribe((users: IUser[]) => {
-                this.eventService.usersStatusesChanged(users);
-            });
+            this.updateUsersAfterRequestEnded(codeFight.notification);
         });
 
-        this.hubConnection.on('WinCodeFightAsync', (notification: INotificationModel) => {
+        this.hubConnection.on('WinCodeFightAsync', () => {
             this.toastrService.showSuccess('You have won the code fight!');
             this.router.navigateByUrl('/leader/board', { state: { canLeave: true } });
-
-            this.challengeService.sendCodeFightRequestEnd(notification).subscribe((users: IUser[]) => {
-                this.eventService.usersStatusesChanged(users);
-            });
         });
 
-        this.hubConnection.on('LoseCodeFightAsync', (notification: INotificationModel) => {
-            this.toastrService.showWarning('You have lost the code fight!');
+        this.hubConnection.on('LoseCodeFightAsync', () => {
+            this.toastrService.showInfo('You have lost the code fight!');
             this.router.navigateByUrl('/leader/board', { state: { canLeave: true } });
-
-            this.challengeService.sendCodeFightRequestEnd(notification).subscribe((users: IUser[]) => {
-                this.eventService.usersStatusesChanged(users);
-            });
         });
 
         await this.hubConnection.invoke('OnConnectAsync', `${this.user.id.toString()}`);
+    }
+
+    private updateUsersAfterRequestStarted(codeFightRequest: ICodeFightRequestNotification) {
+        const senderObservable = this.userService.getUser(codeFightRequest.senderId);
+        const receiverObservable = this.userService.getUser(codeFightRequest.receiverId);
+
+        forkJoin([senderObservable, receiverObservable]).subscribe(([senderUser, receiverUser]: [IUser, IUser]) => {
+            this.sender = senderUser;
+            this.receiver = receiverUser;
+
+            this.eventService.usersStatusesChanged([this.sender, this.receiver]);
+        });
+    }
+
+    private updateUsersAfterRequestEnded(notification: INotificationModel) {
+        this.codeFightService.sendCodeFightRequestEnded(notification).subscribe((users: IUser[]) => {
+            this.eventService.usersStatusesChanged(users);
+        });
     }
 }

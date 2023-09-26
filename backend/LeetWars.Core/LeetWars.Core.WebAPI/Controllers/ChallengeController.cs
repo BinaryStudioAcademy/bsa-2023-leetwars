@@ -72,38 +72,6 @@ namespace LeetWars.Core.WebAPI.Controllers
             return NoContent();
         }
 
-        [HttpPost("codeFightRequestStart")]
-        public async Task<ActionResult<List<UserDto>>> SendCodeFightRequestStartAsync([FromBody] CodeFightRequestDto requestDto)
-        {
-            var users = await _challengeService.SendCodeFightRequestStartAsync(requestDto);
-
-            return Ok(users);
-        }
-
-        [HttpPost("codeFightRequestEnd")]
-        public async Task<ActionResult<List<UserDto>>> SendCodeFightRequestEndAsync([FromBody] NewNotificationDto notification)
-        {
-            var users = await _challengeService.SendCodeFightRequestEndAsync(notification);
-
-            return Ok(users);
-        }
-
-        [HttpPost("codefightstart")]
-        public async Task<ActionResult<List<UserDto>>> SendCodeFightStartAsync([FromBody] NewNotificationDto notificationDto)
-        {
-            var users = await _challengeService.SendCodeFightStartAsync(notificationDto);
-
-            return Ok(users);
-        }
-
-        [HttpPost("codefightend")]
-        public async Task<ActionResult<List<UserDto>>> SendCodeFightEndAsync([FromBody] CodeFightEndDto codeFightEndDto)
-        {
-            var users = await _challengeService.SendCodeFightEndAsync(codeFightEndDto);
-
-            return Ok(users);
-        }
-
         [HttpPut("edit")]
         public async Task<ActionResult<ChallengePreviewDto>> EditChallenge([FromBody] ChallengeEditDto challengeEditDto)
         {
@@ -114,14 +82,6 @@ namespace LeetWars.Core.WebAPI.Controllers
         public async Task<ActionResult<ChallengePreviewDto>> UpdateStar([FromBody] ChallengeStarDto challengeStarDto)
         {
             return Ok(await _challengeService.UpdateStarAsync(challengeStarDto));
-        }
-
-        [HttpPut("codeFightStatus")]
-        public async Task<ActionResult<List<UserDto>>> UpdateUserCodeFightStatusAsync([FromBody] UserCodeFightDto userCodeFightDto)
-        {
-            var users = await _challengeService.UpdateCodeFightStatusAsync(userCodeFightDto);
-
-            return Ok(users);
         }
 
         [HttpDelete("{id}")]

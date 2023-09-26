@@ -86,7 +86,13 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     }
 
     public startCodeFight(user: IUser) {
-        this.openModal(user);
+        if (this.isCurrentUserAbleToCodeFight()) {
+            this.openModal(user);
+        }
+    }
+
+    isCurrentUserAbleToCodeFight() {
+        return this.currentUser.codeFightStatus === CodeFightStatus.NotInBattle;
     }
 
     private getUsers() {
@@ -132,19 +138,27 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     private updateUsersStatuses() {
         this.eventService.usersChangedEvent$.pipe(takeUntil(this.unsubscribe$)).subscribe({
             next: (users: IUser[]) => {
-                this.users = this.users.map((user) => {
-                    const matchingUser = users.find((updatedUser: IUser) => updatedUser.id === user.id);
+                this.updateCurrentUserCodeFightStatus(users);
 
-                    if (matchingUser) {
-                        return { ...user, codeFightStatus: matchingUser.codeFightStatus };
-                    }
-
-                    return user;
-                });
+                this.updateUsersAfterCodeFightStatusChanged(users);
             },
             error: () => {
                 this.toastrNotification.showError('Server connection error');
             },
         });
+    }
+
+    private updateCurrentUserCodeFightStatus(users: IUser[]) {
+        this.currentUser = users.find((updatedUser) => updatedUser.id === this.currentUser.id) || this.currentUser;
+    }
+
+    private updateUsersAfterCodeFightStatusChanged(users: IUser[]) {
+        const updatedUsers = this.users.map((user) => {
+            const matchingUser = users.find((updatedUser: IUser) => updatedUser.id === user.id);
+
+            return matchingUser ? { ...user, codeFightStatus: matchingUser.codeFightStatus } : user;
+        });
+
+        this.users = updatedUsers;
     }
 }

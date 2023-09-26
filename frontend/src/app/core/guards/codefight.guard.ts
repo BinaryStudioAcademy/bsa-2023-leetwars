@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate, Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
-import { ChallengeService } from '@core/services/challenge.service';
+import { CodeFightService } from '@core/services/code-fight.service';
 import { OnlineEditorPageComponent } from '@modules/challenges/online-editor-page/online-editor-page.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalComponent } from '@shared/components/confirmation-modal/confirmation-modal.component';
@@ -17,7 +17,7 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
     constructor(
         private modalService: NgbModal,
         private router: Router,
-        private challengeService: ChallengeService,
+        private codeFightService: CodeFightService,
         private authService: AuthService,
     ) {}
 
@@ -44,7 +44,7 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
                         senderId: this.user.id,
                     };
 
-                    this.challengeService.sendCodeFightEnd(codeFightEnd).subscribe(() => {
+                    this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe(() => {
                         modalRef.close();
                     });
 

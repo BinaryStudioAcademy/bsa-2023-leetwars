@@ -22,10 +22,7 @@ namespace LeetWars.Core.BLL.Interfaces
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
         Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto);
         Task<List<ChallengeLevelDto>> GetChallengeLevelsAsync();
-        Task<List<UserDto>> SendCodeFightRequestStartAsync(CodeFightRequestDto requestDto);
-        Task<List<UserDto>> SendCodeFightRequestEndAsync(NewNotificationDto notification);
-        Task<List<UserDto>> SendCodeFightStartAsync(NewNotificationDto notificationDto);
-        Task<List<UserDto>> SendCodeFightEndAsync(CodeFightEndDto codeFightEndDto);
-        Task<List<UserDto>> UpdateCodeFightStatusAsync(UserCodeFightDto userCodeFightDto);
+        Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId);
+        Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings);
     }
 }

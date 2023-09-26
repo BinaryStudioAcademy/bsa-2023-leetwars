@@ -14,7 +14,10 @@
                     <div class="total-score">{{ user.totalScore }}</div>
                     <div class="start-fight text-start">
                         <div *ngIf="user.id !== this.currentUser.id">
-                            <button *ngIf="user.codeFightStatus === CodeFightStatus.NotInBattle" (click)="startCodeFight(user)">
+                            <button
+                                [ngClass]="{ 'cursor-none': !isCurrentUserAbleToCodeFight() }"
+                                *ngIf="user.codeFightStatus === CodeFightStatus.NotInBattle"
+                                (click)="startCodeFight(user)">
                                 <fa-icon [icon]="'user-ninja'"></fa-icon>
                                 <span class="start-fight-text">Start Battle</span>
                             </button>

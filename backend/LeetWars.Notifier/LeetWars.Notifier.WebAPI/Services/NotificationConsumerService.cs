@@ -59,52 +59,23 @@ namespace LeetWars.Notifier.WebAPI.Services
                     break;
 
                 case TypeNotifications.CodeFightRequestStart:
+                    await SendCodeFightNotificationToAllAsync(notificationDto);
+
                     if (!string.IsNullOrEmpty(notificationDto.ReceiverId) && notificationDto.Sender is not null)
                     {
                         await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotificationAsync(notificationDto);
-
-                        var notification = new CodeFightRequestNotificationDto
-                        {
-                            SenderId = notificationDto.Sender.Id,
-                            ReceiverId = long.Parse(notificationDto.ReceiverId),
-                            Notification = notificationDto 
-                        };
-
-                        await _hubContext.Clients.All.CodeFightRequestAsync(notification);
                     }
 
                     break;
 
                 case TypeNotifications.CodeFightRequestEnd:
-                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId) && notificationDto.Sender is not null)
-                    {
-                        var notification = new CodeFightRequestNotificationDto
-                        {
-                            SenderId = notificationDto.Sender.Id,
-                            ReceiverId = long.Parse(notificationDto.ReceiverId),
-                            Notification = notificationDto
-                        };
-
-                        await _hubContext.Clients.All.CodeFightRequestAsync(notification);
-                    }
-
+                    await SendCodeFightNotificationToAllAsync(notificationDto);
                     break;
 
                 case TypeNotifications.CodeFightStart:
-                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
-                        && notificationDto.Sender is not null
-                        && notificationDto.Challenge is not null)
-                    {
-                        var redirectDto = new CodeFightStartDto()
-                        {
-                            ReceiverId = notificationDto.ReceiverId,
-                            SenderId = notificationDto.Sender.Id.ToString(),
-                            ChallengeId = notificationDto.Challenge.Id,
-                            Notification = notificationDto
-                        };
+                    await StartCodeFightAsync(notificationDto);
+                    await SendCodeFightNotificationToAllAsync(notificationDto);
 
-                        await _hubContext.Clients.Groups(redirectDto.ReceiverId, redirectDto.SenderId).StartCodeFightAsync(redirectDto);
-                    }
                     break;
 
                 case TypeNotifications.CodeFightEnd:
@@ -114,10 +85,46 @@ namespace LeetWars.Notifier.WebAPI.Services
                         await _hubContext.Clients.Groups(notificationDto.Sender.Id.ToString()).WinCodeFightAsync(notificationDto);
                         await _hubContext.Clients.Groups(notificationDto.ReceiverId).LoseCodeFightAsync(notificationDto);
                     }
+
+                    await SendCodeFightNotificationToAllAsync(notificationDto);
+
                     break;
+
                 default:
-                    await Task.CompletedTask;
-                    break;
+                    return;
+            }
+        }
+
+        private async Task StartCodeFightAsync(NewNotificationDto notificationDto)
+        {
+            if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
+                        && notificationDto.Sender is not null
+                        && notificationDto.Challenge is not null)
+            {
+                var redirectDto = new CodeFightStartDto()
+                {
+                    ReceiverId = notificationDto.ReceiverId,
+                    SenderId = notificationDto.Sender.Id.ToString(),
+                    ChallengeId = notificationDto.Challenge.Id,
+                    Notification = notificationDto
+                };
+
+                await _hubContext.Clients.Groups(redirectDto.ReceiverId, redirectDto.SenderId).StartCodeFightAsync(redirectDto);
+            }
+        }
+
+        private async Task SendCodeFightNotificationToAllAsync(NewNotificationDto notificationDto)
+        {
+            if (!string.IsNullOrEmpty(notificationDto.ReceiverId) && notificationDto.Sender is not null)
+            {
+                var notification = new CodeFightRequestNotificationDto
+                {
+                    SenderId = notificationDto.Sender.Id,
+                    ReceiverId = long.Parse(notificationDto.ReceiverId),
+                    Notification = notificationDto
+                };
+
+                await _hubContext.Clients.All.CodeFightRequestAsync(notification);
             }
         }
     }

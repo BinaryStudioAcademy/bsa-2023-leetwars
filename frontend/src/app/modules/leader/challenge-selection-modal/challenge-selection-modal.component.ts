@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
-import { ChallengeService } from '@core/services/challenge.service';
+import { CodeFightService } from '@core/services/code-fight.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LanguageLevel } from '@shared/enums/language-level';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
@@ -35,7 +35,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private authService: AuthService,
-        private challengeService: ChallengeService,
+        private codeFightService: CodeFightService,
     ) {}
 
     public ngOnInit(): void {
@@ -53,7 +53,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
             senderId: this.currentUser.id,
         };
 
-        this.challengeService.sendCodeFightRequestStart(codeFightRequest).subscribe((users: IUser[]) => {
+        this.codeFightService.sendCodeFightRequestStarted(codeFightRequest).subscribe((users: IUser[]) => {
             this.activeModal.close(users);
         });
     }
@@ -71,6 +71,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
             return;
         }
 
-        this.fightChallengeSettings.level = this.levels.find((level) => level.skillLevel === value)?.skillLevel ?? LanguageLevel.Easy;
+        this.fightChallengeSettings.level =
+            this.levels.find((level) => level.skillLevel === value)?.skillLevel ?? LanguageLevel.Easy;
     }
 }

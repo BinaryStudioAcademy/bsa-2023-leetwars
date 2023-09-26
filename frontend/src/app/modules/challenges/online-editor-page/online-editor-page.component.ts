@@ -5,6 +5,7 @@ import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { CodeFightService } from '@core/services/code-fight.service';
 import { CodeRunService } from '@core/services/code-run.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
@@ -62,6 +63,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
+        private codeFightService: CodeFightService,
         private breakpointObserver: BreakpointObserver,
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
@@ -141,7 +143,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
             senderId: this.user.id,
         };
 
-        this.challengeService.sendCodeFightEnd(codeFightEnd).subscribe();
+        this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
     }
 
     public runSampleTests(): void {
@@ -168,7 +170,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
                 };
 
                 if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults?.isSuccess) {
-                    this.challengeService.sendCodeFightEnd(codeFightEnd).subscribe();
+                    this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
                 }
             }
         });
