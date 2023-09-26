@@ -13,11 +13,9 @@ export class UnsavedChangesGuard<T extends HasUnsavedChanges> implements CanDeac
     ) {}
 
     canDeactivate(component: T): Promise<boolean> {
-        return new Promise<boolean>((resolve) => {
-            resolve(component.unsavedChanges
-                ? this.showConfirmationModal()
-                : true);
-        });
+        return component.unsavedChanges
+            ? this.showConfirmationModal()
+            : Promise.resolve(true);
     }
 
     private showConfirmationModal(): Promise<boolean> {
