@@ -40,6 +40,7 @@ export class AuthService {
     ) {
         this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
         this.currentUser$ = this.userSubject.asObservable();
+        this.initializeAuth();
     }
 
     public async initializeAuth(): Promise<void> {
@@ -227,8 +228,7 @@ export class AuthService {
                     image: resp.user?.photoURL ?? undefined,
                     timezone: new Date().getTimezoneOffset() / 60,
                     isWithProvider: provider ?? false,
-                }),
-            ),
+                })),
             tap((user) => this.setUserInfo(user)),
         );
     }
