@@ -8,8 +8,8 @@ import { AuthHelper } from '@shared/utils/auth.helper';
 import { getFirebaseErrorMessage } from '@shared/utils/validation/validation-helper';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
-import { BehaviorSubject, first, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { BehaviorSubject, first, from, Observable, of, Subject, switchMap, tap, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { ToastrNotificationsService } from './toastr-notifications.service';
 import { UserService } from './user.service';
@@ -149,6 +149,35 @@ export class AuthService {
 
     public getUser() {
         return of(this.getUserInfo()!);
+    }
+
+    public linkGitHub(): Observable<firebase.auth.UserCredential | null> {
+        return this.afAuth.authState.pipe(
+            first(),
+            switchMap((user) => {
+                if (!user) {
+                    return of(null);
+                }
+
+                return user.linkWithPopup(new GithubAuthProvider()).then(
+                    (result) => result,
+                    (error) => {
+                        this.toastrNotification.showError(error.message);
+
+                        return null;
+                    },
+                );
+            }),
+            catchError((error) => {
+                this.toastrNotification.showError(error.message);
+
+                return of(null);
+            }),
+        );
+    }
+
+    public getFirebaseUserInfo() {
+        return this.afAuth.authState.pipe(map((user) => (user ? user.providerData : [])));
     }
 
     private signInWithProvider(provider: firebase.auth.AuthProvider) {

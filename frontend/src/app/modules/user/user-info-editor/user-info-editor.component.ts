@@ -23,6 +23,10 @@ import { map, of, switchMap } from 'rxjs';
     styleUrls: ['./user-info-editor.component.sass'],
 })
 export class UserInfoEditorComponent implements OnInit {
+    public isGithubLinked: boolean;
+
+    private readonly GITHUB_PROVIDER = 'github.com';
+
     userInfoForm: FormGroup = new FormGroup({
         email: new FormControl('', [
             Validators.required,
@@ -51,6 +55,7 @@ export class UserInfoEditorComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadData();
+        this.updateExistingProviders();
     }
 
     public onSave() {
@@ -91,6 +96,21 @@ export class UserInfoEditorComponent implements OnInit {
 
     public getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.userInfoForm);
+    }
+
+    public linkGithub() {
+        this.authService.linkGitHub().subscribe((result) => {
+            if (result) {
+                this.toastrNotification.showSuccess('GitHub account has been succesfully linked');
+                this.updateExistingProviders();
+            }
+        });
+    }
+
+    private updateExistingProviders() {
+        this.authService.getFirebaseUserInfo().subscribe((providerData) => {
+            this.isGithubLinked = providerData.some((provider) => provider?.providerId === this.GITHUB_PROVIDER);
+        });
     }
 
     private updateUserAvatar(user: IUser) {
