@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseComponent } from '@core/base/base.component';
+import { ScrollComponent } from '@core/base/scroll.component';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { EventService } from '@core/services/event.service';
@@ -12,7 +12,7 @@ import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level'
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
-import { Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 import { ChallengeSelectionModalComponent } from '../challenge-selection-modal/challenge-selection-modal.component';
 
@@ -21,7 +21,7 @@ import { ChallengeSelectionModalComponent } from '../challenge-selection-modal/c
     templateUrl: './leader-board.component.html',
     styleUrls: ['./leader-board.component.sass'],
 })
-export class LeaderBoardComponent extends BaseComponent implements OnInit {
+export class LeaderBoardComponent extends ScrollComponent implements OnInit {
     public users: IUser[] = [];
 
     public currentUser: IUser;
@@ -29,8 +29,6 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     public isLastPage = false;
 
     public loading = false;
-
-    public scrollEventSubject = new Subject<void>();
 
     public isCodeFightRequestSent = false;
 
@@ -76,8 +74,6 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     }
 
     public onScroll() {
-        this.scrollEventSubject.next();
-
         if (this.isLastPage) {
             return;
         }

@@ -4,6 +4,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
 import { BaseComponent } from './base/base.component';
+import { ScrollComponent } from './base/scroll.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { GlobalErrorHandlerService } from './services/globalerrorhandler.service';
@@ -15,6 +16,6 @@ import { GlobalErrorHandlerService } from './services/globalerrorhandler.service
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: ErrorHandler, useClass: GlobalErrorHandlerService },
     ],
-    declarations: [BaseComponent],
+    declarations: [BaseComponent, ScrollComponent],
 })
 export class CoreModule {}
