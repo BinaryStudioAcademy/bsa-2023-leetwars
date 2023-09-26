@@ -105,8 +105,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     onSelectedLanguageChanged($event: string | string[]): void {
         const selectedLang = this.mapLanguageName($event as string);
 
-        this.selectedLanguage = selectedLang;
-
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
 
         this.languageVersions = this.getLanguageVersionsByLanguage(selectedLang);
@@ -188,12 +186,14 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
         this.editorOptions = {
             theme: 'vs-dark',
-            language: this.mapLanguageName(this.selectedLanguage),
-            minimap: { enabled: false },
+            language: this.selectedLanguage,
+            minimap: { enabled: true },
             automaticLayout: true,
             useShadows: false,
-            wordWrap: 'on',
-            lineNumbers: 'on',
+            wordWrap: true,
+            lineNumbers: true,
+            tabWidth: 3,
+            fontSize: 15,
         };
     }
 

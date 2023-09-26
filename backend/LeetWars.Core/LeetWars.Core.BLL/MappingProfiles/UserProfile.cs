@@ -5,6 +5,7 @@ using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Subscription;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.Common.DTO.UserLanguageLevel;
+using LeetWars.Core.Common.DTO.UserPrefferences;
 using LeetWars.Core.Common.DTO.UserSolution;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.WebAPI.Settings;
@@ -48,6 +49,11 @@ namespace LeetWars.Core.BLL.MappingProfiles
                 
             CreateMap<UserBadge, BadgeDto>()
                 .IncludeMembers(x => x.Badge);
+
+
+            CreateMap<UserPreferences, UserPreferencesDto>().ReverseMap();
+
+            CreateMap<NewUserPreferencesDto, UserPreferences>();
         }
     }
 }

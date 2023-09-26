@@ -55,6 +55,10 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
             builder.HasMany(e => e.ChallengeVersions)
                 .WithOne(e => e.Author)
                 .HasForeignKey(e => e.CreatedBy);
+
+            builder.HasOne(u => u.UserPreferences)
+                .WithOne(x=>x.User)
+                .HasForeignKey<UserPreferences>(ues => ues.UserId);
         }
     }
 }

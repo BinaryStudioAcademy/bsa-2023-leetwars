@@ -12,6 +12,7 @@ import { ProfilePageMainInfoComponent } from './profile-page-main-info/profile-p
 import { SolvedProblemComponent } from './solved-problem/solved-problem.component';
 import { UserInfoEditorComponent } from './user-info-editor/user-info-editor.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserPreferencesComponent } from './user-preferences/user-preferences.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
         BadgeComponent,
         UserProfileComponent,
         UserInfoEditorComponent,
+        UserPreferencesComponent,
     ],
     imports: [SharedModule, UserRoutingModule, NgxChartsModule, ProgressbarModule, CarouselModule],
 })

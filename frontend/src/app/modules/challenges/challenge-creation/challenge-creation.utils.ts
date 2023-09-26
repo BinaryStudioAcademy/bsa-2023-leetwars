@@ -137,6 +137,8 @@ export const editorOptions: EditorOptions = {
     minimap: { enabled: false },
     automaticLayout: true,
     useShadows: false,
-    wordWrap: 'on',
-    lineNumbers: 'on',
+    wordWrap: true,
+    lineNumbers: true,
+    tabWidth: 3,
+    fontSize: 19,
 };

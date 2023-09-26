@@ -5,6 +5,7 @@ using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Http;
+using LeetWars.Core.Common.DTO.UserPrefferences;
 
 namespace LeetWars.Core.BLL.Interfaces;
 

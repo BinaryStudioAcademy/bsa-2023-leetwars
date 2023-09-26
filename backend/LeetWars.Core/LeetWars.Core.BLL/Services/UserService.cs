@@ -70,7 +70,7 @@ public class UserService : BaseService, IUserService
         var newUser = _mapper.Map<NewUserDto, User>(userDto);
 
         newUser.RegisteredAt = DateTime.UtcNow;
-
+        newUser.Id = 400;
         var createdUser = _context.Users.Add(newUser).Entity;
         await _context.SaveChangesAsync();
 
@@ -122,24 +122,16 @@ public class UserService : BaseService, IUserService
     {
         var user = await GetUserByExpressionAsync(user => user.Id == id);
 
-        if (user is null)
-        {
-            throw new ArgumentNullException("Not Found", new Exception("User was not found"));
-        }
-
-        return _mapper.Map<User, BriefUserInfoDto>(user);
+        return user is null
+            ? throw new ArgumentNullException("Not Found", new Exception("User was not found"))
+            : _mapper.Map<User, BriefUserInfoDto>(user);
     }
 
     public async Task<UserFullDto> GetFullUserAsync(long id)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == id);
 
-        if (user is null)
-        {
-            throw new NotFoundException(nameof(User), id);
-        }
-
-        return _mapper.Map<User, UserFullDto>(user);
+        return user is null ? throw new NotFoundException(nameof(User), id) : _mapper.Map<User, UserFullDto>(user);
     }
 
     public async Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId)
@@ -211,9 +203,9 @@ public class UserService : BaseService, IUserService
 
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
                             ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
-        
+
         _mapper.Map(userInfoDto, currentUser);
-        
+
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
         return _mapper.Map<UserDto>(currentUser);
@@ -225,18 +217,18 @@ public class UserService : BaseService, IUserService
         {
             throw new ArgumentNullException(nameof(image));
         }
-        
+
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
                           ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
-        
+
         var uniqueFileName = FileNameHelper.CreateUniqueFileName(image.FileName);
         await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
             uniqueFileName);
         currentUser.ImagePath = uniqueFileName;
-        
+
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
-        
+
         var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
     }
@@ -267,4 +259,6 @@ public class UserService : BaseService, IUserService
 
         return newUserName;
     }
+
+   
 }

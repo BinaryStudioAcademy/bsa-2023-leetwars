@@ -8,6 +8,7 @@ import { IUser } from '@shared/models/user/user';
 import { IUserAvatar } from '@shared/models/user/user-avatar';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
+import { IUserPreferences } from '@shared/models/user-prefferences/user-preferences';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
 
@@ -65,5 +66,10 @@ export class UserService {
 
     public updateUserRank(userDto: IEditUser): Observable<IUserFull> {
         return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
+    }
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public getUserPrefferences(): Observable<IUserPreferences> {
+        return this.httpService.getRequest<IUserPreferences>(`${this.baseUrl}/prefferences`);
     }
 }
