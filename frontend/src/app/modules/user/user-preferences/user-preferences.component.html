@@ -1,26 +1,64 @@
 <div class="page-wrapper d-flex justify-content-center">
-    <div class="user-preferences">
-        <h2>User Preferences</h2>
-        <!-- <form>
-                <label for="language">Language:</label>
-                <app-dropdown-select [items]="" [selectedItem]="" [selectText]="'Choose Language...'">
-                </app-dropdown-select>
-                <label for="theme">Theme:</label>
-                <app-dropdown-select [items]="" [selectedItem]="" [selectText]="'Choose Language...'">
-                </app-dropdown-select>
-            <div class="form-group">
-                <label for="wordWrap">Word Wrap:</label>
-                <input type="checkbox" id="wordWrap" name="wordWrap">
+    <div class="form-wrapper d-flex flex-column flex-grow-1">
+        <form class="user-preferences-form d-flex flex-column">
+            <p>PREFERENCES</p>
+            <button [disabled]="userPreferenceForm.invalid"
+                class="submit-button d-flex justify-content-center align-items-center align-self-end"
+                (click)="onSave()">
+                Save
+            </button>
+            <div class="form-data">
+                <div class="row mb-2 mt-3">
+                    <div class="col-md-4">
+                        <div class="label-input-group">
+                            <label for="programming-language">Programming Language</label>
+                            <app-dropdown-select [items]="languagesNames" formControlName="language"
+                                [selectText]="'Choose Language...'" [selectedItem]="userPreferenceForm.value.language"
+                                (selectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
+                        </div>
+
+                        <div class="label-input-group">
+                            <label for="editor-theme">Editor Theme</label>
+                            <app-dropdown-select [items]="monacoThemes" [selectText]="'Choose Theme...'"
+                                [selectedItem]="userPreferenceForm.value?.theme" formControlName=" theme"
+                                (selectedItemsChanged)="onThemeChanged($event)">
+                            </app-dropdown-select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="label-input-group ">
+                            <label for="tab-size">Tab Size</label>
+                            <div class="input-wrapper">
+                                <app-custom-input InputType="number" [Identifier]="'tab-size'" Width="100px"
+                                    [InputValue]="userPreferenceForm.value?.tabWidth" formControlName="tabSize"
+                                    (InputValueChange)="userPreferenceForm.controls['tabSize'].setValue($event)">
+                                </app-custom-input>
+                            </div>
+                        </div>
+
+                        <div class="label-input-group">
+                            <label for="font-size">Font Size</label>
+                            <div class="input-wrapper">
+                                <app-custom-input InputType="number" [Identifier]="'font-size'" Width="100px"
+                                    [InputValue]="userPreferenceForm.value?.fontSize" formControlName="fontSize"
+                                    (InputValueChange)="userPreferenceForm.controls['fontSize'].setValue($event)"></app-custom-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <div class="label-input-group">
+                            <label for="word-wrap">Word Wrap</label>
+                            <div class="input-wrapper">
+                                <app-custom-input InputType="checkbox" [Identifier]="'word-wrap'" Width="20px"
+                                    formControlName="wordWrap" [InputValue]="userPreferenceForm.value.wordWrap"
+                                    (InputValueChange)="userPreferenceForm.controls['wordWrap'].setValue($event)"></app-custom-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="tabWidth">Tab Width:</label>
-                <input type="number" id="tabWidth" name="tabWidth">
-            </div>
-            <div class="form-group">
-                <label for="fontSize">Font Size (in Word):</label>
-                <input type="number" id="fontSize" name="fontSize">
-            </div>
-            <button type="submit">Save Preferences</button>
-        </form> -->
+        </form>
     </div>
 </div>

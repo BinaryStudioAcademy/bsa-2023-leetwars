@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
-import { UserService } from '@core/services/user.service';
+import { PreferencesService } from '@core/services/preferences.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { IUserPreferences } from '@shared/models/user-prefferences/user-preferences';
@@ -24,11 +24,7 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
 
     userPreferences: IUserPreferences;
 
-    constructor(private userService: UserService) { super(); }
-
-    ngAfterViewInit(): void {
-        this.updateEditorOptions();
-    }
+    constructor(private preferencesService: PreferencesService) { super(); }
 
     ngAfterViewInit(): void {
         this.updateEditorOptions();
@@ -42,20 +38,22 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
 
     ngOnInit(): void {
         this.getUserPrefferences();
-        this.updateEditorOptions();
+    }
+
     onCodeChange(model: string) {
         this.initText = model;
         this.codeChanged.emit(model);
     }
 
     private getUserPrefferences() {
-        this.userService
+        this.preferencesService
             .getUserPrefferences()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (preferences) => {
-                    if (!preferences) {
+                    if (preferences) {
                         this.userPreferences = preferences;
+                        this.updateEditorOptions();
                     }
                 },
             });
@@ -68,13 +66,15 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
     private updateEditorOptions(): void {
         this.editorOptions = {
             theme: this.userPreferences?.theme ? this.userPreferences.theme : this.options?.theme,
-            language: this.userPreferences?.language ? this.userPreferences?.language : this.mapLanguageName(this.options?.language),
-            tabWidth: this.userPreferences?.tabWidth ? this.userPreferences.tabWidth : this.options?.tabWidth,
+            language: this.userPreferences?.language
+                ? this.userPreferences?.language.name
+                : this.mapLanguageName(this.options?.language),
+            tabSize: this.userPreferences?.tabSize ? this.userPreferences.tabSize : this.options?.tabSize,
             fontSize: this.userPreferences?.fontSize ? this.userPreferences.fontSize : this.options?.fontSize,
             wordWrap: this.userPreferences?.wordWrap ? this.userPreferences.wordWrap : this.options?.wordWrap,
-            minimap: { enabled: this.options?.minimap?.enabled },
-            hasAutomaticLayout: this.options?.automaticLayout,
-            hasShadows: this.options?.useShadows,
+            minimap: { isEnabled: this.options?.minimap?.isEnabled },
+            hasAutomaticLayout: this.options?.hasAutomaticLayout,
+            hasShadows: this.options?.hasShadows,
             lineNumbers: this.options?.lineNumbers,
         };
     }

@@ -6,7 +6,7 @@
         public long? LanguageId { get; set; }
         public string? Theme { get; set; } 
         public bool? WordWrap { get; set; }
-        public int? TabWidth { get; set; }
+        public int? TabSize { get; set; }
         public int? FontSize { get; set; }
         public User? User { get; set; }
         public Language? Language { get; set; }

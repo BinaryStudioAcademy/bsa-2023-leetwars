@@ -8,6 +8,6 @@ export interface EditorOptions {
     hasShadows: boolean;
     wordWrap: boolean;
     lineNumbers: boolean;
-    tabWidth: number;
+    tabSize: number;
     fontSize: number;
 }

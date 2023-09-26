@@ -1,7 +1,9 @@
+import { ILanguage } from '../language/language';
+
 export interface IUserPreferences {
-    language: string;
+    language: ILanguage;
     theme: string;
     wordWrap: boolean;
-    tabWidth: number;
+    tabSize: number;
     fontSize: number;
 }

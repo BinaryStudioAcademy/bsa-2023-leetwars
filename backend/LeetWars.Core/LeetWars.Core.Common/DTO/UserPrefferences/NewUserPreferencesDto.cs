@@ -10,7 +10,7 @@ namespace LeetWars.Core.Common.DTO.UserPrefferences
 
         public bool? WordWrap { get; set; }
 
-        public int? TabWidth { get; set; }
+        public int? TabSize { get; set; }
 
         public int? FontSize { get; set; }
     }

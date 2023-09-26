@@ -20,24 +20,26 @@ namespace LeetWars.Core.BLL.Services
         }
         public async Task<UserPreferencesDto> GetUserPreferences()
         {
-            //var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
-            //                 ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
+            var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                             ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
 
-            var preferences = await _context.UserPreferences.FirstOrDefaultAsync(x => x.UserId ==6);
+            var preferences = await _context.UserPreferences
+                .Include(l => l.Language)
+                .FirstOrDefaultAsync(x => x.UserId == currentUser.Id);
 
             return _mapper.Map<UserPreferencesDto>(preferences);
         }
 
         public async Task<UserPreferencesDto> SetUserPreferences(NewUserPreferencesDto newPreferences)
         {
-            //var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
-            //                 ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
+            var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
+                             ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
 
-            var currentPreferences = await _context.UserPreferences.FirstOrDefaultAsync(x => x.UserId == 6);
+            var currentPreferences = await _context.UserPreferences.FirstOrDefaultAsync(x => x.UserId == currentUser.Id);
 
             var updatedPreferences = currentPreferences is not null
                 ?  UpdateUserPreferences(currentPreferences, newPreferences)
-                : await AddUserPreferences(newPreferences, 6); 
+                : await AddUserPreferences(newPreferences, currentUser.Id); 
 
             await _context.SaveChangesAsync();
 
@@ -56,7 +58,7 @@ namespace LeetWars.Core.BLL.Services
         {
             currentPreferences.Theme = newPreferences.Theme;
             currentPreferences.FontSize = newPreferences.FontSize;
-            currentPreferences.TabWidth = newPreferences.TabWidth;
+            currentPreferences.TabSize = newPreferences.TabSize;
             currentPreferences.WordWrap = newPreferences.WordWrap;
             currentPreferences.LanguageId = newPreferences.LanguageId;
 

@@ -197,12 +197,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.editorOptions = {
             theme: 'vs-dark',
             language: this.selectedLanguage,
-            minimap: { enabled: true },
+            minimap: { isEnabled: true },
             hasAutomaticLayout: true,
             hasShadows: false,
             wordWrap: true,
             lineNumbers: true,
-            tabWidth: 3,
+            tabSize: 3,
             fontSize: 15,
         };
     }

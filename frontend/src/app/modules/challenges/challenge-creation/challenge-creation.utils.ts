@@ -134,14 +134,11 @@ export function mapLanguageName(language: string): string {
 export const editorOptions: EditorOptions = {
     theme: 'vs-dark',
     language: '',
-    minimap: { enabled: false },
+    minimap: { isEnabled: false },
     wordWrap: true,
     lineNumbers: true,
-    tabWidth: 3,
+    tabSize: 3,
     fontSize: 19,
-    minimap: { isEnabled: false },
     hasAutomaticLayout: true,
     hasShadows: false,
-    wordWrap: 'on',
-    lineNumbers: 'on',
 };

@@ -6960,7 +6960,7 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Property<long?>("LanguageId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("TabWidth")
+                    b.Property<int?>("TabSize")
                         .HasColumnType("int");
 
                     b.Property<string>("Theme")

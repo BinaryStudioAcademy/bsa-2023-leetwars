@@ -70,7 +70,6 @@ public class UserService : BaseService, IUserService
         var newUser = _mapper.Map<NewUserDto, User>(userDto);
 
         newUser.RegisteredAt = DateTime.UtcNow;
-        newUser.Id = 400;
         var createdUser = _context.Users.Add(newUser).Entity;
         await _context.SaveChangesAsync();
 

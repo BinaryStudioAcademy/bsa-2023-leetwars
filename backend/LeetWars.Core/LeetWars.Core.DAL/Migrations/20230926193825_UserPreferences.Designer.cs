@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeetWars.Core.DAL.Migrations
 {
     [DbContext(typeof(LeetWarsCoreContext))]
-    [Migration("20230925133140_UserPreferences")]
+    [Migration("20230926193825_UserPreferences")]
     partial class UserPreferences
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -6962,7 +6962,7 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Property<long?>("LanguageId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("TabWidth")
+                    b.Property<int?>("TabSize")
                         .HasColumnType("int");
 
                     b.Property<string>("Theme")
