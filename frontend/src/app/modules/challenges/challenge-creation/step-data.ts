@@ -4,5 +4,5 @@ export interface StepData {
     step: ChallengeStep,
     requiredSteps: ChallengeStep[],
     isValid: boolean,
-    checkValidation: boolean
+    isValidationChecked: boolean
 }

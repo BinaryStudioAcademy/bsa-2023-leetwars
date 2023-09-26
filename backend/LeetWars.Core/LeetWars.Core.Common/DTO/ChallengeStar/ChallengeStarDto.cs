@@ -1,5 +1,4 @@
 ﻿using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.DAL.Entities;
 
 namespace LeetWars.Core.Common.DTO.ChallengeStar
 {

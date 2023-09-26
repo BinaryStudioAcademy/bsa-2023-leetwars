@@ -1,6 +1,4 @@
-﻿using LeetWars.Core.DAL.Enums;
-
-namespace LeetWars.Core.Common.DTO.User
+﻿namespace LeetWars.Core.Common.DTO.User
 {
     public class NewUserDto
     {
