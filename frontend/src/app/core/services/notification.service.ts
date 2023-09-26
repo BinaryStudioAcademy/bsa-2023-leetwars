@@ -1,45 +1,55 @@
 import { Injectable } from '@angular/core';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationsComponent } from '@shared/components/notifications/notifications.component';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 
 @Injectable({
     providedIn: 'root',
 })
 export class NotificationService {
-    private notifications: INotificationModel[] = [];
+    private localStorageItem: string = 'unreadNotifications';
 
-    private notificationModal: NgbModalRef;
+    private newNotificationsCollection: INotificationModel[] = [];
 
-    constructor(private modalService: NgbModal) {}
-
-    public addNotification(notification: INotificationModel) {
-        this.notifications = [...this.notifications, notification];
-    }
-
-    public removeNotification(notification: INotificationModel) {
-        this.notifications = this.notifications.filter((n) => n !== notification);
-    }
-
-    public showNotifications() {
-        this.notificationModal = this.modalService.open(NotificationsComponent);
-
-        this.notificationModal.componentInstance.notifications = this.notifications;
-
-        this.notificationModal.hidden.subscribe(() => {
-            this.notifications = [];
-        });
-
-        this.notificationModal.closed.subscribe((nofitications: INotificationModel[]) => {
-            this.notifications = nofitications;
-        });
-    }
-
-    public hideNofitications() {
-        this.notificationModal.close(this.notifications);
-    }
+    private seenNotificationsCollection: INotificationModel[] = [];
 
     public get countNotification() {
-        return this.notifications.length;
+        return this.newNotifications.length;
+    }
+
+    public get newNotifications() {
+        return this.newNotificationsCollection;
+    }
+
+    public get seenNotifications() {
+        return this.seenNotificationsCollection;
+    }
+
+    constructor() {
+        this.newNotificationsCollection = this.getUnreadFromLocalStorage();
+    }
+
+    public addNewNotification(notification: INotificationModel) {
+        this.saveNewNotificationToLocalStorage(notification);
+
+        this.newNotificationsCollection = [...this.newNotificationsCollection, notification];
+    }
+
+    public readNofitications() {
+        this.clearLocalStorageOnRead();
+        this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
+        this.newNotificationsCollection = [];
+    }
+
+    private saveNewNotificationToLocalStorage(notification: INotificationModel) {
+        const newNotificationArray = [...this.getUnreadFromLocalStorage(), notification];
+
+        localStorage.setItem(`${this.localStorageItem}`, JSON.stringify(newNotificationArray));
+    }
+
+    private clearLocalStorageOnRead() {
+        localStorage.removeItem(`${this.localStorageItem}`);
+    }
+
+    private getUnreadFromLocalStorage() {
+        return JSON.parse(localStorage.getItem(`${this.localStorageItem}`) ?? '[]');
     }
 }

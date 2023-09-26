@@ -13,14 +13,29 @@
         </ul>
     </nav>
     <div class="user-menu align-items-center d-flex">
-        <div class="notification" (click)="showNotifications()">
-            <fa-layers size="2x">
-                <fa-icon [icon]="['far', 'bell']"></fa-icon>
-                <fa-layers-counter
-                    *ngIf="countNotification"
-                    [classes]="['change-color']"
-                    content="{{ countNotification }}"></fa-layers-counter>
-            </fa-layers>
+        <div class="notification-dropdown-container">
+            <div class="notification-bell" (click)="showNotifications()">
+                <fa-layers size="2x">
+                    <fa-icon [icon]="['far', 'bell']"></fa-icon>
+                    <fa-layers-counter
+                        *ngIf="countNotification"
+                        [classes]="['change-color']"
+                        content="{{ countNotification }}"></fa-layers-counter>
+                </fa-layers>
+            </div>
+            <div class="notifications-dropdown" *ngIf="this.isNotificationsDropdownDisplayed" [@fadeInOut]>
+                <div class="dropdown-heading">
+                    <span>Your notifications</span>
+                    <span class="new-notifications-count">{{countNotification}}</span>
+                </div>
+                <div class="dropdown-body">
+                    <div class="zero-notifications-info" *ngIf="!newNotifications.length">
+                        <span>No new notifications so far</span>
+                    </div>
+                    <app-notifications [notifications]="this.newNotifications" [isUnread]="true"></app-notifications>
+                    <app-notifications [notifications]="this.seenNotifications"></app-notifications>
+                </div>
+            </div>
         </div>
         <div class="user" (click)="showMenu = !showMenu">
             <img

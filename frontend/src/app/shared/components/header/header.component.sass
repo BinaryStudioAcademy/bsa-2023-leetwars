@@ -21,12 +21,59 @@
 .user-menu
     justify-self: end
 
-.notification
+.notification-dropdown-container
+    position: relative
+
+.notification-bell
     margin-right: 2rem
     cursor: pointer
     color: $transparent-grey
     @media screen and (max-width: $medium)
         margin-right: 1rem
+
+.dropdown-heading
+    padding: 8px
+    text-align: center
+    border-bottom: 1px solid $transparent-green
+
+.new-notifications-count
+    position: static
+    height: 25px
+    width: 25px
+    display: inline-block
+    line-height: 24px
+    margin-left: 8px
+    font-size: 12px
+    vertical-align: middle
+    background-color:$cornflower
+    border-radius: 50%
+    text-shadow: $dark-grey 1px 1px 1px
+
+.notifications-dropdown
+    position: absolute
+    top: 48px
+    right: 18px
+    min-width: 300px
+    max-width: 350px
+    background-color: $charcoal-grey
+    color: $white
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5)
+    border-radius: 5px
+    font-family: 'Inter', sans-serif
+    z-index: 1
+    border-bottom-right-radius: 5px
+    border-bottom-left-radius: 5px
+
+.zero-notifications-info
+    padding-top: 8px
+    text-align: center
+    font-size: 13px
+
+.dropdown-body
+    max-height: 80vh
+    overflow-y: auto
+    overflow-x: hidden
+    padding-bottom: 8px
 
 :host ::ng-deep .change-color
     background-color: $cornflower

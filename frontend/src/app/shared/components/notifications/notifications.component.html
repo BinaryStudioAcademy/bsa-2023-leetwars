@@ -1,17 +1,20 @@
-<div class="notifications-container">
-    <div *ngIf="!notifications.length">You do not have notifications</div>
-    <div *ngFor="let notification of notifications" class="notification">
-        <div *ngIf="notification.typeNotification === typeNotification.NewChallenge">
-            <p>
-                A new challenge
-                <a routerLink="/challenges/{{ notification.challenge.id }}"> {{ notification.challenge.title }}</a>
-            </p>
-        </div>
-        <div *ngIf="notification.typeNotification === typeNotification.LikeChallenge">
-            <p>
-                User {{ notification.sender.userName }} liked your challenge
-                <a routerLink="/challenges/{{ notification.challenge.id }}">{{ notification.challenge.title }}</a>
-            </p>
-        </div>
+<div class="notification" *ngFor="let notification of notifications.slice().reverse(); trackBy: trackByFn" [ngClass]="{'unread': this.isUnread, 'read': !this.isUnread }" [@fadeIn]>
+    <div class="sender-image">
+        <img
+        [src]="notification.sender.imagePath ? notification.sender.imagePath : '/assets/images/default-profile-img.jpg'"
+        alt="User Logo"
+        class="sender-img" />
+    </div>
+    <div *ngIf="notification.typeNotification === typeNotification.NewChallenge" class="notification-text">
+        <p>
+            A new challenge
+            <a routerLink="/challenges/{{ notification.challenge.id }}"> {{ notification.challenge.title }}</a>
+        </p>
+    </div>
+    <div *ngIf="notification.typeNotification === typeNotification.LikeChallenge" class="notification-text">
+        <p>
+            User {{ notification.sender.userName }} liked your challenge
+            <a routerLink="/challenges/{{ notification.challenge.id }}">{{ notification.challenge.title }}</a>
+        </p>
     </div>
 </div>

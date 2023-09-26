@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
@@ -7,6 +7,7 @@ import { HeaderService } from '@core/services/header-service';
 import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { fadeInOut } from '@shared/animations/fade-in-out.animation';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
@@ -17,6 +18,7 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.sass'],
+    animations: [fadeInOut],
 })
 export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy {
     constructor(
@@ -40,21 +42,42 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
     }
 
+    @HostListener('window:beforeunload', ['$event'])
+    beforeUnloadHandler() {
+        if (this.isNotificationsDropdownDisplayed) {
+            this.notificationService.readNofitications();
+            this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
+        }
+    }
+
+    public isNotificationsDropdownDisplayed: boolean = false;
+
     public showMenu: boolean = false;
 
     public user: IUser;
 
     async ngOnInit() {
         await this.notificationHub.start();
-        this.listeningHub();
+        this.listeningNotificationHub();
     }
 
     showNotifications() {
-        this.notificationService.showNotifications();
+        if (this.isNotificationsDropdownDisplayed) {
+            this.notificationService.readNofitications();
+        }
+        this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
     }
 
-    get countNotification() {
+    public get countNotification() {
         return this.notificationService.countNotification;
+    }
+
+    public get newNotifications() {
+        return this.notificationService.newNotifications;
+    }
+
+    public get seenNotifications() {
+        return this.notificationService.seenNotifications;
     }
 
     onLogOut() {
@@ -89,14 +112,18 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.router.navigate(['/user/profile']);
     }
 
-    private listeningHub() {
+    private listeningNotificationHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
-            this.notificationService.addNotification(msg);
+            this.notificationService.addNewNotification(msg);
         });
     }
 
     override ngOnDestroy() {
         this.notificationHub.stop();
         super.ngOnDestroy();
+        if (this.isNotificationsDropdownDisplayed) {
+            this.notificationService.readNofitications();
+            this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
+        }
     }
 }
