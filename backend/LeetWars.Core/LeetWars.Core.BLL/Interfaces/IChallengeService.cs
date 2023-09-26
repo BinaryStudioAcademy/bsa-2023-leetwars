@@ -1,4 +1,5 @@
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
@@ -22,11 +23,11 @@ namespace LeetWars.Core.BLL.Interfaces
         Task DeleteChallengeAsync(long challengeId);
 
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
-        
+
         Task<List<ChallengeLevelDto>> GetChallengesLevelsAsync();
 
         Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto);
-        
+
         Task SetWeeklyChallenges();
     }
 }

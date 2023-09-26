@@ -77,11 +77,11 @@ export class UserService {
         return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
     }
 
-    public sendFriendshipRequest(newFriendship: INewFriendship): Observable<IUser> {
+    sendFriendshipRequest(newFriendship: INewFriendship): Observable<IUser> {
         return this.httpService.postRequest<IUser>(`${this.baseUrl}/send-friendship-request`, newFriendship);
     }
 
-    public updateFriendshipRequest(updateFriendship: IUpdateFriendship): Observable<IUser> {
+    updateFriendshipRequest(updateFriendship: IUpdateFriendship): Observable<IUser> {
         return this.httpService.putRequest<IUser>(`${this.baseUrl}/update-friendship-request`, updateFriendship);
     }
 }

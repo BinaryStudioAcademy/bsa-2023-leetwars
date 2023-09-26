@@ -6,9 +6,9 @@ import { Subject } from 'rxjs';
 export class EventService {
     private onUserFriendshipChanged = new Subject<IUser>();
 
-    public userChangedEvent$ = this.onUserFriendshipChanged.asObservable();
+    userChangedEvent$ = this.onUserFriendshipChanged.asObservable();
 
-    public userFriendshipChanged(user: IUser) {
+    userFriendshipChanged(user: IUser) {
         this.onUserFriendshipChanged.next(user);
     }
 }

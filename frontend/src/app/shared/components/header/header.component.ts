@@ -54,7 +54,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         super.ngOnDestroy();
     }
 
-    public showNotifications() {
+    showNotifications() {
         this.notificationService.showNotifications();
     }
 
@@ -62,7 +62,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         return this.notificationService.countNotification;
     }
 
-    public onLogOut() {
+    onLogOut() {
         const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'log-out-modal' });
 
         modalRef.componentInstance.titleText = 'Do you really wish to log out?';

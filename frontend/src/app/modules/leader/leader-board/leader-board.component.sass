@@ -92,10 +92,6 @@
 .user:nth-child(even)
   background-color: $transparent-yellow
 
-.dot-flashing
-    padding: 0 !important
-    margin-left: 7.5px
-
 .form-check-input
     cursor: pointer
 
@@ -112,3 +108,47 @@
 .form-check-input:checked
     background-color: $green
     border-color: $emerald-green
+
+.dot-flashing
+    padding: 0 !important
+    margin-left: 7.5px
+    position: relative
+    width: 5px
+    height: 5px
+    border-radius: 5px
+    background-color: #9880ff
+    color: #9880ff
+    animation: dot-flashing 1s infinite linear alternate
+    animation-delay: 0.5s
+
+    &::before, &::after
+        content: ""
+        display: inline-block
+        position: absolute
+        top: 0
+
+    &::before
+        left: -7.5px
+        width: 5px
+        height: 5px
+        border-radius: 5px
+        background-color: $cornflower
+        color: $cornflower
+        animation: dot-flashing 1s infinite alternate
+        animation-delay: 0s
+
+    &::after
+        left: 7.5px
+        width: 5px
+        height: 5px
+        border-radius: 5px
+        background-color: $cornflower
+        color: $cornflower
+        animation: dot-flashing 1s infinite alternate
+        animation-delay: 1s
+
+@keyframes dot-flashing
+    0%
+        background-color: $cornflower
+    50%, 100%
+        background-color: $ultra-transparent-cornflower

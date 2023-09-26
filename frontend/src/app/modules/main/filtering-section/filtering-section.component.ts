@@ -40,7 +40,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     difficultyNames: string[];
 
-    public scrollEventSubject = new Subject<void>();
+    scrollEventSubject = new Subject<void>();
 
     private sortingProperty?: ISortedModel;
 

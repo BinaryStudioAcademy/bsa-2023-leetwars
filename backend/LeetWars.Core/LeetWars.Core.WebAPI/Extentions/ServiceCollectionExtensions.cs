@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using FluentValidation.AspNetCore;
+using Hangfire;
 using LeetWars.Core.BLL.Helpers.BlobStorage;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.BLL.MappingProfiles;
@@ -12,8 +13,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RabbitMQ.Client;
-using Microsoft.Extensions.Options;
-using Hangfire;
 using System.Reflection;
 
 namespace LeetWars.Core.WebAPI.Extentions
@@ -124,10 +123,10 @@ namespace LeetWars.Core.WebAPI.Extentions
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseRecommendedSerializerSettings()
                 .UseSqlServerStorage(configuration.GetConnectionString("LeetWarsCoreDBConnection")));
-           
+
             services.AddHangfireServer();
         }
-      
+
         private static void RegisterNotificationProducerService(IServiceCollection services, IConfiguration configuration)
         {
             var settings = configuration

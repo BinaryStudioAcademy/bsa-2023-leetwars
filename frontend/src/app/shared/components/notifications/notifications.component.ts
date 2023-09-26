@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { EventService } from '@core/services/event.service';
@@ -17,7 +17,7 @@ import { takeUntil } from 'rxjs';
     templateUrl: './notifications.component.html',
     styleUrls: ['./notifications.component.sass'],
 })
-export class NotificationsComponent extends BaseComponent implements OnInit, AfterViewInit {
+export class NotificationsComponent extends BaseComponent implements OnInit {
     constructor(
         private notificationService: NotificationService,
         private userService: UserService,
@@ -30,46 +30,11 @@ export class NotificationsComponent extends BaseComponent implements OnInit, Aft
 
     private currentUser: IUser;
 
-    public typeNotification = TypeNotification;
+    typeNotification = TypeNotification;
 
-    @Input() public notifications: INotificationModel[];
+    @Input() notifications: INotificationModel[];
 
-    private readonly TOP_OFFSET = 40;
-
-    private readonly RIGHT_OFFSET = 300;
-
-    private readonly HALF = 2;
-
-    private readonly NEGATIVE = -1;
-
-    @ViewChild('notificationsContainer') public notificationsContainer: ElementRef;
-
-    @HostListener('window:resize', ['$event'])
-    onResize() {
-        this.calculateRigthPosition();
-        this.calculateTopPosition();
-    }
-
-    public ngAfterViewInit() {
-        this.calculateTopPosition();
-        this.calculateRigthPosition();
-    }
-
-    public calculateTopPosition() {
-        const containerHeight = this.notificationsContainer.nativeElement.offsetHeight;
-        const topValue = containerHeight / this.HALF + this.TOP_OFFSET;
-
-        this.notificationsContainer.nativeElement.style.top = `${topValue}px`;
-    }
-
-    public calculateRigthPosition() {
-        const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        const rightValue = this.NEGATIVE * (screenWidth / this.HALF) + this.RIGHT_OFFSET;
-
-        this.notificationsContainer.nativeElement.style.right = `${rightValue}px`;
-    }
-
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.getCurrentUser();
 
         this.notificationService.currentNotifications.subscribe((notifications: INotificationModel[]) => {
@@ -91,7 +56,7 @@ export class NotificationsComponent extends BaseComponent implements OnInit, Aft
             });
     }
 
-    public updateFriendshipStatus(notification: INotificationModel, status: FriendshipStatus) {
+    updateFriendshipStatus(notification: INotificationModel, status: FriendshipStatus) {
         const updateRequest = notification.updateFriendship;
 
         updateRequest.friendshipStatus = status;
@@ -101,11 +66,11 @@ export class NotificationsComponent extends BaseComponent implements OnInit, Aft
         this.notificationService.removeNotification(notification);
     }
 
-    public acceptFriendship(notification: INotificationModel) {
+    acceptFriendship(notification: INotificationModel) {
         this.updateFriendshipStatus(notification, FriendshipStatus.Accepted);
     }
 
-    public declineFriendship(notification: INotificationModel) {
+    declineFriendship(notification: INotificationModel) {
         this.updateFriendshipStatus(notification, FriendshipStatus.Declined);
     }
 

@@ -2865,181 +2865,181 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2023, 9, 16, 3, 58, 40, 588, DateTimeKind.Local).AddTicks(5138),
+                            CreatedAt = new DateTime(2023, 3, 6, 21, 33, 18, 580, DateTimeKind.Utc).AddTicks(4249),
                             Status = 2
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedAt = new DateTime(2023, 9, 9, 15, 35, 4, 989, DateTimeKind.Local).AddTicks(6127),
-                            Status = 2
+                            CreatedAt = new DateTime(2022, 10, 7, 20, 5, 51, 959, DateTimeKind.Utc).AddTicks(1922),
+                            Status = 0
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedAt = new DateTime(2023, 9, 17, 0, 28, 4, 313, DateTimeKind.Local).AddTicks(4787),
+                            CreatedAt = new DateTime(2023, 4, 3, 12, 8, 17, 175, DateTimeKind.Utc).AddTicks(5574),
                             Status = 0
                         },
                         new
                         {
                             Id = 4L,
-                            CreatedAt = new DateTime(2023, 9, 12, 17, 43, 56, 387, DateTimeKind.Local).AddTicks(7631),
-                            Status = 2
+                            CreatedAt = new DateTime(2023, 4, 9, 4, 6, 49, 80, DateTimeKind.Utc).AddTicks(4542),
+                            Status = 0
                         },
                         new
                         {
                             Id = 5L,
-                            CreatedAt = new DateTime(2023, 9, 17, 22, 43, 43, 210, DateTimeKind.Local).AddTicks(5168),
-                            Status = 1
+                            CreatedAt = new DateTime(2022, 11, 15, 1, 58, 25, 96, DateTimeKind.Utc).AddTicks(7697),
+                            Status = 0
                         },
                         new
                         {
                             Id = 6L,
-                            CreatedAt = new DateTime(2023, 9, 10, 14, 7, 26, 335, DateTimeKind.Local).AddTicks(3288),
-                            Status = 1
+                            CreatedAt = new DateTime(2022, 12, 21, 22, 38, 20, 532, DateTimeKind.Utc).AddTicks(3462),
+                            Status = 0
                         },
                         new
                         {
                             Id = 7L,
-                            CreatedAt = new DateTime(2023, 9, 17, 21, 3, 41, 977, DateTimeKind.Local).AddTicks(5268),
+                            CreatedAt = new DateTime(2022, 8, 27, 15, 57, 21, 652, DateTimeKind.Utc).AddTicks(8939),
                             Status = 1
                         },
                         new
                         {
                             Id = 8L,
-                            CreatedAt = new DateTime(2023, 9, 12, 23, 8, 42, 364, DateTimeKind.Local).AddTicks(7410),
-                            Status = 0
+                            CreatedAt = new DateTime(2022, 12, 7, 0, 34, 27, 472, DateTimeKind.Utc).AddTicks(297),
+                            Status = 1
                         },
                         new
                         {
                             Id = 9L,
-                            CreatedAt = new DateTime(2023, 9, 12, 9, 16, 13, 343, DateTimeKind.Local).AddTicks(4768),
+                            CreatedAt = new DateTime(2022, 11, 16, 23, 29, 34, 322, DateTimeKind.Utc).AddTicks(5149),
                             Status = 2
                         },
                         new
                         {
                             Id = 10L,
-                            CreatedAt = new DateTime(2023, 9, 9, 3, 44, 16, 994, DateTimeKind.Local).AddTicks(9071),
+                            CreatedAt = new DateTime(2023, 1, 29, 13, 56, 13, 709, DateTimeKind.Utc).AddTicks(3310),
                             Status = 2
                         },
                         new
                         {
                             Id = 11L,
-                            CreatedAt = new DateTime(2023, 9, 15, 14, 57, 26, 562, DateTimeKind.Local).AddTicks(2977),
+                            CreatedAt = new DateTime(2023, 3, 27, 14, 2, 17, 323, DateTimeKind.Utc).AddTicks(2511),
                             Status = 0
                         },
                         new
                         {
                             Id = 12L,
-                            CreatedAt = new DateTime(2023, 9, 17, 16, 29, 59, 104, DateTimeKind.Local).AddTicks(369),
-                            Status = 2
+                            CreatedAt = new DateTime(2023, 2, 24, 18, 42, 41, 601, DateTimeKind.Utc).AddTicks(8683),
+                            Status = 1
                         },
                         new
                         {
                             Id = 13L,
-                            CreatedAt = new DateTime(2023, 9, 15, 21, 55, 43, 180, DateTimeKind.Local).AddTicks(1840),
+                            CreatedAt = new DateTime(2022, 9, 22, 6, 59, 19, 736, DateTimeKind.Utc).AddTicks(5675),
                             Status = 0
                         },
                         new
                         {
                             Id = 14L,
-                            CreatedAt = new DateTime(2023, 9, 13, 23, 53, 12, 452, DateTimeKind.Local).AddTicks(984),
-                            Status = 0
+                            CreatedAt = new DateTime(2023, 5, 19, 7, 16, 59, 668, DateTimeKind.Utc).AddTicks(4974),
+                            Status = 2
                         },
                         new
                         {
                             Id = 15L,
-                            CreatedAt = new DateTime(2023, 9, 10, 20, 58, 16, 813, DateTimeKind.Local).AddTicks(4098),
-                            Status = 2
+                            CreatedAt = new DateTime(2023, 3, 2, 17, 47, 34, 879, DateTimeKind.Utc).AddTicks(3480),
+                            Status = 1
                         },
                         new
                         {
                             Id = 16L,
-                            CreatedAt = new DateTime(2023, 9, 9, 6, 16, 13, 230, DateTimeKind.Local).AddTicks(2882),
-                            Status = 2
+                            CreatedAt = new DateTime(2023, 1, 3, 1, 33, 46, 258, DateTimeKind.Utc).AddTicks(7231),
+                            Status = 1
                         },
                         new
                         {
                             Id = 17L,
-                            CreatedAt = new DateTime(2023, 9, 18, 2, 38, 6, 294, DateTimeKind.Local).AddTicks(1542),
+                            CreatedAt = new DateTime(2023, 3, 3, 5, 5, 48, 364, DateTimeKind.Utc).AddTicks(548),
                             Status = 2
                         },
                         new
                         {
                             Id = 18L,
-                            CreatedAt = new DateTime(2023, 9, 13, 6, 4, 46, 85, DateTimeKind.Local).AddTicks(3201),
+                            CreatedAt = new DateTime(2023, 2, 12, 18, 51, 10, 593, DateTimeKind.Utc).AddTicks(6763),
                             Status = 0
                         },
                         new
                         {
                             Id = 19L,
-                            CreatedAt = new DateTime(2023, 9, 16, 1, 46, 6, 411, DateTimeKind.Local).AddTicks(4170),
-                            Status = 0
+                            CreatedAt = new DateTime(2023, 3, 20, 20, 54, 52, 409, DateTimeKind.Utc).AddTicks(9513),
+                            Status = 2
                         },
                         new
                         {
                             Id = 20L,
-                            CreatedAt = new DateTime(2023, 9, 11, 3, 32, 56, 253, DateTimeKind.Local).AddTicks(4294),
+                            CreatedAt = new DateTime(2022, 12, 5, 15, 12, 1, 783, DateTimeKind.Utc).AddTicks(347),
                             Status = 1
                         },
                         new
                         {
                             Id = 21L,
-                            CreatedAt = new DateTime(2023, 9, 18, 1, 36, 46, 264, DateTimeKind.Local).AddTicks(7480),
-                            Status = 0
+                            CreatedAt = new DateTime(2022, 8, 19, 4, 21, 19, 502, DateTimeKind.Utc).AddTicks(4081),
+                            Status = 1
                         },
                         new
                         {
                             Id = 22L,
-                            CreatedAt = new DateTime(2023, 9, 16, 17, 11, 34, 190, DateTimeKind.Local).AddTicks(2458),
-                            Status = 0
+                            CreatedAt = new DateTime(2022, 8, 23, 18, 3, 33, 380, DateTimeKind.Utc).AddTicks(839),
+                            Status = 1
                         },
                         new
                         {
                             Id = 23L,
-                            CreatedAt = new DateTime(2023, 9, 14, 10, 54, 59, 247, DateTimeKind.Local).AddTicks(1863),
+                            CreatedAt = new DateTime(2023, 1, 24, 12, 34, 33, 785, DateTimeKind.Utc).AddTicks(7553),
                             Status = 0
                         },
                         new
                         {
                             Id = 24L,
-                            CreatedAt = new DateTime(2023, 9, 11, 7, 1, 49, 486, DateTimeKind.Local).AddTicks(4872),
+                            CreatedAt = new DateTime(2022, 8, 9, 19, 49, 24, 251, DateTimeKind.Utc).AddTicks(3727),
                             Status = 2
                         },
                         new
                         {
                             Id = 25L,
-                            CreatedAt = new DateTime(2023, 9, 15, 9, 2, 27, 41, DateTimeKind.Local).AddTicks(2980),
-                            Status = 0
+                            CreatedAt = new DateTime(2022, 11, 17, 4, 52, 30, 276, DateTimeKind.Utc).AddTicks(75),
+                            Status = 1
                         },
                         new
                         {
                             Id = 26L,
-                            CreatedAt = new DateTime(2023, 9, 9, 17, 15, 59, 165, DateTimeKind.Local).AddTicks(6348),
+                            CreatedAt = new DateTime(2022, 12, 24, 10, 37, 41, 9, DateTimeKind.Utc).AddTicks(9896),
                             Status = 2
                         },
                         new
                         {
                             Id = 27L,
-                            CreatedAt = new DateTime(2023, 9, 13, 19, 35, 52, 87, DateTimeKind.Local).AddTicks(7274),
-                            Status = 2
+                            CreatedAt = new DateTime(2023, 5, 13, 1, 29, 17, 953, DateTimeKind.Utc).AddTicks(3587),
+                            Status = 0
                         },
                         new
                         {
                             Id = 28L,
-                            CreatedAt = new DateTime(2023, 9, 18, 19, 15, 58, 384, DateTimeKind.Local).AddTicks(5294),
-                            Status = 1
+                            CreatedAt = new DateTime(2022, 8, 17, 12, 52, 25, 687, DateTimeKind.Utc).AddTicks(8878),
+                            Status = 2
                         },
                         new
                         {
                             Id = 29L,
-                            CreatedAt = new DateTime(2023, 9, 17, 7, 55, 33, 861, DateTimeKind.Local).AddTicks(3360),
-                            Status = 1
+                            CreatedAt = new DateTime(2022, 12, 16, 22, 54, 58, 641, DateTimeKind.Utc).AddTicks(5577),
+                            Status = 0
                         },
                         new
                         {
                             Id = 30L,
-                            CreatedAt = new DateTime(2023, 9, 17, 13, 21, 47, 801, DateTimeKind.Local).AddTicks(6090),
+                            CreatedAt = new DateTime(2023, 5, 23, 17, 20, 21, 649, DateTimeKind.Utc).AddTicks(992),
                             Status = 0
                         });
                 });
@@ -7229,361 +7229,361 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             FriendshipId = 1L,
-                            UserId = 29L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 1L,
-                            UserId = 11L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 2L,
-                            UserId = 38L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 2L,
-                            UserId = 27L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 3L,
                             UserId = 26L,
                             IsSender = true
                         },
                         new
                         {
-                            FriendshipId = 3L,
-                            UserId = 35L,
+                            FriendshipId = 1L,
+                            UserId = 25L,
                             IsSender = false
                         },
                         new
                         {
-                            FriendshipId = 4L,
-                            UserId = 13L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 4L,
-                            UserId = 6L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 5L,
-                            UserId = 12L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 5L,
+                            FriendshipId = 2L,
                             UserId = 17L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 6L,
-                            UserId = 13L,
                             IsSender = true
                         },
                         new
                         {
-                            FriendshipId = 6L,
-                            UserId = 40L,
+                            FriendshipId = 2L,
+                            UserId = 16L,
                             IsSender = false
                         },
                         new
                         {
-                            FriendshipId = 7L,
-                            UserId = 20L,
+                            FriendshipId = 3L,
+                            UserId = 30L,
                             IsSender = true
                         },
                         new
                         {
-                            FriendshipId = 7L,
-                            UserId = 35L,
+                            FriendshipId = 3L,
+                            UserId = 37L,
                             IsSender = false
                         },
                         new
                         {
-                            FriendshipId = 8L,
-                            UserId = 10L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 8L,
-                            UserId = 27L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 9L,
-                            UserId = 32L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 9L,
-                            UserId = 33L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 10L,
-                            UserId = 20L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 10L,
-                            UserId = 35L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 11L,
-                            UserId = 29L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 11L,
-                            UserId = 11L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 12L,
-                            UserId = 40L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 12L,
-                            UserId = 21L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 13L,
-                            UserId = 18L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 13L,
-                            UserId = 32L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 14L,
-                            UserId = 22L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 14L,
-                            UserId = 2L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 15L,
-                            UserId = 2L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 15L,
-                            UserId = 39L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 16L,
-                            UserId = 22L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 16L,
-                            UserId = 2L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 17L,
-                            UserId = 18L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 17L,
-                            UserId = 14L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 18L,
+                            FriendshipId = 4L,
                             UserId = 4L,
                             IsSender = true
                         },
                         new
                         {
-                            FriendshipId = 18L,
-                            UserId = 17L,
+                            FriendshipId = 4L,
+                            UserId = 39L,
                             IsSender = false
                         },
                         new
                         {
-                            FriendshipId = 19L,
-                            UserId = 31L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 19L,
-                            UserId = 34L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 20L,
+                            FriendshipId = 5L,
                             UserId = 40L,
                             IsSender = true
                         },
                         new
                         {
-                            FriendshipId = 20L,
-                            UserId = 12L,
+                            FriendshipId = 5L,
+                            UserId = 4L,
                             IsSender = false
                         },
                         new
                         {
-                            FriendshipId = 21L,
-                            UserId = 33L,
+                            FriendshipId = 6L,
+                            UserId = 34L,
                             IsSender = true
                         },
                         new
                         {
-                            FriendshipId = 21L,
+                            FriendshipId = 6L,
+                            UserId = 19L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 7L,
+                            UserId = 6L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 7L,
+                            UserId = 7L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 8L,
+                            UserId = 9L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 8L,
+                            UserId = 32L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 9L,
+                            UserId = 11L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 9L,
+                            UserId = 38L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 10L,
+                            UserId = 21L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 10L,
+                            UserId = 4L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 11L,
+                            UserId = 17L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 11L,
+                            UserId = 25L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 12L,
+                            UserId = 35L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 12L,
+                            UserId = 22L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 13L,
+                            UserId = 22L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 13L,
+                            UserId = 40L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 14L,
+                            UserId = 37L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 14L,
                             UserId = 20L,
                             IsSender = false
                         },
                         new
                         {
-                            FriendshipId = 22L,
+                            FriendshipId = 15L,
+                            UserId = 26L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 15L,
+                            UserId = 7L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 16L,
                             UserId = 23L,
                             IsSender = true
                         },
                         new
                         {
+                            FriendshipId = 16L,
+                            UserId = 40L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 17L,
+                            UserId = 16L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 17L,
+                            UserId = 18L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 18L,
+                            UserId = 24L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 18L,
+                            UserId = 10L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 19L,
+                            UserId = 25L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 19L,
+                            UserId = 4L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 20L,
+                            UserId = 15L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 20L,
+                            UserId = 6L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 21L,
+                            UserId = 27L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 21L,
+                            UserId = 34L,
+                            IsSender = false
+                        },
+                        new
+                        {
                             FriendshipId = 22L,
-                            UserId = 37L,
+                            UserId = 10L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 22L,
+                            UserId = 19L,
                             IsSender = false
                         },
                         new
                         {
                             FriendshipId = 23L,
-                            UserId = 37L,
+                            UserId = 25L,
                             IsSender = true
                         },
                         new
                         {
                             FriendshipId = 23L,
-                            UserId = 2L,
+                            UserId = 1L,
                             IsSender = false
                         },
                         new
                         {
                             FriendshipId = 24L,
-                            UserId = 27L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 24L,
-                            UserId = 9L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 25L,
-                            UserId = 38L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 25L,
-                            UserId = 27L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 26L,
-                            UserId = 27L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 26L,
                             UserId = 5L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 24L,
+                            UserId = 16L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 25L,
+                            UserId = 17L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 25L,
+                            UserId = 26L,
+                            IsSender = false
+                        },
+                        new
+                        {
+                            FriendshipId = 26L,
+                            UserId = 2L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 26L,
+                            UserId = 18L,
                             IsSender = false
                         },
                         new
                         {
                             FriendshipId = 27L,
-                            UserId = 3L,
+                            UserId = 35L,
                             IsSender = true
                         },
                         new
                         {
                             FriendshipId = 27L,
-                            UserId = 37L,
+                            UserId = 16L,
                             IsSender = false
                         },
                         new
                         {
                             FriendshipId = 28L,
-                            UserId = 23L,
+                            UserId = 22L,
                             IsSender = true
                         },
                         new
                         {
                             FriendshipId = 28L,
-                            UserId = 9L,
-                            IsSender = false
-                        },
-                        new
-                        {
-                            FriendshipId = 29L,
-                            UserId = 12L,
-                            IsSender = true
-                        },
-                        new
-                        {
-                            FriendshipId = 29L,
                             UserId = 8L,
                             IsSender = false
                         },
                         new
                         {
+                            FriendshipId = 29L,
+                            UserId = 30L,
+                            IsSender = true
+                        },
+                        new
+                        {
+                            FriendshipId = 29L,
+                            UserId = 26L,
+                            IsSender = false
+                        },
+                        new
+                        {
                             FriendshipId = 30L,
-                            UserId = 27L,
+                            UserId = 26L,
                             IsSender = true
                         },
                         new
                         {
                             FriendshipId = 30L,
-                            UserId = 18L,
+                            UserId = 30L,
                             IsSender = false
                         });
                 });

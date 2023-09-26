@@ -5,7 +5,7 @@ namespace LeetWars.Core.WebAPI.Validators.Friendship
 {
     public class NewFriendshipDtoValidator : AbstractValidator<NewFriendshipDto>
     {
-        public NewFriendshipDtoValidator() 
+        public NewFriendshipDtoValidator()
         {
             RuleFor(dto => dto.SenderId)
                .NotEmpty().WithMessage("SenderId is required")

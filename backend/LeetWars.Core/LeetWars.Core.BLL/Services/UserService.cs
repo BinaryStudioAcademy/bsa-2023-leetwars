@@ -6,17 +6,17 @@ using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Friendship;
+using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.User;
+using LeetWars.Core.Common.Exceptions;
 using LeetWars.Core.Common.Extensions;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Entities.HelperEntities;
-using LeetWars.Core.DAL.Extensions;
-using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.DAL.Enums;
+using LeetWars.Core.DAL.Extensions;
 using Microsoft.AspNetCore.Http;
-using LeetWars.Core.Common.DTO.Notifications;
-using LeetWars.Core.Common.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -192,39 +192,25 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserFullDto>(user);
     }
 
-    public async Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page)
+    public async Task<List<UserDto>> GetLeaderBoardAsync(LeaderBoardPageSettingsDto page)
     {
-        var users = _context.Users.OrderByDescending(u => u.TotalScore).AsQueryable();
-        if (page is not null)
+        var query = _context.Users.OrderByDescending(u => u.TotalScore).AsQueryable();
+
+        if (page.GetFriends)
         {
-            users = users.Skip(page.PageSize * (page.PageNumber - 1))
-                         .Take(page.PageSize);
+            var currentUser = await GetCurrentUserEntityAsync();
+            var currentUserDto = _mapper.Map<UserDto>(currentUser);
+
+            var currentUserFriendsIds = currentUserDto.Friendships?
+                .Where(f => f.FriendshipStatus == FriendshipStatus.Accepted)
+                .Select(f => f.FriendId) ?? throw new NotFoundException(nameof(List<User>));
+
+            query = query.Where(u => currentUserFriendsIds.Contains(u.Id));
         }
 
-        return _mapper.Map<List<UserDto>>(await users.ToListAsync());
-    }
+        query = query.Skip(page.PageSize * (page.PageNumber - 1)).Take(page.PageSize);
 
-    public async Task<List<UserDto>> GetFriendsLeaderBoardAsync(PageSettingsDto? page)
-    {
-        var currentUser = await GetCurrentUserEntityAsync();
-        var currentUserDto = _mapper.Map<UserDto>(currentUser);
-
-        var currentUserFriendsIds = currentUserDto.Friendships?
-            .Where(f => f.FriendshipStatus is FriendshipStatus.Accepted)
-            .Select(f => f.FriendId) ?? throw new NotFoundException(nameof(List<User>));
-
-        var friendsEntities = _context.Users
-            .Where(u => currentUserFriendsIds.Contains(u.Id))
-            .OrderByDescending(u => u.TotalScore).AsQueryable();
-
-        if (page is not null)
-        {
-            friendsEntities = friendsEntities
-                .Skip(page.PageSize * (page.PageNumber - 1))
-                .Take(page.PageSize);
-        }
-
-        return _mapper.Map<List<UserDto>>(await friendsEntities.ToListAsync());
+        return _mapper.Map<List<UserDto>>(await query.ToListAsync());
     }
 
     public async Task<UserDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto)
@@ -345,14 +331,6 @@ public class UserService : BaseService, IUserService
 
         var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
-    }
-
-    private async Task<User> GetCurrentUserEntityAsync()
-    {
-        var userStringId = _userGetter.CurrentUserId;
-        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
-
-        return user ?? throw new NotFoundException(nameof(User));
     }
 
     private async Task<int> GetRewardFromChallenge(long challengeId)

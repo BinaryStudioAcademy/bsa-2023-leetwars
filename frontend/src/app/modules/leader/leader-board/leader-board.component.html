@@ -22,9 +22,9 @@
                             *ngIf="isAddFriendButtonVisible(user)">
                             <fa-icon class="user-icon user-plus-icon" [icon]="['fas', 'user-plus']"></fa-icon>
                         </button>
-                        <div *ngIf="isPendingFriendship(user)" class="dot-flashing">
+                        <div *ngIf="isFriendshipStatus(user, 'Pending')" class="dot-flashing">
                         </div>
-                        <button class="user-icon-btn" *ngIf="isAcceptedFriendship(user)">
+                        <button class="user-icon-btn" *ngIf="isFriendshipStatus(user, 'Accepted')">
                             <fa-icon class="user-icon" [icon]="['fas', 'user-group']"></fa-icon>
                         </button>
                     </div>

@@ -11,11 +11,11 @@ import { BehaviorSubject } from 'rxjs';
 export class NotificationService {
     private notifications: INotificationModel[] = [];
 
-    private strongNotifications: TypeNotification[] = [TypeNotification.FriendRequest];
+    strongNotifications: TypeNotification[] = [TypeNotification.FriendRequest];
 
-    private notificationSubject = new BehaviorSubject(this.notifications);
+    notificationSubject = new BehaviorSubject(this.notifications);
 
-    public currentNotifications = this.notificationSubject.asObservable();
+    currentNotifications = this.notificationSubject.asObservable();
 
     private notificationModal: NgbModalRef;
 

@@ -92,18 +92,44 @@ public class UsersController : ControllerBase
     /// <param name="page">Page of leaderboard</param>
     /// <returns>List of users on leaderbloard</returns>
     [HttpGet("leader-board")]
-    public async Task<ActionResult<List<UserDto>>> GetLeaderBoardAsync([FromQuery] PageSettingsDto page)
+    public async Task<ActionResult<List<UserDto>>> GetLeaderBoardAsync([FromQuery] LeaderBoardPageSettingsDto page)
     {
         var users = await _userService.GetLeaderBoardAsync(page);
 
         return Ok(users);
     }
-    
-    [HttpGet("friends-leader-board")]
-    public async Task<ActionResult<List<UserDto>>> GetFriendsLeaderBoardAsync([FromQuery] PageSettingsDto page)
+
+    //[HttpGet("friends-leader-board")]
+    //public async Task<ActionResult<List<UserDto>>> GetFriendsLeaderBoardAsync([FromQuery] PageSettingsDto page)
+    //{
+    //    var users = await _userService.GetFriendsLeaderBoardAsync(page);
+    //    return Ok(users);
+    //}
+
+    /// <summary>
+    /// Create friendship
+    /// </summary>
+    /// <param name="newFriendshipDto">Friendship to create</param>
+    /// <returns>Existing user</returns>
+    [HttpPost("send-friendship-request")]
+    public async Task<ActionResult<UserDto>> SendFriendshipRequestAsync([FromBody] NewFriendshipDto newFriendshipDto)
     {
-        var users = await _userService.GetFriendsLeaderBoardAsync(page);
-        return Ok(users);
+        var user = await _userService.SendFriendshipRequestAsync(newFriendshipDto);
+
+        return Ok(user);
+    }
+
+    /// <summary>
+    /// Update friendship
+    /// </summary>
+    /// <param name="updateFriendshipDto">Friendship to update</param>
+    /// <returns>Existing user</returns>
+    [HttpPut("update-friendship-request")]
+    public async Task<ActionResult<UserDto>> UpdateFriendshipRequestAsync([FromBody] UpdateFriendshipDto updateFriendshipDto)
+    {
+        var user = await _userService.UpdateFriendshipRequestAsync(updateFriendshipDto);
+
+        return Ok(user);
     }
 
     /// <summary>
