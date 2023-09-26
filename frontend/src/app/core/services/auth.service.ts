@@ -8,7 +8,7 @@ import { AuthHelper } from '@shared/utils/auth.helper';
 import { getFirebaseErrorMessage } from '@shared/utils/validation/validation-helper';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
-import { BehaviorSubject, first, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
+import { BehaviorSubject, first, firstValueFrom, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { ToastrNotificationsService } from './toastr-notifications.service';
@@ -40,13 +40,16 @@ export class AuthService {
     ) {
         this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
         this.currentUser$ = this.userSubject.asObservable();
-        afAuth.authState.subscribe(async (user) => {
-            if (user) {
-                localStorage.setItem(this.tokenKeyName, await user.getIdToken());
-            } else {
-                localStorage.removeItem(this.tokenKeyName);
-            }
-        });
+    }
+
+    public async initializeAuth(): Promise<void> {
+        const user = await firstValueFrom(this.afAuth.authState);
+
+        if (user) {
+            localStorage.setItem(this.tokenKeyName, await user.getIdToken());
+        } else {
+            localStorage.removeItem(this.tokenKeyName);
+        }
     }
 
     isAuthorized() {
