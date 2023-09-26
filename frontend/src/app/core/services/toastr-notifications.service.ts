@@ -15,8 +15,8 @@ export class ToastrNotificationsService {
         this.toastr.info(message, 'Info');
     }
 
-    showWarring(message: string) {
-        this.toastr.warning(message, 'Warring');
+    showWarning(message: string) {
+        this.toastr.warning(message, 'Warning');
     }
 
     showError(message: string) {

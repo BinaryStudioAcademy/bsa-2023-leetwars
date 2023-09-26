@@ -30,9 +30,8 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
         this.updateEditorOptions();
     }
 
-    public onCodeChange(model: string) {
-        this.initText = model;
-        this.codeChanged.emit(model);
+    ngAfterViewInit(): void {
+        this.updateEditorOptions();
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -44,6 +43,9 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
     ngOnInit(): void {
         this.getUserPrefferences();
         this.updateEditorOptions();
+    onCodeChange(model: string) {
+        this.initText = model;
+        this.codeChanged.emit(model);
     }
 
     private getUserPrefferences() {
@@ -71,8 +73,8 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
             fontSize: this.userPreferences?.fontSize ? this.userPreferences.fontSize : this.options?.fontSize,
             wordWrap: this.userPreferences?.wordWrap ? this.userPreferences.wordWrap : this.options?.wordWrap,
             minimap: { enabled: this.options?.minimap?.enabled },
-            automaticLayout: this.options?.automaticLayout,
-            useShadows: this.options?.useShadows,
+            hasAutomaticLayout: this.options?.automaticLayout,
+            hasShadows: this.options?.useShadows,
             lineNumbers: this.options?.lineNumbers,
         };
     }

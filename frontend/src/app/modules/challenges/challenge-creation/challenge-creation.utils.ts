@@ -13,19 +13,19 @@ export function getInitStepsData(isValid: boolean = false): StepData[] {
         {
             step: ChallengeStep.Question,
             isValid,
-            checkValidation: false,
+            isValidationChecked: false,
             requiredSteps: [],
         },
         {
             step: ChallengeStep.Solutions,
             isValid,
-            checkValidation: false,
+            isValidationChecked: false,
             requiredSteps: [ChallengeStep.Question],
         },
         {
             step: ChallengeStep.Testcases,
             isValid,
-            checkValidation: false,
+            isValidationChecked: false,
             requiredSteps: [ChallengeStep.Question, ChallengeStep.Solutions],
         },
     ];
@@ -42,7 +42,7 @@ export function getStepChecking(stepsData: StepData[], step: ChallengeStep) {
         return false;
     }
 
-    return stepData.checkValidation;
+    return stepData.isValidationChecked;
 }
 
 export function stepIsAllowed(stepsData: StepData[], step: ChallengeStep) {
@@ -135,10 +135,13 @@ export const editorOptions: EditorOptions = {
     theme: 'vs-dark',
     language: '',
     minimap: { enabled: false },
-    automaticLayout: true,
-    useShadows: false,
     wordWrap: true,
     lineNumbers: true,
     tabWidth: 3,
     fontSize: 19,
+    minimap: { isEnabled: false },
+    hasAutomaticLayout: true,
+    hasShadows: false,
+    wordWrap: 'on',
+    lineNumbers: 'on',
 };
