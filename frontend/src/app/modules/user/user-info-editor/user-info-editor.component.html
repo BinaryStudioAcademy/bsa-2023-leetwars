@@ -12,9 +12,13 @@
         <form class="edit-user-info-form d-flex flex-column" [formGroup]="userInfoForm">
             <p>INFORMATION</p>
             <div class="form-data d-flex justify-content-center align-items-center flex-grow-1">
-                <div class="avatar">
+                <div class="user-avatar-container">
                     <label class="h-100">
                         <img [src]="avatarPreview" />
+                        <div class="edit-photo">
+                            <fa-icon [icon]="'camera'" size="2xl"></fa-icon>
+                            <span>Edit</span>
+                        </div>
                         <input type="file" style="display: none" (change)="onImagePicked($event)" />
                     </label>
                 </div>
