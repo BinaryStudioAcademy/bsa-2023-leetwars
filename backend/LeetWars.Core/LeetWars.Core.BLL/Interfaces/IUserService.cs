@@ -20,6 +20,7 @@ public interface IUserService
     public Task<User?> GetUserByExpressionAsync(Expression<Func<User, bool>> expression);
 
     public Task<UserDto> GetCurrentUserAsync();
+
     public Task<UserDto> GetUserAsync(long id);
     
     public Task<UserFullDto> GetFullUserAsync(long id);
