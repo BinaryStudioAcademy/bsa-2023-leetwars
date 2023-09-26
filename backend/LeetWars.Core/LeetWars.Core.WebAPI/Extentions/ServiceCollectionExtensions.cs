@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RabbitMQ.Client;
+using Microsoft.Extensions.Options;
+using Hangfire;
 using System.Reflection;
 
 namespace LeetWars.Core.WebAPI.Extentions
@@ -115,6 +117,17 @@ namespace LeetWars.Core.WebAPI.Extentions
             return services;
         }
 
+        public static void RegisterHengfire(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHangfire(globalCongig => globalCongig
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(configuration.GetConnectionString("LeetWarsCoreDBConnection")));
+           
+            services.AddHangfireServer();
+        }
+      
         private static void RegisterNotificationProducerService(IServiceCollection services, IConfiguration configuration)
         {
             var settings = configuration

@@ -34,5 +34,6 @@ namespace LeetWars.Core.BLL.Interfaces
         Task<BriefChallengeInfoDto> GetBriefChallengeInfoByIdAsync(long challengeId);
 
         Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings);
+        Task SetWeeklyChallenges();
     }
 }
