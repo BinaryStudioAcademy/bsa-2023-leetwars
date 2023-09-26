@@ -12,24 +12,24 @@ import { INotificationModel } from '@shared/models/notifications/notifications';
 export class NotificationsComponent implements OnInit {
     @Input() notifications: INotificationModel[];
 
-    public typeNotification = TypeNotification;
+    typeNotification = TypeNotification;
 
     constructor(private notificationService: NotificationService, private codeFightService: CodeFightService) {}
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.notificationService.currentNotifications.subscribe((notifications: INotificationModel[]) => {
             this.notifications = notifications;
         });
     }
 
-    public onCodeFightStart(notification: INotificationModel) {
+    onCodeFightStart(notification: INotificationModel) {
         this.notificationService.removeNotification(notification);
         this.notificationService.hideNofitications();
 
         this.codeFightService.sendCodeFightStart(notification).subscribe();
     }
 
-    public onCodeFightRefuse(notification: INotificationModel) {
+    onCodeFightRefuse(notification: INotificationModel) {
         this.codeFightService.sendCodeFightRequestEnded(notification).subscribe();
 
         this.notificationService.removeNotification(notification);

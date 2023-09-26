@@ -55,7 +55,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     userId: string;
 
-    public isCodeFight: boolean;
+    isCodeFight: boolean;
 
     private isFullscreen = false;
 
@@ -96,6 +96,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     ngOnInit() {
         this.splitDirection = 'horizontal';
+
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const challengeId = +params.get('id')!;
 
@@ -152,7 +153,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return this.activeTab === title;
     }
 
-    public giveUpCodeFight() {
+    giveUpCodeFight() {
         const codeFightEnd: ICodeFightEnd = {
             isWinner: false,
             senderId: this.user.id,
@@ -161,13 +162,13 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
     }
 
-    public runSampleTests(): void {
+    runSampleTests(): void {
         this.sendCode().subscribe();
 
         this.isSampleTests = true;
     }
 
-    public submitSolution(): void {
+    submitSolution(): void {
         this.sendCode().subscribe();
 
         this.isSampleTests = false;
@@ -178,17 +179,21 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.signalRService.listenMessages((codeRunResults: ICodeRunResults) => {
             this.codeRunService.getCodeRunResults(codeRunResults);
 
-            if (this.isCodeFight && !this.isSampleTests) {
-                const codeFightEnd: ICodeFightEnd = {
-                    isWinner: true,
-                    senderId: this.user.id,
-                };
-
-                if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults?.isSuccess) {
-                    this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
-                }
-            }
+            this.shouldSendCodeFightEnd(codeRunResults);
         });
+    }
+
+    private shouldSendCodeFightEnd(codeRunResults: ICodeRunResults) {
+        if (this.isCodeFight && !this.isSampleTests) {
+            const codeFightEnd: ICodeFightEnd = {
+                isWinner: true,
+                senderId: this.user.id,
+            };
+
+            if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults?.isSuccess) {
+                this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+            }
+        }
     }
 
     private sendCode(): Observable<void> {

@@ -8,9 +8,9 @@ import { Subject } from 'rxjs';
 export class EventService {
     private onUsersStatusesChanged = new Subject<IUser[]>();
 
-    public usersChangedEvent$ = this.onUsersStatusesChanged.asObservable();
+    usersChangedEvent$ = this.onUsersStatusesChanged.asObservable();
 
-    public usersStatusesChanged(users: IUser[]) {
+    usersStatusesChanged(users: IUser[]) {
         this.onUsersStatusesChanged.next(users);
     }
 }

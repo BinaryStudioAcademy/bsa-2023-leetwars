@@ -33,7 +33,7 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallengePreview[]>(this.challengesRoute, httpParams);
     }
 
-    public getChallengeLevels(): Observable<IChallengeLevel[]> {
+    getChallengeLevels(): Observable<IChallengeLevel[]> {
         return this.httpService.getRequest<IChallengeLevel[]>(`${this.challengesRoute}/levels`);
     }
 

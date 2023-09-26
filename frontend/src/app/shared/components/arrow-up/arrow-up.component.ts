@@ -9,21 +9,21 @@ import { Observable } from 'rxjs';
 export class ArrowUpComponent implements OnInit {
     @Input() onScrollEvent: Observable<void>;
 
-    public showArrowButton = false;
+    showArrowButton = false;
 
     private heightWhereScrollAppears = 800;
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.onScrollEvent.subscribe(() => {
             this.updateArrowButton();
         });
     }
 
-    public afterScroll() {
+    afterScroll() {
         this.showArrowButton = false;
     }
 
-    public updateArrowButton() {
+    updateArrowButton() {
         const currentScrollHeight = window.scrollY;
 
         this.showArrowButton = currentScrollHeight > this.heightWhereScrollAppears;

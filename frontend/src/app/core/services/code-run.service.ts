@@ -10,7 +10,7 @@ import { ToastrNotificationsService } from './toastr-notifications.service';
 export class CodeRunService {
     constructor(private toastrService: ToastrNotificationsService) {}
 
-    public getCodeRunResults(result: ICodeRunResults) {
+    getCodeRunResults(result: ICodeRunResults) {
         if (result.buildResults?.isSuccess && result.testRunResults) {
             this.toastrService.showSuccess('Code was compiled successfully');
             this.showTestResults(result.testRunResults);

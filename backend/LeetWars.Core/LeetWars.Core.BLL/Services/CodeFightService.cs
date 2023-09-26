@@ -19,6 +19,8 @@ namespace LeetWars.Core.BLL.Services
         private readonly IUserService _userService;
         private readonly IChallengeService _challengeService;
 
+        private const long NOTIFICATION_CODE_FIGHT_TIME = 10 * 1000;
+
         public CodeFightService(LeetWarsCoreContext context, IMapper mapper, INotificationSenderService notificationSenderService, IUserService userService, IChallengeService challengeService)
             : base(context, mapper)
         {
@@ -44,7 +46,7 @@ namespace LeetWars.Core.BLL.Services
                 TypeNotification = TypeNotifications.CodeFightRequestStart,
                 Message = $"You received code fight from {sender.UserName}! {requestDto.ChallengeSettings.Level} challenge from " +
                 $"{language.Name}. Are you in?",
-                ShowFor = 10 * 1000
+                ShowFor = NOTIFICATION_CODE_FIGHT_TIME
             };
 
             return await UpdateUsersCodeFightStatusesAsync(notification, CodeFightStatus.HasRequest);

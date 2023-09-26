@@ -21,9 +21,9 @@ export class ChallengeSelectionModalComponent implements OnInit {
 
     @Input() receiverId: number;
 
-    public languagesNames: string[];
+    languagesNames: string[];
 
-    public levelsNames: string[];
+    levelsNames: string[];
 
     private currentUser: IUser;
 
@@ -38,7 +38,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
         private codeFightService: CodeFightService,
     ) {}
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.languagesNames = this.languages.map((item) => item.name);
         this.levelsNames = this.levels.map((item) => item.skillLevel);
         this.authService.getUser().subscribe((user: IUser) => {
@@ -46,7 +46,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
         });
     }
 
-    public confirmCodeFightRequest() {
+    onfirmCodeFightRequest() {
         const codeFightRequest: ICodeFightRequest = {
             challengeSettings: this.fightChallengeSettings,
             receiverId: this.receiverId,
@@ -58,7 +58,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
         });
     }
 
-    public onLanguageChanged(value: string | string[]) {
+    onLanguageChanged(value: string | string[]) {
         if (typeof value !== 'string') {
             return;
         }
@@ -66,7 +66,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
         this.fightChallengeSettings.languageId = this.languages.find((language) => language.name === value)?.id ?? 0;
     }
 
-    public onLevelChanged(value: string | string[]) {
+    onLevelChanged(value: string | string[]) {
         if (typeof value !== 'string') {
             return;
         }

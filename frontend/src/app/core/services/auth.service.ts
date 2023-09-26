@@ -42,7 +42,7 @@ export class AuthService {
         this.currentUser$ = this.userSubject.asObservable();
     }
 
-    public async initializeAuth(): Promise<void> {
+    async initializeAuth(): Promise<void> {
         const user = await firstValueFrom(this.afAuth.authState);
 
         if (user) {
