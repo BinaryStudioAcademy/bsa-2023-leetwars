@@ -46,7 +46,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
         });
     }
 
-    onfirmCodeFightRequest() {
+    confirmCodeFightRequest() {
         const codeFightRequest: ICodeFightRequest = {
             challengeSettings: this.fightChallengeSettings,
             receiverId: this.receiverId,
