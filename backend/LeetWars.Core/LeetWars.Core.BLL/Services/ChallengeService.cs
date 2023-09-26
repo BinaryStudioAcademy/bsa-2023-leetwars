@@ -277,10 +277,16 @@ namespace LeetWars.Core.BLL.Services
                 .Where(challenge => challenge.Level!.SkillLevel == settings.Level &&
                        challenge.Versions.Any(challengeversion => challengeversion.LanguageId == settings.LanguageId));
 
+            if(await challenges.CountAsync() == 0)
+            {
+                var randomPositionWhenNochallenges = GetRandomInt(await _context.Challenges.CountAsync());
+
+                return _mapper.Map<BriefChallengeInfoDto>(await _context.Challenges.Skip(randomPositionWhenNochallenges).FirstAsync());
+            }
+
             var randomPosition = GetRandomInt(challenges.Count());
 
-            return _mapper.Map<BriefChallengeInfoDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync() ??
-                await GetChallengeByIdAsync(1));
+            return _mapper.Map<BriefChallengeInfoDto>(await challenges.Skip(randomPosition).FirstAsync();
         }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)
