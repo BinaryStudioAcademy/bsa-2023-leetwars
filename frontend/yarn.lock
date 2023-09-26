@@ -6869,6 +6869,20 @@ ngx-owl-carousel-o@14.0.1:
   dependencies:
     tslib "^2.3.0"
 
+ngx-page-scroll-core@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-page-scroll-core/-/ngx-page-scroll-core-9.0.0.tgz#193524e90c413f238afea8c45de394567763aa38"
+  integrity sha512-/usoigGMuFk8a6NkKkoq4G6lSiql8rYH1xyPFnS++1ba0EjsWWzZSSUa962NBD2DlELTX3WT6zHR9Ub67n6IWg==
+  dependencies:
+    tslib "^2.0.0"
+
+ngx-page-scroll@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-page-scroll/-/ngx-page-scroll-9.0.0.tgz#3fbc41397e4db137971940255f8a47da03c1af68"
+  integrity sha512-q2Cg52AnqC5bhxsWE/WgmiuQ3P8hQ+5yNexkxbovv5cKd+1u8lohTCFb/fO3PQxYHI+ZPXggjDqaisMzG/d0cQ==
+  dependencies:
+    tslib "^2.0.0"
+
 ngx-toastr@15.2.2:
   version "15.2.2"
   resolved "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-15.2.2.tgz#8df1e880e6b111ede424350add200d97bb2fa524"
