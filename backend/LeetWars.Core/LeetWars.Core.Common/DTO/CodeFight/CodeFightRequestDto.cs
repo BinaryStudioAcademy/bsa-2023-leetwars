@@ -1,6 +1,4 @@
-﻿using LeetWars.Core.Common.DTO.Filters;
-
-namespace LeetWars.Core.Common.DTO.CodeFight
+﻿namespace LeetWars.Core.Common.DTO.CodeFight
 {
     public class CodeFightRequestDto
     {

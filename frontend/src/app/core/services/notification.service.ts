@@ -8,13 +8,13 @@ import { BehaviorSubject } from 'rxjs';
     providedIn: 'root',
 })
 export class NotificationService {
-    private notifications: INotificationModel[] = [];
+    notifications: INotificationModel[] = [];
 
-    private notificationModal: NgbModalRef;
-
-    private notificationSubject = new BehaviorSubject(this.notifications);
+    notificationSubject = new BehaviorSubject(this.notifications);
 
     currentNotifications = this.notificationSubject.asObservable();
+
+    private notificationModal: NgbModalRef;
 
     constructor(private modalService: NgbModal) {}
 

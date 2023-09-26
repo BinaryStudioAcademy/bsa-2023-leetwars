@@ -190,9 +190,13 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
                 senderId: this.user.id,
             };
 
-            if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults?.isSuccess) {
-                this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
-            }
+            this.sendCodeFightIfSuccessfullResults(codeRunResults, codeFightEnd);
+        }
+    }
+
+    private sendCodeFightIfSuccessfullResults(codeRunResults: ICodeRunResults, codeFightEnd: ICodeFightEnd) {
+        if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults?.isSuccess) {
+            this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
         }
     }
 

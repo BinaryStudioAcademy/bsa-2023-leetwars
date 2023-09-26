@@ -3,8 +3,6 @@ using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Http;
-using LeetWars.Core.DAL.Enums;
-using LeetWars.Core.Common.DTO.CodeFight;
 using System.Linq.Expressions;
 
 namespace LeetWars.Core.BLL.Interfaces;
@@ -22,7 +20,7 @@ public interface IUserService
     public Task<UserDto> GetCurrentUserAsync();
 
     public Task<UserDto> GetUserAsync(long id);
-    
+
     public Task<UserFullDto> GetFullUserAsync(long id);
 
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId);

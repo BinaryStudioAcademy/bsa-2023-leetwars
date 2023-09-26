@@ -1,15 +1,9 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
-using LeetWars.Core.Common.DTO.CodeRunRequest;
-using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.Filters;
-using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Notifications;
-using LeetWars.Core.Common.DTO.SortingModel;
-using LeetWars.Core.DAL.Entities;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 using LeetWars.Core.Common.DTO.User;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LeetWars.Core.WebAPI.Controllers
 {

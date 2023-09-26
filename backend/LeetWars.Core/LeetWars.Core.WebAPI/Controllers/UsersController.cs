@@ -1,6 +1,5 @@
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
-using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.User;
 using Microsoft.AspNetCore.Authorization;
@@ -118,7 +117,7 @@ public class UsersController : ControllerBase
     /// <param name="updateUserInfoDto">User info to update</param>
     /// <returns>Updated user info</returns>
     [HttpPut]
-    public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserInfoDto updateUserInfoDto)
+    public async Task<ActionResult<UserDto>> UpdateUserAsync(UpdateUserInfoDto updateUserInfoDto)
     {
         var updatedUser = await _userService.UpdateUserInfoAsync(updateUserInfoDto);
 
@@ -137,14 +136,14 @@ public class UsersController : ControllerBase
         var updatedUser = await _userService.CreateUserAsync(user);
         return Ok(updatedUser);
     }
-    
+
     /// <summary>
     /// Update user avatar
     /// </summary>
     /// <param name="avatar">New avatar</param>
     /// <returns>New user avatar</returns>
     [HttpPost("avatar")]
-    public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatar([FromForm] IFormFile avatar)
+    public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatarAsync([FromForm] IFormFile avatar)
     {
         var updatedUser = await _userService.UpdateUserAvatarAsync(avatar);
 

@@ -13,8 +13,6 @@ using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.AspNetCore.Http;
-using LeetWars.Core.DAL.Enums;
-using LeetWars.Core.Common.DTO.CodeFight;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 

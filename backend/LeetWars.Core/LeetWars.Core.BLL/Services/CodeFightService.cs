@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
-using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.User;
@@ -66,7 +65,7 @@ namespace LeetWars.Core.BLL.Services
             var sender = await _userService.GetUserAsync(notification.Sender.Id);
             var receiver = await _userService.GetUserAsync(receiverId);
 
-            if(sender.CodeFightStatus == CodeFightStatus.HasRequest)
+            if (sender.CodeFightStatus == CodeFightStatus.HasRequest)
             {
                 return await UpdateUsersCodeFightStatusesAsync(notification, CodeFightStatus.NotInBattle);
             }
@@ -79,8 +78,8 @@ namespace LeetWars.Core.BLL.Services
             notificationDto.TypeNotification = TypeNotifications.CodeFightStart;
 
             if (notificationDto.Challenge is null
-            || notificationDto.Sender is null
-            || string.IsNullOrEmpty(notificationDto.ReceiverId))
+                || notificationDto.Sender is null
+                || string.IsNullOrEmpty(notificationDto.ReceiverId))
             {
                 throw new NotFoundException(nameof(NewNotificationDto));
             }

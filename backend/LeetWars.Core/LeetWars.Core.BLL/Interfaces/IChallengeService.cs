@@ -1,13 +1,11 @@
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.CodeRunRequest;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
+using LeetWars.Core.Common.DTO.CodeFight;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
-using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
-using LeetWars.Core.Common.DTO.CodeFight;
-using LeetWars.Core.Common.DTO.User;
-using LeetWars.Core.Common.DTO.ChallengeLevel;
 
 namespace LeetWars.Core.BLL.Interfaces
 {
@@ -34,7 +32,7 @@ namespace LeetWars.Core.BLL.Interfaces
         Task<BriefChallengeInfoDto> GetBriefChallengeInfoByIdAsync(long challengeId);
 
         Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings);
-        
+
         Task SetWeeklyChallengesAsync();
     }
 }

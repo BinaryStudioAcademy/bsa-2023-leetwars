@@ -63,7 +63,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
             return;
         }
 
-        this.fightChallengeSettings.languageId = this.languages.find((language) => language.name === value)?.id ?? 0;
+        this.fightChallengeSettings.languageId = this.languages.find((language) => language.name === value)?.id ?? 1;
     }
 
     onLevelChanged(value: string | string[]) {

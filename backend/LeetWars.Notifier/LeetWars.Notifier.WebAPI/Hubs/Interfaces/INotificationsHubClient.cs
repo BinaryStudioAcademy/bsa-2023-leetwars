@@ -1,6 +1,5 @@
 ﻿using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Notifications;
-using LeetWars.Core.Common.DTO.User;
 
 namespace LeetWars.Notifier.WebAPI.Hubs.Interfaces
 {

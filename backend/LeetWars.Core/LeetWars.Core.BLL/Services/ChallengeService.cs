@@ -2,8 +2,10 @@ using AutoMapper;
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
+using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
@@ -14,10 +16,8 @@ using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
-using LeetWars.Core.Common.DTO.CodeFight;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
-using LeetWars.Core.Common.DTO.ChallengeLevel;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -118,7 +118,7 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(version => version.Language)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
-                        .ThenInclude(solution => solution.User)  
+                        .ThenInclude(solution => solution.User)
                 .AsQueryable();
 
             if (settings.LanguageId is not null)
@@ -272,7 +272,7 @@ namespace LeetWars.Core.BLL.Services
                                             .Cast<LanguageLevel>()
                                             .ToArray();
 
-            foreach(var level in levels) 
+            foreach (var level in levels)
             {
                 var challengesByLevel = _context.Challenges
                     .Where(x => x.Level != null && x.Level.SkillLevel == level)
@@ -308,7 +308,7 @@ namespace LeetWars.Core.BLL.Services
                 .Where(challenge => challenge.Level!.SkillLevel == settings.Level &&
                        challenge.Versions.Any(challengeversion => challengeversion.LanguageId == settings.LanguageId));
 
-            if(await challenges.AnyAsync())
+            if (await challenges.AnyAsync())
             {
                 var randomPositionWhenNochallenges = GetRandomInt(await _context.Challenges.CountAsync());
 
