@@ -43,7 +43,7 @@ export class AuthService {
         this.initializeAuth();
     }
 
-    public async initializeAuth(): Promise<void> {
+    async initializeAuth(): Promise<void> {
         const user = await firstValueFrom(this.afAuth.authState);
 
         if (user) {
@@ -165,7 +165,7 @@ export class AuthService {
         return of(this.getUserInfo()!);
     }
 
-    public linkGitHub(): Observable<firebase.auth.UserCredential | null> {
+    linkGitHub(): Observable<firebase.auth.UserCredential | null> {
         return this.afAuth.authState.pipe(
             first(),
             switchMap((user) => {
@@ -190,7 +190,7 @@ export class AuthService {
         );
     }
 
-    public getFirebaseUserInfo() {
+    getFirebaseUserInfo() {
         return this.afAuth.authState.pipe(map((user) => (user ? user.providerData : [])));
     }
 

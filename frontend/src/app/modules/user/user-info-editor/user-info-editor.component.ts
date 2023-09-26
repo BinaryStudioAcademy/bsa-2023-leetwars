@@ -23,7 +23,7 @@ import { map, of, switchMap } from 'rxjs';
     styleUrls: ['./user-info-editor.component.sass'],
 })
 export class UserInfoEditorComponent implements OnInit {
-    public isGithubLinked: boolean;
+    isGithubLinked: boolean;
 
     private readonly GITHUB_PROVIDER = 'github.com';
 
@@ -98,7 +98,7 @@ export class UserInfoEditorComponent implements OnInit {
         return getErrorMessage(formControlName, this.userInfoForm);
     }
 
-    public linkGithub() {
+    linkGithub() {
         this.authService.linkGitHub().subscribe((result) => {
             if (result) {
                 this.toastrNotification.showSuccess('GitHub account has been succesfully linked');
