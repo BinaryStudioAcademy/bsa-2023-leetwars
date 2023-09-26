@@ -44,7 +44,7 @@ export class UserInfoEditorComponent implements OnInit {
 
     avatarPreview: string;
 
-    user: IUser;
+    private user: IUser;
 
     constructor(
         private userService: UserService,
@@ -58,7 +58,7 @@ export class UserInfoEditorComponent implements OnInit {
         this.updateExistingProviders();
     }
 
-    public onSave() {
+    onSave() {
         const editUserInfo: IEditUserInfo = {
             email: this.userInfoForm.value.email,
             username: this.userInfoForm.value.username,
@@ -78,7 +78,7 @@ export class UserInfoEditorComponent implements OnInit {
             });
     }
 
-    public onImagePicked(event: Event) {
+    onImagePicked(event: Event) {
         const file = (event.target as HTMLInputElement).files![0];
 
         if (!validatePictureFileName(file.name)) {
@@ -94,7 +94,7 @@ export class UserInfoEditorComponent implements OnInit {
         this.router.navigate(['user/profile']);
     }
 
-    public getErrorMessage(formControlName: string) {
+    getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.userInfoForm);
     }
 

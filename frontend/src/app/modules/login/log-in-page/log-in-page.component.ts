@@ -13,24 +13,20 @@ import { switchMap } from 'rxjs';
     styleUrls: ['./log-in-page.component.sass'],
 })
 export class LogInPageComponent {
-    public logInForm = new FormGroup({
+    logInForm = new FormGroup({
         email: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
     });
 
-    public isSignInError = false;
+    isSignInError = false;
 
-    constructor(
-        private authService: AuthService,
-        private userService: UserService,
-        private authHelper: AuthHelper,
-    ) { }
+    constructor(private authService: AuthService, private userService: UserService, private authHelper: AuthHelper) {}
 
-    public getErrorMessage(formControlName: string) {
+    getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.logInForm);
     }
 
-    public signIn() {
+    signIn() {
         this.userService
             .checkEmail(this.logInForm.value.email!)
             .pipe(
@@ -47,7 +43,7 @@ export class LogInPageComponent {
             )
             .subscribe(
                 ({ userName, firstName }: IUser) => {
-                    this.authHelper.handleAuthSuccess(userName || (firstName!), true);
+                    this.authHelper.handleAuthSuccess(userName || firstName!, true);
                 },
                 () => {
                     this.isSignInError = true;
@@ -56,11 +52,11 @@ export class LogInPageComponent {
             );
     }
 
-    public signInWithGitHub() {
+    signInWithGitHub() {
         this.authService.signInWithGitHub();
     }
 
-    public signInWithGoogle() {
+    signInWithGoogle() {
         this.authService.signInWithGoogle();
     }
 }

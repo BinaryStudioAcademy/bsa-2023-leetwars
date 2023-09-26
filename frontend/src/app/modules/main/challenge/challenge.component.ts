@@ -16,13 +16,13 @@ export class ChallengeComponent implements OnInit {
 
     @Input() challenge: IChallengePreview;
 
-    public challengePositiveFeedbacksPercent = 0;
+    challengePositiveFeedbacksPercent = 0;
 
-    public isChallengeUpdated = true;
+    isChallengeUpdated = true;
 
-    public getLanguageIconUrl = getLanguageIconUrl;
+    getLanguageIconUrl = getLanguageIconUrl;
 
-    public canEdit: boolean;
+    canEdit: boolean;
 
     private user: IUser;
 
@@ -33,7 +33,7 @@ export class ChallengeComponent implements OnInit {
         });
     }
 
-    public starChange() {
+    starChange() {
         this.isChallengeUpdated = false;
 
         const star: IStar = {

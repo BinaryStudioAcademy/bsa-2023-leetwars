@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { AuthService } from '@core/services/auth.service';
 import { HubConnection } from '@microsoft/signalr';
+import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { Guid } from 'guid-typescript';
 import { Subject, Subscription } from 'rxjs';
 
@@ -9,17 +11,17 @@ import { SignalRHubFactoryService } from './signalr-hub-factory.service';
     providedIn: 'root',
 })
 export class CodeDisplayingHubService {
-    readonly hubUrl = 'codeDisplayingHub';
+    singleUserGroupId: string;
+
+    private readonly hubUrl = 'codeDisplayingHub';
 
     private hubConnection: HubConnection;
 
-    readonly messages = new Subject<string>();
+    private readonly messages = new Subject<ICodeRunResults>();
 
     private subscriptions: Subscription[] = [];
 
-    public singleUserGroupId: string;
-
-    constructor(private hubFactory: SignalRHubFactoryService) {}
+    constructor(private hubFactory: SignalRHubFactoryService, private authService: AuthService) {}
 
     async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
@@ -27,7 +29,7 @@ export class CodeDisplayingHubService {
         await this.init();
     }
 
-    listenMessages(action: (msg: string) => void) {
+    listenMessages(action: (msg: ICodeRunResults) => void) {
         this.subscriptions = [...this.subscriptions, this.messages.subscribe({ next: action })];
     }
 
@@ -40,23 +42,12 @@ export class CodeDisplayingHubService {
         await this.hubConnection
             .start()
             .then(() => console.info(`"${this.hubFactory}" successfully started.`))
-            .then(() => this.registerUser())
             .catch(() => console.info(`"${this.hubFactory}" failed.`));
 
-        this.hubConnection.on('BroadcastMessage', (msg: string) => {
+        this.hubConnection.on('BroadcastMessageAsync', (msg: ICodeRunResults) => {
             this.messages.next(msg);
         });
 
-        this.hubConnection.onreconnected(() => {
-            this.registerUser();
-        });
+        await this.hubConnection.invoke('OnConnectAsync', `${this.authService.userSubject.value?.id}`);
     }
-
-    public registerUser = async () => {
-        try {
-            await this.hubConnection.invoke('OnConnectAsync', `${this.singleUserGroupId}`);
-        } catch (error) {
-            console.error('Error getting connection ID:', error);
-        }
-    };
 }

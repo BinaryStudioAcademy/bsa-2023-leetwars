@@ -3,7 +3,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
-import { HeaderService } from '@core/services/header-service';
+import { HeaderService } from '@core/services/header.service';
 import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -40,13 +40,18 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
     }
 
-    public showMenu: boolean = false;
+    showMenu: boolean = false;
 
-    public user: IUser;
+    user: IUser;
 
     async ngOnInit() {
         await this.notificationHub.start();
         this.listeningHub();
+    }
+
+    override ngOnDestroy() {
+        this.notificationHub.stop();
+        super.ngOnDestroy();
     }
 
     showNotifications() {
@@ -84,7 +89,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         ];
     }
 
-    public goToProfile() {
+    goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
     }
@@ -93,10 +98,5 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.notificationHub.listenMessages((msg: INotificationModel) => {
             this.notificationService.addNotification(msg);
         });
-    }
-
-    override ngOnDestroy() {
-        this.notificationHub.stop();
-        super.ngOnDestroy();
     }
 }

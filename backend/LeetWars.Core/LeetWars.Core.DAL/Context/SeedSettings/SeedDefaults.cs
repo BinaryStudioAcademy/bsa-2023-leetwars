@@ -24,6 +24,8 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
 
         public static readonly int LanguageVersionSeed = 8901;
 
+        public static readonly int BadgeSeed = 1337;
+
         public static readonly ImmutableArray<Tag> Tags = ImmutableArray.CreateRange(new Tag[]
         {
             new Tag("Arrays"){ Id = 1 },
@@ -50,7 +52,7 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
             new Language("Javascript"){Id = 1},
             new Language("C#"){Id = 2}
         });
-        
+
         public static readonly ImmutableArray<Badge> Badges = ImmutableArray.CreateRange(new Badge[]
         {
             new Badge("Jan LeetWars Challenge Badge", "2023-01.png", "2023-01.gif"){Id = 1},
