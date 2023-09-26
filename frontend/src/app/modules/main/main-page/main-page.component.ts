@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
-import { BroadcastHubService } from '@core/hubs/broadcast-hub.service';
 import { CodeAnylizerHttpService } from '@core/services/code-anylizer-http.service';
 import { SpinnerService } from '@core/services/spinner.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
@@ -16,26 +15,14 @@ import { takeUntil } from 'rxjs';
     templateUrl: './main-page.component.html',
     styleUrls: ['./main-page.component.sass'],
 })
-export class MainComponent extends BaseComponent implements OnInit, OnDestroy {
+export class MainComponent extends BaseComponent {
     challengeGenerateRequest: IChallengeGenerateRequest;
-    constructor(private broadcastHub: BroadcastHubService, private modalService: NgbModal, private codeAnylizerService: CodeAnylizerHttpService, private toastrService: ToastrNotificationsService, private router: Router, private spinnerService: SpinnerService) {
+
+    constructor(private modalService: NgbModal, private codeAnylizerService: CodeAnylizerHttpService, private toastrService: ToastrNotificationsService, private router: Router, private spinnerService: SpinnerService) {
         super();
     }
 
-    async ngOnInit() {
-        await this.broadcastHub.start();
-        this.broadcastHub.listenMessages((msg) => {
-            console.info(`The next broadcast message was received: ${msg}`);
-        });
-    }
-
-    override async ngOnDestroy() {
-        super.ngOnDestroy();
-        await this.broadcastHub.stop();
-    }
-
     public onBtnGenerateClick() {
-        
         const modalRef = this.modalService.open(DescribeQuestionComponent, { windowClass: 'delete-modal' });
         modalRef.componentInstance.buttons = [
             {
@@ -57,6 +44,7 @@ export class MainComponent extends BaseComponent implements OnInit, OnDestroy {
             this.challengeGenerateRequest = request;
         });
     }
+
     private generateChallenge() {
         if (!this.challengeGenerateRequest) {
             return;
@@ -82,5 +70,4 @@ export class MainComponent extends BaseComponent implements OnInit, OnDestroy {
                 }
             });
     }
-
 }
