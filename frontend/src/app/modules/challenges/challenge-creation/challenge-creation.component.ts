@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
@@ -33,6 +33,7 @@ import { INewChallengeVersion } from '@shared/models/challenge-version/new-chall
 import { IDropdownItem } from '@shared/models/dropdown-item';
 import { ILanguage } from '@shared/models/language/language';
 import { ITag } from '@shared/models/tag/tag';
+import { HasUnsavedChanges } from '@shared/models/unsaved-changes/has-unsaved-changes';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -40,32 +41,34 @@ import { takeUntil } from 'rxjs';
     templateUrl: './challenge-creation.component.html',
     styleUrls: ['./challenge-creation.component.sass'],
 })
-export class ChallengeCreationComponent extends BaseComponent implements OnInit {
-    public steps: ChallengeStep[];
+export class ChallengeCreationComponent extends BaseComponent implements HasUnsavedChanges, OnInit {
+    steps: ChallengeStep[];
 
-    public stepsData: StepData[] = getInitStepsData();
+    stepsData: StepData[] = getInitStepsData();
 
-    public currentStep: ChallengeStep = ChallengeStep.Question;
+    currentStep: ChallengeStep = ChallengeStep.Question;
 
-    public challengeId: number;
+    challengeId: number;
 
-    public challenge: INewChallenge | IEditChallenge;
+    challenge: INewChallenge | IEditChallenge;
 
-    public challengeVersion: INewChallengeVersion | IEditChallengeVersion;
+    challengeVersion: INewChallengeVersion | IEditChallengeVersion;
 
-    public tags: ITag[] = [];
+    tags: ITag[] = [];
 
-    public challengeLevels: IChallengeLevel[] = [];
+    challengeLevels: IChallengeLevel[] = [];
 
-    public languages: ILanguage[] = [];
+    languages: ILanguage[] = [];
 
-    public languageDropdownItems: IDropdownItem[] = [];
+    languageDropdownItems: IDropdownItem[] = [];
 
-    public currentLanguage?: IDropdownItem;
+    currentLanguage?: IDropdownItem;
 
-    public editorOptions = editorOptions;
+    editorOptions = editorOptions;
 
-    public canOpenDropdown = true;
+    canOpenDropdown = true;
+
+    unsavedChanges: boolean = true;
 
     protected readonly ChallengeStep = ChallengeStep;
 
@@ -85,6 +88,11 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.challengeVersion = getNewChallengeVersion();
     }
 
+    @HostListener('window:beforeunload', ['$event'])
+    reloadNotification($event: BeforeUnloadEvent): void {
+        $event.returnValue = 'true';
+    }
+
     ngOnInit(): void {
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             this.challengeId = +params.get('id')!;
@@ -101,23 +109,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         });
     }
 
-    private loadChallenge(challengeId: number) {
-        this.challengeService
-            .getChallengeById(challengeId)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (challenge) => {
-                    this.challenge = { ...challenge };
-                    [this.challengeVersion] = this.challenge.versions;
-                    this.loadActualLanguages();
-                },
-                error: () => {
-                    this.toastrService.showError('Server connection error');
-                },
-            });
-    }
-
-    public onStepClick(step: ChallengeStep) {
+    onStepClick(step: ChallengeStep) {
         this.stepsData = showValidationErrorsForRequiredSteps(this.stepsData, step);
         if (!stepIsAllowed(this.stepsData, step)) {
             return;
@@ -125,7 +117,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.currentStep = step;
     }
 
-    public onValidationChange(step: ChallengeStep, isValid: boolean) {
+    onValidationChange(step: ChallengeStep, isValid: boolean) {
         const stepData = getStepData(this.stepsData, step);
 
         if (stepData) {
@@ -134,7 +126,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         }
     }
 
-    public onBtnCreateClick() {
+    onBtnCreateClick() {
         this.stepsData = showValidationErrorsForAllSteps(this.stepsData);
         if (checkAllStepsIsValid(this.stepsData)) {
             const newChallenge = prepareChallengeDto(this.challenge);
@@ -144,6 +136,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
                     next: () => {
+                        this.unsavedChanges = false;
                         this.toastrService.showSuccess('Challenge was successfully created');
                         this.router.navigate(['/']);
                     },
@@ -154,7 +147,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         }
     }
 
-    public onBtnEditClick() {
+    onBtnEditClick() {
         this.stepsData = showValidationErrorsForAllSteps(this.stepsData);
         if (checkAllStepsIsValid(this.stepsData)) {
             this.challengeService
@@ -162,6 +155,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
                     next: () => {
+                        this.unsavedChanges = false;
                         this.toastrService.showSuccess('Challenge was successfully edited');
                         this.router.navigate(['/']);
                     },
@@ -172,11 +166,12 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         }
     }
 
-    public onBtnDeleteClick() {
+    onBtnDeleteClick() {
         const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'delete-modal' });
 
         modalRef.componentInstance.titleText = 'Do you really want to delete challenge?';
-        modalRef.componentInstance.bodyText = 'After confirmation, the challenge will be permanently deleted and cannot be recovered.';
+        modalRef.componentInstance.bodyText =
+            'After confirmation, the challenge will be permanently deleted and cannot be recovered.';
         modalRef.componentInstance.buttons = [
             {
                 text: 'Yes',
@@ -194,11 +189,11 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         ];
     }
 
-    public onBtnCancelClick() {
+    onBtnCancelClick() {
         this.router.navigate(['/']);
     }
 
-    public onLanguageChanged(selectedItem: IDropdownItem) {
+    onLanguageChanged(selectedItem: IDropdownItem) {
         this.currentLanguage = selectedItem;
         const language = this.languages.find((l) => l.name === selectedItem.content);
 
@@ -210,8 +205,24 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.challengeVersion = this.challenge.versions.find((v) => v.languageId === language.id)!;
     }
 
-    public getStepChecking(step: ChallengeStep) {
+    getStepChecking(step: ChallengeStep) {
         return getStepChecking(this.stepsData, step);
+    }
+
+    private loadChallenge(challengeId: number) {
+        this.challengeService
+            .getChallengeById(challengeId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (challenge) => {
+                    this.challenge = { ...challenge };
+                    [this.challengeVersion] = this.challenge.versions;
+                    this.loadActualLanguages();
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
     }
 
     private deleteChallenge() {

@@ -6,11 +6,11 @@ import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level'
     providedIn: 'root',
 })
 export class ChallengeLevelService {
-    public baseUrl = '/challengelevel';
+    private baseUrl = '/challengelevel';
 
-    constructor(private httpService: HttpInternalService) { }
+    constructor(private httpService: HttpInternalService) {}
 
-    public getLevels() {
+    getLevels() {
         return this.httpService.getRequest<IChallengeLevel[]>(this.baseUrl);
     }
 }

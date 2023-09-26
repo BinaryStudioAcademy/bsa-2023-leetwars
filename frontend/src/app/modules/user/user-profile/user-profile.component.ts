@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { IUser } from '@shared/models/user/user';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
-import { Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
 
@@ -17,11 +18,7 @@ import { getInactiveBars } from './user-profile.utils';
     templateUrl: './user-profile.component.html',
     styleUrls: ['./user-profile.component.sass'],
 })
-export class UserProfileComponent implements OnInit {
-    user?: IUser | null;
-
-    currentUser?: IUser | null;
-
+export class UserProfileComponent extends BaseComponent implements OnInit {
     fullUser: IUserFull;
 
     userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
@@ -32,7 +29,9 @@ export class UserProfileComponent implements OnInit {
 
     isFriend: Boolean = false;
 
-    private unsubscribe$ = new Subject<void>();
+    private user: IUser;
+
+    currentUser?: IUser | null;
 
     constructor(
         private userService: UserService,
@@ -40,7 +39,10 @@ export class UserProfileComponent implements OnInit {
         private toastrNotification: ToastrNotificationsService,
         private route: ActivatedRoute,
     ) {
-        this.user = this.authService.getUserInfo();
+        super();
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.user = user;
+        });
     }
 
     ngOnInit(): void {
@@ -97,7 +99,9 @@ export class UserProfileComponent implements OnInit {
                         ...getInactiveBars(result),
                     ];
                 },
-                error: () => { this.toastrNotification.showError('Server connection error'); },
+                error: () => {
+                    this.toastrNotification.showError('Server connection error');
+                },
             });
     }
 

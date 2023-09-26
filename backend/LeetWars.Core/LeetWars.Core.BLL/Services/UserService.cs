@@ -1,21 +1,21 @@
-using System.Linq.Expressions;
 using AutoMapper;
+using Bogus;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Helpers.Email;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
-using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.User;
+using LeetWars.Core.Common.Extensions;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
-using Microsoft.EntityFrameworkCore;
-using LeetWars.Core.BLL.Extensions;
-using Bogus;
-using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -118,7 +118,7 @@ public class UserService : BaseService, IUserService
 
         return _mapper.Map<UserDto>(user);
     }
-
+    
     public async Task<UserFullDto> GetUserByNickname(string nickname)
     {
         var user = await _context.Users
@@ -135,7 +135,7 @@ public class UserService : BaseService, IUserService
         return user is null ? throw new NotFoundException(nameof(User), nickname) : _mapper.Map<User, UserFullDto>(user);
     }
 
-    public async Task<BriefUserInfoDto> GetBriefUserInfoById(long id)
+    public async Task<BriefUserInfoDto> GetBriefUserInfoByIdAsync(long id)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == id);
 
@@ -218,7 +218,7 @@ public class UserService : BaseService, IUserService
         return user ?? throw new NotFoundException(nameof(User));
     }
 
-    public async Task<UserDto> UpdateUserInfo(UpdateUserInfoDto userInfoDto)
+    public async Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto)
     {
         if (userInfoDto is null)
         {
@@ -227,32 +227,32 @@ public class UserService : BaseService, IUserService
 
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
                             ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
-        
+
         _mapper.Map(userInfoDto, currentUser);
-        
+
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
         return _mapper.Map<UserDto>(currentUser);
     }
 
-    public async Task<UserAvatarDto> UpdateUserAvatar(IFormFile image)
+    public async Task<UserAvatarDto> UpdateUserAvatarAsync(IFormFile image)
     {
         if (image is null)
         {
             throw new ArgumentNullException(nameof(image));
         }
-        
+
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
                           ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
-        
+
         var uniqueFileName = FileNameHelper.CreateUniqueFileName(image.FileName);
         await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
             uniqueFileName);
         currentUser.ImagePath = uniqueFileName;
-        
+
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
-        
+
         var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
     }

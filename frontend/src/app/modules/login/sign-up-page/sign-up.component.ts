@@ -10,11 +10,7 @@ import {
     userNameMaxLength,
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
-import {
-    emailPattern,
-    latinOrCyrillicCharactersPattern,
-    passwordPattern,
-} from '@shared/utils/validation/regex-patterns';
+import { emailPattern, latinOrCyrillicCharactersPattern, passwordPattern } from '@shared/utils/validation/regex-patterns';
 import { usernameExistsValidator } from '@shared/utils/validation/username-exists.validator';
 import { getErrorMessage, getFirebaseErrorMessage } from '@shared/utils/validation/validation-helper';
 import { FirebaseError } from 'firebase/app';
@@ -25,9 +21,9 @@ import { FirebaseError } from 'firebase/app';
     styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent {
-    public validationError: string | null;
+    validationError: string | null;
 
-    public registrationForm = new FormGroup({
+    registrationForm = new FormGroup({
         email: new FormControl('', [
             Validators.required,
             Validators.maxLength(emailMaxLength),
@@ -51,7 +47,7 @@ export class SignUpComponent {
         ]),
     });
 
-    public getErrorMessage(formControlName: string) {
+    getErrorMessage(formControlName: string) {
         this.validationError = null;
 
         return getErrorMessage(formControlName, this.registrationForm);
@@ -59,15 +55,15 @@ export class SignUpComponent {
 
     constructor(private authService: AuthService, private userService: UserService, private authHelper: AuthHelper) {}
 
-    public signUpGitHub() {
+    signUpGitHub() {
         this.authService.signInWithGitHub(false);
     }
 
-    public signUpGoogle() {
+    signUpGoogle() {
         this.authService.signInWithGoogle(false);
     }
 
-    public signUp() {
+    signUp() {
         this.authService
             .register({
                 userName: this.registrationForm.value.username!,

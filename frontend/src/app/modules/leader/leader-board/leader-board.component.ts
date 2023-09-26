@@ -13,15 +13,15 @@ import { Subject, takeUntil } from 'rxjs';
     styleUrls: ['./leader-board.component.sass'],
 })
 export class LeaderBoardComponent extends BaseComponent implements OnInit {
-    public users: IUser[] = [];
+    users: IUser[] = [];
 
-    public currentUser: IUser;
+    currentUser: IUser;
 
-    public usersToShow: IUser[] = [];
+    usersToShow: IUser[] = [];
 
-    public isLastPage = false;
+    isLastPage = false;
 
-    public loading = false;
+    loading = false;
 
     public scrollEventSubject = new Subject<void>();
 
@@ -38,11 +38,11 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         super();
     }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.getUsers();
     }
 
-    public onScroll() {
+    onScroll() {
         this.scrollEventSubject.next();
 
         if (this.isLastPage) {

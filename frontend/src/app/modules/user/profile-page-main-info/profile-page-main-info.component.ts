@@ -12,35 +12,35 @@ import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solu
 export class ProfilePageMainInfoComponent implements OnChanges {
     @Input() user: IUserFull = <IUserFull>{};
 
-    @Input() userSolutions: IUserSolutionsGroupedBySkillLevel [] = [];
+    @Input() userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
 
     @Input() isCurrentUser: Boolean;
 
     @Input() isFriend: Boolean;
 
-    public communityViews = 0;
+    communityViews = 0;
 
-    public communityLastWeekViews = 0;
+    communityLastWeekViews = 0;
 
-    public communitySolution = 0;
+    communitySolution = 0;
 
-    public communityLastWeekSolution = 0;
+    communityLastWeekSolution = 0;
 
-    public communityDiscuss = 0;
+    communityDiscuss = 0;
 
-    public communityLastWeekDiscuss = 0;
+    communityLastWeekDiscuss = 0;
 
-    public communityLastWeekReputation = 0;
+    communityLastWeekReputation = 0;
 
     constructor(private router: Router) {}
 
-    public ngOnChanges({ user }: SimpleChanges) {
+    ngOnChanges({ user }: SimpleChanges) {
         if (user && this.user) {
             this.updateSolutions();
         }
     }
 
-    public onEditProfile() {
+    onEditProfile() {
         this.router.navigate(['user/profile/edit']);
     }
 

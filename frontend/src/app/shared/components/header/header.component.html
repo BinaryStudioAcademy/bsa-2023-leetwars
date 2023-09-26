@@ -15,7 +15,7 @@
     <div class="user-menu align-items-center d-flex">
         <div class="notification" (click)="showNotifications()">
             <fa-layers size="2x">
-                <fa-icon [icon]="['far', 'bell']"></fa-icon>
+                <fa-icon [icon]="['far', 'bell']" class="icon-bell"></fa-icon>
                 <fa-layers-counter
                     *ngIf="countNotification"
                     [classes]="['change-color']"

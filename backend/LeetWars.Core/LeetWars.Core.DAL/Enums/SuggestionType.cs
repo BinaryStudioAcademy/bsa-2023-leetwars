@@ -6,5 +6,6 @@ public enum SuggestionType
     RankUp,
     PracticeAndRepeat,
     Beta,
-    Random
+    Random,
+    Weekly
 }

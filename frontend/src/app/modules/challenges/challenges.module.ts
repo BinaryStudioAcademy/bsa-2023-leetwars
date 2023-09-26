@@ -1,5 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
+import { UnsavedChangesGuard } from '@core/guards/unsaved-changes.guard';
 import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { monacoConfig } from '@shared/configurations/monaco-config';
 import { SharedModule } from '@shared/shared.module';
@@ -34,5 +35,8 @@ import { ChallengesRoutingModule } from './challenges-routing.module';
         MarkdownModule.forRoot(),
         AngularSplitModule,
         MonacoEditorModule.forRoot(monacoConfig)],
+    providers: [
+        UnsavedChangesGuard,
+    ],
 })
 export class ChallengesModule {}
