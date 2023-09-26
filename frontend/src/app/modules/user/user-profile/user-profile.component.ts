@@ -9,6 +9,7 @@ import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solu
 import { takeUntil } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
+
 import { getInactiveBars } from './user-profile.utils';
 
 @Component({

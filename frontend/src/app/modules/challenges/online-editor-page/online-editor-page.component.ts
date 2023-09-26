@@ -7,8 +7,8 @@ import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
-import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { IChallenge } from '@shared/models/challenge/challenge';
+import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { EditorOptions } from '@shared/models/options/editor-options';
@@ -190,8 +190,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     private extractLanguageVersions(versions: IChallengeVersion[]) {
         return versions.flatMap((version) =>
-            version.language.languageVersions.map((languageVersion) => languageVersion.version),
-        );
+            version.language.languageVersions.map((languageVersion) => languageVersion.version));
     }
 
     private setupEditorOptions() {

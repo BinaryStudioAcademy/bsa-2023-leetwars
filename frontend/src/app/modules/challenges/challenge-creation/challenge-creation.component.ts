@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
-import { ChallengeLevelService } from '@core/services/challenge-level.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { ChallengeLevelService } from '@core/services/challenge-level.service';
 import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
@@ -25,11 +25,11 @@ import { StepData } from '@modules/challenges/challenge-creation/step-data';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalComponent } from '@shared/components/confirmation-modal/confirmation-modal.component';
 import { ChallengeStep } from '@shared/enums/challenge-step';
+import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
+import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { IEditChallengeVersion } from '@shared/models/challenge-version/edit-challenge-version';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
-import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
-import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { IDropdownItem } from '@shared/models/dropdown-item';
 import { ILanguage } from '@shared/models/language/language';
 import { ITag } from '@shared/models/tag/tag';
@@ -258,8 +258,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     private loadActualLanguages() {
         const challengeVersionLanguages = this.languages.filter((lang) =>
-            this.challenge.versions.some((version) => version.languageId === lang.id),
-        );
+            this.challenge.versions.some((version) => version.languageId === lang.id));
 
         this.languageDropdownItems = getDropdownItems(challengeVersionLanguages.map((lang) => lang.name));
         [this.currentLanguage] = this.languageDropdownItems;
