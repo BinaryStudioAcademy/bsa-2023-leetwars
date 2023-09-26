@@ -133,6 +133,11 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
         }
 
+        public async Task<List<ChallengeLevelDto>> GetChallengeLevelsAsync()
+        {
+            return _mapper.Map<List<ChallengeLevelDto>>(await _context.ChallengeLevels.ToListAsync());
+        }
+
         public async Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id)
         {
             var challenge = await GetChallengeByIdAsync(id);
@@ -259,9 +264,9 @@ namespace LeetWars.Core.BLL.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task SetWeeklyChallenges()
+        public async Task SetWeeklyChallengesAsync()
         {
-            await ResetLastWeeklyChallenge();
+            await ResetLastWeeklyChallengeAsync();
 
             var levels = Enum.GetValues(typeof(LanguageLevel))
                                             .Cast<LanguageLevel>()
@@ -284,20 +289,7 @@ namespace LeetWars.Core.BLL.Services
             await _context.SaveChangesAsync();
         }
 
-        private async Task ResetLastWeeklyChallenge()
-        {
-            var weeklyChallengesToReset = await _context.Challenges
-                .Where(x => x.IsWeekly)
-                .ToListAsync();
-
-            weeklyChallengesToReset
-                .ForEach(challenge => challenge.IsWeekly = false);
-
-            _context.UpdateRange(weeklyChallengesToReset);
-            await _context.SaveChangesAsync();
-        }
-
-        private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
+        public async Task<BriefChallengeInfoDto> GetBriefChallengeInfoByIdAsync(long challengeId)
         {
             var challenge = await _context.Challenges
                 .Include(x => x.Author)
@@ -331,6 +323,19 @@ namespace LeetWars.Core.BLL.Services
         public void SendCodeRunRequest(CodeRunRequestDto request)
         {
             _builderSenderService.SendNotificationToRabbitMQ(request);
+        }
+
+        private async Task ResetLastWeeklyChallengeAsync()
+        {
+            var weeklyChallengesToReset = await _context.Challenges
+                .Where(x => x.IsWeekly)
+                .ToListAsync();
+
+            weeklyChallengesToReset
+                .ForEach(challenge => challenge.IsWeekly = false);
+
+            _context.UpdateRange(weeklyChallengesToReset);
+            await _context.SaveChangesAsync();
         }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)
