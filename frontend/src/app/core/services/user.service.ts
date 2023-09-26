@@ -41,7 +41,7 @@ export class UserService {
         return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/${id}`);
     }
 
-    public getUserByNickname(nickname: string): Observable<IUserFull> {
+    getUserByNickname(nickname: string): Observable<IUserFull> {
         return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/another-profile/${nickname}`);
     }
 
