@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using LeetWars.Core.Common.DTO.CodeFight;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -153,7 +154,7 @@ namespace LeetWars.Core.BLL.Services
                     throw new NotFoundException(nameof(ChallengeStar));
                 }
 
-                var briefChallenge = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id);
+                var briefChallenge = await GetBriefChallengeInfoByIdAsync(challengeStarDto.Challenge.Id);
 
                 var newNotification = new NewNotificationDto()
                 {
@@ -186,7 +187,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengePreviewDto>(challenge);
         }
 
-        public async Task CreateChallengeAsync(NewChallengeDto challengeDto)
+        public async Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
             var challenge = _mapper.Map<Challenge>(challengeDto);
@@ -219,7 +220,7 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
 
-            var briefChallenge = await GetBriefChallengeInfoById(challenge.Id);
+            var briefChallenge = await GetBriefChallengeInfoByIdAsync(challenge.Id);
 
             var newNotification = new NewNotificationDto()
             {
@@ -229,6 +230,8 @@ namespace LeetWars.Core.BLL.Services
             };
 
             _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
+
+            return _mapper.Map<ChallengeFullDto>(challenge);
         }
 
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
@@ -261,7 +264,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<List<ChallengeLevelDto>>(await _context.ChallengeLevels.ToListAsync());
         }
 
-        public async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
+        public async Task<BriefChallengeInfoDto> GetBriefChallengeInfoByIdAsync(long challengeId)
         {
             var challenge = await _context.Challenges
                 .Include(x => x.Author)
@@ -289,7 +292,12 @@ namespace LeetWars.Core.BLL.Services
 
             var randomPosition = GetRandomInt(challenges.Count());
 
-            return _mapper.Map<BriefChallengeInfoDto>(await challenges.Skip(randomPosition).FirstAsync();
+            return _mapper.Map<BriefChallengeInfoDto>(await challenges.Skip(randomPosition).FirstAsync());
+        }
+
+        public void SendCodeRunRequest(CodeRunRequestDto request)
+        {
+            _builderSenderService.SendNotificationToRabbitMQ(request);
         }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)
@@ -436,11 +444,6 @@ namespace LeetWars.Core.BLL.Services
 
                 return randomValue % maxValue;
             }
-        }
-
-        public void SendCodeRunRequest(CodeRunRequestDto request)
-        {
-            _builderSenderService.SendNotificationToRabbitMQ(request);
         }
     }
 }

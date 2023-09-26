@@ -25,6 +25,11 @@ namespace LeetWars.Core.WebAPI.Controllers
             _codeFightService = codeFightService;
         }
 
+        /// <summary>
+        /// Send code fight request
+        /// </summary>
+        /// <param name="requestDto">Code fight request settings</param>
+        /// <returns>Two users, who participated in this request</returns>
         [HttpPost("codeFightRequestStarted")]
         public async Task<ActionResult<List<UserDto>>> SendCodeFightRequestStartedAsync([FromBody] CodeFightRequestDto requestDto)
         {
@@ -33,7 +38,11 @@ namespace LeetWars.Core.WebAPI.Controllers
             return Ok(users);
         }
 
-
+        /// <summary>
+        /// End code fight request
+        /// </summary>
+        /// <param name="notification">Notification about ending code fight</param>
+        /// <returns>Two users, who participated in this request</returns>
         [HttpPost("codeFightRequestEnded")]
         public async Task<ActionResult<List<UserDto>>> SendcodeFightRequestEndedAsync([FromBody] NewNotificationDto notification)
         {
@@ -42,6 +51,11 @@ namespace LeetWars.Core.WebAPI.Controllers
             return Ok(users);
         }
 
+        /// <summary>
+        /// Start code fight
+        /// </summary>
+        /// <param name="notificationDto">Notification about starting code fight</param>
+        /// <returns>Two users, who participated in this code fight</returns>
         [HttpPost("codefightstart")]
         public async Task<ActionResult<List<UserDto>>> SendCodeFightStartAsync([FromBody] NewNotificationDto notificationDto)
         {
@@ -50,6 +64,11 @@ namespace LeetWars.Core.WebAPI.Controllers
             return Ok(users);
         }
 
+        /// <summary>
+        /// End code fight
+        /// </summary>
+        /// <param name="codeFightEndDto">Options to end code fight</param>
+        /// <returns>Two users, who participated in this code fight</returns>
         [HttpPost("codefightend")]
         public async Task<ActionResult<List<UserDto>>> SendCodeFightEndAsync([FromBody] CodeFightEndDto codeFightEndDto)
         {

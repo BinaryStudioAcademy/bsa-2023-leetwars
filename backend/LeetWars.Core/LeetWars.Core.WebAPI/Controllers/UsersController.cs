@@ -21,27 +21,25 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
+    /// Get user info by id
+    /// </summary>
+    /// <param name="id">User id to find</param>
+    /// <returns>User info</returns>
+    [HttpGet("{id}")]
+    public async Task<ActionResult<UserFullDto>> GetUserAsync(long id)
+    {
+        var user = await _userService.GetUserAsync(id);
+
+        return Ok(user);
+    }
+
+    /// <summary>
     /// Get full user info by id
     /// </summary>
     /// <param name="id">User id to find</param>
     /// <returns>Full user info</returns>
-    [HttpGet("{id}")]
-    public async Task<ActionResult<UserFullDto>> GetFullUserAsync(long id)
-    {
-        var user = await _userService.GetUserAsync(id);
-
-        return Ok(user);
-    }
-
-    public async Task<ActionResult<UserFullDto>> GetUser(long id)
-    {
-        var user = await _userService.GetUserAsync(id);
-
-        return Ok(user);
-    }
-
     [HttpGet("full/{id}")]
-    public async Task<ActionResult<UserFullDto>> GetFullUser(long id)
+    public async Task<ActionResult<UserFullDto>> GetFullUserAsync(long id)
     {
         var user = await _userService.GetFullUserAsync(id);
 
@@ -114,10 +112,15 @@ public class UsersController : ControllerBase
         return Ok(users);
     }
 
+    /// <summary>
+    /// Update user info
+    /// </summary>
+    /// <param name="updateUserInfoDto">User info to update</param>
+    /// <returns>Updated user info</returns>
     [HttpPut]
     public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserInfoDto updateUserInfoDto)
     {
-        var updatedUser = await _userService.UpdateUserInfo(updateUserInfoDto);
+        var updatedUser = await _userService.UpdateUserInfoAsync(updateUserInfoDto);
 
         return Ok(updatedUser);
     }
@@ -131,22 +134,19 @@ public class UsersController : ControllerBase
     [AllowAnonymous]
     public async Task<ActionResult<UserDto>> CreateUserAsync([FromBody] NewUserDto user)
     {
-        var updatedUser = await _userService.UpdateUserRankAsync(userDto);
+        var updatedUser = await _userService.CreateUserAsync(user);
         return Ok(updatedUser);
     }
     
-    [HttpPut]
-    public async Task<ActionResult<UserDto>> UpdateUser(UpdateUserInfoDto updateUserInfoDto)
-    {
-        var updatedUser = await _userService.UpdateUserInfo(updateUserInfoDto);
-        
-        return Ok(updatedUser);
-    }
-    
+    /// <summary>
+    /// Update user avatar
+    /// </summary>
+    /// <param name="avatar">New avatar</param>
+    /// <returns>New user avatar</returns>
     [HttpPost("avatar")]
     public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatar([FromForm] IFormFile avatar)
     {
-        var updatedUser = await _userService.UpdateUserRankAsync(userDto);
+        var updatedUser = await _userService.UpdateUserAvatarAsync(avatar);
 
         return Ok(updatedUser);
     }

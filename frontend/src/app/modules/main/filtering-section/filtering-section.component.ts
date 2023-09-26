@@ -40,8 +40,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     difficultyNames: string[];
 
-    public scrollEventSubject = new Subject<void>();
-
     private sortingProperty?: ISortedModel;
 
     private page: IPageSettings = {
@@ -84,8 +82,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     }
 
     onScroll() {
-        this.scrollEventSubject.next();
-
         if (this.isLastPage) {
             return;
         }

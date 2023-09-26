@@ -7,6 +7,7 @@ using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.User;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 
 namespace LeetWars.Core.BLL.Interfaces
 {
@@ -18,7 +19,7 @@ namespace LeetWars.Core.BLL.Interfaces
 
         Task<ChallengePreviewDto> GetChallengeSuggestionAsync(SuggestionSettingsDto settings);
 
-        Task CreateChallengeAsync(NewChallengeDto challengeDto);
+        Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto);
 
         Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto);
 
@@ -27,8 +28,11 @@ namespace LeetWars.Core.BLL.Interfaces
         Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id);
 
         Task<ChallengePreviewDto> UpdateStarAsync(ChallengeStarDto challengeStarDto);
+
         Task<List<ChallengeLevelDto>> GetChallengeLevelsAsync();
-        Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId);
+
+        Task<BriefChallengeInfoDto> GetBriefChallengeInfoByIdAsync(long challengeId);
+
         Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings);
     }
 }

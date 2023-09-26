@@ -15,6 +15,7 @@ import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { EditorOptions } from '@shared/models/options/editor-options';
+import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
 import { Observable, takeUntil } from 'rxjs';
 
@@ -70,7 +71,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private codeRunService: CodeRunService,
         private authService: AuthService,
         private router: Router,
-        private authService: AuthService,
     ) {
         super();
         breakpointObserver

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
-using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.CodeFight;
 
 namespace LeetWars.Notifier.WebAPI.Services

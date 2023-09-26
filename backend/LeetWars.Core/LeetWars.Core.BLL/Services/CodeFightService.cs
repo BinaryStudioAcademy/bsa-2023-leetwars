@@ -33,7 +33,7 @@ namespace LeetWars.Core.BLL.Services
 
             var language = await _context.Languages.FirstAsync(language => language.Id == requestDto.ChallengeSettings.LanguageId);
 
-            var sender = await _userService.GetBriefUserInfoById(requestDto.SenderId);
+            var sender = await _userService.GetBriefUserInfoByIdAsync(requestDto.SenderId);
 
             var notification = new NewNotificationDto
             {
@@ -112,10 +112,10 @@ namespace LeetWars.Core.BLL.Services
                 throw new NotFoundException(nameof(CodeFight));
             }
 
-            var challenge = await _challengeService.GetBriefChallengeInfoById(codeFight.ChallengeId);
+            var challenge = await _challengeService.GetBriefChallengeInfoByIdAsync(codeFight.ChallengeId);
 
-            var sender = await _userService.GetBriefUserInfoById(codeFight.SenderId);
-            var receiver = await _userService.GetBriefUserInfoById(codeFight.ReceiverId);
+            var sender = await _userService.GetBriefUserInfoByIdAsync(codeFight.SenderId);
+            var receiver = await _userService.GetBriefUserInfoByIdAsync(codeFight.ReceiverId);
 
             _context.Remove(codeFight);
 
