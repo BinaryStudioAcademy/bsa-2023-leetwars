@@ -34,6 +34,7 @@ import { IDropdownItem } from '@shared/models/dropdown-item';
 import { ILanguage } from '@shared/models/language/language';
 import { ITag } from '@shared/models/tag/tag';
 import { takeUntil } from 'rxjs';
+import { IChallengeGenerateResponse } from '@shared/models/challenge-generate/challenge-generate-response';
 
 @Component({
     selector: 'app-challenge-creation',
@@ -69,6 +70,8 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     protected readonly ChallengeStep = ChallengeStep;
 
+    generateChallengeResponse: IChallengeGenerateResponse;
+
     constructor(
         private challengeService: ChallengeService,
         private challengeLevelService: ChallengeLevelService,
@@ -83,6 +86,41 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.steps = this.stepsData.map((s) => s.step);
         this.challenge = getNewChallenge();
         this.challengeVersion = getNewChallengeVersion();
+
+        const data = this.router.getCurrentNavigation()?.extras.state?.['myComplexObject'];
+        const {
+            category,
+            completeSolution,
+            description,
+            exampleTestCases,
+            initialSolution,
+            level,
+            tags,
+            testCases,
+            title,
+            language
+        } = data as any;
+        this.challenge.title = title;
+        this.challenge.instructions = description;
+        this.challenge.category = category;
+        this.challenge.level = level;
+        this.challenge.tags = tags;
+        this.challengeVersion.completeSolution = completeSolution;
+        this.challengeVersion.initialSolution = initialSolution;
+        this.challengeVersion.exampleTestCases = exampleTestCases;
+        this.challengeVersion.testCases = testCases;
+        this.challengeVersion.languageId = language.id;
+        this.editorOptions.language = language;
+        this.currentLanguage = language;
+        console.log('completeSolution:', this.challengeVersion.completeSolution);
+        console.log('initialSolution:', initialSolution);
+        console.log('exampleTestCases:', exampleTestCases);
+        console.log('testCases:', testCases);
+        console.log('language:', language);
+        console.log('language:',  this.currentLanguage);
+        
+        console.log('language4:',  this.currentLanguage);
+        console.log(data);
     }
 
     ngOnInit(): void {
@@ -109,6 +147,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                 next: (challenge) => {
                     this.challenge = { ...challenge };
                     [this.challengeVersion] = this.challenge.versions;
+                    console.log('completeSolution2:', this.challengeVersion.completeSolution);
                     this.loadActualLanguages();
                 },
                 error: () => {
@@ -176,7 +215,8 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'delete-modal' });
 
         modalRef.componentInstance.titleText = 'Do you really want to delete challenge?';
-        modalRef.componentInstance.bodyText = 'After confirmation, the challenge will be permanently deleted and cannot be recovered.';
+        modalRef.componentInstance.bodyText =
+            'After confirmation, the challenge will be permanently deleted and cannot be recovered.';
         modalRef.componentInstance.buttons = [
             {
                 text: 'Yes',
@@ -208,6 +248,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
         this.editorOptions.language = mapLanguageName(language.name);
         this.challengeVersion = this.challenge.versions.find((v) => v.languageId === language.id)!;
+        console.log(this.challenge.versions);
     }
 
     public getStepChecking(step: ChallengeStep) {
@@ -247,17 +288,23 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.languages = data;
         this.languageDropdownItems = getDropdownItems(data.map((item) => item.name));
 
-        this.challenge.versions = data.map((lang) => ({
-            ...getNewChallengeVersion(),
-            languageId: lang.id,
-        }));
+        this.challenge.versions = data.map((lang) => {
+            if(lang.id === this.challengeVersion.languageId){
+                return this.challengeVersion;
+            }
 
+            return {
+                ...getNewChallengeVersion(),
+                languageId: lang.id,
+            }
+        });
         this.onLanguageChanged(this.languageDropdownItems[0]);
     }
 
     private loadActualLanguages() {
         const challengeVersionLanguages = this.languages.filter((lang) =>
-            this.challenge.versions.some((version) => version.languageId === lang.id));
+            this.challenge.versions.some((version) => version.languageId === lang.id),
+        );
 
         this.languageDropdownItems = getDropdownItems(challengeVersionLanguages.map((lang) => lang.name));
         [this.currentLanguage] = this.languageDropdownItems;

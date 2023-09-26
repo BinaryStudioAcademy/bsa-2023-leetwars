@@ -20,7 +20,6 @@ import { ChallengesRoutingModule } from './challenges-routing.module';
     declarations: [
         StepsOfProgressComponent,
         ChallengesTestPageComponent,
-        ChallengesDropdownSelectComponent,
         EditorQuestionComponent,
         SolutionPageComponent,
         ChallengeCreationComponent,

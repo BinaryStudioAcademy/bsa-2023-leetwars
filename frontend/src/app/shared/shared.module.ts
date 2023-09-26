@@ -24,6 +24,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { DescribeQuestionComponent } from './components/describe-question/describe-question/describe-question.component';
+import { ChallengesDropdownSelectComponent } from '@modules/challenges/challenges-dropdown-select/challenges-dropdown-select.component';
 
 @NgModule({
     imports: [
@@ -51,6 +53,8 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         ProgressBarComponent,
         NotificationsComponent,
         HeaderComponent,
+        DescribeQuestionComponent,
+        ChallengesDropdownSelectComponent
     ],
     exports: [
         CommonModule,
@@ -68,6 +72,8 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         CustomInputComponent,
         ProgressBarComponent,
         HeaderComponent,
+        DescribeQuestionComponent,
+        ChallengesDropdownSelectComponent,
         NgbModule,
         TabsModule,
         MarkdownModule,

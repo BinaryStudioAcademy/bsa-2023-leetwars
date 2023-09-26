@@ -6,6 +6,6 @@ namespace LeetWars.CodeAnalyzer.Interfaces
     public interface IOpenAiSettings
     {
         string GetCodeAnalysisPrompt(string languageName, string codeListing);
-        string GetChallengeGeneratePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto);
+        string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto);
     }
 }

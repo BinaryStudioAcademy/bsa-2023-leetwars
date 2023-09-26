@@ -21,8 +21,14 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
             "Don't provide additional info, only a number." +
             $"Code listing: \n ${codeListing}";
 
-        public string GetChallengeGeneratePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto) =>
-            $"you are a full stack developer, as a full stack developer for generating a challenge task with the following name: {challengeGenerateRequestDto.Title}, with the following category: {challengeGenerateRequestDto.Category}, with the following tags: {challengeGenerateRequestDto.Tags}, and with the following level: {challengeGenerateRequestDto.Level}, " +
-            "your goal is to generate a challenge task by this properties.";
+        public string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto) =>
+             $"You are a full-stack developer. As a {challengeGenerateRequestDto.Language} full-stack developer, your goal is to create a challenge task with the following name: {challengeGenerateRequestDto.Title}, in the following category: {challengeGenerateRequestDto.Category}, with the following tags: {challengeGenerateRequestDto.Tags}, and at the following level: {challengeGenerateRequestDto.Level}." +
+            "Describe a task that matches these properties in the field - Description" +
+            "Then create a complete solution based on description in the field - CompleteSolution" +
+            "Then create an initial solution based on description in the field - InitialSolution" +
+            "Then create a test cases for the complete solution and initial solution in the field - TestCases" +
+            "Then create an example of test cases for the complete solution and initial solution in the field - ExampleTestCases" +
+            "And give me the information in the form of a Json object with the following fields string Description string CompleteSolution string InitialSolution string TestCases string ExampleTestCases";
+
     }
 }

@@ -1,12 +1,7 @@
 ﻿using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.Tag;
-using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LeetWars.Core.Common.DTO.Language;
 
 namespace LeetWars.Core.Common.DTO.ChallengeRequest
 {
@@ -19,5 +14,7 @@ namespace LeetWars.Core.Common.DTO.ChallengeRequest
 
         public ChallengeLevelDto? Level { get; set; }
         public ICollection<TagDto>? Tags { get; set; }
+        public LanguageDto? Language { get; set; }
+
     }
 }

@@ -21,6 +21,7 @@ namespace LeetWars.CodeAnalyzer.Services
         {
             var request = new ChatRequest()
             {
+
                 Model = Model.ChatGPTTurbo,
                 MaxTokens = int.Parse(_configuration["OpenAPISettings:MaxTokens"]),
                 Temperature = double.Parse(_configuration["OpenAPISettings:Temperature"]),

@@ -4,7 +4,8 @@
       "commandName": "Project",
       "launchBrowser": false,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "OPENAI_API_KEY": "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"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5100"

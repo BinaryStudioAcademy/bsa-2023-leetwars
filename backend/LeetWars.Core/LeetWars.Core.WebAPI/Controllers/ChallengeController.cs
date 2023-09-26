@@ -18,7 +18,7 @@ namespace LeetWars.Core.WebAPI.Controllers
     {
         private readonly IChallengeService _challengeService;
         
-        public ChallengeController(IChallengeService challengeService, )
+        public ChallengeController(IChallengeService challengeService)
         {
             _challengeService = challengeService;
         }
