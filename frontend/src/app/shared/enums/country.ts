@@ -9,7 +9,7 @@ export enum Country {
     Chile = 'Chile',
     Colombia = 'Colombia',
     Croatia = 'Croatia',
-    CzechRepublic = 'CzechRepublic',
+    CzechRe = 'CzechRepublic',
     Denmark = 'Denmark',
     Egypt = 'Egypt',
     Finland = 'Finland',

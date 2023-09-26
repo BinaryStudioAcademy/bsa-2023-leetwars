@@ -1,17 +1,15 @@
-using System.Linq.Expressions;
 using AutoMapper;
+using Bogus;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Helpers.Email;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
-using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.User;
+using LeetWars.Core.Common.Extensions;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
-using Microsoft.EntityFrameworkCore;
-using LeetWars.Core.BLL.Extensions;
-using Bogus;
-using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
 using LeetWars.Core.Common.DTO.Friendship;
@@ -19,6 +17,8 @@ using LeetWars.Core.DAL.Enums;
 using Microsoft.AspNetCore.Http;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.Exceptions;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -317,9 +317,9 @@ public class UserService : BaseService, IUserService
 
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
                             ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
-        
+
         _mapper.Map(userInfoDto, currentUser);
-        
+
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
         return _mapper.Map<UserDto>(currentUser);
@@ -331,20 +331,28 @@ public class UserService : BaseService, IUserService
         {
             throw new ArgumentNullException(nameof(image));
         }
-        
+
         var currentUser = await _context.Users.FirstOrDefaultAsync(x => x.Uid == _userGetter.CurrentUserId)
                           ?? throw new NotFoundException(nameof(User), _userGetter.CurrentUserId);
-        
+
         var uniqueFileName = FileNameHelper.CreateUniqueFileName(image.FileName);
         await _blobService.UploadFileBlobAsync(image.OpenReadStream(), image.ContentType,
             uniqueFileName);
         currentUser.ImagePath = uniqueFileName;
-        
+
         _context.Users.Update(currentUser);
         await _context.SaveChangesAsync();
-        
+
         var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
+    }
+
+    private async Task<User> GetCurrentUserEntityAsync()
+    {
+        var userStringId = _userGetter.CurrentUserId;
+        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
+
+        return user ?? throw new NotFoundException(nameof(User));
     }
 
     private async Task<int> GetRewardFromChallenge(long challengeId)

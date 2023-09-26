@@ -23,41 +23,41 @@ export class UserService {
 
     constructor(private httpService: HttpInternalService) {}
 
-    public createUser(newUser: INewUser): Observable<IUser> {
+    createUser(newUser: INewUser): Observable<IUser> {
         return this.httpService.postRequest<IUser>(`${this.baseUrl}`, newUser);
     }
 
-    public getCurrentUser(): Observable<IUser> {
+    getCurrentUser(): Observable<IUser> {
         return this.httpService.getRequest<IUser>(`${this.baseUrl}/current`);
     }
 
-    public checkEmail(email: string): Observable<boolean> {
+    checkEmail(email: string): Observable<boolean> {
         return this.httpService.getRequest<boolean>(`${this.baseUrl}/is-existing-email?email=${email}`);
     }
 
-    public checkUserName(userName: string): Observable<boolean> {
+    checkUserName(userName: string): Observable<boolean> {
         return this.httpService.getRequest<boolean>(`${this.baseUrl}/is-existing-username?username=${userName}`);
     }
 
-    public getFullUser(id: number): Observable<IUserFull> {
+    getFullUser(id: number): Observable<IUserFull> {
         return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/${id}`);
     }
 
-    public updateUser(editUserInfo: IEditUserInfo): Observable<IUser> {
+    updateUser(editUserInfo: IEditUserInfo): Observable<IUser> {
         return this.httpService.putRequest<IUser>(`${this.baseUrl}`, editUserInfo);
     }
 
-    public updateUserAvatar(fileFormData: FormData): Observable<IUserAvatar> {
+    updateUserAvatar(fileFormData: FormData): Observable<IUserAvatar> {
         return this.httpService.postRequest<IUserAvatar>(`${this.baseUrl}/avatar`, fileFormData);
     }
 
-    public getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {
+    getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {
         return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(
             `${this.baseUrl}/${id}/user-challenges`,
         );
     }
 
-    public getLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
+    getLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
         let httpParams = new HttpParams();
 
         httpParams = setParams<IPageSettings>(httpParams, page);
@@ -65,7 +65,7 @@ export class UserService {
         return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/leader-board`, httpParams);
     }
 
-    public getFriendsLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
+    getFriendsLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
         let httpParams = new HttpParams();
 
         httpParams = setParams<IPageSettings>(httpParams, page);
@@ -73,7 +73,7 @@ export class UserService {
         return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/friends-leader-board`, httpParams);
     }
 
-    public updateUserRank(userDto: IEditUser): Observable<IUserFull> {
+    updateUserRank(userDto: IEditUser): Observable<IUserFull> {
         return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
     }
 

@@ -15,21 +15,21 @@ import { Subject, takeUntil } from 'rxjs';
     styleUrls: ['./leader-board.component.sass'],
 })
 export class LeaderBoardComponent extends BaseComponent implements OnInit {
-    public users: IUser[] = [];
+    users: IUser[] = [];
 
-    public currentUser: IUser;
+    currentUser: IUser;
 
-    public userFriendsIds: number[] = [];
+    userFriendsIds: number[] = [];
 
-    public usersToShow: IUser[] = [];
+    usersToShow: IUser[] = [];
 
-    public isMyFriendsChecked = false;
+    isMyFriendsChecked = false;
 
-    public isLastPage = false;
+    isLastPage = false;
 
-    public isLastFriendsPage = false;
+    isLastFriendsPage = false;
 
-    public loading = false;
+    loading = false;
 
     public scrollEventSubject = new Subject<void>();
 
@@ -53,7 +53,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         super();
     }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.getUsers();
         this.getCurrentUser();
 
@@ -68,7 +68,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         });
     }
 
-    public onScroll() {
+    onScroll() {
         if (this.isMyFriendsChecked && !this.isLastFriendsPage) {
             this.getFriends();
         } else if (!this.isMyFriendsChecked && !this.isLastPage) {

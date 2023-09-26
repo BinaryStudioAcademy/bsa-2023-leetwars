@@ -8,10 +8,10 @@ namespace LeetWars.Core.BLL.Interfaces
         /// Returns current userId or 0 if no userId is presented
         /// </summary>
         string CurrentUserId { get; }
-        
+
         /// <summary>
-         /// Returns current user or null if no user is presented
-         /// </summary>
+        /// Returns current user or null if no user is presented
+        /// </summary>
         User? CurrentUser { get; }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace LeetWars.Core.BLL.Interfaces
         /// </summary>
         /// <returns></returns>
         string GetCurrentUserIdOrThrow();
-       
+
         /// <summary>
         /// Throws exception if not user is presented
         /// </summary>

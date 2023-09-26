@@ -20,11 +20,11 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class ChallengeService {
-    public challengesRoute = '/challenge';
+    private challengesRoute = '/challenge';
 
     constructor(private httpService: HttpInternalService) {}
 
-    public getChallenges(filter?: IChallengeFilter, page?: IPageSettings, sortingModel?: ISortedModel) {
+    getChallenges(filter?: IChallengeFilter, page?: IPageSettings, sortingModel?: ISortedModel) {
         let httpParams = new HttpParams();
 
         httpParams = setParams<IChallengeFilter>(httpParams, filter);
@@ -34,7 +34,7 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallengePreview[]>(this.challengesRoute, httpParams);
     }
 
-    public getChallengeSuggestion(settings: ISuggestionSettings) {
+    getChallengeSuggestion(settings: ISuggestionSettings) {
         let httpParams = new HttpParams();
 
         httpParams = setParams<ISuggestionSettings>(httpParams, settings);
@@ -42,31 +42,31 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallengePreview>(`${this.challengesRoute}/suggestion`, httpParams);
     }
 
-    public getChallengeLevels(): Observable<IChallengeLevel[]> {
+    getChallengeLevels(): Observable<IChallengeLevel[]> {
         return this.httpService.getRequest<IChallengeLevel[]>(`${this.challengesRoute}/levels`);
     }
 
-    public getChallengeById(id: number): Observable<IChallenge> {
+    getChallengeById(id: number): Observable<IChallenge> {
         return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/${id}`);
     }
 
-    public updateStar(star: IStar): Observable<IChallengePreview> {
+    updateStar(star: IStar): Observable<IChallengePreview> {
         return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
     }
 
-    public runTests(request: ICodeRunRequest): Observable<HttpResponse> {
+    runTests(request: ICodeRunRequest): Observable<HttpResponse> {
         return this.httpService.postRequest<HttpResponse>(`${this.challengesRoute}/test`, request);
     }
 
-    public updateChallenge(challenge: IEditChallenge): Observable<IChallenge> {
+    updateChallenge(challenge: IEditChallenge): Observable<IChallenge> {
         return this.httpService.putRequest<IChallenge>(`${this.challengesRoute}/edit`, challenge);
     }
 
-    public createChallenge(challenge: INewChallenge): Observable<IChallenge> {
+    createChallenge(challenge: INewChallenge): Observable<IChallenge> {
         return this.httpService.postRequest<IChallenge>(`${this.challengesRoute}`, challenge);
     }
 
-    public deleteChallenge(id: number): Observable<void> {
+    deleteChallenge(id: number): Observable<void> {
         return this.httpService.deleteRequest(`${this.challengesRoute}/${id}`);
     }
 }

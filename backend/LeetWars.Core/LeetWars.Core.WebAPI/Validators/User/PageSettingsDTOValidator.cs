@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using LeetWars.Core.Common.DTO.Filters;
-using LeetWars.Core.Common.DTO.User;
 
 namespace LeetWars.Core.WebAPI.Validators.User
 {

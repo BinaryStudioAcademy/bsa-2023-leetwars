@@ -5,7 +5,7 @@ import { throwError } from 'rxjs';
     providedIn: 'root',
 })
 export class GlobalErrorHandlerService implements ErrorHandler {
-    public handleError(error: Error) {
+    handleError(error: Error) {
         return throwError(error);
     }
 }

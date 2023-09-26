@@ -54,7 +54,7 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
             new Language("Javascript"){Id = 1},
             new Language("C#"){Id = 2}
         });
-        
+
         public static readonly ImmutableArray<Badge> Badges = ImmutableArray.CreateRange(new Badge[]
         {
             new Badge("Jan LeetWars Challenge Badge", "2023-01.png", "2023-01.gif"){Id = 1},
@@ -69,7 +69,7 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
             new Badge("Oct LeetWars Challenge Badge", "2023-10.png", "2023-10.gif"){Id = 10},
             new Badge("Nov LeetWars Challenge Badge", "2023-11.png", "2023-11.gif"){Id = 11},
             new Badge("Dec LeetWars Challenge Badge", "2023-12.png", "2023-12.gif"){Id = 12},
+            new Badge("Weekly LeetWars Challenge Badge", "weekly.png", "weekly.gif"){Id = 13},
         });
-
     }
 }
