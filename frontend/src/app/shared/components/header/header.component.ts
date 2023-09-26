@@ -3,7 +3,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
-import { HeaderService } from '@core/services/header-service';
+import { HeaderService } from '@core/services/header.service';
 import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -54,7 +54,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
     public showMenu: boolean = false;
 
-    public user: IUser;
+    user: IUser;
 
     async ngOnInit() {
         await this.notificationHub.start();
@@ -107,7 +107,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         ];
     }
 
-    public goToProfile() {
+    goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
     }

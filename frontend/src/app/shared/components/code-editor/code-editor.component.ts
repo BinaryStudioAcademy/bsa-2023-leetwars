@@ -17,13 +17,12 @@ export class CodeEditorComponent implements OnChanges, AfterViewInit, OnInit {
 
     editorOptions: EditorOptions;
 
-    ngAfterViewInit(): void {
+    ngOnInit(): void {
         this.updateEditorOptions();
     }
 
-    public onCodeChange(model: string) {
-        this.initText = model;
-        this.codeChanged.emit(model);
+    ngAfterViewInit(): void {
+        this.updateEditorOptions();
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -32,17 +31,18 @@ export class CodeEditorComponent implements OnChanges, AfterViewInit, OnInit {
         }
     }
 
-    ngOnInit(): void {
-        this.updateEditorOptions();
+    onCodeChange(model: string) {
+        this.initText = model;
+        this.codeChanged.emit(model);
     }
 
     private updateEditorOptions(): void {
         this.editorOptions = {
             theme: this.options?.theme,
             language: this.options?.language,
-            minimap: { enabled: this.options?.minimap?.enabled },
-            automaticLayout: this.options?.automaticLayout,
-            useShadows: this.options?.useShadows,
+            minimap: { isEnabled: this.options?.minimap?.isEnabled },
+            hasAutomaticLayout: this.options?.hasAutomaticLayout,
+            hasShadows: this.options?.hasShadows,
             wordWrap: this.options?.wordWrap,
             lineNumbers: this.options?.lineNumbers,
         };

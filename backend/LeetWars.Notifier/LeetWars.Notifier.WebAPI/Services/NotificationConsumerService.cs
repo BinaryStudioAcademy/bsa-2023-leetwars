@@ -1,11 +1,11 @@
-﻿using LeetWars.RabbitMQ;
+﻿using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Notifier.WebAPI.Hubs;
+using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
+using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client.Events;
 using System.Text;
-using LeetWars.Notifier.WebAPI.Hubs;
-using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using System.Text.Json;
-using LeetWars.Core.Common.DTO.Notifications;
 
 namespace LeetWars.Notifier.WebAPI.Services
 {
@@ -19,7 +19,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             _hubContext = hubContext;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
@@ -28,7 +28,7 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 var notificationDto = JsonSerializer.Deserialize<NewNotificationDto>(message);
 
-                if(notificationDto is null)
+                if (notificationDto is null)
                 {
                     return;
                 }
@@ -39,6 +39,8 @@ namespace LeetWars.Notifier.WebAPI.Services
             });
 
             _consumerService.Listen(handler);
+
+            return Task.CompletedTask;
         }
 
         private async Task SendNotificationAsync(NewNotificationDto notificationDto)
@@ -46,12 +48,12 @@ namespace LeetWars.Notifier.WebAPI.Services
             switch (notificationDto.TypeNotification)
             {
                 case TypeNotifications.NewChallenge:
-                    await _hubContext.Clients.All.SendNotification(notificationDto);
+                    await _hubContext.Clients.All.SendNotificationAsync(notificationDto);
                     break;
                 case TypeNotifications.LikeChallenge:
                     if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
                     {
-                        await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotification(notificationDto);
+                        await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotificationAsync(notificationDto);
                     }
                     break;
                 default:

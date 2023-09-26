@@ -14,5 +14,5 @@ public static class LanguageLevelExtension
 
         var levelIndex = (int)source + 1;
         return (LanguageLevel)levelIndex;
-    }  
+    }
 }

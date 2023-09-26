@@ -27,13 +27,25 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
 
     @Output() validationChange = new EventEmitter<boolean>();
 
-    public allTagsNames: string[] = [];
+    allTagsNames: string[] = [];
 
-    public selectedTagsNames: string[] = [];
+    selectedTagsNames: string[] = [];
 
-    public allLevelsNames: string[] = [];
+    allLevelsNames: string[] = [];
 
-    public selectedLevelName = '';
+    selectedLevelName = '';
+
+    selectedTab: TabType = TabType.Description;
+
+    CategoryType = CategoryType;
+
+    TabType = TabType;
+
+    editorOptions: EditorOption;
+
+    customInputHeight = '48px';
+
+    customInputWidth = '100%';
 
     inputForm = new FormGroup({
         name: new FormControl(this.challenge.title, [Validators.required]),
@@ -44,21 +56,9 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
 
     private bsEditorInstance: EditorInstance;
 
-    public selectedTab: TabType = TabType.Description;
-
-    public CategoryType = CategoryType;
-
-    public TabType = TabType;
-
-    public editorOptions: EditorOption;
-
-    public customInputHeight = '48px';
-
-    public customInputWidth = '100%';
-
     constructor(private markdownService: MarkdownService) {}
 
-    public ngOnInit() {
+    ngOnInit() {
         this.editorOptions = {
             parser: (val) => this.markdownService.parse(val.trim()),
             onChange: (e) => this.onDescriptionChange(e.getContent()),
@@ -66,65 +66,6 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
                 this.bsEditorInstance = edInstance;
             },
         };
-    }
-
-    public editMarkDown() {
-        this.selectedTab = TabType.Description;
-        this.bsEditorInstance.hidePreview();
-    }
-
-    public previewMarkDown() {
-        this.selectedTab = TabType.Preview;
-        this.bsEditorInstance.showPreview();
-    }
-
-    public submitQuestion() {
-        this.selectedTab = TabType.Help;
-    }
-
-    public onNameChange(value: string) {
-        this.challenge.title = value;
-
-        this.inputForm.controls.name.setValue(value);
-        this.validationChange.emit(this.inputForm.valid);
-    }
-
-    public onDescriptionChange(value: string) {
-        this.challenge.instructions = value;
-
-        this.inputForm.controls.description.setValue(value);
-        this.validationChange.emit(this.inputForm.valid);
-    }
-
-    public onCategoryChange(value: CategoryType) {
-        this.challenge.category = value;
-    }
-
-    public onTagsChange(value: string | string[]) {
-        if (typeof value === 'string') {
-            return;
-        }
-
-        this.challenge.tags = this.allTags.filter((tag) => value.includes(tag.name));
-
-        this.inputForm.controls.tags.setValue(value);
-        this.validationChange.emit(this.inputForm.valid);
-    }
-
-    public onLevelChange(value: string | string[]) {
-        if (typeof value !== 'string') {
-            return;
-        }
-
-        this.challenge.level = this.allLevels.find((item) => item.skillLevel === value);
-        this.challenge.levelId = this.challenge.level?.id!;
-
-        this.inputForm.controls.level.setValue(this.challenge.level?.skillLevel ?? '');
-        this.validationChange.emit(this.inputForm.valid);
-    }
-
-    public getErrorMessage(formControlName: string) {
-        return getErrorMessage(formControlName, this.inputForm);
     }
 
     ngOnChanges({ checkValidation, challenge, allTags, allLevels }: SimpleChanges): void {
@@ -147,5 +88,64 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
             this.inputForm.controls.name.setValue(this.challenge.title);
             this.inputForm.controls.description.setValue(this.challenge.instructions);
         }
+    }
+
+    editMarkDown() {
+        this.selectedTab = TabType.Description;
+        this.bsEditorInstance.hidePreview();
+    }
+
+    previewMarkDown() {
+        this.selectedTab = TabType.Preview;
+        this.bsEditorInstance.showPreview();
+    }
+
+    submitQuestion() {
+        this.selectedTab = TabType.Help;
+    }
+
+    onNameChange(value: string) {
+        this.challenge.title = value;
+
+        this.inputForm.controls.name.setValue(value);
+        this.validationChange.emit(this.inputForm.valid);
+    }
+
+    onDescriptionChange(value: string) {
+        this.challenge.instructions = value;
+
+        this.inputForm.controls.description.setValue(value);
+        this.validationChange.emit(this.inputForm.valid);
+    }
+
+    onCategoryChange(value: CategoryType) {
+        this.challenge.category = value;
+    }
+
+    onTagsChange(value: string | string[]) {
+        if (typeof value === 'string') {
+            return;
+        }
+
+        this.challenge.tags = this.allTags.filter((tag) => value.includes(tag.name));
+
+        this.inputForm.controls.tags.setValue(value);
+        this.validationChange.emit(this.inputForm.valid);
+    }
+
+    onLevelChange(value: string | string[]) {
+        if (typeof value !== 'string') {
+            return;
+        }
+
+        this.challenge.level = this.allLevels.find((item) => item.skillLevel === value);
+        this.challenge.levelId = this.challenge.level?.id!;
+
+        this.inputForm.controls.level.setValue(this.challenge.level?.skillLevel ?? '');
+        this.validationChange.emit(this.inputForm.valid);
+    }
+
+    getErrorMessage(formControlName: string) {
+        return getErrorMessage(formControlName, this.inputForm);
     }
 }

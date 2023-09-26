@@ -4,12 +4,12 @@ import { Directive, HostListener, Input } from '@angular/core';
     selector: '[appScrollTo]',
 })
 export class ScrollToDirective {
-    @Input() public scrollToId: string;
+    @Input() scrollToId: string;
 
-    @Input() public scrollOffset: number = 0;
+    @Input() scrollOffset: number = 0;
 
     @HostListener('click')
-    public onClick() {
+    onClick() {
         const targetElement = document.querySelector(this.scrollToId);
 
         if (targetElement) {

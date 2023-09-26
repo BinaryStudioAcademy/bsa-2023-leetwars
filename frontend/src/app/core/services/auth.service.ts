@@ -18,9 +18,9 @@ import { UserService } from './user.service';
     providedIn: 'root',
 })
 export class AuthService {
-    public userSubject: BehaviorSubject<IUser | undefined>;
+    userSubject: BehaviorSubject<IUser | undefined>;
 
-    public currentUser$: Observable<IUser | undefined>;
+    currentUser$: Observable<IUser | undefined>;
 
     private userKeyName = 'userInfo';
 
@@ -29,6 +29,8 @@ export class AuthService {
     private providerName = 'firebase';
 
     private popUpErrorMessage = 'auth/cancelled-popup-request';
+
+    private notAuthorizedErrorMessage = 'User is not authorized';
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -47,11 +49,11 @@ export class AuthService {
         });
     }
 
-    public isAuthorized() {
+    isAuthorized() {
         return this.getUserToken() && this.getUserInfo();
     }
 
-    public register(user: IUserRegister) {
+    register(user: IUserRegister) {
         return this.createUser(
             from(this.afAuth.createUserWithEmailAndPassword(user.email, user.password)).pipe(
                 first(),
@@ -62,7 +64,7 @@ export class AuthService {
         );
     }
 
-    public login(userDto: IUserLogin) {
+    login(userDto: IUserLogin) {
         return from(this.afAuth.signInWithEmailAndPassword(userDto.email, userDto.password)).pipe(
             switchMap(() => this.afAuth.idToken),
             first(),
@@ -74,27 +76,26 @@ export class AuthService {
         );
     }
 
-    public logout() {
+    logout() {
         this.removeUserInfo();
         this.userSubject.next(undefined);
 
         return from(this.afAuth.signOut());
     }
 
-    public getUserToken(): string | null {
+    getUserToken(): string | null {
         return localStorage.getItem(this.tokenKeyName);
     }
 
-    public signInWithGoogle(isLogin: boolean = true) {
+    signInWithGoogle(isLogin: boolean = true) {
         return this.signWithProvider(this.createUser(this.signInWithProvider(new GoogleAuthProvider()), true), isLogin);
     }
 
-    public signInWithGitHub(isLogin: boolean = true) {
+    signInWithGitHub(isLogin: boolean = true) {
         return this.signWithProvider(this.createUser(this.signInWithProvider(new GithubAuthProvider()), true), isLogin);
     }
 
-    // TODO: Implemented only firebase part
-    public changePassword(password: string): Observable<void> {
+    changePassword(password: string): Observable<void> {
         return from(this.afAuth.currentUser).pipe(
             first(),
             switchMap((user) => {
@@ -102,12 +103,12 @@ export class AuthService {
                     return user.updatePassword(password);
                 }
 
-                throw new Error('User is not authorized');
+                throw new Error(this.notAuthorizedErrorMessage);
             }),
         );
     }
 
-    public sendVerificationMail(): Observable<void> {
+    sendVerificationMail() {
         return from(this.afAuth.currentUser).pipe(
             first(),
             switchMap((user) => {
@@ -115,18 +116,18 @@ export class AuthService {
                     return user.sendEmailVerification();
                 }
 
-                throw new Error('User is not authorized');
+                throw new Error(this.notAuthorizedErrorMessage);
             }),
         );
     }
 
-    public updateUserEmail(email: string) {
+    updateUserEmail(email: string) {
         return this.afAuth.authState.subscribe(async (user) => {
             user?.updateEmail(email);
         });
     }
 
-    public updateUserInfo(editUserInfo: IEditUserInfo): Observable<IUser> {
+    updateUserInfo(editUserInfo: IEditUserInfo): Observable<IUser> {
         return this.userService.updateUser(editUserInfo).pipe(
             tap((user) => {
                 this.updateUserEmail(user.email!);
@@ -134,24 +135,38 @@ export class AuthService {
         );
     }
 
-    // TODO: Implemented only firebase part
-    public forgotPassword(passwordResetEmail: string): Observable<void> {
+    forgotPassword(passwordResetEmail: string): Observable<void> {
         return from(this.afAuth.sendPasswordResetEmail(passwordResetEmail)).pipe(first());
     }
 
-    public verifyPasswordResetCode(code: string): Observable<string | void> {
+    verifyPasswordResetCode(code: string): Observable<string | void> {
         return from(this.afAuth.verifyPasswordResetCode(code)).pipe(first());
     }
 
-    public confirmPasswordReset(code: string, newPassword: string): Observable<void> {
+    confirmPasswordReset(code: string, newPassword: string): Observable<void> {
         return from(this.afAuth.confirmPasswordReset(code, newPassword)).pipe(first());
     }
 
-    public getUser() {
+    getUserInfo(): IUser | undefined {
+        const userInfo = localStorage.getItem(this.userKeyName);
+
+        if (userInfo) {
+            return JSON.parse(userInfo);
+        }
+
+        return undefined;
+    }
+
+    getUser(): Observable<IUser> {
         return of(this.getUserInfo()!);
     }
 
-    private signInWithProvider(provider: firebase.auth.AuthProvider) {
+    setUserInfo(user: IUser) {
+        localStorage.setItem(this.userKeyName, JSON.stringify(user));
+        this.userSubject.next(user);
+    }
+
+    private signInWithProvider(provider: firebase.auth.AuthProvider): Observable<firebase.auth.UserCredential> {
         return from(this.afAuth.signInWithPopup(provider)).pipe(
             first(),
             catchError((error) => throwError(error.message)),
@@ -185,16 +200,6 @@ export class AuthService {
         );
     }
 
-    public getUserInfo(): IUser | undefined {
-        const userInfo = localStorage.getItem(this.userKeyName);
-
-        if (userInfo) {
-            return JSON.parse(userInfo);
-        }
-
-        return undefined;
-    }
-
     private catchAuthWithProviderError(auth: Observable<IUser | undefined>): Observable<IUser | undefined> {
         return auth.pipe(
             catchError((error: string | Error) => {
@@ -218,11 +223,6 @@ export class AuthService {
 
     private setIdToken(token: string) {
         localStorage.setItem(this.tokenKeyName, token);
-    }
-
-    public setUserInfo(user: IUser) {
-        localStorage.setItem(this.userKeyName, JSON.stringify(user));
-        this.userSubject.next(user);
     }
 
     private removeUserInfo() {

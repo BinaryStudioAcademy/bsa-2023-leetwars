@@ -32,8 +32,8 @@ namespace LeetWars.Notifier.WebAPI.Extensions
                 settings));
 
             services.AddHostedService<NotificationConsumerService>();
-        }        
-        
+        }
+
         private static void BuilderNotificationConsumer(IServiceCollection services, IConfiguration configuration)
         {
             var settings = configuration
