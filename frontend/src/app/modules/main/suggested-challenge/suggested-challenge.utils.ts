@@ -13,7 +13,7 @@ export const SUGGESTION_TYPE_NAMES = [
 export const ICONS: IconName[] = ['stairs', 'chart-simple', 'repeat', 'lock', 'circle-question'];
 
 export function findItemIdByName(collection: ILanguage[], name: string) {
-    return collection.find(item => item.name === name)?.id ?? 0;
+    return collection.find(item => item.name === name)?.id ?? null;
 }
 
 export function findSuggestionTypeByName(name: string) {
