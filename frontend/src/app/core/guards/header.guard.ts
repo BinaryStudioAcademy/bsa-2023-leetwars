@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { HeaderService } from '@core/services/header-service';
+import { HeaderService } from '@core/services/header.service';
 
 @Injectable({
     providedIn: 'root',
@@ -8,7 +8,7 @@ import { HeaderService } from '@core/services/header-service';
 export class HeaderGuard implements CanActivate {
     constructor(private headerService: HeaderService) {}
 
-    public canActivate(): boolean {
+    canActivate() {
         this.headerService.setShowHeader(true);
 
         return true;

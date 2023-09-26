@@ -1,6 +1,6 @@
-using LeetWars.Notifier.Hubs;
-using LeetWars.Notifier.WebAPI.Services;
-using LeetWars.RabbitMQ.Extensions;
+using LeetWars.Core.Common.Extensions;
+using LeetWars.Notifier.WebAPI.Extensions;
+using LeetWars.Notifier.WebAPI.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,9 +12,9 @@ builder.Configuration
     .Build();
 
 builder.Services.AddControllers();
-builder.Services.AddSignalR();
-builder.Services.AddRabbitMqServices(builder.Configuration);
 
+builder.Services.AddSignalR();
+builder.Services.RegisterRabbit(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
@@ -23,7 +23,6 @@ builder.WebHost.UseUrls("http://*:5070");
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -31,6 +30,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.ConfigureCustomExceptionMiddleware();
 
 app.UseRouting();
 
@@ -40,7 +41,8 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
-    endpoints.MapHub<BroadcastHub>("/broadcastHub");
+    endpoints.MapHub<CodeDisplayingHub>("/codeDisplayingHub");
+    endpoints.MapHub<NotificationsHub>("/notificationHub");
     endpoints.MapHealthChecks("/health");
 });
 

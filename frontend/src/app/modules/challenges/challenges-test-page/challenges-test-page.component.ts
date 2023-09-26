@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    SimpleChanges,
+    ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getNewChallengeVersion } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { NavigationTabType } from '@shared/enums/navigation-tab-type';
@@ -23,15 +33,17 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
 
     @Output() validationChange = new EventEmitter<boolean>();
 
-    public editorContent: string;
+    @ViewChild('editorContainer') editorContainer: ElementRef;
 
-    public tabs = tabs;
+    editorContent: string;
 
-    public currentTab = tabs[0];
+    tabs = tabs;
 
-    public isMaximized: boolean = false;
+    currentTab = tabs[0];
 
-    public inputForm = new FormGroup({
+    isMaximized: boolean = false;
+
+    inputForm = new FormGroup({
         testCases: new FormControl('', [Validators.required]),
         exampleTestCases: new FormControl('', [Validators.required]),
     });
@@ -40,7 +52,20 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
         this.editorContent = this.challengeVersion.testCases;
     }
 
-    public onCodeChange(code: string) {
+    ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
+        if (checkValidation && checkValidation.currentValue) {
+            this.inputForm.markAllAsTouched();
+        }
+
+        if (challengeVersion) {
+            this.inputForm.controls.testCases.setValue(this.challengeVersion.testCases);
+            this.inputForm.controls.exampleTestCases.setValue(this.challengeVersion.exampleTestCases);
+        }
+
+        this.updateEditorContent();
+    }
+
+    onCodeChange(code: string) {
         this.editorContent = code;
 
         switch (this.currentTab.type) {
@@ -65,7 +90,7 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
         this.updateEditorContent();
     }
 
-    public updateEditorContent() {
+    updateEditorContent() {
         switch (this.currentTab.type) {
             case NavigationTabType.TestCases:
                 this.editorContent = this.challengeVersion.testCases;
@@ -76,19 +101,6 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
             default:
                 break;
         }
-    }
-
-    ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
-        if (checkValidation && checkValidation.currentValue) {
-            this.inputForm.markAllAsTouched();
-        }
-
-        if (challengeVersion) {
-            this.inputForm.controls.testCases.setValue(this.challengeVersion.testCases);
-            this.inputForm.controls.exampleTestCases.setValue(this.challengeVersion.exampleTestCases);
-        }
-
-        this.updateEditorContent();
     }
 
     getTabClass(tab: NavigationTab) {
@@ -123,13 +135,12 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
         }
     }
 
-    toggleMaximize() {
+    toggleMaximize(element: HTMLDivElement) {
         this.isMaximized = !this.isMaximized;
-
-        setTimeout(() => {
-            const resizeEvent = new Event('resize');
-
-            window.dispatchEvent(resizeEvent);
-        }, 50);
+        if (this.isMaximized) {
+            element.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
     }
 }

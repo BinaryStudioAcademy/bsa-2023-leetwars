@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import * as utils from '@modules/user/profile-page-main-info/profile-page-main.utils';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
@@ -13,24 +14,30 @@ export class ProfilePageMainInfoComponent implements OnChanges {
 
     @Input() userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
 
-    public communityViews = 0;
+    communityViews = 0;
 
-    public communityLastWeekViews = 0;
+    communityLastWeekViews = 0;
 
-    public communitySolution = 0;
+    communitySolution = 0;
 
-    public communityLastWeekSolution = 0;
+    communityLastWeekSolution = 0;
 
-    public communityDiscuss = 0;
+    communityDiscuss = 0;
 
-    public communityLastWeekDiscuss = 0;
+    communityLastWeekDiscuss = 0;
 
-    public communityLastWeekReputation = 0;
+    communityLastWeekReputation = 0;
 
-    public ngOnChanges({ user }: SimpleChanges) {
+    constructor(private router: Router) {}
+
+    ngOnChanges({ user }: SimpleChanges) {
         if (user && this.user) {
             this.updateSolutions();
         }
+    }
+
+    onEditProfile() {
+        this.router.navigate(['user/profile/edit']);
     }
 
     private updateSolutions() {

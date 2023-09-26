@@ -7,12 +7,12 @@ public static class LanguageLevelExtension
     public static LanguageLevel GetNextLevel(this LanguageLevel source)
     {
 
-        if (source == LanguageLevel.Master)
+        if (source == LanguageLevel.Extreme)
         {
             return source;
         }
 
         var levelIndex = (int)source + 1;
         return (LanguageLevel)levelIndex;
-    }  
+    }
 }

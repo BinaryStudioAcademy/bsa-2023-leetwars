@@ -1,13 +1,13 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class HttpInternalService {
-    public baseUrl: string = environment.coreUrl;
+    private baseUrl: string = environment.coreUrl;
 
-    public headers = new HttpHeaders();
+    private headers = new HttpHeaders();
 
     constructor(private http: HttpClient) {}
 
@@ -27,32 +27,20 @@ export class HttpInternalService {
         this.headers = this.headers.delete(key);
     }
 
-    public getRequest<T>(url: string, httpParams?: HttpParams): Observable<T> {
-        return this.http
-            .get<T>(this.buildUrl(url), { headers: this.getHeaders(), params: httpParams })
-            .pipe(catchError(this.handleError));
+    getRequest<T>(url: string, httpParams?: HttpParams): Observable<T> {
+        return this.http.get<T>(this.buildUrl(url), { headers: this.getHeaders(), params: httpParams });
     }
 
-    public postRequest<T>(url: string, payload: object, httpParams?: HttpParams): Observable<T> {
-        return this.http
-            .post<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), params: httpParams })
-            .pipe(catchError(this.handleError));
+    postRequest<T>(url: string, payload: object, httpParams?: HttpParams): Observable<T> {
+        return this.http.post<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), params: httpParams });
     }
 
-    public putRequest<T>(url: string, payload: object, httpParams?: HttpParams): Observable<T> {
-        return this.http
-            .put<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), params: httpParams })
-            .pipe(catchError(this.handleError));
+    putRequest<T>(url: string, payload: object, httpParams?: HttpParams): Observable<T> {
+        return this.http.put<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), params: httpParams });
     }
 
-    public deleteRequest<T>(url: string, httpParams?: HttpParams): Observable<T> {
-        return this.http
-            .delete<T>(this.buildUrl(url), { headers: this.getHeaders(), params: httpParams })
-            .pipe(catchError(this.handleError));
-    }
-
-    private handleError(error: HttpErrorResponse) {
-        return throwError(() => new Error(error.message ?? 'An error occurred'));
+    deleteRequest<T>(url: string, httpParams?: HttpParams): Observable<T> {
+        return this.http.delete<T>(this.buildUrl(url), { headers: this.getHeaders(), params: httpParams });
     }
 
     private buildUrl(url: string): string {

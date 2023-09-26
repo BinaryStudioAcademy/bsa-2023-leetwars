@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
+using LeetWars.Core.Common.Exceptions;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ namespace LeetWars.Core.WebAPI.Logic
     {
         private string _id = String.Empty;
         private User? _user;
-        private  readonly LeetWarsCoreContext _context;
+        private readonly LeetWarsCoreContext _context;
 
         public UserStorage(LeetWarsCoreContext context)
         {
@@ -20,6 +21,7 @@ namespace LeetWars.Core.WebAPI.Logic
         {
             get => _id;
         }
+
         public User? CurrentUser
         {
             get => _user;
@@ -29,29 +31,29 @@ namespace LeetWars.Core.WebAPI.Logic
         {
             if (String.IsNullOrEmpty(_id))
             {
-                throw new ArgumentException("No token with userId was passed");
+                throw new InvalidTokenException(_id);
             }
 
             return _id;
         }
+
         public User GetCurrentUserOrThrow()
         {
-            return _user ?? throw new ArgumentException("No token with userId was passed");
+            return _user ?? throw new InvalidTokenException(_id);
         }
 
-        public async Task SetUserId(string userId)
+        public async Task SetUserIdAsync(string userId)
         {
             if (_id != userId)
             {
-                _user = await GetCurrentUserEntity(userId);
+                _user = await GetCurrentUserEntityAsync(userId);
                 _id = _user?.Uid ?? "";
             }
         }
-        
-        private async Task<User?> GetCurrentUserEntity(string uid)
+
+        private async Task<User?> GetCurrentUserEntityAsync(string uid)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Uid == uid);
         }
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.BLL.MappingProfiles.Resolvers;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeLevel;
@@ -8,6 +7,7 @@ using LeetWars.Core.Common.DTO.ChallengeVersion;
 using LeetWars.Core.Common.DTO.Test;
 using LeetWars.Core.Common.DTO.UserSolution;
 using LeetWars.Core.DAL.Entities;
+using LeetWars.Core.DAL.Enums;
 
 namespace LeetWars.Core.BLL.MappingProfiles
 {
@@ -18,7 +18,7 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<Challenge, ChallengePreviewDto>()
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author != null ? $"{src.Author.UserName}" : null))
                 .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy))
-                .ForMember(dest => dest.LevelName, opt => opt.MapFrom(src => src.Level != null ? src.Level.Name : null))
+                .ForMember(dest => dest.LevelName, opt => opt.MapFrom(src => src.Level != null ? src.Level.SkillLevel : LanguageLevel.Easy))
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.Languages, opt => opt.MapFrom(src => src.Versions.Select(version => version.Language)))
@@ -48,6 +48,8 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<EditChallengeVersionDto, ChallengeVersion>();
 
             CreateMap<Challenge, ChallengeDto>();
+
+            CreateMap<Challenge, BriefChallengeInfoDto>();
 
             CreateMap<ChallengeStar, ChallengeStarDto>()
                 .ForMember(dest => dest.IsStar, opt => opt.MapFrom(src => true))

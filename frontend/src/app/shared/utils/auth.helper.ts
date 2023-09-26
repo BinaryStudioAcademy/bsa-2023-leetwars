@@ -7,17 +7,13 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
     providedIn: 'root',
 })
 export class AuthHelper {
-    constructor(
-        private toastrNotification: ToastrNotificationsService,
-        private router: Router,
-    ) { }
+    constructor(private toastrNotification: ToastrNotificationsService, private router: Router) {}
 
-    public handleAuthError(form: FormGroup) {
-        this.toastrNotification.showError('Something went wrong');
+    handleAuthError(form: FormGroup) {
         form.markAsUntouched();
     }
 
-    public handleAuthSuccess(username: string, isLogin: boolean) {
+    handleAuthSuccess(username: string, isLogin: boolean) {
         this.toastrNotification.showSuccess(`${username} was successfully signed ${isLogin ? 'in' : 'up'}`);
         this.router.navigate(['']);
     }

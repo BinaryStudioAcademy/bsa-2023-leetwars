@@ -1,6 +1,7 @@
+using LeetWars.Core.Common.Extensions;
+using LeetWars.Core.Common.Filters;
 using LeetWars.Core.WebAPI.Extentions;
 using LeetWars.Core.WebAPI.Middlewares;
-using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Converters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,13 +14,13 @@ builder.Configuration
     .AddEnvironmentVariables()
     .Build();
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(options => options.Filters.Add<CustomExceptionFilterAttribute>())
     .AddNewtonsoftJson(x => x.SerializerSettings.Converters.Add(new StringEnumConverter()));
-builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddLeetWarsCoreContext(builder.Configuration);
 builder.Services.AddRabbitMqServices(builder.Configuration);
 builder.Services.RegisterCustomServices(builder.Configuration);
+builder.Services.AddAzureBlobServices(builder.Configuration);
 builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
@@ -41,7 +42,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseMiddleware<GenericExceptionHandlerMiddleware>();
+app.ConfigureCustomExceptionMiddleware();
 
 app.UseCors(opt => opt
     .AllowAnyHeader()
@@ -49,12 +50,6 @@ app.UseCors(opt => opt
     .AllowAnyOrigin());
 
 app.UseHttpsRedirection();
-
-app.UseStaticFiles(new StaticFileOptions()
-{
-    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Static")),
-    RequestPath = new PathString("/static")
-});
 
 app.UseRouting();
 

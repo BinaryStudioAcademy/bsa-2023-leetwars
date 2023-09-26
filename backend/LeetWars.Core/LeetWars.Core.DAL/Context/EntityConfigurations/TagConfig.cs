@@ -11,7 +11,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
         {
             builder.Property(e => e.Name)
                 .HasMaxLength(EntitySettings.MaxTagNameLength);
-            
+
             builder.HasKey(t => t.Id).HasName("PK_Tag");
         }
     }

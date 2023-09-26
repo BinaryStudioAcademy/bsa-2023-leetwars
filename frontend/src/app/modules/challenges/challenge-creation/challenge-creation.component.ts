@@ -22,6 +22,8 @@ import {
     stepIsAllowed,
 } from '@modules/challenges/challenge-creation/challenge-creation.utils';
 import { StepData } from '@modules/challenges/challenge-creation/step-data';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModalComponent } from '@shared/components/confirmation-modal/confirmation-modal.component';
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
@@ -39,31 +41,31 @@ import { takeUntil } from 'rxjs';
     styleUrls: ['./challenge-creation.component.sass'],
 })
 export class ChallengeCreationComponent extends BaseComponent implements OnInit {
-    public steps: ChallengeStep[];
+    steps: ChallengeStep[];
 
-    public stepsData: StepData[] = getInitStepsData();
+    stepsData: StepData[] = getInitStepsData();
 
-    public currentStep: ChallengeStep = ChallengeStep.Question;
+    currentStep: ChallengeStep = ChallengeStep.Question;
 
-    public challenge: INewChallenge | IEditChallenge;
+    challengeId: number;
 
-    public challengeVersion: INewChallengeVersion | IEditChallengeVersion;
+    challenge: INewChallenge | IEditChallenge;
 
-    public tags: ITag[] = [];
+    challengeVersion: INewChallengeVersion | IEditChallengeVersion;
 
-    public challengeLevels: IChallengeLevel[] = [];
+    tags: ITag[] = [];
 
-    public languages: ILanguage[] = [];
+    challengeLevels: IChallengeLevel[] = [];
 
-    public languageDropdownItems: IDropdownItem[] = [];
+    languages: ILanguage[] = [];
 
-    public currentLanguage?: IDropdownItem;
+    languageDropdownItems: IDropdownItem[] = [];
 
-    public editorOptions = editorOptions;
+    currentLanguage?: IDropdownItem;
 
-    public isEditMode: boolean = false;
+    editorOptions = editorOptions;
 
-    public canOpenDropdown = true;
+    canOpenDropdown = true;
 
     protected readonly ChallengeStep = ChallengeStep;
 
@@ -75,6 +77,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         private toastrService: ToastrNotificationsService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
+        private modalService: NgbModal,
     ) {
         super();
         this.steps = this.stepsData.map((s) => s.step);
@@ -84,39 +87,21 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     ngOnInit(): void {
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-            const challengeId = +params.get('id')!;
+            this.challengeId = +params.get('id')!;
 
-            this.isEditMode = !!challengeId;
-
-            this.stepsData = getInitStepsData(this.isEditMode);
+            this.stepsData = getInitStepsData(!!this.challengeId);
 
             this.getTags();
             this.getChallengeLevels();
             this.getLanguages();
 
-            if (this.isEditMode) {
-                this.loadChallenge(challengeId);
+            if (this.challengeId) {
+                this.loadChallenge(this.challengeId);
             }
         });
     }
 
-    private loadChallenge(challengeId: number) {
-        this.challengeService
-            .getChallengeById(challengeId)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (challenge) => {
-                    this.challenge = { ...challenge };
-                    [this.challengeVersion] = this.challenge.versions;
-                    this.loadActualLanguages();
-                },
-                error: () => {
-                    this.toastrService.showError('Server connection error');
-                },
-            });
-    }
-
-    public onStepClick(step: ChallengeStep) {
+    onStepClick(step: ChallengeStep) {
         this.stepsData = showValidationErrorsForRequiredSteps(this.stepsData, step);
         if (!stepIsAllowed(this.stepsData, step)) {
             return;
@@ -124,7 +109,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.currentStep = step;
     }
 
-    public onValidationChange(step: ChallengeStep, isValid: boolean) {
+    onValidationChange(step: ChallengeStep, isValid: boolean) {
         const stepData = getStepData(this.stepsData, step);
 
         if (stepData) {
@@ -133,7 +118,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         }
     }
 
-    public onBtnCreateClick() {
+    onBtnCreateClick() {
         this.stepsData = showValidationErrorsForAllSteps(this.stepsData);
         if (checkAllStepsIsValid(this.stepsData)) {
             const newChallenge = prepareChallengeDto(this.challenge);
@@ -153,7 +138,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         }
     }
 
-    public onBtnEditClick() {
+    onBtnEditClick() {
         this.stepsData = showValidationErrorsForAllSteps(this.stepsData);
         if (checkAllStepsIsValid(this.stepsData)) {
             this.challengeService
@@ -171,11 +156,34 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         }
     }
 
-    public onBtnCancelClick() {
+    onBtnDeleteClick() {
+        const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'delete-modal' });
+
+        modalRef.componentInstance.titleText = 'Do you really want to delete challenge?';
+        modalRef.componentInstance.bodyText =
+            'After confirmation, the challenge will be permanently deleted and cannot be recovered.';
+        modalRef.componentInstance.buttons = [
+            {
+                text: 'Yes',
+                handler: () => {
+                    this.deleteChallenge();
+                    modalRef.close();
+                },
+            },
+            {
+                text: 'Cancel',
+                handler: () => {
+                    modalRef.dismiss();
+                },
+            },
+        ];
+    }
+
+    onBtnCancelClick() {
         this.router.navigate(['/']);
     }
 
-    public onLanguageChanged(selectedItem: IDropdownItem) {
+    onLanguageChanged(selectedItem: IDropdownItem) {
         this.currentLanguage = selectedItem;
         const language = this.languages.find((l) => l.name === selectedItem.content);
 
@@ -187,8 +195,39 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.challengeVersion = this.challenge.versions.find((v) => v.languageId === language.id)!;
     }
 
-    public getStepChecking(step: ChallengeStep) {
+    getStepChecking(step: ChallengeStep) {
         return getStepChecking(this.stepsData, step);
+    }
+
+    private loadChallenge(challengeId: number) {
+        this.challengeService
+            .getChallengeById(challengeId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (challenge) => {
+                    this.challenge = { ...challenge };
+                    [this.challengeVersion] = this.challenge.versions;
+                    this.loadActualLanguages();
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
+    }
+
+    private deleteChallenge() {
+        this.challengeService
+            .deleteChallenge(this.challengeId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: () => {
+                    this.toastrService.showSuccess('Challenge was successfully deleted');
+                    this.router.navigate(['/']);
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
     }
 
     private getLanguages() {

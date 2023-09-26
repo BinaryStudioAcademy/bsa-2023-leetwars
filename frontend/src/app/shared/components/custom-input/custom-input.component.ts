@@ -1,8 +1,10 @@
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SecondsConstants } from '@shared/constants/second-constants';
+import { debounceTime, Subject } from 'rxjs';
+
 /* eslint-disable no-empty-function */
 /* eslint-disable no-use-before-define */
-import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
 @Component({
     selector: 'app-custom-input[Identifier]',
     templateUrl: './custom-input.component.html',
@@ -15,12 +17,45 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         },
     ],
 })
-export class CustomInputComponent implements ControlValueAccessor {
+export class CustomInputComponent implements ControlValueAccessor, OnInit {
+    @Input() InputType: string = 'text';
+
+    @Input() Identifier: string = 'text';
+
+    @Input() Height: string = '64px';
+
+    @Input() Width: string = '327px';
+
+    @Input() FormTextHeight: string = '45px';
+
+    @Input() IsForgetPassword: boolean = false;
+
+    @Input() InputValue?: string;
+
+    @Input() InputLabel?: string;
+
+    @Input() InputPlaceholder?: string;
+
+    @Input() disabled: boolean;
+
+    @Output() InputValueChange = new EventEmitter<string>();
+
+    showPassword = false;
+
+    private _value = '';
+
+    private searchSubject = new Subject<string>();
+
+    ngOnInit(): void {
+        this.searchSubject.pipe(debounceTime(SecondsConstants.Delay)).subscribe((model) => {
+            this.InputValue = model;
+            this.InputValueChange.emit(model);
+        });
+    }
+
     onChange: (value: string) => void = () => {};
 
     onTouchedFn: () => void = () => {};
-
-    private _value = '';
 
     get value(): string {
         return this._value;
@@ -46,31 +81,8 @@ export class CustomInputComponent implements ControlValueAccessor {
         this.value = value;
     }
 
-    @Input() InputType: string = 'text';
-
-    @Input() Identifier: string = 'text';
-
-    @Input() Height: string = '64px';
-
-    @Input() Width: string = '327px';
-
-    @Input() FormTextHeight: string = '45px';
-
-    @Input() IsForgetPassword: boolean = false;
-
-    @Input() InputValue?: string;
-
-    @Input() InputLabel?: string;
-
-    @Input() InputPlaceholder?: string;
-
-    @Output() InputValueChange = new EventEmitter<string>();
-
-    showPassword = false;
-
     onInputChange(model: string) {
-        this.InputValue = model;
-        this.InputValueChange.emit(model);
+        this.searchSubject.next(model);
     }
 
     togglePasswordVisibility() {
