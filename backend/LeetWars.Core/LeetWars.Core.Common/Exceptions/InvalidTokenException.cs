@@ -2,6 +2,6 @@
 {
     public sealed class InvalidTokenException : Exception
     {
-        public InvalidTokenException(string id): base($"No token with user id {id} was passed") { }
+        public InvalidTokenException(string id) : base($"No token with user id {id} was passed") { }
     }
 }

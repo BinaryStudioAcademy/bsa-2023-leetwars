@@ -3,6 +3,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
+import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
@@ -60,6 +61,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
         private router: Router,
+        private authService: AuthService,
     ) {
         super();
         breakpointObserver
@@ -90,7 +92,17 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
             this.loadChallenge(challengeId);
         });
+
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.user = user;
+        });
+
         this.subscribeToMessageQueue();
+    }
+
+    override ngOnDestroy() {
+        this.signalRService.stop();
+        super.ngOnDestroy();
     }
 
     showTestResults(testResults: ITestsOutput) {
@@ -141,14 +153,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     subscribeToMessageQueue(): void {
         this.signalRService.start();
-        this.signalRService.listenMessages((msg: string) => {
-            const codeRunResults: ICodeRunResults = JSON.parse(msg) as ICodeRunResults;
-
-            if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults) {
+        this.signalRService.listenMessages((result: ICodeRunResults) => {
+            if (result.buildResults?.isSuccess && result.testRunResults) {
                 this.toastrService.showSuccess('Code was compiled successfully');
-                this.showTestResults(codeRunResults.testRunResults);
+                this.showTestResults(result.testRunResults);
             } else {
-                this.toastrService.showError(codeRunResults.buildResults?.buildMessage as string);
+                this.toastrService.showError(result.buildResults?.buildMessage as string);
             }
         });
     }
@@ -189,9 +199,9 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.editorOptions = {
             theme: 'vs-dark',
             language: this.mapLanguageName(this.selectedLanguage),
-            minimap: { enabled: false },
-            automaticLayout: true,
-            useShadows: false,
+            minimap: { isEnabled: false },
+            hasAutomaticLayout: true,
+            hasShadows: false,
             wordWrap: 'on',
             lineNumbers: 'on',
         };
@@ -219,10 +229,5 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return this.challenge.versions
             .filter((version) => this.mapLanguageName(version.language.name) === language)
             .flatMap((version) => version.language.languageVersions.map((languageVersion) => languageVersion.version));
-    }
-
-    override ngOnDestroy() {
-        this.signalRService.stop();
-        super.ngOnDestroy();
     }
 }

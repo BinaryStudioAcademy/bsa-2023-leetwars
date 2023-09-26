@@ -10,11 +10,11 @@ import { SignalRHubFactoryService } from './signalr-hub-factory.service';
     providedIn: 'root',
 })
 export class NotificationHubService {
-    readonly hubUrl = 'notificationHub';
+    private readonly hubUrl = 'notificationHub';
 
     private hubConnection: HubConnection;
 
-    readonly messages = new Subject<INotificationModel>();
+    private readonly messages = new Subject<INotificationModel>();
 
     private subscriptions: Subscription[] = [];
 
@@ -36,7 +36,7 @@ export class NotificationHubService {
         this.subscriptions.forEach((s) => s.unsubscribe());
     }
 
-    public getConnectionId() {
+    getConnectionId() {
         return this.hubConnectionId;
     }
 
@@ -46,7 +46,7 @@ export class NotificationHubService {
             .then(() => console.info(`"${this.hubFactory}" successfully started.`))
             .catch(() => console.info(`"${this.hubFactory}" failed.`));
 
-        this.hubConnection.on('SendNotification', (msg: INotificationModel) => {
+        this.hubConnection.on('SendNotificationAsync', (msg: INotificationModel) => {
             this.messages.next(msg);
         });
 

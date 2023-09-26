@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="RunnerDefaults\JSRunner\**" />
+    <Content Remove="RunnerDefaults\JSRunner\**" />
+    <EmbeddedResource Remove="RunnerDefaults\JSRunner\**" />
+    <None Remove="RunnerDefaults\JSRunner\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="RunnerDefaults\CSharp\CSharpTestRunner\SolutionTester.Tests\SolutionTester.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Docker.DotNet" Version="3.125.15" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
+    <PackageReference Include="SharpCompress" Version="0.33.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\LeetWars.Core\LeetWars.Core.Common\LeetWars.Core.Common.csproj" />
+    <ProjectReference Include="..\..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="RunnerDefaults\CSharp\CSharpBuilder\" />
+    <Folder Include="RunnerDefaults\JS\JSBuilder\" />
+  </ItemGroup>
+
+</Project>

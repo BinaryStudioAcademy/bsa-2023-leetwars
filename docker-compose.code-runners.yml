@@ -1,17 +1,17 @@
 version: '3.1'
 services:
   csharptestrunner:
-    build: ./backend/LeetWars.Builder/RunnerDefaults/CSharp/CSharpTestRunner
+    build: ./backend/LeetWars.Builder/LeetWars.Builder.WebAPI/RunnerDefaults/CSharp/CSharpTestRunner
     image: csharptestrunner
 
   csharpcodebuilder:
-    build: ./backend/LeetWars.Builder/RunnerDefaults/CSharp/CSharpBuilder
+    build: ./backend/LeetWars.Builder/LeetWars.Builder.WebAPI/RunnerDefaults/CSharp/CSharpBuilder
     image: csharpcodebuilder
     
   jstestrunner:
-    build: ./backend/LeetWars.Builder/RunnerDefaults/JS/JSTestRunner
+    build: ./backend/LeetWars.Builder/LeetWars.Builder.WebAPI/RunnerDefaults/JS/JSTestRunner
     image: jstestrunner
 
   jscodebuilder:
-    build: ./backend/LeetWars.Builder/RunnerDefaults/JS/JSBuilder
+    build: ./backend/LeetWars.Builder/LeetWars.Builder.WebAPI/RunnerDefaults/JS/JSBuilder
     image: jscodebuilder

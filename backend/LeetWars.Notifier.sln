@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Notifier.WebAPI", "LeetWars.Notifier\LeetWars.Notifier.WebAPI\LeetWars.Notifier.WebAPI.csproj", "{7E96B0B5-EE79-482E-BDAF-D069D05BBAF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetWars.Notifier.WebAPI", "LeetWars.Notifier\LeetWars.Notifier.WebAPI\LeetWars.Notifier.WebAPI.csproj", "{F173F87C-4EF1-479B-8C3C-9CB4B02BA266}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7E96B0B5-EE79-482E-BDAF-D069D05BBAF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E96B0B5-EE79-482E-BDAF-D069D05BBAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E96B0B5-EE79-482E-BDAF-D069D05BBAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E96B0B5-EE79-482E-BDAF-D069D05BBAF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F173F87C-4EF1-479B-8C3C-9CB4B02BA266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F173F87C-4EF1-479B-8C3C-9CB4B02BA266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F173F87C-4EF1-479B-8C3C-9CB4B02BA266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F173F87C-4EF1-479B-8C3C-9CB4B02BA266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,7 +11,7 @@ export class LandingPageComponent {
 
     isNavShown = false;
 
-    windowWidth: number;
+    private windowWidth: number;
 
     @HostListener('window:scroll', [])
     onWindowScroll() {

@@ -6,11 +6,11 @@ import { ILanguage } from '@shared/models/language/language';
     providedIn: 'root',
 })
 export class LanguageService {
-    public baseUrl = '/language';
+    private baseUrl = '/language';
 
-    constructor(private httpService: HttpInternalService) { }
+    constructor(private httpService: HttpInternalService) {}
 
-    public getLanguages() {
+    getLanguages() {
         return this.httpService.getRequest<ILanguage[]>(this.baseUrl);
     }
 }

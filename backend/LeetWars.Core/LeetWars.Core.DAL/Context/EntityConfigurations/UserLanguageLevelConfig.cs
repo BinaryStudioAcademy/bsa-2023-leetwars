@@ -9,7 +9,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
         public void Configure(EntityTypeBuilder<UserLanguageLevel> builder)
         {
             //Connections
-            builder.HasKey(e => new {e.UserId, e.LanguageId }).HasName("PK_UserLanguageLevel");
+            builder.HasKey(e => new { e.UserId, e.LanguageId }).HasName("PK_UserLanguageLevel");
 
             builder.HasOne(e => e.Language)
                 .WithMany()

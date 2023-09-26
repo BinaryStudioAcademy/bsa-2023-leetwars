@@ -1,5 +1,5 @@
-﻿using LeetWars.Core.Common.DTO;
-using FluentValidation;
+﻿using FluentValidation;
+using LeetWars.Core.Common.DTO;
 
 namespace LeetWars.Core.WebAPI.Validators
 {
