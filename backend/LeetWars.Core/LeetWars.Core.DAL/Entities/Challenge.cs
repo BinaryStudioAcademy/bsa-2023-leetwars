@@ -8,7 +8,7 @@ namespace LeetWars.Core.DAL.Entities
         public string Instructions { get; set; }
         public long LevelId { get; set; }
         public ChallengeLevel? Level { get; set; }
-        
+
         public ChallengeCategory Category { get; set; }
         public User? Author { get; set; }
         public bool IsWeekly { get; set; }

@@ -1,3 +1,4 @@
+using LeetWars.Core.Common.Extensions;
 using LeetWars.Notifier.WebAPI.Extensions;
 using LeetWars.Notifier.WebAPI.Hubs;
 
@@ -22,7 +23,6 @@ builder.WebHost.UseUrls("http://*:5070");
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -30,6 +30,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.ConfigureCustomExceptionMiddleware();
 
 app.UseRouting();
 

@@ -1,10 +1,9 @@
 using Hangfire;
 using LeetWars.Core.BLL.Interfaces;
+using LeetWars.Core.Common.Extensions;
+using LeetWars.Core.Common.Filters;
 using LeetWars.Core.WebAPI.Extentions;
-using LeetWars.Core.WebAPI.Filters;
 using LeetWars.Core.WebAPI.Middlewares;
-using LeetWars.Core.WebAPI.Settings;
-using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Converters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,7 +53,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseMiddleware<GenericExceptionHandlerMiddleware>();
+app.ConfigureCustomExceptionMiddleware();
 
 app.UseCors(opt => opt
     .AllowAnyHeader()

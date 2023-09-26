@@ -1,20 +1,20 @@
-﻿using LeetWars.Core.BLL.MappingProfiles;
+﻿using Azure.Storage.Blobs;
+using FluentValidation.AspNetCore;
+using LeetWars.Core.BLL.Helpers.BlobStorage;
+using LeetWars.Core.BLL.Interfaces;
+using LeetWars.Core.BLL.MappingProfiles;
 using LeetWars.Core.BLL.Services;
 using LeetWars.Core.DAL.Context;
-using LeetWars.Core.BLL.Interfaces;
-using LeetWars.Core.WebAPI.Validators;
-using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-using Azure.Storage.Blobs;
 using LeetWars.Core.WebAPI.Logic;
-using LeetWars.Core.WebAPI.Settings;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using LeetWars.Core.WebAPI.Validators;
 using LeetWars.RabbitMQ;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Options;
 using Hangfire;
+using System.Reflection;
 
 namespace LeetWars.Core.WebAPI.Extentions
 {
@@ -49,42 +49,6 @@ namespace LeetWars.Core.WebAPI.Extentions
             RegisterEmailerProducer(services, configuration);
             RegisterNotificationProducerService(services, configuration);
             RegisterBuilderProducerService(services, configuration);
-        }
-
-        private static void RegisterNotificationProducerService(IServiceCollection services, IConfiguration configuration)
-        {
-            var settings = configuration
-                .GetSection("RabbitMQProducers:Emailer")
-                .Get<ProducerSettings>();
-
-            services.AddSingleton<IEmailSenderService>(provider =>
-                new EmailSenderService(new ProducerService(
-                    provider.GetRequiredService<IConnection>(),
-                    settings)));
-        }        
-        
-        private static void RegisterBuilderProducerService(IServiceCollection services, IConfiguration configuration)
-        {
-            var settings = configuration
-                .GetSection("RabbitMQProducers:Builder")
-                .Get<ProducerSettings>();
-
-            services.AddSingleton<IBuilderSenderService>(provider =>
-                new BuilderSenderService(new ProducerService(
-                    provider.GetRequiredService<IConnection>(),
-                    settings)));
-        }
-
-        private static void RegisterEmailerProducer(IServiceCollection services, IConfiguration configuration)
-        {
-            var settings = configuration
-                .GetSection("RabbitMQProducers:Notifier")
-                .Get<ProducerSettings>();
-
-            services.AddSingleton<INotificationSenderService>(provider =>
-                new NotificationSenderService(new ProducerService(
-                    provider.GetRequiredService<IConnection>(),
-                    settings)));
         }
 
         public static void AddAutoMapper(this IServiceCollection services)
@@ -162,6 +126,42 @@ namespace LeetWars.Core.WebAPI.Extentions
                 .UseSqlServerStorage(configuration.GetConnectionString("LeetWarsCoreDBConnection")));
            
             services.AddHangfireServer();
+        }
+      
+        private static void RegisterNotificationProducerService(IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = configuration
+                .GetSection("RabbitMQProducers:Emailer")
+                .Get<ProducerSettings>();
+
+            services.AddSingleton<IEmailSenderService>(provider =>
+                new EmailSenderService(new ProducerService(
+                    provider.GetRequiredService<IConnection>(),
+                    settings)));
+        }
+
+        private static void RegisterBuilderProducerService(IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = configuration
+                .GetSection("RabbitMQProducers:Builder")
+                .Get<ProducerSettings>();
+
+            services.AddSingleton<IBuilderSenderService>(provider =>
+                new BuilderSenderService(new ProducerService(
+                    provider.GetRequiredService<IConnection>(),
+                    settings)));
+        }
+
+        private static void RegisterEmailerProducer(IServiceCollection services, IConfiguration configuration)
+        {
+            var settings = configuration
+                .GetSection("RabbitMQProducers:Notifier")
+                .Get<ProducerSettings>();
+
+            services.AddSingleton<INotificationSenderService>(provider =>
+                new NotificationSenderService(new ProducerService(
+                    provider.GetRequiredService<IConnection>(),
+                    settings)));
         }
     }
 }
