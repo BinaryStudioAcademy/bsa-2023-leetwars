@@ -45,12 +45,16 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
     @HostListener('window:beforeunload', ['$event'])
     beforeUnloadHandler() {
         if (this.isNotificationsDropdownDisplayed) {
-            this.notificationService.readNofitications();
+            this.readNotifications();
             this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
         }
     }
 
     public isNotificationsDropdownDisplayed: boolean = false;
+
+    private newNotificationsCollection: INotificationModel[] = [];
+
+    private seenNotificationsCollection: INotificationModel[] = [];
 
     public showMenu: boolean = false;
 
@@ -59,25 +63,60 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
     async ngOnInit() {
         await this.notificationHub.start();
         this.listeningNotificationHub();
+        this.getNotifications();
+    }
+
+    private getNotifications() {
+        this.notificationService.getUserNotifications(this.user.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (notifications) => {
+                    this.newNotificationsCollection = notifications.filter(e => !e.isRead);
+                    this.seenNotificationsCollection = notifications.filter(e => e.isRead);
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                    this.router.navigate(['/']);
+                },
+            });
+    }
+
+    private readNotifications() {
+        this.notificationService.updateStatusToRead(this.newNotificationsCollection.map(e => e.id))
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: () => {
+                    this.newNotificationsCollection.forEach(x => {
+                        x.isRead = true;
+                    });
+
+                    this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
+                    this.newNotificationsCollection = [];
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                    this.router.navigate(['/']);
+                },
+            });
     }
 
     showNotifications() {
         if (this.isNotificationsDropdownDisplayed) {
-            this.notificationService.readNofitications();
+            this.readNotifications();
         }
         this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
     }
 
     public get countNotification() {
-        return this.notificationService.countNotification;
+        return this.newNotificationsCollection.length;
     }
 
     public get newNotifications() {
-        return this.notificationService.newNotifications;
+        return this.newNotificationsCollection;
     }
 
     public get seenNotifications() {
-        return this.notificationService.seenNotifications;
+        return this.seenNotificationsCollection;
     }
 
     onLogOut() {
@@ -114,7 +153,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
     private listeningNotificationHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
-            this.notificationService.addNewNotification(msg);
+            this.newNotificationsCollection = [...this.newNotificationsCollection, msg];
         });
     }
 
@@ -122,7 +161,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.notificationHub.stop();
         super.ngOnDestroy();
         if (this.isNotificationsDropdownDisplayed) {
-            this.notificationService.readNofitications();
+            this.readNotifications();
             this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
         }
     }

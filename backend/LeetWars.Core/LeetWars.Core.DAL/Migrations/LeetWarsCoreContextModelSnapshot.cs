@@ -2890,6 +2890,38 @@ namespace LeetWars.Core.DAL.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.Notification", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("ChallengeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateSending")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("SenderId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("TypeNotification")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChallengeId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.Subscription", b =>
                 {
                     b.Property<long>("Id")
@@ -6946,6 +6978,24 @@ namespace LeetWars.Core.DAL.Migrations
                     b.ToTable("UserLanguageLevels");
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserNotification", b =>
+                {
+                    b.Property<long>("ReceiverId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("NotificationId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ReceiverId", "NotificationId");
+
+                    b.HasIndex("NotificationId");
+
+                    b.ToTable("UserNotifications");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserPreferredLanguage", b =>
                 {
                     b.Property<long>("LanguageId")
@@ -8092,6 +8142,24 @@ namespace LeetWars.Core.DAL.Migrations
                         .HasConstraintName("FK_LanguageVersion_Language_LanguageId");
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.Notification", b =>
+                {
+                    b.HasOne("LeetWars.Core.DAL.Entities.Challenge", "Challenge")
+                        .WithMany()
+                        .HasForeignKey("ChallengeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Challenge");
+
+                    b.Navigation("Sender");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.Subscription", b =>
                 {
                     b.HasOne("LeetWars.Core.DAL.Entities.SubscriptionType", "SubscriptionType")
@@ -8156,6 +8224,25 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("Language");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserNotification", b =>
+                {
+                    b.HasOne("LeetWars.Core.DAL.Entities.Notification", "Notification")
+                        .WithMany()
+                        .HasForeignKey("NotificationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Notification");
+
+                    b.Navigation("Receiver");
                 });
 
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserPreferredLanguage", b =>

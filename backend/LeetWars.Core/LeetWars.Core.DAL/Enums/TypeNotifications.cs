@@ -1,8 +1,6 @@
-﻿namespace LeetWars.Core.Common.DTO.Notifications
-{
+﻿namespace LeetWars.Core.DAL.Enums;
     public enum TypeNotifications
     {
         LikeChallenge,
         NewChallenge
     }
-}

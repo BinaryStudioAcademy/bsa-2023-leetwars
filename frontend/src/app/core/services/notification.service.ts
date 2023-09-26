@@ -1,55 +1,21 @@
 import { Injectable } from '@angular/core';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 
+import { HttpInternalService } from './http-internal.service';
+
 @Injectable({
     providedIn: 'root',
 })
 export class NotificationService {
-    private localStorageItem: string = 'unreadNotifications';
+    private baseUrl = '/notifications';
 
-    private newNotificationsCollection: INotificationModel[] = [];
+    constructor(private httpService: HttpInternalService) {}
 
-    private seenNotificationsCollection: INotificationModel[] = [];
-
-    public get countNotification() {
-        return this.newNotifications.length;
+    public getUserNotifications(id: number) {
+        return this.httpService.getRequest<INotificationModel[]>(`${this.baseUrl}/${id}`);
     }
 
-    public get newNotifications() {
-        return this.newNotificationsCollection;
-    }
-
-    public get seenNotifications() {
-        return this.seenNotificationsCollection;
-    }
-
-    constructor() {
-        this.newNotificationsCollection = this.getUnreadFromLocalStorage();
-    }
-
-    public addNewNotification(notification: INotificationModel) {
-        this.saveNewNotificationToLocalStorage(notification);
-
-        this.newNotificationsCollection = [...this.newNotificationsCollection, notification];
-    }
-
-    public readNofitications() {
-        this.clearLocalStorageOnRead();
-        this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
-        this.newNotificationsCollection = [];
-    }
-
-    private saveNewNotificationToLocalStorage(notification: INotificationModel) {
-        const newNotificationArray = [...this.getUnreadFromLocalStorage(), notification];
-
-        localStorage.setItem(`${this.localStorageItem}`, JSON.stringify(newNotificationArray));
-    }
-
-    private clearLocalStorageOnRead() {
-        localStorage.removeItem(`${this.localStorageItem}`);
-    }
-
-    private getUnreadFromLocalStorage() {
-        return JSON.parse(localStorage.getItem(`${this.localStorageItem}`) ?? '[]');
+    public updateStatusToRead(ids: number[]) {
+        return this.httpService.putRequest(`${this.baseUrl}`, ids);
     }
 }

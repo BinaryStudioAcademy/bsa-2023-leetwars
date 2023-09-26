@@ -21,13 +21,13 @@ namespace LeetWars.Core.BLL.Services
 {
     public class ChallengeService : BaseService, IChallengeService
     {
-        private readonly INotificationSenderService _notificationSenderService;
+        private readonly INotificationService _notificationService;
         private readonly IBuilderSenderService _builderSenderService;
         private readonly IUserGetter _userGetter;
         private readonly IUserService _userService;
 
         public ChallengeService(
-            INotificationSenderService notificationSenderService,
+            INotificationService notificationService,
             IBuilderSenderService builderSenderService,
             LeetWarsCoreContext context,
             IMapper mapper,
@@ -36,7 +36,7 @@ namespace LeetWars.Core.BLL.Services
         ) : base(context, mapper)
         {
             _userService = userService;
-            _notificationSenderService = notificationSenderService;
+            _notificationService = notificationService;
             _builderSenderService = builderSenderService;
             _userGetter = userGetter;
         }
@@ -150,7 +150,7 @@ namespace LeetWars.Core.BLL.Services
 
                 var briefChallenge = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id);
 
-                var newNotification = new NewNotificationDto()
+                var newNotification = new NotificationDto()
                 {
                     ReceiverId = briefChallenge.Author.Id.ToString(),
                     Sender = await _userService.GetBriefUserInfoByIdAsync(challengeStarDto.AuthorId),
@@ -158,7 +158,9 @@ namespace LeetWars.Core.BLL.Services
                     Challenge = briefChallenge
                 };
 
-                _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
+                await _notificationService.CreateNotification(newNotification);
+
+                _notificationService.SendNotification(newNotification);
 
                 await _context.ChallengeStars.AddAsync(challengeStar);
             }
@@ -216,14 +218,16 @@ namespace LeetWars.Core.BLL.Services
 
             var briefChallenge = await GetBriefChallengeInfoById(challenge.Id);
 
-            var newNotification = new NewNotificationDto()
+            var newNotification = new NotificationDto()
             {
                 TypeNotification = TypeNotifications.NewChallenge,
                 Challenge = briefChallenge,
                 Message = "New challenge!",
             };
 
-            _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
+            await _notificationService.CreateNotification(newNotification);
+
+            _notificationService.SendNotification(newNotification);
         }
 
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)

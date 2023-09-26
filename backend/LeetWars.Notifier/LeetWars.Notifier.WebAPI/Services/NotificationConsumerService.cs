@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Core.DAL.Enums;
 using LeetWars.Notifier.WebAPI.Hubs;
 using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using LeetWars.RabbitMQ;
@@ -26,7 +27,7 @@ namespace LeetWars.Notifier.WebAPI.Services
                 var body = args.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
 
-                var notificationDto = JsonSerializer.Deserialize<NewNotificationDto>(message);
+                var notificationDto = JsonSerializer.Deserialize<NotificationDto>(message);
 
                 if (notificationDto is null)
                 {
@@ -43,7 +44,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             return Task.CompletedTask;
         }
 
-        private async Task SendNotificationAsync(NewNotificationDto notificationDto)
+        private async Task SendNotificationAsync(NotificationDto notificationDto)
         {
             switch (notificationDto.TypeNotification)
             {
