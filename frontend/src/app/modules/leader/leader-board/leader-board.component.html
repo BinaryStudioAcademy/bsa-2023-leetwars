@@ -9,7 +9,11 @@
             <div class="scrollable" infinite-scroll (scrolled)="onScroll()">
                 <div class="user d-flex" *ngFor="let user of usersToShow; let i = index">
                     <div class="position position-item">#{{ i + 1 }}</div>
-                    <div class="user-name">{{ user.userName }}</div>
+                    <div class="user-name">
+                        <a class="user-link" (click)="onLinkClick(user.userName)">
+                            {{ user.userName }}
+                        </a>
+                    </div>
                     <div class="total-score">{{ user.totalScore }}</div>
                 </div>
             </div>

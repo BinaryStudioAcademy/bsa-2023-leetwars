@@ -13,6 +13,10 @@ const routes: Routes = [
         path: 'profile/edit',
         component: UserInfoEditorComponent,
     },
+    {
+        path: 'profile/:nickname',
+        component: UserProfileComponent,
+    },
 ];
 
 @NgModule({

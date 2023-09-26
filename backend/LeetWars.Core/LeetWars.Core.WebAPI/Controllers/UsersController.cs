@@ -45,6 +45,13 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
+    [HttpGet("another-profile/{nickname}")]
+    public async Task<ActionResult<UserFullDto>> GetUserByNickName(string nickname)
+    {
+        var user = await _userService.GetUserByNickname(nickname);
+        return Ok(user);
+    }
+
     [HttpGet("is-existing-username")]
     [AllowAnonymous]
     public async Task<ActionResult<bool>> CheckUserName([FromQuery] string username)

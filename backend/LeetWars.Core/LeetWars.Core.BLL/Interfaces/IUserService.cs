@@ -16,6 +16,8 @@ public interface IUserService
     public Task<User?> GetUserByExpressionAsync(Expression<Func<User, bool>> expression);
     public Task<UserDto> GetCurrentUserAsync();
     public Task<UserFullDto> GetFullUserAsync(long id);
+
+    public Task<UserFullDto> GetUserByNickname(string nickname);
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId);
     public Task<UserFullDto> UpdateUserRankAsync(EditUserDto userDto);
     public Task<BriefUserInfoDto> GetBriefUserInfoById(long id);

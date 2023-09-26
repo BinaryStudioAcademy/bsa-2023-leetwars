@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
@@ -32,6 +33,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
     constructor(
         private userService: UserService,
         private toastrNotification: ToastrNotificationsService,
+        private router: Router,
     ) {
         super();
     }
@@ -48,6 +50,10 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         }
 
         this.getUsers();
+    }
+
+    public onLinkClick(nickname: string | undefined) {
+        this.router.navigate(['/user/profile', nickname as string]);
     }
 
     private getUsers() {

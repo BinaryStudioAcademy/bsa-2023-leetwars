@@ -15,6 +15,7 @@ using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -118,6 +119,22 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(user);
     }
 
+    public async Task<UserFullDto> GetUserByNickname(string nickname)
+    {
+        var user = await _context.Users
+            .Include(user => user.Subscriptions)
+            .Include(user => user.PreferredLanguages)
+            .Include(user => user.LanguagesWithLevels)
+            .Include(user => user.Solutions)
+            .Include(user => user.Challenges)
+            .Include(user => user.UserBadges)
+            .ThenInclude(badge => badge.Badge)
+            .Include(user => user.ChallengeVersions)
+            .SingleOrDefaultAsync(user => user.UserName == nickname);
+
+        return user is null ? throw new NotFoundException(nameof(User), nickname) : _mapper.Map<User, UserFullDto>(user);
+    }
+
     public async Task<BriefUserInfoDto> GetBriefUserInfoById(long id)
     {
         var user = await GetUserByExpressionAsync(user => user.Id == id);
@@ -192,7 +209,6 @@ public class UserService : BaseService, IUserService
 
         return _mapper.Map<List<UserDto>>(await users.ToListAsync());
     }
-
 
     private async Task<User> GetCurrentUserEntityAsync()
     {

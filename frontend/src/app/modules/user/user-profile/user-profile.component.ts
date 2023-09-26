@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
@@ -19,11 +20,17 @@ import { getInactiveBars } from './user-profile.utils';
 export class UserProfileComponent implements OnInit {
     user?: IUser | null;
 
+    currentUser?: IUser | null;
+
     fullUser: IUserFull;
 
     userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
 
     bars: IBar[] = [];
+
+    isCurrentUser: Boolean = false;
+
+    isFriend: Boolean = false;
 
     private unsubscribe$ = new Subject<void>();
 
@@ -31,23 +38,47 @@ export class UserProfileComponent implements OnInit {
         private userService: UserService,
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
+        private route: ActivatedRoute,
     ) {
         this.user = this.authService.getUserInfo();
     }
 
     ngOnInit(): void {
-        this.getUserInfo();
-        this.getUserChallenges();
+        this.getUserByNickName();
+    }
+
+    private getUserByNickName() {
+        this.route.paramMap.subscribe((params) => {
+            const nickname = params.get('nickname');
+
+            if (nickname !== null) {
+                this.userService
+                    .getUserByNickname(nickname as string)
+                    .pipe(takeUntil(this.unsubscribe$))
+                    .subscribe({
+                        next: (result) => {
+                            this.user = result;
+                            this.fullUser = result;
+                            this.getCurrentUser();
+                        },
+                        error: () => { this.toastrNotification.showError('User not found'); },
+                    });
+            } else {
+                this.getCurrentUser();
+            }
+        });
     }
 
     private getUserInfo() {
-        this.userService
-            .getFullUser(this.user!.id)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (result) => { this.fullUser = result; },
-                error: () => { this.toastrNotification.showError('User not found'); },
-            });
+        if (this.isCurrentUser) {
+            this.userService
+                .getFullUser(this.user!.id)
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    next: (result) => { this.fullUser = result; },
+                    error: () => { this.toastrNotification.showError('User not found'); },
+                });
+        }
     }
 
     private getUserChallenges() {
@@ -68,5 +99,21 @@ export class UserProfileComponent implements OnInit {
                 },
                 error: () => { this.toastrNotification.showError('Server connection error'); },
             });
+    }
+
+    private async getCurrentUser() {
+        try {
+            const result = await this.userService.getCurrentUser().toPromise();
+
+            this.currentUser = result;
+            this.isCurrentUser = this.currentUser?.id === this.user?.id;
+
+            if (this.isCurrentUser) {
+                this.getUserInfo();
+                this.getUserChallenges();
+            }
+        } catch (error) {
+            this.toastrNotification.showError('User not found');
+        }
     }
 }
