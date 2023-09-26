@@ -23,9 +23,15 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
 
     @Output() selectedItemsChanged = new EventEmitter<string[] | string>();
 
-    public selectedIcon: IconName;
+    selectedIcon: IconName;
 
-    public fieldText = '';
+    fieldText = '';
+
+    private allSelectionName = 'All';
+
+    ngOnInit() {
+        this.updateSelectedIcon();
+    }
 
     ngOnChanges({ selectedItem, selectedItems }: SimpleChanges): void {
         if (selectedItem) {
@@ -36,17 +42,11 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
         }
     }
 
-    private allSelectionName = 'All';
-
-    public ngOnInit() {
-        this.updateSelectedIcon();
-    }
-
-    public isSelectedTextNotDefault() {
+    isSelectedTextNotDefault() {
         return this.selectText !== 'Select';
     }
 
-    public toggleItem(item: string) {
+    toggleItem(item: string) {
         const isAllSelected = this.selectedItems.includes(this.allSelectionName);
 
         if (item === this.allSelectionName) {
@@ -64,7 +64,7 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
         this.updateSelectedItems();
     }
 
-    public selectItem(item: string) {
+    selectItem(item: string) {
         this.selectedItem = item;
         this.fieldText = item;
         this.selectedItemsChanged.emit(this.selectedItem);

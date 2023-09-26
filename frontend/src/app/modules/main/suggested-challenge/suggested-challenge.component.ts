@@ -27,15 +27,15 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
 
     languagesNames: string[] = [];
 
-    languages: ILanguage[] = [];
-
     suggestionTypesNames: string[];
 
     suggestionTypes = SUGGESTION_TYPE_NAMES;
 
     suggestionIcons = ICONS;
 
-    suggestionSettings: ISuggestionSettings = {
+    private languages: ILanguage[] = [];
+
+    private suggestionSettings: ISuggestionSettings = {
         suggestionType: SuggestionType.Fundamentals,
     };
 
@@ -47,13 +47,13 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         super();
     }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.getLanguages();
 
         this.suggestionTypesNames = this.suggestionTypes.map((item) => item.name);
     }
 
-    public onLanguageChanged(value: string | string[]) {
+    onLanguageChanged(value: string | string[]) {
         if (typeof value !== 'string') {
             return;
         }
@@ -61,7 +61,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         this.getChallenge();
     }
 
-    public onSuggestionTypeChanged(value: string | string[]) {
+    onSuggestionTypeChanged(value: string | string[]) {
         if (typeof value !== 'string') {
             return;
         }
@@ -69,7 +69,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         this.getChallenge();
     }
 
-    public onMouseWheel(event: WheelEvent): void {
+    onMouseWheel(event: WheelEvent): void {
         const container = document.querySelector('.tags');
 
         if (container) {
@@ -78,7 +78,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         }
     }
 
-    public getChallenge() {
+    getChallenge() {
         this.challengeService
             .getChallengeSuggestion(this.suggestionSettings)
             .pipe(takeUntil(this.unsubscribe$))

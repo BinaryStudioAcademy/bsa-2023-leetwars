@@ -1,13 +1,10 @@
-using System.Linq.Expressions;
-using System.Security.Cryptography;
 using AutoMapper;
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
-using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
-using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
@@ -17,6 +14,8 @@ using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -90,9 +89,9 @@ namespace LeetWars.Core.BLL.Services
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
 
-            if(filters.SkillLevel is not null)
+            if (filters.SkillLevel is not null)
             {
-                challenges = challenges.Where(challenge => 
+                challenges = challenges.Where(challenge =>
                 challenge.Level != null && challenge.Level.SkillLevel == filters.SkillLevel);
             }
 
@@ -158,7 +157,7 @@ namespace LeetWars.Core.BLL.Services
                 var newNotification = new NewNotificationDto()
                 {
                     ReceiverId = briefChallenge.Author.Id.ToString(),
-                    Sender = await _userService.GetBriefUserInfoById(challengeStarDto.AuthorId),
+                    Sender = await _userService.GetBriefUserInfoByIdAsync(challengeStarDto.AuthorId),
                     TypeNotification = TypeNotifications.LikeChallenge,
                     Challenge = briefChallenge
                 };
