@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { environment } from '@env/environment';
 import { Badge } from '@shared/models/badge/badge';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 
@@ -13,9 +12,9 @@ export class BadgeComponent implements OnInit {
 
     @Input() startPosition: number = 0;
 
-    activeSlides: SlidesOutputData;
-
     customOptions: OwlOptions;
+
+    private activeSlides: SlidesOutputData;
 
     ngOnInit(): void {
         this.loadCarouselOptions();
@@ -29,7 +28,11 @@ export class BadgeComponent implements OnInit {
         return this.activeSlides.slides?.some((x) => x.center && item.id === +x.id);
     }
 
-    loadCarouselOptions(): void {
+    getIconUrl(item: Badge): string {
+        return this.isCentered(item) ? item.iconGif : item.icon;
+    }
+
+    private loadCarouselOptions(): void {
         this.customOptions = {
             loop: true,
             mouseDrag: true,
@@ -50,11 +53,5 @@ export class BadgeComponent implements OnInit {
                 },
             },
         };
-    }
-
-    getIconUrl(item: Badge): string {
-        const url = this.isCentered(item) ? item.iconGif : item.icon;
-
-        return `${environment.coreUrl}${url}`;
     }
 }

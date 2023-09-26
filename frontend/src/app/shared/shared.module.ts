@@ -13,7 +13,10 @@ import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
+import { ArrowUpComponent } from './components/arrow-up/arrow-up.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
@@ -39,6 +42,8 @@ import { ChallengesDropdownSelectComponent } from '@modules/challenges/challenge
         MonacoEditorModule,
         InfiniteScrollModule,
         ProgressbarModule,
+        NgxPageScrollCoreModule.forRoot(),
+        NgxPageScrollModule,
         MarkdownModule.forRoot(),
         AngularMarkdownEditorModule.forRoot({ iconlibrary: 'fa' }),
     ],
@@ -53,6 +58,7 @@ import { ChallengesDropdownSelectComponent } from '@modules/challenges/challenge
         ProgressBarComponent,
         NotificationsComponent,
         HeaderComponent,
+        ArrowUpComponent,
         DescribeQuestionComponent,
         ChallengesDropdownSelectComponent
     ],
@@ -72,6 +78,7 @@ import { ChallengesDropdownSelectComponent } from '@modules/challenges/challenge
         CustomInputComponent,
         ProgressBarComponent,
         HeaderComponent,
+        ArrowUpComponent,
         DescribeQuestionComponent,
         ChallengesDropdownSelectComponent,
         NgbModule,
@@ -79,6 +86,8 @@ import { ChallengesDropdownSelectComponent } from '@modules/challenges/challenge
         MarkdownModule,
         AngularMarkdownEditorModule,
         InfiniteScrollModule,
+        NgxPageScrollCoreModule,
+        NgxPageScrollModule,
     ],
     providers: [TabsetConfig],
 })

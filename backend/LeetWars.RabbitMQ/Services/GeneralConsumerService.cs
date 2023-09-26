@@ -1,8 +1,7 @@
 ﻿using LeetWars.RabbitMQ.Interfaces;
-using RabbitMQ.Client.Events;
-using RabbitMQ.Client;
 using LeetWars.RabbitMQ.Settings;
-using Microsoft.Extensions.Options;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace LeetWars.RabbitMQ.Services;
 public class GeneralConsumerService : IGeneralConsumerService
@@ -12,21 +11,16 @@ public class GeneralConsumerService : IGeneralConsumerService
     protected readonly GeneralConsumerSettings _settings;
     protected bool disposedValue;
 
-    public GeneralConsumerService(IConnection connection, IOptions<GeneralConsumerSettings> settings)
+    public GeneralConsumerService(IConnection connection, GeneralConsumerSettings settings)
     {
         _connection = connection;
-        _settings = settings.Value;
+        _settings = settings;
         _channel = _connection.CreateModel();
     }
 
     public void Listen(EventHandler<BasicDeliverEventArgs> messageReceivedHandler)
     {
         ConsumerSetupHelperService.ListenSetup(messageReceivedHandler, _channel, _settings);
-    }
-
-    public void ListenAsync(AsyncEventHandler<BasicDeliverEventArgs> messageReceivedHandler)
-    {
-        ConsumerSetupHelperService.ListenAsyncSetup(messageReceivedHandler, _channel, _settings);
     }
 
     public void SetAcknowledge(ulong deliveryTag, bool processed)

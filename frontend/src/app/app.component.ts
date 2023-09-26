@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { SpinnerService } from '@core/services/spinner.service';
 
-import { HeaderService } from './core/services/header-service';
+import { HeaderService } from './core/services/header.service';
 
 @Component({
     selector: 'app-root',

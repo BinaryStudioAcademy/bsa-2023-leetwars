@@ -3,7 +3,8 @@ import { NavigationStart, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
-import { HeaderService } from '@core/services/header-service';
+import { HeaderService } from '@core/services/header.service';
+import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { INotificationModel } from '@shared/models/notifications/notifications';
@@ -11,7 +12,6 @@ import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
 
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-import { NotificationsComponent } from '../notifications/notifications.component';
 
 @Component({
     selector: 'app-header',
@@ -25,6 +25,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         private router: Router,
         private headerService: HeaderService,
         private toastrService: ToastrNotificationsService,
+        private notificationService: NotificationService,
         private notificationHub: NotificationHubService,
     ) {
         super();
@@ -39,29 +40,26 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
     }
 
-    public showMenu: boolean = false;
+    showMenu: boolean = false;
 
-    public user: IUser;
-
-    private notifications: INotificationModel[] = [];
+    user: IUser;
 
     async ngOnInit() {
         await this.notificationHub.start();
         this.listeningHub();
     }
 
+    override ngOnDestroy() {
+        this.notificationHub.stop();
+        super.ngOnDestroy();
+    }
+
     showNotifications() {
-        const modalRef = this.modalService.open(NotificationsComponent);
-
-        modalRef.componentInstance.notifications = this.notifications;
-
-        modalRef.hidden.subscribe(() => {
-            this.notifications = [];
-        });
+        this.notificationService.showNotifications();
     }
 
     get countNotification() {
-        return this.notifications.length;
+        return this.notificationService.countNotification;
     }
 
     onLogOut() {
@@ -91,19 +89,14 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         ];
     }
 
-    public goToProfile() {
+    goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
     }
 
     private listeningHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
-            this.notifications = [...this.notifications, msg];
+            this.notificationService.addNotification(msg);
         });
-    }
-
-    override ngOnDestroy() {
-        this.notificationHub.stop();
-        super.ngOnDestroy();
     }
 }

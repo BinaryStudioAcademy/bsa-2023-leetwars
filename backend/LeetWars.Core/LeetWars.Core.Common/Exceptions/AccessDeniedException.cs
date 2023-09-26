@@ -2,6 +2,6 @@
 {
     public class AccessDeniedException : Exception
     {
-        public AccessDeniedException() : base("Access denied. You don't have permission to do it.") {}
+        public AccessDeniedException() : base("Access denied. You don't have permission to do it.") { }
     }
 }

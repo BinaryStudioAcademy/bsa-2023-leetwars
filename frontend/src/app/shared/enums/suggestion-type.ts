@@ -4,4 +4,5 @@ export enum SuggestionType {
     PracticeAndRepeat = 'PracticeAndRepeat',
     Beta = 'Beta',
     Random = 'Random',
+    Weekly = 'Weekly'
 }

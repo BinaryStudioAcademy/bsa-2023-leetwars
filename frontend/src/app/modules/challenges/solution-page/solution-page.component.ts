@@ -21,24 +21,37 @@ export class SolutionPageComponent implements OnInit, OnChanges {
 
     @Output() validationChange = new EventEmitter<boolean>();
 
-    public editorContent: string;
+    editorContent: string;
 
-    public tabs = tabs;
+    tabs = tabs;
 
-    public currentTab = tabs[0];
+    currentTab = tabs[0];
 
-    public inputForm = new FormGroup({
+    inputForm = new FormGroup({
         completeSolution: new FormControl('', [Validators.required]),
         initialSolution: new FormControl('', [Validators.required]),
     });
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.editorContent = this.challengeVersion.completeSolution;
         console.log(this.challengeVersion);
         console.log(this.editorOptions);
     }
 
-    public onCodeChange(code: string) {
+    ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
+        if (checkValidation && checkValidation.currentValue) {
+            this.inputForm.markAllAsTouched();
+        }
+
+        if (challengeVersion) {
+            this.inputForm.controls.completeSolution.setValue(this.challengeVersion.completeSolution);
+            this.inputForm.controls.initialSolution.setValue(this.challengeVersion.initialSolution);
+        }
+
+        this.updateEditorContent();
+    }
+
+    onCodeChange(code: string) {
         this.editorContent = code;
 
         switch (this.currentTab.type) {
@@ -69,7 +82,7 @@ export class SolutionPageComponent implements OnInit, OnChanges {
         this.updateEditorContent();
     }
 
-    public updateEditorContent() {
+    updateEditorContent() {
         switch (this.currentTab.type) {
             case NavigationTabType.Complete:
                 this.editorContent = this.challengeVersion.completeSolution;
@@ -83,19 +96,6 @@ export class SolutionPageComponent implements OnInit, OnChanges {
             default:
                 break;
         }
-    }
-
-    ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {
-        if (checkValidation && checkValidation.currentValue) {
-            this.inputForm.markAllAsTouched();
-        }
-
-        if (challengeVersion) {
-            this.inputForm.controls.completeSolution.setValue(this.challengeVersion.completeSolution);
-            this.inputForm.controls.initialSolution.setValue(this.challengeVersion.initialSolution);
-        }
-
-        this.updateEditorContent();
     }
 
     getTabClass(tab: NavigationTab) {

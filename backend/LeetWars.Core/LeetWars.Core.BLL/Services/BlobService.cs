@@ -1,13 +1,10 @@
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using Azure.Storage.Blobs.Specialized;
-using Azure.Storage.Sas;
 using LeetWars.Core.BLL.Interfaces;
-using LeetWars.Core.WebAPI.Settings;
 
 namespace LeetWars.Core.BLL.Services;
 
-public class BlobService :IBlobService
+public class BlobService : IBlobService
 {
     private readonly BlobContainerClient _blobContainerClient;
 
@@ -15,7 +12,7 @@ public class BlobService :IBlobService
     {
         _blobContainerClient = blobClient;
     }
-    
+
     public string GetBlob(string fileName)
     {
         var client = _blobContainerClient.GetBlobClient(fileName);
@@ -36,7 +33,7 @@ public class BlobService :IBlobService
         {
             throw new ArgumentNullException(nameof(fileName));
         }
-        
+
         var client = _blobContainerClient.GetBlobClient(fileName);
 
         var result = await client.DeleteIfExistsAsync();
