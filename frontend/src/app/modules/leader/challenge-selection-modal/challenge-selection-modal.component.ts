@@ -53,7 +53,7 @@ export class ChallengeSelectionModalComponent implements OnInit {
             senderId: this.currentUser.id,
         };
 
-        this.challengeService.sendCodeFightRequest(codeFightRequest).subscribe((users: IUser[]) => {
+        this.challengeService.sendCodeFightRequestStart(codeFightRequest).subscribe((users: IUser[]) => {
             this.activeModal.close(users);
         });
     }

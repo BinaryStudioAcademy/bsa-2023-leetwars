@@ -13,7 +13,7 @@
                 <a routerLink="/challenges/{{ notification.challenge.id }}">{{ notification.challenge.title }}</a>
             </p>
         </div>
-        <div *ngIf="notification.typeNotification === typeNotification.SendCodeFightRequest">
+        <div *ngIf="notification.typeNotification === typeNotification.CodeFightRequestStart">
             <p>{{ notification.message }}</p>
             <button (click)="onCodeFightStart(notification)">Yes</button>
             <button (click)="onCodeFightRefuse(notification)">No</button>

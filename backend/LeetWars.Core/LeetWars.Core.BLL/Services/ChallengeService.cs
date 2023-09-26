@@ -19,6 +19,8 @@ using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
 using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.User;
+using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -229,7 +231,7 @@ namespace LeetWars.Core.BLL.Services
             _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
         }
 
-        public async Task<List<UserDto>> SendCodeFightRequestAsync(CodeFightRequestDto requestDto)
+        public async Task<List<UserDto>> SendCodeFightRequestStartAsync(CodeFightRequestDto requestDto)
         {
             var challenge = await GetCodeFightChallengeAsync(requestDto.ChallengeSettings);
 
@@ -245,7 +247,7 @@ namespace LeetWars.Core.BLL.Services
                 ReceiverId = requestDto.ReceiverId.ToString(),
                 Sender = sender,
                 Challenge = challenge,
-                TypeNotification = TypeNotifications.SendCodeFightRequest,
+                TypeNotification = TypeNotifications.CodeFightRequestStart,
                 Message = $"You received code fight from {sender.UserName}! {requestDto.ChallengeSettings.Level} challenge from " +
                 $"{language.Name}. Are you in?",
                 ShowFor = TIME_FOR_NOTIFICATION_TO_SHOW
@@ -257,57 +259,34 @@ namespace LeetWars.Core.BLL.Services
                 SenderId = sender.Id,
                 Status = CodeFightStatus.HasRequest
             };
-            
-            var users = await UpdateCodeFightStatusAsync(userCodeFight);
 
             _notificationSenderService.SendNotificationToRabbitMQ(notification);
 
-            return users;
+            return await UpdateCodeFightStatusAsync(userCodeFight);
         }
 
-        public async Task SendCodeFightRequestStartAsync(NewNotificationDto notification)
+        public async Task<List<UserDto>> SendCodeFightRequestEndAsync(NewNotificationDto notification)
         {
-            if (notification.ReceiverId is null || notification.Sender is null)
-            {
-                throw new NotFoundException(nameof(NewNotificationDto));
-            }
-
-            notification.TypeNotification = TypeNotifications.CodeFightRequestStart;
-
-            var userNewCodeFight = new UserCodeFightDto
-            {
-                ReceiverId = long.Parse(notification.ReceiverId),
-                SenderId = notification.Sender.Id,
-                Status = CodeFightStatus.HasRequest
-            };
-
-            await UpdateCodeFightStatusAsync(userNewCodeFight);
-
-            _notificationSenderService.SendNotificationToRabbitMQ(notification);
-        }
-
-        public async Task SendCodeFightRequestEndAsync(NewNotificationDto notification)
-        {
-            if (notification.ReceiverId is null || notification.Sender is null)
-            {
-                throw new NotFoundException(nameof(NewNotificationDto));
-            }
-
             notification.TypeNotification = TypeNotifications.CodeFightRequestEnd;
 
-            var userNewCodeFight = new UserCodeFightDto
+            if(notification.ReceiverId is null || notification.Sender is null)
+            {
+                throw new NotFoundException(nameof(NewNotificationDto));
+            }
+
+            var userCodeFight = new UserCodeFightDto
             {
                 ReceiverId = long.Parse(notification.ReceiverId),
                 SenderId = notification.Sender.Id,
                 Status = CodeFightStatus.NotInBattle
             };
 
-            await UpdateCodeFightStatusAsync(userNewCodeFight);
-
             _notificationSenderService.SendNotificationToRabbitMQ(notification);
+
+            return await UpdateCodeFightStatusAsync(userCodeFight);
         }
 
-        public async Task SendCodeFightStartAsync(NewNotificationDto notificationDto)
+        public async Task<List<UserDto>> SendCodeFightStartAsync(NewNotificationDto notificationDto)
         {
             notificationDto.TypeNotification = TypeNotifications.CodeFightStart;
 
@@ -329,9 +308,18 @@ namespace LeetWars.Core.BLL.Services
             await _context.SaveChangesAsync();
 
             _notificationSenderService.SendNotificationToRabbitMQ(notificationDto);
+
+            var userCodeFight = new UserCodeFightDto
+            {
+                ReceiverId = long.Parse(notificationDto.ReceiverId),
+                SenderId = notificationDto.Sender.Id,
+                Status = CodeFightStatus.InBattle
+            };
+
+            return await UpdateCodeFightStatusAsync(userCodeFight);
         }
 
-        public async Task SendCodeFightEndAsync(CodeFightEndDto codeFightEndDto)
+        public async Task<List<UserDto>> SendCodeFightEndAsync(CodeFightEndDto codeFightEndDto)
         {
             var senderCodeFight = await GetCodeFightChallengeByExpressionAsync(cf => cf.SenderId == codeFightEndDto.SenderId);
             var receiverCodeFight = await GetCodeFightChallengeByExpressionAsync(cf => cf.ReceiverId == codeFightEndDto.SenderId);
@@ -374,6 +362,15 @@ namespace LeetWars.Core.BLL.Services
             await _context.SaveChangesAsync();
 
             _notificationSenderService.SendNotificationToRabbitMQ(notification);
+
+            var userCodeFight = new UserCodeFightDto
+            {
+                ReceiverId = long.Parse(notification.ReceiverId),
+                SenderId = notification.Sender.Id,
+                Status = CodeFightStatus.NotInBattle
+            };
+
+            return await UpdateCodeFightStatusAsync(userCodeFight);
         }
 
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)

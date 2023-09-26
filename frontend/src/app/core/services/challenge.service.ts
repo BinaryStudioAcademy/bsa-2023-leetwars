@@ -1,6 +1,8 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { IStar } from '@shared/models/challenge-star/star';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
@@ -8,8 +10,6 @@ import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
-import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
-import { IStar } from '@shared/models/challenge-star/star';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { ICodeFightRequest } from '@shared/models/codefight/code-fight-request';
@@ -54,24 +54,20 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/${id}`);
     }
 
-    public sendCodeFightRequest(codeFight: ICodeFightRequest): Observable<IUser[]> {
-        return this.httpService.postRequest<IUser[]>(`${this.challengesRoute}/codefightrequest`, codeFight);
+    public sendCodeFightRequestStart(codeFight: ICodeFightRequest): Observable<IUser[]> {
+        return this.httpService.postRequest<IUser[]>(`${this.challengesRoute}/codeFightRequestStart`, codeFight);
     }
 
-    public sendCodeFightStartRequest(notification: INotificationModel): Observable<void> {
-        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightrequeststart`, notification);
+    public sendCodeFightRequestEnd(notification: INotificationModel): Observable<IUser[]> {
+        return this.httpService.postRequest<IUser[]>(`${this.challengesRoute}/codeFightRequestEnd`, notification);
     }
 
-    public sendCodeFightEndRequest(notification: INotificationModel): Observable<void> {
-        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightrequestend`, notification);
+    public sendCodeFightStart(notification: INotificationModel): Observable<IUser[]> {
+        return this.httpService.postRequest<IUser[]>(`${this.challengesRoute}/codefightstart`, notification);
     }
 
-    public sendCodeFightStart(notification: INotificationModel): Observable<void> {
-        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightstart`, notification);
-    }
-
-    public sendCodeFightEnd(codeFightEnd: ICodeFightEnd): Observable<void> {
-        return this.httpService.postRequest<void>(`${this.challengesRoute}/codefightend`, codeFightEnd);
+    public sendCodeFightEnd(codeFightEnd: ICodeFightEnd): Observable<IUser[]> {
+        return this.httpService.postRequest<IUser[]>(`${this.challengesRoute}/codefightend`, codeFightEnd);
     }
 
     public updateUserCodeFightStatus(codeFightDto: IUserCodeFight): Observable<IUser[]> {

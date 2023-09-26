@@ -29,7 +29,7 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 var notificationDto = JsonSerializer.Deserialize<NewNotificationDto>(message);
 
-                if(notificationDto is null)
+                if (notificationDto is null)
                 {
                     return;
                 }
@@ -52,7 +52,6 @@ namespace LeetWars.Notifier.WebAPI.Services
                     break;
 
                 case TypeNotifications.LikeChallenge:
-                case TypeNotifications.SendCodeFightRequest:
                     if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
                     {
                         await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotificationAsync(notificationDto);
@@ -60,36 +59,40 @@ namespace LeetWars.Notifier.WebAPI.Services
                     break;
 
                 case TypeNotifications.CodeFightRequestStart:
-                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
-                        && notificationDto.Sender is not null)
+                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId) && notificationDto.Sender is not null)
                     {
-                        var codeFightRequestEnd = new CodeFightRequestEndDto
+                        await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotificationAsync(notificationDto);
+
+                        var notification = new CodeFightRequestNotificationDto
                         {
                             SenderId = notificationDto.Sender.Id,
-                            ReceiverId = long.Parse(notificationDto.ReceiverId)
+                            ReceiverId = long.Parse(notificationDto.ReceiverId),
+                            Notification = notificationDto 
                         };
 
-                        await _hubContext.Clients.All.AddRequestAsync(codeFightRequestEnd);
+                        await _hubContext.Clients.All.CodeFightRequestAsync(notification);
                     }
+
                     break;
 
                 case TypeNotifications.CodeFightRequestEnd:
-                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
-                        && notificationDto.Sender is not null)
+                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId) && notificationDto.Sender is not null)
                     {
-                        var codeFightRequestEnd = new CodeFightRequestEndDto
+                        var notification = new CodeFightRequestNotificationDto
                         {
                             SenderId = notificationDto.Sender.Id,
-                            ReceiverId = long.Parse(notificationDto.ReceiverId)
+                            ReceiverId = long.Parse(notificationDto.ReceiverId),
+                            Notification = notificationDto
                         };
 
-                        await _hubContext.Clients.All.RemoveRequestAsync(codeFightRequestEnd);
+                        await _hubContext.Clients.All.CodeFightRequestAsync(notification);
                     }
+
                     break;
 
                 case TypeNotifications.CodeFightStart:
-                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId) 
-                        && notificationDto.Sender is not null 
+                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
+                        && notificationDto.Sender is not null
                         && notificationDto.Challenge is not null)
                     {
                         var redirectDto = new CodeFightStartDto()
@@ -111,7 +114,7 @@ namespace LeetWars.Notifier.WebAPI.Services
                         await _hubContext.Clients.Groups(notificationDto.Sender.Id.ToString()).WinCodeFightAsync(notificationDto);
                         await _hubContext.Clients.Groups(notificationDto.ReceiverId).LoseCodeFightAsync(notificationDto);
                     }
-                    break;                   
+                    break;
                 default:
                     await Task.CompletedTask;
                     break;

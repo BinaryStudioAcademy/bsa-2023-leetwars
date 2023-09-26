@@ -72,44 +72,36 @@ namespace LeetWars.Core.WebAPI.Controllers
             return NoContent();
         }
 
-        [HttpPost("codefightrequest")]
-        public async Task<ActionResult<List<UserDto>>> SendCodeFightRequestAsync([FromBody] CodeFightRequestDto requestDto)
+        [HttpPost("codeFightRequestStart")]
+        public async Task<ActionResult<List<UserDto>>> SendCodeFightRequestStartAsync([FromBody] CodeFightRequestDto requestDto)
         {
-            var users = await _challengeService.SendCodeFightRequestAsync(requestDto);
+            var users = await _challengeService.SendCodeFightRequestStartAsync(requestDto);
 
             return Ok(users);
         }
 
-        [HttpPost("codefightrequeststart")]
-        public async Task<ActionResult> SendCodeFightRequestStartAsync([FromBody] NewNotificationDto notification)
+        [HttpPost("codeFightRequestEnd")]
+        public async Task<ActionResult<List<UserDto>>> SendCodeFightRequestEndAsync([FromBody] NewNotificationDto notification)
         {
-            await _challengeService.SendCodeFightRequestStartAsync(notification);
+            var users = await _challengeService.SendCodeFightRequestEndAsync(notification);
 
-            return NoContent();
-        }
-
-        [HttpPost("codefightrequestend")]
-        public async Task<ActionResult> SendCodeFightRequestEndAsync([FromBody] NewNotificationDto notification)
-        {
-            await _challengeService.SendCodeFightRequestEndAsync(notification);
-
-            return NoContent();
+            return Ok(users);
         }
 
         [HttpPost("codefightstart")]
-        public async Task<ActionResult> SendCodeFightStartAsync([FromBody] NewNotificationDto notificationDto)
+        public async Task<ActionResult<List<UserDto>>> SendCodeFightStartAsync([FromBody] NewNotificationDto notificationDto)
         {
-            await _challengeService.SendCodeFightStartAsync(notificationDto);
+            var users = await _challengeService.SendCodeFightStartAsync(notificationDto);
 
-            return NoContent();
+            return Ok(users);
         }
 
         [HttpPost("codefightend")]
-        public async Task<ActionResult> SendCodeFightEndAsync([FromBody] CodeFightEndDto codeFightEndDto)
+        public async Task<ActionResult<List<UserDto>>> SendCodeFightEndAsync([FromBody] CodeFightEndDto codeFightEndDto)
         {
-            await _challengeService.SendCodeFightEndAsync(codeFightEndDto);
+            var users = await _challengeService.SendCodeFightEndAsync(codeFightEndDto);
 
-            return NoContent();
+            return Ok(users);
         }
 
         [HttpPut("edit")]

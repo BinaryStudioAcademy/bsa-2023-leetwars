@@ -4,7 +4,6 @@
     {
         LikeChallenge,
         NewChallenge,
-        SendCodeFightRequest,
         CodeFightRequestStart,
         CodeFightRequestEnd,
         CodeFightStart,
