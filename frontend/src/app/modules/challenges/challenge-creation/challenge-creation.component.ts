@@ -147,23 +147,6 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
         });
     }
 
-    private loadChallenge(challengeId: number) {
-        this.challengeService
-            .getChallengeById(challengeId)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (challenge) => {
-                    this.challenge = { ...challenge };
-                    [this.challengeVersion] = this.challenge.versions;
-                    console.log('completeSolution2:', this.challengeVersion.completeSolution);
-                    this.loadActualLanguages();
-                },
-                error: () => {
-                    this.toastrService.showError('Server connection error');
-                },
-            });
-    }
-
     public onStepClick(step: ChallengeStep) {
         this.stepsData = showValidationErrorsForRequiredSteps(this.stepsData, step);
         if (!stepIsAllowed(this.stepsData, step)) {
