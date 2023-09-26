@@ -99,13 +99,6 @@ public class UsersController : ControllerBase
         return Ok(users);
     }
 
-    //[HttpGet("friends-leader-board")]
-    //public async Task<ActionResult<List<UserDto>>> GetFriendsLeaderBoardAsync([FromQuery] PageSettingsDto page)
-    //{
-    //    var users = await _userService.GetFriendsLeaderBoardAsync(page);
-    //    return Ok(users);
-    //}
-
     /// <summary>
     /// Create friendship
     /// </summary>
