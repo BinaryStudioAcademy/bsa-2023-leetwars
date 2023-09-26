@@ -21,6 +21,8 @@ import { takeUntil } from 'rxjs';
     styleUrls: ['./suggested-challenge.component.sass'],
 })
 export class SuggestedChallengeComponent extends BaseComponent implements OnInit {
+    suggestionType = SuggestionType;
+
     challenge?: IChallengePreview;
 
     languagesNames: string[] = [];
@@ -33,8 +35,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
 
     private languages: ILanguage[] = [];
 
-    private suggestionSettings: ISuggestionSettings = {
-        languageId: 0,
+    suggestionSettings: ISuggestionSettings = {
         suggestionType: SuggestionType.Weekly,
     };
 
