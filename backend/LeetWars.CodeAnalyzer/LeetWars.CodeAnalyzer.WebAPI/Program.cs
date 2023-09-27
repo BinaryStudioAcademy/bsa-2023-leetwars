@@ -20,13 +20,8 @@ builder.Services.AddControllers()
 builder.Services.RegisterOpenAI();
 builder.Services.AddScoped<IChallengeGenerator, ChallengeGenerator>();
 
-builder.Services.AddCors(options => options
-    .AddPolicy("AllowAny", builder => builder
-        .AllowAnyOrigin()
-        .AllowAnyHeader()
-        .AllowAnyMethod())
-);
-builder.WebHost.UseUrls("https://*:5100");
+builder.Services.AddCors();
+builder.WebHost.UseUrls("http://*:5100");
 builder.Services.AddSwaggerGen();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -39,7 +34,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
+app.UseCors(opt => opt
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowAnyOrigin());
+
 
 app.UseHttpsRedirection();
 
