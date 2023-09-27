@@ -40,21 +40,28 @@ export class AuthService {
     ) {
         this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
         this.currentUser$ = this.userSubject.asObservable();
-        this.initializeAuth();
     }
 
     async initializeAuth(): Promise<void> {
         const user = await firstValueFrom(this.afAuth.authState);
 
+        this.updateLocalStorage(user);
+    }
+
+    isAuthorized() {
+        this.afAuth.authState.subscribe(async (user) => {
+            this.updateLocalStorage(user);
+        });
+
+        return this.getUserToken() && this.getUserInfo();
+    }
+
+    private async updateLocalStorage(user: firebase.User | null): Promise<void> {
         if (user) {
             localStorage.setItem(this.tokenKeyName, await user.getIdToken());
         } else {
             localStorage.removeItem(this.tokenKeyName);
         }
-    }
-
-    isAuthorized() {
-        return this.getUserToken() && this.getUserInfo();
     }
 
     register(user: IUserRegister) {
@@ -168,20 +175,21 @@ export class AuthService {
     linkGitHub(): Observable<firebase.auth.UserCredential | null> {
         return this.afAuth.authState.pipe(
             first(),
-            switchMap((user) => {
-                if (!user) {
-                    return of(null);
-                }
+            switchMap((user) => this.linkGitHubWithPopup(user)),
+            catchError((error) => {
+                this.toastrNotification.showError(error.message);
 
-                return user.linkWithPopup(new GithubAuthProvider()).then(
-                    (result) => result,
-                    (error) => {
-                        this.toastrNotification.showError(error.message);
-
-                        return null;
-                    },
-                );
+                return of(null);
             }),
+        );
+    }
+
+    private linkGitHubWithPopup(user: firebase.User | null): Observable<firebase.auth.UserCredential | null> {
+        if (!user) {
+            return of(null);
+        }
+
+        return from(user.linkWithPopup(new GithubAuthProvider())).pipe(
             catchError((error) => {
                 this.toastrNotification.showError(error.message);
 
