@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { AssetConstants } from '@shared/constants/asset-constants';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
 import { IStar } from '@shared/models/challenge-star/star';
 import { IUser } from '@shared/models/user/user';
@@ -23,6 +24,8 @@ export class ChallengeComponent implements OnInit {
     getLanguageIconUrl = getLanguageIconUrl;
 
     canEdit: boolean;
+
+    AssetConstants = AssetConstants;
 
     private user: IUser;
 

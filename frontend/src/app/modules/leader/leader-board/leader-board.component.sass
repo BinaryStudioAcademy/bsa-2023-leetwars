@@ -56,10 +56,14 @@
 
 .user-name
     width: 50%
-    @media ( max-width: $small-challenge)
-      width: 40%
-    @media ( max-width: $mobile)
-      width: calc(87% - 132px)
+    @media (max-width: $small-challenge)
+        width: 40%
+    @media (max-width: $mobile)
+        width: calc(87% - 132px)
+    &-avatar
+        width: 16px
+        height: 16px
+        border-radius: 50%
 
 .total-score
     width: 13%
@@ -74,22 +78,22 @@
     &-text
         padding-left: 4px
     @media (max-width: $small-challenge)
-      width: calc(47% -  100px)
+        width: calc(47% - 100px)
     @media (max-width: $mobile)
-      width: 32px
-      &-text
-        display: none
+        width: 32px
+        &-text
+            display: none
 
 .user:nth-child(even)
-  background-color: $transparent-yellow
+    background-color: $transparent-yellow
 
 .has-request,
 .in-battle,
 .cursor-none
-  cursor: default
+    cursor: default
 
 .has-request
-  color: $green
+    color: $green
 
 .in-battle
-  color: $light-red
+    color: $light-red
