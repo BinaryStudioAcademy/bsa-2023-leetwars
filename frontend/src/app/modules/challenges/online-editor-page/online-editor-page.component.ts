@@ -5,16 +5,19 @@ import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { CodeFightService } from '@core/services/code-fight.service';
+import { CodeRunService } from '@core/services/code-run.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
+import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
-import { takeUntil } from 'rxjs';
+import { Observable, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -52,16 +55,22 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     userId: string;
 
+    isCodeFight: boolean;
+
     private isFullscreen = false;
+
+    private isSampleTests: boolean;
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
+        private codeFightService: CodeFightService,
         private breakpointObserver: BreakpointObserver,
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
-        private router: Router,
+        private codeRunService: CodeRunService,
         private authService: AuthService,
+        private router: Router,
     ) {
         super();
         breakpointObserver
@@ -87,6 +96,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     ngOnInit() {
         this.splitDirection = 'horizontal';
+
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const challengeId = +params.get('id')!;
 
@@ -96,6 +106,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.authService.getUser().subscribe((user: IUser) => {
             this.user = user;
         });
+
+        this.isCodeFight = this.router.url.includes('codefight');
 
         this.subscribeToMessageQueue();
     }
@@ -139,26 +151,62 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return this.activeTab === title;
     }
 
-    sendCode(): void {
-        this.solution = {
-            userConnectionId: this.signalRService.singleUserGroupId,
-            language: this.selectedLanguage,
-            userCode: this.initialSolution as string,
-            tests: this.testCode,
+    giveUpCodeFight() {
+        const codeFightEnd: ICodeFightEnd = {
+            isWinner: false,
+            senderId: this.user.id,
         };
-        this.challengeService.runTests(this.solution).subscribe();
+
+        this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+    }
+
+    runSampleTests(): void {
+        this.sendCode().subscribe();
+
+        this.isSampleTests = true;
+    }
+
+    submitSolution(): void {
+        this.sendCode().subscribe();
+
+        this.isSampleTests = false;
     }
 
     subscribeToMessageQueue(): void {
         this.signalRService.start();
-        this.signalRService.listenMessages((result: ICodeRunResults) => {
-            if (result.buildResults?.isSuccess && result.testRunResults) {
-                this.toastrService.showSuccess('Code was compiled successfully');
-                this.showTestResults(result.testRunResults);
-            } else {
-                this.toastrService.showError(result.buildResults?.buildMessage as string);
-            }
+        this.signalRService.listenMessages((codeRunResults: ICodeRunResults) => {
+            this.codeRunService.getCodeRunResults(codeRunResults);
+
+            this.shouldSendCodeFightEnd(codeRunResults);
         });
+    }
+
+    private shouldSendCodeFightEnd(codeRunResults: ICodeRunResults) {
+        if (this.isCodeFight && !this.isSampleTests) {
+            const codeFightEnd: ICodeFightEnd = {
+                isWinner: true,
+                senderId: this.user.id,
+            };
+
+            this.sendCodeFightIfSuccessfullResults(codeRunResults, codeFightEnd);
+        }
+    }
+
+    private sendCodeFightIfSuccessfullResults(codeRunResults: ICodeRunResults, codeFightEnd: ICodeFightEnd) {
+        if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults?.isSuccess) {
+            this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+        }
+    }
+
+    private sendCode(): Observable<void> {
+        this.solution = {
+            userConnectionId: this.user.id.toString(),
+            language: this.selectedLanguage,
+            userCode: this.initialSolution as string,
+            tests: this.testCode,
+        };
+
+        return this.challengeService.runTests(this.solution);
     }
 
     private loadChallenge(challengeId: number) {

@@ -1,3 +1,5 @@
+using Hangfire;
+using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.Extensions;
 using LeetWars.Core.Common.Filters;
 using LeetWars.Core.WebAPI.Extentions;
@@ -25,15 +27,24 @@ builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
 builder.Services.AddFirebaseAuthentication(builder.Configuration);
+builder.Services.RegisterHengfire(builder.Configuration);
 
 builder.Services.AddCors();
 builder.Services.AddHealthChecks();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.WebHost.UseUrls("http://*:5050");
 
+builder.Services.AddHangfireServer();
+
 var app = builder.Build();
 
 app.UseLeetWarsCoreContext();
+
+app.UseHangfireDashboard();
+
+RecurringJob.AddOrUpdate<IChallengeService>("SetWeeklyChallengesAsync",
+    service => service.SetWeeklyChallengesAsync(),
+    Cron.Weekly());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

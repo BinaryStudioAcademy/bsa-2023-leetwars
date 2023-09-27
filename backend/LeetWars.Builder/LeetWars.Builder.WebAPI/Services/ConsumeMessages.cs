@@ -47,7 +47,6 @@ namespace LeetWars.Builder.Services
 
                     var codeRunResultJson = JsonConvert.SerializeObject(result, settings);
                     _producerService.Send(codeRunResultJson, ExchangeType.Direct);
-
                 }
             });
 

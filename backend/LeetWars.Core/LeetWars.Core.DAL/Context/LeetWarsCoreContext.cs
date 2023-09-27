@@ -24,6 +24,7 @@ namespace LeetWars.Core.DAL.Context
 
         public DbSet<Badge> Badges => Set<Badge>();
         public DbSet<UserBadge> UserBadges => Set<UserBadge>();
+        public DbSet<CodeFight> CodeFights => Set<CodeFight>();
 
         public LeetWarsCoreContext(DbContextOptions<LeetWarsCoreContext> options) : base(options)
         {

@@ -87,9 +87,9 @@ public class UserService : BaseService, IUserService
 
     public async Task<bool> CheckIsExistingUserNameAsync(string? userName)
     {
-        if (string.IsNullOrEmpty((userName)))
+        if (string.IsNullOrEmpty(userName))
         {
-            return false;
+            return true;
         }
 
         bool isExistingUserName = await _context.Users.AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
@@ -105,9 +105,9 @@ public class UserService : BaseService, IUserService
             .Include(user => user.Solutions)
             .Include(user => user.Challenges)
             .Include(user => user.UserBadges)
-            .ThenInclude(badge => badge.Badge)
+                .ThenInclude(badge => badge.Badge)
             .Include(user => user.ChallengeVersions)
-            .SingleOrDefaultAsync(expression);
+            .FirstOrDefaultAsync(expression);
     }
 
     public async Task<UserDto> GetCurrentUserAsync()
@@ -124,6 +124,18 @@ public class UserService : BaseService, IUserService
         return user is null
             ? throw new ArgumentNullException("Not Found", new Exception("User was not found"))
             : _mapper.Map<User, BriefUserInfoDto>(user);
+    }
+
+    public async Task<UserDto> GetUserAsync(long id)
+    {
+        var user = await GetUserByExpressionAsync(user => user.Id == id);
+
+        if (user is null)
+        {
+            throw new NotFoundException(nameof(User), id);
+        }
+
+        return _mapper.Map<User, UserDto>(user);
     }
 
     public async Task<UserFullDto> GetFullUserAsync(long id)
