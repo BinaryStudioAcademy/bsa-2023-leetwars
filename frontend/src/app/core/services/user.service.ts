@@ -1,7 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPageSettings } from '@shared/models/page-settings';
-import { IEditUser } from '@shared/models/user/edit-user';
 import { IEditUserInfo } from '@shared/models/user/edit-user-info';
 import { INewUser } from '@shared/models/user/new-user';
 import { IUser } from '@shared/models/user/user';
@@ -37,8 +36,12 @@ export class UserService {
         return this.httpService.getRequest<boolean>(`${this.baseUrl}/is-existing-username?username=${userName}`);
     }
 
+    getUser(id: number): Observable<IUser> {
+        return this.httpService.getRequest<IUser>(`${this.baseUrl}/${id}`);
+    }
+
     getFullUser(id: number): Observable<IUserFull> {
-        return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/${id}`);
+        return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/full/${id}`);
     }
 
     updateUser(editUserInfo: IEditUserInfo): Observable<IUser> {
@@ -61,9 +64,5 @@ export class UserService {
         httpParams = setParams<IPageSettings>(httpParams, page);
 
         return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/leader-board`, httpParams);
-    }
-
-    updateUserRank(userDto: IEditUser): Observable<IUserFull> {
-        return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
     }
 }

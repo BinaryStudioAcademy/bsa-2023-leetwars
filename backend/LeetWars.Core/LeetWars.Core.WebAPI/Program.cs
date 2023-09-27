@@ -42,8 +42,8 @@ app.UseLeetWarsCoreContext();
 
 app.UseHangfireDashboard();
 
-RecurringJob.AddOrUpdate<IChallengeService>("SetWeeklyChallenges",
-    service => service.SetWeeklyChallenges(),
+RecurringJob.AddOrUpdate<IChallengeService>("SetWeeklyChallengesAsync",
+    service => service.SetWeeklyChallengesAsync(),
     Cron.Weekly());
 
 // Configure the HTTP request pipeline.
