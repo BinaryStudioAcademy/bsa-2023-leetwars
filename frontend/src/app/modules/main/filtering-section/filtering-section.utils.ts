@@ -5,7 +5,6 @@ import { SortingProperty } from '@shared/enums/sorting-property';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 
 export const PROGRESS_NAMES_MAP = [
-    { state: undefined, name: 'All' },
     { state: ChallengeProgress.Started, name: 'Not completed', id: 1 },
     { state: ChallengeProgress.Completed, name: 'Completed', id: 2 },
     { state: ChallengeProgress.NotStarted, name: 'Not trained on', id: 0 },

@@ -36,29 +36,42 @@
                 <div class="header">
                     <div class="language-selection">
                         <fa-icon [icon]="'info'" size="sm"></fa-icon>
-                        <app-dropdown-select [isMultiSelection]="false" [items]="languages"
+                        <app-dropdown-select
+                            [isMultiSelection]="false"
+                            [items]="languages"
                             [selectedItem]="selectedLanguage"
                             (selectedItemsChanged)="onSelectedLanguageChanged($event)">
                         </app-dropdown-select>
-                        <app-dropdown-select [isMultiSelection]="false" [items]="languageVersions"
-                            [selectedItem]="selectedLanguageVersion">
-                        </app-dropdown-select>
                     </div>
-                    <fa-icon (click)="toggleFullScreen(editorContainer)" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
+                    <fa-icon
+                        (click)="toggleFullScreen(editorContainer)"
+                        class="fullscreen-button"
+                        [icon]="'maximize'"></fa-icon>
                 </div>
-                <app-code-editor class="my-code-editor" [initText]="initialSolution!" [language]="selectedLanguage" [(ngModel)]="initialSolution" (codeChanged)="onCodeChanged($event)"
+                <app-code-editor
+                    class="my-code-editor"
+                    [initText]="initialSolution!"
+                    [language]="selectedLanguage"
+                    [(ngModel)]="initialSolution"
+                    (codeChanged)="onCodeChanged($event)"
                     [options]="editorOptions"></app-code-editor>
             </div>
 
             <div class="editor test-wrp" #editorTestContainer>
                 <div class="header">
-                    <div class="language-selection">
-                        Sample test
-                    </div>
-                    <fa-icon (click)="toggleFullScreen(editorTestContainer)" class="fullscreen-button" [icon]="'maximize'"></fa-icon>
+                    <div class="language-selection">Sample test</div>
+                    <fa-icon
+                        (click)="toggleFullScreen(editorTestContainer)"
+                        class="fullscreen-button"
+                        [icon]="'maximize'"></fa-icon>
                 </div>
                 <div class="editor-test" #editorTestContainer>
-                    <app-code-editor class="my-code-editor" [options]="editorOptions" [language]="selectedLanguage" [(ngModel)]="testCode" (codeChanged)="onTestChanged($event)"
+                    <app-code-editor
+                        class="my-code-editor"
+                        [options]="editorOptions"
+                        [language]="selectedLanguage"
+                        [(ngModel)]="testCode"
+                        (codeChanged)="onTestChanged($event)"
                         [initText]="testCode!"></app-code-editor>
                 </div>
             </div>
