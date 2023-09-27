@@ -14,7 +14,7 @@ namespace LeetWars.Core.DAL.Entities
         public string? LastName { get; set; }
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string? ImagePath { get; set; } = null;
+        public string? ImagePath { get; set; }
         public long TotalScore { get; set; }
         public long Reputation { get; set; }
         public DateTime RegisteredAt { get; set; }
