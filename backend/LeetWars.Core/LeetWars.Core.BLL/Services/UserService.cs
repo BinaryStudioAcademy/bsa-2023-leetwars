@@ -17,6 +17,7 @@ using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -314,7 +315,6 @@ public class UserService : BaseService, IUserService
 
         return _mapper.Map<UserFriendsInfoDto>(user);
     }
-
     public async Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto)
     {
         if (userInfoDto is null)
