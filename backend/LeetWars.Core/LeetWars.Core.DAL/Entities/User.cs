@@ -31,7 +31,7 @@ namespace LeetWars.Core.DAL.Entities
         public ICollection<UserBadge> UserBadges { get; } = new List<UserBadge>();
         public User() { }
 
-        public User(string firstName, string lastName, string userName, string email, string imagePath, string oAuthToken)
+        public User(string firstName, string lastName, string userName, string email, string? imagePath, string oAuthToken)
         {
             FirstName = firstName;
             LastName = lastName;
