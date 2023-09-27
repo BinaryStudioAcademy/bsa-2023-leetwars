@@ -61,6 +61,7 @@ namespace LeetWars.Core.BLL.Services
             currentPreferences.TabSize = newPreferences.TabSize;
             currentPreferences.WordWrap = newPreferences.WordWrap;
             currentPreferences.LanguageId = newPreferences.LanguageId;
+            currentPreferences.Minimap = newPreferences.Minimap;
 
             _context.Update(currentPreferences);
 

@@ -17,7 +17,7 @@ export class DropdownSelectComponent implements OnInit, OnChanges {
 
     @Input() itemsIcons: IconName[] = [];
 
-    @Input() selectedItem: string;
+    @Input() selectedItem: string ;
 
     @Input() selectedItems: string[] = [];
 

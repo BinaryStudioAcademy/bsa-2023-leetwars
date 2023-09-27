@@ -114,6 +114,7 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
             fontSize: preferences?.fontSize,
             wordWrap: preferences?.wordWrap,
             language: preferences.language?.name,
+            minimap: preferences?.minimap,
         });
     }
 
