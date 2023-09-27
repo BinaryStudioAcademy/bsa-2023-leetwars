@@ -5,15 +5,18 @@ import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SolutionSubmitModalComponent } from '@shared/components/solution-submit-modal/solution-submit-modal.component';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
+import { ICodeSubmitResult } from '@shared/models/code-run/code-submit-result';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
-import { takeUntil } from 'rxjs';
+import { take, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -59,6 +62,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private breakpointObserver: BreakpointObserver,
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
+        private modalService: NgbModal,
         private router: Router,
     ) {
         super();
@@ -129,28 +133,47 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return this.activeTab === title;
     }
 
-    sendCode(): void {
+    subscribeToMessageQueue(): void {
+        this.signalRService.start();
+    }
+
+    runSampleTests() {
+        this.signalRService.codeRunResult$
+            .pipe(take(1), takeUntil(this.unsubscribe$))
+            .subscribe((codeRunResults: ICodeRunResults) => {
+                if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults) {
+                    this.toastrService.showSuccess('Code was compiled successfully');
+                    this.showTestResults(codeRunResults.testRunResults);
+                } else {
+                    this.toastrService.showError(codeRunResults.buildResults?.buildMessage as string);
+                }
+            });
+
+        this.sendCode();
+    }
+
+    sendSubmitRequest() {
+        this.signalRService.codeSubmitResults$
+            .pipe(take(1), takeUntil(this.unsubscribe$))
+            .subscribe((codeSubmitResults: ICodeSubmitResult) => {
+                const modalRef = this.modalService.open(SolutionSubmitModalComponent);
+
+                modalRef.componentInstance.codeRunResults = codeSubmitResults.codeRunResult;
+                modalRef.componentInstance.codeAnalysisResults = codeSubmitResults.codeAnalysisResult;
+            });
+
+        this.sendCode(true);
+    }
+
+    private sendCode(isSubmitRequest: boolean = false): void {
         this.solution = {
             userConnectionId: this.signalRService.singleUserGroupId,
             language: this.selectedLanguage,
             userCode: this.initialSolution as string,
             tests: this.testCode,
+            isSubmitRequest,
         };
         this.challengeService.runTests(this.solution).subscribe();
-    }
-
-    subscribeToMessageQueue(): void {
-        this.signalRService.start();
-        this.signalRService.listenMessages((msg: string) => {
-            const codeRunResults: ICodeRunResults = JSON.parse(msg) as ICodeRunResults;
-
-            if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults) {
-                this.toastrService.showSuccess('Code was compiled successfully');
-                this.showTestResults(codeRunResults.testRunResults);
-            } else {
-                this.toastrService.showError(codeRunResults.buildResults?.buildMessage as string);
-            }
-        });
     }
 
     private loadChallenge(challengeId: number) {

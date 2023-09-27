@@ -3,4 +3,5 @@
 public interface ICodeDisplayingHubClient
 {
     Task BroadcastMessage(string msg);
+    Task BroadcastSubmitResultMessage(string msg);
 }

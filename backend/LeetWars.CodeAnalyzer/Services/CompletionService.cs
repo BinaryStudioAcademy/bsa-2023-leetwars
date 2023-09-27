@@ -1,4 +1,5 @@
-﻿using LeetWars.CodeAnalyzer.Interfaces;
+﻿using System.Globalization;
+using LeetWars.CodeAnalyzer.Interfaces;
 using LeetWars.CodeAnalyzer.OpenAISettings;
 using OpenAI_API;
 using OpenAI_API.Chat;
@@ -23,9 +24,9 @@ namespace LeetWars.CodeAnalyzer.Services
             {
                 Model = Model.ChatGPTTurbo,
                 MaxTokens = int.Parse(_configuration["OpenAPISettings:MaxTokens"]),
-                Temperature = double.Parse(_configuration["OpenAPISettings:Temperature"]),
-                PresencePenalty = double.Parse(_configuration["OpenAPISettings:PresencePenalty"]),
-                FrequencyPenalty = double.Parse(_configuration["OpenAPISettings:FrequencyPenalty"]),
+                Temperature = double.Parse(_configuration["OpenAPISettings:Temperature"], CultureInfo.InvariantCulture),
+                PresencePenalty = double.Parse(_configuration["OpenAPISettings:PresencePenalty"], CultureInfo.InvariantCulture),
+                FrequencyPenalty = double.Parse(_configuration["OpenAPISettings:FrequencyPenalty"], CultureInfo.InvariantCulture),
                 Messages = new ChatMessage[]
                 {
                     new ChatMessage(ChatMessageRole.User, prompt)

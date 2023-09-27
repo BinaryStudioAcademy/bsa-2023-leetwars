@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HubConnection } from '@microsoft/signalr';
+import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
+import { ICodeSubmitResult } from '@shared/models/code-run/code-submit-result';
 import { Guid } from 'guid-typescript';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { SignalRHubFactoryService } from './signalr-hub-factory.service';
 
@@ -13,9 +15,13 @@ export class CodeDisplayingHubService {
 
     private hubConnection: HubConnection;
 
-    readonly messages = new Subject<string>();
+    private codeRunResultsSubject$ = new Subject<ICodeRunResults>();
 
-    private subscriptions: Subscription[] = [];
+    private codeSubmitResultsSubject$ = new Subject<ICodeSubmitResult>();
+
+    public codeRunResult$ = this.codeRunResultsSubject$.asObservable();
+
+    public codeSubmitResults$ = this.codeSubmitResultsSubject$.asObservable();
 
     public singleUserGroupId: string;
 
@@ -27,13 +33,8 @@ export class CodeDisplayingHubService {
         await this.init();
     }
 
-    listenMessages(action: (msg: string) => void) {
-        this.subscriptions = [...this.subscriptions, this.messages.subscribe({ next: action })];
-    }
-
     async stop() {
         await this.hubConnection?.stop();
-        this.subscriptions.forEach((s) => s.unsubscribe());
     }
 
     private async init() {
@@ -44,7 +45,11 @@ export class CodeDisplayingHubService {
             .catch(() => console.info(`"${this.hubFactory}" failed.`));
 
         this.hubConnection.on('BroadcastMessage', (msg: string) => {
-            this.messages.next(msg);
+            this.codeRunResultsSubject$.next(JSON.parse(msg) as ICodeRunResults);
+        });
+
+        this.hubConnection.on('BroadcastSubmitResultMessage', (msg: string) => {
+            this.codeSubmitResultsSubject$.next(JSON.parse(msg) as ICodeSubmitResult);
         });
 
         this.hubConnection.onreconnected(() => {

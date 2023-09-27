@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
 using System.Text;
+using LeetWars.Notifier.WebAPI.Helpers;
 using LeetWars.RabbitMQ.Interfaces;
 using LeetWars.Notifier.WebAPI.Models;
 
@@ -31,13 +32,21 @@ public class CodeMessageConsumerService : BackgroundService
             var body = args.Body.ToArray();
 
             var message = Encoding.UTF8.GetString(body);
-            var request = JsonConvert.DeserializeObject<CodeRunResults>(message);
 
-            if (request is not null)
+            var isCodeRunResult = JsonConvertingHelper.TryDeserialize<CodeRunResults>(message, out var codeRunResult);
+
+            if (isCodeRunResult && codeRunResult is not null)
             {
-                Console.WriteLine($"notifier usercode: {request.UserConnectionId}");
-
-                await _codeDisplayingHubContext.Clients.Group(request.UserConnectionId).BroadcastMessage(message);
+                await _codeDisplayingHubContext.Clients.Group(codeRunResult.UserConnectionId).BroadcastMessage(message);
+                return;
+            }
+            
+            var isCodeSubmitResult = JsonConvertingHelper.TryDeserialize<CodeSubmitResult>(message, out var codeSubmitResult);
+            
+            if (isCodeSubmitResult && codeSubmitResult is not null)
+            {
+                await _codeDisplayingHubContext.Clients.Group(codeSubmitResult.CodeRunResult.UserConnectionId)
+                    .BroadcastSubmitResultMessage(message);
             }
         });
 

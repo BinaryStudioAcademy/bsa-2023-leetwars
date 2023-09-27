@@ -7,6 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
@@ -23,7 +24,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { SolutionSubmitModalComponent } from './components/solution-submit-modal/solution-submit-modal.component';
 
 @NgModule({
     imports: [
@@ -33,6 +36,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         ReactiveFormsModule,
         RouterModule,
         FontAwesomeModule,
+        NgxChartsModule,
         NgbModule,
         MonacoEditorModule,
         InfiniteScrollModule,
@@ -42,6 +46,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
     ],
     declarations: [
         LoadingSpinnerComponent,
+        PieChartComponent,
         NotFoundComponent,
         ConfirmationModalComponent,
         GeneralModalComponent,
@@ -51,6 +56,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         ProgressBarComponent,
         NotificationsComponent,
         HeaderComponent,
+        SolutionSubmitModalComponent,
     ],
     exports: [
         CommonModule,
@@ -61,6 +67,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         FontAwesomeModule,
         LoadingSpinnerComponent,
         NotFoundComponent,
+        PieChartComponent,
         CodeEditorComponent,
         ConfirmationModalComponent,
         GeneralModalComponent,
