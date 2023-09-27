@@ -31,14 +31,14 @@ namespace LeetWars.Core.DAL.Entities
         public ICollection<UserBadge> UserBadges { get; } = new List<UserBadge>();
         public User() { }
 
-        public User(string firstName, string lastName, string userName, string email, string imagePath, string oAuthToken)
+        public User(string firstName, string lastName, string userName, string email, string oAuthToken, string? imagePath = null)
         {
             FirstName = firstName;
             LastName = lastName;
             UserName = userName;
             Email = email;
-            ImagePath = imagePath;
             OAuthToken = oAuthToken;
+            ImagePath = imagePath;
         }
     }
 }
