@@ -4,7 +4,6 @@ using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Http;
-using LeetWars.Core.Common.DTO.UserPrefferences;
 using System.Linq.Expressions;
 
 namespace LeetWars.Core.BLL.Interfaces;

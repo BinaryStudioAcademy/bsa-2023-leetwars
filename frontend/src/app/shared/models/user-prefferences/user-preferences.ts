@@ -6,5 +6,5 @@ export interface IUserPreferences {
     wordWrap: boolean;
     tabSize: number;
     fontSize: number;
-    minimap: boolean
+    minimap: boolean;
 }

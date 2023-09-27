@@ -31,12 +31,6 @@ namespace LeetWars.Core.DAL.Context
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // Другие настройки вашего контекста
-
-            optionsBuilder.EnableSensitiveDataLogging(); // Включение опции
-        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Configure();

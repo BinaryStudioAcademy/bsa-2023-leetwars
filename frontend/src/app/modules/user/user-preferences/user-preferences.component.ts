@@ -91,9 +91,6 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
     }
 
     onThemeChanged(value: string | string[]) {
-        if (typeof value !== 'string') {
-            return;
-        }
         this.userPreferenceForm.value.theme = value;
     }
 

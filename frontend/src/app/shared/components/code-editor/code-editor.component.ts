@@ -66,9 +66,7 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
     private updateEditorOptions(): void {
         this.editorOptions = {
             theme: this.userPreferences?.theme ? this.userPreferences.theme : this.options?.theme,
-            language: this.userPreferences?.language
-                ? this.userPreferences?.language.name
-                : this.mapLanguageName(this.options?.language),
+            language: this.userPreferences?.language ? this.userPreferences?.language.name : this.mapLanguageName(this.options?.language),
             tabSize: this.userPreferences?.tabSize ? this.userPreferences.tabSize : this.options?.tabSize,
             fontSize: this.userPreferences?.fontSize ? this.userPreferences.fontSize : this.options?.fontSize,
             wordWrap: this.userPreferences?.wordWrap != null ? this.userPreferences?.wordWrap : this.options?.wordWrap,
