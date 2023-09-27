@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
@@ -42,14 +42,6 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
     }
 
-    @HostListener('window:beforeunload', ['$event'])
-    beforeUnloadHandler() {
-        if (this.isNotificationsDropdownDisplayed) {
-            this.readNotifications();
-            this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
-        }
-    }
-
     public isNotificationsDropdownDisplayed: boolean = false;
 
     private newNotificationsCollection: INotificationModel[] = [];
@@ -67,7 +59,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
     }
 
     private getNotifications() {
-        this.notificationService.getUserNotifications(this.user.id)
+        this.notificationService.getUserNotifications()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (notifications) => {
@@ -82,27 +74,26 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
     }
 
     private readNotifications() {
-        this.notificationService.updateStatusToRead(this.newNotificationsCollection.map(e => e.id))
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: () => {
-                    this.newNotificationsCollection.forEach(x => {
-                        x.isRead = true;
-                    });
+        this.newNotificationsCollection.forEach(x => {
+            x.isRead = true;
+        });
 
-                    this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
-                    this.newNotificationsCollection = [];
-                },
-                error: () => {
-                    this.toastrService.showError('Server connection error');
-                    this.router.navigate(['/']);
-                },
-            });
+        this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
+        this.newNotificationsCollection = [];
     }
 
-    showNotifications() {
+    public showNotifications() {
         if (this.isNotificationsDropdownDisplayed) {
             this.readNotifications();
+        } else {
+            this.notificationService.updateStatusToRead(this.newNotificationsCollection.map(e => e.id))
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    error: () => {
+                        this.toastrService.showError('Server connection error');
+                        this.router.navigate(['/']);
+                    },
+                });
         }
         this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
     }

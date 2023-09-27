@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.Notifications;
@@ -57,10 +58,17 @@ namespace LeetWars.Core.BLL.Services
             _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
         }
 
-        public async Task<ICollection<NotificationDto>> GetNotificationsByUserIdAsync(long id)
+        public async Task<ICollection<NotificationDto>> GetNotificationsOfCurrentUserAsync()
         {
+            var currUserId = _userGetter.CurrentUser?.Id;
+
+            if (currUserId is null)
+            {
+                throw new NotFoundException("User not found");
+            }
+
             var notificationDtos = await _context.UserNotifications
-                .Where(un => un.ReceiverId == _userGetter.CurrentUser!.Id)
+                .Where(un => un.ReceiverId == currUserId)
                 .Include(un => un.Notification)
                     .ThenInclude(n => n!.Sender)
                 .Include(un => un.Notification)
@@ -83,8 +91,15 @@ namespace LeetWars.Core.BLL.Services
 
         public async Task UpdateStatusToRead(long[] ids)
         {
+            var currUserId = _userGetter.CurrentUser?.Id;
+
+            if (currUserId is null)
+            {
+                throw new NotFoundException("User not found");
+            }
+
             await _context.UserNotifications
-                .Where(un => ids.Contains(un.NotificationId) && un.ReceiverId == _userGetter.CurrentUser!.Id)
+                .Where(un => ids.Contains(un.NotificationId) && un.ReceiverId == currUserId)
                 .ForEachAsync(e => e.IsRead = true);
 
             await _context.SaveChangesAsync();

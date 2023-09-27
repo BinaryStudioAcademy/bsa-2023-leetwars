@@ -21,10 +21,10 @@ namespace LeetWars.Core.WebAPI.Controllers
         /// Get all notifications of a single user by id
         /// </summary>
         /// <returns>Collection of user's notification, read and unseen</returns>
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ICollection<TagDto>>> GetAllAsync([FromRoute] long id)
+        [HttpGet]
+        public async Task<ActionResult<ICollection<TagDto>>> GetAllAsync()
         {
-            var notifications = await _notificationService.GetNotificationsByUserIdAsync(id);
+            var notifications = await _notificationService.GetNotificationsOfCurrentUserAsync();
 
             return Ok(notifications);
         }

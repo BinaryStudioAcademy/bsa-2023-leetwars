@@ -29,7 +29,7 @@
                     <span class="new-notifications-count">{{countNotification}}</span>
                 </div>
                 <div class="dropdown-body">
-                    <div class="zero-notifications-info" *ngIf="!newNotifications.length">
+                    <div class="zero-notifications-info" *ngIf="!countNotification">
                         <span>No new notifications so far</span>
                     </div>
                     <app-notifications [notifications]="this.newNotifications" [isUnread]="true"></app-notifications>

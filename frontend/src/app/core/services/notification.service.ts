@@ -11,8 +11,8 @@ export class NotificationService {
 
     constructor(private httpService: HttpInternalService) {}
 
-    public getUserNotifications(id: number) {
-        return this.httpService.getRequest<INotificationModel[]>(`${this.baseUrl}/${id}`);
+    public getUserNotifications() {
+        return this.httpService.getRequest<INotificationModel[]>(`${this.baseUrl}`);
     }
 
     public updateStatusToRead(ids: number[]) {
