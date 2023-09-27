@@ -35,10 +35,6 @@ export class NotificationService {
 
         this.notificationModal.componentInstance.notifications = this.notifications;
 
-        this.notificationModal.hidden.subscribe(() => {
-            this.notifications = [];
-        });
-
         this.notificationModal.closed.subscribe((nofitications: INotificationModel[]) => {
             this.notifications = nofitications;
         });

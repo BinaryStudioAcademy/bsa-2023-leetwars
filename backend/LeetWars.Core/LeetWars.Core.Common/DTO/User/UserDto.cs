@@ -1,4 +1,5 @@
-﻿using LeetWars.Core.DAL.Entities;
+﻿using LeetWars.Core.Common.DTO.Friendship;
+using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
 
 namespace LeetWars.Core.Common.DTO.User
@@ -21,5 +22,6 @@ namespace LeetWars.Core.Common.DTO.User
         public bool IsSubscribed { get; set; }
         public bool IsBanned { get; set; }
         public CodeFightStatus CodeFightStatus { get; set; }
+        public ICollection<FriendshipPreviewDto>? Friendships { get; set; }
     }
 }

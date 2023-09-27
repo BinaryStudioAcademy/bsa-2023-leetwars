@@ -10,6 +10,7 @@ import { HubConnection } from '@microsoft/signalr';
 import { TypeNotification } from '@shared/enums/type-notification';
 import { ICodeFightRequestNotification } from '@shared/models/codefight/code-fight-request-notification';
 import { ICodeFightStart } from '@shared/models/codefight/code-fight-start';
+import { IFriendshipPreview } from '@shared/models/friendship/friendship-preview';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IUser } from '@shared/models/user/user';
 import { forkJoin, Subject, Subscription, timer } from 'rxjs';
@@ -113,6 +114,10 @@ export class NotificationHubService {
         this.hubConnection.on('LoseCodeFightAsync', () => {
             this.toastrService.showInfo('You have lost the code fight!');
             this.router.navigateByUrl('/leader/board', { state: { canLeave: true } });
+        });
+
+        this.hubConnection.on('UpdateFriendshipAsync', (notification: IFriendshipPreview) => {
+            this.eventService.userFriendshipChanged(notification);
         });
 
         await this.hubConnection.invoke('OnConnectAsync', `${this.user.id.toString()}`);

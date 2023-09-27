@@ -1,4 +1,5 @@
 ﻿using LeetWars.Core.BLL.Exceptions;
+using LeetWars.Core.Common.Exceptions;
 using LeetWars.Core.DAL.Enums;
 using System.Net;
 
@@ -13,6 +14,7 @@ namespace LeetWars.Core.Common.Extentions
                 NotFoundException _ => (HttpStatusCode.NotFound, ErrorCode.NotFound),
                 InvalidUsernameOrPasswordException _ => (HttpStatusCode.Unauthorized, ErrorCode.InvalidUsernameOrPassword),
                 AccessDeniedException _ => (HttpStatusCode.Forbidden, ErrorCode.Forbidden),
+                BadOperationException _ => (HttpStatusCode.BadRequest, ErrorCode.BadRequest),
                 _ => (HttpStatusCode.InternalServerError, ErrorCode.General),
             };
         }
