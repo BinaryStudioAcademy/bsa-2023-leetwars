@@ -36,6 +36,8 @@ export class CustomInputComponent implements ControlValueAccessor, OnInit {
 
     @Input() InputPlaceholder?: string;
 
+    @Input() checked: boolean = false;
+
     @Input() disabled: boolean;
 
     @Output() InputValueChange = new EventEmitter<string>();

@@ -17,7 +17,7 @@ import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { ITag } from '@shared/models/tag/tag';
-import { takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-filtering-section',

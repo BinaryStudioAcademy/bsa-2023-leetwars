@@ -23,9 +23,10 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
     userPreferenceForm: FormGroup = new FormGroup({
         language: new FormControl(''),
         theme: new FormControl(''),
-        tabSize: new FormControl(3, [Validators.max(tabSizeMaxValue), Validators.required]),
+        tabSize: new FormControl(3, [Validators.max(tabSizeMaxValue)]),
         fontSize: new FormControl(0, [Validators.max(fontSizeMaxValue)]),
         wordWrap: new FormControl(false),
+        minimap: new FormControl(false),
     });
 
     user: IUser;
@@ -62,6 +63,7 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
             tabSize: this.userPreferenceForm.value.tabSize,
             fontSize: this.userPreferenceForm.value.fontSize,
             wordWrap: this.userPreferenceForm.value.wordWrap,
+            minimap: this.userPreferenceForm.value.minimap,
         };
 
         this.preferenceService
@@ -76,6 +78,14 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
             });
     }
 
+    onCheckedWrapChange() {
+        this.userPreferenceForm.value.wordWrap = !this.userPreferenceForm.value.wordWrap;
+    }
+
+    onCheckedMinimapChange() {
+        this.userPreferenceForm.value.minimap = !this.userPreferenceForm.value.minimap;
+    }
+
     onLanguageChanged(value: string | string[]) {
         this.userPreferenceForm.value.language = value;
     }
@@ -85,11 +95,6 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
             return;
         }
         this.userPreferenceForm.value.theme = value;
-    }
-
-    onCheckedChange(value: boolean) {
-        console.log(value);
-        this.isWordWrap = value;
     }
 
     getErrorMessage(formControlName: string) {

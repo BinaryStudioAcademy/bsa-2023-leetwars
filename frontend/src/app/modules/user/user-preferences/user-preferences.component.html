@@ -58,14 +58,29 @@
                     </div>
 
                     <div class=" col-md-4">
-                        <div class="label-input-group">
-                            <label for="word-wrap">Word Wrap</label>
-                            <div class="input-wrapper">
-                                <input InputType="checkbox"
-                                    formControlName="wordWrap"  checked>
+                        <div class="form-item">
+                            <div class="label-input-group">
+                                <label for="minimap">Minimap</label>
+                                <div class="input-wrapper">
+                                <app-custom-input InputType="checkbox" [Identifier]="'word-wrap'" Width="20px"
+                                [checked]="userPreferenceForm.value?.minimap" formControlName="minimap"
+                                (InputValueChange)="onCheckedMinimapChange()">
+                            </app-custom-input>
                             </div>
                         </div>
                     </div>
+                    <div class="form-item">
+                        <div class="label-input-group">
+                            <label for="word-wrap">Word Wrap</label>
+                            <div class="input-wrapper">
+                                <app-custom-input InputType="checkbox" [Identifier]="'word-wrap'" Width="20px"
+                                [checked]="userPreferenceForm.value?.wordWrap" formControlName="wordWrap"
+                                (InputValueChange)="onCheckedWrapChange()">
+                            </app-custom-input>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
                 </div>
             </div>
             <button [disabled]="userPreferenceForm.invalid" class="submit-button align-items-center align-self-end"
