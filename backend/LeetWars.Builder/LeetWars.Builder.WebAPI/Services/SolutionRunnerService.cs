@@ -36,7 +36,7 @@ namespace LeetWars.Builder.Services
             var container = await CreateContainerWithVolumeAsync(data.ProcessName, volumeName, DefaultRunnerImageNames.CSharpBuildImage, _localVolumeName);
             await StringToFileInContainerAsync(data.Code, DefaultCSharpFileNaming.SolutionFileName, container.ID, $"/{_localVolumeName}/");
             await StringToFileInContainerAsync(data.Preloaded, DefaultCSharpFileNaming.SolutionPreloadedFileName, container.ID, $"/{_localVolumeName}/");
-            var buildLog = await RunContainerAndGetResultFile(container.ID, volumeName, $"/{_localVolumeName}/{DefaultCSharpFileNaming.BuildResultsFileName}");
+            var buildLog = await RunContainerAndGetResultFileAsync(container.ID, volumeName, $"/{_localVolumeName}/{DefaultCSharpFileNaming.BuildResultsFileName}");
             return buildLog;
         }
 
@@ -45,7 +45,7 @@ namespace LeetWars.Builder.Services
             var volumeName = data.ProcessName + "-volume";
             var container = await CreateContainerWithVolumeAsync(data.ProcessName, volumeName, DefaultRunnerImageNames.JSBuildImage, _localVolumeName);
             await StringToFileInContainerAsync(data.Preloaded + Environment.NewLine + data.Code, DefaultJSFileNaming.SolutionCodeFileName, container.ID, $"/{_localVolumeName}/");
-            var buildLog = await RunContainerAndGetResultFile(container.ID, volumeName, $"/{_localVolumeName}/{DefaultCSharpFileNaming.BuildResultsFileName}");
+            var buildLog = await RunContainerAndGetResultFileAsync(container.ID, volumeName, $"/{_localVolumeName}/{DefaultCSharpFileNaming.BuildResultsFileName}");
             return buildLog;
         }
 
@@ -78,7 +78,7 @@ namespace LeetWars.Builder.Services
             await StringToFileInContainerAsync(data.Tests, DefaultCSharpFileNaming.SolutionTestFileName, container.ID, $"/{_localVolumeName}/");
             await StringToFileInContainerAsync(data.Preloaded, DefaultCSharpFileNaming.SolutionPreloadedFileName, container.ID, $"/{_localVolumeName}/");
             await StringToFileInContainerAsync(TestShellScripts.CSharpTestScript, TestShellScriptNaming.CSharpTestScriptName, container.ID, $"/{_localVolumeName}/");
-            var stringResult = await RunContainerAndGetResultFile(container.ID, volumeName, $"/{_localVolumeName}/{DefaultCSharpFileNaming.TestResultsFileName}");
+            var stringResult = await RunContainerAndGetResultFileAsync(container.ID, volumeName, $"/{_localVolumeName}/{DefaultCSharpFileNaming.TestResultsFileName}");
             return _parserService.ParseCSharpTestResult(stringResult);
         }
 
@@ -89,7 +89,7 @@ namespace LeetWars.Builder.Services
             var jsCodeWithTests = data.Preloaded + Environment.NewLine + data.Code + Environment.NewLine + data.Tests;
             await StringToFileInContainerAsync(jsCodeWithTests, DefaultJSFileNaming.SolutionCodeFileName, container.ID, $"/{_localVolumeName}/");
             await StringToFileInContainerAsync(TestShellScripts.JSTestScript, TestShellScriptNaming.JSTestScriptName, container.ID, $"/{_localVolumeName}/");
-            var stringResult = await RunContainerAndGetResultFile(container.ID, volumeName, $"/{_localVolumeName}/{DefaultJSFileNaming.TestResultsFileName}");
+            var stringResult = await RunContainerAndGetResultFileAsync(container.ID, volumeName, $"/{_localVolumeName}/{DefaultJSFileNaming.TestResultsFileName}");
             return _parserService.ParseJSTestResult(stringResult);
         }
 
@@ -122,7 +122,7 @@ namespace LeetWars.Builder.Services
             return await _client.Containers.CreateContainerAsync(containerParams);
         }
 
-        private async Task<string> RunContainerAndGetResultFile(string containerId, string? volumeName, string path)
+        private async Task<string> RunContainerAndGetResultFileAsync(string containerId, string? volumeName, string path)
         {
             await _client.Containers.StartContainerAsync(containerId, null);
             await _client.Containers.WaitContainerAsync(containerId);

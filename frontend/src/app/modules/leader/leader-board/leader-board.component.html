@@ -16,7 +16,13 @@
             <div class="scrollable" infinite-scroll (scrolled)="onScroll()">
                 <div class="user d-flex" *ngFor="let user of users; let i = index">
                     <div class="position position-item">#{{ i + 1 }}</div>
-                    <div class="user-name">{{ user.userName }}</div>
+                    <div class="user-name d-flex gap-1 align-items-center">
+                        <img
+                            class="user-name-avatar"
+                            [src]="this.user?.imagePath ?? AssetConstants.defaultProfileImagePath"
+                            alt="user-avatar" />
+                        <p>{{ user.userName }}</p>
+                    </div>
                     <div class="total-score">{{ user.totalScore }}</div>
                     <div class="add-friend d-flex">
                         <button (click)="addFriend(user)" class="user-icon-btn user-plus-btn"
