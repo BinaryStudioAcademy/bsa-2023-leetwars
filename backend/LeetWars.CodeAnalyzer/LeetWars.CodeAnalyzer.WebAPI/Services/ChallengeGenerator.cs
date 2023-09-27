@@ -26,9 +26,9 @@ namespace LeetWars.CodeAnalyzer.Services
 
             var challengeResponse = JsonConvert.DeserializeObject<OpenAiChallengeGenerateResponseDto>(response);
 
-            if(challengeResponse is null) 
+            if(challengeResponse == null) 
             {
-                throw new Exception();
+                throw new ArgumentNullException(nameof(challengeResponse));
             }
 
             ChallengeGenerateResponseDto challengeGenerateResponseDto = new ChallengeGenerateResponseDto();

@@ -22,7 +22,10 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
 
         public string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto)
         {
-            if(challengeGenerateRequestDto.Tags is null) { throw new Exception(); }
+            if(challengeGenerateRequestDto.Tags == null) 
+            { 
+                throw new ArgumentNullException(nameof(challengeGenerateRequestDto.Tags)); 
+            }
 
             var testFramework = challengeGenerateRequestDto.Language?.Name == "Javascript" ? "Mocha" : "NUnit";
             return @$"You are a software engineer.As a {challengeGenerateRequestDto.Language?.Name} developer, your goal is to
