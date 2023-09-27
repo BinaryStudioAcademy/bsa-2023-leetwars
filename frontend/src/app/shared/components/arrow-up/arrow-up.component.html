@@ -1,4 +1,4 @@
-<a pageScroll [pageScrollDuration]="1000" (pageScrollFinish)="afterScroll()" href="#top-scroll-page" *ngIf="showArrowButton">
+<a appScrollTo scrollToId="#top-scroll-page" *ngIf="showArrowButton" (click)="afterScroll()">
     <div class="scroll-top d-flex justify-content-center align-items-center">
         <fa-icon [icon]="'arrow-up-long'" [size]="'lg'" class="scroll-top-icon"></fa-icon>
     </div>

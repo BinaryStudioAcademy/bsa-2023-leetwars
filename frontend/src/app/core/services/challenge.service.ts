@@ -1,7 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInternalService } from '@core/services/http-internal.service';
-import { HttpResponse } from '@microsoft/signalr';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { IChallengeFilter } from '@shared/models/challenge/challenge-filter';
 import { IChallengePreview } from '@shared/models/challenge/challenge-preview';
@@ -9,6 +8,7 @@ import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ISuggestionSettings } from '@shared/models/challenge/suggestion-settings';
+import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { IStar } from '@shared/models/challenge-star/star';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { IPageSettings } from '@shared/models/page-settings';
@@ -33,6 +33,10 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallengePreview[]>(this.challengesRoute, httpParams);
     }
 
+    getChallengeLevels(): Observable<IChallengeLevel[]> {
+        return this.httpService.getRequest<IChallengeLevel[]>(`${this.challengesRoute}/levels`);
+    }
+
     getChallengeSuggestion(settings: ISuggestionSettings) {
         let httpParams = new HttpParams();
 
@@ -49,8 +53,8 @@ export class ChallengeService {
         return this.httpService.putRequest<IChallengePreview>(this.challengesRoute, star);
     }
 
-    runTests(request: ICodeRunRequest): Observable<HttpResponse> {
-        return this.httpService.postRequest<HttpResponse>(`${this.challengesRoute}/test`, request);
+    runTests(request: ICodeRunRequest): Observable<void> {
+        return this.httpService.postRequest<void>(`${this.challengesRoute}/test`, request);
     }
 
     updateChallenge(challenge: IEditChallenge): Observable<IChallenge> {
