@@ -10,8 +10,8 @@
     font-family: 'Montserrat', sans-serif
     border-radius: 4px
     &:hover
-      transition: box-shadow .6s
-      box-shadow: 0 0 6px $white
+        transition: box-shadow .6s
+        box-shadow: 0 0 6px $white
 
 .icon
     font-size: 12px
@@ -80,9 +80,22 @@
     font-weight: 600
     flex: 1 1 auto
 
+.author-block
+    max-width: 264px
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+    color: $light-copper
+    @media (max-width: $tablet)
+        max-width: 180px
+
+    & span
+        color: $white
+
 .author
     color: $light-copper
     text-decoration-color: $light-copper
+    margin-left: 4px
 
 .language-block
     font-family: 'Open Sans', sans-serif
