@@ -94,9 +94,10 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                 const userId = params.get('id') as unknown as number;
 
                 this.isCurrentUser = !userId || this.currentUser?.id === userId;
-                    const curentUserId = this.isCurrentUser  ? this.user.id : userId;
-                    this.getUserInfo(curentUserId );
-                    this.getUserChallenges(curentUserId );
+                const curentUserId = this.isCurrentUser ? this.user.id : userId;
+
+                this.getUserInfo(curentUserId);
+                this.getUserChallenges(curentUserId);
             });
         } catch (error) {
             this.toastrNotification.showError('User not found');
