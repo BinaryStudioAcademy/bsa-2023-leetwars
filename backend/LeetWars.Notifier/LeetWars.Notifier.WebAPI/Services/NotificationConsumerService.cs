@@ -155,11 +155,11 @@ namespace LeetWars.Notifier.WebAPI.Services
                     FriendId = long.Parse(notificationDto.ReceiverId),
                     FriendshipId = notificationDto.UpdateFriendship!.FriendshipId,
                     FriendshipStatus = notificationDto.UpdateFriendship.FriendshipStatus,
-                };                
+                };
                 await _hubContext.Clients.Groups(notificationDto.Sender.Id.ToString()).UpdateFriendshipAsync(friendshipPreviewDto);
                 friendshipPreviewDto.FriendId = notificationDto.Sender.Id;
                 await _hubContext.Clients.Groups(notificationDto.ReceiverId).UpdateFriendshipAsync(friendshipPreviewDto);
             }
-        }       
+        }
     }
 }

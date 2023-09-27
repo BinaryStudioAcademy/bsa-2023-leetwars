@@ -167,13 +167,18 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
 
     private handleUserDataChange(updateFriendship: IFriendshipPreview) {
         if (updateFriendship.friendshipStatus === FriendshipStatus.Declined) {
-            this.userFriendsIds = this.userFriendsIds.filter((id) => id !== updateFriendship.friendId);
-            this.currentUser.friendships = this.currentUser.friendships.filter(
-                (f) => f.friendId !== updateFriendship.friendId,
-            );
-
-            return;
+            this.removeFriendship(updateFriendship.friendId);
+        } else {
+            this.updateOrAddFriendship(updateFriendship);
         }
+    }
+
+    private removeFriendship(friendId: number) {
+        this.userFriendsIds = this.userFriendsIds.filter((id) => id !== friendId);
+        this.currentUser.friendships = this.currentUser.friendships.filter((f) => f.friendId !== friendId);
+    }
+
+    private updateOrAddFriendship(updateFriendship: IFriendshipPreview) {
         this.currentUser.friendships = [
             ...this.currentUser.friendships.filter(
                 (friendship) => friendship.friendshipId !== updateFriendship.friendshipId,

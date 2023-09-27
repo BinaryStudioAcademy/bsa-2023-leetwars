@@ -136,7 +136,7 @@ public class UsersController : ControllerBase
         var user = await _userService.SendFriendshipRequestAsync(newFriendshipDto);
 
         return Ok(user);
-    }    
+    }
 
     /// <summary>
     /// Update friendship
