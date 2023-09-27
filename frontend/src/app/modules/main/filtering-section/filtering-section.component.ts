@@ -16,7 +16,7 @@ import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { ITag } from '@shared/models/tag/tag';
-import { Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-filtering-section',
@@ -39,8 +39,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     sortingLabels = SORTING_PROPERTIES.map((x) => x.label) as string[];
 
     difficultyNames: string[];
-
-    public scrollEventSubject = new Subject<void>();
 
     private sortingProperty?: ISortedModel;
 
@@ -84,8 +82,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     }
 
     onScroll() {
-        this.scrollEventSubject.next();
-
         if (this.isLastPage) {
             return;
         }
@@ -190,7 +186,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             .subscribe({
                 next: (data) => {
                     this.tags = data;
-                    this.tagsNames = ['All', ...data.map((tag) => tag.name)];
+                    this.tagsNames = data.map((tag) => tag.name);
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
@@ -205,7 +201,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             .subscribe({
                 next: (data) => {
                     this.languages = data;
-                    this.languagesNames = ['All', ...data.map((language) => language.name)];
+                    this.languagesNames = data.map((language) => language.name);
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');

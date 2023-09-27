@@ -63,7 +63,7 @@ public class UserService : BaseService, IUserService
         if (isExistingUserName)
         {
             userDto.UserName = userDto.IsWithProvider
-                ? await GenerateUniqueUsername(userDto.Email)
+                ? await GenerateUniqueUsernameAsync(userDto.Email)
                 : throw new InvalidUsernameOrPasswordException($"Error: This username is already registered in the system.");
         }
 
@@ -88,9 +88,9 @@ public class UserService : BaseService, IUserService
 
     public async Task<bool> CheckIsExistingUserNameAsync(string? userName)
     {
-        if (string.IsNullOrEmpty((userName)))
+        if (string.IsNullOrEmpty(userName))
         {
-            return false;
+            return true;
         }
 
         bool isExistingUserName = await _context.Users.AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
@@ -106,9 +106,9 @@ public class UserService : BaseService, IUserService
             .Include(user => user.Solutions)
             .Include(user => user.Challenges)
             .Include(user => user.UserBadges)
-            .ThenInclude(badge => badge.Badge)
+                .ThenInclude(badge => badge.Badge)
             .Include(user => user.ChallengeVersions)
-            .SingleOrDefaultAsync(expression);
+            .FirstOrDefaultAsync(expression);
     }
 
     public async Task<UserDto> GetCurrentUserAsync()
@@ -128,6 +128,18 @@ public class UserService : BaseService, IUserService
         }
 
         return _mapper.Map<User, BriefUserInfoDto>(user);
+    }
+
+    public async Task<UserDto> GetUserAsync(long id)
+    {
+        var user = await GetUserByExpressionAsync(user => user.Id == id);
+
+        if (user is null)
+        {
+            throw new NotFoundException(nameof(User), id);
+        }
+
+        return _mapper.Map<User, UserDto>(user);
     }
 
     public async Task<UserFullDto> GetFullUserAsync(long id)
@@ -171,7 +183,7 @@ public class UserService : BaseService, IUserService
         var user = await GetUserByExpressionAsync(user => user.Id == userDto.Id)
             ?? throw new NotFoundException(nameof(User), userDto.Id);
 
-        user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallengeId);
+        user.TotalScore += await GetRewardFromChallengeAsync(userDto.CompletedChallengeId);
         user.Reputation = user.TotalScore / REPUTATION_DIVIDER;
 
         _context.Users.Update(user);
@@ -240,7 +252,7 @@ public class UserService : BaseService, IUserService
         return user ?? throw new NotFoundException(nameof(User));
     }
 
-    private async Task<int> GetRewardFromChallenge(long challengeId)
+    private async Task<int> GetRewardFromChallengeAsync(long challengeId)
     {
         var challengeLevel = await _context.Challenges
             .Select(challenge => new ChallengeRewardDto
@@ -254,7 +266,7 @@ public class UserService : BaseService, IUserService
             ?? throw new NotFoundException(nameof(Challenge), challengeId);
     }
 
-    private async Task<string> GenerateUniqueUsername(string email)
+    private async Task<string> GenerateUniqueUsernameAsync(string email)
     {
         string newUserName = email.GetUserNameFromEmail();
 

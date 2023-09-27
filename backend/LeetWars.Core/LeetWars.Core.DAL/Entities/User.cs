@@ -21,6 +21,7 @@ namespace LeetWars.Core.DAL.Entities
         public string? OAuthToken { get; set; }
         public bool IsSubscribed { get; set; }
         public bool IsBanned { get; set; }
+        public CodeFightStatus CodeFightStatus { get; set; }
         public ICollection<Subscription> Subscriptions { get; } = new List<Subscription>();
         public ICollection<Language> PreferredLanguages { get; } = new List<Language>();
         public ICollection<UserLanguageLevel> LanguagesWithLevels { get; } = new List<UserLanguageLevel>();
@@ -28,17 +29,16 @@ namespace LeetWars.Core.DAL.Entities
         public ICollection<Challenge> Challenges { get; } = new List<Challenge>();
         public ICollection<ChallengeVersion> ChallengeVersions { get; } = new List<ChallengeVersion>();
         public ICollection<UserBadge> UserBadges { get; } = new List<UserBadge>();
-
         public User() { }
 
-        public User(string firstName, string lastName, string userName, string email, string imagePath, string oAuthToken)
+        public User(string firstName, string lastName, string userName, string email, string oAuthToken, string? imagePath = null)
         {
             FirstName = firstName;
             LastName = lastName;
             UserName = userName;
             Email = email;
-            ImagePath = imagePath;
             OAuthToken = oAuthToken;
+            ImagePath = imagePath;
         }
     }
 }

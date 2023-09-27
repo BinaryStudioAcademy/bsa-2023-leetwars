@@ -2843,20 +2843,32 @@ namespace LeetWars.Core.DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LeetWars.Core.DAL.Entities.HelperEntities.ChallengeVersionLanguageVersion", b =>
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.CodeFight", b =>
                 {
-                    b.Property<long>("ChallengeVersionId")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<long>("LanguageVersionId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("ChallengeId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("ChallengeVersionId", "LanguageVersionId")
-                        .HasName("PK_ChallengesVersionLanguagesVersion");
+                    b.Property<long>("ReceiverId")
+                        .HasColumnType("bigint");
 
-                    b.HasIndex("LanguageVersionId");
+                    b.Property<long>("SenderId")
+                        .HasColumnType("bigint");
 
-                    b.ToTable("ChallengeVersionLanguageVersion");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiverId")
+                        .IsUnique();
+
+                    b.HasIndex("SenderId")
+                        .IsUnique();
+
+                    b.ToTable("CodeFights");
                 });
 
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.Language", b =>
@@ -2887,86 +2899,6 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 2L,
                             Name = "C#"
-                        });
-                });
-
-            modelBuilder.Entity("LeetWars.Core.DAL.Entities.LanguageVersion", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<long>("LanguageId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Version")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("Id")
-                        .HasName("PK_LanguageVersion");
-
-                    b.HasIndex("LanguageId");
-
-                    b.ToTable("LanguageVersions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            LanguageId = 2L,
-                            Version = "8.5.4.4"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            LanguageId = 2L,
-                            Version = "1.0.9.1"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            LanguageId = 1L,
-                            Version = "9.6.6.2"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            LanguageId = 2L,
-                            Version = "8.4.6.6"
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            LanguageId = 1L,
-                            Version = "4.5.3.5"
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            LanguageId = 2L,
-                            Version = "4.7.8.1"
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            LanguageId = 2L,
-                            Version = "2.0.6.1"
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            LanguageId = 2L,
-                            Version = "5.1.4.6"
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            LanguageId = 2L,
-                            Version = "7.6.7.5"
                         });
                 });
 
@@ -5507,6 +5439,9 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Property<DateTime?>("BirthDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CodeFightStatus")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Country")
                         .HasColumnType("int");
 
@@ -5578,10 +5513,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 1L,
                             BirthDate = new DateTime(1991, 5, 8, 14, 17, 47, 307, DateTimeKind.Utc).AddTicks(4649),
+                            CodeFightStatus = 0,
                             Country = 8,
                             Email = "Josue41@hotmail.com",
                             FirstName = "Grayson",
-                            ImagePath = "wymtrpbcdupodqfwhkxtmnyngfjrqv.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Tremblay",
@@ -5599,10 +5534,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 2L,
                             BirthDate = new DateTime(1984, 5, 30, 8, 42, 31, 222, DateTimeKind.Utc).AddTicks(9633),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Amely_Murphy71@hotmail.com",
                             FirstName = "Ford",
-                            ImagePath = "jfplewxzubgazxgkgpkbapjelwlpjj.jpg",
                             IsBanned = true,
                             IsSubscribed = false,
                             LastName = "Reinger",
@@ -5620,10 +5555,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 3L,
                             BirthDate = new DateTime(1993, 7, 25, 6, 0, 59, 61, DateTimeKind.Utc).AddTicks(456),
+                            CodeFightStatus = 0,
                             Country = 28,
                             Email = "Regan.Larson42@hotmail.com",
                             FirstName = "Rupert",
-                            ImagePath = "uteqdltwogiudurmfofioawoaftbpx.jpg",
                             IsBanned = false,
                             IsSubscribed = false,
                             LastName = "Greenholt",
@@ -5641,10 +5576,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 4L,
                             BirthDate = new DateTime(1989, 7, 7, 0, 1, 37, 619, DateTimeKind.Utc).AddTicks(4666),
+                            CodeFightStatus = 0,
                             Country = 27,
                             Email = "Nelle24@yahoo.com",
                             FirstName = "Pansy",
-                            ImagePath = "rzkqhrfjmqxwpuqbifmzszvswxfwml.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Kreiger",
@@ -5662,10 +5597,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 5L,
                             BirthDate = new DateTime(1995, 6, 17, 22, 37, 8, 128, DateTimeKind.Utc).AddTicks(7960),
+                            CodeFightStatus = 0,
                             Country = 18,
                             Email = "Maurice.Thiel45@gmail.com",
                             FirstName = "Earnestine",
-                            ImagePath = "nplkfbdsoeheuobcwcmtmivfsfttzo.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Brakus",
@@ -5683,10 +5618,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 6L,
                             BirthDate = new DateTime(1993, 9, 26, 9, 32, 5, 895, DateTimeKind.Utc).AddTicks(5444),
+                            CodeFightStatus = 0,
                             Country = 1,
                             Email = "Onie_Donnelly@hotmail.com",
                             FirstName = "Simone",
-                            ImagePath = "aubaopzgkthivstlqshgunonviwigp.jpg",
                             IsBanned = false,
                             IsSubscribed = false,
                             LastName = "Bradtke",
@@ -5704,10 +5639,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 7L,
                             BirthDate = new DateTime(1983, 7, 26, 8, 51, 33, 259, DateTimeKind.Utc).AddTicks(9753),
+                            CodeFightStatus = 0,
                             Country = 51,
                             Email = "Jordon51@hotmail.com",
                             FirstName = "Abigail",
-                            ImagePath = "uwvemdbwnafziplilofkvtpsguukrm.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Sanford",
@@ -5725,10 +5660,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 8L,
                             BirthDate = new DateTime(1998, 4, 20, 15, 42, 17, 513, DateTimeKind.Utc).AddTicks(1989),
+                            CodeFightStatus = 0,
                             Country = 43,
                             Email = "Sydni.Carter66@hotmail.com",
                             FirstName = "Blanca",
-                            ImagePath = "menoubraiygknjoshnavzeuvawcggy.jpg",
                             IsBanned = false,
                             IsSubscribed = false,
                             LastName = "Mueller",
@@ -5746,10 +5681,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 9L,
                             BirthDate = new DateTime(1995, 4, 25, 0, 45, 14, 388, DateTimeKind.Utc).AddTicks(7786),
+                            CodeFightStatus = 0,
                             Country = 2,
                             Email = "Hettie.Runte@yahoo.com",
                             FirstName = "Arnoldo",
-                            ImagePath = "ltgffzvqbiiqmwrrjsiucyujhtuglt.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Bahringer",
@@ -5767,10 +5702,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 10L,
                             BirthDate = new DateTime(1995, 5, 25, 7, 0, 28, 701, DateTimeKind.Utc).AddTicks(1905),
+                            CodeFightStatus = 0,
                             Country = 57,
                             Email = "Zula.Jakubowski67@gmail.com",
                             FirstName = "Leonardo",
-                            ImagePath = "ibgryvtwjfdzqulusklmnzppjqqgst.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Haley",
@@ -5788,10 +5723,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 11L,
                             BirthDate = new DateTime(1995, 4, 5, 8, 18, 27, 362, DateTimeKind.Utc).AddTicks(1964),
+                            CodeFightStatus = 0,
                             Country = 26,
                             Email = "Richie_Feeney@yahoo.com",
                             FirstName = "Enola",
-                            ImagePath = "zocanbwdiqgbtzlxuujvdetgeiofvx.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Wisozk",
@@ -5809,10 +5744,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 12L,
                             BirthDate = new DateTime(1984, 4, 28, 17, 5, 53, 844, DateTimeKind.Utc).AddTicks(6728),
+                            CodeFightStatus = 0,
                             Country = 44,
                             Email = "Jaylon_Schamberger68@yahoo.com",
                             FirstName = "Beatrice",
-                            ImagePath = "tgrlwcfgevnpusljnjqnnglnpscrpf.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Mosciski",
@@ -5830,10 +5765,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 13L,
                             BirthDate = new DateTime(1990, 12, 2, 11, 48, 22, 614, DateTimeKind.Utc).AddTicks(5448),
+                            CodeFightStatus = 0,
                             Country = 10,
                             Email = "Susie.Sauer@gmail.com",
                             FirstName = "Lorenzo",
-                            ImagePath = "xqstoqygsgpqxvbhdvfelyrucsplle.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Abshire",
@@ -5851,10 +5786,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 14L,
                             BirthDate = new DateTime(1998, 12, 12, 2, 49, 5, 942, DateTimeKind.Utc).AddTicks(5586),
+                            CodeFightStatus = 0,
                             Country = 16,
                             Email = "Hans_Toy94@hotmail.com",
                             FirstName = "Jazmin",
-                            ImagePath = "nexdidajzastgttskdtgqthvhkeeie.jpg",
                             IsBanned = false,
                             IsSubscribed = false,
                             LastName = "Vandervort",
@@ -5872,10 +5807,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 15L,
                             BirthDate = new DateTime(1996, 6, 14, 0, 11, 22, 542, DateTimeKind.Utc).AddTicks(9487),
+                            CodeFightStatus = 0,
                             Country = 35,
                             Email = "Pietro_Bradtke68@hotmail.com",
                             FirstName = "Imani",
-                            ImagePath = "amfpenvrntvvfhxzrzuqfueodmahlc.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Beahan",
@@ -5893,10 +5828,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 16L,
                             BirthDate = new DateTime(1990, 9, 30, 11, 37, 15, 847, DateTimeKind.Utc).AddTicks(3302),
+                            CodeFightStatus = 0,
                             Country = 49,
                             Email = "Josh.Mueller@hotmail.com",
                             FirstName = "Frankie",
-                            ImagePath = "thsimfomcvggbkoufswcdsaxhcixvy.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Strosin",
@@ -5914,10 +5849,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 17L,
                             BirthDate = new DateTime(1995, 4, 25, 3, 35, 40, 382, DateTimeKind.Utc).AddTicks(8040),
+                            CodeFightStatus = 0,
                             Country = 47,
                             Email = "Emily.OReilly@yahoo.com",
                             FirstName = "Abigail",
-                            ImagePath = "uoqfdyewrtyauprvnyxplhgmktwnfg.jpg",
                             IsBanned = true,
                             IsSubscribed = true,
                             LastName = "White",
@@ -5935,10 +5870,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 18L,
                             BirthDate = new DateTime(1999, 7, 7, 14, 33, 58, 925, DateTimeKind.Utc).AddTicks(478),
+                            CodeFightStatus = 0,
                             Country = 33,
                             Email = "Maeve_Watsica26@hotmail.com",
                             FirstName = "Glennie",
-                            ImagePath = "sfxkmtdbbizaswzojrtrabdizjkfix.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Kozey",
@@ -5956,10 +5891,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 19L,
                             BirthDate = new DateTime(1995, 7, 16, 18, 36, 41, 301, DateTimeKind.Utc).AddTicks(6700),
+                            CodeFightStatus = 0,
                             Country = 17,
                             Email = "Lisette93@gmail.com",
                             FirstName = "Immanuel",
-                            ImagePath = "blcvqvrompmwetzemnrwocrwktihjo.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Kohler",
@@ -5977,10 +5912,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 20L,
                             BirthDate = new DateTime(1998, 8, 9, 4, 58, 20, 690, DateTimeKind.Utc).AddTicks(797),
+                            CodeFightStatus = 0,
                             Country = 49,
                             Email = "Delores.Weimann@hotmail.com",
                             FirstName = "Tanya",
-                            ImagePath = "yjayexxdpjwjtptlvremcaycronoup.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Grimes",
@@ -5998,10 +5933,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 21L,
                             BirthDate = new DateTime(1993, 10, 31, 14, 35, 47, 700, DateTimeKind.Utc).AddTicks(3580),
+                            CodeFightStatus = 0,
                             Country = 39,
                             Email = "Heidi57@yahoo.com",
                             FirstName = "Jaydon",
-                            ImagePath = "dzgodeuemzuwruqsfgasqptelbcbsw.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Grimes",
@@ -6019,10 +5954,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 22L,
                             BirthDate = new DateTime(1980, 11, 14, 4, 38, 15, 242, DateTimeKind.Utc).AddTicks(9462),
+                            CodeFightStatus = 0,
                             Country = 28,
                             Email = "Mikel21@hotmail.com",
                             FirstName = "Candelario",
-                            ImagePath = "pcobtgomefcvaqcmbtqphuzjtxxcto.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Goodwin",
@@ -6040,10 +5975,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 23L,
                             BirthDate = new DateTime(1989, 1, 22, 8, 46, 41, 321, DateTimeKind.Utc).AddTicks(5466),
+                            CodeFightStatus = 0,
                             Country = 6,
                             Email = "Carlo61@gmail.com",
                             FirstName = "Perry",
-                            ImagePath = "ybxzisituahwqzarlsftcntnmzuohq.jpg",
                             IsBanned = true,
                             IsSubscribed = true,
                             LastName = "Sipes",
@@ -6061,10 +5996,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 24L,
                             BirthDate = new DateTime(1999, 8, 18, 11, 6, 17, 868, DateTimeKind.Utc).AddTicks(7529),
+                            CodeFightStatus = 0,
                             Country = 18,
                             Email = "Laurie.Wilderman86@yahoo.com",
                             FirstName = "Javon",
-                            ImagePath = "kagatghnfuxkliqmluqqrnremcllmf.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Schumm",
@@ -6082,10 +6017,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 25L,
                             BirthDate = new DateTime(1991, 9, 13, 4, 27, 55, 562, DateTimeKind.Utc).AddTicks(7424),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Evalyn_Crona66@gmail.com",
                             FirstName = "Eugene",
-                            ImagePath = "wccugqxcqvdzrbeuylgyywegivpyar.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Greenholt",
@@ -6103,10 +6038,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 26L,
                             BirthDate = new DateTime(1980, 12, 8, 12, 21, 7, 274, DateTimeKind.Utc).AddTicks(2574),
+                            CodeFightStatus = 0,
                             Country = 31,
                             Email = "Deven34@yahoo.com",
                             FirstName = "Hank",
-                            ImagePath = "vgtvseamrbxjckqmdydcvlhrupvkvs.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Stanton",
@@ -6124,10 +6059,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 27L,
                             BirthDate = new DateTime(1994, 2, 11, 22, 59, 8, 450, DateTimeKind.Utc).AddTicks(2210),
+                            CodeFightStatus = 0,
                             Country = 11,
                             Email = "Trystan.Jacobson8@gmail.com",
                             FirstName = "Mallie",
-                            ImagePath = "xtnccbswltkvoplirwlgwnwboskbel.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "King",
@@ -6145,10 +6080,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 28L,
                             BirthDate = new DateTime(1982, 7, 16, 16, 27, 0, 682, DateTimeKind.Utc).AddTicks(6739),
+                            CodeFightStatus = 0,
                             Country = 29,
                             Email = "Hester_Dibbert12@yahoo.com",
                             FirstName = "Ayla",
-                            ImagePath = "soxywhlupyoxbehkulcebkvphhzksw.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Blanda",
@@ -6166,10 +6101,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 29L,
                             BirthDate = new DateTime(1983, 8, 16, 22, 13, 6, 897, DateTimeKind.Utc).AddTicks(8679),
+                            CodeFightStatus = 0,
                             Country = 57,
                             Email = "Brant38@gmail.com",
                             FirstName = "Emory",
-                            ImagePath = "bbfprpfnlysyflnsskndjtptaofikb.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Bartell",
@@ -6187,10 +6122,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 30L,
                             BirthDate = new DateTime(1985, 8, 16, 8, 34, 58, 912, DateTimeKind.Utc).AddTicks(3608),
+                            CodeFightStatus = 0,
                             Country = 44,
                             Email = "Mathilde_Shields@hotmail.com",
                             FirstName = "Clifford",
-                            ImagePath = "ziqrgoeuqubflcgalujwdgyvbikgsk.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Cole",
@@ -6208,10 +6143,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 31L,
                             BirthDate = new DateTime(1981, 9, 7, 22, 34, 15, 418, DateTimeKind.Utc).AddTicks(2863),
+                            CodeFightStatus = 0,
                             Country = 53,
                             Email = "Addison8@hotmail.com",
                             FirstName = "Aisha",
-                            ImagePath = "awbuyndhgtlvfviyowsrokxtwtwlag.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Wiza",
@@ -6229,10 +6164,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 32L,
                             BirthDate = new DateTime(1989, 3, 25, 9, 41, 23, 12, DateTimeKind.Utc).AddTicks(2976),
+                            CodeFightStatus = 0,
                             Country = 5,
                             Email = "Emerald.Schaefer@hotmail.com",
                             FirstName = "David",
-                            ImagePath = "ixdemrfdyuzjaanctzxjxhyyjbsxdc.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Hilpert",
@@ -6250,10 +6185,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 33L,
                             BirthDate = new DateTime(1986, 9, 3, 1, 30, 16, 31, DateTimeKind.Utc).AddTicks(8206),
+                            CodeFightStatus = 0,
                             Country = 55,
                             Email = "Mustafa_Jast@hotmail.com",
                             FirstName = "Rogelio",
-                            ImagePath = "xiolznmtzytpqnjcyrbnvwmvtwyhvb.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Moen",
@@ -6271,10 +6206,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 34L,
                             BirthDate = new DateTime(1984, 2, 9, 18, 52, 0, 505, DateTimeKind.Utc).AddTicks(4957),
+                            CodeFightStatus = 0,
                             Country = 26,
                             Email = "Faye28@hotmail.com",
                             FirstName = "Leon",
-                            ImagePath = "lnzzfqbjrzpnrxqenxvbdeodvtenng.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Tillman",
@@ -6292,10 +6227,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 35L,
                             BirthDate = new DateTime(1995, 5, 4, 12, 34, 2, 318, DateTimeKind.Utc).AddTicks(9374),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Don77@gmail.com",
                             FirstName = "Betsy",
-                            ImagePath = "gtrefaeqfqrhkstycymyfuzerktvnm.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Hackett",
@@ -6313,10 +6248,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 36L,
                             BirthDate = new DateTime(1994, 1, 23, 3, 43, 9, 490, DateTimeKind.Utc).AddTicks(7686),
+                            CodeFightStatus = 0,
                             Country = 56,
                             Email = "Lonie.Conroy22@yahoo.com",
                             FirstName = "Ophelia",
-                            ImagePath = "yduppzhzdfhskgqsthdbstuccvdmhc.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Mills",
@@ -6334,10 +6269,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 37L,
                             BirthDate = new DateTime(1993, 10, 29, 2, 6, 21, 56, DateTimeKind.Utc).AddTicks(4494),
+                            CodeFightStatus = 0,
                             Country = 5,
                             Email = "Margot_Erdman5@gmail.com",
                             FirstName = "Mackenzie",
-                            ImagePath = "afgnlrbxjlftdipzxykvpvvrotchxv.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Macejkovic",
@@ -6355,10 +6290,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 38L,
                             BirthDate = new DateTime(1989, 10, 24, 0, 36, 24, 452, DateTimeKind.Utc).AddTicks(1234),
+                            CodeFightStatus = 0,
                             Country = 20,
                             Email = "Kayli_Johns57@yahoo.com",
                             FirstName = "Elda",
-                            ImagePath = "tgilghkndnluoaugempfzpawzyvwkl.jpg",
                             IsBanned = true,
                             IsSubscribed = true,
                             LastName = "Rodriguez",
@@ -6376,10 +6311,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 39L,
                             BirthDate = new DateTime(1984, 11, 3, 12, 25, 37, 675, DateTimeKind.Utc).AddTicks(4462),
+                            CodeFightStatus = 0,
                             Country = 40,
                             Email = "Lela.Howell95@hotmail.com",
                             FirstName = "Orion",
-                            ImagePath = "yyegocqeyiunwrlzfdumwtyrgfjukz.jpg",
                             IsBanned = false,
                             IsSubscribed = false,
                             LastName = "Mann",
@@ -6397,10 +6332,10 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 40L,
                             BirthDate = new DateTime(1994, 2, 19, 7, 53, 27, 731, DateTimeKind.Utc).AddTicks(2229),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Erna43@yahoo.com",
                             FirstName = "Marjolaine",
-                            ImagePath = "ghlfahxfiffedqbpvbpefaqjfxbwug.jpg",
                             IsBanned = false,
                             IsSubscribed = true,
                             LastName = "Metz",
@@ -8099,7 +8034,7 @@ namespace LeetWars.Core.DAL.Migrations
                     b.HasOne("LeetWars.Core.DAL.Entities.Challenge", "Challenge")
                         .WithMany("Stars")
                         .HasForeignKey("ChallengeId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Author");
@@ -8146,30 +8081,23 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("Language");
                 });
 
-            modelBuilder.Entity("LeetWars.Core.DAL.Entities.HelperEntities.ChallengeVersionLanguageVersion", b =>
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.CodeFight", b =>
                 {
-                    b.HasOne("LeetWars.Core.DAL.Entities.ChallengeVersion", null)
-                        .WithMany()
-                        .HasForeignKey("ChallengeVersionId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "Receiver")
+                        .WithOne()
+                        .HasForeignKey("LeetWars.Core.DAL.Entities.CodeFight", "ReceiverId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("LeetWars.Core.DAL.Entities.LanguageVersion", null)
-                        .WithMany()
-                        .HasForeignKey("LanguageVersionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_ChallengeVersionLanguageVersion_LanguageVersion_LanguageVersionId");
-                });
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "Sender")
+                        .WithOne()
+                        .HasForeignKey("LeetWars.Core.DAL.Entities.CodeFight", "SenderId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
-            modelBuilder.Entity("LeetWars.Core.DAL.Entities.LanguageVersion", b =>
-                {
-                    b.HasOne("LeetWars.Core.DAL.Entities.Language", null)
-                        .WithMany("LanguageVersions")
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_LanguageVersion_Language_LanguageId");
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.Subscription", b =>
@@ -8286,11 +8214,6 @@ namespace LeetWars.Core.DAL.Migrations
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.ChallengeVersion", b =>
                 {
                     b.Navigation("Solutions");
-                });
-
-            modelBuilder.Entity("LeetWars.Core.DAL.Entities.Language", b =>
-                {
-                    b.Navigation("LanguageVersions");
                 });
 
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.Tag", b =>

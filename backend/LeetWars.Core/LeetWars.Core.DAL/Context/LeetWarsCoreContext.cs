@@ -10,7 +10,6 @@ namespace LeetWars.Core.DAL.Context
         public DbSet<ChallengeVersion> ChallengeVersions => Set<ChallengeVersion>();
         public DbSet<ChallengeStar> ChallengeStars => Set<ChallengeStar>();
         public DbSet<Language> Languages => Set<Language>();
-        public DbSet<LanguageVersion> LanguageVersions => Set<LanguageVersion>();
         public DbSet<Subscription> Subscriptions => Set<Subscription>();
         public DbSet<SubscriptionType> SubscriptionTypes => Set<SubscriptionType>();
         public DbSet<Tag> Tags => Set<Tag>();
@@ -22,6 +21,7 @@ namespace LeetWars.Core.DAL.Context
         public DbSet<UserSolution> UserSolutions => Set<UserSolution>();
         public DbSet<Badge> Badges => Set<Badge>();
         public DbSet<UserBadge> UserBadges => Set<UserBadge>();
+        public DbSet<CodeFight> CodeFights => Set<CodeFight>();
 
         public LeetWarsCoreContext(DbContextOptions<LeetWarsCoreContext> options) : base(options)
         {

@@ -2,13 +2,13 @@
     <div class="description d-flex flex-column">
         <div class="title-row d-flex align-items-center position-relative">
             <span class="level">{{ challenge.levelName }}</span>
-            <span class="title text-wrap" routerLink="/challenges/{{challenge.id}}">{{ challenge.title }}</span>
+            <span class="title text-wrap" routerLink="/challenges/{{ challenge.id }}">{{ challenge.title }}</span>
             <fa-icon
                 *ngIf="canEdit"
                 class="edit-icon"
                 [icon]="['far', 'pen-to-square']"
                 [size]="'2xl'"
-                routerLink="/challenges/edit/{{challenge.id}}"></fa-icon>
+                routerLink="/challenges/edit/{{ challenge.id }}"></fa-icon>
             <fa-icon
                 class="star-icon"
                 [icon]="challenge.isStarry ? ['fas', 'star'] : ['far', 'star']"
@@ -24,11 +24,17 @@
                 <fa-icon [icon]="'chart-simple'" size="2xs"></fa-icon>
                 <span class="icon icon-border">{{ challengePositiveFeedbacksPercent }}% positive feedback</span>
             </div>
-            <div class="d-flex align-items-center ml-6px info-item">
-                <fa-icon [icon]="['far', 'user']" size="2xs"></fa-icon>
-                <span class="icon">
+            <div class="d-flex align-items-center info-item">
+                <span class="icon d-flex gap-2 author-block">
                     <!-- TODO: Add author link -->
-                    created <a class="author" href="#">{{ challenge.authorName }}</a>
+                    <span>created</span>
+                    <div class="d-flex">
+                        <img
+                            class="author-avatar"
+                            alt="author-avatar"
+                            [src]="this.challenge.authorAvatarPath ?? AssetConstants.defaultProfileImagePath" />
+                        <a class="author d-block" href="#">{{ challenge.authorName }}</a>
+                    </div>
                 </span>
             </div>
         </div>
