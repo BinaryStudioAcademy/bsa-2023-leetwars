@@ -14,7 +14,7 @@ namespace LeetWars.Core.DAL.Entities
         public string? LastName { get; set; }
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string? ImagePath { get; set; }
+        public string? ImagePath { get; set; } = null;
         public long TotalScore { get; set; }
         public long Reputation { get; set; }
         public DateTime RegisteredAt { get; set; }
@@ -31,14 +31,14 @@ namespace LeetWars.Core.DAL.Entities
         public ICollection<UserBadge> UserBadges { get; } = new List<UserBadge>();
         public User() { }
 
-        public User(string firstName, string lastName, string userName, string email, string? imagePath, string oAuthToken)
+        public User(string firstName, string lastName, string userName, string email, string oAuthToken, string? imagePath = null)
         {
             FirstName = firstName;
             LastName = lastName;
             UserName = userName;
             Email = email;
-            ImagePath = imagePath;
             OAuthToken = oAuthToken;
+            ImagePath = imagePath;
         }
     }
 }

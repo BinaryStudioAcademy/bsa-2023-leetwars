@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeetWars.Core.DAL.Migrations
 {
     [DbContext(typeof(LeetWarsCoreContext))]
-    [Migration("20230927125132_DeletedLanguageVersions")]
-    partial class DeletedLanguageVersions
+    [Migration("20230927152001_DeleteLanguageVersions")]
+    partial class DeleteLanguageVersions
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
