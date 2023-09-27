@@ -80,22 +80,22 @@
     font-weight: 600
     flex: 1 1 auto
 
-.author-block
-    max-width: 264px
-    text-overflow: ellipsis
-    overflow: hidden
-    white-space: nowrap
-    color: $light-copper
-    @media (max-width: $tablet)
-        max-width: 180px
-
-    & span
-        color: $white
-
 .author
     color: $light-copper
     text-decoration-color: $light-copper
     margin-left: 4px
+    max-width: 140px
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+
+    @media (max-width: $tablet)
+        max-width: 100px
+
+    &-avatar
+        width: 16px
+        height: 16px
+        border-radius: 50%
 
 .language-block
     font-family: 'Open Sans', sans-serif
