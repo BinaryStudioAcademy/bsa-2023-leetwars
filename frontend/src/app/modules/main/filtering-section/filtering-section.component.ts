@@ -186,7 +186,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             .subscribe({
                 next: (data) => {
                     this.tags = data;
-                    this.tagsNames = ['All', ...data.map((tag) => tag.name)];
+                    this.tagsNames = data.map((tag) => tag.name);
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
@@ -201,7 +201,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
             .subscribe({
                 next: (data) => {
                     this.languages = data;
-                    this.languagesNames = ['All', ...data.map((language) => language.name)];
+                    this.languagesNames = data.map((language) => language.name);
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');

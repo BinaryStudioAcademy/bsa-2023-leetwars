@@ -12,7 +12,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
                    .WithMany(c => c.Stars)
                    .HasForeignKey(cs => cs.ChallengeId)
                    .IsRequired()
-                   .OnDelete(DeleteBehavior.NoAction);
+                   .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(cs => cs.Author)
                    .WithMany()

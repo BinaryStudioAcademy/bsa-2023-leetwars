@@ -11,7 +11,7 @@ var app = builder.Build();
 
 app.ConfigureCustomExceptionMiddleware();
 
-app.MapPost("/analyzecode", async (IAnalyzeCodeService analyzeCodeService,
+app.MapPost("/analyzeCodeAsync", async (IAnalyzeCodeService analyzeCodeService,
                                           CodeRequestAnalysisDto requestDto) =>
 {
     return await analyzeCodeService.RunCodeAnalysisAsync(requestDto);
