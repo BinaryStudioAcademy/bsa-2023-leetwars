@@ -56,14 +56,22 @@
 
 .user-name
     width: 50%
-    @media (max-width: $small-challenge)
-        width: 40%
-    @media (max-width: $mobile)
-        width: calc(87% - 132px)
+    color: $white
+    @media ( max-width: $small-challenge)
+      width: 40%
+    @media ( max-width: $mobile)
+      width: calc(87% - 132px)
     &-avatar
         width: 16px
         height: 16px
         border-radius: 50%
+
+.user-link
+    color: $white
+    text-decoration: none
+
+.user-link:hover
+    text-decoration: underline
 
 .total-score
     width: 13%

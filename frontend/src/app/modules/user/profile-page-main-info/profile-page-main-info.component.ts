@@ -14,6 +14,10 @@ export class ProfilePageMainInfoComponent implements OnChanges {
 
     @Input() userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
 
+    @Input() isCurrentUser: Boolean;
+
+    @Input() isFriend: Boolean;
+
     communityViews = 0;
 
     communityLastWeekViews = 0;

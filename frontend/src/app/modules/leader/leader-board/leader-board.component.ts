@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ScrollComponent } from '@core/base/scroll.component';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
@@ -65,6 +66,7 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
         private challengeService: ChallengeService,
         private eventService: EventService,
         private toastrNotification: ToastrNotificationsService,
+        private router: Router,
         private modalService: NgbModal,
     ) {
         super();
@@ -99,6 +101,10 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
         }
 
         this.getUsers();
+    }
+
+    public onLinkClick(id: number | undefined) {
+        this.router.navigate(['/user/profile', id as number]);
     }
 
     startCodeFight(user: IUser) {

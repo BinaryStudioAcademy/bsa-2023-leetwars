@@ -21,7 +21,11 @@
                             class="user-name-avatar"
                             [src]="this.user?.imagePath ?? AssetConstants.defaultProfileImagePath"
                             alt="user-avatar" />
-                        <p>{{ user.userName }}</p>
+                        <p>
+                            <a class="user-link" (click)="onLinkClick(user.id)">
+                                {{ user.userName }}
+                            </a>
+                        </p>
                     </div>
                     <div class="total-score">{{ user.totalScore }}</div>
                     <div class="add-friend d-flex">

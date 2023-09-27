@@ -12,7 +12,13 @@
                 <p class="user-rank"><span>Rank</span>{{ user.totalScore }}</p>
             </div>
         </div>
-        <button class="edit-profile-btn" (click)="onEditProfile()">Edit Profile</button>
+        <button *ngIf="isCurrentUser; else NotCurrentUser" class="edit-profile-btn" (click)="onEditProfile()">Edit Profile</button>
+        <ng-template #NotCurrentUser>
+            <button *ngIf="isFriend === false; else Friend" class="edit-profile-btn">Send Friend Request</button>
+            <ng-template #Friend>
+                <button class="edit-profile-btn">Delete Friend</button>
+            </ng-template>
+        </ng-template>
     </div>
     <div class="profile-main-info-content">
         <div class="community-stats-container info-container">
