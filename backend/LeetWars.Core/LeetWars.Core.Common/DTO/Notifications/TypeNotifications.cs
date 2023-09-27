@@ -8,5 +8,7 @@
         CodeFightRequestEnd,
         CodeFightStart,
         CodeFightEnd,
+        FriendRequest,
+        UpdateFriendRequest
     }
 }

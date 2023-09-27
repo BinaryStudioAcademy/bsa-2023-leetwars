@@ -5,4 +5,5 @@ export enum TypeNotification {
     CodeFightRequestEnd = 'CodeFightRequestEnd',
     CodeFightStart = 'CodeFightStart',
     CodeFightEnd = 'CodeFightEnd',
+    FriendRequest = 'FriendRequest',
 }

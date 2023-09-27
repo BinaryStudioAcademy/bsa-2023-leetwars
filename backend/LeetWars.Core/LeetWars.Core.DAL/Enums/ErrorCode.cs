@@ -5,6 +5,7 @@
         General = 1,
         NotFound,
         InvalidUsernameOrPassword,
-        Forbidden
+        Forbidden,
+        BadRequest
     }
 }
