@@ -1,4 +1,5 @@
 ﻿using LeetWars.CodeAnalyzer.Interfaces;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.Common.DTO.ChallengeGenerate;
 using LeetWars.Core.Common.DTO.ChallengeRequest;
 using Newtonsoft.Json;
@@ -28,7 +29,7 @@ namespace LeetWars.CodeAnalyzer.Services
 
             if(challengeResponse == null) 
             {
-                throw new NullReferenceException(nameof(challengeResponse));
+                throw new NotFoundException(nameof(challengeResponse));
             }
 
             ChallengeGenerateResponseDto challengeGenerateResponseDto = new ChallengeGenerateResponseDto();
