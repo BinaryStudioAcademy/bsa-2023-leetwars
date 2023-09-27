@@ -8,7 +8,11 @@ import { BehaviorSubject } from 'rxjs';
     providedIn: 'root',
 })
 export class NotificationService {
-    private notifications: INotificationModel[] = [];
+    notifications: INotificationModel[] = [];
+
+    notificationSubject = new BehaviorSubject(this.notifications);
+
+    currentNotifications = this.notificationSubject.asObservable();
 
     notificationSubject = new BehaviorSubject(this.notifications);
 

@@ -20,6 +20,8 @@ public interface IUserService
 
     public Task<UserDto> GetCurrentUserAsync();
 
+    public Task<UserDto> GetUserAsync(long id);
+
     public Task<UserFullDto> GetFullUserAsync(long id);
 
     public Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId);

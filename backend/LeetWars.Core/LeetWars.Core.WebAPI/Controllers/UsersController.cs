@@ -21,12 +21,25 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
+    /// Get user info by id
+    /// </summary>
+    /// <param name="id">User id to find</param>
+    /// <returns>User info</returns>
+    [HttpGet("{id}")]
+    public async Task<ActionResult<UserFullDto>> GetUserAsync(long id)
+    {
+        var user = await _userService.GetUserAsync(id);
+
+        return Ok(user);
+    }
+
+    /// <summary>
     /// Get full user info by id
     /// </summary>
     /// <param name="id">User id to find</param>
     /// <returns>Full user info</returns>
-    [HttpGet("{id}")]
-    public async Task<ActionResult<UserFullDto>> GetUserAsync(int id)
+    [HttpGet("full/{id}")]
+    public async Task<ActionResult<UserFullDto>> GetFullUserAsync(long id)
     {
         var user = await _userService.GetFullUserAsync(id);
 
@@ -161,19 +174,6 @@ public class UsersController : ControllerBase
     public async Task<ActionResult<UserDto>> UpdateUserAsync(UpdateUserInfoDto updateUserInfoDto)
     {
         var updatedUser = await _userService.UpdateUserInfoAsync(updateUserInfoDto);
-
-        return Ok(updatedUser);
-    }
-
-    /// <summary>
-    /// Update user rank and reputation
-    /// </summary>
-    /// <param name="userDto">User rank and reputation to edit</param>
-    /// <returns></returns>
-    [HttpPut("rank")]
-    public async Task<ActionResult<UserFullDto>> UpdateUserRankAsync([FromBody] EditUserDto userDto)
-    {
-        var updatedUser = await _userService.UpdateUserRankAsync(userDto);
 
         return Ok(updatedUser);
     }

@@ -4,6 +4,10 @@
     {
         LikeChallenge,
         NewChallenge,
-        FriendRequest
+        CodeFightRequestStart,
+        CodeFightRequestEnd,
+        CodeFightStart,
+        CodeFightEnd,
+        FriendRequest,
     }
 }

@@ -21,5 +21,7 @@ namespace LeetWars.Core.Common.DTO.Notifications
         public string? Message { get; set; }
 
         public DateTime DateSending { get; set; } = DateTime.UtcNow;
+
+        public long? ShowFor { get; set; }
     }
 }
