@@ -32,9 +32,9 @@
                     <div class="zero-notifications-info" *ngIf="!countNotification">
                         <span>No new notifications so far</span>
                     </div>
-                    <app-notifications [notifications]="this.codeFightNotifications"></app-notifications>
-                    <app-notifications [notifications]="this.newNotifications" [isUnread]="true"></app-notifications>
-                    <app-notifications [notifications]="this.seenNotifications"></app-notifications>
+                    <app-notifications *ngFor="let notification of this.codeFightNotifications.slice().reverse(); trackBy: trackByFn" [notification]="notification"></app-notifications>
+                    <app-notifications *ngFor="let notification of this.newNotifications.slice().reverse(); trackBy: trackByFn" [isUnread]="true" [notification]="notification"></app-notifications>
+                    <app-notifications *ngFor="let notification of this.seenNotifications.slice().reverse(); trackBy: trackByFn" [notification]="notification"></app-notifications>
                 </div>
             </div>
         </div>

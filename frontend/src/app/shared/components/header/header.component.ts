@@ -166,4 +166,8 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
             this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
         }
     }
+
+    trackByFn(index: number, item: INotificationModel) {
+        return item.dateSending;
+    }
 }

@@ -12,33 +12,21 @@ import { INotificationModel } from '@shared/models/notifications/notifications';
     animations: [longFadeIn],
 })
 export class NotificationsComponent {
-    @Input() notifications: INotificationModel[];
+    @Input() notification: INotificationModel;
 
     @Input() isUnread: boolean;
-
-    trackByFn(index: number, item: INotificationModel) {
-        return item.dateSending;
-    }
 
     typeNotification = TypeNotification;
 
     constructor(private notificationService: NotificationService, private codeFightService: CodeFightService) {}
 
-    onCodeFightStart(notification: INotificationModel) {
-        this.notificationService.removeNotification(notification);
-        if (!notification.sender.imagePath) {
-            notification.sender.imagePath = '';
-        }
-
-        this.codeFightService.sendCodeFightStart(notification).subscribe();
+    onCodeFightStart() {
+        this.notificationService.removeNotification(this.notification);
+        this.codeFightService.sendCodeFightStart(this.notification).subscribe();
     }
 
-    onCodeFightRefuse(notification: INotificationModel) {
-        this.codeFightService.sendCodeFightRequestEnded(notification).subscribe();
-        if (!notification.sender.imagePath) {
-            notification.sender.imagePath = '';
-        }
-
-        this.notificationService.removeNotification(notification);
+    onCodeFightRefuse() {
+        this.codeFightService.sendCodeFightRequestEnded(this.notification).subscribe();
+        this.notificationService.removeNotification(this.notification);
     }
 }

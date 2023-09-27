@@ -91,9 +91,6 @@ export class NotificationHubService {
                 codeFightRequest.notification.showFor
             ) {
                 timer(codeFightRequest.notification.showFor).subscribe(() => {
-                    if (!codeFightRequest.notification.sender.imagePath) {
-                        codeFightRequest.notification.sender.imagePath = '';
-                    }
                     this.updateUsersAfterRequestEnded(codeFightRequest.notification);
                 });
             }
