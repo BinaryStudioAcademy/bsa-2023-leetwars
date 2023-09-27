@@ -7,8 +7,10 @@ import { IBriefUserInfo } from '../user/brief-user';
 export interface INotificationModel extends Entity<number> {
     typeNotification: TypeNotification;
     sender: IBriefUserInfo;
+    receiverId: string;
     challenge: IBriefChallengeInfo;
     message: string;
     dateSending: Date;
     isRead: boolean;
+    showFor?: number;
 }

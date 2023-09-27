@@ -1,21 +1,30 @@
 import { Injectable } from '@angular/core';
 import { INotificationModel } from '@shared/models/notifications/notifications';
-
-import { HttpInternalService } from './http-internal.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class NotificationService {
-    private baseUrl = '/notifications';
+    notifications: INotificationModel[] = [];
 
-    constructor(private httpService: HttpInternalService) {}
+    notificationSubject = new BehaviorSubject(this.notifications);
 
-    public getUserNotifications() {
-        return this.httpService.getRequest<INotificationModel[]>(`${this.baseUrl}`);
+    currentNotifications = this.notificationSubject.asObservable();
+
+    addNotification(notification: INotificationModel) {
+        this.notifications = [...this.notifications, notification];
+
+        this.notificationSubject.next(this.notifications);
     }
 
-    public updateStatusToRead(ids: number[]) {
-        return this.httpService.putRequest(`${this.baseUrl}`, ids);
+    removeNotification(notification: INotificationModel) {
+        this.notifications = this.notifications.filter((n) => n !== notification);
+
+        this.notificationSubject.next(this.notifications);
+    }
+
+    get countNotification() {
+        return this.notifications.length;
     }
 }

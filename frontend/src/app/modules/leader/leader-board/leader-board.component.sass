@@ -5,7 +5,7 @@
     margin-top: 30px
     display: flex
     justify-content: center
-    align-items: start
+    align-items: flex-start
     height: 100%
 
 .board
@@ -47,7 +47,7 @@
 .user
     gap: 16px
     color: $white
-    div
+    & > div
         font-family: Inter
         font-size: 12px
         line-height: 21px
@@ -55,7 +55,11 @@
         padding-bottom: 11px
 
 .user-name
-    width: 70%
+    width: 50%
+    @media ( max-width: $small-challenge)
+      width: 40%
+    @media ( max-width: $mobile)
+      width: calc(87% - 132px)
 
 .total-score
     width: 13%
@@ -64,5 +68,28 @@
     @media (max-width: $mobile)
         text-align: start
 
+.start-fight
+    width: calc(37% - 100px)
+    text-align: center
+    &-text
+        padding-left: 4px
+    @media (max-width: $small-challenge)
+      width: calc(47% -  100px)
+    @media (max-width: $mobile)
+      width: 32px
+      &-text
+        display: none
+
 .user:nth-child(even)
   background-color: $transparent-yellow
+
+.has-request,
+.in-battle,
+.cursor-none
+  cursor: default
+
+.has-request
+  color: $green
+
+.in-battle
+  color: $light-red

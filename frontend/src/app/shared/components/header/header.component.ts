@@ -5,9 +5,11 @@ import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header.service';
 import { NotificationService } from '@core/services/notification.service';
+import { NotificationStorageService } from '@core/services/notification-storage.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { fadeInOut } from '@shared/animations/fade-in-out.animation';
+import { TypeNotification } from '@shared/enums/type-notification';
 import { INotificationModel } from '@shared/models/notifications/notifications';
 import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
@@ -28,6 +30,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         private headerService: HeaderService,
         private toastrService: ToastrNotificationsService,
         private notificationService: NotificationService,
+        private notificationStorage: NotificationStorageService,
         private notificationHub: NotificationHubService,
     ) {
         super();
@@ -59,7 +62,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
     }
 
     private getNotifications() {
-        this.notificationService.getUserNotifications()
+        this.notificationStorage.getUserNotifications()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (notifications) => {
@@ -86,7 +89,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         if (this.isNotificationsDropdownDisplayed) {
             this.readNotifications();
         } else {
-            this.notificationService.updateStatusToRead(this.newNotificationsCollection.map(e => e.id))
+            this.notificationStorage.updateStatusToRead(this.newNotificationsCollection.map(e => e.id))
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
                     error: () => {
@@ -108,6 +111,10 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
     public get seenNotifications() {
         return this.seenNotificationsCollection;
+    }
+
+    public get codeFightNotifications() {
+        return this.notificationService.notifications;
     }
 
     onLogOut() {
@@ -144,6 +151,9 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
     private listeningNotificationHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
+            if (msg.typeNotification === TypeNotification.CodeFightRequestStart) {
+                this.notificationService.addNotification(msg);
+            }
             this.newNotificationsCollection = [...this.newNotificationsCollection, msg];
         });
     }

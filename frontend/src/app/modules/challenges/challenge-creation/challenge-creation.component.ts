@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
-import { ChallengeLevelService } from '@core/services/challenge-level.service';
 import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
@@ -33,6 +32,7 @@ import { INewChallengeVersion } from '@shared/models/challenge-version/new-chall
 import { IDropdownItem } from '@shared/models/dropdown-item';
 import { ILanguage } from '@shared/models/language/language';
 import { ITag } from '@shared/models/tag/tag';
+import { HasUnsavedChanges } from '@shared/models/unsaved-changes/has-unsaved-changes';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -40,7 +40,7 @@ import { takeUntil } from 'rxjs';
     templateUrl: './challenge-creation.component.html',
     styleUrls: ['./challenge-creation.component.sass'],
 })
-export class ChallengeCreationComponent extends BaseComponent implements OnInit {
+export class ChallengeCreationComponent extends BaseComponent implements HasUnsavedChanges, OnInit {
     steps: ChallengeStep[];
 
     stepsData: StepData[] = getInitStepsData();
@@ -67,11 +67,12 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
 
     canOpenDropdown = true;
 
+    unsavedChanges: boolean = true;
+
     protected readonly ChallengeStep = ChallengeStep;
 
     constructor(
         private challengeService: ChallengeService,
-        private challengeLevelService: ChallengeLevelService,
         private languageService: LanguageService,
         private tagService: TagService,
         private toastrService: ToastrNotificationsService,
@@ -83,6 +84,11 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
         this.steps = this.stepsData.map((s) => s.step);
         this.challenge = getNewChallenge();
         this.challengeVersion = getNewChallengeVersion();
+    }
+
+    @HostListener('window:beforeunload', ['$event'])
+    reloadNotification($event: BeforeUnloadEvent): void {
+        $event.returnValue = 'true';
     }
 
     ngOnInit(): void {
@@ -128,6 +134,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
                     next: () => {
+                        this.unsavedChanges = false;
                         this.toastrService.showSuccess('Challenge was successfully created');
                         this.router.navigate(['/']);
                     },
@@ -146,6 +153,7 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
                     next: () => {
+                        this.unsavedChanges = false;
                         this.toastrService.showSuccess('Challenge was successfully edited');
                         this.router.navigate(['/']);
                     },
@@ -279,8 +287,8 @@ export class ChallengeCreationComponent extends BaseComponent implements OnInit 
     }
 
     private getChallengeLevels() {
-        this.challengeLevelService
-            .getLevels()
+        this.challengeService
+            .getChallengeLevels()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (data) => {

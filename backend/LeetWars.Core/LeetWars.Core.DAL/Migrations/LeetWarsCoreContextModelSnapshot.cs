@@ -130,6 +130,13 @@ namespace LeetWars.Core.DAL.Migrations
                             Icon = "2023-12.png",
                             IconGif = "2023-12.gif",
                             Name = "Dec LeetWars Challenge Badge"
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            Icon = "weekly.png",
+                            IconGif = "weekly.gif",
+                            Name = "Weekly LeetWars Challenge Badge"
                         });
                 });
 
@@ -153,6 +160,9 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Property<string>("Instructions")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsWeekly")
+                        .HasColumnType("bit");
 
                     b.Property<long>("LevelId")
                         .HasColumnType("bigint");
@@ -178,6 +188,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 8, 22, 6, 17, 11, 764, DateTimeKind.Utc).AddTicks(7220),
                             CreatedBy = 19L,
                             Instructions = "Perspiciatis cum et et laudantium.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "We need to input the online SCSI firewall!"
                         },
@@ -188,6 +199,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 2, 28, 9, 5, 16, 325, DateTimeKind.Utc).AddTicks(7185),
                             CreatedBy = 17L,
                             Instructions = "quis",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "Use the open-source SMS driver, then you can input"
                         },
@@ -198,6 +210,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2022, 1, 29, 17, 30, 56, 109, DateTimeKind.Utc).AddTicks(3877),
                             CreatedBy = 34L,
                             Instructions = "Aut rerum consectetur veniam distinctio officiis praesentium.\nAperiam quis qui animi omnis.\nMolestiae laboriosam exercitationem similique amet dolores quibusdam aspernatur consequatur quia.\nSuscipit consequuntur eos laborum facilis culpa.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "If we back up the application, we can get to the G"
                         },
@@ -208,6 +221,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 2, 26, 11, 49, 42, 323, DateTimeKind.Utc).AddTicks(6277),
                             CreatedBy = 20L,
                             Instructions = "Suscipit quia modi nobis ad eos voluptatum est.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "Use the haptic JBOD transmitter, then you can hack"
                         },
@@ -218,6 +232,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 9, 3, 10, 26, 18, 980, DateTimeKind.Utc).AddTicks(938),
                             CreatedBy = 33L,
                             Instructions = "Voluptatem possimus iure impedit enim provident incidunt molestiae earum.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "I'll transmit the wireless USB driver, that should"
                         },
@@ -228,6 +243,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 9, 9, 18, 5, 22, 552, DateTimeKind.Utc).AddTicks(9780),
                             CreatedBy = 28L,
                             Instructions = "Distinctio rerum voluptatem aut iure nesciunt aut eos voluptatem molestias. Molestias reprehenderit tenetur hic. Esse repudiandae voluptatem quae impedit sed voluptates ratione minus in.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "If we parse the feed, we can get to the SSL feed t"
                         },
@@ -238,6 +254,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 11, 22, 10, 38, 59, 508, DateTimeKind.Utc).AddTicks(5379),
                             CreatedBy = 40L,
                             Instructions = "Molestiae quis nihil similique autem nemo numquam. Et ut ratione vel. Aperiam harum perferendis ad consequuntur.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "We need to calculate the auxiliary HTTP applicatio"
                         },
@@ -248,6 +265,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 3, 23, 20, 34, 43, 545, DateTimeKind.Utc).AddTicks(7372),
                             CreatedBy = 26L,
                             Instructions = "et",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "I'll index the back-end RSS driver, that should dr"
                         },
@@ -258,6 +276,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 11, 26, 8, 5, 43, 311, DateTimeKind.Utc).AddTicks(5424),
                             CreatedBy = 3L,
                             Instructions = "Quas maxime esse et dolores accusamus doloremque in magnam quos.\nSaepe incidunt modi recusandae saepe ut et.\nAccusamus sed maiores doloremque aut et aut praesentium quae.\nQui magni eum autem architecto accusamus dolore inventore expedita.\nEos velit optio asperiores dolores voluptas amet voluptatum deserunt.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "The SAS pixel is down, hack the mobile pixel so we"
                         },
@@ -268,6 +287,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 6, 27, 17, 9, 10, 848, DateTimeKind.Utc).AddTicks(300),
                             CreatedBy = 6L,
                             Instructions = "Doloremque velit maiores unde at commodi.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "You can't synthesize the firewall without transmit"
                         },
@@ -278,6 +298,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 9, 22, 3, 51, 0, 158, DateTimeKind.Utc).AddTicks(5035),
                             CreatedBy = 40L,
                             Instructions = "Doloribus eveniet non aut fuga et.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "Try to calculate the SMTP bus, maybe it will calcu"
                         },
@@ -288,6 +309,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2020, 2, 10, 14, 47, 24, 119, DateTimeKind.Utc).AddTicks(6346),
                             CreatedBy = 40L,
                             Instructions = "Est molestiae voluptatem eos assumenda et libero voluptatem et.\nAb maxime fuga nemo ad.\nNon illum ut iste ea perspiciatis.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "The ADP array is down, generate the bluetooth arra"
                         },
@@ -298,6 +320,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 8, 25, 18, 8, 39, 833, DateTimeKind.Utc).AddTicks(6622),
                             CreatedBy = 5L,
                             Instructions = "iure",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "The SMS driver is down, hack the optical driver so"
                         },
@@ -308,6 +331,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 2, 28, 8, 39, 50, 149, DateTimeKind.Utc).AddTicks(3649),
                             CreatedBy = 30L,
                             Instructions = "Nostrum sit quia consequatur eos dolorem quo vel libero ut.\nIusto error quia ab.\nAutem quam et quia eum ea molestias eum dolore consequuntur.\nEligendi rerum nisi aspernatur et commodi libero cupiditate.\nMollitia molestias eaque quia dignissimos voluptas porro voluptas.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "Try to copy the IB program, maybe it will copy the"
                         },
@@ -318,6 +342,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 9, 16, 16, 30, 9, 315, DateTimeKind.Utc).AddTicks(6480),
                             CreatedBy = 5L,
                             Instructions = "Recusandae molestias id.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "Use the wireless SDD circuit, then you can navigat"
                         },
@@ -328,6 +353,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 3, 24, 7, 26, 35, 75, DateTimeKind.Utc).AddTicks(6362),
                             CreatedBy = 13L,
                             Instructions = "Corporis veniam vel et voluptas. Rerum quod facilis est nihil qui et rerum et non. Rerum culpa deserunt adipisci vero iure corporis. Quam odit reprehenderit. Atque cupiditate aut minus minus reprehenderit eos. Ipsam et aut nostrum assumenda explicabo rem.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "If we bypass the port, we can get to the USB port "
                         },
@@ -338,6 +364,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 10, 7, 0, 49, 20, 762, DateTimeKind.Utc).AddTicks(551),
                             CreatedBy = 18L,
                             Instructions = "ratione",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "calculating the panel won't do anything, we need t"
                         },
@@ -348,6 +375,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 4, 18, 23, 8, 24, 227, DateTimeKind.Utc).AddTicks(7337),
                             CreatedBy = 17L,
                             Instructions = "et",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "If we hack the program, we can get to the PCI prog"
                         },
@@ -358,6 +386,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 3, 24, 7, 5, 57, 583, DateTimeKind.Utc).AddTicks(5347),
                             CreatedBy = 20L,
                             Instructions = "Sint doloribus sit aut ipsam maiores voluptatum voluptas in.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "compressing the sensor won't do anything, we need "
                         },
@@ -368,6 +397,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2020, 7, 3, 23, 35, 57, 407, DateTimeKind.Utc).AddTicks(1401),
                             CreatedBy = 38L,
                             Instructions = "perspiciatis",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "I'll override the redundant AGP card, that should "
                         },
@@ -378,6 +408,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 7, 27, 23, 18, 49, 917, DateTimeKind.Utc).AddTicks(781),
                             CreatedBy = 23L,
                             Instructions = "Quisquam cum aut sunt sit suscipit similique voluptatem maxime qui. Quia aut exercitationem est provident enim rerum maiores. Voluptatem aut fugiat sunt exercitationem. Corrupti vitae ea eos enim similique. Fuga et enim ad laboriosam quaerat ut et. Et sed dolorum sunt quisquam incidunt et explicabo et.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "Use the open-source EXE array, then you can connec"
                         },
@@ -388,6 +419,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 7, 16, 23, 44, 18, 402, DateTimeKind.Utc).AddTicks(8940),
                             CreatedBy = 2L,
                             Instructions = "Id consequuntur nesciunt laudantium quaerat et suscipit quaerat recusandae nobis. Id corrupti vitae. Hic quisquam cumque aliquam qui. Quasi porro quisquam dicta voluptatibus.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "The IB transmitter is down, quantify the optical t"
                         },
@@ -398,6 +430,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 11, 17, 16, 39, 45, 941, DateTimeKind.Utc).AddTicks(1668),
                             CreatedBy = 35L,
                             Instructions = "Odit laudantium quibusdam nostrum fugiat dolores.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "Use the back-end SMTP bus, then you can override t"
                         },
@@ -408,6 +441,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 1, 19, 20, 39, 10, 223, DateTimeKind.Utc).AddTicks(9932),
                             CreatedBy = 20L,
                             Instructions = "Sed voluptate iusto vel ad ea voluptates iure.\nAccusantium saepe iusto dolorum necessitatibus necessitatibus.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "We need to reboot the haptic USB protocol!"
                         },
@@ -418,6 +452,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 8, 22, 16, 44, 33, 8, DateTimeKind.Utc).AddTicks(6101),
                             CreatedBy = 11L,
                             Instructions = "eum",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "You can't reboot the bus without parsing the redun"
                         },
@@ -428,6 +463,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 9, 27, 22, 57, 26, 319, DateTimeKind.Utc).AddTicks(8153),
                             CreatedBy = 18L,
                             Instructions = "Amet qui vel dignissimos maxime quo recusandae provident. Accusamus expedita delectus praesentium nam dolores accusamus. Mollitia iste unde voluptatem.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "You can't calculate the program without hacking th"
                         },
@@ -438,6 +474,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 6, 24, 1, 45, 9, 112, DateTimeKind.Utc).AddTicks(4728),
                             CreatedBy = 19L,
                             Instructions = "necessitatibus",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "I'll index the open-source JSON card, that should "
                         },
@@ -448,6 +485,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 5, 10, 0, 34, 34, 852, DateTimeKind.Utc).AddTicks(8789),
                             CreatedBy = 23L,
                             Instructions = "Modi blanditiis aut sunt qui ut.\nVeritatis dignissimos deleniti.\nQuod ut aliquid voluptatum dolorem error.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "If we parse the driver, we can get to the PNG driv"
                         },
@@ -458,6 +496,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 4, 25, 9, 11, 29, 734, DateTimeKind.Utc).AddTicks(8781),
                             CreatedBy = 17L,
                             Instructions = "numquam",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "The PNG pixel is down, bypass the haptic pixel so "
                         },
@@ -468,6 +507,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 3, 11, 1, 57, 58, 342, DateTimeKind.Utc).AddTicks(2979),
                             CreatedBy = 2L,
                             Instructions = "ut",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "The GB firewall is down, reboot the 1080p firewall"
                         },
@@ -478,6 +518,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 9, 18, 23, 29, 44, 379, DateTimeKind.Utc).AddTicks(3503),
                             CreatedBy = 19L,
                             Instructions = "Eum ea sequi voluptas praesentium hic.\nVoluptatum voluptatem dolor consequatur distinctio et.\nAutem officia ut unde delectus repudiandae eum animi consectetur omnis.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "You can't index the transmitter without compressin"
                         },
@@ -488,6 +529,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 7, 2, 23, 3, 54, 455, DateTimeKind.Utc).AddTicks(6703),
                             CreatedBy = 13L,
                             Instructions = "quia",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "We need to back up the virtual SQL feed!"
                         },
@@ -498,6 +540,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 7, 13, 7, 32, 27, 49, DateTimeKind.Utc).AddTicks(240),
                             CreatedBy = 9L,
                             Instructions = "Sunt et est aliquam aut unde blanditiis.\nRepellendus dolorem autem.\nEos nihil veniam quia ipsa.\nOdit fuga illum nobis voluptatum deserunt in.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "Try to program the COM alarm, maybe it will progra"
                         },
@@ -508,6 +551,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 3, 4, 4, 20, 35, 587, DateTimeKind.Utc).AddTicks(4983),
                             CreatedBy = 7L,
                             Instructions = "Culpa voluptatem est sequi in sit quam.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "The XSS matrix is down, transmit the cross-platfor"
                         },
@@ -518,6 +562,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 12, 19, 11, 5, 0, 420, DateTimeKind.Utc).AddTicks(8124),
                             CreatedBy = 34L,
                             Instructions = "Quisquam voluptate sequi magni soluta soluta qui voluptatem reprehenderit quo.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "We need to navigate the digital RAM pixel!"
                         },
@@ -528,6 +573,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2020, 4, 11, 8, 43, 30, 576, DateTimeKind.Utc).AddTicks(2926),
                             CreatedBy = 4L,
                             Instructions = "Voluptatem quia ut ut doloribus ut et ratione suscipit. Est sunt veritatis. Quis ducimus laboriosam.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "Try to input the JBOD driver, maybe it will input "
                         },
@@ -538,6 +584,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2020, 6, 14, 4, 8, 42, 21, DateTimeKind.Utc).AddTicks(4228),
                             CreatedBy = 38L,
                             Instructions = "iusto",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "The COM array is down, program the virtual array s"
                         },
@@ -548,6 +595,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 7, 3, 12, 15, 35, 472, DateTimeKind.Utc).AddTicks(3153),
                             CreatedBy = 6L,
                             Instructions = "Omnis et et eum eum tempora nostrum a iure voluptatem. Expedita itaque quos quia soluta repellat quas perspiciatis. Sed consequatur numquam maxime. Enim quaerat ratione rerum sed quis. Ea dolores dolor eum vitae dolores vitae.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "Use the solid state IB transmitter, then you can h"
                         },
@@ -558,6 +606,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 3, 17, 13, 41, 14, 991, DateTimeKind.Utc).AddTicks(6947),
                             CreatedBy = 13L,
                             Instructions = "Expedita labore omnis omnis delectus doloremque possimus esse fugit.\nQui quasi pariatur et sed aliquam aut quo temporibus animi.\nNihil esse similique molestiae voluptas molestiae eum.\nImpedit et in nihil nihil et.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "If we navigate the hard drive, we can get to the P"
                         },
@@ -568,6 +617,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 8, 19, 21, 46, 34, 252, DateTimeKind.Utc).AddTicks(3919),
                             CreatedBy = 27L,
                             Instructions = "Adipisci sint quibusdam.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "bypassing the matrix won't do anything, we need to"
                         },
@@ -578,6 +628,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 4, 20, 0, 45, 6, 380, DateTimeKind.Utc).AddTicks(4937),
                             CreatedBy = 23L,
                             Instructions = "Non non ea ab maxime est ratione. Et voluptate iusto ut. Minima nihil qui quaerat ratione aut.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "I'll parse the virtual SCSI transmitter, that shou"
                         },
@@ -588,6 +639,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 8, 15, 17, 40, 48, 355, DateTimeKind.Utc).AddTicks(2201),
                             CreatedBy = 23L,
                             Instructions = "Eos provident laborum placeat reprehenderit voluptatem.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "indexing the hard drive won't do anything, we need"
                         },
@@ -598,6 +650,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 10, 8, 21, 45, 32, 612, DateTimeKind.Utc).AddTicks(9355),
                             CreatedBy = 23L,
                             Instructions = "Et dolor error quo doloremque harum explicabo.\nSed qui facere corporis sunt omnis voluptas corporis perspiciatis ut.\nEst rerum ad necessitatibus voluptatem.\nLaboriosam cupiditate dolorem eaque perspiciatis et.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "You can't copy the port without parsing the wirele"
                         },
@@ -608,6 +661,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 7, 28, 3, 26, 22, 616, DateTimeKind.Utc).AddTicks(2053),
                             CreatedBy = 21L,
                             Instructions = "Aut ex quis.\nEnim nulla eligendi est quam iusto.\nCumque harum saepe velit consequatur eligendi odit ut vero.\nDolorem sit vel sed nemo modi consequatur.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "You can't parse the firewall without backing up th"
                         },
@@ -618,6 +672,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 8, 25, 17, 17, 5, 904, DateTimeKind.Utc).AddTicks(3953),
                             CreatedBy = 35L,
                             Instructions = "Ut qui non dolores sunt enim fugiat quisquam cupiditate distinctio. Officiis reprehenderit quidem qui quis quia asperiores quaerat sapiente. Quia quia voluptatem magni et enim iure. Dolorum ut minus.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "If we bypass the transmitter, we can get to the AI"
                         },
@@ -628,6 +683,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 2, 12, 20, 19, 21, 785, DateTimeKind.Utc).AddTicks(555),
                             CreatedBy = 7L,
                             Instructions = "Officia iusto rerum placeat temporibus corrupti et aut cumque.\nCommodi voluptatem laborum amet consequatur.\nA ducimus est ut reprehenderit.\nSit odit consequuntur.\nTempore magni nihil velit quos sed deleniti aliquid.\nEligendi nesciunt error mollitia et consequatur.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "compressing the bus won't do anything, we need to "
                         },
@@ -638,6 +694,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2020, 3, 20, 22, 3, 31, 732, DateTimeKind.Utc).AddTicks(8522),
                             CreatedBy = 10L,
                             Instructions = "Earum laudantium molestias quam sed fuga explicabo vel corrupti in. Quibusdam et ut voluptatem facere. Magni qui pariatur reiciendis eveniet.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "I'll parse the back-end XML protocol, that should "
                         },
@@ -648,6 +705,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 9, 9, 5, 52, 45, 461, DateTimeKind.Utc).AddTicks(7513),
                             CreatedBy = 15L,
                             Instructions = "Sed rerum molestiae ad.\nItaque quas vel sint voluptas maxime assumenda.\nHic debitis tempore minus et quos quia repudiandae.\nUt laudantium ut.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "We need to synthesize the haptic THX bandwidth!"
                         },
@@ -658,6 +716,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2022, 1, 23, 3, 58, 48, 659, DateTimeKind.Utc).AddTicks(4025),
                             CreatedBy = 34L,
                             Instructions = "vel",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "Use the wireless AI card, then you can back up the"
                         },
@@ -668,6 +727,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 10, 30, 1, 40, 25, 18, DateTimeKind.Utc).AddTicks(570),
                             CreatedBy = 34L,
                             Instructions = "Cum in ex nulla doloremque nostrum nemo quos.\nLaudantium corporis ut hic sapiente dolore sed architecto.\nIusto expedita rerum et pariatur optio ex aperiam dolorem placeat.\nAssumenda nesciunt nostrum pariatur corporis et doloribus quae.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "You can't copy the sensor without navigating the d"
                         },
@@ -678,6 +738,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2020, 7, 18, 17, 8, 49, 928, DateTimeKind.Utc).AddTicks(8918),
                             CreatedBy = 38L,
                             Instructions = "Voluptatem iure quia labore pariatur id quia qui expedita quos.\nLaudantium natus dolorem rerum nemo perferendis quam est explicabo aliquam.\nIncidunt et qui.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "The XML monitor is down, compress the 1080p monito"
                         },
@@ -688,6 +749,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 12, 13, 11, 25, 5, 464, DateTimeKind.Utc).AddTicks(3271),
                             CreatedBy = 16L,
                             Instructions = "Fugiat illo alias error eligendi voluptatem.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "You can't transmit the system without connecting t"
                         },
@@ -698,6 +760,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 10, 5, 11, 14, 31, 87, DateTimeKind.Utc).AddTicks(9648),
                             CreatedBy = 29L,
                             Instructions = "Distinctio adipisci sequi vitae nulla. Corporis in labore nobis vel laudantium accusantium minus nihil quas. Sapiente quam vitae ea asperiores cum. Et illum temporibus placeat itaque et aliquam nostrum tempore ratione. Quia modi facere quia. Quaerat nostrum voluptatem.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "Use the wireless GB protocol, then you can synthes"
                         },
@@ -708,6 +771,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 5, 7, 23, 12, 54, 797, DateTimeKind.Utc).AddTicks(4591),
                             CreatedBy = 33L,
                             Instructions = "Necessitatibus libero sint ad culpa accusantium sed omnis praesentium.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "Use the open-source ADP pixel, then you can input "
                         },
@@ -718,6 +782,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 10, 22, 7, 52, 20, 685, DateTimeKind.Utc).AddTicks(9619),
                             CreatedBy = 31L,
                             Instructions = "Aut ut ut voluptates tempora ut commodi quos id. Dolores rerum eveniet quaerat dolores eligendi hic ipsum sit. Impedit fugiat numquam ad rerum atque tempore vero ipsa ab. Consequatur vitae hic omnis cumque perspiciatis consequatur ex omnis.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "overriding the port won't do anything, we need to "
                         },
@@ -728,6 +793,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 4, 25, 2, 10, 28, 331, DateTimeKind.Utc).AddTicks(9137),
                             CreatedBy = 26L,
                             Instructions = "Sunt ut fugit minima facere optio accusantium.\nDeserunt molestias ducimus omnis voluptatibus quos aut rerum.\nQuibusdam ratione qui illum quam modi.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "I'll bypass the digital XSS pixel, that should pix"
                         },
@@ -738,6 +804,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 6, 30, 5, 9, 15, 865, DateTimeKind.Utc).AddTicks(14),
                             CreatedBy = 15L,
                             Instructions = "Minus quo dolores rerum pariatur nisi.\nDolorem dolore laborum corporis reiciendis dignissimos in.\nEos enim vel placeat minus voluptatem consequuntur totam corporis et.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "Try to generate the SMTP application, maybe it wil"
                         },
@@ -748,6 +815,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 11, 7, 21, 25, 36, 282, DateTimeKind.Utc).AddTicks(9120),
                             CreatedBy = 40L,
                             Instructions = "aut",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "Use the solid state SMS alarm, then you can bypass"
                         },
@@ -758,6 +826,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 10, 1, 1, 37, 52, 97, DateTimeKind.Utc).AddTicks(3012),
                             CreatedBy = 8L,
                             Instructions = "Veniam rerum repudiandae sint eos delectus qui veniam id consequatur.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "We need to synthesize the open-source CSS driver!"
                         },
@@ -768,6 +837,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 12, 27, 17, 0, 32, 169, DateTimeKind.Utc).AddTicks(5315),
                             CreatedBy = 22L,
                             Instructions = "Quia fugiat voluptatem nihil vitae molestias.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "I'll connect the bluetooth RSS feed, that should f"
                         },
@@ -778,6 +848,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 7, 31, 3, 30, 10, 517, DateTimeKind.Utc).AddTicks(7654),
                             CreatedBy = 2L,
                             Instructions = "Accusamus beatae omnis totam maxime autem in et et.\nEt ducimus ea quia a excepturi a aut.\nExplicabo illo blanditiis illo eum qui itaque natus modi.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "You can't generate the protocol without indexing t"
                         },
@@ -788,6 +859,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 5, 2, 19, 48, 53, 833, DateTimeKind.Utc).AddTicks(5936),
                             CreatedBy = 13L,
                             Instructions = "Voluptatem veniam ut autem enim. Architecto nihil ut rerum aut nihil eos aut. Esse voluptatem reprehenderit perferendis aut ut dolor voluptas.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "If we quantify the program, we can get to the FTP "
                         },
@@ -798,6 +870,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 6, 27, 9, 54, 23, 172, DateTimeKind.Utc).AddTicks(6610),
                             CreatedBy = 26L,
                             Instructions = "Est consectetur voluptatem.\nPlaceat et eos.\nSunt quo et qui eius qui dolor numquam numquam nulla.\nSed nulla sint delectus alias.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "If we bypass the circuit, we can get to the RSS ci"
                         },
@@ -808,6 +881,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2020, 2, 18, 11, 17, 50, 234, DateTimeKind.Utc).AddTicks(2595),
                             CreatedBy = 10L,
                             Instructions = "ut",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "parsing the matrix won't do anything, we need to c"
                         },
@@ -818,6 +892,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 2, 1, 6, 47, 58, 957, DateTimeKind.Utc).AddTicks(2382),
                             CreatedBy = 24L,
                             Instructions = "Suscipit iusto quas est quaerat molestiae nostrum tempora aliquam tempora.\nRem dolorem ut voluptas voluptate.\nQuo magnam eligendi.\nIpsum tenetur praesentium earum.",
+                            IsWeekly = false,
                             LevelId = 2L,
                             Title = "Try to connect the XSS feed, maybe it will connect"
                         },
@@ -828,6 +903,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 4, 21, 21, 46, 8, 253, DateTimeKind.Utc).AddTicks(4985),
                             CreatedBy = 33L,
                             Instructions = "Quae aliquid quod error nesciunt.",
+                            IsWeekly = false,
                             LevelId = 3L,
                             Title = "Use the online IB panel, then you can synthesize t"
                         },
@@ -838,6 +914,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 9, 2, 16, 57, 19, 353, DateTimeKind.Utc).AddTicks(9206),
                             CreatedBy = 39L,
                             Instructions = "Autem est neque deleniti quae.\nCum vitae ut id voluptate est aut enim.\nAlias tenetur commodi cumque explicabo est.\nCommodi blanditiis tenetur sapiente dolores atque tempore.\nAut modi officiis neque consequatur.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "You can't transmit the application without quantif"
                         },
@@ -848,6 +925,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 9, 19, 21, 4, 54, 872, DateTimeKind.Utc).AddTicks(9079),
                             CreatedBy = 19L,
                             Instructions = "Est dolores id tempore vel.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "If we override the circuit, we can get to the HDD "
                         },
@@ -858,6 +936,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2021, 3, 4, 20, 14, 32, 43, DateTimeKind.Utc).AddTicks(341),
                             CreatedBy = 7L,
                             Instructions = "Aut quibusdam amet at facilis rerum.\nUt veritatis commodi aspernatur doloremque quia quidem.",
+                            IsWeekly = false,
                             LevelId = 1L,
                             Title = "Use the cross-platform AGP firewall, then you can "
                         },
@@ -868,6 +947,7 @@ namespace LeetWars.Core.DAL.Migrations
                             CreatedAt = new DateTime(2019, 7, 26, 23, 58, 4, 184, DateTimeKind.Utc).AddTicks(5347),
                             CreatedBy = 37L,
                             Instructions = "Natus aut officia qui consequatur.",
+                            IsWeekly = false,
                             LevelId = 4L,
                             Title = "Try to navigate the THX system, maybe it will navi"
                         });
@@ -2761,6 +2841,34 @@ namespace LeetWars.Core.DAL.Migrations
                             Status = 3,
                             TestCases = "Animi libero dolor dolore ipsa omnis nesciunt vitae pariatur. Consequatur consequatur temporibus sit et non odit tempore qui. Officia illum qui. Et consequatur assumenda eius. Accusamus aut ducimus aut et tempore rerum illum sint debitis. Delectus inventore delectus eum voluptates."
                         });
+                });
+
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.CodeFight", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("ChallengeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ReceiverId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("SenderId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiverId")
+                        .IsUnique();
+
+                    b.HasIndex("SenderId")
+                        .IsUnique();
+
+                    b.ToTable("CodeFights");
                 });
 
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.HelperEntities.ChallengeVersionLanguageVersion", b =>
@@ -5459,6 +5567,9 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Property<DateTime?>("BirthDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CodeFightStatus")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Country")
                         .HasColumnType("int");
 
@@ -5530,6 +5641,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 1L,
                             BirthDate = new DateTime(1991, 5, 8, 14, 17, 47, 307, DateTimeKind.Utc).AddTicks(4649),
+                            CodeFightStatus = 0,
                             Country = 8,
                             Email = "Josue41@hotmail.com",
                             FirstName = "Grayson",
@@ -5551,6 +5663,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 2L,
                             BirthDate = new DateTime(1984, 5, 30, 8, 42, 31, 222, DateTimeKind.Utc).AddTicks(9633),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Amely_Murphy71@hotmail.com",
                             FirstName = "Ford",
@@ -5572,6 +5685,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 3L,
                             BirthDate = new DateTime(1993, 7, 25, 6, 0, 59, 61, DateTimeKind.Utc).AddTicks(456),
+                            CodeFightStatus = 0,
                             Country = 28,
                             Email = "Regan.Larson42@hotmail.com",
                             FirstName = "Rupert",
@@ -5593,6 +5707,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 4L,
                             BirthDate = new DateTime(1989, 7, 7, 0, 1, 37, 619, DateTimeKind.Utc).AddTicks(4666),
+                            CodeFightStatus = 0,
                             Country = 27,
                             Email = "Nelle24@yahoo.com",
                             FirstName = "Pansy",
@@ -5614,6 +5729,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 5L,
                             BirthDate = new DateTime(1995, 6, 17, 22, 37, 8, 128, DateTimeKind.Utc).AddTicks(7960),
+                            CodeFightStatus = 0,
                             Country = 18,
                             Email = "Maurice.Thiel45@gmail.com",
                             FirstName = "Earnestine",
@@ -5635,6 +5751,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 6L,
                             BirthDate = new DateTime(1993, 9, 26, 9, 32, 5, 895, DateTimeKind.Utc).AddTicks(5444),
+                            CodeFightStatus = 0,
                             Country = 1,
                             Email = "Onie_Donnelly@hotmail.com",
                             FirstName = "Simone",
@@ -5656,6 +5773,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 7L,
                             BirthDate = new DateTime(1983, 7, 26, 8, 51, 33, 259, DateTimeKind.Utc).AddTicks(9753),
+                            CodeFightStatus = 0,
                             Country = 51,
                             Email = "Jordon51@hotmail.com",
                             FirstName = "Abigail",
@@ -5677,6 +5795,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 8L,
                             BirthDate = new DateTime(1998, 4, 20, 15, 42, 17, 513, DateTimeKind.Utc).AddTicks(1989),
+                            CodeFightStatus = 0,
                             Country = 43,
                             Email = "Sydni.Carter66@hotmail.com",
                             FirstName = "Blanca",
@@ -5698,6 +5817,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 9L,
                             BirthDate = new DateTime(1995, 4, 25, 0, 45, 14, 388, DateTimeKind.Utc).AddTicks(7786),
+                            CodeFightStatus = 0,
                             Country = 2,
                             Email = "Hettie.Runte@yahoo.com",
                             FirstName = "Arnoldo",
@@ -5719,6 +5839,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 10L,
                             BirthDate = new DateTime(1995, 5, 25, 7, 0, 28, 701, DateTimeKind.Utc).AddTicks(1905),
+                            CodeFightStatus = 0,
                             Country = 57,
                             Email = "Zula.Jakubowski67@gmail.com",
                             FirstName = "Leonardo",
@@ -5740,6 +5861,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 11L,
                             BirthDate = new DateTime(1995, 4, 5, 8, 18, 27, 362, DateTimeKind.Utc).AddTicks(1964),
+                            CodeFightStatus = 0,
                             Country = 26,
                             Email = "Richie_Feeney@yahoo.com",
                             FirstName = "Enola",
@@ -5761,6 +5883,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 12L,
                             BirthDate = new DateTime(1984, 4, 28, 17, 5, 53, 844, DateTimeKind.Utc).AddTicks(6728),
+                            CodeFightStatus = 0,
                             Country = 44,
                             Email = "Jaylon_Schamberger68@yahoo.com",
                             FirstName = "Beatrice",
@@ -5782,6 +5905,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 13L,
                             BirthDate = new DateTime(1990, 12, 2, 11, 48, 22, 614, DateTimeKind.Utc).AddTicks(5448),
+                            CodeFightStatus = 0,
                             Country = 10,
                             Email = "Susie.Sauer@gmail.com",
                             FirstName = "Lorenzo",
@@ -5803,6 +5927,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 14L,
                             BirthDate = new DateTime(1998, 12, 12, 2, 49, 5, 942, DateTimeKind.Utc).AddTicks(5586),
+                            CodeFightStatus = 0,
                             Country = 16,
                             Email = "Hans_Toy94@hotmail.com",
                             FirstName = "Jazmin",
@@ -5824,6 +5949,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 15L,
                             BirthDate = new DateTime(1996, 6, 14, 0, 11, 22, 542, DateTimeKind.Utc).AddTicks(9487),
+                            CodeFightStatus = 0,
                             Country = 35,
                             Email = "Pietro_Bradtke68@hotmail.com",
                             FirstName = "Imani",
@@ -5845,6 +5971,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 16L,
                             BirthDate = new DateTime(1990, 9, 30, 11, 37, 15, 847, DateTimeKind.Utc).AddTicks(3302),
+                            CodeFightStatus = 0,
                             Country = 49,
                             Email = "Josh.Mueller@hotmail.com",
                             FirstName = "Frankie",
@@ -5866,6 +5993,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 17L,
                             BirthDate = new DateTime(1995, 4, 25, 3, 35, 40, 382, DateTimeKind.Utc).AddTicks(8040),
+                            CodeFightStatus = 0,
                             Country = 47,
                             Email = "Emily.OReilly@yahoo.com",
                             FirstName = "Abigail",
@@ -5887,6 +6015,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 18L,
                             BirthDate = new DateTime(1999, 7, 7, 14, 33, 58, 925, DateTimeKind.Utc).AddTicks(478),
+                            CodeFightStatus = 0,
                             Country = 33,
                             Email = "Maeve_Watsica26@hotmail.com",
                             FirstName = "Glennie",
@@ -5908,6 +6037,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 19L,
                             BirthDate = new DateTime(1995, 7, 16, 18, 36, 41, 301, DateTimeKind.Utc).AddTicks(6700),
+                            CodeFightStatus = 0,
                             Country = 17,
                             Email = "Lisette93@gmail.com",
                             FirstName = "Immanuel",
@@ -5929,6 +6059,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 20L,
                             BirthDate = new DateTime(1998, 8, 9, 4, 58, 20, 690, DateTimeKind.Utc).AddTicks(797),
+                            CodeFightStatus = 0,
                             Country = 49,
                             Email = "Delores.Weimann@hotmail.com",
                             FirstName = "Tanya",
@@ -5950,6 +6081,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 21L,
                             BirthDate = new DateTime(1993, 10, 31, 14, 35, 47, 700, DateTimeKind.Utc).AddTicks(3580),
+                            CodeFightStatus = 0,
                             Country = 39,
                             Email = "Heidi57@yahoo.com",
                             FirstName = "Jaydon",
@@ -5971,6 +6103,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 22L,
                             BirthDate = new DateTime(1980, 11, 14, 4, 38, 15, 242, DateTimeKind.Utc).AddTicks(9462),
+                            CodeFightStatus = 0,
                             Country = 28,
                             Email = "Mikel21@hotmail.com",
                             FirstName = "Candelario",
@@ -5992,6 +6125,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 23L,
                             BirthDate = new DateTime(1989, 1, 22, 8, 46, 41, 321, DateTimeKind.Utc).AddTicks(5466),
+                            CodeFightStatus = 0,
                             Country = 6,
                             Email = "Carlo61@gmail.com",
                             FirstName = "Perry",
@@ -6013,6 +6147,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 24L,
                             BirthDate = new DateTime(1999, 8, 18, 11, 6, 17, 868, DateTimeKind.Utc).AddTicks(7529),
+                            CodeFightStatus = 0,
                             Country = 18,
                             Email = "Laurie.Wilderman86@yahoo.com",
                             FirstName = "Javon",
@@ -6034,6 +6169,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 25L,
                             BirthDate = new DateTime(1991, 9, 13, 4, 27, 55, 562, DateTimeKind.Utc).AddTicks(7424),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Evalyn_Crona66@gmail.com",
                             FirstName = "Eugene",
@@ -6055,6 +6191,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 26L,
                             BirthDate = new DateTime(1980, 12, 8, 12, 21, 7, 274, DateTimeKind.Utc).AddTicks(2574),
+                            CodeFightStatus = 0,
                             Country = 31,
                             Email = "Deven34@yahoo.com",
                             FirstName = "Hank",
@@ -6076,6 +6213,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 27L,
                             BirthDate = new DateTime(1994, 2, 11, 22, 59, 8, 450, DateTimeKind.Utc).AddTicks(2210),
+                            CodeFightStatus = 0,
                             Country = 11,
                             Email = "Trystan.Jacobson8@gmail.com",
                             FirstName = "Mallie",
@@ -6097,6 +6235,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 28L,
                             BirthDate = new DateTime(1982, 7, 16, 16, 27, 0, 682, DateTimeKind.Utc).AddTicks(6739),
+                            CodeFightStatus = 0,
                             Country = 29,
                             Email = "Hester_Dibbert12@yahoo.com",
                             FirstName = "Ayla",
@@ -6118,6 +6257,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 29L,
                             BirthDate = new DateTime(1983, 8, 16, 22, 13, 6, 897, DateTimeKind.Utc).AddTicks(8679),
+                            CodeFightStatus = 0,
                             Country = 57,
                             Email = "Brant38@gmail.com",
                             FirstName = "Emory",
@@ -6139,6 +6279,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 30L,
                             BirthDate = new DateTime(1985, 8, 16, 8, 34, 58, 912, DateTimeKind.Utc).AddTicks(3608),
+                            CodeFightStatus = 0,
                             Country = 44,
                             Email = "Mathilde_Shields@hotmail.com",
                             FirstName = "Clifford",
@@ -6160,6 +6301,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 31L,
                             BirthDate = new DateTime(1981, 9, 7, 22, 34, 15, 418, DateTimeKind.Utc).AddTicks(2863),
+                            CodeFightStatus = 0,
                             Country = 53,
                             Email = "Addison8@hotmail.com",
                             FirstName = "Aisha",
@@ -6181,6 +6323,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 32L,
                             BirthDate = new DateTime(1989, 3, 25, 9, 41, 23, 12, DateTimeKind.Utc).AddTicks(2976),
+                            CodeFightStatus = 0,
                             Country = 5,
                             Email = "Emerald.Schaefer@hotmail.com",
                             FirstName = "David",
@@ -6202,6 +6345,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 33L,
                             BirthDate = new DateTime(1986, 9, 3, 1, 30, 16, 31, DateTimeKind.Utc).AddTicks(8206),
+                            CodeFightStatus = 0,
                             Country = 55,
                             Email = "Mustafa_Jast@hotmail.com",
                             FirstName = "Rogelio",
@@ -6223,6 +6367,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 34L,
                             BirthDate = new DateTime(1984, 2, 9, 18, 52, 0, 505, DateTimeKind.Utc).AddTicks(4957),
+                            CodeFightStatus = 0,
                             Country = 26,
                             Email = "Faye28@hotmail.com",
                             FirstName = "Leon",
@@ -6244,6 +6389,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 35L,
                             BirthDate = new DateTime(1995, 5, 4, 12, 34, 2, 318, DateTimeKind.Utc).AddTicks(9374),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Don77@gmail.com",
                             FirstName = "Betsy",
@@ -6265,6 +6411,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 36L,
                             BirthDate = new DateTime(1994, 1, 23, 3, 43, 9, 490, DateTimeKind.Utc).AddTicks(7686),
+                            CodeFightStatus = 0,
                             Country = 56,
                             Email = "Lonie.Conroy22@yahoo.com",
                             FirstName = "Ophelia",
@@ -6286,6 +6433,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 37L,
                             BirthDate = new DateTime(1993, 10, 29, 2, 6, 21, 56, DateTimeKind.Utc).AddTicks(4494),
+                            CodeFightStatus = 0,
                             Country = 5,
                             Email = "Margot_Erdman5@gmail.com",
                             FirstName = "Mackenzie",
@@ -6307,6 +6455,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 38L,
                             BirthDate = new DateTime(1989, 10, 24, 0, 36, 24, 452, DateTimeKind.Utc).AddTicks(1234),
+                            CodeFightStatus = 0,
                             Country = 20,
                             Email = "Kayli_Johns57@yahoo.com",
                             FirstName = "Elda",
@@ -6328,6 +6477,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 39L,
                             BirthDate = new DateTime(1984, 11, 3, 12, 25, 37, 675, DateTimeKind.Utc).AddTicks(4462),
+                            CodeFightStatus = 0,
                             Country = 40,
                             Email = "Lela.Howell95@hotmail.com",
                             FirstName = "Orion",
@@ -6349,6 +6499,7 @@ namespace LeetWars.Core.DAL.Migrations
                         {
                             Id = 40L,
                             BirthDate = new DateTime(1994, 2, 19, 7, 53, 27, 731, DateTimeKind.Utc).AddTicks(2229),
+                            CodeFightStatus = 0,
                             Country = 46,
                             Email = "Erna43@yahoo.com",
                             FirstName = "Marjolaine",
@@ -6435,7 +6586,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 6L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2023, 6, 12, 21, 31, 58, 222, DateTimeKind.Utc).AddTicks(8241),
                             UserId = 1L
                         },
@@ -6449,14 +6600,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 8L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2022, 3, 2, 3, 57, 59, 794, DateTimeKind.Utc).AddTicks(8114),
                             UserId = 35L
                         },
                         new
                         {
                             Id = 9L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 9, 5, 21, 54, 24, 918, DateTimeKind.Utc).AddTicks(4773),
                             UserId = 30L
                         },
@@ -6470,35 +6621,35 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 11L,
-                            BadgeId = 8L,
+                            BadgeId = 9L,
                             CreatedAt = new DateTime(2023, 6, 14, 7, 3, 12, 1, DateTimeKind.Utc).AddTicks(9745),
                             UserId = 32L
                         },
                         new
                         {
                             Id = 12L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2023, 2, 3, 12, 50, 4, 70, DateTimeKind.Utc).AddTicks(278),
                             UserId = 21L
                         },
                         new
                         {
                             Id = 13L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2022, 6, 22, 17, 31, 44, 60, DateTimeKind.Utc).AddTicks(430),
                             UserId = 22L
                         },
                         new
                         {
                             Id = 14L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2022, 4, 4, 4, 58, 1, 140, DateTimeKind.Utc).AddTicks(348),
                             UserId = 5L
                         },
                         new
                         {
                             Id = 15L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2023, 4, 10, 0, 36, 51, 717, DateTimeKind.Utc).AddTicks(5962),
                             UserId = 4L
                         },
@@ -6512,7 +6663,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 17L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2023, 2, 23, 21, 47, 9, 929, DateTimeKind.Utc).AddTicks(4464),
                             UserId = 31L
                         },
@@ -6540,7 +6691,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 21L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2022, 7, 17, 11, 0, 12, 330, DateTimeKind.Utc).AddTicks(796),
                             UserId = 21L
                         },
@@ -6554,14 +6705,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 23L,
-                            BadgeId = 3L,
+                            BadgeId = 4L,
                             CreatedAt = new DateTime(2022, 11, 10, 20, 38, 20, 998, DateTimeKind.Utc).AddTicks(4303),
                             UserId = 14L
                         },
                         new
                         {
                             Id = 24L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 7, 10, 0, 54, 36, 307, DateTimeKind.Utc).AddTicks(1150),
                             UserId = 6L
                         },
@@ -6575,7 +6726,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 26L,
-                            BadgeId = 10L,
+                            BadgeId = 11L,
                             CreatedAt = new DateTime(2022, 8, 1, 21, 7, 46, 271, DateTimeKind.Utc).AddTicks(8576),
                             UserId = 12L
                         },
@@ -6596,7 +6747,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 29L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 7, 7, 19, 39, 14, 712, DateTimeKind.Utc).AddTicks(9364),
                             UserId = 5L
                         },
@@ -6610,7 +6761,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 31L,
-                            BadgeId = 4L,
+                            BadgeId = 5L,
                             CreatedAt = new DateTime(2022, 7, 15, 11, 37, 34, 125, DateTimeKind.Utc).AddTicks(1228),
                             UserId = 22L
                         },
@@ -6624,21 +6775,21 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 33L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2022, 2, 1, 13, 56, 38, 86, DateTimeKind.Utc).AddTicks(4669),
                             UserId = 33L
                         },
                         new
                         {
                             Id = 34L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2023, 6, 30, 22, 35, 13, 853, DateTimeKind.Utc).AddTicks(4954),
                             UserId = 6L
                         },
                         new
                         {
                             Id = 35L,
-                            BadgeId = 8L,
+                            BadgeId = 9L,
                             CreatedAt = new DateTime(2022, 9, 11, 21, 53, 46, 244, DateTimeKind.Utc).AddTicks(5370),
                             UserId = 34L
                         },
@@ -6666,7 +6817,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 39L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 10, 18, 1, 10, 52, 611, DateTimeKind.Utc).AddTicks(2144),
                             UserId = 6L
                         },
@@ -6694,14 +6845,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 43L,
-                            BadgeId = 9L,
+                            BadgeId = 10L,
                             CreatedAt = new DateTime(2022, 4, 6, 11, 0, 58, 769, DateTimeKind.Utc).AddTicks(9807),
                             UserId = 40L
                         },
                         new
                         {
                             Id = 44L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 5, 18, 15, 3, 5, 382, DateTimeKind.Utc).AddTicks(3229),
                             UserId = 2L
                         },
@@ -6722,7 +6873,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 47L,
-                            BadgeId = 9L,
+                            BadgeId = 10L,
                             CreatedAt = new DateTime(2023, 3, 25, 20, 34, 1, 783, DateTimeKind.Utc).AddTicks(5416),
                             UserId = 19L
                         },
@@ -6743,7 +6894,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 50L,
-                            BadgeId = 10L,
+                            BadgeId = 11L,
                             CreatedAt = new DateTime(2022, 3, 1, 6, 27, 11, 443, DateTimeKind.Utc).AddTicks(7468),
                             UserId = 27L
                         },
@@ -6757,7 +6908,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 52L,
-                            BadgeId = 10L,
+                            BadgeId = 11L,
                             CreatedAt = new DateTime(2022, 11, 27, 5, 21, 31, 101, DateTimeKind.Utc).AddTicks(5287),
                             UserId = 1L
                         },
@@ -6771,63 +6922,63 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 54L,
-                            BadgeId = 5L,
+                            BadgeId = 6L,
                             CreatedAt = new DateTime(2023, 7, 6, 19, 8, 3, 296, DateTimeKind.Utc).AddTicks(7334),
                             UserId = 12L
                         },
                         new
                         {
                             Id = 55L,
-                            BadgeId = 9L,
+                            BadgeId = 10L,
                             CreatedAt = new DateTime(2022, 3, 9, 12, 8, 7, 222, DateTimeKind.Utc).AddTicks(8856),
                             UserId = 15L
                         },
                         new
                         {
                             Id = 56L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2023, 3, 19, 6, 54, 55, 16, DateTimeKind.Utc).AddTicks(8204),
                             UserId = 13L
                         },
                         new
                         {
                             Id = 57L,
-                            BadgeId = 11L,
+                            BadgeId = 12L,
                             CreatedAt = new DateTime(2022, 6, 14, 8, 48, 11, 942, DateTimeKind.Utc).AddTicks(971),
                             UserId = 1L
                         },
                         new
                         {
                             Id = 58L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2023, 2, 19, 14, 16, 42, 531, DateTimeKind.Utc).AddTicks(3930),
                             UserId = 32L
                         },
                         new
                         {
                             Id = 59L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2023, 7, 15, 3, 26, 59, 154, DateTimeKind.Utc).AddTicks(4099),
                             UserId = 10L
                         },
                         new
                         {
                             Id = 60L,
-                            BadgeId = 10L,
+                            BadgeId = 11L,
                             CreatedAt = new DateTime(2023, 4, 25, 2, 19, 39, 28, DateTimeKind.Utc).AddTicks(1424),
                             UserId = 26L
                         },
                         new
                         {
                             Id = 61L,
-                            BadgeId = 4L,
+                            BadgeId = 5L,
                             CreatedAt = new DateTime(2023, 5, 27, 22, 9, 16, 284, DateTimeKind.Utc).AddTicks(7956),
                             UserId = 30L
                         },
                         new
                         {
                             Id = 62L,
-                            BadgeId = 6L,
+                            BadgeId = 7L,
                             CreatedAt = new DateTime(2022, 2, 28, 17, 55, 45, 455, DateTimeKind.Utc).AddTicks(8867),
                             UserId = 3L
                         },
@@ -6841,14 +6992,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 64L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2023, 3, 1, 18, 48, 53, 525, DateTimeKind.Utc).AddTicks(3390),
                             UserId = 3L
                         },
                         new
                         {
                             Id = 65L,
-                            BadgeId = 2L,
+                            BadgeId = 3L,
                             CreatedAt = new DateTime(2022, 6, 11, 5, 48, 2, 850, DateTimeKind.Utc).AddTicks(3289),
                             UserId = 28L
                         },
@@ -6869,14 +7020,14 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 68L,
-                            BadgeId = 8L,
+                            BadgeId = 9L,
                             CreatedAt = new DateTime(2023, 6, 19, 7, 25, 57, 440, DateTimeKind.Utc).AddTicks(3545),
                             UserId = 25L
                         },
                         new
                         {
                             Id = 69L,
-                            BadgeId = 9L,
+                            BadgeId = 10L,
                             CreatedAt = new DateTime(2022, 8, 14, 4, 50, 37, 885, DateTimeKind.Utc).AddTicks(7902),
                             UserId = 33L
                         },
@@ -6897,7 +7048,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 72L,
-                            BadgeId = 7L,
+                            BadgeId = 8L,
                             CreatedAt = new DateTime(2022, 2, 23, 10, 44, 20, 702, DateTimeKind.Utc).AddTicks(5714),
                             UserId = 8L
                         },
@@ -6918,7 +7069,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 75L,
-                            BadgeId = 12L,
+                            BadgeId = 13L,
                             CreatedAt = new DateTime(2023, 5, 19, 21, 46, 33, 696, DateTimeKind.Utc).AddTicks(4907),
                             UserId = 19L
                         },
@@ -6953,7 +7104,7 @@ namespace LeetWars.Core.DAL.Migrations
                         new
                         {
                             Id = 80L,
-                            BadgeId = 3L,
+                            BadgeId = 4L,
                             CreatedAt = new DateTime(2023, 2, 22, 11, 44, 5, 583, DateTimeKind.Utc).AddTicks(3095),
                             UserId = 39L
                         });
@@ -8114,6 +8265,25 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("Author");
 
                     b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.CodeFight", b =>
+                {
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "Receiver")
+                        .WithOne()
+                        .HasForeignKey("LeetWars.Core.DAL.Entities.CodeFight", "ReceiverId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "Sender")
+                        .WithOne()
+                        .HasForeignKey("LeetWars.Core.DAL.Entities.CodeFight", "SenderId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.HelperEntities.ChallengeVersionLanguageVersion", b =>

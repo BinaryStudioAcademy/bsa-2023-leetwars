@@ -45,7 +45,7 @@
     margin-left: 8px
     font-size: 12px
     vertical-align: middle
-    background-color:$cornflower
+    background-color: $cornflower
     border-radius: 50%
 
 .notifications-dropdown
@@ -64,7 +64,6 @@
     border-bottom-left-radius: 5px
     @media screen and (max-width: 500px)
         right: -90%
-
 
 .zero-notifications-info
     padding-top: 8px
@@ -90,24 +89,34 @@
     .modal-body, .modal-footer, button
         color: $white
 
+.user-menu
+    justify-self: end
+    gap: 10px
+
 .user
     display: flex
+    gap: 5px
     position: relative
     align-items: center
     cursor: pointer
     padding-right: 1rem
 
+.icon-bell
+    color: $white
+
 .user-logo
-  width: 50px
-  height: 50px
-  border-radius: 50%
-  margin-right: 0.5rem
-  object-fit: cover
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    margin-right: 0.5rem
+    object-fit: cover
 
 .username
-    color: $transparent-grey
+    color: $white
     font-family: "Open Sans", sans-serif
     font-size: 0.9rem
+    &:hover
+        color: $green
     @media screen and (max-width: $large)
         max-width: 100px
         white-space: nowrap

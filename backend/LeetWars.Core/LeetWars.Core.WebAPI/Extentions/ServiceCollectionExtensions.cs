@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using FluentValidation.AspNetCore;
+using Hangfire;
 using LeetWars.Core.BLL.Helpers.BlobStorage;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.BLL.MappingProfiles;
@@ -24,12 +25,13 @@ namespace LeetWars.Core.WebAPI.Extentions
                 .AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IChallengeService, ChallengeService>();
-            services.AddTransient<IChallengeLevelService, ChallengeLevelService>();
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddTransient<INotificationService, NotificationServcie>();
             services.AddScoped<IUserService, UserService>();
+            services.AddTransient<ICodeFightService, CodeFightService>();
 
             services.AddScoped<UserStorage>();
             services.AddTransient<IUserSetter>(s => s.GetService<UserStorage>()!);
@@ -114,6 +116,17 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddScoped<IBlobService, BlobService>();
 
             return services;
+        }
+
+        public static void RegisterHengfire(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHangfire(globalCongig => globalCongig
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(configuration.GetConnectionString("LeetWarsCoreDBConnection")));
+
+            services.AddHangfireServer();
         }
 
         private static void RegisterNotificationProducerService(IServiceCollection services, IConfiguration configuration)
