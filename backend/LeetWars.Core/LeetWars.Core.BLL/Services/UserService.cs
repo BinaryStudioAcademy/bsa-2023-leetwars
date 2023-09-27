@@ -210,7 +210,7 @@ public class UserService : BaseService, IUserService
 
         if (page.HasFriends)
         {
-            var currentUser = await GetCurrentUserEntityAsync();
+            var currentUser = await GetUserInfoWithFriends(u => u.Uid == _userGetter.CurrentUserId);
             var currentUserDto = _mapper.Map<UserDto>(currentUser);
 
             var currentUserFriendsIds = currentUserDto.Friendships?
@@ -227,7 +227,7 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserFriendsInfoDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto)
     {
-        var sender = await GetUserInfoWithFriends(newFriendshipDto.SenderId)
+        var sender = await GetUserInfoWithFriends(u => u.Id == newFriendshipDto.SenderId)
             ?? throw new NotFoundException(nameof(User), newFriendshipDto.SenderId);
 
         if (sender.Friendships
@@ -269,7 +269,7 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserFriendsInfoDto> UpdateFriendshipRequestAsync(UpdateFriendshipDto updateFriendshipDto)
     {
-        var user = await GetUserInfoWithFriends(updateFriendshipDto.UserId)
+        var user = await GetUserInfoWithFriends(u => u.Id == updateFriendshipDto.UserId)
             ?? throw new NotFoundException(nameof(User));
 
         ThrowIfIsNotMatchingIds(updateFriendshipDto.UserId, user.Id);
@@ -310,7 +310,7 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserFriendsInfoDto> GetUserFriendshipsAsync(long userId)
     {
-        var user = await GetUserInfoWithFriends(userId) ?? throw new NotFoundException(nameof(User));
+        var user = await GetUserInfoWithFriends(u => u.Id == userId) ?? throw new NotFoundException(nameof(User));
 
         return _mapper.Map<UserFriendsInfoDto>(user);
     }
@@ -389,14 +389,14 @@ public class UserService : BaseService, IUserService
         return newUserName;
     }
 
-    private async Task<User?> GetUserInfoWithFriends(long userId)
+    private async Task<User?> GetUserInfoWithFriends(Expression<Func<User, bool>> expression)
     {
         var user = await _context.Users
             .Include(user => user.Friendships)
                 .ThenInclude(friendship => friendship.Users)
             .Include(user => user.Friendships)
                 .ThenInclude(f => f.UserFriendships)
-            .FirstOrDefaultAsync(u => u.Id == userId);
+            .FirstOrDefaultAsync(expression);
 
         return user;
     }
