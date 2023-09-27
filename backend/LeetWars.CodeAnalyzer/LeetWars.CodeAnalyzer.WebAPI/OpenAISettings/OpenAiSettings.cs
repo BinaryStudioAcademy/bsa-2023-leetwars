@@ -1,6 +1,7 @@
 ﻿using LeetWars.CodeAnalyzer.Interfaces;
-using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeRequest;
+using LeetWars.Core.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.CodeAnalyzer.OpenAISettings
 {
@@ -21,14 +22,28 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
             "Don't provide additional info, only a number." +
             $"Code listing: \n ${codeListing}";
 
-        public string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto) =>
-             $"You are a full-stack developer. As a {challengeGenerateRequestDto.Language} full-stack developer, your goal is to create a challenge task with the following name: {challengeGenerateRequestDto.Title}, in the following category: {challengeGenerateRequestDto.Category}, with the following tags: {challengeGenerateRequestDto.Tags}, and at the following level: {challengeGenerateRequestDto.Level}." +
-            "Describe a task that matches these properties in the field - Description" +
-            "Then create a complete solution based on description in the field - CompleteSolution" +
-            "Then create an initial solution based on description in the field - InitialSolution" +
-            "Then create a test cases for the complete solution and initial solution in the field - TestCases" +
-            "Then create an example of test cases for the complete solution and initial solution in the field - ExampleTestCases" +
-            "And give me the information in the form of a Json object with the following fields string Description string CompleteSolution string InitialSolution string TestCases string ExampleTestCases";
+        public string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto) {
+            var testFramework = challengeGenerateRequestDto.Language.Name == "Javascript" ? "Mocha" : "NUnit";
+            return @$"You are a software engineer.As a {challengeGenerateRequestDto.Language.Name} developer, your goal is to
+            create a {challengeGenerateRequestDto.Language.Name} programming challenge task with the following name: {challengeGenerateRequestDto.Title}
+            Challenge programming language should be {challengeGenerateRequestDto.Language.Name}.
+            Challenge category should be {challengeGenerateRequestDto.Category};
+            Challenge topic should be related to {string.Join(", ", challengeGenerateRequestDto.Tags.Select(t => t.Name))};
+            Challenge complexity should be {challengeGenerateRequestDto.Level.SkillLevel}.
+            Describe a task that matches these requirements in the field called Description;
+            Then create a complete solution based on description and put it in the field called CompleteSolution;
+            Then create a placeholder where the code needs to be implemented by the challenge taker and put it in the field called InitialSolution;
+            Then create tests using {testFramework} Framework that will verify that code in field CompleteSolution is correct and put them in the field called Tests
+            Then create get a subset of tests in field Tests and put them in the field called TestsSubset
+            And give me the result in the form of a JSON object, example of JSON object:
+            {{ 
+                ""Description"": "" "",
+                ""CompleteSolution"": "" "",
+                ""InitialSolution"": "" "",
+                ""Tests"": "" "",
+                ""TestsSubset"": "" "",
+            }}
+            ";}
 
     }
 }

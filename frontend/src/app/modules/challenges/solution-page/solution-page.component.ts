@@ -34,8 +34,6 @@ export class SolutionPageComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         this.editorContent = this.challengeVersion.completeSolution;
-        console.log(this.challengeVersion);
-        console.log(this.editorOptions);
     }
 
     ngOnChanges({ checkValidation, challengeVersion }: SimpleChanges): void {

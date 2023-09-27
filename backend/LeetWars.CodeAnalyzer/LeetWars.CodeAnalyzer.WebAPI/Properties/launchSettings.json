@@ -2,11 +2,37 @@
   "profiles": {
     "LeetWars.CodeAnalyzer": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5100"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": false,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "https://+:443;http://+:80"
       },
-      "applicationUrl": "https://localhost:64613;http://localhost:64614"
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:5100",
+      "sslPort": 44441
     }
   }
 }

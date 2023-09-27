@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="new-challenge">
             <button [routerLink]="'/challenges/create'">Create new challenge</button>
-            <button (click)="onBtnGenerateClick()"> Generate Challenge by AI</button>
+            <button class="generate-challenge" (click)="onBtnGenerateClick()">Generate Challenge by AI</button>
         </div>
         <app-suggested-challenge></app-suggested-challenge>
         <app-filtering-section></app-filtering-section>

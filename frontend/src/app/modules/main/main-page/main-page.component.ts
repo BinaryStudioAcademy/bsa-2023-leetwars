@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { CodeAnylizerHttpService } from '@core/services/code-anylizer-http.service';
@@ -18,16 +18,23 @@ import { takeUntil } from 'rxjs';
 export class MainComponent extends BaseComponent {
     challengeGenerateRequest: IChallengeGenerateRequest;
 
-    constructor(private modalService: NgbModal, private codeAnylizerService: CodeAnylizerHttpService, private toastrService: ToastrNotificationsService, private router: Router, private spinnerService: SpinnerService) {
+    constructor(
+        private modalService: NgbModal,
+        private codeAnylizerService: CodeAnylizerHttpService,
+        private toastrService: ToastrNotificationsService,
+        private router: Router,
+        private spinnerService: SpinnerService,
+    ) {
         super();
     }
 
     public onBtnGenerateClick() {
-        const modalRef = this.modalService.open(DescribeQuestionComponent, { windowClass: 'delete-modal' });
+        const modalRef = this.modalService.open(DescribeQuestionComponent);
+
         modalRef.componentInstance.buttons = [
             {
-                text: 'Yes',
-                handler: () => { 
+                text: 'Generate',
+                handler: () => {
                     modalRef.componentInstance.updateChallengeGenerateRequest();
                     this.generateChallenge();
                     modalRef.close();
@@ -59,15 +66,13 @@ export class MainComponent extends BaseComponent {
                     this.router.navigate(['/challenges/create'], {
                         state: {
                             myComplexObject: response,
-                            
                         },
                     });
-                    console.log(response);
                     this.toastrService.showSuccess('Challenge generated successfully');
                 },
-                error: (error) => {
+                error: () => {
                     this.toastrService.showError('Error generating challenge');
-                }
+                },
             });
     }
 }

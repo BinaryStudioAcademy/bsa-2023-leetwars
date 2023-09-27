@@ -20,19 +20,10 @@ builder.Services.AddControllers()
 builder.Services.RegisterOpenAI();
 builder.Services.AddScoped<IChallengeGenerator, ChallengeGenerator>();
 
-
-//builder.Services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(options =>
-//{
-//    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-//});
 builder.Services.AddCors();
 builder.Services.AddSwaggerGen();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.WebHost.UseUrls("http://*:5100");
-
-
-
-
 
 var app = builder.Build();
 
@@ -41,8 +32,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-
 
 app.UseCors(opt => opt
     .AllowAnyHeader()
@@ -57,27 +46,5 @@ app.UseEndpoints(endpoinds =>
 {
     endpoinds.MapControllers();
 });
-
-
-
-
-
-
-//app.MapPost("/analyzecode", async (IAnalyzeCodeService analyzeCodeService,
-//                                          CodeRequestAnalysisDto requestDto) =>
-//{
-//    return await analyzeCodeService.RunCodeAnalysisAsync(requestDto);
-//});
-
-
-//app.MapPost("/generateChallenge", async (IChallengeGenerator challengeGenerator,
-//                                          ChallengeGenerateRequestDto challengeGenerateRequestDto) =>
-//{
-//    var response = await challengeGenerator.GenerateChallenge(challengeGenerateRequestDto);
-//    return Results.Ok(response);
-
-//}).Produces<ChallengeGenerateResponseDto>();
-
-
 
 app.Run();

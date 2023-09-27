@@ -1,10 +1,6 @@
 ﻿using LeetWars.CodeAnalyzer.Interfaces;
-using LeetWars.CodeAnalyzer.OpenAISettings;
-using LeetWars.Core.BLL.Exceptions;
-using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeGenerate;
 using LeetWars.Core.Common.DTO.ChallengeRequest;
-using LeetWars.Core.Common.DTO.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace LeetWars.CodeAnalyzer.Services
@@ -28,43 +24,28 @@ namespace LeetWars.CodeAnalyzer.Services
 
 
 
-            ChallengeGenerateResponseDto challengeResponse = JsonConvert.DeserializeObject<ChallengeGenerateResponseDto>(response);
-            challengeResponse.Title = challengeGenerateRequest.Title;
-            challengeResponse.Level = challengeGenerateRequest.Level;
-            challengeResponse.Category = challengeGenerateRequest.Category;
-            challengeResponse.Tags = challengeGenerateRequest.Tags;
-            challengeResponse.Language = challengeGenerateRequest.Language;
+            var challengeResponse = JsonConvert.DeserializeObject<OpenAiChallengeGenerateResponseDto>(response);
+            ChallengeGenerateResponseDto challengeGenerateResponseDto = new ChallengeGenerateResponseDto();
 
+            challengeGenerateResponseDto.Title = challengeGenerateRequest.Title;
+            challengeGenerateResponseDto.Level = challengeGenerateRequest.Level;
+            challengeGenerateResponseDto.Category = challengeGenerateRequest.Category;
+            challengeGenerateResponseDto.Tags = challengeGenerateRequest.Tags;
+            challengeGenerateResponseDto.Language = challengeGenerateRequest.Language;
+            challengeGenerateResponseDto.Description = challengeResponse.Description;
+            challengeGenerateResponseDto.CompleteSolution = challengeResponse.CompleteSolution;
+            challengeGenerateResponseDto.InitialSolution = challengeResponse.InitialSolution;
+            challengeGenerateResponseDto.TestCases = challengeResponse.Tests;
+            challengeGenerateResponseDto.ExampleTestCases = challengeResponse.TestsSubset;
 
-
-            return challengeResponse;
-
-
-            //return new ChallengeGenerateResponseDto
-            //{
-            //    Description = response
-
-            //};
+            return challengeGenerateResponseDto;
         }
 
         private async Task<string> GenerateTextResponse(string prompt)
         {
             var chatResponse = await _completionService.CreateCompletionAsync(prompt);
             string response = chatResponse.ToString();
-            return (response);
-        }
-
-        private string CleanResponse(string response)
-        {
-            if (string.IsNullOrWhiteSpace(response))
-            {
-                throw new NotFoundException(nameof(ChallengeGenerateRequestDto));
-            }
-            return response
-                .Replace("\n", " ")
-                .Replace("\r", " ")
-                .Replace("\t", " ");
+            return response;
         }
     }
-
 }

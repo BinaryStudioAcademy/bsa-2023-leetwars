@@ -9,7 +9,6 @@ import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { ChallengeCreationComponent } from './challenge-creation/challenge-creation.component';
-import { ChallengesDropdownSelectComponent } from './challenges-dropdown-select/challenges-dropdown-select.component';
 import { ChallengesTestPageComponent } from './challenges-test-page/challenges-test-page.component';
 import { EditorQuestionComponent } from './editor-question/editor-question.component';
 import { OnlineEditorPageComponent } from './online-editor-page/online-editor-page.component';

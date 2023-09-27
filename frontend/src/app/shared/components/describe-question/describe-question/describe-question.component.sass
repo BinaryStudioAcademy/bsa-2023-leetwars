@@ -1,9 +1,12 @@
 @import 'color-variables'
 @import 'screen-sizes-variables'
 
-
 .content-wrapper
-    background-color: $black
+    background-color: $deep-dark-grey
+    
+.wrapper
+  padding: 10px
+
 :host
   font-family: Inter
   color: $white
@@ -34,6 +37,9 @@
 .question-header
   color: $satured-grey
 
+.language
+  margin-top: 10px
+
 .category
   display: flex
   flex-direction: column
@@ -55,53 +61,24 @@
     font-size: 12px
 
 .input-wrapper
-  max-width: 85%
-
-.tabs-list
-  background-color: $double-weak-white
-  max-width: 340px
-  border-radius: 8px
-  overflow: hidden
-
-.tab
-  font-size: 14px
-  padding: 12px 24px
-  cursor: pointer
-  gap: 0.25em
-  &:hover, &-active
-    background-color: $delicate-lavender
-
-.editor
-  background-color: $strong-black
-  color: $white
-  min-height: 260px
-  padding: 10px
+  max-width: 100%
 
 .input-column
-  width: calc(50% - 12px)
+  width: 100%
+
+.modal-footer
+  justify-content: center               
+  & button
+      color: $white
+      border-color: $border-grey
+      &:hover
+        border-color: $white
 
 :host ::ng-deep app-dropdown-select
   label
     color: $satured-grey
     font-weight: 400
-
-// Markdown editor styles
-:host ::ng-deep .md-header
-  display: none
-
-:host ::ng-deep .md-preview
-  padding: 12px
-  border: 1px solid $border-grey
-  width: 100% !important
-
-:host ::ng-deep #markdown-editor
-  display: block
-  background-color: $strong-black
-  color: $white
-  padding: 12px
-  width: 100%
-  max-height: 260px
-
+      
 @media (max-width: $large)
   .input-wrapper
     max-width: 100%
@@ -119,10 +96,4 @@
     flex-direction: column
   .input-column
     width: 100%
-  .tabs-list
-    flex-direction: column
-    text-align: center
-  .tab
-    justify-content: center
-    text-align: center
-    gap: 0.5em
+  

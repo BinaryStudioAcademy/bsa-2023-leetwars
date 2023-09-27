@@ -27,6 +27,7 @@ import { ConfirmationModalComponent } from '@shared/components/confirmation-moda
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
+import { IChallengeGenerateResponse } from '@shared/models/challenge-generate/challenge-generate-response';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { IEditChallengeVersion } from '@shared/models/challenge-version/edit-challenge-version';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
@@ -35,7 +36,6 @@ import { ILanguage } from '@shared/models/language/language';
 import { ITag } from '@shared/models/tag/tag';
 import { HasUnsavedChanges } from '@shared/models/unsaved-changes/has-unsaved-changes';
 import { takeUntil } from 'rxjs';
-import { IChallengeGenerateResponse } from '@shared/models/challenge-generate/challenge-generate-response';
 
 @Component({
     selector: 'app-challenge-creation',
@@ -91,39 +91,32 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
         this.challengeVersion = getNewChallengeVersion();
 
         const data = this.router.getCurrentNavigation()?.extras.state?.['myComplexObject'];
-        const {
-            category,
-            completeSolution,
-            description,
-            exampleTestCases,
-            initialSolution,
-            level,
-            tags,
-            testCases,
-            title,
-            language
-        } = data as any;
-        this.challenge.title = title;
-        this.challenge.instructions = description;
-        this.challenge.category = category;
-        this.challenge.level = level;
-        this.challenge.tags = tags;
-        this.challengeVersion.completeSolution = completeSolution;
-        this.challengeVersion.initialSolution = initialSolution;
-        this.challengeVersion.exampleTestCases = exampleTestCases;
-        this.challengeVersion.testCases = testCases;
-        this.challengeVersion.languageId = language.id;
-        this.editorOptions.language = language;
-        this.currentLanguage = language;
-        console.log('completeSolution:', this.challengeVersion.completeSolution);
-        console.log('initialSolution:', initialSolution);
-        console.log('exampleTestCases:', exampleTestCases);
-        console.log('testCases:', testCases);
-        console.log('language:', language);
-        console.log('language:',  this.currentLanguage);
-        
-        console.log('language4:',  this.currentLanguage);
-        console.log(data);
+
+        if (data) {
+            const {
+                category,
+                completeSolution,
+                description,
+                exampleTestCases,
+                initialSolution,
+                level,
+                tags,
+                testCases,
+                title,
+                language,
+            } = data as IChallengeGenerateResponse;
+
+            this.challenge.title = title;
+            this.challenge.instructions = description;
+            this.challenge.category = category;
+            this.challenge.level = level;
+            this.challenge.tags = tags;
+            this.challengeVersion.completeSolution = completeSolution;
+            this.challengeVersion.initialSolution = initialSolution;
+            this.challengeVersion.exampleTestCases = exampleTestCases;
+            this.challengeVersion.testCases = testCases;
+            this.challengeVersion.languageId = language?.id || 0;
+        }
     }
 
     @HostListener('window:beforeunload', ['$event'])
@@ -241,7 +234,6 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
 
         this.editorOptions.language = mapLanguageName(language.name);
         this.challengeVersion = this.challenge.versions.find((v) => v.languageId === language.id)!;
-        console.log(this.challenge.versions);
     }
 
     getStepChecking(step: ChallengeStep) {
@@ -298,22 +290,21 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
         this.languageDropdownItems = getDropdownItems(data.map((item) => item.name));
 
         this.challenge.versions = data.map((lang) => {
-            if(lang.id === this.challengeVersion.languageId){
+            if (lang.id === this.challengeVersion.languageId) {
                 return this.challengeVersion;
             }
 
             return {
                 ...getNewChallengeVersion(),
                 languageId: lang.id,
-            }
+            };
         });
         this.onLanguageChanged(this.languageDropdownItems[0]);
     }
 
     private loadActualLanguages() {
         const challengeVersionLanguages = this.languages.filter((lang) =>
-            this.challenge.versions.some((version) => version.languageId === lang.id),
-        );
+            this.challenge.versions.some((version) => version.languageId === lang.id));
 
         this.languageDropdownItems = getDropdownItems(challengeVersionLanguages.map((lang) => lang.name));
         [this.currentLanguage] = this.languageDropdownItems;
