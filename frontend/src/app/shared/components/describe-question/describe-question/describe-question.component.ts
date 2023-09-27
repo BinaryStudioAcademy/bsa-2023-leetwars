@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
+import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
@@ -21,7 +22,6 @@ import { ILanguage } from '@shared/models/language/language';
 import { IModalButton } from '@shared/models/modal-button';
 import { ITag } from '@shared/models/tag/tag';
 import { takeUntil } from 'rxjs';
-import { ChallengeService } from '@core/services/challenge.service';
 
 @Component({
     selector: 'app-describe-question',

@@ -28,7 +28,7 @@ namespace LeetWars.CodeAnalyzer.Services
 
             if(challengeResponse == null) 
             {
-                throw new ArgumentNullException(nameof(challengeResponse));
+                throw new NullReferenceException(nameof(challengeResponse));
             }
 
             ChallengeGenerateResponseDto challengeGenerateResponseDto = new ChallengeGenerateResponseDto();
