@@ -1,5 +1,6 @@
 ﻿using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
 using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
@@ -70,9 +71,21 @@ namespace LeetWars.Core.WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
-            await _challengeService.CreateChallengeAsync(challengeDto);
+            var challenge = await _challengeService.CreateChallengeAsync(challengeDto);
 
-            return NoContent();
+            return Ok(challenge);
+        }
+
+        /// <summary>
+        /// Get challenge levels
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("levels")]
+        public async Task<ActionResult<List<ChallengeLevelDto>>> GetChallengeLevelsAsync()
+        {
+            var challengeLevels = await _challengeService.GetChallengeLevelsAsync();
+
+            return Ok(challengeLevels);
         }
 
         /// <summary>

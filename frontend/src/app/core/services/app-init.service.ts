@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 export class AppInitService {
     constructor(private authService: AuthService) {}
 
-    public initializeApp(): Observable<void> {
+    initializeApp(): Observable<void> {
         return from(this.authService.initializeAuth());
     }
 }
