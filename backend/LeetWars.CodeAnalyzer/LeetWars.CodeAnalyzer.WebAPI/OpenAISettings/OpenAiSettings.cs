@@ -22,10 +22,10 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
 
         public string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto)
         {
-            if (challengeGenerateRequestDto.Tags != null)
-            {
-                var testFramework = challengeGenerateRequestDto.Language?.Name == "Javascript" ? "Mocha" : "NUnit";
-                return @$"You are a software engineer.As a {challengeGenerateRequestDto.Language?.Name} developer, your goal is to
+            if(challengeGenerateRequestDto.Tags is null) { throw new Exception(); }
+
+            var testFramework = challengeGenerateRequestDto.Language?.Name == "Javascript" ? "Mocha" : "NUnit";
+            return @$"You are a software engineer.As a {challengeGenerateRequestDto.Language?.Name} developer, your goal is to
                 create a {challengeGenerateRequestDto.Language?.Name} programming challenge task with the following name: {challengeGenerateRequestDto.Title}
                 Challenge programming language should be {challengeGenerateRequestDto.Language?.Name}.
                 Challenge category should be {challengeGenerateRequestDto.Category};
@@ -44,11 +44,7 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
                     ""Tests"": "" "",
                     ""TestsSubset"": "" "",
                 }}";
-            }
-            else
-            {
-                throw new ArgumentNullException(nameof(challengeGenerateRequestDto.Tags));
-            }
+
         }
     }
 }
