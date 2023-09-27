@@ -54,10 +54,10 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
             .getFullUser(id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: (result) => { 
+                next: (result) => {
                     this.user = result;
                     this.fullUser = result;
-                 },
+                },
                 error: () => { this.toastrNotification.showError('User not found'); },
             });
     }
@@ -87,35 +87,29 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
     private async getCurrentUser() {
         try {
             const result = await firstValueFrom(this.userService.getCurrentUser());
+
             this.currentUser = result;
 
             this.route.paramMap.subscribe((params) => {
                 const userId = params.get('id') as unknown as number;
 
                 if (userId !== null) {
-
                     this.isCurrentUser = this.currentUser?.id === userId;
 
-                    if(!this.isCurrentUser)
-                    {
+                    if (!this.isCurrentUser) {
                         this.getUserInfo(userId);
                         this.getUserChallenges(userId);
-                    }
-                    else
-                    {
+                    } else {
                         this.getUserInfo(this.user.id);
                         this.getUserChallenges(this.user.id);
                     }
-                }
-                else {
+                } else {
                     this.isCurrentUser = true;
                     this.getUserInfo(this.user.id);
                     this.getUserChallenges(this.user.id);
                 }
-
-            })
-
-        }   catch (error) {
+            });
+        } catch (error) {
             this.toastrNotification.showError('User not found');
         }
     }

@@ -88,7 +88,7 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
     public onLinkClick(id: number | undefined) {
         this.router.navigate(['/user/profile', id as number]);
     }
-    
+
     startCodeFight(user: IUser) {
         if (this.isCurrentUserAbleToCodeFight()) {
             this.openModal(user);
