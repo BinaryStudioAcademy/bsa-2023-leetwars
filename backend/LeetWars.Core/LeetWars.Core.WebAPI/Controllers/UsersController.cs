@@ -1,7 +1,6 @@
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
-
 using LeetWars.Core.Common.DTO.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,12 +20,25 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
+    /// Get user info by id
+    /// </summary>
+    /// <param name="id">User id to find</param>
+    /// <returns>User info</returns>
+    [HttpGet("{id}")]
+    public async Task<ActionResult<UserFullDto>> GetUserAsync(long id)
+    {
+        var user = await _userService.GetUserAsync(id);
+
+        return Ok(user);
+    }
+
+    /// <summary>
     /// Get full user info by id
     /// </summary>
     /// <param name="id">User id to find</param>
     /// <returns>Full user info</returns>
-    [HttpGet("{id}")]
-    public async Task<ActionResult<UserFullDto>> GetUserAsync(int id)
+    [HttpGet("full/{id}")]
+    public async Task<ActionResult<UserFullDto>> GetFullUserAsync(long id)
     {
         var user = await _userService.GetFullUserAsync(id);
 
@@ -100,33 +112,6 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Create user (register or login)
-    /// </summary>
-    /// <param name="user">New user to create</param>
-    /// <returns>Created user</returns>
-    [HttpPost]
-    [AllowAnonymous]
-    public async Task<ActionResult<UserDto>> CreateUserAsync([FromBody] NewUserDto user)
-    {
-        var createdUser = await _userService.CreateUserAsync(user);
-
-        return Ok(createdUser);
-    }
-
-    /// <summary>
-    /// Update user avatar on profile page
-    /// </summary>
-    /// <param name="avatar">New avatar</param>
-    /// <returns></returns>
-    [HttpPost("avatar")]
-    public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatarAsync([FromForm] IFormFile newAvatar)
-    {
-        var newAvatarDto = await _userService.UpdateUserAvatarAsync(newAvatar);
-
-        return Ok(newAvatarDto);
-    }
-
-    /// <summary>
     /// Update user info
     /// </summary>
     /// <param name="updateUserInfoDto">User info to update</param>
@@ -140,14 +125,27 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Update user rank and reputation
+    /// Create user (register or login)
     /// </summary>
-    /// <param name="userDto">User rank and reputation to edit</param>
-    /// <returns></returns>
-    [HttpPut("rank")]
-    public async Task<ActionResult<UserFullDto>> UpdateUserRankAsync([FromBody] EditUserDto userDto)
+    /// <param name="user">New user to create</param>
+    /// <returns>Created user</returns>
+    [HttpPost]
+    [AllowAnonymous]
+    public async Task<ActionResult<UserDto>> CreateUserAsync([FromBody] NewUserDto user)
     {
-        var updatedUser = await _userService.UpdateUserRankAsync(userDto);
+        var updatedUser = await _userService.CreateUserAsync(user);
+        return Ok(updatedUser);
+    }
+
+    /// <summary>
+    /// Update user avatar
+    /// </summary>
+    /// <param name="avatar">New avatar</param>
+    /// <returns>New user avatar</returns>
+    [HttpPost("avatar")]
+    public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatarAsync([FromForm] IFormFile avatar)
+    {
+        var updatedUser = await _userService.UpdateUserAvatarAsync(avatar);
 
         return Ok(updatedUser);
     }

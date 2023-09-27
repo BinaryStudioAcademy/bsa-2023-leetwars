@@ -1,0 +1,35 @@
+@import 'color-variables'
+
+:host
+  background-color: $dark-grey
+  color: $white
+  box-shadow: 0 0 6px $white
+
+.modal-header,
+.modal-footer
+  border-color: $green
+
+.modal-body
+  text-align: center
+  &-text
+    margin-bottom: 14px
+
+.btn,
+.btn-close
+  color: $white
+  border: none
+
+.btn
+  background-color: $green
+  &:hover
+    background-color: $dark-green
+
+.close
+  box-shadow: none
+  background-color: $light-red
+  padding: 4px 8px
+  border-radius: 4px
+  &:hover,
+  &:focus,
+  &:active
+    background-color: $maroon

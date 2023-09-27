@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CodefightGuard } from '@core/guards/codefight.guard';
 import { UnsavedChangesGuard } from '@core/guards/unsaved-changes.guard';
 
 import { ChallengeCreationComponent } from './challenge-creation/challenge-creation.component';
@@ -19,6 +20,11 @@ const routes: Routes = [
     {
         path: ':id',
         component: OnlineEditorPageComponent,
+    },
+    {
+        path: 'codefight/:id',
+        component: OnlineEditorPageComponent,
+        canDeactivate: [CodefightGuard],
     },
 ];
 

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { HubConnection } from '@microsoft/signalr';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
-import { Guid } from 'guid-typescript';
 import { Subject, Subscription } from 'rxjs';
 
 import { SignalRHubFactoryService } from './signalr-hub-factory.service';
@@ -25,7 +24,6 @@ export class CodeDisplayingHubService {
 
     async start() {
         this.hubConnection = this.hubFactory.createHub(this.hubUrl);
-        this.singleUserGroupId = Guid.create().toString();
         await this.init();
     }
 

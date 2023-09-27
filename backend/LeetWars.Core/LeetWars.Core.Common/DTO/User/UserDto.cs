@@ -20,5 +20,6 @@ namespace LeetWars.Core.Common.DTO.User
         public DateTime RegisteredAt { get; set; }
         public bool IsSubscribed { get; set; }
         public bool IsBanned { get; set; }
+        public CodeFightStatus CodeFightStatus { get; set; }
     }
 }

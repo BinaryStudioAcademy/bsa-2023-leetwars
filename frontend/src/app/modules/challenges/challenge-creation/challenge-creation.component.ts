@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
-import { ChallengeLevelService } from '@core/services/challenge-level.service';
 import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
@@ -74,7 +73,6 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
 
     constructor(
         private challengeService: ChallengeService,
-        private challengeLevelService: ChallengeLevelService,
         private languageService: LanguageService,
         private tagService: TagService,
         private toastrService: ToastrNotificationsService,
@@ -289,8 +287,8 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
     }
 
     private getChallengeLevels() {
-        this.challengeLevelService
-            .getLevels()
+        this.challengeService
+            .getChallengeLevels()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (data) => {

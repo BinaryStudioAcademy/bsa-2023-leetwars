@@ -4,6 +4,7 @@ import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
 import { BaseComponent } from './base/base.component';
+import { ScrollComponent } from './base/scroll.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { AppInitService } from './services/app-init.service';
@@ -25,6 +26,6 @@ import { GlobalErrorHandlerService } from './services/globalerrorhandler.service
         AppInitService,
         AuthService,
     ],
-    declarations: [BaseComponent],
+    declarations: [BaseComponent, ScrollComponent],
 })
 export class CoreModule {}
