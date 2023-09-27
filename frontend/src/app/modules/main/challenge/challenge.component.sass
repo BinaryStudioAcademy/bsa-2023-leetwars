@@ -10,8 +10,8 @@
     font-family: 'Montserrat', sans-serif
     border-radius: 4px
     &:hover
-      transition: box-shadow .6s
-      box-shadow: 0 0 6px $white
+        transition: box-shadow .6s
+        box-shadow: 0 0 6px $white
 
 .icon
     font-size: 12px
@@ -83,6 +83,23 @@
 .author
     color: $light-copper
     text-decoration-color: $light-copper
+    margin-left: 4px
+    max-width: 140px
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+
+    @media (max-width: $tablet)
+        max-width: 100px
+
+    &-avatar
+        width: 16px
+        height: 16px
+        border-radius: 50%
+
+    &-block
+        @media (max-width: $mobile)
+            padding-left: 0
 
 .language-block
     font-family: 'Open Sans', sans-serif

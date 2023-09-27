@@ -69,7 +69,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         /// </summary>
         /// <param name="challengeDto">Challenge to create</param>
         [HttpPost]
-        public async Task<ActionResult> CreateChallengeAsync(NewChallengeDto challengeDto)
+        public async Task<ActionResult<ChallengeFullDto>> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
             var challenge = await _challengeService.CreateChallengeAsync(challengeDto);
 
