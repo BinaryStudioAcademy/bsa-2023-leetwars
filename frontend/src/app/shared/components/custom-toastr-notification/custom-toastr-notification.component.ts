@@ -1,6 +1,7 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
-import { IndividualConfig, Toast } from 'ngx-toastr';
+import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { IndividualConfig, Toast, ToastPackage } from 'ngx-toastr';
 
 @Component({
     selector: 'app-custom-toastr-notification',
@@ -77,4 +78,13 @@ export class CustomToastrNotificationComponent extends Toast {
         newestOnTop: false,
         payload: undefined,
     };
+
+    isCodeFightNotification = this.toastrService.isCodeFightNotification;
+
+    constructor(
+        protected override toastrService: ToastrNotificationsService,
+        public override toastPackage: ToastPackage,
+    ) {
+        super(toastrService, toastPackage);
+    }
 }
