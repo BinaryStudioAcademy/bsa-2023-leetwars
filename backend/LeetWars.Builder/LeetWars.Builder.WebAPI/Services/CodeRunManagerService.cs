@@ -23,14 +23,14 @@ namespace LeetWars.Builder.Services
                 Language = request.Language
             };
 
-            await BuildCode(request, result);
+            await BuildCodeAsync(request, result);
 
-            await TestCode(request, result);
+            await TestCodeAsync(request, result);
 
             return result;
         }
 
-        private async Task BuildCode(CodeRunRequest request, CodeRunResults result)
+        private async Task BuildCodeAsync(CodeRunRequest request, CodeRunResults result)
         {
             string buildProcessName = request.UserConnectionId + DateTime.UtcNow.Ticks + "-build";
 
@@ -40,7 +40,7 @@ namespace LeetWars.Builder.Services
 
         }
 
-        private async Task TestCode(CodeRunRequest request, CodeRunResults result)
+        private async Task TestCodeAsync(CodeRunRequest request, CodeRunResults result)
         {
             if (result.BuildResults?.IsSuccess ?? false)
             {
