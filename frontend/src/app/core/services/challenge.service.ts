@@ -45,10 +45,6 @@ export class ChallengeService {
         return this.httpService.getRequest<IChallengePreview>(`${this.challengesRoute}/suggestion`, httpParams);
     }
 
-    getChallengeLevels(): Observable<IChallengeLevel[]> {
-        return this.httpService.getRequest<IChallengeLevel[]>(`${this.challengesRoute}/levels`);
-    }
-
     getChallengeById(id: number): Observable<IChallenge> {
         return this.httpService.getRequest<IChallenge>(`${this.challengesRoute}/${id}`);
     }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IFriendshipPreview } from '@shared/models/friendship/friendship-preview';
 import { IUser } from '@shared/models/user/user';
 import { Subject } from 'rxjs';
 
@@ -8,7 +9,7 @@ import { Subject } from 'rxjs';
 export class EventService {
     private onUsersStatusesChanged = new Subject<IUser[]>();
 
-    private onUserFriendshipChanged = new Subject<IUser>();
+    private onUserFriendshipChanged = new Subject<IFriendshipPreview>();
 
     usersChangedEvent$ = this.onUsersStatusesChanged.asObservable();
 
@@ -18,7 +19,7 @@ export class EventService {
         this.onUsersStatusesChanged.next(users);
     }
 
-    userFriendshipChanged(user: IUser) {
-        this.onUserFriendshipChanged.next(user);
+    userFriendshipChanged(friendship: IFriendshipPreview) {
+        this.onUserFriendshipChanged.next(friendship);
     }
 }

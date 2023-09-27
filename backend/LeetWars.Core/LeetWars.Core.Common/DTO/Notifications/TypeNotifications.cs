@@ -9,5 +9,6 @@
         CodeFightStart,
         CodeFightEnd,
         FriendRequest,
+        UpdateFriendRequest
     }
 }

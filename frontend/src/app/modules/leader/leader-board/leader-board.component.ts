@@ -10,6 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CodeFightStatus } from '@shared/enums/code-fight-status';
 import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
+import { IFriendshipPreview } from '@shared/models/friendship/friendship-preview';
 import { INewFriendship } from '@shared/models/friendship/new-friendship';
 import { ILanguage } from '@shared/models/language/language';
 import { ILeaderBoardPageSettings } from '@shared/models/leaderboard-page-settings';
@@ -24,14 +25,6 @@ import { ChallengeSelectionModalComponent } from '../challenge-selection-modal/c
     styleUrls: ['./leader-board.component.sass'],
 })
 export class LeaderBoardComponent extends ScrollComponent implements OnInit {
-    private readonly pageDefault: ILeaderBoardPageSettings = {
-        pageNumber: 0,
-        pageSize: 30,
-        getFriends: false,
-    };
-
-    private page: ILeaderBoardPageSettings = { ...this.pageDefault };
-
     users: IUser[] = [];
 
     currentUser: IUser;
@@ -50,6 +43,14 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
 
     CodeFightStatus = CodeFightStatus;
 
+    private readonly pageDefault: ILeaderBoardPageSettings = {
+        pageNumber: 0,
+        pageSize: 30,
+        hasFriends: false,
+    };
+
+    private page: ILeaderBoardPageSettings = { ...this.pageDefault };
+
     private languages: ILanguage[];
 
     private levels: IChallengeLevel[];
@@ -67,26 +68,21 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.authService.getUser().subscribe((user: IUser) => {
-            this.currentUser = user;
-        });
+        this.getCurrentUser();
 
-        this.languageService.getLanguages().subscribe((languages: ILanguage[]) => {
-            this.languages = languages;
-        });
+        this.getUserFriendships();
 
-        this.challengeService.getChallengeLevels().subscribe((levels: IChallengeLevel[]) => {
-            this.levels = levels;
-        });
+        this.initializeLevels();
+
+        this.initializeLanguages();
 
         this.updateUsersStatuses();
 
         this.getUsers();
-        this.getCurrentUser();
 
         this.eventService.userChangedEvent$.pipe(takeUntil(this.unsubscribe$)).subscribe({
-            next: (user) => {
-                this.handleUserDataChange(user);
+            next: (updateFriendship) => {
+                this.handleUserDataChange(updateFriendship);
             },
             error: () => {
                 this.toastrNotification.showError('Server connection error');
@@ -138,9 +134,6 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
             .sendFriendshipRequest(request)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: (user) => {
-                    this.handleUserDataChange(user);
-                },
                 error: (error) => {
                     this.toastrNotification.showError(error);
                 },
@@ -152,7 +145,7 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
         this.users = [];
         this.isLastPage = false;
 
-        this.page = { ...this.pageDefault, getFriends: this.isMyFriendsChecked };
+        this.page = { ...this.pageDefault, hasFriends: this.isMyFriendsChecked };
 
         this.getUsers();
     }
@@ -172,9 +165,22 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
         this.usersToShow = this.users;
     }
 
-    private handleUserDataChange(user: IUser) {
-        this.currentUser.friendships = user.friendships;
-        this.userFriendsIds = user.friendships.map((f) => f.friendId);
+    private handleUserDataChange(updateFriendship: IFriendshipPreview) {
+        if (updateFriendship.friendshipStatus === FriendshipStatus.Declined) {
+            this.userFriendsIds = this.userFriendsIds.filter((id) => id !== updateFriendship.friendId);
+            this.currentUser.friendships = this.currentUser.friendships.filter(
+                (f) => f.friendId !== updateFriendship.friendId,
+            );
+
+            return;
+        }
+        this.currentUser.friendships = [
+            ...this.currentUser.friendships.filter(
+                (friendship) => friendship.friendshipId !== updateFriendship.friendshipId,
+            ),
+            updateFriendship,
+        ];
+        this.userFriendsIds = this.currentUser.friendships.map((f) => f.friendId);
     }
 
     private getUsers() {
@@ -239,13 +245,31 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
     }
 
     private getCurrentUser() {
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.currentUser = user;
+        });
+    }
+
+    private initializeLevels() {
+        this.challengeService.getChallengeLevels().subscribe((levels: IChallengeLevel[]) => {
+            this.levels = levels;
+        });
+    }
+
+    private initializeLanguages() {
+        this.languageService.getLanguages().subscribe((languages: ILanguage[]) => {
+            this.languages = languages;
+        });
+    }
+
+    private getUserFriendships() {
         this.userService
-            .getCurrentUser()
+            .getUserFriendships(this.currentUser.id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: (user) => {
-                    this.currentUser = user;
-                    this.userFriendsIds = user.friendships.map((f) => f.friendId);
+                next: (userFriendsInfo) => {
+                    this.userFriendsIds = userFriendsInfo.friendships.map((f) => f.friendId);
+                    this.currentUser.friendships = userFriendsInfo.friendships;
                 },
                 error: () => {
                     this.toastrNotification.showError('Server connection error');

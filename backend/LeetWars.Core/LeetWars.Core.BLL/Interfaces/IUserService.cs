@@ -32,9 +32,11 @@ public interface IUserService
 
     public Task<List<UserDto>> GetLeaderBoardAsync(LeaderBoardPageSettingsDto page);
 
-    public Task<UserDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto);
+    public Task<UserFriendsInfoDto> GetUserFriendshipsAsync(long userId);
 
-    public Task<UserDto> UpdateFriendshipRequestAsync(UpdateFriendshipDto updateFriendshipDto);
+    public Task<UserFriendsInfoDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto);
+
+    public Task<UserFriendsInfoDto> UpdateFriendshipRequestAsync(UpdateFriendshipDto updateFriendshipDto);
 
     public Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto);
 

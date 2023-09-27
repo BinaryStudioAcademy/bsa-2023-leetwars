@@ -22,6 +22,7 @@ namespace LeetWars.Core.BLL.MappingProfiles
                 .ReverseMap();
 
             CreateMap<User, BriefUserInfoDto>().ReverseMap();
+            CreateMap<User, UserFriendsInfoDto>().ReverseMap();
 
             CreateMap<Friendship, FriendshipPreviewDto>()
                 .ForMember(dest => dest.FriendshipId, opt => opt.MapFrom(src => src.Id))

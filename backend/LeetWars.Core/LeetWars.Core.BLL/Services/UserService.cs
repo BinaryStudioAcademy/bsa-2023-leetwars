@@ -18,6 +18,7 @@ using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.Linq.Expressions;
 
 namespace LeetWars.Core.BLL.Services;
@@ -208,7 +209,7 @@ public class UserService : BaseService, IUserService
     {
         var query = _context.Users.OrderByDescending(u => u.TotalScore).AsQueryable();
 
-        if (page.GetFriends)
+        if (page.HasFriends)
         {
             var currentUser = await GetCurrentUserEntityAsync();
             var currentUserDto = _mapper.Map<UserDto>(currentUser);
@@ -225,16 +226,15 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<List<UserDto>>(await query.ToListAsync());
     }
 
-    public async Task<UserDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto)
+    public async Task<UserFriendsInfoDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto)
     {
-        var senderId = newFriendshipDto.SenderId;
-        var recipientId = newFriendshipDto.RecipientId;
-        var currentUser = await GetCurrentUserEntityAsync();
+        var sender = await GetUserInfoWithFriends(newFriendshipDto.SenderId)
+            ?? throw new NotFoundException(nameof(User), newFriendshipDto.SenderId);
 
-        var friendshipGroups = currentUser.Friendships.SelectMany(f => f.UserFriendships).GroupBy(uf => uf.FriendshipId);
-        var hasSuchFriendship = friendshipGroups.Any(group => group.Any(uf => uf.UserId == recipientId));
-
-        if (hasSuchFriendship)
+        if (sender.Friendships
+            .SelectMany(f => f.UserFriendships)
+            .GroupBy(uf => uf.FriendshipId)
+            .Any(group => group.Any(uf => uf.UserId == newFriendshipDto.RecipientId)))
         {
             throw new BadOperationException($"You can't send a friendship request to this user");
         }
@@ -245,8 +245,8 @@ public class UserService : BaseService, IUserService
         _context.Friendships.Add(friendship);
         await _context.SaveChangesAsync();
 
-        var senderUserFriendship = new UserFriendship(senderId, friendship.Id, true);
-        var recipientUserFriendship = new UserFriendship(recipientId, friendship.Id, false);
+        var senderUserFriendship = new UserFriendship(newFriendshipDto.SenderId, friendship.Id, true);
+        var recipientUserFriendship = new UserFriendship(newFriendshipDto.RecipientId, friendship.Id, false);
 
         _context.UserFriendships.Add(senderUserFriendship);
         _context.UserFriendships.Add(recipientUserFriendship);
@@ -256,31 +256,29 @@ public class UserService : BaseService, IUserService
         var newNotification = new NewNotificationDto
         {
             DateSending = DateTime.UtcNow,
-            ReceiverId = recipientId.ToString(),
-            Sender = await GetBriefUserInfoByIdAsync(currentUser.Id),
+            ReceiverId = newFriendshipDto.RecipientId.ToString(),
+            Sender = await GetBriefUserInfoByIdAsync(sender.Id),
             TypeNotification = TypeNotifications.FriendRequest,
-            Message = $"{currentUser.UserName} sent you a friend request",
-            UpdateFriendship = new UpdateFriendshipDto(currentUser.Id, friendship.Id, friendship.Status)
+            Message = $"{sender.UserName} sent you a friend request",
+            UpdateFriendship = new UpdateFriendshipDto(sender.Id, friendship.Id, friendship.Status)
         };
 
         _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
 
-        return _mapper.Map<UserDto>(senderUserFriendship.User);
+        return _mapper.Map<UserFriendsInfoDto>(senderUserFriendship.User);
     }
 
-    public async Task<UserDto> UpdateFriendshipRequestAsync(UpdateFriendshipDto updateFriendshipDto)
+    public async Task<UserFriendsInfoDto> UpdateFriendshipRequestAsync(UpdateFriendshipDto updateFriendshipDto)
     {
-        var userId = updateFriendshipDto.UserId;
-        var friendshipId = updateFriendshipDto.FriendshipId;
-        var friendshipStatus = updateFriendshipDto.FriendshipStatus;
-        var currentUser = await GetCurrentUserEntityAsync();
+        var user = await GetUserInfoWithFriends(updateFriendshipDto.UserId)
+            ?? throw new NotFoundException(nameof(User));
 
-        ThrowIfIsNotMatchingIds(userId, currentUser.Id);
+        ThrowIfIsNotMatchingIds(updateFriendshipDto.UserId, user.Id);
 
-        var friendshipToUpdate = currentUser.Friendships.FirstOrDefault(f => f.Id == friendshipId)
-            ?? throw new NotFoundException(nameof(Friendship), (int)friendshipId);
+        var friendshipToUpdate = user.Friendships.FirstOrDefault(f => f.Id == updateFriendshipDto.FriendshipId)
+            ?? throw new NotFoundException(nameof(Friendship), (int)updateFriendshipDto.FriendshipId);
 
-        switch (friendshipStatus)
+        switch (updateFriendshipDto.FriendshipStatus)
         {
             case FriendshipStatus.Pending:
                 throw new BadOperationException("You cannot update a friendship status as 'Pending'");
@@ -288,22 +286,34 @@ public class UserService : BaseService, IUserService
                 _context.Friendships.Remove(friendshipToUpdate);
                 break;
             case FriendshipStatus.Accepted:
-                friendshipToUpdate.Status = friendshipStatus;
+                friendshipToUpdate.Status = updateFriendshipDto.FriendshipStatus;
                 break;
             default:
                 throw new BadOperationException("Not expected friendship status value");
         }
-
         await _context.SaveChangesAsync();
-        return _mapper.Map<UserDto>(currentUser);
+
+        var userFriendship = friendshipToUpdate.UserFriendships.First(uf => uf.UserId != user.Id);
+
+        var newNotification = new NewNotificationDto
+        {
+            DateSending = DateTime.UtcNow,
+            ReceiverId = userFriendship.UserId.ToString(),
+            Sender = await GetBriefUserInfoByIdAsync(user.Id),
+            TypeNotification = TypeNotifications.UpdateFriendRequest,
+            UpdateFriendship = new UpdateFriendshipDto(user.Id, friendshipToUpdate.Id, updateFriendshipDto.FriendshipStatus)
+        };
+
+        _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
+
+        return _mapper.Map<UserFriendsInfoDto>(user);
     }
 
-    private async Task<User> GetCurrentUserEntityAsync()
+    public async Task<UserFriendsInfoDto> GetUserFriendshipsAsync(long userId)
     {
-        var userStringId = _userGetter.CurrentUserId;
-        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
+        var user = await GetUserInfoWithFriends(userId) ?? throw new NotFoundException(nameof(User));
 
-        return user ?? throw new NotFoundException(nameof(User));
+        return _mapper.Map<UserFriendsInfoDto>(user);
     }
 
     public async Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto)
@@ -345,6 +355,14 @@ public class UserService : BaseService, IUserService
         return newUserAvatar;
     }
 
+    private async Task<User> GetCurrentUserEntityAsync()
+    {
+        var userStringId = _userGetter.CurrentUserId;
+        var user = await GetUserByExpressionAsync(user => user.Uid == userStringId);
+
+        return user ?? throw new NotFoundException(nameof(User));
+    }
+
     private async Task<int> GetRewardFromChallenge(long challengeId)
     {
         var challengeLevel = await _context.Challenges
@@ -370,6 +388,18 @@ public class UserService : BaseService, IUserService
         }
 
         return newUserName;
+    }
+
+    private async Task<User?> GetUserInfoWithFriends(long userId)
+    {
+        var user = await _context.Users
+            .Include(user => user.Friendships)
+                .ThenInclude(friendship => friendship.Users)
+            .Include(user => user.Friendships)
+                .ThenInclude(f => f.UserFriendships)
+            .FirstOrDefaultAsync(u => u.Id == userId);
+
+        return user;
     }
 
     private static void ThrowIfIsNotMatchingIds(long userId, long currentUserId)

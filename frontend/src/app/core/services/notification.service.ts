@@ -14,10 +14,6 @@ export class NotificationService {
 
     currentNotifications = this.notificationSubject.asObservable();
 
-    notificationSubject = new BehaviorSubject(this.notifications);
-
-    currentNotifications = this.notificationSubject.asObservable();
-
     private notificationModal: NgbModalRef;
 
     constructor(private modalService: NgbModal) {}

@@ -113,17 +113,30 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
+    /// Get user friendships
+    /// </summary>
+    /// <param name="id">User ID</param>
+    /// <returns>Existing user</returns>
+    [HttpGet("user-friendships")]
+    public async Task<ActionResult<UserFriendsInfoDto>> GetUserFriendshipsAsync([FromQuery] long userId)
+    {
+        var user = await _userService.GetUserFriendshipsAsync(userId);
+
+        return Ok(user);
+    }
+
+    /// <summary>
     /// Create friendship
     /// </summary>
     /// <param name="newFriendshipDto">Friendship to create</param>
     /// <returns>Existing user</returns>
     [HttpPost("send-friendship-request")]
-    public async Task<ActionResult<UserDto>> SendFriendshipRequestAsync([FromBody] NewFriendshipDto newFriendshipDto)
+    public async Task<ActionResult<UserFriendsInfoDto>> SendFriendshipRequestAsync([FromBody] NewFriendshipDto newFriendshipDto)
     {
         var user = await _userService.SendFriendshipRequestAsync(newFriendshipDto);
 
         return Ok(user);
-    }
+    }    
 
     /// <summary>
     /// Update friendship
@@ -131,7 +144,7 @@ public class UsersController : ControllerBase
     /// <param name="updateFriendshipDto">Friendship to update</param>
     /// <returns>Existing user</returns>
     [HttpPut("update-friendship-request")]
-    public async Task<ActionResult<UserDto>> UpdateFriendshipRequestAsync([FromBody] UpdateFriendshipDto updateFriendshipDto)
+    public async Task<ActionResult<UserFriendsInfoDto>> UpdateFriendshipRequestAsync([FromBody] UpdateFriendshipDto updateFriendshipDto)
     {
         var user = await _userService.UpdateFriendshipRequestAsync(updateFriendshipDto);
 

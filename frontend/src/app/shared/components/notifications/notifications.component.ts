@@ -80,9 +80,6 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
             .updateFriendshipRequest(updateRequest)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: (user) => {
-                    this.eventService.userFriendshipChanged(user);
-                },
                 error: (error) => {
                     this.toastrNotification.showError(error);
                 },
@@ -90,16 +87,8 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
     }
 
     private getCurrentUser() {
-        this.authService
-            .getUser()
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (user) => {
-                    this.currentUser = user;
-                },
-                error: () => {
-                    this.toastrNotification.showError('Server connection error');
-                },
-            });
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.currentUser = user;
+        });
     }
 }

@@ -2,6 +2,6 @@
 {
     public class LeaderBoardPageSettingsDto : PageSettingsDto
     {
-        public bool GetFriends { get; set; }
+        public bool HasFriends { get; set; }
     }
 }
