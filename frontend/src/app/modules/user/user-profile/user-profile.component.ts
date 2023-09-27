@@ -93,21 +93,10 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
             this.route.paramMap.subscribe((params) => {
                 const userId = params.get('id') as unknown as number;
 
-                if (userId !== null) {
-                    this.isCurrentUser = this.currentUser?.id === userId;
-
-                    if (!this.isCurrentUser) {
-                        this.getUserInfo(userId);
-                        this.getUserChallenges(userId);
-                    } else {
-                        this.getUserInfo(this.user.id);
-                        this.getUserChallenges(this.user.id);
-                    }
-                } else {
-                    this.isCurrentUser = true;
-                    this.getUserInfo(this.user.id);
-                    this.getUserChallenges(this.user.id);
-                }
+                this.isCurrentUser = !userId || this.currentUser?.id === userId;
+                    const curentUserId = this.isCurrentUser  ? this.user.id : userId;
+                    this.getUserInfo(curentUserId );
+                    this.getUserChallenges(curentUserId );
             });
         } catch (error) {
             this.toastrNotification.showError('User not found');
