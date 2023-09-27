@@ -52,8 +52,8 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         this.getUsers();
     }
 
-    public onLinkClick(nickname: string | undefined) {
-        this.router.navigate(['/user/profile', nickname as string]);
+    public onLinkClick(id: number | undefined) {
+        this.router.navigate(['/user/profile', id as number]);
     }
 
     private getUsers() {

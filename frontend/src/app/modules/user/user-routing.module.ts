@@ -14,7 +14,7 @@ const routes: Routes = [
         component: UserInfoEditorComponent,
     },
     {
-        path: 'profile/:nickname',
+        path: 'profile/:id',
         component: UserProfileComponent,
     },
 ];

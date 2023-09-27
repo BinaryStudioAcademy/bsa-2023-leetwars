@@ -10,7 +10,7 @@
                 <div class="user d-flex" *ngFor="let user of usersToShow; let i = index">
                     <div class="position position-item">#{{ i + 1 }}</div>
                     <div class="user-name">
-                        <a class="user-link" (click)="onLinkClick(user.userName)">
+                        <a class="user-link" (click)="onLinkClick(user.id)">
                             {{ user.userName }}
                         </a>
                     </div>

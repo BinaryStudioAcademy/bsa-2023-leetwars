@@ -7,7 +7,7 @@ import { UserService } from '@core/services/user.service';
 import { IUser } from '@shared/models/user/user';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
-import { takeUntil } from 'rxjs';
+import { firstValueFrom, takeUntil } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
 
@@ -46,46 +46,25 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getUserByNickName();
+        this.getCurrentUser();
     }
 
-    private getUserByNickName() {
-        this.route.paramMap.subscribe((params) => {
-            const nickname = params.get('nickname');
-
-            if (nickname !== null) {
-                this.userService
-                    .getUserByNickname(nickname as string)
-                    .pipe(takeUntil(this.unsubscribe$))
-                    .subscribe({
-                        next: (result) => {
-                            this.user = result;
-                            this.fullUser = result;
-                            this.getCurrentUser();
-                        },
-                        error: () => { this.toastrNotification.showError('User not found'); },
-                    });
-            } else {
-                this.getCurrentUser();
-            }
-        });
-    }
-
-    private getUserInfo() {
-        if (this.isCurrentUser) {
-            this.userService
-                .getFullUser(this.user!.id)
-                .pipe(takeUntil(this.unsubscribe$))
-                .subscribe({
-                    next: (result) => { this.fullUser = result; },
-                    error: () => { this.toastrNotification.showError('User not found'); },
-                });
-        }
-    }
-
-    private getUserChallenges() {
+    private getUserInfo(id: number) {
         this.userService
-            .getUserChallengesInfoByTags(this.user!.id)
+            .getFullUser(id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (result) => { 
+                    this.user = result;
+                    this.fullUser = result;
+                 },
+                error: () => { this.toastrNotification.showError('User not found'); },
+            });
+    }
+
+    private getUserChallenges(id: number) {
+        this.userService
+            .getUserChallengesInfoByTags(id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (result: IUserSolutionsGroupedBySkillLevel[]) => {
@@ -107,16 +86,36 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
 
     private async getCurrentUser() {
         try {
-            const result = await this.userService.getCurrentUser().toPromise();
-
+            const result = await firstValueFrom(this.userService.getCurrentUser());
             this.currentUser = result;
-            this.isCurrentUser = this.currentUser?.id === this.user?.id;
 
-            if (this.isCurrentUser) {
-                this.getUserInfo();
-                this.getUserChallenges();
-            }
-        } catch (error) {
+            this.route.paramMap.subscribe((params) => {
+                const userId = params.get('id') as unknown as number;
+
+                if (userId !== null) {
+
+                    this.isCurrentUser = this.currentUser?.id === userId;
+
+                    if(!this.isCurrentUser)
+                    {
+                        this.getUserInfo(userId);
+                        this.getUserChallenges(userId);
+                    }
+                    else
+                    {
+                        this.getUserInfo(this.user.id);
+                        this.getUserChallenges(this.user.id);
+                    }
+                }
+                else {
+                    this.isCurrentUser = true;
+                    this.getUserInfo(this.user.id);
+                    this.getUserChallenges(this.user.id);
+                }
+
+            })
+
+        }   catch (error) {
             this.toastrNotification.showError('User not found');
         }
     }

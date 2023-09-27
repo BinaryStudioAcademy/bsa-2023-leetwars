@@ -41,10 +41,6 @@ export class UserService {
         return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/${id}`);
     }
 
-    getUserByNickname(nickname: string): Observable<IUserFull> {
-        return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/another-profile/${nickname}`);
-    }
-
     updateUser(editUserInfo: IEditUserInfo): Observable<IUser> {
         return this.httpService.putRequest<IUser>(`${this.baseUrl}`, editUserInfo);
     }

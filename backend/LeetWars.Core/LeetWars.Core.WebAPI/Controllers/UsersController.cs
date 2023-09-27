@@ -34,17 +34,6 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Get full user info by nickname
-    /// </summary>
-    /// <param name="nickname">User nickname to find</param>
-    /// <returns>Full user info</returns>
-    [HttpGet("another-profile/{nickname}")]
-    public async Task<ActionResult<UserFullDto>> GetUserByNickName(string nickname)
-    {
-        var user = await _userService.GetUserByNickname(nickname);
-        return Ok(user);
-    }
-    /// <summary>
     /// Check if email already registered in our system
     /// </summary>
     /// <param name="email">Email to check</param>
