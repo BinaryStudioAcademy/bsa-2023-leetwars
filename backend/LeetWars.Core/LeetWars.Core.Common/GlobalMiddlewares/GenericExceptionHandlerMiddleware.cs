@@ -1,4 +1,4 @@
-﻿using LeetWars.Core.BLL.Exceptions;
+using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.Common.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;

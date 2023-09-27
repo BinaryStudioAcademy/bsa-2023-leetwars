@@ -1,6 +1,7 @@
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -104,7 +105,7 @@ public class UsersController : ControllerBase
     /// <param name="page">Page of leaderboard</param>
     /// <returns>List of users on leaderbloard</returns>
     [HttpGet("leader-board")]
-    public async Task<ActionResult<List<UserDto>>> GetLeaderBoardAsync([FromQuery] PageSettingsDto page)
+    public async Task<ActionResult<List<UserDto>>> GetLeaderBoardAsync([FromQuery] LeaderBoardPageSettingsDto page)
     {
         var users = await _userService.GetLeaderBoardAsync(page);
 
@@ -112,16 +113,42 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
-    /// Update user info
+    /// Get user friendships
     /// </summary>
-    /// <param name="updateUserInfoDto">User info to update</param>
-    /// <returns>Updated user info</returns>
-    [HttpPut]
-    public async Task<ActionResult<UserDto>> UpdateUserAsync(UpdateUserInfoDto updateUserInfoDto)
+    /// <param name="id">User ID</param>
+    /// <returns>Existing user</returns>
+    [HttpGet("user-friendships")]
+    public async Task<ActionResult<UserFriendsInfoDto>> GetUserFriendshipsAsync([FromQuery] long userId)
     {
-        var updatedUser = await _userService.UpdateUserInfoAsync(updateUserInfoDto);
+        var user = await _userService.GetUserFriendshipsAsync(userId);
 
-        return Ok(updatedUser);
+        return Ok(user);
+    }
+
+    /// <summary>
+    /// Create friendship
+    /// </summary>
+    /// <param name="newFriendshipDto">Friendship to create</param>
+    /// <returns>Existing user</returns>
+    [HttpPost("send-friendship-request")]
+    public async Task<ActionResult<UserFriendsInfoDto>> SendFriendshipRequestAsync([FromBody] NewFriendshipDto newFriendshipDto)
+    {
+        var user = await _userService.SendFriendshipRequestAsync(newFriendshipDto);
+
+        return Ok(user);
+    }
+
+    /// <summary>
+    /// Update friendship
+    /// </summary>
+    /// <param name="updateFriendshipDto">Friendship to update</param>
+    /// <returns>Existing user</returns>
+    [HttpPut("update-friendship-request")]
+    public async Task<ActionResult<UserFriendsInfoDto>> UpdateFriendshipRequestAsync([FromBody] UpdateFriendshipDto updateFriendshipDto)
+    {
+        var user = await _userService.UpdateFriendshipRequestAsync(updateFriendshipDto);
+
+        return Ok(user);
     }
 
     /// <summary>
@@ -133,19 +160,33 @@ public class UsersController : ControllerBase
     [AllowAnonymous]
     public async Task<ActionResult<UserDto>> CreateUserAsync([FromBody] NewUserDto user)
     {
-        var updatedUser = await _userService.CreateUserAsync(user);
-        return Ok(updatedUser);
+        var createdUser = await _userService.CreateUserAsync(user);
+
+        return Ok(createdUser);
     }
 
     /// <summary>
-    /// Update user avatar
+    /// Update user avatar on profile page
     /// </summary>
     /// <param name="avatar">New avatar</param>
-    /// <returns>New user avatar</returns>
+    /// <returns></returns>
     [HttpPost("avatar")]
-    public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatarAsync([FromForm] IFormFile avatar)
+    public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatarAsync([FromForm] IFormFile newAvatar)
     {
-        var updatedUser = await _userService.UpdateUserAvatarAsync(avatar);
+        var newAvatarDto = await _userService.UpdateUserAvatarAsync(newAvatar);
+
+        return Ok(newAvatarDto);
+    }
+
+    /// <summary>
+    /// Update user info
+    /// </summary>
+    /// <param name="updateUserInfoDto">User info to update</param>
+    /// <returns>Updated user info</returns>
+    [HttpPut]
+    public async Task<ActionResult<UserDto>> UpdateUserAsync(UpdateUserInfoDto updateUserInfoDto)
+    {
+        var updatedUser = await _userService.UpdateUserInfoAsync(updateUserInfoDto);
 
         return Ok(updatedUser);
     }

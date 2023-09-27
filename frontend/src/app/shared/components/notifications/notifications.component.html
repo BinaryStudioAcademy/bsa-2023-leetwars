@@ -1,14 +1,14 @@
-<div class="notifications-container">
-    <div *ngIf="!notifications.length">You do not have notifications</div>
+<div class="notifications-container d-flex flex-column" #notificationsContainer>
+    <div *ngIf="!notifications.length" class="notification-text">You don't have any notifications</div>
     <div *ngFor="let notification of notifications" class="notification">
         <div *ngIf="notification.typeNotification === typeNotification.NewChallenge">
-            <p>
+            <p class="notification-text">
                 A new challenge
                 <a routerLink="/challenges/{{ notification.challenge.id }}"> {{ notification.challenge.title }}</a>
             </p>
         </div>
         <div *ngIf="notification.typeNotification === typeNotification.LikeChallenge">
-            <p>
+            <p class="notification-text">
                 User {{ notification.sender.userName }} liked your challenge
                 <a routerLink="/challenges/{{ notification.challenge.id }}">{{ notification.challenge.title }}</a>
             </p>
@@ -17,6 +17,13 @@
             <p>{{ notification.message }}</p>
             <button (click)="onCodeFightStart(notification)">Yes</button>
             <button (click)="onCodeFightRefuse(notification)">No</button>
+        </div>
+        <div *ngIf="notification.typeNotification === typeNotification.FriendRequest" class="friend-request-container">
+            <p class="notification-text">{{ notification.message }}</p>
+            <div class="friend-request-buttons">
+                <button (click)="acceptFriendship(notification)" class="friend-request-btn accept-btn">Accept</button>
+                <button (click)="declineFriendship(notification)" class="friend-request-btn reject-btn">Decline</button>
+            </div>
         </div>
     </div>
 </div>

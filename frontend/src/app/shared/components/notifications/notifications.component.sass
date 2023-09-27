@@ -1,30 +1,65 @@
-@import 'src/styles/color-variables'
+@import 'color-variables'
 
 .notifications-container
     position: absolute
-    top: 50px
-    right: -560px
+    gap: 8px
+    top: 60px
     min-width: 300px
-    max-width: 350px
+    max-width: 400px
+    width: 25vw
     background-color: $dark-grey
     color: $white
     border-radius: 5px
-    padding: 3px
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5)
+    padding: 10px
     overflow-y: auto
     max-height: 80vh
+    box-shadow: 0px 0px 15px $dark-olive-green
+    transform: translateY(-40%)
 
 .notification
-  margin: 3px
-  padding: 5px
-  background-color: $deep-dark-grey
-  border-radius: 3px
-  word-wrap: break-word
-  overflow: hidden
-  max-height: 100px
+    padding: 8px 15px
+    background-color: $deep-dark-grey
+    border-radius: 3px
+    word-wrap: break-word
 
 @media screen and (max-width: 1600px)
     .notifications-container
-        top: 70px
-        right: 50%
+        right: 50% !important
         transform: translate(50%, -50%)
+
+.friend-request-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 10px
+    border-radius: 4px
+    background-color: $deep-dark-grey
+
+.notification-text
+    font-size: 16px
+    width: 100%
+    text-align: center
+
+.friend-request-buttons
+    display: flex
+    gap: 10px
+
+.friend-request-btn 
+    cursor: pointer
+    padding: 5px 10px
+    border: none
+    border-radius: 4px
+    color: $white
+    &:active
+        scale: 97%
+
+.accept-btn
+    background-color: $green
+    &:hover
+        background-color: $dark-olive-green
+
+.reject-btn
+    background-color: $light-red
+    &:hover
+        background-color: $maroon
+        
