@@ -1,7 +1,5 @@
 ﻿using LeetWars.CodeAnalyzer.Interfaces;
 using LeetWars.Core.Common.DTO.ChallengeRequest;
-using LeetWars.Core.DAL.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.CodeAnalyzer.OpenAISettings
 {
@@ -22,28 +20,35 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
             "Don't provide additional info, only a number." +
             $"Code listing: \n ${codeListing}";
 
-        public string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto) {
-            var testFramework = challengeGenerateRequestDto.Language.Name == "Javascript" ? "Mocha" : "NUnit";
-            return @$"You are a software engineer.As a {challengeGenerateRequestDto.Language.Name} developer, your goal is to
-            create a {challengeGenerateRequestDto.Language.Name} programming challenge task with the following name: {challengeGenerateRequestDto.Title}
-            Challenge programming language should be {challengeGenerateRequestDto.Language.Name}.
-            Challenge category should be {challengeGenerateRequestDto.Category};
-            Challenge topic should be related to {string.Join(", ", challengeGenerateRequestDto.Tags.Select(t => t.Name))};
-            Challenge complexity should be {challengeGenerateRequestDto.Level.SkillLevel}.
-            Describe a task that matches these requirements in the field called Description;
-            Then create a complete solution based on description and put it in the field called CompleteSolution;
-            Then create a placeholder where the code needs to be implemented by the challenge taker and put it in the field called InitialSolution;
-            Then create tests using {testFramework} Framework that will verify that code in field CompleteSolution is correct and put them in the field called Tests
-            Then create get a subset of tests in field Tests and put them in the field called TestsSubset
-            And give me the result in the form of a JSON object, example of JSON object:
-            {{ 
-                ""Description"": "" "",
-                ""CompleteSolution"": "" "",
-                ""InitialSolution"": "" "",
-                ""Tests"": "" "",
-                ""TestsSubset"": "" "",
-            }}
-            ";}
-
+        public string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto)
+        {
+            if (challengeGenerateRequestDto.Tags != null)
+            {
+                var testFramework = challengeGenerateRequestDto.Language?.Name == "Javascript" ? "Mocha" : "NUnit";
+                return @$"You are a software engineer.As a {challengeGenerateRequestDto.Language?.Name} developer, your goal is to
+                create a {challengeGenerateRequestDto.Language?.Name} programming challenge task with the following name: {challengeGenerateRequestDto.Title}
+                Challenge programming language should be {challengeGenerateRequestDto.Language?.Name}.
+                Challenge category should be {challengeGenerateRequestDto.Category};
+                Challenge topic should be related to {string.Join(", ", challengeGenerateRequestDto.Tags.Select(t => t.Name))};
+                Challenge complexity should be {challengeGenerateRequestDto.Level?.SkillLevel}.
+                Describe a task that matches these requirements in the field called Description;
+                Then create a complete solution based on description and put it in the field called CompleteSolution;
+                Then create a placeholder where the code needs to be implemented by the challenge taker and put it in the field called InitialSolution;
+                Then create tests using {testFramework} Framework that will verify that code in field CompleteSolution is correct and put them in the field called Tests
+                Then create get a subset of tests in field Tests and put them in the field called TestsSubset
+                And give me the result in the form of a JSON object, example of JSON object:
+                {{ 
+                    ""Description"": "" "",
+                    ""CompleteSolution"": "" "",
+                    ""InitialSolution"": "" "",
+                    ""Tests"": "" "",
+                    ""TestsSubset"": "" "",
+                }}";
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(challengeGenerateRequestDto.Tags));
+            }
+        }
     }
 }

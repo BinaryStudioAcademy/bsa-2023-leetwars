@@ -25,20 +25,28 @@ namespace LeetWars.CodeAnalyzer.Services
 
 
             var challengeResponse = JsonConvert.DeserializeObject<OpenAiChallengeGenerateResponseDto>(response);
-            ChallengeGenerateResponseDto challengeGenerateResponseDto = new ChallengeGenerateResponseDto();
 
-            challengeGenerateResponseDto.Title = challengeGenerateRequest.Title;
-            challengeGenerateResponseDto.Level = challengeGenerateRequest.Level;
-            challengeGenerateResponseDto.Category = challengeGenerateRequest.Category;
-            challengeGenerateResponseDto.Tags = challengeGenerateRequest.Tags;
-            challengeGenerateResponseDto.Language = challengeGenerateRequest.Language;
-            challengeGenerateResponseDto.Description = challengeResponse.Description;
-            challengeGenerateResponseDto.CompleteSolution = challengeResponse.CompleteSolution;
-            challengeGenerateResponseDto.InitialSolution = challengeResponse.InitialSolution;
-            challengeGenerateResponseDto.TestCases = challengeResponse.Tests;
-            challengeGenerateResponseDto.ExampleTestCases = challengeResponse.TestsSubset;
+            if (challengeResponse != null)
+            {
+                ChallengeGenerateResponseDto challengeGenerateResponseDto = new ChallengeGenerateResponseDto();
 
-            return challengeGenerateResponseDto;
+                challengeGenerateResponseDto.Title = challengeGenerateRequest.Title;
+                challengeGenerateResponseDto.Level = challengeGenerateRequest.Level;
+                challengeGenerateResponseDto.Category = challengeGenerateRequest.Category;
+                challengeGenerateResponseDto.Tags = challengeGenerateRequest.Tags;
+                challengeGenerateResponseDto.Language = challengeGenerateRequest.Language;
+                challengeGenerateResponseDto.Description = challengeResponse.Description;
+                challengeGenerateResponseDto.CompleteSolution = challengeResponse.CompleteSolution;
+                challengeGenerateResponseDto.InitialSolution = challengeResponse.InitialSolution;
+                challengeGenerateResponseDto.TestCases = challengeResponse.Tests;
+                challengeGenerateResponseDto.ExampleTestCases = challengeResponse.TestsSubset;
+
+                return challengeGenerateResponseDto;
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(challengeResponse));
+            }
         }
 
         private async Task<string> GenerateTextResponse(string prompt)

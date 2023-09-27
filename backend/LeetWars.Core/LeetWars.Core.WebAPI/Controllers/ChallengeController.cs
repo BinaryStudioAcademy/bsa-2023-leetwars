@@ -8,8 +8,6 @@ using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using LeetWars.Core.Common.DTO.ChallengeRequest;
 
 namespace LeetWars.Core.WebAPI.Controllers
 {
