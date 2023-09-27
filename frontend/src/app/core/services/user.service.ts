@@ -65,14 +65,6 @@ export class UserService {
         return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/leader-board`, httpParams);
     }
 
-    getFriendsLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
-        let httpParams = new HttpParams();
-
-        httpParams = setParams<IPageSettings>(httpParams, page);
-
-        return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/friends-leader-board`, httpParams);
-    }
-
     updateUserRank(userDto: IEditUser): Observable<IUserFull> {
         return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
     }

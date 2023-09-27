@@ -15,6 +15,14 @@ import { Subject, takeUntil } from 'rxjs';
     styleUrls: ['./leader-board.component.sass'],
 })
 export class LeaderBoardComponent extends BaseComponent implements OnInit {
+    private readonly pageDefault: ILeaderBoardPageSettings = {
+        pageNumber: 0,
+        pageSize: 30,
+        getFriends: false,
+    };
+
+    private page: ILeaderBoardPageSettings = { ...this.pageDefault };
+
     users: IUser[] = [];
 
     currentUser: IUser;
@@ -31,14 +39,6 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
     scrollEventSubject = new Subject<void>();
 
-    private readonly pageDefault: ILeaderBoardPageSettings = {
-        pageNumber: 0,
-        pageSize: 30,
-        getFriends: false,
-    };
-
-    private page: ILeaderBoardPageSettings = { ...this.pageDefault };
-
     constructor(
         private eventService: EventService,
         private userService: UserService,
@@ -53,8 +53,7 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
 
         this.eventService.userChangedEvent$.pipe(takeUntil(this.unsubscribe$)).subscribe({
             next: (user) => {
-                this.currentUser.friendships = user.friendships;
-                this.userFriendsIds = user.friendships.map((f) => f.friendId);
+                this.handleUserDataChange(user);
             },
             error: () => {
                 this.toastrNotification.showError('Server connection error');
@@ -70,6 +69,71 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
         }
 
         this.getUsers();
+    }
+
+    isCurrentUser(user: IUser): boolean {
+        return user && this.currentUser && user.id === this.currentUser.id;
+    }
+
+    isAddFriendButtonVisible(user: IUser): boolean {
+        return !this.isCurrentUser(user) && !this.isFriend(user);
+    }
+
+    isFriendshipStatus(user: IUser, status: string): boolean {
+        return !this.isCurrentUser(user) && this.getFriendshipStatus(user) === status;
+    }
+
+    isFriend(user: IUser): boolean {
+        return user && this.userFriendsIds.includes(user.id);
+    }
+
+    addFriend(friend: IUser) {
+        const request: INewFriendship = {
+            senderId: this.currentUser.id,
+            recipientId: friend.id,
+        };
+
+        this.userService
+            .sendFriendshipRequest(request)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (user) => {
+                    this.handleUserDataChange(user);
+                },
+                error: (error) => {
+                    this.toastrNotification.showError(error);
+                },
+            });
+    }
+
+    toggleMyFriends() {
+        this.isMyFriendsChecked = !this.isMyFriendsChecked;
+        this.users = [];
+        this.isLastPage = false;
+
+        this.page = { ...this.pageDefault, getFriends: this.isMyFriendsChecked };
+
+        this.getUsers();
+    }
+
+    private getFriendshipStatus(user: IUser): FriendshipStatus | undefined {
+        return this.currentUser?.friendships?.find((f) => f.friendId === user.id)?.friendshipStatus;
+    }
+
+    private handleUsersUpdate(users: IUser[]) {
+        this.loading = false;
+        if (!users.length) {
+            this.isLastPage = true;
+
+            return;
+        }
+        this.users = [...this.users, ...users];
+        this.usersToShow = this.users;
+    }
+
+    private handleUserDataChange(user: IUser) {
+        this.currentUser.friendships = user.friendships;
+        this.userFriendsIds = user.friendships.map((f) => f.friendId);
     }
 
     private getUsers() {
@@ -107,66 +171,5 @@ export class LeaderBoardComponent extends BaseComponent implements OnInit {
                     this.toastrNotification.showError('Server connection error');
                 },
             });
-    }
-
-    isCurrentUser(user: IUser): boolean {
-        return user && this.currentUser && user.id === this.currentUser.id;
-    }
-
-    isAddFriendButtonVisible(user: IUser): boolean {
-        return !this.isCurrentUser(user) && !this.isFriend(user);
-    }
-
-    isFriendshipStatus(user: IUser, status: string): boolean {
-        return !this.isCurrentUser(user) && this.getFriendshipStatus(user) === status;
-    }
-
-    isFriend(user: IUser): boolean {
-        return user && this.userFriendsIds.includes(user.id);
-    }
-
-    private getFriendshipStatus(user: IUser): FriendshipStatus | undefined {
-        return this.currentUser?.friendships?.find((f) => f.friendId === user.id)?.friendshipStatus;
-    }
-
-    addFriend(user: IUser) {
-        const request: INewFriendship = {
-            senderId: this.currentUser.id,
-            recipientId: user.id,
-        };
-
-        this.userService
-            .sendFriendshipRequest(request)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (userDto) => {
-                    this.currentUser.friendships = userDto.friendships;
-                    this.userFriendsIds = userDto.friendships.map((f) => f.friendId);
-                },
-                error: (error) => {
-                    this.toastrNotification.showError(error);
-                },
-            });
-    }
-
-    toggleMyFriends() {
-        this.isMyFriendsChecked = !this.isMyFriendsChecked;
-        this.users = [];
-        this.isLastPage = false;
-
-        this.page = { ...this.pageDefault, getFriends: this.isMyFriendsChecked };
-
-        this.getUsers();
-    }
-
-    private handleUsersUpdate(users: IUser[]) {
-        this.loading = false;
-        if (!users.length) {
-            this.isLastPage = true;
-
-            return;
-        }
-        this.users = [...this.users, ...users];
-        this.usersToShow = this.users;
     }
 }
