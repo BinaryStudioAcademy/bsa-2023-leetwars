@@ -7,6 +7,7 @@ import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AssetConstants } from '@shared/constants/asset-constants';
 import { CodeFightStatus } from '@shared/enums/code-fight-status';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { ILanguage } from '@shared/models/language/language';
@@ -35,6 +36,8 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
     isCodeFightRequestSent = false;
 
     CodeFightStatus = CodeFightStatus;
+
+    AssetConstants = AssetConstants;
 
     private page: IPageSettings = {
         pageNumber: 0,

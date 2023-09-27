@@ -10,7 +10,6 @@ import { CodeRunService } from '@core/services/code-run.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
-import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
@@ -37,11 +36,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     selectedLanguage: string;
 
-    selectedLanguageVersion: string;
-
     languages: string[];
-
-    languageVersions: string[];
 
     initialSolution?: string;
 
@@ -130,9 +125,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         const selectedLang = this.mapLanguageName($event as string);
 
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
-
-        this.languageVersions = this.getLanguageVersionsByLanguage(selectedLang);
-        [this.selectedLanguageVersion] = this.languageVersions;
     }
 
     onCodeChanged(newCode: string) {
@@ -228,15 +220,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private setupLanguages(challenge: IChallenge) {
         this.challenge = challenge;
         this.languages = [...new Set(challenge.versions?.map((v) => v.language?.name))];
-        this.languageVersions = [...new Set(this.extractLanguageVersions(challenge.versions))];
 
         [this.selectedLanguage] = this.languages;
-        [this.selectedLanguageVersion] = this.languageVersions;
-    }
-
-    private extractLanguageVersions(versions: IChallengeVersion[]) {
-        return versions.flatMap((version) =>
-            version.language.languageVersions.map((languageVersion) => languageVersion.version));
     }
 
     private setupEditorOptions() {
@@ -270,12 +255,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     private mapLanguageName(language?: string): string {
-        return language ? languageNameMap.get(language) || language.toLowerCase() : 'No language available';
-    }
-
-    private getLanguageVersionsByLanguage(language: string) {
-        return this.challenge.versions
-            .filter((version) => this.mapLanguageName(version.language.name) === language)
-            .flatMap((version) => version.language.languageVersions.map((languageVersion) => languageVersion.version));
+        return language ? languageNameMap.get(language) || language : 'No language available';
     }
 }

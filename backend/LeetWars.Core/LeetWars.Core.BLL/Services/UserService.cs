@@ -63,7 +63,7 @@ public class UserService : BaseService, IUserService
         if (isExistingUserName)
         {
             userDto.UserName = userDto.IsWithProvider
-                ? await GenerateUniqueUsername(userDto.Email)
+                ? await GenerateUniqueUsernameAsync(userDto.Email)
                 : throw new InvalidUsernameOrPasswordException($"Error: This username is already registered in the system.");
         }
 
@@ -174,7 +174,7 @@ public class UserService : BaseService, IUserService
         var user = await GetUserByExpressionAsync(user => user.Id == userDto.Id)
             ?? throw new NotFoundException(nameof(User), userDto.Id);
 
-        user.TotalScore += await GetRewardFromChallenge(userDto.CompletedChallengeId);
+        user.TotalScore += await GetRewardFromChallengeAsync(userDto.CompletedChallengeId);
         user.Reputation = user.TotalScore / REPUTATION_DIVIDER;
 
         _context.Users.Update(user);
@@ -243,7 +243,7 @@ public class UserService : BaseService, IUserService
         return user ?? throw new NotFoundException(nameof(User));
     }
 
-    private async Task<int> GetRewardFromChallenge(long challengeId)
+    private async Task<int> GetRewardFromChallengeAsync(long challengeId)
     {
         var challengeLevel = await _context.Challenges
             .Select(challenge => new ChallengeRewardDto
@@ -257,7 +257,7 @@ public class UserService : BaseService, IUserService
             ?? throw new NotFoundException(nameof(Challenge), challengeId);
     }
 
-    private async Task<string> GenerateUniqueUsername(string email)
+    private async Task<string> GenerateUniqueUsernameAsync(string email)
     {
         string newUserName = email.GetUserNameFromEmail();
 

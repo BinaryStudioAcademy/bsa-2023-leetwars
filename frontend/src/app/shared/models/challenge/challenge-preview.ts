@@ -7,6 +7,7 @@ import { AuditEntity } from '../common/audit-entity/audit-entity';
 
 export interface IChallengePreview extends AuditEntity<number> {
     authorName: string;
+    authorAvatarPath?: string;
     levelName: LanguageLevel;
     title: string;
     instructions: string;

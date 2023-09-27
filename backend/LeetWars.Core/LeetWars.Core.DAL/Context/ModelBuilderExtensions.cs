@@ -30,9 +30,6 @@ namespace LeetWars.Core.DAL.Context
             var subscriptionTypeEntities = GenerateSubscriptionTypes();
             modelBuilder.Entity<SubscriptionType>().HasData(subscriptionTypeEntities);
 
-            var languageVersionEntities = GenerateLanguageVersions();
-            modelBuilder.Entity<LanguageVersion>().HasData(languageVersionEntities);
-
             var challengeEntities = GenerateChallenges(userEntities);
             modelBuilder.Entity<Challenge>().HasData(challengeEntities);
 
@@ -108,18 +105,6 @@ namespace LeetWars.Core.DAL.Context
                 .Generate(count);
 
             return challengeTags.DistinctBy(ct => new { ct.ChallengeId, ct.TagId }).ToList();
-        }
-
-        private static ICollection<LanguageVersion> GenerateLanguageVersions(int count = 9)
-        {
-            Faker.GlobalUniqueIndex = 0;
-
-            return new Faker<LanguageVersion>()
-                .CustomInstantiator(f => new LanguageVersion(f.System.Version().ToString().LimitLength(EntitySettings.MaxShortNameLength)))
-                .UseSeed(SeedDefaults.LanguageVersionSeed)
-                .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
-                .Generate(count);
         }
 
         private static ICollection<SubscriptionType> GenerateSubscriptionTypes(int count = 3)
@@ -223,7 +208,6 @@ namespace LeetWars.Core.DAL.Context
                         f.Name.LastName().LimitLength(EntitySettings.MaxGeneralNameLength),
                         f.Internet.UserName().LimitLength(EntitySettings.MaxUserNameLength - 3) + (uniqueIntForUserId++),
                         f.Internet.Email().LimitLength(EntitySettings.MaxEmailLength),
-                        f.Random.String2(30) + ".jpg",
                         f.Random.AlphaNumeric(32)))
                 .UseSeed(SeedDefaults.UserSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
