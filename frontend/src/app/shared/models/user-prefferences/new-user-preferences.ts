@@ -1,7 +1,7 @@
 export interface INewUserPreferences {
     languageId?: number | null;
     theme?: string;
-    wordWrap?: boolean;
+    wordWrap: boolean;
     tabSize?: number;
     fontSize?: number;
 }

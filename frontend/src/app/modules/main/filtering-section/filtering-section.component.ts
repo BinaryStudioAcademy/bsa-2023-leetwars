@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
+import { PreferencesService } from '@core/services/preferences.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import {
@@ -40,6 +41,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     difficultyNames: string[];
 
+    preferenceLanguage: string;
+
     public scrollEventSubject = new Subject<void>();
 
     private sortingProperty?: ISortedModel;
@@ -69,12 +72,13 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         private languageService: LanguageService,
         private tagService: TagService,
         private toastrService: ToastrNotificationsService,
+        private preferencesService: PreferencesService,
     ) {
         super();
     }
 
     ngOnInit(): void {
-        this.getChalenges();
+        this.getPreferences();
         this.getLanguages();
         this.getTags();
 
@@ -153,6 +157,14 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
         this.filter.skillLevel = LanguageLevel[value as keyof typeof LanguageLevel];
         this.resetChallengesData();
+    }
+
+    private getPreferences() {
+        this.preferencesService.getUserPrefferences().subscribe((preferences) => {
+            this.preferenceLanguage = preferences?.language.name ? preferences?.language.name : '';
+            this.filter.languageId = preferences?.language?.id;
+            this.getChalenges();
+        });
     }
 
     private getChalenges() {

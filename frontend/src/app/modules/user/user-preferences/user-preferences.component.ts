@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BaseComponent } from '@core/base/base.component';
 import { LanguageService } from '@core/services/language.service';
 import { PreferencesService } from '@core/services/preferences.service';
@@ -8,9 +8,11 @@ import { ILanguage } from '@shared/models/language/language';
 import { IUser } from '@shared/models/user/user';
 import { INewUserPreferences } from '@shared/models/user-prefferences/new-user-preferences';
 import { IUserPreferences } from '@shared/models/user-prefferences/user-preferences';
+import { fontSizeMaxValue, tabSizeMaxValue } from '@shared/utils/validation/form-control-validator-options';
+import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { takeUntil } from 'rxjs';
 
-import { findItemIdByName } from './user-preferences.utils';
+import { findItemIdByName, MONACO_EDITOR_THEMES } from './user-preferences.utils';
 
 @Component({
     selector: 'app-user-preferences',
@@ -21,18 +23,20 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
     userPreferenceForm: FormGroup = new FormGroup({
         language: new FormControl(''),
         theme: new FormControl(''),
-        tabSize: new FormControl(0),
-        fontSize: new FormControl(0),
-        wordWrap: new FormControl(true),
+        tabSize: new FormControl(3, [Validators.max(tabSizeMaxValue), Validators.required]),
+        fontSize: new FormControl(0, [Validators.max(fontSizeMaxValue)]),
+        wordWrap: new FormControl(false),
     });
 
     user: IUser;
 
     languagesNames: string[] = [];
 
+    isWordWrap: boolean;
+
     private languages: ILanguage[] = [];
 
-    monacoThemes: string[] = ['vs', 'vs-dark', 'hc-black'];
+    monacoThemes: string[] = MONACO_EDITOR_THEMES;
 
     constructor(
         private toastrService: ToastrNotificationsService,
@@ -45,12 +49,16 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
         this.loadData();
     }
 
-    onSave() {
+    setPreferences() {
         const language = findItemIdByName(this.languages, this.userPreferenceForm.value.language);
+
+        const editorTheme = this.monacoThemes.includes(this.userPreferenceForm.value.theme)
+            ? this.userPreferenceForm.value.theme
+            : null;
 
         const newPreferences: INewUserPreferences = {
             languageId: language,
-            theme: this.userPreferenceForm.value.theme,
+            theme: editorTheme,
             tabSize: this.userPreferenceForm.value.tabSize,
             fontSize: this.userPreferenceForm.value.fontSize,
             wordWrap: this.userPreferenceForm.value.wordWrap,
@@ -68,6 +76,26 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
             });
     }
 
+    onLanguageChanged(value: string | string[]) {
+        this.userPreferenceForm.value.language = value;
+    }
+
+    onThemeChanged(value: string | string[]) {
+        if (typeof value !== 'string') {
+            return;
+        }
+        this.userPreferenceForm.value.theme = value;
+    }
+
+    onCheckedChange(value: boolean) {
+        console.log(value);
+        this.isWordWrap = value;
+    }
+
+    getErrorMessage(formControlName: string) {
+        return getErrorMessage(formControlName, this.userPreferenceForm);
+    }
+
     private loadData() {
         this.preferenceService.getUserPrefferences().subscribe((preferences) => {
             this.initializeForm(preferences);
@@ -76,20 +104,12 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
 
     private initializeForm(preferences: IUserPreferences) {
         this.userPreferenceForm.patchValue({
-            tabWidth: preferences?.tabSize,
+            tabSize: preferences?.tabSize,
             theme: preferences?.theme,
             fontSize: preferences?.fontSize,
             wordWrap: preferences?.wordWrap,
             language: preferences.language?.name,
         });
-    }
-
-    onLanguageChanged(value: string | string[]) {
-        this.userPreferenceForm.value.language = value;
-    }
-
-    onThemeChanged(value: string | string[]) {
-        this.userPreferenceForm.value.theme = value;
     }
 
     private getLanguages() {

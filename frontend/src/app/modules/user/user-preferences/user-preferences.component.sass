@@ -1,10 +1,18 @@
+
 @import 'color-variables'
+@import 'screen-sizes-variables'
 
 .page-wrapper
     color: $white
     height: calc(100% - 87px)
     padding: 65px 10px 0px 10px
 
+.submit-button
+    weight: auto
+    padding: 5px
+    background-color: $green
+    border-radius: 10px
+    font-weight: 800
 
 .form-wrapper
     max-width: 970px
@@ -25,16 +33,24 @@
 .label-input-group
     display: flex
     align-items: center
-    margin-top: 10px
+    margin-top: 20px
+    height: 50px
 
+.input-wrapper
+    max-width: 100px
 
 .label-input-group label
+    display: flex
+    justify-content: right
     margin-right: 15px
-    text-align: right
     color: $white
     min-width: 120px
     overflow: wrap
+    @media screen and (max-width: $medium)
+        justify-content: left
+
+.form-item
+    height: 50px
 
 app-dropdown-select
-    min-width: 50%
-    max-width: 50%
+    width: 200px
