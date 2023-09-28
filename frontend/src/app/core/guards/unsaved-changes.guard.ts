@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanDeactivate } from '@angular/router';
+import { CanDeactivate, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalComponent } from '@shared/components/confirmation-modal/confirmation-modal.component';
 import { HasUnsavedChanges } from '@shared/models/unsaved-changes/has-unsaved-changes';
@@ -8,9 +8,13 @@ import { HasUnsavedChanges } from '@shared/models/unsaved-changes/has-unsaved-ch
     providedIn: 'root',
 })
 export class UnsavedChangesGuard<T extends HasUnsavedChanges> implements CanDeactivate<T> {
-    constructor(private modalService: NgbModal) {}
+    constructor(private modalService: NgbModal, private router: Router) {}
 
     canDeactivate(component: T) {
+        if (this.router.getCurrentNavigation()?.extras?.state?.['canLeave']) {
+            return true;
+        }
+
         if (component.unsavedChanges) {
             return this.showConfirmationModal();
         }
