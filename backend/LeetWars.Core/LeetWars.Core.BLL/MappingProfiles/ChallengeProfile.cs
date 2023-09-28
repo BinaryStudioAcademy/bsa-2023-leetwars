@@ -15,7 +15,7 @@ namespace LeetWars.Core.BLL.MappingProfiles
     {
         public ChallengeProfile()
         {
-                CreateMap<Challenge, ChallengePreviewDto>()
+            CreateMap<Challenge, ChallengePreviewDto>()
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author != null ? $"{src.Author.UserName}" : null))
                 .ForMember(dest => dest.AuthorAvatarPath,
                     opt => opt

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -31,280 +30,280 @@ namespace LeetWars.Core.DAL.Migrations
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 1L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 2L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 3L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 4L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 5L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 6L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 7L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 8L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 9L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 10L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
-                
+
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 11L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 12L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 13L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 14L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 15L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 16L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 17L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 18L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 19L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
-                
+
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 20L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 21L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 22L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 23L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 24L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 25L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 26L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 27L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 28L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 29L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 30L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 31L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
-                
+
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 32L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 33L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 34L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 35L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 36L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
-                
+
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 37L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 38L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
-                
+
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 39L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 40L,
-                columns: new[] { "ImagePath"  },
+                columns: new[] { "ImagePath" },
                 values: new object[] { null });
         }
 

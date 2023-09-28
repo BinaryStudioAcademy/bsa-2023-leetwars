@@ -17,6 +17,8 @@
     height: 70px
     cursor: pointer
     padding-left: 20px
+    @media screen and (max-width: $tablet)
+        padding-left: 15px
 
 .user-menu
     justify-self: end
@@ -25,11 +27,11 @@
     position: relative
 
 .notification-bell
-    margin-right: 2rem
+    margin-right: 1rem
     cursor: pointer
     color: $transparent-grey
-    @media screen and (max-width: $medium)
-        margin-right: 1rem
+    @media screen and (max-width: $tablet)
+        margin-right: 0.5rem
 
 .dropdown-heading
     padding: 8px
@@ -101,6 +103,8 @@
     align-items: center
     cursor: pointer
     padding-right: 1rem
+    @media screen and (max-width: $medium)
+        padding-right: 0
 
 .icon-bell
     color: $white
