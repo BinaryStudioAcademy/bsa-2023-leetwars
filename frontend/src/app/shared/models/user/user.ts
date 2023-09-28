@@ -1,6 +1,8 @@
+import { CodeFightStatus } from '@shared/enums/code-fight-status';
 import { Country } from '@shared/enums/country';
 import { Sex } from '@shared/enums/sex';
 import { UserStatus } from '@shared/enums/userStatus';
+import { IFriendshipPreview } from '@shared/models/friendship/friendship-preview';
 
 export interface IUser {
     id: number;
@@ -19,4 +21,6 @@ export interface IUser {
     registeredAt: Date;
     isSubscribed: boolean;
     isBanned: boolean;
+    codeFightStatus: CodeFightStatus;
+    friendships: IFriendshipPreview[];
 }

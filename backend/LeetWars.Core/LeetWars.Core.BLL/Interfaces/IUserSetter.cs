@@ -2,6 +2,6 @@
 {
     public interface IUserSetter
     {
-        Task SetUserId(string userId);
+        Task SetUserIdAsync(string userId);
     }
 }

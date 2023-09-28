@@ -1,11 +1,6 @@
 ﻿using FluentValidation;
 using LeetWars.Core.Common.DTO.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace LeetWars.Core.WebAPI.Validators.User
 {
@@ -14,16 +9,20 @@ namespace LeetWars.Core.WebAPI.Validators.User
         public UserRegisterDtoValidator()
         {
             RuleFor(u => u.UserName)
-                .NotEmpty().WithMessage("UserName is requeried")
+                .NotEmpty()
+                    .When(u => !u.IsWithProvider)
+                    .WithMessage("UserName is required")
                 .Length(2, 50)
+                    .When(u => !u.IsWithProvider)
                     .WithMessage("The name must contain at least 2 and at most 50 characters.")
                 .Must(BeValidLatinOrCyrillicCharacters)
-                  .WithMessage("Enter your name in Latin or Cyrillic");
+                    .When(u => !u.IsWithProvider)
+                    .WithMessage("Enter your name in Latin or Cyrillic");
 
             RuleFor(u => u.Email)
                 .EmailAddress()
                 .NotEmpty()
-                    .WithMessage("Email is requeried")
+                    .WithMessage("Email is required")
                 .MaximumLength(255)
                     .WithMessage("Email can't be longer than 255 characters.");
         }

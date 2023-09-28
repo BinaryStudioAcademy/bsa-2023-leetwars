@@ -1,5 +1,7 @@
-﻿using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
-using LeetWars.Notifier.WebAPI.Hubs;
+﻿using LeetWars.Notifier.WebAPI.Hubs;
+using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
+using LeetWars.Notifier.WebAPI.Models;
+using LeetWars.RabbitMQ.Interfaces;
 using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
@@ -28,7 +30,7 @@ public class CodeMessageConsumerService : BackgroundService
         var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
         {
             _consumerService.SetAcknowledge(args.DeliveryTag, true);
-
+            
             var body = args.Body.ToArray();
 
             var message = Encoding.UTF8.GetString(body);
@@ -37,7 +39,7 @@ public class CodeMessageConsumerService : BackgroundService
 
             if (isCodeRunResult && codeRunResult is not null)
             {
-                await _codeDisplayingHubContext.Clients.Group(codeRunResult.UserConnectionId).BroadcastMessage(message);
+                await _codeDisplayingHubContext.Clients.Group(codeRunResult.UserConnectionId).BroadcastMessageAsync(codeRunResult);
                 return;
             }
             
@@ -46,7 +48,7 @@ public class CodeMessageConsumerService : BackgroundService
             if (isCodeSubmitResult && codeSubmitResult is not null)
             {
                 await _codeDisplayingHubContext.Clients.Group(codeSubmitResult.CodeRunResult.UserConnectionId)
-                    .BroadcastSubmitResultMessage(message);
+                    .BroadcastSubmitResultMessage(codeSubmitResult);
             }
         });
 

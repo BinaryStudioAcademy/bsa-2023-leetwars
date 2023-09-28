@@ -5,7 +5,6 @@ import { SortingProperty } from '@shared/enums/sorting-property';
 import { ISortedModel } from '@shared/models/challenge/sorted-model';
 
 export const PROGRESS_NAMES_MAP = [
-    { state: undefined, name: 'All' },
     { state: ChallengeProgress.Started, name: 'Not completed', id: 1 },
     { state: ChallengeProgress.Completed, name: 'Completed', id: 2 },
     { state: ChallengeProgress.NotStarted, name: 'Not trained on', id: 0 },
@@ -17,7 +16,7 @@ export const STATUS_NAMES_MAP = [
     { status: ChallengeStatus.Beta, name: 'Beta' },
 ];
 
-export const SORTING_PROPERTIES = [
+export const SORTING_PROPERTIES: ISortedModel[] = [
     { property: SortingProperty.Title, order: SortingOrder.Ascending, label: 'Name A-Z' },
     { property: SortingProperty.Title, order: SortingOrder.Descending, label: 'Name Z-A' },
     { property: SortingProperty.Level, order: SortingOrder.Ascending, label: 'Easy' },
@@ -26,4 +25,4 @@ export const SORTING_PROPERTIES = [
     { property: SortingProperty.Stars, order: SortingOrder.Ascending, label: 'Unpopular' },
     { property: SortingProperty.CreatedAt, order: SortingOrder.Descending, label: 'Newest' },
     { property: SortingProperty.CreatedAt, order: SortingOrder.Ascending, label: 'Oldest' },
-] as ISortedModel[];
+];

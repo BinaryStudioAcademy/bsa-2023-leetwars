@@ -6,7 +6,6 @@ using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace LeetWars.Core.DAL.Context
 {
@@ -28,11 +27,14 @@ namespace LeetWars.Core.DAL.Context
             var userEntities = GenerateUsers();
             modelBuilder.Entity<User>().HasData(userEntities);
 
+            var friendshipEntities = GenerateFriendships();
+            modelBuilder.Entity<Friendship>().HasData(friendshipEntities);
+
+            var userFriendshipEntities = GenerateUserFriendships(userEntities, friendshipEntities);
+            modelBuilder.Entity<UserFriendship>().HasData(userFriendshipEntities);
+
             var subscriptionTypeEntities = GenerateSubscriptionTypes();
             modelBuilder.Entity<SubscriptionType>().HasData(subscriptionTypeEntities);
-
-            var languageVersionEntities = GenerateLanguageVersions();
-            modelBuilder.Entity<LanguageVersion>().HasData(languageVersionEntities);
 
             var challengeEntities = GenerateChallenges(userEntities);
             modelBuilder.Entity<Challenge>().HasData(challengeEntities);
@@ -68,13 +70,13 @@ namespace LeetWars.Core.DAL.Context
                 .RuleFor(e => e.LevelId, f => f.PickRandom(SeedDefaults.ChallengeLevels.AsEnumerable()).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
                 {
-                    var author = users.ToList().Find(a => a.Id == e.CreatedBy);
-                    return f.Date.Between(author?.RegisteredAt ?? DateTime.Now, DateTime.Now);
+                    var author = users.ToList().Find(a => a.Id == e.CreatedBy)!;
+                    return f.Date.Between(author.RegisteredAt, author.RegisteredAt.AddMonths(6));
                 })
                 .Generate(count);
         }
 
-        private static ICollection<ChallengeVersion> GenerateChallengeVersions(ICollection<User> users, ICollection<Challenge> challenges, int count = 200)
+        private static ICollection<ChallengeVersion> GenerateChallengeVersions(ICollection<User> users, ICollection<Challenge> challenges, int count = 80)
         {
             Faker.GlobalUniqueIndex = 0;
 
@@ -88,8 +90,8 @@ namespace LeetWars.Core.DAL.Context
                 .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
                 {
-                    var challenge = challenges.ToList().Find(a => a.Id == e.ChallengeId);
-                    return f.Date.Between(challenge?.CreatedAt ?? DateTime.Now, DateTime.Now);
+                    var challenge = challenges.ToList().Find(a => a.Id == e.ChallengeId)!;
+                    return f.Date.Between(challenge.CreatedAt, challenge.CreatedAt.AddMonths(3));
                 })
                 .Generate(count)
                 .DistinctBy(challengeversion => new { challengeversion.ChallengeId, challengeversion.LanguageId })
@@ -109,18 +111,6 @@ namespace LeetWars.Core.DAL.Context
                 .Generate(count);
 
             return challengeTags.DistinctBy(ct => new { ct.ChallengeId, ct.TagId }).ToList();
-        }
-
-        private static ICollection<LanguageVersion> GenerateLanguageVersions(int count = 9)
-        {
-            Faker.GlobalUniqueIndex = 0;
-
-            return new Faker<LanguageVersion>()
-                .CustomInstantiator(f => new LanguageVersion(f.System.Version().ToString().LimitLength(EntitySettings.MaxShortNameLength)))
-                .UseSeed(SeedDefaults.LanguageVersionSeed)
-                .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e => e.LanguageId, f => f.PickRandom(SeedDefaults.Languages.AsEnumerable()).Id)
-                .Generate(count);
         }
 
         private static ICollection<SubscriptionType> GenerateSubscriptionTypes(int count = 3)
@@ -153,26 +143,17 @@ namespace LeetWars.Core.DAL.Context
                 })
                 .RuleFor(p => p.SubscribedDate, (f, e) =>
                 {
-                    var user = users.ToList().Find(a => a.Id == e.UserId);
-                    return f.Date.Between(user?.RegisteredAt ?? DateTime.Now, DateTime.Now);
+                    var user = users.ToList().Find(a => a.Id == e.UserId)!;
+                    return f.Date.Between(user.RegisteredAt, user.RegisteredAt.AddYears(1));
                 })
-                .RuleFor(p => p.StartDate, (f, e) =>
-                {
-                    return f.Date.Between(e.SubscribedDate, DateTime.Now);
-                })
-                .RuleFor(p => p.EndDate, (f, e) =>
-                {
-                    return f.Date.Between(e.StartDate, e.StartDate.AddYears(1));
-                })
-                .RuleFor(p => p.UnsubscribedDate, (f, e) =>
-                {
-                    return f.Date.Between(e.SubscribedDate, DateTime.Now).OrNull(f, 0.07f);
-                })
+                .RuleFor(p => p.StartDate, (f, e) => f.Date.Between(e.SubscribedDate, e.SubscribedDate.AddMonths(6)))
+                .RuleFor(p => p.EndDate, (f, e) => f.Date.Between(e.StartDate, e.StartDate.AddYears(1)))
+                .RuleFor(p => p.UnsubscribedDate, (f, e) => f.Date.Between(e.SubscribedDate, e.SubscribedDate.AddMonths(6)).OrNull(f, 0.07f))
                 .RuleFor(e => e.IsActive, f => f.Random.Bool())
                 .Generate(count);
         }
 
-        private static ICollection<Test> GenerateTests(ICollection<User> users, ICollection<ChallengeVersion> challengeVersions, int count = 200)
+        private static ICollection<Test> GenerateTests(ICollection<User> users, ICollection<ChallengeVersion> challengeVersions, int count = 100)
         {
             Faker.GlobalUniqueIndex = 0;
 
@@ -185,13 +166,13 @@ namespace LeetWars.Core.DAL.Context
                 .RuleFor(e => e.CreatedBy, f => f.PickRandom(users).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
                 {
-                    var challengeVersion = challengeVersions.ToList().Find(a => a.Id == e.ChallengeVersionId);
-                    return f.Date.Between(challengeVersion?.CreatedAt ?? DateTime.Now, DateTime.Now);
+                    var challengeVersion = challengeVersions.ToList().Find(a => a.Id == e.ChallengeVersionId)!;
+                    return f.Date.Between(challengeVersion.CreatedAt, new DateTime(2022, 11, 30, 0, 0, 0, DateTimeKind.Utc));
                 })
                 .Generate(count);
         }
 
-        private static ICollection<UserSolution> GenerateUserSolutions(ICollection<User> users, ICollection<ChallengeVersion> challengeVersions, int count = 200)
+        private static ICollection<UserSolution> GenerateUserSolutions(ICollection<User> users, ICollection<ChallengeVersion> challengeVersions, int count = 100)
         {
             Faker.GlobalUniqueIndex = 0;
 
@@ -203,13 +184,10 @@ namespace LeetWars.Core.DAL.Context
                 .RuleFor(e => e.ChallengeVersionId, f => f.PickRandom(challengeVersions).Id)
                 .RuleFor(p => p.CreatedAt, (f, e) =>
                 {
-                    var challengeVersion = challengeVersions.ToList().Find(a => a.Id == e.ChallengeVersionId);
-                    return f.Date.Between(challengeVersion?.CreatedAt ?? DateTime.Now, DateTime.Now);
+                    var challengeVersion = challengeVersions.ToList().Find(a => a.Id == e.ChallengeVersionId)!;
+                    return f.Date.Between(challengeVersion.CreatedAt, new DateTime(2023, 9, 20, 0, 0, 0, DateTimeKind.Utc));
                 })
-                .RuleFor(p => p.SubmittedAt, (f, e) =>
-                {
-                    return f.Date.Between(e.CreatedAt, DateTime.Now).OrNull(f, 0.1f);
-                })
+                .RuleFor(p => p.SubmittedAt, (f, e) => f.Date.Between(e.CreatedAt, new DateTime(2023, 9, 22, 0, 0, 0, DateTimeKind.Utc)).OrNull(f, 0.1f))
                 .Generate(count);
         }
 
@@ -219,7 +197,9 @@ namespace LeetWars.Core.DAL.Context
 
             return new Faker<UserBadge>()
                 .CustomInstantiator(f => new UserBadge(f.PickRandom(users).Id, f.PickRandom(SeedDefaults.Badges.AsEnumerable()).Id))
+                .UseSeed(SeedDefaults.BadgeSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
+                .RuleFor(e => e.CreatedAt, f => f.Date.Between(new DateTime(2021, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(2023, 7, 20, 0, 0, 0, DateTimeKind.Utc)))
                 .Generate(count);
         }
 
@@ -234,7 +214,6 @@ namespace LeetWars.Core.DAL.Context
                         f.Name.LastName().LimitLength(EntitySettings.MaxGeneralNameLength),
                         f.Internet.UserName().LimitLength(EntitySettings.MaxUserNameLength - 3) + (uniqueIntForUserId++),
                         f.Internet.Email().LimitLength(EntitySettings.MaxEmailLength),
-                        f.Random.String2(30) + ".jpg",
                         f.Random.AlphaNumeric(32)))
                 .UseSeed(SeedDefaults.UserSeed)
                 .RuleFor(e => e.Id, f => f.IndexGlobal)
@@ -248,8 +227,41 @@ namespace LeetWars.Core.DAL.Context
                 .RuleFor(e => e.Reputation, (f, e) => e.TotalScore / 10)
                 .RuleFor(e => e.IsBanned, f => f.Random.Bool(0.05f))
                 .RuleFor(e => e.IsSubscribed, f => f.Random.Bool(0.8f))
-                .RuleFor(p => p.RegisteredAt, f => f.Date.Between(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc), DateTime.Now))
+                .RuleFor(p => p.RegisteredAt, f => f.Date.Between(new DateTime(2019, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(2021, 12, 31, 0, 0, 0, DateTimeKind.Utc)))
                 .Generate(count);
+        }
+        private static ICollection<Friendship> GenerateFriendships(int count = 30)
+        {
+            Faker.GlobalUniqueIndex = 0;
+
+            return new Faker<Friendship>()
+                .CustomInstantiator(f => new Friendship())
+                .UseSeed(SeedDefaults.Friendship)
+                .RuleFor(e => e.Id, f => f.IndexGlobal)
+                .RuleFor(e => e.Status, f => f.PickRandom<FriendshipStatus>())
+                .RuleFor(e => e.CreatedAt, f => f.Date.Between(new DateTime(2023, 6, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(2022, 8, 1, 0, 0, 0, DateTimeKind.Utc)))
+                .Generate(count);
+        }
+
+        private static ICollection<UserFriendship> GenerateUserFriendships(ICollection<User> users, ICollection<Friendship> friendships)
+        {
+            Faker.GlobalUniqueIndex = 0;
+
+            var userFriendships = new List<UserFriendship>();
+            foreach (var (friendship, recipientUser, senderUserFriendship) in from friendship in friendships
+                                                                              let faker = new Faker()
+                                                                              let senderUser = faker.PickRandom(users)
+                                                                              let recipientUsers = users.Where(u => u.Id != senderUser.Id).ToList()
+                                                                              let recipientUser = faker.PickRandom(recipientUsers)
+                                                                              let senderUserFriendship = new UserFriendship(senderUser.Id, friendship.Id, true)
+                                                                              select (friendship, recipientUser, senderUserFriendship))
+            {
+                userFriendships.Add(senderUserFriendship);
+                var recipientUserFriendship = new UserFriendship(recipientUser.Id, friendship.Id, false);
+                userFriendships.Add(recipientUserFriendship);
+            }
+
+            return userFriendships;
         }
     }
 }

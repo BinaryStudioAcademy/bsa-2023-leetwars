@@ -1,13 +1,12 @@
-using System.Linq.Expressions;
-using System.Security.Cryptography;
 using AutoMapper;
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
 using LeetWars.Core.Common.DTO.ChallengeLevel;
 using LeetWars.Core.Common.DTO.ChallengeStar;
-using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.ChallengeVersion;
+using LeetWars.Core.Common.DTO.CodeFight;
+using LeetWars.Core.Common.DTO.CodeRunRequest;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
@@ -17,6 +16,8 @@ using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -43,7 +44,7 @@ namespace LeetWars.Core.BLL.Services
         }
 
         public async Task<ICollection<ChallengePreviewDto>> GetChallengesAsync(ChallengesFiltersDto filters,
-            PageSettingsDto? page, SortingModel? sortingModel)
+                    PageSettingsDto? page, SortingModel? sortingModel)
         {
             var challenges = _context.Challenges
                 .Include(challenge => challenge.Tags)
@@ -90,9 +91,9 @@ namespace LeetWars.Core.BLL.Services
                     filterTags.All(tag => challenge.Tags.Contains(tag)));
             }
 
-            if(filters.SkillLevel is not null)
+            if (filters.SkillLevel is not null)
             {
-                challenges = challenges.Where(challenge => 
+                challenges = challenges.Where(challenge =>
                 challenge.Level != null && challenge.Level.SkillLevel == filters.SkillLevel);
             }
 
@@ -118,14 +119,23 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
                         .ThenInclude(solution => solution.User)
-                .Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId))
                 .AsQueryable();
+
+            if (settings.LanguageId is not null)
+            {
+                challenges = challenges.Where(c => c.Versions.Any(v => v.LanguageId == settings.LanguageId));
+            }
 
             challenges = await FilterChallengesBySuggestionTypeAsync(challenges, settings);
 
             var randomPosition = GetRandomInt(challenges.Count());
 
             return _mapper.Map<ChallengePreviewDto>(await challenges.Skip(randomPosition).FirstOrDefaultAsync());
+        }
+
+        public async Task<List<ChallengeLevelDto>> GetChallengeLevelsAsync()
+        {
+            return _mapper.Map<List<ChallengeLevelDto>>(await _context.ChallengeLevels.ToListAsync());
         }
 
         public async Task<ChallengeFullDto> GetChallengeFullDtoByIdAsync(long id)
@@ -149,12 +159,12 @@ namespace LeetWars.Core.BLL.Services
                     throw new NotFoundException(nameof(ChallengeStar));
                 }
 
-                var briefChallenge = await GetBriefChallengeInfoById(challengeStarDto.Challenge.Id);
+                var briefChallenge = await GetBriefChallengeInfoByIdAsync(challengeStarDto.Challenge.Id);
 
                 var newNotification = new NewNotificationDto()
                 {
                     ReceiverId = briefChallenge.Author.Id.ToString(),
-                    Sender = await _userService.GetBriefUserInfoById(challengeStarDto.AuthorId),
+                    Sender = await _userService.GetBriefUserInfoByIdAsync(challengeStarDto.AuthorId),
                     TypeNotification = TypeNotifications.LikeChallenge,
                     Challenge = briefChallenge
                 };
@@ -182,7 +192,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<ChallengePreviewDto>(challenge);
         }
 
-        public async Task CreateChallengeAsync(NewChallengeDto challengeDto)
+        public async Task<ChallengeFullDto> CreateChallengeAsync(NewChallengeDto challengeDto)
         {
             var currentUser = _userGetter.GetCurrentUserOrThrow();
             var challenge = _mapper.Map<Challenge>(challengeDto);
@@ -215,7 +225,7 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
 
-            var briefChallenge = await GetBriefChallengeInfoById(challenge.Id);
+            var briefChallenge = await GetBriefChallengeInfoByIdAsync(challenge.Id);
 
             var newNotification = new NewNotificationDto()
             {
@@ -225,6 +235,8 @@ namespace LeetWars.Core.BLL.Services
             };
 
             _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
+
+            return _mapper.Map<ChallengeFullDto>(challenge);
         }
 
         public async Task<ChallengeFullDto> EditChallengeAsync(ChallengeEditDto challengeEditDto)
@@ -252,13 +264,78 @@ namespace LeetWars.Core.BLL.Services
             await _context.SaveChangesAsync();
         }
 
-        private async Task<BriefChallengeInfoDto> GetBriefChallengeInfoById(long challengeId)
+        public async Task SetWeeklyChallengesAsync()
+        {
+            await ResetLastWeeklyChallengeAsync();
+
+            var levels = Enum.GetValues(typeof(LanguageLevel))
+                                            .Cast<LanguageLevel>()
+                                            .ToArray();
+
+            foreach (var level in levels)
+            {
+                var challengesByLevel = _context.Challenges
+                    .Where(x => x.Level != null && x.Level.SkillLevel == level)
+                    .AsQueryable();
+
+                var randomPosition = GetRandomInt(await challengesByLevel.CountAsync());
+                var weeklyChallenge = await challengesByLevel.Skip(randomPosition).FirstOrDefaultAsync();
+                if (weeklyChallenge is not null)
+                {
+                    weeklyChallenge.IsWeekly = true;
+                    _context.Update(weeklyChallenge);
+                }
+            }
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<BriefChallengeInfoDto> GetBriefChallengeInfoByIdAsync(long challengeId)
         {
             var challenge = await _context.Challenges
                 .Include(x => x.Author)
                 .FirstOrDefaultAsync(challenge => challenge.Id == challengeId);
 
             return _mapper.Map<BriefChallengeInfoDto>(challenge);
+        }
+
+        public async Task<BriefChallengeInfoDto> GetCodeFightChallengeAsync(CodeFightChallengeSettingsDto settings)
+        {
+            var challenges = _context.Challenges
+                .Include(challenge => challenge.Author)
+                .Include(challenge => challenge.Versions)
+                    .ThenInclude(challengeVersion => challengeVersion.Language)
+                .Include(challenge => challenge.Level)
+                .Where(challenge => challenge.Level!.SkillLevel == settings.Level &&
+                       challenge.Versions.Any(challengeversion => challengeversion.LanguageId == settings.LanguageId));
+
+            if (!await challenges.AnyAsync())
+            {
+                var randomPositionWhenNochallenges = GetRandomInt(await _context.Challenges.CountAsync());
+
+                return _mapper.Map<BriefChallengeInfoDto>(await _context.Challenges.Skip(randomPositionWhenNochallenges).FirstAsync());
+            }
+
+            var randomPosition = GetRandomInt(challenges.Count());
+
+            return _mapper.Map<BriefChallengeInfoDto>(await challenges.Skip(randomPosition).FirstAsync());
+        }
+
+        public void SendCodeRunRequest(CodeRunRequestDto request)
+        {
+            _builderSenderService.SendNotificationToRabbitMQ(request);
+        }
+
+        private async Task ResetLastWeeklyChallengeAsync()
+        {
+            var weeklyChallengesToReset = await _context.Challenges
+                .Where(x => x.IsWeekly)
+                .ToListAsync();
+
+            weeklyChallengesToReset
+                .ForEach(challenge => challenge.IsWeekly = false);
+
+            _context.UpdateRange(weeklyChallengesToReset);
+            await _context.SaveChangesAsync();
         }
 
         private void UpdateChallengeVersions(Challenge challenge, ICollection<EditChallengeVersionDto> versions, long currentUserId)
@@ -289,7 +366,6 @@ namespace LeetWars.Core.BLL.Services
                 }).ToList();
 
             _context.ChallengeTags.AddRange(editedChallengeTags);
-
         }
 
         private async Task<Challenge> GetChallengeByIdAsync(long challengeId)
@@ -299,12 +375,9 @@ namespace LeetWars.Core.BLL.Services
                 .Include(challenge => challenge.Tags)
                 .Include(challenge => challenge.Author)
                 .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.Language!)
-                    .ThenInclude(language => language.LanguageVersions)
+                    .ThenInclude(version => version.Language)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Solutions)
-                .Include(challenge => challenge.Versions)
-                    .ThenInclude(version => version.LanguageVersions)
                 .Include(challenge => challenge.Versions)
                     .ThenInclude(version => version.Author)
                 .Include(challenge => challenge.Stars)
@@ -323,7 +396,7 @@ namespace LeetWars.Core.BLL.Services
                     .SingleOrDefaultAsync(condition);
         }
 
-        private async Task<LanguageLevel> GetUserLevelAsync(long languageId)
+        private async Task<LanguageLevel> GetUserLevelAsync(long? languageId)
         {
             var userId = _userGetter.CurrentUserId;
             var userLevel = await _context
@@ -370,6 +443,8 @@ namespace LeetWars.Core.BLL.Services
                     challenge.Level != null && challenge.Level.SkillLevel == userNextLevel),
                 SuggestionType.PracticeAndRepeat => challenges.Where(challenge => challenge.Versions.Any(version =>
                     version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId))),
+                SuggestionType.Weekly => challenges.Where(challenge =>
+                    challenge.Level != null && challenge.Level.SkillLevel == userLevel && challenge.IsWeekly),
                 _ => challenges
             };
         }
@@ -406,10 +481,6 @@ namespace LeetWars.Core.BLL.Services
 
                 return randomValue % maxValue;
             }
-        }
-        public void SendCodeRunRequest(CodeRunRequestDto request)
-        {
-            _builderSenderService.SendNotificationToRabbitMQ(request);
         }
     }
 }

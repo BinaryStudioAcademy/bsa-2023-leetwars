@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { IUser } from '@shared/models/user/user';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
-import { Subject, takeUntil } from 'rxjs';
+import { firstValueFrom, takeUntil } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
 
@@ -16,43 +18,53 @@ import { getInactiveBars } from './user-profile.utils';
     templateUrl: './user-profile.component.html',
     styleUrls: ['./user-profile.component.sass'],
 })
-export class UserProfileComponent implements OnInit {
-    user?: IUser | null;
-
+export class UserProfileComponent extends BaseComponent implements OnInit {
     fullUser: IUserFull;
 
     userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
 
     bars: IBar[] = [];
 
-    private unsubscribe$ = new Subject<void>();
+    isCurrentUser: Boolean = false;
+
+    isFriend: Boolean = false;
+
+    private user: IUser;
+
+    currentUser?: IUser | null;
 
     constructor(
         private userService: UserService,
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
+        private route: ActivatedRoute,
     ) {
-        this.user = this.authService.getUserInfo();
+        super();
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.user = user;
+        });
     }
 
     ngOnInit(): void {
-        this.getUserInfo();
-        this.getUserChallenges();
+        this.getCurrentUser();
     }
 
-    private getUserInfo() {
+    private getUserInfo(id: number) {
         this.userService
-            .getFullUser(this.user!.id)
+            .getFullUser(id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next: (result) => { this.fullUser = result; },
+                next: (result) => {
+                    this.user = result;
+                    this.fullUser = result;
+                },
                 error: () => { this.toastrNotification.showError('User not found'); },
             });
     }
 
-    private getUserChallenges() {
+    private getUserChallenges(id: number) {
         this.userService
-            .getUserChallengesInfoByTags(this.user!.id)
+            .getUserChallengesInfoByTags(id)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (result: IUserSolutionsGroupedBySkillLevel[]) => {
@@ -66,7 +78,29 @@ export class UserProfileComponent implements OnInit {
                         ...getInactiveBars(result),
                     ];
                 },
-                error: () => { this.toastrNotification.showError('Server connection error'); },
+                error: () => {
+                    this.toastrNotification.showError('Server connection error');
+                },
             });
+    }
+
+    private async getCurrentUser() {
+        try {
+            const result = await firstValueFrom(this.userService.getCurrentUser());
+
+            this.currentUser = result;
+
+            this.route.paramMap.subscribe((params) => {
+                const userId = params.get('id') as unknown as number;
+
+                this.isCurrentUser = !userId || this.currentUser?.id === userId;
+                const curentUserId = this.isCurrentUser ? this.user.id : userId;
+
+                this.getUserInfo(curentUserId);
+                this.getUserChallenges(curentUserId);
+            });
+        } catch (error) {
+            this.toastrNotification.showError('User not found');
+        }
     }
 }

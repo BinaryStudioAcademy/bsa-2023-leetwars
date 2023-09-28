@@ -1,11 +1,14 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { INewFriendship } from '@shared/models/friendship/new-friendship';
+import { IUpdateFriendship } from '@shared/models/friendship/update-friendship';
 import { IPageSettings } from '@shared/models/page-settings';
 import { IEditUser } from '@shared/models/user/edit-user';
 import { IEditUserInfo } from '@shared/models/user/edit-user-info';
 import { INewUser } from '@shared/models/user/new-user';
 import { IUser } from '@shared/models/user/user';
 import { IUserAvatar } from '@shared/models/user/user-avatar';
+import { IUserFriendsInfo } from '@shared/models/user/user-friends-info';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 import { setParams } from '@shared/utils/http-params.utils';
@@ -21,41 +24,45 @@ export class UserService {
 
     constructor(private httpService: HttpInternalService) {}
 
-    public createUser(newUser: INewUser): Observable<IUser> {
+    createUser(newUser: INewUser): Observable<IUser> {
         return this.httpService.postRequest<IUser>(`${this.baseUrl}`, newUser);
     }
 
-    public getCurrentUser(): Observable<IUser> {
+    getCurrentUser(): Observable<IUser> {
         return this.httpService.getRequest<IUser>(`${this.baseUrl}/current`);
     }
 
-    public checkEmail(email: string): Observable<boolean> {
+    checkEmail(email: string): Observable<boolean> {
         return this.httpService.getRequest<boolean>(`${this.baseUrl}/is-existing-email?email=${email}`);
     }
 
-    public checkUserName(userName: string): Observable<boolean> {
+    checkUserName(userName: string): Observable<boolean> {
         return this.httpService.getRequest<boolean>(`${this.baseUrl}/is-existing-username?username=${userName}`);
     }
 
-    public getFullUser(id: number): Observable<IUserFull> {
-        return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/${id}`);
+    getUser(id: number): Observable<IUser> {
+        return this.httpService.getRequest<IUser>(`${this.baseUrl}/${id}`);
     }
 
-    public updateUser(editUserInfo: IEditUserInfo): Observable<IUser> {
+    getFullUser(id: number): Observable<IUserFull> {
+        return this.httpService.getRequest<IUserFull>(`${this.baseUrl}/full/${id}`);
+    }
+
+    updateUser(editUserInfo: IEditUserInfo): Observable<IUser> {
         return this.httpService.putRequest<IUser>(`${this.baseUrl}`, editUserInfo);
     }
 
-    public updateUserAvatar(fileFormData: FormData): Observable<IUserAvatar> {
+    updateUserAvatar(fileFormData: FormData): Observable<IUserAvatar> {
         return this.httpService.postRequest<IUserAvatar>(`${this.baseUrl}/avatar`, fileFormData);
     }
 
-    public getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {
+    getUserChallengesInfoByTags(id: number): Observable<IUserSolutionsGroupedBySkillLevel[]> {
         return this.httpService.getRequest<IUserSolutionsGroupedBySkillLevel[]>(
             `${this.baseUrl}/${id}/user-challenges`,
         );
     }
 
-    public getLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
+    getLeaderBoard(page?: IPageSettings): Observable<IUser[]> {
         let httpParams = new HttpParams();
 
         httpParams = setParams<IPageSettings>(httpParams, page);
@@ -63,7 +70,22 @@ export class UserService {
         return this.httpService.getRequest<IUser[]>(`${this.baseUrl}/leader-board`, httpParams);
     }
 
-    public updateUserRank(userDto: IEditUser): Observable<IUserFull> {
+    updateUserRank(userDto: IEditUser): Observable<IUserFull> {
         return this.httpService.putRequest<IUserFull>(`${this.baseUrl}/rank`, userDto);
+    }
+
+    sendFriendshipRequest(newFriendship: INewFriendship): Observable<IUserFriendsInfo> {
+        return this.httpService.postRequest<IUserFriendsInfo>(`${this.baseUrl}/send-friendship-request`, newFriendship);
+    }
+
+    updateFriendshipRequest(updateFriendship: IUpdateFriendship): Observable<IUserFriendsInfo> {
+        return this.httpService.putRequest<IUserFriendsInfo>(
+            `${this.baseUrl}/update-friendship-request`,
+            updateFriendship,
+        );
+    }
+
+    getUserFriendships(id: number): Observable<IUserFriendsInfo> {
+        return this.httpService.getRequest<IUserFriendsInfo>(`${this.baseUrl}/user-friendships?userid=${id}`);
     }
 }

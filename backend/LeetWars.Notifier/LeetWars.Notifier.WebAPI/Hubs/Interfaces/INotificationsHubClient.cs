@@ -1,9 +1,16 @@
-﻿using LeetWars.Core.Common.DTO.Notifications;
+﻿using LeetWars.Core.Common.DTO.CodeFight;
+using LeetWars.Core.Common.DTO.Friendship;
+using LeetWars.Core.Common.DTO.Notifications;
 
 namespace LeetWars.Notifier.WebAPI.Hubs.Interfaces
 {
     public interface INotificationsHubClient
     {
-        Task SendNotification(NewNotificationDto newNotification);
+        Task SendNotificationAsync(NewNotificationDto newNotification);
+        Task StartCodeFightAsync(CodeFightStartDto codeFightDto);
+        Task WinCodeFightAsync(NewNotificationDto newNotification);
+        Task LoseCodeFightAsync(NewNotificationDto newNotification);
+        Task CodeFightRequestAsync(CodeFightRequestNotificationDto notification);
+        Task UpdateFriendshipAsync(FriendshipPreviewDto notification);
     }
 }

@@ -1,11 +1,13 @@
-﻿using LeetWars.RabbitMQ;
+﻿using LeetWars.Core.Common.DTO.CodeFight;
+using LeetWars.Core.Common.DTO.Friendship;
+using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Notifier.WebAPI.Hubs;
+using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
+using LeetWars.RabbitMQ;
 using Microsoft.AspNetCore.SignalR;
 using RabbitMQ.Client.Events;
 using System.Text;
-using LeetWars.Notifier.WebAPI.Hubs;
-using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using System.Text.Json;
-using LeetWars.Core.Common.DTO.Notifications;
 
 namespace LeetWars.Notifier.WebAPI.Services
 {
@@ -19,7 +21,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             _hubContext = hubContext;
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
             {
@@ -28,7 +30,7 @@ namespace LeetWars.Notifier.WebAPI.Services
 
                 var notificationDto = JsonSerializer.Deserialize<NewNotificationDto>(message);
 
-                if(notificationDto is null)
+                if (notificationDto is null)
                 {
                     return;
                 }
@@ -39,6 +41,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             });
 
             _consumerService.Listen(handler);
+            return Task.CompletedTask;
         }
 
         private async Task SendNotificationAsync(NewNotificationDto notificationDto)
@@ -46,17 +49,116 @@ namespace LeetWars.Notifier.WebAPI.Services
             switch (notificationDto.TypeNotification)
             {
                 case TypeNotifications.NewChallenge:
-                    await _hubContext.Clients.All.SendNotification(notificationDto);
+                    await SendNotificationToAllUsersAsync(notificationDto);
                     break;
+
                 case TypeNotifications.LikeChallenge:
-                    if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
-                    {
-                        await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotification(notificationDto);
-                    }
+                    await SendSingleNotificationAsync(notificationDto);
                     break;
+
+                case TypeNotifications.CodeFightRequestStart:
+                    await SendCodeFightNotificationToAllAsync(notificationDto);
+                    await SendSingleNotificationAsync(notificationDto);
+                    break;
+
+                case TypeNotifications.CodeFightRequestEnd:
+                    await SendCodeFightNotificationToAllAsync(notificationDto);
+                    break;
+
+                case TypeNotifications.CodeFightStart:
+                    await StartCodeFightAsync(notificationDto);
+                    await SendCodeFightNotificationToAllAsync(notificationDto);
+                    break;
+
+                case TypeNotifications.CodeFightEnd:
+                    await SendCodeFightResultsAsync(notificationDto);
+                    await SendCodeFightNotificationToAllAsync(notificationDto);
+                    break;
+
+                case TypeNotifications.FriendRequest:
+                    await SendSingleNotificationAsync(notificationDto);
+                    await SendFrienshipUpdateAsync(notificationDto);
+                    break;
+
+                case TypeNotifications.UpdateFriendRequest:
+                    await SendFrienshipUpdateAsync(notificationDto);
+                    break;
+
                 default:
-                    await Task.CompletedTask;
-                    break;
+                    return;
+            }
+        }
+
+        private async Task SendNotificationToAllUsersAsync(NewNotificationDto notificationDto)
+        {
+            await _hubContext.Clients.All.SendNotificationAsync(notificationDto);
+        }
+
+        private async Task SendSingleNotificationAsync(NewNotificationDto notificationDto)
+        {
+            if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
+            {
+                await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotificationAsync(notificationDto);
+            }
+        }
+
+        private async Task StartCodeFightAsync(NewNotificationDto notificationDto)
+        {
+            if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
+                        && notificationDto.Sender is not null
+                        && notificationDto.Challenge is not null)
+            {
+                var redirectDto = new CodeFightStartDto()
+                {
+                    ReceiverId = notificationDto.ReceiverId,
+                    SenderId = notificationDto.Sender.Id.ToString(),
+                    ChallengeId = notificationDto.Challenge.Id,
+                    Notification = notificationDto
+                };
+
+                await _hubContext.Clients.Groups(redirectDto.ReceiverId, redirectDto.SenderId).StartCodeFightAsync(redirectDto);
+            }
+        }
+
+        private async Task SendCodeFightNotificationToAllAsync(NewNotificationDto notificationDto)
+        {
+            if (!string.IsNullOrEmpty(notificationDto.ReceiverId) && notificationDto.Sender is not null)
+            {
+                var notification = new CodeFightRequestNotificationDto
+                {
+                    SenderId = notificationDto.Sender.Id,
+                    ReceiverId = long.Parse(notificationDto.ReceiverId),
+                    Notification = notificationDto
+                };
+
+                await _hubContext.Clients.All.CodeFightRequestAsync(notification);
+            }
+        }
+
+        private async Task SendCodeFightResultsAsync(NewNotificationDto notificationDto)
+        {
+            if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
+            && notificationDto.Sender is not null)
+            {
+                await _hubContext.Clients.Groups(notificationDto.Sender.Id.ToString()).WinCodeFightAsync(notificationDto);
+                await _hubContext.Clients.Groups(notificationDto.ReceiverId).LoseCodeFightAsync(notificationDto);
+            }
+        }
+
+        private async Task SendFrienshipUpdateAsync(NewNotificationDto notificationDto)
+        {
+            if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
+                && notificationDto.Sender is not null)
+            {
+                var friendshipPreviewDto = new FriendshipPreviewDto
+                {
+                    FriendId = long.Parse(notificationDto.ReceiverId),
+                    FriendshipId = notificationDto.UpdateFriendship!.FriendshipId,
+                    FriendshipStatus = notificationDto.UpdateFriendship.FriendshipStatus,
+                };
+                await _hubContext.Clients.Groups(notificationDto.Sender.Id.ToString()).UpdateFriendshipAsync(friendshipPreviewDto);
+                friendshipPreviewDto.FriendId = notificationDto.Sender.Id;
+                await _hubContext.Clients.Groups(notificationDto.ReceiverId).UpdateFriendshipAsync(friendshipPreviewDto);
             }
         }
     }

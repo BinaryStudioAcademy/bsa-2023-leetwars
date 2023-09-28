@@ -8,9 +8,10 @@ namespace LeetWars.Core.Common.DTO.Challenge
     public class ChallengePreviewDto : AuditEntity<long>
     {
         public string AuthorName { get; set; } = string.Empty;
+        public string? AuthorAvatarPath { get; set; }
         public LanguageLevel? LevelName { get; set; }
-        public string Title { get; set; } = string.Empty;        
-        public string Instructions { get; set; } = string.Empty; 
+        public string Title { get; set; } = string.Empty;
+        public string Instructions { get; set; } = string.Empty;
         public ChallengeCategory Category { get; set; }
         public ICollection<TagDto>? Tags { get; set; }
         public ICollection<LanguageDto>? Languages { get; set; }

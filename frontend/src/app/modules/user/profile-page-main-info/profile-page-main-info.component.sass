@@ -120,13 +120,16 @@
     top: 50%
     transform: translateY(-50%)
 
-.skills-list-item-text.advanced::before
+.skills-list-item-text.extreme::before
+    background-color: $maroon
+
+.skills-list-item-text.difficult::before
     background-color: $vibrant-red
 
-.skills-list-item-text.intermediate::before
+.skills-list-item-text.medium::before
     background-color: $brigth-yellow
 
-.skills-list-item-text.fundamental::before
+.skills-list-item-text.easy::before
     background-color: $fresh-green
 
 // =====shared=====
@@ -176,11 +179,10 @@
     overflow-y: auto
 
 .skills-item
-    border:  1px solid $black
+    border: 1px solid $black
     border-radius: 8px
     padding: 5px
     font-size: 10px
     display: inline-block
     width: fit-content
     color: $white
-

@@ -2,15 +2,23 @@
     <div class="profile-main-info-header info-container">
         <div class="user-info-container d-flex flex-row">
             <div class="user-avatar-container">
-                <img [src]="user.imagePath ?? 'assets/images/default-profile-img.jpg'" alt="User avatar"
-                    class="user-avatar">
+                <img
+                    [src]="user.imagePath ?? 'assets/images/default-profile-img.jpg'"
+                    alt="User avatar"
+                    class="user-avatar" />
             </div>
             <div class="user-info d-flex flex-column">
-                <p class="username">{{user.userName}}</p>
-                <p class="user-rank"><span>Rank</span>{{user.totalScore}}</p>
+                <p class="username">{{ user.userName }}</p>
+                <p class="user-rank"><span>Rank</span>{{ user.totalScore }}</p>
             </div>
         </div>
-        <button class="edit-profile-btn" (click)="onEditProfile()">Edit Profile</button>
+        <button *ngIf="isCurrentUser; else NotCurrentUser" class="edit-profile-btn" (click)="onEditProfile()">Edit Profile</button>
+        <ng-template #NotCurrentUser>
+            <button *ngIf="isFriend === false; else Friend" class="edit-profile-btn">Send Friend Request</button>
+            <ng-template #Friend>
+                <button class="edit-profile-btn">Delete Friend</button>
+            </ng-template>
+        </ng-template>
     </div>
     <div class="profile-main-info-content">
         <div class="community-stats-container info-container">
@@ -19,49 +27,70 @@
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="views community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'eye'"></fa-icon>
-                        <p class="list-item-main-text">Views<span>{{communityViews}}</span></p>
+                        <p class="list-item-main-text">
+                            Views<span>{{ communityViews }}</span>
+                        </p>
                     </div>
-                    <p class="last-week-stats">Last week<span>{{communityLastWeekViews}}</span></p>
+                    <p class="last-week-stats">
+                        Last week<span>{{ communityLastWeekViews }}</span>
+                    </p>
                 </li>
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="solution community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'square-check'"></fa-icon>
-                        <p class="list-item-main-text">Solution<span>{{user.solutions?.length}}</span></p>
+                        <p class="list-item-main-text">
+                            Solution<span>{{ user.solutions?.length }}</span>
+                        </p>
                     </div>
-                    <p class="last-week-stats">Last week<span>{{communityLastWeekSolution}}</span></p>
+                    <p class="last-week-stats">
+                        Last week<span>{{ communityLastWeekSolution }}</span>
+                    </p>
                 </li>
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="discuss community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'comments'"></fa-icon>
-                        <p class="list-item-main-text">Discuss<span>{{communityDiscuss}}</span></p>
+                        <p class="list-item-main-text">
+                            Discuss<span>{{ communityDiscuss }}</span>
+                        </p>
                     </div>
-                    <p class="last-week-stats">Last week<span>{{communityLastWeekDiscuss}}</span></p>
+                    <p class="last-week-stats">
+                        Last week<span>{{ communityLastWeekDiscuss }}</span>
+                    </p>
                 </li>
                 <li class="community-stats-list-item d-flex flex-column">
                     <div class="reputation community-stats-list-item-container d-flex flex-row">
                         <fa-icon [icon]="'star'"></fa-icon>
-                        <p class="list-item-main-text">Reputation<span>{{user.reputation}}</span></p>
+                        <p class="list-item-main-text">
+                            Reputation<span>{{ user.reputation }}</span>
+                        </p>
                     </div>
-                    <p class="last-week-stats">Last week<span>{{communityLastWeekReputation}}</span></p>
+                    <p class="last-week-stats">
+                        Last week<span>{{ communityLastWeekReputation }}</span>
+                    </p>
                 </li>
             </ul>
         </div>
         <div class="languages-container info-container">
             <p class="content-section-name">Languages</p>
             <div class="languages-item-container">
-                <div class="languages-item" *ngFor="let language of user.preferredLanguages">{{language.name}}</div>
+                <div class="languages-item" *ngFor="let language of user.preferredLanguages">{{ language.name }}</div>
             </div>
         </div>
         <div class="skills-container info-container">
             <p class="content-section-name">Skills</p>
             <ul class="skills-list d-flex flex-column" *ngFor="let userSolution of userSolutions">
                 <li class="skills-list-item">
-                    <div class="skills-list-item-container d-flex flex-column ">
-                        <p class="skills-list-item-text advanced">{{userSolution.name}}
+                    <div class="skills-list-item-container d-flex flex-column">
+                        <p class="skills-list-item-text {{ userSolution.name.toLowerCase() }}">
+                            {{ userSolution.name }}
                         </p>
                         <div class="scroll-container">
                             <ng-container
-                                *ngIf="!userSolution.taskCountDtos?.length; then noData; else hasAdvanceData"></ng-container>
+                                *ngIf="
+                                    !userSolution.taskCountDtos?.length;
+                                    then noData;
+                                    else hasAdvanceData
+                                "></ng-container>
                             <ng-template #noData>
                                 <p class="not-enough-data">Not enough data</p>
                             </ng-template>
@@ -69,8 +98,8 @@
                                 <div class="skills-list">
                                     <div *ngFor="let item of userSolution.taskCountDtos" class="skill">
                                         <div class="name-container">
-                                            <div class="skills-item">{{item.name}}</div>
-                                            <span>x{{item.challengeCount}}</span>
+                                            <div class="skills-item">{{ item.name }}</div>
+                                            <span>x{{ item.challengeCount }}</span>
                                         </div>
                                     </div>
                                 </div>

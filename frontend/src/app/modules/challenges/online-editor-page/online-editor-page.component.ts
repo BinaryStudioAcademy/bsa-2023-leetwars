@@ -3,16 +3,19 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
+import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
+import { CodeFightService } from '@core/services/code-fight.service';
+import { CodeRunService } from '@core/services/code-run.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SolutionSubmitModalComponent } from '@shared/components/solution-submit-modal/solution-submit-modal.component';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
-import { IChallengeVersion } from '@shared/models/challenge-version/challenge-version';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { ICodeSubmitResult } from '@shared/models/code-run/code-submit-result';
+import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
@@ -36,11 +39,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     selectedLanguage: string;
 
-    selectedLanguageVersion: string;
-
     languages: string[];
-
-    languageVersions: string[];
 
     initialSolution?: string;
 
@@ -54,15 +53,20 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     userId: string;
 
+    isCodeFight: boolean;
+
     private isFullscreen = false;
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
+        private codeFightService: CodeFightService,
         private breakpointObserver: BreakpointObserver,
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
         private modalService: NgbModal,
+        private codeRunService: CodeRunService,
+        private authService: AuthService,
         private router: Router,
     ) {
         super();
@@ -89,12 +93,25 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     ngOnInit() {
         this.splitDirection = 'horizontal';
+
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const challengeId = +params.get('id')!;
 
             this.loadChallenge(challengeId);
         });
+
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.user = user;
+        });
+
+        this.isCodeFight = this.router.url.includes('codefight');
+
         this.subscribeToMessageQueue();
+    }
+
+    override ngOnDestroy() {
+        this.signalRService.stop();
+        super.ngOnDestroy();
     }
 
     showTestResults(testResults: ITestsOutput) {
@@ -112,9 +129,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.selectedLanguage = selectedLang;
 
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
-
-        this.languageVersions = this.getLanguageVersionsByLanguage(selectedLang);
-        [this.selectedLanguageVersion] = this.languageVersions;
     }
 
     onCodeChanged(newCode: string) {
@@ -133,6 +147,15 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return this.activeTab === title;
     }
 
+    giveUpCodeFight() {
+        const codeFightEnd: ICodeFightEnd = {
+            isWinner: false,
+            senderId: this.user.id,
+        };
+
+        this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+    }
+
     subscribeToMessageQueue(): void {
         this.signalRService.start();
     }
@@ -141,12 +164,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.signalRService.codeRunResult$
             .pipe(take(1), takeUntil(this.unsubscribe$))
             .subscribe((codeRunResults: ICodeRunResults) => {
-                if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults) {
-                    this.toastrService.showSuccess('Code was compiled successfully');
-                    this.showTestResults(codeRunResults.testRunResults);
-                } else {
-                    this.toastrService.showError(codeRunResults.buildResults?.buildMessage as string);
-                }
+                this.codeRunService.getCodeRunResults(codeRunResults);
             });
 
         this.sendCode();
@@ -160,14 +178,33 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
                 modalRef.componentInstance.codeRunResults = codeSubmitResults.codeRunResult;
                 modalRef.componentInstance.codeAnalysisResults = codeSubmitResults.codeAnalysisResult;
+
+                this.shouldSendCodeFightEnd(codeSubmitResults.codeRunResult);
             });
 
         this.sendCode(true);
     }
 
+    private shouldSendCodeFightEnd(codeRunResults: ICodeRunResults) {
+        if (this.isCodeFight) {
+            const codeFightEnd: ICodeFightEnd = {
+                isWinner: true,
+                senderId: this.user.id,
+            };
+
+            this.sendCodeFightIfSuccessfullResults(codeRunResults, codeFightEnd);
+        }
+    }
+
+    private sendCodeFightIfSuccessfullResults(codeRunResults: ICodeRunResults, codeFightEnd: ICodeFightEnd) {
+        if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults?.isSuccess) {
+            this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+        }
+    }
+
     private sendCode(isSubmitRequest: boolean = false): void {
         this.solution = {
-            userConnectionId: this.signalRService.singleUserGroupId,
+            userConnectionId: this.user.id.toString(),
             language: this.selectedLanguage,
             userCode: this.initialSolution as string,
             tests: this.testCode,
@@ -195,15 +232,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private setupLanguages(challenge: IChallenge) {
         this.challenge = challenge;
         this.languages = [...new Set(challenge.versions?.map((v) => v.language?.name))];
-        this.languageVersions = [...new Set(this.extractLanguageVersions(challenge.versions))];
 
         [this.selectedLanguage] = this.languages;
-        [this.selectedLanguageVersion] = this.languageVersions;
-    }
-
-    private extractLanguageVersions(versions: IChallengeVersion[]) {
-        return versions.flatMap((version) =>
-            version.language.languageVersions.map((languageVersion) => languageVersion.version));
     }
 
     private setupEditorOptions() {
@@ -212,9 +242,9 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.editorOptions = {
             theme: 'vs-dark',
             language: this.mapLanguageName(this.selectedLanguage),
-            minimap: { enabled: false },
-            automaticLayout: true,
-            useShadows: false,
+            minimap: { isEnabled: false },
+            hasAutomaticLayout: true,
+            hasShadows: false,
             wordWrap: 'on',
             lineNumbers: 'on',
         };
@@ -235,17 +265,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     private mapLanguageName(language?: string): string {
-        return language ? languageNameMap.get(language) || language.toLowerCase() : 'No language available';
-    }
-
-    private getLanguageVersionsByLanguage(language: string) {
-        return this.challenge.versions
-            .filter((version) => this.mapLanguageName(version.language.name) === language)
-            .flatMap((version) => version.language.languageVersions.map((languageVersion) => languageVersion.version));
-    }
-
-    override ngOnDestroy() {
-        this.signalRService.stop();
-        super.ngOnDestroy();
+        return language ? languageNameMap.get(language) || language : 'No language available';
     }
 }

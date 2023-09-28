@@ -17,5 +17,4 @@
     <ProjectReference Include="..\..\LeetWars.RabbitMQ\LeetWars.RabbitMQ.csproj" />
   </ItemGroup>
 
-
 </Project>

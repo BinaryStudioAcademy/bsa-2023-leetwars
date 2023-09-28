@@ -5,7 +5,7 @@
     margin-top: 30px
     display: flex
     justify-content: center
-    align-items: start
+    align-items: flex-start
     height: 100%
 
 .board
@@ -47,7 +47,7 @@
 .user
     gap: 16px
     color: $white
-    div
+    & > div
         font-family: Inter
         font-size: 12px
         line-height: 21px
@@ -55,7 +55,23 @@
         padding-bottom: 11px
 
 .user-name
-    width: 70%
+    width: 50%
+    color: $white
+    @media ( max-width: $small-challenge)
+      width: 40%
+    @media ( max-width: $mobile)
+      width: calc(87% - 132px)
+    &-avatar
+        width: 16px
+        height: 16px
+        border-radius: 50%
+
+.user-link
+    color: $white
+    text-decoration: none
+
+.user-link:hover
+    text-decoration: underline
 
 .total-score
     width: 13%
@@ -64,5 +80,116 @@
     @media (max-width: $mobile)
         text-align: start
 
+.start-fight
+    width: calc(37% - 100px)
+    text-align: center
+    display: flex
+    align-items: center
+    &-text
+        padding-left: 4px
+    @media (max-width: $small-challenge)
+        width: calc(47% - 100px)
+    @media (max-width: $mobile)
+        width: 32px
+        &-text
+            display: none
+
+.add-friend 
+    width: 7%
+    min-width: 25px
+    justify-content: start
+    align-items: center
+    
+.user-icon-btn 
+    padding: 0 3px
+    &:active
+        scale: 93%
+
+.user-plus-btn
+    padding: 0 4px
+
+.user-icon        
+    cursor: pointer
+    color: $cornflower
+    &:hover
+        color: $transparent-cornflower
+
+.user-plus-icon
+    color: inherit
+    &:hover
+        color: $silver
+
 .user:nth-child(even)
-  background-color: $transparent-yellow
+    background-color: $transparent-yellow
+
+.has-request,
+.in-battle,
+.cursor-none
+    cursor: default
+
+.has-request
+    color: $green
+
+.in-battle
+  color: $light-red
+
+.form-check-input
+    cursor: pointer
+
+.form-check-label
+    color: $silver
+    cursor: pointer
+    user-select: none
+
+.form-check-input
+    &:focus
+        border-color: $green
+        box-shadow: none
+
+.form-check-input:checked
+    background-color: $green
+    border-color: $emerald-green
+
+.dot-flashing
+    padding: 0 !important
+    margin-left: 7.5px
+    position: relative
+    width: 5px
+    height: 5px
+    border-radius: 5px
+    background-color: $cornflower
+    color: $cornflower
+    animation: dot-flashing 1s infinite linear alternate
+    animation-delay: 0.5s
+
+    &::before, &::after
+        content: ""
+        display: inline-block
+        position: absolute
+        top: 0
+
+    &::before
+        left: -7.5px
+        width: 5px
+        height: 5px
+        border-radius: 5px
+        background-color: $cornflower
+        color: $cornflower
+        animation: dot-flashing 1s infinite alternate
+        animation-delay: 0s
+
+    &::after
+        left: 7.5px
+        width: 5px
+        height: 5px
+        border-radius: 5px
+        background-color: $cornflower
+        color: $cornflower
+        animation: dot-flashing 1s infinite alternate
+        animation-delay: 1s
+
+@keyframes dot-flashing
+    0%
+        background-color: $cornflower
+    50%, 100%
+        background-color: $ultra-transparent-cornflower

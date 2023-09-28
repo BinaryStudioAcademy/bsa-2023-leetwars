@@ -3,6 +3,7 @@ import { SuggestionType } from '@shared/enums/suggestion-type';
 import { ILanguage } from '@shared/models/language/language';
 
 export const SUGGESTION_TYPE_NAMES = [
+    { type: SuggestionType.Weekly, name: 'Weekly' },
     { type: SuggestionType.Fundamentals, name: 'Fundamentals' },
     { type: SuggestionType.RankUp, name: 'Rank up' },
     { type: SuggestionType.PracticeAndRepeat, name: 'Practice and Repeat' },
@@ -10,10 +11,10 @@ export const SUGGESTION_TYPE_NAMES = [
     { type: SuggestionType.Random, name: 'Random' },
 ];
 
-export const ICONS: IconName[] = ['stairs', 'chart-simple', 'repeat', 'lock', 'circle-question'];
+export const ICONS: IconName[] = ['calendar-check', 'stairs', 'chart-simple', 'repeat', 'lock', 'circle-question'];
 
 export function findItemIdByName(collection: ILanguage[], name: string) {
-    return collection.find(item => item.name === name)?.id ?? 0;
+    return collection.find(item => item.name === name)?.id ?? null;
 }
 
 export function findSuggestionTypeByName(name: string) {

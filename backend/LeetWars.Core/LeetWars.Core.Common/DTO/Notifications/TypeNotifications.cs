@@ -3,6 +3,12 @@
     public enum TypeNotifications
     {
         LikeChallenge,
-        NewChallenge
+        NewChallenge,
+        CodeFightRequestStart,
+        CodeFightRequestEnd,
+        CodeFightStart,
+        CodeFightEnd,
+        FriendRequest,
+        UpdateFriendRequest
     }
 }

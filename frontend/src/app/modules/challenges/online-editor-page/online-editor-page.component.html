@@ -1,5 +1,6 @@
 <div class="page-container">
     <div class="actions">
+        <button class="custom-button giveup-btn" *ngIf="isCodeFight" (click)="giveUpCodeFight()">Give up</button>
         <button class="custom-button cancel-btn" (click)="runSampleTests()">Run sample tests</button>
         <button class="custom-button accent" (click)="sendSubmitRequest()">Submit</button>
     </div>
@@ -40,11 +41,6 @@
                             [items]="languages"
                             [selectedItem]="selectedLanguage"
                             (selectedItemsChanged)="onSelectedLanguageChanged($event)">
-                        </app-dropdown-select>
-                        <app-dropdown-select
-                            [isMultiSelection]="false"
-                            [items]="languageVersions"
-                            [selectedItem]="selectedLanguageVersion">
                         </app-dropdown-select>
                     </div>
                     <fa-icon

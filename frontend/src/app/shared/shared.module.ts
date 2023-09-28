@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ScrollToDirective } from '@core/directives/scroll-to.directive';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
@@ -15,6 +16,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
+import { ArrowUpComponent } from './components/arrow-up/arrow-up.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
@@ -57,6 +59,8 @@ import { SolutionSubmitModalComponent } from './components/solution-submit-modal
         NotificationsComponent,
         HeaderComponent,
         SolutionSubmitModalComponent,
+        ArrowUpComponent,
+        ScrollToDirective,
     ],
     exports: [
         CommonModule,
@@ -75,11 +79,13 @@ import { SolutionSubmitModalComponent } from './components/solution-submit-modal
         CustomInputComponent,
         ProgressBarComponent,
         HeaderComponent,
+        ArrowUpComponent,
         NgbModule,
         TabsModule,
         MarkdownModule,
         AngularMarkdownEditorModule,
         InfiniteScrollModule,
+        ScrollToDirective,
     ],
     providers: [TabsetConfig],
 })

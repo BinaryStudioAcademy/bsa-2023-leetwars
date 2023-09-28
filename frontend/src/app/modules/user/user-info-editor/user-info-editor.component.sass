@@ -1,9 +1,14 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
+
+:host ::ng-deep
+    color: $white
+    height: calc(100% - 87px)
 
 .page-wrapper
-    color: $white
-    height: calc( 100% - 87px )
-    padding: 65px 10px 0px 10px
+    padding: 65px 10px 30px 10px
+    @media screen and (max-width: $medium)
+        padding: 30px 10px 30px 10px
 
 .submit-button
     height: 45px
@@ -11,18 +16,20 @@
     background-color: $green
     border-radius: 10px
     font-weight: 800
+    &:active
+        scale: 97%
+    &:hover
+        background-color: $dark-olive-green
 
 .form-wrapper
     max-width: 970px
     gap: 39px
+    @media screen and (max-width: $medium)
+        gap: 25px
 
-.edit-user-info-form
-    background-color: $charcoal-grey
-    border-radius: 38px
-    min-height: 344px
-    padding: 26px 36px 26px 29px
-
-.avatar
+.user-avatar-container
+    position: relative
+    cursor: pointer
     width: 160px
     height: 160px
     img
@@ -32,12 +39,42 @@
         border-radius: 15px
         border: 5px solid $white
         height: 100%
+        border-radius: 8px
+
+    &:hover::before
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: $medium-black
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 8px
+
+.edit-photo
+    display: none
+    flex-direction: column
+    align-items: center
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    color: $white
+    gap: 10px
+
+.user-avatar-container:hover .edit-photo
+    display: flex
 
 .form-data
     gap: 77px
     flex-wrap: wrap
     padding-top: 20px
     padding-bottom: 20px
+    @media screen and (max-width: $medium)
+        gap: 30px
 
 .right-form-data
     height: 160px
@@ -47,3 +84,24 @@
 
 fa-icon
     cursor: pointer
+
+.accounts-container
+    margin-top: 20px
+
+.github-button 
+    display: inline-block
+    padding: 5px 10px
+    background-color: $grey
+    color: $white
+    text-decoration: none
+    border-radius: 5px
+    user-select: none
+    transition: background-color 0.3s
+
+.github-button:hover 
+    background-color: $transparent-grey
+
+.edit-section
+    background-color: $charcoal-grey
+    border-radius: 38px
+    padding: 26px 36px 26px 29px
