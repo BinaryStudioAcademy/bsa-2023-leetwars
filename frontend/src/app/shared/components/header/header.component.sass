@@ -17,13 +17,15 @@
     height: 70px
     cursor: pointer
     padding-left: 20px
+    @media screen and (max-width: $tablet)
+        padding-left: 15px
 
 .notification
-    margin-right: 2rem
+    margin-right: 1rem
     cursor: pointer
     color: $transparent-grey
-    @media screen and (max-width: $medium)
-        margin-right: 1rem
+    @media screen and (max-width: $tablet)
+        margin-right: 0.5rem
 
 :host ::ng-deep .change-color
     background-color: $cornflower
@@ -49,16 +51,18 @@
     align-items: center
     cursor: pointer
     padding-right: 1rem
+    @media screen and (max-width: $medium)
+        padding-right: 0
 
 .icon-bell
     color: $white
 
 .user-logo
-  width: 50px
-  height: 50px
-  border-radius: 50%
-  margin-right: 0.5rem
-  object-fit: cover
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    margin-right: 0.5rem
+    object-fit: cover
 
 .username
     color: $white
