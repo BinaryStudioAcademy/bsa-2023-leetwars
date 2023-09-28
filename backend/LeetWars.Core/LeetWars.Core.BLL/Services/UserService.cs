@@ -25,7 +25,7 @@ namespace LeetWars.Core.BLL.Services;
 public class UserService : BaseService, IUserService
 {
     private readonly IUserGetter _userGetter;
-    private readonly INotificationSenderService _notificationSenderService;
+    private readonly INotificationService _notificationService;
     private readonly IEmailSenderService _emailSenderService;
     private readonly IBlobService _blobService;
     private const int REPUTATION_DIVIDER = 10;
@@ -33,13 +33,13 @@ public class UserService : BaseService, IUserService
     public UserService(LeetWarsCoreContext context,
                        IMapper mapper,
                        IUserGetter userGetter,
-                       INotificationSenderService notificationSenderService,
+                       INotificationService notificationService,
                        IEmailSenderService emailSenderService,
                        IBlobService blobService
                        ) : base(context, mapper)
     {
         _userGetter = userGetter;
-        _notificationSenderService = notificationSenderService;
+        _notificationService = notificationService;
         _emailSenderService = emailSenderService;
         _blobService = blobService;
     }
@@ -252,7 +252,7 @@ public class UserService : BaseService, IUserService
 
         await _context.SaveChangesAsync();
 
-        var newNotification = new NewNotificationDto
+        var newNotification = new NotificationDto
         {
             DateSending = DateTime.UtcNow,
             ReceiverId = newFriendshipDto.RecipientId.ToString(),
@@ -262,7 +262,8 @@ public class UserService : BaseService, IUserService
             UpdateFriendship = new UpdateFriendshipDto(sender.Id, friendship.Id, friendship.Status)
         };
 
-        _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
+        await _notificationService.CreateNotification(newNotification);
+        _notificationService.SendNotification(newNotification);
 
         return _mapper.Map<UserFriendsInfoDto>(senderUserFriendship.User);
     }
@@ -294,7 +295,7 @@ public class UserService : BaseService, IUserService
 
         var userFriendship = friendshipToUpdate.UserFriendships.First(uf => uf.UserId != user.Id);
 
-        var newNotification = new NewNotificationDto
+        var newNotification = new NotificationDto
         {
             DateSending = DateTime.UtcNow,
             ReceiverId = userFriendship.UserId.ToString(),
@@ -303,7 +304,7 @@ public class UserService : BaseService, IUserService
             UpdateFriendship = new UpdateFriendshipDto(user.Id, friendshipToUpdate.Id, updateFriendshipDto.FriendshipStatus)
         };
 
-        _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
+        _notificationService.SendNotification(newNotification);
 
         return _mapper.Map<UserFriendsInfoDto>(user);
     }

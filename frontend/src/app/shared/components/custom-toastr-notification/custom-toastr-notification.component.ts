@@ -30,7 +30,6 @@ export class CustomToastrNotificationComponent extends Toast {
     onCodeFightStart() {
         this.codeFightService.sendCodeFightStart(this.toastrService.codeFightNotification).subscribe(() => {
             this.notificationService.removeNotification(this.toastrService.codeFightNotification);
-            this.notificationService.hideNofitications();
         });
     }
 
