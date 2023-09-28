@@ -4,6 +4,7 @@
     {
         public string Name { get; set; }
         public ICollection<User> Users { get; } = new List<User>();
+        public ICollection<UserPreferences>? UserPreferences { get; }
 
         public Language(string name)
         {

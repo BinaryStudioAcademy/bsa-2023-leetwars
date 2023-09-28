@@ -10,7 +10,6 @@ import { CodeRunService } from '@core/services/code-run.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SolutionSubmitModalComponent } from '@shared/components/solution-submit-modal/solution-submit-modal.component';
-import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
@@ -20,6 +19,8 @@ import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
 import { take, takeUntil } from 'rxjs';
+
+import { editorOptions } from '../challenge-creation/challenge-creation.utils';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -122,10 +123,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
-        const selectedLang = this.mapLanguageName($event as string);
-
-        this.selectedLanguage = selectedLang;
-
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
     }
 
@@ -237,15 +234,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private setupEditorOptions() {
         this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
-        this.editorOptions = {
-            theme: 'vs-dark',
-            language: this.mapLanguageName(this.selectedLanguage),
-            minimap: { isEnabled: false },
-            hasAutomaticLayout: true,
-            hasShadows: false,
-            wordWrap: 'on',
-            lineNumbers: 'on',
-        };
+        this.editorOptions = editorOptions;
     }
 
     private getInitialSolutionByLanguage(language: string): string {
@@ -260,9 +249,5 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return selectedVersion && selectedVersion.exampleTestCases
             ? selectedVersion.exampleTestCases
             : 'No tests available';
-    }
-
-    private mapLanguageName(language?: string): string {
-        return language ? languageNameMap.get(language) || language : 'No language available';
     }
 }

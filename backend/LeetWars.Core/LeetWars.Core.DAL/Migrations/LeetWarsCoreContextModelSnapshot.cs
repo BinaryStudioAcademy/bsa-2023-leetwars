@@ -7053,6 +7053,45 @@ namespace LeetWars.Core.DAL.Migrations
                     b.ToTable("UserNotifications");
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserPreferences", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<int?>("FontSize")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsMinimap")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsWordWrap")
+                        .HasColumnType("bit");
+
+                    b.Property<long?>("LanguageId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("TabSize")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Theme")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("UserPreferences");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserPreferredLanguage", b =>
                 {
                     b.Property<long>("LanguageId")
@@ -8319,6 +8358,23 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("Receiver");
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserPreferences", b =>
+                {
+                    b.HasOne("LeetWars.Core.DAL.Entities.Language", "Language")
+                        .WithMany("UserPreferences")
+                        .HasForeignKey("LanguageId");
+
+                    b.HasOne("LeetWars.Core.DAL.Entities.User", "User")
+                        .WithOne("UserPreferences")
+                        .HasForeignKey("LeetWars.Core.DAL.Entities.UserPreferences", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.UserPreferredLanguage", b =>
                 {
                     b.HasOne("LeetWars.Core.DAL.Entities.Language", null)
@@ -8374,6 +8430,11 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("UserFriendships");
                 });
 
+            modelBuilder.Entity("LeetWars.Core.DAL.Entities.Language", b =>
+                {
+                    b.Navigation("UserPreferences");
+                });
+
             modelBuilder.Entity("LeetWars.Core.DAL.Entities.Tag", b =>
                 {
                     b.Navigation("ChallengeTags");
@@ -8394,6 +8455,8 @@ namespace LeetWars.Core.DAL.Migrations
                     b.Navigation("UserBadges");
 
                     b.Navigation("UserFriendships");
+
+                    b.Navigation("UserPreferences");
                 });
 #pragma warning restore 612, 618
         }

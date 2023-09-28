@@ -15,6 +15,7 @@
             (keydown)="onPasswordKeyDown($event)"
             [disabled]="disabled"
             required
+            [checked]="checked"
             placeholder="{{ InputPlaceholder }}"/>
         <button *ngIf="Identifier === 'password'" class="hide-password" (click)="togglePasswordVisibility()">
             <fa-icon [icon]="showPassword ? ['far', 'eye'] : ['far', 'eye-slash']"></fa-icon>
