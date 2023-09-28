@@ -128,7 +128,7 @@ export function getDropdownItems(names: string[]): IDropdownItem[] {
 }
 
 export function mapLanguageName(language: string): string {
-    return languageNameMap.get(language) || language.toLowerCase();
+    return languageNameMap.get(language) || language;
 }
 
 export const editorOptions: EditorOptions = {
