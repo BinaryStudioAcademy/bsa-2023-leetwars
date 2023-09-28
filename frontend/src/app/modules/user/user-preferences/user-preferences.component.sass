@@ -1,0 +1,54 @@
+
+@import 'color-variables'
+@import 'screen-sizes-variables'
+
+.page-wrapper
+    color: $white
+
+.submit-button
+    weight: auto
+    padding: 5px
+    background-color: $green
+    border-radius: 10px
+    font-weight: 800
+
+.form-wrapper
+    max-width: 970px
+    margin: 0 auto
+
+.form-data
+    margin: 0 auto
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+.user-preferences-form
+    background-color: $charcoal-grey
+    border-radius: 38px
+    padding: 26px 36px 26px 29px
+
+
+.label-input-group
+    display: flex
+    align-items: center
+    margin-top: 20px
+    height: 50px
+
+.input-wrapper
+    max-width: 100px
+
+.label-input-group label
+    display: flex
+    justify-content: right
+    margin-right: 15px
+    color: $white
+    min-width: 120px
+    overflow: wrap
+    @media screen and (max-width: $medium)
+        justify-content: left
+
+.form-item
+    height: 50px
+
+app-dropdown-select
+    width: 200px

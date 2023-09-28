@@ -1,7 +1,9 @@
 import {
     emailMaxLength,
+    fontSizeMaxValue,
     passwordMaxLength,
     passwordMinLength,
+    tabSizeMaxValue,
     userNameMaxLength,
     userNameMinLength,
 } from '@shared/utils/validation/form-control-validator-options';
@@ -11,6 +13,14 @@ export const emailValidationErrorMessages: ControlErrorMessages = {
     required: 'Please enter your Email',
     maxlength: `Email must not exceed ${emailMaxLength} characters`,
     pattern: 'Email format is incorrect. An example of the correct format: example@example.com',
+};
+
+export const tabSizeValidationErrorMessages: ControlErrorMessages = {
+    max: `Max tab size is ${tabSizeMaxValue} characters`,
+};
+
+export const fontSizeValidationErrorMessages: ControlErrorMessages = {
+    max: `Max font size is ${fontSizeMaxValue} characters`,
 };
 
 export const usernameValidationErrorMessages: ControlErrorMessages = {
