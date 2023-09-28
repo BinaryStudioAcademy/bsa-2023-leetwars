@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
+import { HeaderService } from '@core/services/header.service';
+import { SpinnerService } from '@core/services/spinner.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { AssetConstants } from '@shared/constants/asset-constants';
@@ -42,7 +44,7 @@ export class UserInfoEditorComponent implements OnInit {
         avatar: new FormControl<File>(null!),
     });
 
-    avatarPreview: string;
+    avatarPreview = AssetConstants.defaultProfileImagePath;
 
     private user: IUser;
 
@@ -51,6 +53,8 @@ export class UserInfoEditorComponent implements OnInit {
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
         private router: Router,
+        private spinnerService: SpinnerService,
+        private headerService: HeaderService,
     ) {}
 
     ngOnInit(): void {
@@ -59,6 +63,8 @@ export class UserInfoEditorComponent implements OnInit {
     }
 
     onSave() {
+        this.spinnerService.show();
+
         const editUserInfo: IEditUserInfo = {
             email: this.userInfoForm.value.email,
             username: this.userInfoForm.value.username,
@@ -66,14 +72,16 @@ export class UserInfoEditorComponent implements OnInit {
 
         this.authService
             .updateUserInfo(editUserInfo)
-            .pipe(switchMap((user) => (this.userInfoForm.value.avatar ? this.updateUserAvatar(user) : of(user))))
+            .pipe(switchMap((user: IUser) => (this.userInfoForm.value.avatar ? this.updateUserAvatar(user) : of(user))))
             .subscribe({
                 next: (user) => {
                     this.authService.setUserInfo(user);
                     this.toastrNotification.showSuccess('User information has been updated');
+                    this.spinnerService.hide();
                 },
                 error: () => {
                     this.toastrNotification.showError('Something went wrong');
+                    this.spinnerService.hide();
                 },
             });
     }
@@ -116,11 +124,11 @@ export class UserInfoEditorComponent implements OnInit {
     private updateUserAvatar(user: IUser) {
         const fileFormData = new FormData();
 
-        fileFormData.append('avatar', this.userInfoForm.value.avatar);
+        fileFormData.append('newAvatar', this.userInfoForm.value.avatar);
 
         return this.userService.updateUserAvatar(fileFormData).pipe(
-            map((avatar) => {
-                user.imagePath = avatar.imagePath;
+            map((newAvatar) => {
+                user.imagePath = newAvatar.imagePath;
 
                 return user;
             }),
@@ -143,6 +151,8 @@ export class UserInfoEditorComponent implements OnInit {
     }
 
     private updateAvatarPreview(target: HTMLInputElement) {
+        this.spinnerService.show();
+
         const file = target.files && target.files[0];
 
         if (!file) {
@@ -156,5 +166,7 @@ export class UserInfoEditorComponent implements OnInit {
         };
 
         reader.readAsDataURL(file);
+
+        this.spinnerService.hide();
     }
 }
