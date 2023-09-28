@@ -1,4 +1,10 @@
 <div class="wrapper">
+    <div class="board-container">
+        <div class="search-container">
+            <app-custom-input [Identifier]="'search'" [Width]="'100%'" [Height]="'100%'" [InputPlaceholder]="'User Name'"
+             (InputValueChange)="onSearchTextChange($event)"></app-custom-input>
+             <fa-icon [icon]="'search'" size="lg" class="search-filter-icon"></fa-icon>
+        </div>
     <div class="board-wrapper">
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" (change)="toggleMyFriends()" role="switch"
@@ -61,5 +67,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <app-arrow-up [onScrollEvent]="scrollEventSubject.asObservable()"></app-arrow-up>
