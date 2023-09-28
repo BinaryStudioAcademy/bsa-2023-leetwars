@@ -20,7 +20,7 @@ import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
 import { take, takeUntil } from 'rxjs';
 
-import { editorOptions } from '../challenge-creation/challenge-creation.utils';
+import { editorOptions, mapLanguageName } from '../challenge-creation/challenge-creation.utils';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -128,8 +128,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         const selectedLang = $event as string;
 
         this.selectedLanguage = selectedLang;
-        this.mappedSelectedLanguage = this.mapLanguageName(selectedLang);
-      
+        this.mappedSelectedLanguage = mapLanguageName(selectedLang);
+
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
     }
 
@@ -236,7 +236,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.languages = [...new Set(challenge.versions?.map((v) => v.language?.name))];
 
         [this.selectedLanguage] = this.languages;
-        this.mappedSelectedLanguage = this.mapLanguageName(this.selectedLanguage);
+        this.mappedSelectedLanguage = mapLanguageName(this.selectedLanguage);
     }
 
     private setupEditorOptions() {
