@@ -2,8 +2,14 @@
 {
     public class CodeRequestAnalysisDto
     {
-        public string LanguageName { get; set; } = string.Empty;
+        public string LanguageName { get; set; }
 
-        public string CodeListing { get; set; } = string.Empty;
+        public string CodeListing { get; set; }
+
+        public CodeRequestAnalysisDto(string languageName, string codeListing)
+        {
+            LanguageName = languageName;
+            CodeListing = codeListing;
+        }
     }
 }

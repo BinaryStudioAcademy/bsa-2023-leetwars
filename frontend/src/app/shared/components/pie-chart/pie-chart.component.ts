@@ -16,6 +16,8 @@ export class PieChartComponent implements OnChanges {
 
     @Input() activeColor: string;
 
+    @Input() centerText: string;
+
     single: PieChartData[] = [];
 
     colorScheme: Color = {

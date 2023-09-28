@@ -8,6 +8,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
@@ -27,7 +28,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { SolutionSubmitModalComponent } from './components/solution-submit-modal/solution-submit-modal.component';
 import { toastrGlobalConfig } from './configurations/toastr-global-config';
 
 @NgModule({
@@ -38,6 +41,7 @@ import { toastrGlobalConfig } from './configurations/toastr-global-config';
         ReactiveFormsModule,
         RouterModule,
         FontAwesomeModule,
+        NgxChartsModule,
         NgbModule,
         MonacoEditorModule,
         InfiniteScrollModule,
@@ -48,6 +52,7 @@ import { toastrGlobalConfig } from './configurations/toastr-global-config';
     ],
     declarations: [
         LoadingSpinnerComponent,
+        PieChartComponent,
         NotFoundComponent,
         ConfirmationModalComponent,
         GeneralModalComponent,
@@ -57,6 +62,7 @@ import { toastrGlobalConfig } from './configurations/toastr-global-config';
         ProgressBarComponent,
         NotificationsComponent,
         HeaderComponent,
+        SolutionSubmitModalComponent,
         ArrowUpComponent,
         ScrollToDirective,
         CustomToastrNotificationComponent,
@@ -70,6 +76,7 @@ import { toastrGlobalConfig } from './configurations/toastr-global-config';
         FontAwesomeModule,
         LoadingSpinnerComponent,
         NotFoundComponent,
+        PieChartComponent,
         CodeEditorComponent,
         ConfirmationModalComponent,
         GeneralModalComponent,
