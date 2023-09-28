@@ -59,13 +59,6 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddAutoMapper(Assembly.GetAssembly(typeof(UserProfile)));
         }
 
-        public static void AddValidation(this IServiceCollection services)
-        {
-            services
-                .AddControllers()
-                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<NewSampleDtoValidator>());
-        }
-
         public static void AddLeetWarsCoreContext(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionsString = configuration.GetConnectionString("LeetWarsCoreDBConnection");
