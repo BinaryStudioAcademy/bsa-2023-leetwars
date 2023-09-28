@@ -131,11 +131,9 @@ public class UserService : BaseService, IUserService
 
     public async Task<BriefUserInfoDto> GetBriefUserInfoByIdAsync(long id)
     {
-        var user = await GetUserByExpressionAsync(user => user.Id == id);
+        var user = await GetUserByExpressionAsync(user => user.Id == id) ?? throw new ArgumentNullException("Not Found", new Exception("User was not found"));
 
-        return user is null
-            ? throw new ArgumentNullException("Not Found", new Exception("User was not found"))
-            : _mapper.Map<User, BriefUserInfoDto>(user);
+        return _mapper.Map<User, BriefUserInfoDto>(user);
     }
 
     public async Task<UserDto> GetUserAsync(long id)
@@ -152,9 +150,9 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserFullDto> GetFullUserAsync(long id)
     {
-        var user = await GetUserByExpressionAsync(user => user.Id == id);
+        var user = await GetUserByExpressionAsync(user => user.Id == id) ?? throw new NotFoundException(nameof(User), id);
 
-        return user is null ? throw new NotFoundException(nameof(User), id) : _mapper.Map<User, UserFullDto>(user);
+        return _mapper.Map<User, UserFullDto>(user);
     }
 
     public async Task<List<UserSolutionsGroupedBySkillLevelDto>> GetUserChallengesInfoByTagsAsync(long currentUserId)
