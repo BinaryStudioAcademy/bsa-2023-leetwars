@@ -65,8 +65,6 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
 
     editorOptions = editorOptions;
 
-    canOpenDropdown = true;
-
     unsavedChanges: boolean = true;
 
     protected readonly ChallengeStep = ChallengeStep;
@@ -120,7 +118,6 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
 
         if (stepData) {
             stepData.isValid = isValid;
-            this.canOpenDropdown = isValid;
         }
     }
 
@@ -138,8 +135,8 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
                         this.toastrService.showSuccess('Challenge was successfully created');
                         this.router.navigate(['/']);
                     },
-                    error: () => {
-                        this.toastrService.showError('Server connection error');
+                    error: (error) => {
+                        this.toastrService.showError(error.title);
                     },
                 });
         }
@@ -157,8 +154,8 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
                         this.toastrService.showSuccess('Challenge was successfully edited');
                         this.router.navigate(['/']);
                     },
-                    error: () => {
-                        this.toastrService.showError('Server connection error');
+                    error: (error) => {
+                        this.toastrService.showError(error.title);
                     },
                 });
         }

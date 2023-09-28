@@ -2,10 +2,10 @@
     <div class="actions">
         <button class="custom-button giveup-btn" *ngIf="isCodeFight" (click)="giveUpCodeFight()">Give up</button>
         <button class="custom-button cancel-btn" (click)="runSampleTests()">Run sample tests</button>
-        <button class="custom-button accent" (click)="submitSolution()">Submit</button>
+        <button class="custom-button accent" (click)="sendSubmitRequest()">Submit</button>
     </div>
     <as-split [direction]="splitDirection" [gutterSize]="8">
-        <as-split-area [size]="50" [minSize]="splitLeftMinSize">
+        <as-split-area class="min-size" [size]="50">
             <div class="problem-info h-100">
                 <div>
                     <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">

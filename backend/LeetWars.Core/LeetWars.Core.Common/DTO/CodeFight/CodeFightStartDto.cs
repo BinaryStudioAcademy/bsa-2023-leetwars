@@ -7,6 +7,6 @@ namespace LeetWars.Core.Common.DTO.CodeFight
         public string SenderId { get; set; } = string.Empty;
         public string ReceiverId { get; set; } = string.Empty;
         public long ChallengeId { get; set; }
-        public NewNotificationDto Notification { get; set; } = null!;
+        public NotificationDto Notification { get; set; } = null!;
     }
 }

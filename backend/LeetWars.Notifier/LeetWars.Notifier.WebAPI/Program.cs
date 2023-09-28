@@ -1,6 +1,7 @@
 using LeetWars.Core.Common.Extensions;
 using LeetWars.Notifier.WebAPI.Extensions;
 using LeetWars.Notifier.WebAPI.Hubs;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,12 @@ builder.Configuration
 
 builder.Services.AddControllers();
 
-builder.Services.AddSignalR();
+builder.Services.AddSignalR()
+    .AddJsonProtocol(options =>
+    {
+        options.PayloadSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
 builder.Services.RegisterRabbit(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

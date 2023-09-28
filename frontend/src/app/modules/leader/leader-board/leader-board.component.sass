@@ -55,12 +55,15 @@
         padding-bottom: 11px
 
 .user-name
-    width: 50%
+    width: 45%
     color: $white
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
     @media ( max-width: $small-challenge)
-      width: 40%
+        width: 40%
     @media ( max-width: $mobile)
-      width: calc(87% - 132px)
+        width: calc(87% - 132px)
     &-avatar
         width: 16px
         height: 16px
@@ -94,13 +97,13 @@
         &-text
             display: none
 
-.add-friend 
+.add-friend
     width: 7%
     min-width: 25px
     justify-content: start
     align-items: center
-    
-.user-icon-btn 
+
+.user-icon-btn
     padding: 0 3px
     &:active
         scale: 93%
@@ -108,7 +111,7 @@
 .user-plus-btn
     padding: 0 4px
 
-.user-icon        
+.user-icon
     cursor: pointer
     color: $cornflower
     &:hover
@@ -131,7 +134,7 @@
     color: $green
 
 .in-battle
-  color: $light-red
+    color: $light-red
 
 .form-check-input
     cursor: pointer

@@ -1,5 +1,4 @@
 ﻿using LeetWars.Core.DAL.Entities;
-using LeetWars.Core.DAL.Entities.HelperEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

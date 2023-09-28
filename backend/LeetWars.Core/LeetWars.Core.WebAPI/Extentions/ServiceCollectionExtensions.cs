@@ -29,6 +29,8 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddTransient<IChallengeService, ChallengeService>();
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
+            services.AddTransient<INotificationService, NotificationServcie>();
+            services.AddScoped<IUserService, UserService>();
             services.AddTransient<ICodeFightService, CodeFightService>();
 
             services.AddScoped<UserStorage>();
@@ -57,13 +59,6 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddAutoMapper(Assembly.GetAssembly(typeof(TagProfile)));
             services.AddAutoMapper(Assembly.GetAssembly(typeof(LanguageProfile)));
             services.AddAutoMapper(Assembly.GetAssembly(typeof(UserProfile)));
-        }
-
-        public static void AddValidation(this IServiceCollection services)
-        {
-            services
-                .AddControllers()
-                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<NewSampleDtoValidator>());
         }
 
         public static void AddLeetWarsCoreContext(this IServiceCollection services, IConfiguration configuration)
