@@ -125,6 +125,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     onSelectedLanguageChanged($event: string | string[]): void {
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
+
+        this.testCode = this.getInitialTestsByLanguage($event as string);
     }
 
     onCodeChanged(newCode: string) {
@@ -236,6 +238,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
         this.editorOptions = editorOptions;
+    }
+
+    private getInitialTestsByLanguage(language: string): string {
+        const version = this.challenge.versions?.find((v) => v.language.name === language);
+
+        return version?.exampleTestCases ?? 'No tests available';
     }
 
     private getInitialSolutionByLanguage(language: string): string {
