@@ -25,7 +25,6 @@ builder.Services.RegisterCustomServices(builder.Configuration);
 builder.Services.AddAzureBlobServices(builder.Configuration);
 builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
-builder.Services.AddValidation();
 builder.Services.AddFirebaseAuthentication(builder.Configuration);
 builder.Services.RegisterHengfire(builder.Configuration);
 

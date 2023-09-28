@@ -1,11 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
-import { CodeFightService } from '@core/services/code-fight.service';
-import { EventService } from '@core/services/event.service';
-import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { longFadeIn } from '@shared/animations/long-fade-in.animation';
 import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { TypeNotification } from '@shared/enums/type-notification';
 import { IUpdateFriendship } from '@shared/models/friendship/update-friendship';
@@ -17,31 +15,31 @@ import { takeUntil } from 'rxjs';
     selector: 'app-notifications',
     templateUrl: './notifications.component.html',
     styleUrls: ['./notifications.component.sass'],
+    animations: [longFadeIn],
 })
 export class NotificationsComponent extends BaseComponent implements OnInit {
     constructor(
-        private notificationService: NotificationService,
         private userService: UserService,
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
-        private eventService: EventService,
-        private codeFightService: CodeFightService,
     ) {
         super();
     }
+
+    @Input() notification: INotificationModel;
+
+    @Input() isUnread: boolean;
 
     private currentUser: IUser;
 
     typeNotification = TypeNotification;
 
+    friendshipStatus = FriendshipStatus;
+
     @Input() notifications: INotificationModel[];
 
     ngOnInit(): void {
         this.getCurrentUser();
-
-        this.notificationService.currentNotifications.subscribe((notifications: INotificationModel[]) => {
-            this.notifications = notifications;
-        });
     }
 
     updateFriendshipStatus(notification: INotificationModel, status: FriendshipStatus) {
@@ -51,7 +49,6 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
         updateRequest.userId = this.currentUser.id;
 
         this.updateFriendship(updateRequest);
-        this.notificationService.removeNotification(notification);
     }
 
     acceptFriendship(notification: INotificationModel) {
@@ -60,19 +57,6 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
 
     declineFriendship(notification: INotificationModel) {
         this.updateFriendshipStatus(notification, FriendshipStatus.Declined);
-    }
-
-    onCodeFightStart(notification: INotificationModel) {
-        this.notificationService.removeNotification(notification);
-        this.notificationService.hideNofitications();
-
-        this.codeFightService.sendCodeFightStart(notification).subscribe();
-    }
-
-    onCodeFightRefuse(notification: INotificationModel) {
-        this.codeFightService.sendCodeFightRequestEnded(notification).subscribe();
-
-        this.notificationService.removeNotification(notification);
     }
 
     private updateFriendship(updateRequest: IUpdateFriendship) {

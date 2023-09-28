@@ -4,6 +4,6 @@ namespace LeetWars.Core.BLL.Interfaces
 {
     public interface INotificationSenderService
     {
-        void SendNotificationToRabbitMQ(NewNotificationDto newNotificationDto);
+        void SendNotificationToRabbitMQ(NotificationDto newNotificationDto);
     }
 }

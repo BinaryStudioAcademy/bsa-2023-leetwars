@@ -1,6 +1,7 @@
+﻿using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Core.DAL.Enums;
 ﻿using LeetWars.Core.Common.DTO.CodeFight;
 using LeetWars.Core.Common.DTO.Friendship;
-using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Notifier.WebAPI.Hubs;
 using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using LeetWars.RabbitMQ;
@@ -28,7 +29,7 @@ namespace LeetWars.Notifier.WebAPI.Services
                 var body = args.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
 
-                var notificationDto = JsonSerializer.Deserialize<NewNotificationDto>(message);
+                var notificationDto = JsonSerializer.Deserialize<NotificationDto>(message);
 
                 if (notificationDto is null)
                 {
@@ -44,7 +45,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             return Task.CompletedTask;
         }
 
-        private async Task SendNotificationAsync(NewNotificationDto notificationDto)
+        private async Task SendNotificationAsync(NotificationDto notificationDto)
         {
             switch (notificationDto.TypeNotification)
             {
@@ -89,12 +90,12 @@ namespace LeetWars.Notifier.WebAPI.Services
             }
         }
 
-        private async Task SendNotificationToAllUsersAsync(NewNotificationDto notificationDto)
+        private async Task SendNotificationToAllUsersAsync(NotificationDto notificationDto)
         {
             await _hubContext.Clients.All.SendNotificationAsync(notificationDto);
         }
 
-        private async Task SendSingleNotificationAsync(NewNotificationDto notificationDto)
+        private async Task SendSingleNotificationAsync(NotificationDto notificationDto)
         {
             if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
             {
@@ -102,7 +103,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             }
         }
 
-        private async Task StartCodeFightAsync(NewNotificationDto notificationDto)
+        private async Task StartCodeFightAsync(NotificationDto notificationDto)
         {
             if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
                         && notificationDto.Sender is not null
@@ -120,7 +121,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             }
         }
 
-        private async Task SendCodeFightNotificationToAllAsync(NewNotificationDto notificationDto)
+        private async Task SendCodeFightNotificationToAllAsync(NotificationDto notificationDto)
         {
             if (!string.IsNullOrEmpty(notificationDto.ReceiverId) && notificationDto.Sender is not null)
             {
@@ -135,7 +136,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             }
         }
 
-        private async Task SendCodeFightResultsAsync(NewNotificationDto notificationDto)
+        private async Task SendCodeFightResultsAsync(NotificationDto notificationDto)
         {
             if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
             && notificationDto.Sender is not null)
@@ -145,7 +146,7 @@ namespace LeetWars.Notifier.WebAPI.Services
             }
         }
 
-        private async Task SendFrienshipUpdateAsync(NewNotificationDto notificationDto)
+        private async Task SendFrienshipUpdateAsync(NotificationDto notificationDto)
         {
             if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
                 && notificationDto.Sender is not null)

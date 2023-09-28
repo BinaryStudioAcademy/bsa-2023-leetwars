@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { HubConnection } from '@microsoft/signalr';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
-import { Subject, Subscription } from 'rxjs';
+import { ICodeSubmitResult } from '@shared/models/code-run/code-submit-result';
+import { Subject } from 'rxjs';
 
 import { SignalRHubFactoryService } from './signalr-hub-factory.service';
 
@@ -16,9 +17,13 @@ export class CodeDisplayingHubService {
 
     private hubConnection: HubConnection;
 
-    private readonly messages = new Subject<ICodeRunResults>();
+    private codeRunResultsSubject$ = new Subject<ICodeRunResults>();
 
-    private subscriptions: Subscription[] = [];
+    private codeSubmitResultsSubject$ = new Subject<ICodeSubmitResult>();
+
+    public codeRunResult$ = this.codeRunResultsSubject$.asObservable();
+
+    public codeSubmitResults$ = this.codeSubmitResultsSubject$.asObservable();
 
     constructor(private hubFactory: SignalRHubFactoryService, private authService: AuthService) {}
 
@@ -27,13 +32,8 @@ export class CodeDisplayingHubService {
         await this.init();
     }
 
-    listenMessages(action: (msg: ICodeRunResults) => void) {
-        this.subscriptions = [...this.subscriptions, this.messages.subscribe({ next: action })];
-    }
-
     async stop() {
         await this.hubConnection?.stop();
-        this.subscriptions.forEach((s) => s.unsubscribe());
     }
 
     private async init() {
@@ -43,7 +43,11 @@ export class CodeDisplayingHubService {
             .catch(() => console.info(`"${this.hubFactory}" failed.`));
 
         this.hubConnection.on('BroadcastMessageAsync', (msg: ICodeRunResults) => {
-            this.messages.next(msg);
+            this.codeRunResultsSubject$.next(msg);
+        });
+
+        this.hubConnection.on('BroadcastSubmitResultMessage', (msg: ICodeSubmitResult) => {
+            this.codeSubmitResultsSubject$.next(msg);
         });
 
         await this.hubConnection.invoke('OnConnectAsync', `${this.authService.userSubject.value?.id}`);
