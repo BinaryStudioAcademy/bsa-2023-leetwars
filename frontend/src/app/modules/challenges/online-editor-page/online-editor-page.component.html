@@ -52,7 +52,6 @@
                     class="my-code-editor"
                     [initText]="initialSolution!"
                     [language]="selectedLanguage"
-                    [(ngModel)]="initialSolution"
                     (codeChanged)="onCodeChanged($event)"
                     [options]="editorOptions"></app-code-editor>
             </div>
@@ -70,7 +69,6 @@
                         class="my-code-editor"
                         [options]="editorOptions"
                         [language]="selectedLanguage"
-                        [(ngModel)]="testCode"
                         (codeChanged)="onTestChanged($event)"
                         [initText]="testCode!"></app-code-editor>
                 </div>

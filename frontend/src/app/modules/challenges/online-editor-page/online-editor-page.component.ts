@@ -129,6 +129,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.selectedLanguage = selectedLang;
 
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
+
+        this.testCode = this.getInitialTestsByLanguage($event as string);
     }
 
     onCodeChanged(newCode: string) {
@@ -248,6 +250,12 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
             wordWrap: 'on',
             lineNumbers: 'on',
         };
+    }
+
+    private getInitialTestsByLanguage(language: string): string {
+        const version = this.challenge.versions?.find((v) => v.language.name === language);
+
+        return version && version.exampleTestCases ? version.exampleTestCases : 'No tests available';
     }
 
     private getInitialSolutionByLanguage(language: string): string {
