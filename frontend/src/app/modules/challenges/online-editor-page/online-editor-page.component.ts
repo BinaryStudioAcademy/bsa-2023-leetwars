@@ -90,6 +90,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     ngOnInit() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         this.splitDirection = 'horizontal';
 
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
