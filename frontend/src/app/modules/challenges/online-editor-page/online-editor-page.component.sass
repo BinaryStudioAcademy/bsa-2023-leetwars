@@ -17,7 +17,7 @@
 
 .fullscreen-button
     position: absolute
-    right: 15px
+    right: 25px
     &:hover
         cursor: pointer
 
@@ -29,11 +29,7 @@
 
 .test-wrp
     height: 45%
-    margin-top: 5px
-    overflow: hidden
-
-.editor.h-50
-    overflow: hidden
+    margin-top: 10px
 
 .editor-test
     height: 100%
@@ -53,6 +49,7 @@
     background-color: $charcoal
     border-radius: 5px 5px 0px 0px
     border-bottom: 2px solid $green
+    position: relative
 
 .language-selection
     height: 100%
@@ -105,6 +102,9 @@ button span
     background-color: transparent !important
     &-icon
         background-image: url("/assets/images/ellipsis.png") !important
+
+:host ::ng-deep .as-split-area
+    overflow: auto !important
 
 .centered-icon
     margin-left: 8px
@@ -225,3 +225,6 @@ button span
 
 .min-size
     min-width: 320px
+
+.h-40
+    height: 45%

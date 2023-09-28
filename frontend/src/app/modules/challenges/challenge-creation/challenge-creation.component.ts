@@ -228,7 +228,7 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
             .subscribe({
                 next: () => {
                     this.toastrService.showSuccess('Challenge was successfully deleted');
-                    this.router.navigate(['/']);
+                    this.router.navigate(['/'], { state: { canLeave: true } });
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
