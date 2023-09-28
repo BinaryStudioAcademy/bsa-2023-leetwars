@@ -9,7 +9,7 @@ import { getFirebaseErrorMessage } from '@shared/utils/validation/validation-hel
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat';
 import { BehaviorSubject, first, firstValueFrom, from, Observable, of, switchMap, tap, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { ToastrNotificationsService } from './toastr-notifications.service';
 import { UserService } from './user.service';
@@ -45,15 +45,23 @@ export class AuthService {
     async initializeAuth(): Promise<void> {
         const user = await firstValueFrom(this.afAuth.authState);
 
+        this.updateLocalStorage(user);
+    }
+
+    isAuthorized() {
+        this.afAuth.authState.subscribe(async (user) => {
+            this.updateLocalStorage(user);
+        });
+
+        return this.getUserToken() && this.getUserInfo();
+    }
+
+    private async updateLocalStorage(user: firebase.User | null): Promise<void> {
         if (user) {
             localStorage.setItem(this.tokenKeyName, await user.getIdToken());
         } else {
             localStorage.removeItem(this.tokenKeyName);
         }
-    }
-
-    isAuthorized() {
-        return this.getUserToken() && this.getUserInfo();
     }
 
     register(user: IUserRegister) {
@@ -162,6 +170,36 @@ export class AuthService {
 
     getUser(): Observable<IUser> {
         return of(this.getUserInfo()!);
+    }
+
+    linkGitHub(): Observable<firebase.auth.UserCredential | null> {
+        return this.afAuth.authState.pipe(
+            first(),
+            switchMap((user) => this.linkGitHubWithPopup(user)),
+            catchError((error) => {
+                this.toastrNotification.showError(error.message);
+
+                return of(null);
+            }),
+        );
+    }
+
+    private linkGitHubWithPopup(user: firebase.User | null): Observable<firebase.auth.UserCredential | null> {
+        if (!user) {
+            return of(null);
+        }
+
+        return from(user.linkWithPopup(new GithubAuthProvider())).pipe(
+            catchError((error) => {
+                this.toastrNotification.showError(error.message);
+
+                return of(null);
+            }),
+        );
+    }
+
+    getFirebaseUserInfo() {
+        return this.afAuth.authState.pipe(map((user) => (user ? user.providerData : [])));
     }
 
     setUserInfo(user: IUser) {
