@@ -77,6 +77,8 @@ export class NotificationHubService {
 
         this.hubConnection.on('SendNotificationAsync', (msg: INotificationModel) => {
             if (msg.showFor) {
+                this.toastrService.showCodeFightNotification(msg);
+
                 timer(msg.showFor).subscribe(() => {
                     this.notificationService.removeNotification(msg);
                 });

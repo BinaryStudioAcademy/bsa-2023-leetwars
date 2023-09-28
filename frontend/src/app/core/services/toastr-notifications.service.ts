@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { INotificationModel } from '@shared/models/notifications/notifications';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ToastrNotificationsService extends ToastrService {
-    isCodeFightNotification: boolean;
+    codeFightNotification: INotificationModel;
 
     showSuccess(message: string) {
         super.success(message, 'Success');
@@ -23,8 +24,14 @@ export class ToastrNotificationsService extends ToastrService {
         super.error(message, 'Error');
     }
 
-    showCodeFightNotification() {
-        this.isCodeFightNotification = true;
-        super.show();
+    showCodeFightNotification(notification: INotificationModel) {
+        this.codeFightNotification = notification;
+
+        super.show(notification.message, 'CodeFight', {
+            toastClass: 'custom-toast',
+            positionClass: 'toast-bottom-right',
+            progressBar: true,
+            timeOut: notification.showFor,
+        });
     }
 }

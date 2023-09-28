@@ -1,5 +1,5 @@
 <div
-    *ngIf="!isCodeFightNotification; else codeFightNotification"
+    *ngIf="title !== codeFightTitle; else codeFightNotification"
     class="row"
     [style.display]="state.value === 'inactive' ? 'none' : ''">
     <div class="col-9">
@@ -28,5 +28,13 @@
 </div>
 
 <ng-template #codeFightNotification>
-    <p>Hello, world!</p>
+    <div class="main-content d-flex gap-2 align-items-center">
+        <img src="assets/images/logo/logo.png" alt="logo" class="logo-img" />
+        <p>{{ message }}</p>
+    </div>
+    <div class="d-flex justify-content-end mt-2">
+        <button class="custom-btn btn-yes" (click)="onCodeFightStart()">Yes</button>
+        <button class="custom-btn btn-no" (click)="onCodeFightRefuse()">No</button>
+    </div>
+    <div class="toast-progress" [style.width]="width + '%'"></div>
 </ng-template>

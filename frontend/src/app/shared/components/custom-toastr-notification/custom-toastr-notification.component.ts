@@ -1,5 +1,7 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
+import { CodeFightService } from '@core/services/code-fight.service';
+import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { IndividualConfig, Toast, ToastPackage } from 'ngx-toastr';
 
@@ -59,12 +61,14 @@ import { IndividualConfig, Toast, ToastPackage } from 'ngx-toastr';
     preserveWhitespaces: false,
 })
 export class CustomToastrNotificationComponent extends Toast {
+    codeFightTitle = 'CodeFight';
+
     override options: IndividualConfig = {
         timeOut: 10000,
         disableTimeOut: false,
         closeButton: false,
         extendedTimeOut: 0,
-        progressBar: false,
+        progressBar: true,
         progressAnimation: 'increasing',
         enableHtml: false,
         toastClass: '',
@@ -75,16 +79,29 @@ export class CustomToastrNotificationComponent extends Toast {
         easeTime: '',
         tapToDismiss: true,
         onActivateTick: false,
-        newestOnTop: false,
+        newestOnTop: true,
         payload: undefined,
     };
 
-    isCodeFightNotification = this.toastrService.isCodeFightNotification;
-
     constructor(
-        protected override toastrService: ToastrNotificationsService,
         public override toastPackage: ToastPackage,
+        protected override toastrService: ToastrNotificationsService,
+        private notificationService: NotificationService,
+        private codeFightService: CodeFightService,
     ) {
         super(toastrService, toastPackage);
+    }
+
+    onCodeFightStart() {
+        this.notificationService.removeNotification(this.toastrService.codeFightNotification);
+        this.notificationService.hideNofitications();
+
+        this.codeFightService.sendCodeFightStart(this.toastrService.codeFightNotification).subscribe();
+    }
+
+    onCodeFightRefuse() {
+        this.codeFightService.sendCodeFightRequestEnded(this.toastrService.codeFightNotification).subscribe();
+
+        this.notificationService.removeNotification(this.toastrService.codeFightNotification);
     }
 }
