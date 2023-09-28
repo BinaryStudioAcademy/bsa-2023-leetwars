@@ -26,7 +26,7 @@ namespace LeetWars.Core.BLL.Services
         {
             var notification = _mapper.Map<Notification>(newNotification);
 
-            _context.Notifications.Add(notification);
+            await _context.Notifications.AddAsync(notification);
 
             await _context.SaveChangesAsync();
 
