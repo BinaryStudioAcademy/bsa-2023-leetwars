@@ -1,8 +1,14 @@
 @import 'color-variables'
+@import 'screen-sizes-variables'
 
-.edit-user-wrapper
+:host ::ng-deep
     color: $white
-    padding: 65px 10px 0px 10px
+    height: calc(100% - 87px)
+
+.page-wrapper
+    padding: 65px 10px 30px 10px
+    @media screen and (max-width: $medium)
+        padding: 30px 10px 30px 10px
 
 .submit-button
     height: 45px
@@ -10,16 +16,16 @@
     background-color: $green
     border-radius: 10px
     font-weight: 800
+    &:active
+        scale: 97%
+    &:hover
+        background-color: $dark-olive-green
 
 .form-wrapper
     max-width: 970px
     gap: 39px
-
-.edit-user-info-form
-    background-color: $charcoal-grey
-    border-radius: 38px
-    min-height: 344px
-    padding: 26px 36px 26px 29px
+    @media screen and (max-width: $medium)
+        gap: 25px
 
 .user-avatar-container
     position: relative
@@ -67,6 +73,8 @@
     flex-wrap: wrap
     padding-top: 20px
     padding-bottom: 20px
+    @media screen and (max-width: $medium)
+        gap: 30px
 
 .right-form-data
     height: 160px
@@ -76,3 +84,24 @@
 
 fa-icon
     cursor: pointer
+
+.accounts-container
+    margin-top: 20px
+
+.github-button 
+    display: inline-block
+    padding: 5px 10px
+    background-color: $grey
+    color: $white
+    text-decoration: none
+    border-radius: 5px
+    user-select: none
+    transition: background-color 0.3s
+
+.github-button:hover 
+    background-color: $transparent-grey
+
+.edit-section
+    background-color: $charcoal-grey
+    border-radius: 38px
+    padding: 26px 36px 26px 29px
