@@ -89,7 +89,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         if (this.isNotificationsDropdownDisplayed) {
             this.readNotifications();
         } else {
-            this.notificationStorage.updateStatusToRead(this.newNotificationsCollection.map(e => e.id))
+            this.notificationStorage.updateStatusToRead([this.user.id])
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
                     error: () => {

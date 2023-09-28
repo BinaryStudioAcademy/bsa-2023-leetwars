@@ -46,10 +46,6 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.getCurrentUser();
-        console.log(this.notification);
-        // this.notificationService.currentNotifications.subscribe((notifications: INotificationModel[]) => {
-        //     this.notifications = notifications;
-        // });
     }
 
     updateFriendshipStatus(notification: INotificationModel, status: FriendshipStatus) {

@@ -96,17 +96,10 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<List<NotificationDto>>(notificationDtos);
         }
 
-        public async Task UpdateStatusToRead(long[] ids)
+        public async Task UpdateStatusToReadByUserIds(long[] ids)
         {
-            var currUserId = _userGetter.CurrentUser?.Id;
-
-            if (currUserId is null)
-            {
-                throw new NotFoundException("User not found");
-            }
-
             await _context.UserNotifications
-                .Where(un => ids.Contains(un.NotificationId) && un.ReceiverId == currUserId)
+                .Where(un => ids.Contains(un.ReceiverId))
                 .ForEachAsync(e => e.IsRead = true);
 
             await _context.SaveChangesAsync();
