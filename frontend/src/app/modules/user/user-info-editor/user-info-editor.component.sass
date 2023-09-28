@@ -18,7 +18,8 @@
     font-weight: 800
     &:active
         scale: 97%
-    &:hover
+    &:hover,
+    &:disabled
         background-color: $dark-olive-green
 
 .form-wrapper
@@ -88,7 +89,7 @@ fa-icon
 .accounts-container
     margin-top: 20px
 
-.github-button 
+.github-button
     display: inline-block
     padding: 5px 10px
     background-color: $grey
@@ -98,7 +99,7 @@ fa-icon
     user-select: none
     transition: background-color 0.3s
 
-.github-button:hover 
+.github-button:hover
     background-color: $transparent-grey
 
 .edit-section

@@ -32,9 +32,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     splitDirection: 'horizontal' | 'vertical';
 
-    splitLeftMinSize: number = 20;
-
-    splitRightMinSize: number = 20;
+    splitRightMinSize: number = 30;
 
     challenge: IChallenge;
 
