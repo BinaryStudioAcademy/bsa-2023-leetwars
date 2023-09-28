@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
@@ -17,12 +17,16 @@ import { emailPattern, latinOrCyrillicCharactersPattern } from '@shared/utils/va
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
 import { map, of, switchMap } from 'rxjs';
 
+import { UserPreferencesComponent } from '../user-preferences/user-preferences.component';
+
 @Component({
     selector: 'app-user-info-editor',
     templateUrl: './user-info-editor.component.html',
     styleUrls: ['./user-info-editor.component.sass'],
 })
 export class UserInfoEditorComponent implements OnInit {
+    @ViewChild(UserPreferencesComponent) userPreferencesComponent: UserPreferencesComponent;
+
     isGithubLinked: boolean;
 
     private readonly GITHUB_PROVIDER = 'github.com';
@@ -76,6 +80,7 @@ export class UserInfoEditorComponent implements OnInit {
                     this.toastrNotification.showError('Something went wrong');
                 },
             });
+        this.userPreferencesComponent.setPreferences();
     }
 
     onImagePicked(event: Event) {

@@ -32,7 +32,7 @@
                                 <div class="input-wrapper">
                                     <app-custom-input InputType="number" [Identifier]="'tab-size'" Width="100px"
                                         [InputValue]="userPreferenceForm.value?.tabSize" formControlName="tabSize"
-                                        (InputValueChange)="userPreferenceForm.controls['tabSize'].setValue($event)">
+                                        (InputValueChange)="onTabSizeChange($event)">
                                     </app-custom-input>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                 <div class="input-wrapper">
                                     <app-custom-input InputType="number" [Identifier]="'font-size'" Width="100px"
                                         [InputValue]="userPreferenceForm.value?.fontSize" formControlName="fontSize"
-                                        (InputValueChange)="userPreferenceForm.controls['fontSize'].setValue($event)">
+                                        (InputValueChange)="onFontSizeChange($event)">
                                     </app-custom-input>
                                 </div>
                             </div>
@@ -83,10 +83,6 @@
                   </div>
                 </div>
             </div>
-            <button [disabled]="userPreferenceForm.invalid" class="submit-button align-items-center align-self-end"
-                (click)="setPreferences()">
-                Apply
-            </button>
         </form>
     </div>
 </div>
