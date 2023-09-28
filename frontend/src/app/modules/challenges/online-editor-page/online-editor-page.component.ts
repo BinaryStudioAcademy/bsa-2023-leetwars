@@ -93,8 +93,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     ngOnInit() {
-        this.splitDirection = 'horizontal';
-
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const challengeId = +params.get('id')!;
 
