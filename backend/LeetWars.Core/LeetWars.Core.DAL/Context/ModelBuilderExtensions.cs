@@ -27,12 +27,6 @@ namespace LeetWars.Core.DAL.Context
             var userEntities = GenerateUsers();
             modelBuilder.Entity<User>().HasData(userEntities);
 
-            var friendshipEntities = GenerateFriendships();
-            modelBuilder.Entity<Friendship>().HasData(friendshipEntities);
-
-            var userFriendshipEntities = GenerateUserFriendships(userEntities, friendshipEntities);
-            modelBuilder.Entity<UserFriendship>().HasData(userFriendshipEntities);
-
             var subscriptionTypeEntities = GenerateSubscriptionTypes();
             modelBuilder.Entity<SubscriptionType>().HasData(subscriptionTypeEntities);
 
@@ -229,39 +223,6 @@ namespace LeetWars.Core.DAL.Context
                 .RuleFor(e => e.IsSubscribed, f => f.Random.Bool(0.8f))
                 .RuleFor(p => p.RegisteredAt, f => f.Date.Between(new DateTime(2019, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(2021, 12, 31, 0, 0, 0, DateTimeKind.Utc)))
                 .Generate(count);
-        }
-        private static ICollection<Friendship> GenerateFriendships(int count = 30)
-        {
-            Faker.GlobalUniqueIndex = 0;
-
-            return new Faker<Friendship>()
-                .CustomInstantiator(f => new Friendship())
-                .UseSeed(SeedDefaults.Friendship)
-                .RuleFor(e => e.Id, f => f.IndexGlobal)
-                .RuleFor(e => e.Status, f => f.PickRandom<FriendshipStatus>())
-                .RuleFor(e => e.CreatedAt, f => f.Date.Between(new DateTime(2023, 6, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(2022, 8, 1, 0, 0, 0, DateTimeKind.Utc)))
-                .Generate(count);
-        }
-
-        private static ICollection<UserFriendship> GenerateUserFriendships(ICollection<User> users, ICollection<Friendship> friendships)
-        {
-            Faker.GlobalUniqueIndex = 0;
-
-            var userFriendships = new List<UserFriendship>();
-            foreach (var (friendship, recipientUser, senderUserFriendship) in from friendship in friendships
-                                                                              let faker = new Faker()
-                                                                              let senderUser = faker.PickRandom(users)
-                                                                              let recipientUsers = users.Where(u => u.Id != senderUser.Id).ToList()
-                                                                              let recipientUser = faker.PickRandom(recipientUsers)
-                                                                              let senderUserFriendship = new UserFriendship(senderUser.Id, friendship.Id, true)
-                                                                              select (friendship, recipientUser, senderUserFriendship))
-            {
-                userFriendships.Add(senderUserFriendship);
-                var recipientUserFriendship = new UserFriendship(recipientUser.Id, friendship.Id, false);
-                userFriendships.Add(recipientUserFriendship);
-            }
-
-            return userFriendships;
         }
     }
 }
