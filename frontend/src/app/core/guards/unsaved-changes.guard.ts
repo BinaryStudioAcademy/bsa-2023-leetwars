@@ -11,7 +11,11 @@ export class UnsavedChangesGuard<T extends HasUnsavedChanges> implements CanDeac
     constructor(private modalService: NgbModal) {}
 
     canDeactivate(component: T) {
-        return component.unsavedChanges ? this.showConfirmationModal() : true;
+        if (component.unsavedChanges) {
+            return this.showConfirmationModal();
+        }
+
+        return true;
     }
 
     private showConfirmationModal() {
