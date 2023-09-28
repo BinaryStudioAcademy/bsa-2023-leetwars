@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
-import { PreferencesService } from '@core/services/preferences.service';
+import { UserService } from '@core/services/user.service';
 import { languageNameMap } from '@shared/mappings/language-map';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { IUserPreferences } from '@shared/models/user-prefferences/user-preferences';
@@ -24,7 +24,7 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
 
     userPreferences: IUserPreferences;
 
-    constructor(private preferencesService: PreferencesService) { super(); }
+    constructor(private userService: UserService) { super(); }
 
     ngAfterViewInit(): void {
         this.updateEditorOptions();
@@ -46,7 +46,7 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
     }
 
     private getUserPrefferences() {
-        this.preferencesService
+        this.userService
             .getUserPrefferences()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
@@ -69,8 +69,10 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
             language: this.userPreferences?.language ? this.userPreferences?.language.name : this.mapLanguageName(this.options?.language),
             tabSize: this.userPreferences?.tabSize ? this.userPreferences.tabSize : this.options?.tabSize,
             fontSize: this.userPreferences?.fontSize ? this.userPreferences.fontSize : this.options?.fontSize,
-            wordWrap: this.userPreferences?.wordWrap != null ? this.userPreferences?.wordWrap : this.options?.wordWrap,
-            minimap: { isEnabled: this.userPreferences?.minimap != null ? this.userPreferences?.minimap : this.options?.minimap.isEnabled },
+            wordWrap: this.userPreferences?.isWordWrap != null ? this.userPreferences?.isWordWrap : this.options?.wordWrap,
+            minimap: { isEnabled: this.userPreferences?.isMinimap != null
+                ? this.userPreferences?.isMinimap
+                : this.options?.minimap.isEnabled },
             hasAutomaticLayout: this.options?.hasAutomaticLayout,
             hasShadows: this.options?.hasShadows,
             lineNumbers: this.options?.lineNumbers,

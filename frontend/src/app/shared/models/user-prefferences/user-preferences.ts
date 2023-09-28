@@ -3,8 +3,8 @@ import { ILanguage } from '../language/language';
 export interface IUserPreferences {
     language: ILanguage;
     theme: string;
-    wordWrap: boolean;
+    isWordWrap: boolean;
     tabSize: number;
     fontSize: number;
-    minimap: boolean;
+    isMinimap: boolean;
 }

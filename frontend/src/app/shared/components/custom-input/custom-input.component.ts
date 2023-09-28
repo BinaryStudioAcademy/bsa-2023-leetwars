@@ -85,6 +85,7 @@ export class CustomInputComponent implements ControlValueAccessor, OnInit {
 
     onInputChange(model: string) {
         this.searchSubject.next(model);
+        this.onChange(model);
     }
 
     togglePasswordVisibility() {

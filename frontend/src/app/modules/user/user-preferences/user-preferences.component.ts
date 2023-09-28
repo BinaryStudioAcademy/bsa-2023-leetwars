@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BaseComponent } from '@core/base/base.component';
 import { LanguageService } from '@core/services/language.service';
-import { PreferencesService } from '@core/services/preferences.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { UserService } from '@core/services/user.service';
 import { ILanguage } from '@shared/models/language/language';
 import { IUser } from '@shared/models/user/user';
 import { INewUserPreferences } from '@shared/models/user-prefferences/new-user-preferences';
@@ -24,7 +24,7 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
         language: new FormControl(''),
         theme: new FormControl(''),
         tabSize: new FormControl(3, [Validators.max(tabSizeMaxValue)]),
-        fontSize: new FormControl(0, [Validators.max(fontSizeMaxValue)]),
+        fontSize: new FormControl(15, [Validators.max(fontSizeMaxValue)]),
         wordWrap: new FormControl(false),
         minimap: new FormControl(false),
     });
@@ -42,7 +42,7 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
     constructor(
         private toastrService: ToastrNotificationsService,
         private languageService: LanguageService,
-        private preferenceService: PreferencesService,
+        private userervice: UserService,
     ) { super(); }
 
     ngOnInit(): void {
@@ -62,11 +62,11 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
             theme: editorTheme,
             tabSize: this.userPreferenceForm.value.tabSize,
             fontSize: this.userPreferenceForm.value.fontSize,
-            wordWrap: this.userPreferenceForm.value.wordWrap,
-            minimap: this.userPreferenceForm.value.minimap,
+            isWordWrap: this.userPreferenceForm.value.wordWrap,
+            isMinimap: this.userPreferenceForm.value.minimap,
         };
 
-        this.preferenceService
+        this.userervice
             .setUserPrefferences(newPreferences)
             .subscribe({
                 next: () => {
@@ -76,6 +76,31 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
                     this.toastrService.showError('Something went wrong');
                 },
             });
+    }
+
+    private loadData() {
+        this.userervice.getUserPrefferences().subscribe((preferences) => {
+            this.initializeForm(preferences);
+        });
+    }
+
+    private initializeForm(preferences: IUserPreferences) {
+        this.userPreferenceForm.patchValue({
+            tabSize: preferences?.tabSize,
+            theme: preferences?.theme,
+            fontSize: preferences?.fontSize,
+            wordWrap: preferences?.isWordWrap,
+            language: preferences.language?.name,
+            minimap: preferences?.isMinimap,
+        });
+    }
+
+    onFontSizeChange(value: string) {
+        this.userPreferenceForm.value.fontSize = value;
+    }
+
+    onTabSizeChange(value: string) {
+        this.userPreferenceForm.value.tabSize = value;
     }
 
     onCheckedWrapChange() {
@@ -96,23 +121,6 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
 
     getErrorMessage(formControlName: string) {
         return getErrorMessage(formControlName, this.userPreferenceForm);
-    }
-
-    private loadData() {
-        this.preferenceService.getUserPrefferences().subscribe((preferences) => {
-            this.initializeForm(preferences);
-        });
-    }
-
-    private initializeForm(preferences: IUserPreferences) {
-        this.userPreferenceForm.patchValue({
-            tabSize: preferences?.tabSize,
-            theme: preferences?.theme,
-            fontSize: preferences?.fontSize,
-            wordWrap: preferences?.wordWrap,
-            language: preferences.language?.name,
-            minimap: preferences?.minimap,
-        });
     }
 
     private getLanguages() {

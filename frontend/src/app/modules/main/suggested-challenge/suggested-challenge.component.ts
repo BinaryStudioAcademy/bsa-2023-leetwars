@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
-import { PreferencesService } from '@core/services/preferences.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { UserService } from '@core/services/user.service';
 import {
     findItemIdByName,
     findSuggestionTypeByName,
@@ -46,7 +46,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         private challengeService: ChallengeService,
         private languageService: LanguageService,
         private toastrService: ToastrNotificationsService,
-        private preferencesService: PreferencesService,
+        private userService: UserService,
     ) {
         super();
     }
@@ -98,8 +98,8 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
     }
 
     private getPreferences() {
-        this.preferencesService.getUserPrefferences().subscribe((preferences) => {
-            this.preferenceLanguage = preferences.language ? preferences.language.name : this.languagesNames[0];
+        this.userService.getUserPrefferences().subscribe((preferences) => {
+            this.preferenceLanguage = preferences.language?.name ?? this.languagesNames[0];
             this.getChallenge();
         });
     }

@@ -1,8 +1,8 @@
 export interface INewUserPreferences {
     languageId?: number | null;
     theme?: string;
-    wordWrap?: boolean;
-    minimap: boolean;
+    isWordWrap?: boolean;
+    isMinimap: boolean;
     tabSize?: number;
     fontSize?: number;
 }

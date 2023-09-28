@@ -9,6 +9,301 @@ namespace LeetWars.Core.DAL.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 1L, 25L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 1L, 31L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 2L, 13L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 3L, 26L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 3L, 36L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 4L, 14L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 4L, 36L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 5L, 34L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 5L, 38L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 6L, 11L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 6L, 22L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 7L, 7L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 7L, 31L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 8L, 4L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 8L, 35L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 9L, 15L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 9L, 28L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 10L, 12L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 10L, 38L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 11L, 23L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 11L, 33L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 12L, 14L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 12L, 15L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 13L, 13L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 13L, 17L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 14L, 14L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 14L, 28L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 15L, 14L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 15L, 18L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 16L, 2L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 16L, 18L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 17L, 3L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 17L, 38L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 18L, 16L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 18L, 34L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 19L, 4L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 19L, 15L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 20L, 9L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 20L, 13L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 21L, 8L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 21L, 9L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 22L, 3L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 22L, 29L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 23L, 29L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 23L, 35L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 24L, 17L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 24L, 25L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 25L, 1L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 25L, 21L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 26L, 14L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 26L, 34L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 27L, 24L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 27L, 36L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 28L, 17L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 28L, 39L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 29L, 29L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 29L, 30L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 30L, 12L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 30L, 29L });
+
             migrationBuilder.CreateTable(
                 name: "UserPreferences",
                 columns: table => new
@@ -18,10 +313,10 @@ namespace LeetWars.Core.DAL.Migrations
                     UserId = table.Column<long>(type: "bigint", nullable: false),
                     LanguageId = table.Column<long>(type: "bigint", nullable: true),
                     Theme = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WordWrap = table.Column<bool>(type: "bit", nullable: true),
+                    IsWordWrap = table.Column<bool>(type: "bit", nullable: true),
                     TabSize = table.Column<int>(type: "int", nullable: true),
                     FontSize = table.Column<int>(type: "int", nullable: true),
-                    Minimap = table.Column<bool>(type: "bit", nullable: true)
+                    IsMinimap = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -2539,6 +2834,86 @@ namespace LeetWars.Core.DAL.Migrations
                 value: new DateTime(2021, 9, 12, 2, 17, 57, 235, DateTimeKind.Utc).AddTicks(5348));
 
             migrationBuilder.UpdateData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 2L, 11L },
+                column: "IsSender",
+                value: false);
+
+            migrationBuilder.InsertData(
+                table: "UserFriendships",
+                columns: new[] { "FriendshipId", "UserId", "IsSender" },
+                values: new object[,]
+                {
+                    { 1L, 2L, true },
+                    { 1L, 3L, false },
+                    { 2L, 34L, true },
+                    { 3L, 4L, true },
+                    { 3L, 16L, false },
+                    { 4L, 4L, false },
+                    { 4L, 19L, true },
+                    { 5L, 10L, false },
+                    { 5L, 17L, true },
+                    { 6L, 20L, false },
+                    { 6L, 35L, true },
+                    { 7L, 5L, false },
+                    { 7L, 25L, true },
+                    { 8L, 7L, true },
+                    { 8L, 32L, false },
+                    { 9L, 25L, true },
+                    { 9L, 36L, false },
+                    { 10L, 31L, true },
+                    { 10L, 39L, false },
+                    { 11L, 2L, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserFriendships",
+                columns: new[] { "FriendshipId", "UserId", "IsSender" },
+                values: new object[,]
+                {
+                    { 11L, 34L, false },
+                    { 12L, 8L, false },
+                    { 12L, 20L, true },
+                    { 13L, 11L, false },
+                    { 13L, 20L, true },
+                    { 14L, 9L, true },
+                    { 14L, 20L, false },
+                    { 15L, 10L, true },
+                    { 15L, 25L, false },
+                    { 16L, 3L, true },
+                    { 16L, 23L, false },
+                    { 17L, 26L, true },
+                    { 17L, 30L, false },
+                    { 18L, 4L, true },
+                    { 18L, 21L, false },
+                    { 19L, 12L, false },
+                    { 19L, 37L, true },
+                    { 20L, 11L, false },
+                    { 20L, 23L, true },
+                    { 21L, 37L, false },
+                    { 21L, 39L, true },
+                    { 22L, 12L, false },
+                    { 22L, 19L, true },
+                    { 23L, 33L, true },
+                    { 23L, 40L, false },
+                    { 24L, 22L, true },
+                    { 24L, 38L, false },
+                    { 25L, 5L, true },
+                    { 25L, 38L, false },
+                    { 26L, 17L, true },
+                    { 26L, 35L, false },
+                    { 27L, 10L, false },
+                    { 27L, 17L, true },
+                    { 28L, 5L, true },
+                    { 28L, 14L, false },
+                    { 29L, 8L, false },
+                    { 29L, 39L, true },
+                    { 30L, 16L, false },
+                    { 30L, 39L, true }
+                });
+
+            migrationBuilder.UpdateData(
                 table: "UserSolutions",
                 keyColumn: "Id",
                 keyValue: 1L,
@@ -3534,6 +3909,301 @@ namespace LeetWars.Core.DAL.Migrations
         {
             migrationBuilder.DropTable(
                 name: "UserPreferences");
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 1L, 2L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 1L, 3L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 2L, 34L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 3L, 4L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 3L, 16L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 4L, 4L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 4L, 19L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 5L, 10L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 5L, 17L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 6L, 20L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 6L, 35L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 7L, 5L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 7L, 25L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 8L, 7L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 8L, 32L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 9L, 25L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 9L, 36L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 10L, 31L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 10L, 39L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 11L, 2L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 11L, 34L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 12L, 8L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 12L, 20L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 13L, 11L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 13L, 20L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 14L, 9L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 14L, 20L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 15L, 10L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 15L, 25L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 16L, 3L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 16L, 23L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 17L, 26L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 17L, 30L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 18L, 4L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 18L, 21L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 19L, 12L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 19L, 37L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 20L, 11L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 20L, 23L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 21L, 37L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 21L, 39L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 22L, 12L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 22L, 19L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 23L, 33L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 23L, 40L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 24L, 22L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 24L, 38L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 25L, 5L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 25L, 38L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 26L, 17L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 26L, 35L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 27L, 10L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 27L, 17L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 28L, 5L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 28L, 14L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 29L, 8L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 29L, 39L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 30L, 16L });
+
+            migrationBuilder.DeleteData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 30L, 39L });
 
             migrationBuilder.UpdateData(
                 table: "ChallengeVersions",
@@ -6033,6 +6703,86 @@ namespace LeetWars.Core.DAL.Migrations
                 keyValue: 100L,
                 column: "CreatedAt",
                 value: new DateTime(2021, 6, 14, 7, 23, 12, 977, DateTimeKind.Utc).AddTicks(8921));
+
+            migrationBuilder.UpdateData(
+                table: "UserFriendships",
+                keyColumns: new[] { "FriendshipId", "UserId" },
+                keyValues: new object[] { 2L, 11L },
+                column: "IsSender",
+                value: true);
+
+            migrationBuilder.InsertData(
+                table: "UserFriendships",
+                columns: new[] { "FriendshipId", "UserId", "IsSender" },
+                values: new object[,]
+                {
+                    { 1L, 25L, true },
+                    { 1L, 31L, false },
+                    { 2L, 13L, false },
+                    { 3L, 26L, false },
+                    { 3L, 36L, true },
+                    { 4L, 14L, false },
+                    { 4L, 36L, true },
+                    { 5L, 34L, false },
+                    { 5L, 38L, true },
+                    { 6L, 11L, true },
+                    { 6L, 22L, false },
+                    { 7L, 7L, true },
+                    { 7L, 31L, false },
+                    { 8L, 4L, true },
+                    { 8L, 35L, false },
+                    { 9L, 15L, false },
+                    { 9L, 28L, true },
+                    { 10L, 12L, true },
+                    { 10L, 38L, false },
+                    { 11L, 23L, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserFriendships",
+                columns: new[] { "FriendshipId", "UserId", "IsSender" },
+                values: new object[,]
+                {
+                    { 11L, 33L, false },
+                    { 12L, 14L, true },
+                    { 12L, 15L, false },
+                    { 13L, 13L, false },
+                    { 13L, 17L, true },
+                    { 14L, 14L, false },
+                    { 14L, 28L, true },
+                    { 15L, 14L, true },
+                    { 15L, 18L, false },
+                    { 16L, 2L, true },
+                    { 16L, 18L, false },
+                    { 17L, 3L, false },
+                    { 17L, 38L, true },
+                    { 18L, 16L, false },
+                    { 18L, 34L, true },
+                    { 19L, 4L, true },
+                    { 19L, 15L, false },
+                    { 20L, 9L, false },
+                    { 20L, 13L, true },
+                    { 21L, 8L, true },
+                    { 21L, 9L, false },
+                    { 22L, 3L, false },
+                    { 22L, 29L, true },
+                    { 23L, 29L, true },
+                    { 23L, 35L, false },
+                    { 24L, 17L, true },
+                    { 24L, 25L, false },
+                    { 25L, 1L, false },
+                    { 25L, 21L, true },
+                    { 26L, 14L, true },
+                    { 26L, 34L, false },
+                    { 27L, 24L, true },
+                    { 27L, 36L, false },
+                    { 28L, 17L, true },
+                    { 28L, 39L, false },
+                    { 29L, 29L, true },
+                    { 29L, 30L, false },
+                    { 30L, 12L, true },
+                    { 30L, 29L, false }
+                });
 
             migrationBuilder.UpdateData(
                 table: "UserSolutions",

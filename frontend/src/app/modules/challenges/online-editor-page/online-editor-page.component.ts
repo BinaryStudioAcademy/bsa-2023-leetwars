@@ -8,7 +8,6 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { CodeFightService } from '@core/services/code-fight.service';
 import { CodeRunService } from '@core/services/code-run.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
@@ -17,6 +16,8 @@ import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
 import { Observable, takeUntil } from 'rxjs';
+
+import { editorOptions } from '../challenge-creation/challenge-creation.utils';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -225,17 +226,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private setupEditorOptions() {
         this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
-        this.editorOptions = {
-            theme: 'vs-dark',
-            language: this.selectedLanguage,
-            minimap: { isEnabled: false },
-            hasAutomaticLayout: true,
-            hasShadows: false,
-            wordWrap: false,
-            lineNumbers: true,
-            tabSize: 3,
-            fontSize: 15,
-        };
+        this.editorOptions = editorOptions;
     }
 
     private getInitialSolutionByLanguage(language: string): string {
@@ -250,9 +241,5 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return selectedVersion && selectedVersion.exampleTestCases
             ? selectedVersion.exampleTestCases
             : 'No tests available';
-    }
-
-    private mapLanguageName(language?: string): string {
-        return language ? languageNameMap.get(language) || language : 'No language available';
     }
 }

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
-import { PreferencesService } from '@core/services/preferences.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { UserService } from '@core/services/user.service';
 import {
     PROGRESS_NAMES_MAP,
     SORTING_PROPERTIES,
@@ -17,7 +17,7 @@ import { ISortedModel } from '@shared/models/challenge/sorted-model';
 import { ILanguage } from '@shared/models/language/language';
 import { IPageSettings } from '@shared/models/page-settings';
 import { ITag } from '@shared/models/tag/tag';
-import { Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-filtering-section',
@@ -42,8 +42,6 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     difficultyNames: string[];
 
     preferenceLanguage: string;
-
-    public scrollEventSubject = new Subject<void>();
 
     private sortingProperty?: ISortedModel;
 
@@ -72,7 +70,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         private languageService: LanguageService,
         private tagService: TagService,
         private toastrService: ToastrNotificationsService,
-        private preferencesService: PreferencesService,
+        private userService: UserService,
     ) {
         super();
     }
@@ -158,8 +156,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
     }
 
     private getPreferences() {
-        this.preferencesService.getUserPrefferences().subscribe((preferences) => {
-            this.preferenceLanguage = preferences?.language.name ? preferences?.language.name : '';
+        this.userService.getUserPrefferences().subscribe((preferences) => {
+            this.preferenceLanguage = preferences?.language.name ?? '';
             this.filter.languageId = preferences?.language?.id;
             this.getChalenges();
         });

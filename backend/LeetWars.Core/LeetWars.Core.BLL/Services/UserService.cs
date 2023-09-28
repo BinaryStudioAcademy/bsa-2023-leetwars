@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using LeetWars.Core.Common.DTO.UserPrefferences;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -343,6 +344,50 @@ public class UserService : BaseService, IUserService
 
         var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
+    }
+
+
+    public async Task<UserPreferencesDto> GetUserPreferences()
+    {
+        var currentUser = _userGetter.GetCurrentUserOrThrow();
+
+        var preferences = await _context.UserPreferences
+            .Include(l => l.Language)
+            .FirstOrDefaultAsync(x => x.UserId == currentUser.Id);
+
+        return _mapper.Map<UserPreferencesDto>(preferences);
+    }
+
+    public async Task<UserPreferencesDto> SetUserPreferences(NewUserPreferencesDto newPreferences)
+    {
+        var currentUser = _userGetter.GetCurrentUserOrThrow();
+
+        var currentPreferences = await _context.UserPreferences.FirstOrDefaultAsync(x => x.UserId == currentUser.Id);
+
+        var updatedPreferences = currentPreferences is not null
+            ? UpdateUserPreferences(currentPreferences, newPreferences)
+            : await AddUserPreferences(newPreferences, currentUser.Id);
+
+        await _context.SaveChangesAsync();
+
+        return updatedPreferences;
+    }
+
+    private async Task<UserPreferencesDto> AddUserPreferences(NewUserPreferencesDto newPreferences, long userId)
+    {
+        var preferences = _mapper.Map<UserPreferences>(newPreferences);
+        preferences.UserId = userId;
+        await _context.AddAsync(preferences);
+        return _mapper.Map<UserPreferencesDto>(preferences);
+    }
+
+    private UserPreferencesDto UpdateUserPreferences(UserPreferences currentPreferences, NewUserPreferencesDto newPreferences)
+    {
+        _mapper.Map(newPreferences, currentPreferences);
+
+        _context.Update(currentPreferences);
+
+        return _mapper.Map<UserPreferencesDto>(currentPreferences);
     }
 
     private async Task<User> GetCurrentUserEntityAsync()

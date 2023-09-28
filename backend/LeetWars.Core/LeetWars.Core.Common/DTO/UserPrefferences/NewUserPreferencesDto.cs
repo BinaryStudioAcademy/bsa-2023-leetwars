@@ -8,9 +8,9 @@ namespace LeetWars.Core.Common.DTO.UserPrefferences
 
         public string? Theme { get; set; }
 
-        public bool? WordWrap { get; set; }
+        public bool? IsWordWrap { get; set; }
 
-        public bool? Minimap { get; set; }
+        public bool? IsMinimap { get; set; }
 
         public int? TabSize { get; set; }
 
