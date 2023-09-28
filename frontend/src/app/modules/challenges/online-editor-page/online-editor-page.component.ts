@@ -8,14 +8,18 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { CodeFightService } from '@core/services/code-fight.service';
 import { CodeRunService } from '@core/services/code-run.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SolutionSubmitModalComponent } from '@shared/components/solution-submit-modal/solution-submit-modal.component';
+import { languageNameMap } from '@shared/mappings/language-map';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
+import { ICodeSubmitResult } from '@shared/models/code-run/code-submit-result';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
-import { Observable, takeUntil } from 'rxjs';
+import { take, takeUntil } from 'rxjs';
 
 import { editorOptions } from '../challenge-creation/challenge-creation.utils';
 
@@ -55,8 +59,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     private isFullscreen = false;
 
-    private isSampleTests: boolean;
-
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
@@ -64,6 +66,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private breakpointObserver: BreakpointObserver,
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
+        private modalService: NgbModal,
         private codeRunService: CodeRunService,
         private authService: AuthService,
         private router: Router,
@@ -151,29 +154,37 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
     }
 
-    runSampleTests(): void {
-        this.sendCode().subscribe();
-
-        this.isSampleTests = true;
-    }
-
-    submitSolution(): void {
-        this.sendCode().subscribe();
-
-        this.isSampleTests = false;
-    }
-
     subscribeToMessageQueue(): void {
         this.signalRService.start();
-        this.signalRService.listenMessages((codeRunResults: ICodeRunResults) => {
-            this.codeRunService.getCodeRunResults(codeRunResults);
+    }
 
-            this.shouldSendCodeFightEnd(codeRunResults);
-        });
+    runSampleTests() {
+        this.signalRService.codeRunResult$
+            .pipe(take(1), takeUntil(this.unsubscribe$))
+            .subscribe((codeRunResults: ICodeRunResults) => {
+                this.codeRunService.getCodeRunResults(codeRunResults);
+            });
+
+        this.sendCode();
+    }
+
+    sendSubmitRequest() {
+        this.signalRService.codeSubmitResults$
+            .pipe(take(1), takeUntil(this.unsubscribe$))
+            .subscribe((codeSubmitResults: ICodeSubmitResult) => {
+                const modalRef = this.modalService.open(SolutionSubmitModalComponent);
+
+                modalRef.componentInstance.codeRunResults = codeSubmitResults.codeRunResult;
+                modalRef.componentInstance.codeAnalysisResults = codeSubmitResults.codeAnalysisResult;
+
+                this.shouldSendCodeFightEnd(codeSubmitResults.codeRunResult);
+            });
+
+        this.sendCode(true);
     }
 
     private shouldSendCodeFightEnd(codeRunResults: ICodeRunResults) {
-        if (this.isCodeFight && !this.isSampleTests) {
+        if (this.isCodeFight) {
             const codeFightEnd: ICodeFightEnd = {
                 isWinner: true,
                 senderId: this.user.id,
@@ -189,15 +200,15 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         }
     }
 
-    private sendCode(): Observable<void> {
+    private sendCode(isSubmitRequest: boolean = false): void {
         this.solution = {
             userConnectionId: this.user.id.toString(),
             language: this.selectedLanguage,
             userCode: this.initialSolution as string,
             tests: this.testCode,
+            isSubmitRequest,
         };
-
-        return this.challengeService.runTests(this.solution);
+        this.challengeService.runTests(this.solution).subscribe();
     }
 
     private loadChallenge(challengeId: number) {

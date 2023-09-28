@@ -36,7 +36,7 @@ namespace LeetWars.Core.BLL.Services
 
             var sender = await _userService.GetBriefUserInfoByIdAsync(requestDto.SenderId);
 
-            var notification = new NewNotificationDto
+            var notification = new NotificationDto
             {
                 DateSending = DateTime.UtcNow,
                 ReceiverId = requestDto.ReceiverId.ToString(),
@@ -51,13 +51,13 @@ namespace LeetWars.Core.BLL.Services
             return await UpdateUsersCodeFightStatusesAsync(notification, CodeFightStatus.HasRequest);
         }
 
-        public async Task<List<UserDto>> SendcodeFightRequestEndedAsync(NewNotificationDto notification)
+        public async Task<List<UserDto>> SendcodeFightRequestEndedAsync(NotificationDto notification)
         {
             notification.TypeNotification = TypeNotifications.CodeFightRequestEnd;
 
             if (notification.ReceiverId is null || notification.Sender is null)
             {
-                throw new NotFoundException(nameof(NewNotificationDto));
+                throw new NotFoundException(nameof(NotificationDto));
             }
 
             long receiverId = long.Parse(notification.ReceiverId);
@@ -73,7 +73,7 @@ namespace LeetWars.Core.BLL.Services
             return new List<UserDto> { sender, receiver };
         }
 
-        public async Task<List<UserDto>> SendCodeFightStartAsync(NewNotificationDto notificationDto)
+        public async Task<List<UserDto>> SendCodeFightStartAsync(NotificationDto notificationDto)
         {
             notificationDto.TypeNotification = TypeNotifications.CodeFightStart;
 
@@ -81,7 +81,7 @@ namespace LeetWars.Core.BLL.Services
                 || notificationDto.Sender is null
                 || string.IsNullOrEmpty(notificationDto.ReceiverId))
             {
-                throw new NotFoundException(nameof(NewNotificationDto));
+                throw new NotFoundException(nameof(NotificationDto));
             }
 
             var codeFight = new CodeFight
@@ -130,7 +130,7 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
 
-            var notification = new NewNotificationDto
+            var notification = new NotificationDto
             {
                 TypeNotification = TypeNotifications.CodeFightEnd,
                 Challenge = challenge,
@@ -155,7 +155,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<List<UserDto>>(new List<User> { sender, receiver });
         }
 
-        private async Task<List<UserDto>> UpdateUsersCodeFightStatusesAsync(NewNotificationDto notificationDto, CodeFightStatus newStatus)
+        private async Task<List<UserDto>> UpdateUsersCodeFightStatusesAsync(NotificationDto notificationDto, CodeFightStatus newStatus)
         {
             var userCodeFight = new UserCodeFightDto
             {
