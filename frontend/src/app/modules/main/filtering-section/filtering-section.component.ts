@@ -4,6 +4,7 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { UserService } from '@core/services/user.service';
 import {
     PROGRESS_NAMES_MAP,
     SORTING_PROPERTIES,
@@ -40,6 +41,8 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     difficultyNames: string[];
 
+    preferenceLanguage: string;
+
     private sortingProperty?: ISortedModel;
 
     private page: IPageSettings = {
@@ -67,12 +70,13 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
         private languageService: LanguageService,
         private tagService: TagService,
         private toastrService: ToastrNotificationsService,
+        private userService: UserService,
     ) {
         super();
     }
 
     ngOnInit(): void {
-        this.getChalenges();
+        this.getPreferences();
         this.getLanguages();
         this.getTags();
 
@@ -149,6 +153,14 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
         this.filter.skillLevel = LanguageLevel[value as keyof typeof LanguageLevel];
         this.resetChallengesData();
+    }
+
+    private getPreferences() {
+        this.userService.getUserPrefferences().subscribe((preferences) => {
+            this.preferenceLanguage = preferences?.language.name ?? '';
+            this.filter.languageId = preferences?.language?.id;
+            this.getChalenges();
+        });
     }
 
     private getChalenges() {

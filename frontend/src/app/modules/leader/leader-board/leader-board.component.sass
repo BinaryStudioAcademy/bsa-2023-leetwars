@@ -79,12 +79,15 @@
         padding-bottom: 11px
 
 .user-name
-    width: 50%
+    width: 45%
     color: $white
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
     @media ( max-width: $small-challenge)
-      width: 40%
+        width: 40%
     @media ( max-width: $mobile)
-      width: calc(87% - 132px)
+        width: calc(87% - 132px)
     &-avatar
         width: 16px
         height: 16px
@@ -155,7 +158,7 @@
     color: $green
 
 .in-battle
-  color: $light-red
+    color: $light-red
 
 .form-check-input
     cursor: pointer

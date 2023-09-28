@@ -6,7 +6,9 @@ import {
     challengeTagsValidationErrorMessages,
     emailValidationErrorMessages,
     firebaseValidationErrorMessages,
+    fontSizeValidationErrorMessages,
     passwordValidationErrorMessages,
+    tabSizeValidationErrorMessages,
     usernameValidationErrorMessages,
 } from '@shared/utils/validation/form-controls-error-messages';
 import { ControlErrorMessages } from '@shared/utils/validation/validation-interfaces';
@@ -19,6 +21,8 @@ const controlErrorMessagesMap: { [key: string]: ControlErrorMessages } = {
     description: challengeDescriptionValidationErrorMessages,
     level: challengeLevelValidationErrorMessages,
     tags: challengeTagsValidationErrorMessages,
+    tabSize: tabSizeValidationErrorMessages,
+    fontSize: fontSizeValidationErrorMessages,
 };
 
 export function getErrorMessage(formControlName: string, form: FormGroup): string | null {

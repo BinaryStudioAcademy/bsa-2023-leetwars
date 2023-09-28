@@ -11,6 +11,8 @@ import { IUserAvatar } from '@shared/models/user/user-avatar';
 import { IUserFriendsInfo } from '@shared/models/user/user-friends-info';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
+import { INewUserPreferences } from '@shared/models/user-prefferences/new-user-preferences';
+import { IUserPreferences } from '@shared/models/user-prefferences/user-preferences';
 import { setParams } from '@shared/utils/http-params.utils';
 import { Observable } from 'rxjs';
 
@@ -87,5 +89,13 @@ export class UserService {
 
     getUserFriendships(id: number): Observable<IUserFriendsInfo> {
         return this.httpService.getRequest<IUserFriendsInfo>(`${this.baseUrl}/user-friendships?userid=${id}`);
+    }
+
+    public getUserPrefferences(): Observable<IUserPreferences> {
+        return this.httpService.getRequest<IUserPreferences>(`${this.baseUrl}/preferences`);
+    }
+
+    public setUserPrefferences(newPreferences: INewUserPreferences): Observable<IUserPreferences> {
+        return this.httpService.postRequest<IUserPreferences>(`${this.baseUrl}/preferences`, newPreferences);
     }
 }

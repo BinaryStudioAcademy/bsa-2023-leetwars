@@ -14,13 +14,17 @@ namespace LeetWars.Core.DAL.Context
         public DbSet<SubscriptionType> SubscriptionTypes => Set<SubscriptionType>();
         public DbSet<Tag> Tags => Set<Tag>();
         public DbSet<ChallengeTag> ChallengeTags => Set<ChallengeTag>();
+        public DbSet<UserPreferences> UserPreferences => Set<UserPreferences>();
         public DbSet<UserPreferredLanguage> UserPreferredLanguage => Set<UserPreferredLanguage>();
         public DbSet<Test> Tests => Set<Test>();
         public DbSet<User> Users => Set<User>();
         public DbSet<UserLanguageLevel> UserLanguageLevels => Set<UserLanguageLevel>();
         public DbSet<UserSolution> UserSolutions => Set<UserSolution>();
+
         public DbSet<Badge> Badges => Set<Badge>();
         public DbSet<UserBadge> UserBadges => Set<UserBadge>();
+        public DbSet<Notification> Notifications => Set<Notification>();
+        public DbSet<UserNotification> UserNotifications => Set<UserNotification>();
         public DbSet<CodeFight> CodeFights => Set<CodeFight>();
         public DbSet<UserFriendship> UserFriendships => Set<UserFriendship>();
         public DbSet<Friendship> Friendships => Set<Friendship>();

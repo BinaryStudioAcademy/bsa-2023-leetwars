@@ -24,7 +24,6 @@ namespace LeetWars.Core.WebAPI.Validators.Challenge
                 });
 
             RuleFor(dto => dto.LevelId).NotEmpty().WithMessage("LevelId is required!");
-            RuleFor(dto => dto.Category).NotEmpty().WithMessage("Category is required!");
             RuleFor(dto => dto.Tags).NotEmpty().WithMessage("Tags are required!");
             RuleFor(dto => dto.Title).NotEmpty().WithMessage("Title is required!");
             RuleFor(dto => dto.Instructions).NotEmpty().WithMessage("Instructions are required!");

@@ -1,6 +1,6 @@
 export interface ControlErrorMessages {
     [key: string]: string | undefined;
-    required: string;
+    required?: string;
     minlength?: string;
     maxlength?: string;
     pattern?: string;

@@ -2,6 +2,7 @@ using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
+using LeetWars.Core.Common.DTO.UserPrefferences;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Http;
 using System.Linq.Expressions;
@@ -41,4 +42,8 @@ public interface IUserService
     public Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto);
 
     public Task<UserAvatarDto> UpdateUserAvatarAsync(IFormFile image);
+
+    public Task<UserPreferencesDto> GetUserPreferences();
+
+    public Task<UserPreferencesDto> SetUserPreferences(NewUserPreferencesDto newPreferences);
 }

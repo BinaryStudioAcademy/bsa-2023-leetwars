@@ -7,8 +7,12 @@
         </div>
     <div class="board-wrapper">
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" (change)="toggleMyFriends()" role="switch"
-                id="flexSwitchCheckChecked">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                (change)="toggleMyFriends()"
+                role="switch"
+                id="flexSwitchCheckChecked" />
             <label class="form-check-label" for="flexSwitchCheckChecked">My friends</label>
         </div>
         <div class="board">
@@ -28,26 +32,28 @@
                             [src]="this.user?.imagePath ?? AssetConstants.defaultProfileImagePath"
                             alt="user-avatar" />
                         <p>
-                            <a class="user-link" (click)="onLinkClick(user.id)">
+                            <a class="user-link d-block" (click)="onLinkClick(user.id)">
                                 {{ user.userName }}
                             </a>
                         </p>
                     </div>
                     <div class="total-score">{{ user.totalScore }}</div>
                     <div class="add-friend d-flex">
-                        <button (click)="addFriend(user)" class="user-icon-btn user-plus-btn"
+                        <button
+                            (click)="addFriend(user)"
+                            class="user-icon-btn user-plus-btn"
                             *ngIf="isAddFriendButtonVisible(user)">
                             <fa-icon class="user-icon user-plus-icon" [icon]="['fas', 'user-plus']"></fa-icon>
                         </button>
-                        <div *ngIf="isFriendshipStatus(user, 'Pending')" class="dot-flashing">
-                        </div>
+                        <div *ngIf="isFriendshipStatus(user, 'Pending')" class="dot-flashing"></div>
                         <button class="user-icon-btn" *ngIf="isFriendshipStatus(user, 'Accepted')">
                             <fa-icon class="user-icon" [icon]="['fas', 'user-group']"></fa-icon>
                         </button>
                     </div>
                     <div class="start-fight text-start">
                         <div *ngIf="user.id !== this.currentUser.id">
-                            <button [ngClass]="{ 'cursor-none': !isCurrentUserAbleToCodeFight() }"
+                            <button
+                                [ngClass]="{ 'cursor-none': !isCurrentUserAbleToCodeFight() }"
                                 *ngIf="user.codeFightStatus === CodeFightStatus.NotInBattle"
                                 (click)="startCodeFight(user)">
                                 <fa-icon [icon]="'user-ninja'"></fa-icon>
