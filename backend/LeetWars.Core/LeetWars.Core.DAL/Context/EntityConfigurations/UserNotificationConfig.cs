@@ -17,7 +17,7 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
             builder.HasOne(e => e.Notification)
                 .WithMany()
                 .HasForeignKey(e => e.NotificationId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -1,5 +1,6 @@
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
+using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Http;
@@ -29,7 +30,13 @@ public interface IUserService
 
     public Task<BriefUserInfoDto> GetBriefUserInfoByIdAsync(long id);
 
-    public Task<List<UserDto>> GetLeaderBoardAsync(PageSettingsDto? page);
+    public Task<List<UserDto>> GetLeaderBoardAsync(LeaderBoardPageSettingsDto page);
+
+    public Task<UserFriendsInfoDto> GetUserFriendshipsAsync(long userId);
+
+    public Task<UserFriendsInfoDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto);
+
+    public Task<UserFriendsInfoDto> UpdateFriendshipRequestAsync(UpdateFriendshipDto updateFriendshipDto);
 
     public Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto);
 

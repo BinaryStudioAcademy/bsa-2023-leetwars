@@ -1,4 +1,4 @@
-@import 'src/styles/color-variables'
+@import 'color-variables'
 
 @mixin notification-border($edge-color, $middle-color: $green, $border-width: 1px)
     border: 0px
@@ -14,14 +14,14 @@
     font-size: 13px
 
 .notification-text
-  padding: 5px
-  word-wrap: break-word
-  overflow: hidden
-  max-height: 100px
-  padding: 5px
-  display: flex
-  align-items: center
-  a
+    padding: 5px
+    word-wrap: break-word
+    overflow: hidden
+    max-height: 100px
+    padding: 5px
+    display: flex
+    align-items: center
+a
     color: $green
     text-decoration: none
 
@@ -39,3 +39,38 @@
     width: 36px
     height: 36px
 
+.friend-request-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 5px
+    border-radius: 4px
+
+.friend-request-buttons
+    display: flex
+    gap: 10px
+
+.friend-request-btn
+    cursor: pointer
+    padding: 5px 10px
+    border: none
+    border-radius: 4px
+    color: $white
+    &:active
+        scale: 97%
+
+.accept-btn
+    background-color: $green
+    &:hover
+        background-color: $dark-olive-green
+
+.reject-btn
+    background-color: $light-red
+    &:hover
+        background-color: $maroon
+
+.accepted-friendship
+    color: $green
+
+.declined-friendship
+    color: $light-red

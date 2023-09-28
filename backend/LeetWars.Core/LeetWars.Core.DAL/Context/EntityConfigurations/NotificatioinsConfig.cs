@@ -11,13 +11,17 @@ namespace LeetWars.Core.DAL.Context.EntityConfigurations
             //Connections
             builder.HasOne(e => e.Sender)
                 .WithMany()
-                .HasForeignKey(e => e.SenderId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(e => e.SenderId);
 
             builder.HasOne(e => e.Challenge)
                 .WithMany()
                 .HasForeignKey(e => e.ChallengeId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(e => e.Friendship)
+                .WithMany()
+                .HasForeignKey(e => e.FriendshipId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -2,10 +2,12 @@
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
+using LeetWars.Core.DAL.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeetWars.Core.BLL.Services
@@ -73,6 +75,8 @@ namespace LeetWars.Core.BLL.Services
                     .ThenInclude(n => n!.Sender)
                 .Include(un => un.Notification)
                     .ThenInclude(n => n!.Challenge)
+                .Include(un => un.Notification)
+                    .ThenInclude(n => n!.Friendship)
                 .Select(un => new NotificationDto
                 {
                     Id = un.Notification!.Id,
@@ -82,7 +86,10 @@ namespace LeetWars.Core.BLL.Services
                     IsRead = un.IsRead,
                     ReceiverId = un.ReceiverId.ToString(),
                     Message = un.Notification.Message,
-                    DateSending = un.Notification.DateSending
+                    DateSending = un.Notification.DateSending,
+                    UpdateFriendship = un.Notification.TypeNotification == TypeNotifications.FriendRequest
+                        ? new UpdateFriendshipDto(un.Notification.Sender!.Id, (long)un.Notification.FriendshipId!, un.Notification.Friendship!.Status)
+                        : null
                 })
                 .ToListAsync();
 

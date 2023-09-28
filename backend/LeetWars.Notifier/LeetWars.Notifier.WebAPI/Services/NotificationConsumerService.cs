@@ -1,6 +1,7 @@
 ﻿using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.DAL.Enums;
 ﻿using LeetWars.Core.Common.DTO.CodeFight;
+using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Notifier.WebAPI.Hubs;
 using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using LeetWars.RabbitMQ;
@@ -41,7 +42,6 @@ namespace LeetWars.Notifier.WebAPI.Services
             });
 
             _consumerService.Listen(handler);
-
             return Task.CompletedTask;
         }
 
@@ -74,6 +74,15 @@ namespace LeetWars.Notifier.WebAPI.Services
                 case TypeNotifications.CodeFightEnd:
                     await SendCodeFightResultsAsync(notificationDto);
                     await SendCodeFightNotificationToAllAsync(notificationDto);
+                    break;
+
+                case TypeNotifications.FriendRequest:
+                    await SendSingleNotificationAsync(notificationDto);
+                    await SendFrienshipUpdateAsync(notificationDto);
+                    break;
+
+                case TypeNotifications.UpdateFriendRequest:
+                    await SendFrienshipUpdateAsync(notificationDto);
                     break;
 
                 default:
@@ -134,6 +143,23 @@ namespace LeetWars.Notifier.WebAPI.Services
             {
                 await _hubContext.Clients.Groups(notificationDto.Sender.Id.ToString()).WinCodeFightAsync(notificationDto);
                 await _hubContext.Clients.Groups(notificationDto.ReceiverId).LoseCodeFightAsync(notificationDto);
+            }
+        }
+
+        private async Task SendFrienshipUpdateAsync(NotificationDto notificationDto)
+        {
+            if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
+                && notificationDto.Sender is not null)
+            {
+                var friendshipPreviewDto = new FriendshipPreviewDto
+                {
+                    FriendId = long.Parse(notificationDto.ReceiverId),
+                    FriendshipId = notificationDto.UpdateFriendship!.FriendshipId,
+                    FriendshipStatus = notificationDto.UpdateFriendship.FriendshipStatus,
+                };
+                await _hubContext.Clients.Groups(notificationDto.Sender.Id.ToString()).UpdateFriendshipAsync(friendshipPreviewDto);
+                friendshipPreviewDto.FriendId = notificationDto.Sender.Id;
+                await _hubContext.Clients.Groups(notificationDto.ReceiverId).UpdateFriendshipAsync(friendshipPreviewDto);
             }
         }
     }

@@ -2,6 +2,7 @@
 using LeetWars.Core.BLL.MappingProfiles.Resolvers;
 using LeetWars.Core.Common.DTO.Badge;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.Subscription;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.Common.DTO.UserLanguageLevel;
@@ -21,6 +22,12 @@ namespace LeetWars.Core.BLL.MappingProfiles
                 .ReverseMap();
 
             CreateMap<User, BriefUserInfoDto>().ReverseMap();
+            CreateMap<User, UserFriendsInfoDto>().ReverseMap();
+
+            CreateMap<Friendship, FriendshipPreviewDto>()
+                .ForMember(dest => dest.FriendshipId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.FriendshipStatus, opt => opt.MapFrom(src => src.Status))
+                .ForMember(dest => dest.FriendId, opt => opt.MapFrom<FriendshipResolver>());
 
             CreateMap<NewUserDto, User>();
 
