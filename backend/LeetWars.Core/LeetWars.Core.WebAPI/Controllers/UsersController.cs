@@ -169,7 +169,7 @@ public class UsersController : ControllerBase
     /// Update user avatar on profile page
     /// </summary>
     /// <param name="avatar">New avatar</param>
-    /// <returns></returns>
+    /// <returns>User avatar</returns>
     [HttpPost("avatar")]
     public async Task<ActionResult<UserAvatarDto>> UpdateUserAvatarAsync([FromForm] IFormFile newAvatar)
     {
