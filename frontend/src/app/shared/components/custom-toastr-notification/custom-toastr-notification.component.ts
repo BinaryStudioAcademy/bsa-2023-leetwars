@@ -65,7 +65,7 @@ export class CustomToastrNotificationComponent extends Toast {
 
     override options: IndividualConfig = {
         timeOut: 10000,
-        disableTimeOut: false,
+        disableTimeOut: 'extendedTimeOut',
         closeButton: false,
         extendedTimeOut: 0,
         progressBar: true,
@@ -93,15 +93,15 @@ export class CustomToastrNotificationComponent extends Toast {
     }
 
     onCodeFightStart() {
-        this.notificationService.removeNotification(this.toastrService.codeFightNotification);
-        this.notificationService.hideNofitications();
-
-        this.codeFightService.sendCodeFightStart(this.toastrService.codeFightNotification).subscribe();
+        this.codeFightService.sendCodeFightStart(this.toastrService.codeFightNotification).subscribe(() => {
+            this.notificationService.removeNotification(this.toastrService.codeFightNotification);
+            this.notificationService.hideNofitications();
+        });
     }
 
     onCodeFightRefuse() {
-        this.codeFightService.sendCodeFightRequestEnded(this.toastrService.codeFightNotification).subscribe();
-
-        this.notificationService.removeNotification(this.toastrService.codeFightNotification);
+        this.codeFightService.sendCodeFightRequestEnded(this.toastrService.codeFightNotification).subscribe(() => {
+            this.notificationService.removeNotification(this.toastrService.codeFightNotification);
+        });
     }
 }
