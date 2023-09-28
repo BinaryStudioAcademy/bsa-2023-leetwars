@@ -135,7 +135,7 @@ export const editorOptions: EditorOptions = {
     theme: 'vs-dark',
     language: '',
     minimap: { isEnabled: false },
-    wordWrap: true,
+    wordWrap: false,
     lineNumbers: true,
     tabSize: 3,
     fontSize: 19,

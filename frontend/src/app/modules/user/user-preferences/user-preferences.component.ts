@@ -37,6 +37,8 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
 
     private languages: ILanguage[] = [];
 
+    private newPreferences: INewUserPreferences;
+
     monacoThemes: string[] = MONACO_EDITOR_THEMES;
 
     constructor(
@@ -53,11 +55,9 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
     setPreferences() {
         const language = findItemIdByName(this.languages, this.userPreferenceForm.value.language);
 
-        const editorTheme = this.monacoThemes.includes(this.userPreferenceForm.value.theme)
-            ? this.userPreferenceForm.value.theme
-            : null;
+        const editorTheme = this.monacoThemes.find(item => item === this.userPreferenceForm.value.theme);
 
-        const newPreferences: INewUserPreferences = {
+        this.newPreferences = {
             languageId: language,
             theme: editorTheme,
             tabSize: this.userPreferenceForm.value.tabSize,
@@ -65,9 +65,12 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
             isWordWrap: this.userPreferenceForm.value.wordWrap,
             isMinimap: this.userPreferenceForm.value.minimap,
         };
+        this.updateUserPreferences();
+    }
 
+    private updateUserPreferences() {
         this.userervice
-            .setUserPrefferences(newPreferences)
+            .setUserPrefferences(this.newPreferences)
             .subscribe({
                 next: () => {
                     this.toastrService.showSuccess('User preferences has been updated');

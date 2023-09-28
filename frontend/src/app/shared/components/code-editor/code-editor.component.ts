@@ -65,14 +65,12 @@ export class CodeEditorComponent extends BaseComponent implements OnChanges, Aft
 
     private updateEditorOptions(): void {
         this.editorOptions = {
-            theme: this.userPreferences?.theme ? this.userPreferences.theme : this.options?.theme,
-            language: this.userPreferences?.language ? this.userPreferences?.language.name : this.mapLanguageName(this.options?.language),
-            tabSize: this.userPreferences?.tabSize ? this.userPreferences.tabSize : this.options?.tabSize,
-            fontSize: this.userPreferences?.fontSize ? this.userPreferences.fontSize : this.options?.fontSize,
-            wordWrap: this.userPreferences?.isWordWrap != null ? this.userPreferences?.isWordWrap : this.options?.wordWrap,
-            minimap: { isEnabled: this.userPreferences?.isMinimap != null
-                ? this.userPreferences?.isMinimap
-                : this.options?.minimap.isEnabled },
+            theme: this.userPreferences?.theme ?? this.options?.theme,
+            language: this.userPreferences?.language?.name ?? this.mapLanguageName(this.options?.language),
+            tabSize: this.userPreferences?.tabSize ?? this.options?.tabSize,
+            fontSize: this.userPreferences?.fontSize ?? this.options?.fontSize,
+            wordWrap: this.userPreferences?.isWordWrap ?? this.options?.wordWrap,
+            minimap: { isEnabled: this.userPreferences?.isMinimap ?? this.options?.minimap.isEnabled },
             hasAutomaticLayout: this.options?.hasAutomaticLayout,
             hasShadows: this.options?.hasShadows,
             lineNumbers: this.options?.lineNumbers,
