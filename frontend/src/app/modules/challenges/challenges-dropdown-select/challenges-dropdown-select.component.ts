@@ -11,8 +11,6 @@ export class ChallengesDropdownSelectComponent {
 
     @Input() selectedItem?: IDropdownItem;
 
-    @Input() canOpen: boolean;
-
     @Output() selectedItemChanged: EventEmitter<IDropdownItem> = new EventEmitter<IDropdownItem>();
 
     selectItem(item: IDropdownItem) {

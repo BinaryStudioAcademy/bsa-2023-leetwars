@@ -2,7 +2,7 @@
 using LeetWars.Core.Common.DTO.Tag;
 using LeetWars.Core.DAL.Enums;
 
-namespace LeetWars.Core.DAL.Entities
+namespace LeetWars.Core.Common.DTO.Challenge
 {
     public class NewChallengeDto
     {

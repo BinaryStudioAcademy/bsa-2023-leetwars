@@ -3,9 +3,9 @@ using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using LeetWars.Notifier.WebAPI.Models;
 using LeetWars.RabbitMQ.Interfaces;
 using Microsoft.AspNetCore.SignalR;
-using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
 using System.Text;
+using LeetWars.Notifier.WebAPI.Helpers;
 
 namespace LeetWars.Notifier.WebAPI.Services;
 
@@ -26,17 +26,27 @@ public class CodeMessageConsumerService : BackgroundService
     {
         var handler = new EventHandler<BasicDeliverEventArgs>(async (model, args) =>
         {
+            _consumerService.SetAcknowledge(args.DeliveryTag, true);
+            
             var body = args.Body.ToArray();
 
             var message = Encoding.UTF8.GetString(body);
-            var request = JsonConvert.DeserializeObject<CodeRunResults>(message);
 
-            if (request is not null)
+            var isCodeRunResult = JsonConvertingHelper.TryDeserialize<CodeRunResults>(message, out var codeRunResult);
+
+            if (isCodeRunResult && codeRunResult is not null)
             {
-                await _codeDisplayingHubContext.Clients.Group(request.UserConnectionId).BroadcastMessageAsync(request);
+                await _codeDisplayingHubContext.Clients.Group(codeRunResult.UserConnectionId).BroadcastMessageAsync(codeRunResult);
+                return;
             }
-
-            _consumerService.SetAcknowledge(args.DeliveryTag, true);
+            
+            var isCodeSubmitResult = JsonConvertingHelper.TryDeserialize<CodeSubmitResult>(message, out var codeSubmitResult);
+            
+            if (isCodeSubmitResult && codeSubmitResult is not null)
+            {
+                await _codeDisplayingHubContext.Clients.Group(codeSubmitResult.CodeRunResult.UserConnectionId)
+                    .BroadcastSubmitResultMessage(codeSubmitResult);
+            }
         });
 
         _consumerService.Listen(handler);
