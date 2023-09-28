@@ -15,11 +15,6 @@
             <a routerLink="/challenges/{{ this.notification.challenge.id }}">{{ this.notification.challenge.title }}</a>
         </p>
     </div>
-    <div *ngIf="this.notification.typeNotification === typeNotification.CodeFightRequestStart">
-        <p>{{ this.notification.message }}</p>
-        <button (click)="onCodeFightStart()">Yes</button>
-        <button (click)="onCodeFightRefuse()">No</button>
-    </div>
     <div *ngIf="this.notification.typeNotification === typeNotification.FriendRequest" class="friend-request-container">
         <p class="notification-text">{{ notification.message }}</p>
         <div class="friend-request-buttons" *ngIf="this.notification.updateFriendship.friendshipStatus === friendshipStatus.Pending">

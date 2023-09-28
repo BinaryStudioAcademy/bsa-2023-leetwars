@@ -113,10 +113,6 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         return this.seenNotificationsCollection;
     }
 
-    public get codeFightNotifications() {
-        return this.notificationService.notifications;
-    }
-
     onLogOut() {
         const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'log-out-modal' });
 
@@ -151,10 +147,9 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
     private listeningNotificationHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
-            if (msg.typeNotification === TypeNotification.CodeFightRequestStart) {
-                this.notificationService.addNotification(msg);
+            if (msg.typeNotification !== TypeNotification.CodeFightRequestStart) {
+                this.newNotificationsCollection = [...this.newNotificationsCollection, msg];
             }
-            this.newNotificationsCollection = [...this.newNotificationsCollection, msg];
         });
     }
 

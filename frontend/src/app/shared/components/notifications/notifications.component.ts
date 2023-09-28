@@ -1,9 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
-import { CodeFightService } from '@core/services/code-fight.service';
-import { EventService } from '@core/services/event.service';
-import { NotificationService } from '@core/services/notification.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { longFadeIn } from '@shared/animations/long-fade-in.animation';
@@ -22,12 +19,9 @@ import { takeUntil } from 'rxjs';
 })
 export class NotificationsComponent extends BaseComponent implements OnInit {
     constructor(
-        private notificationService: NotificationService,
         private userService: UserService,
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
-        private eventService: EventService,
-        private codeFightService: CodeFightService,
     ) {
         super();
     }
@@ -63,16 +57,6 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
 
     declineFriendship(notification: INotificationModel) {
         this.updateFriendshipStatus(notification, FriendshipStatus.Declined);
-    }
-
-    onCodeFightStart() {
-        this.notificationService.removeNotification(this.notification);
-        this.codeFightService.sendCodeFightStart(this.notification).subscribe();
-    }
-
-    onCodeFightRefuse() {
-        this.codeFightService.sendCodeFightRequestEnded(this.notification).subscribe();
-        this.notificationService.removeNotification(this.notification);
     }
 
     private updateFriendship(updateRequest: IUpdateFriendship) {
