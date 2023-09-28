@@ -29,7 +29,7 @@ export class ProfilePageMainInfoComponent extends BaseComponent implements OnCha
 
     @Input() currentUser: IUser;
 
-    @Input() friendshipId: number | undefined;
+    @Input() friendshipId?: number;
 
     communityViews = 0;
 

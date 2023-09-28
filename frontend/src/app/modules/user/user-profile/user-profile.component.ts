@@ -32,7 +32,7 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
 
     isFriend: Boolean = false;
 
-    friendshipId: number | undefined;
+    friendshipId?: number;
 
     userFriendsIds: number[] = [];
 
