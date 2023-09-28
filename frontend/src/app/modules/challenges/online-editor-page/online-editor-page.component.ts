@@ -37,6 +37,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     selectedLanguage: string;
 
+    mappedSelectedLanguage: string;
+
     languages: string[];
 
     initialSolution?: string;
@@ -122,9 +124,10 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
-        const selectedLang = this.mapLanguageName($event as string);
+        const selectedLang = $event as string;
 
         this.selectedLanguage = selectedLang;
+        this.mappedSelectedLanguage = this.mapLanguageName(selectedLang);
 
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
     }
@@ -203,7 +206,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private sendCode(isSubmitRequest: boolean = false): void {
         this.solution = {
             userConnectionId: this.user.id.toString(),
-            language: this.selectedLanguage,
+            language: this.mappedSelectedLanguage,
             userCode: this.initialSolution as string,
             tests: this.testCode,
             isSubmitRequest,
@@ -232,6 +235,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.languages = [...new Set(challenge.versions?.map((v) => v.language?.name))];
 
         [this.selectedLanguage] = this.languages;
+        this.mappedSelectedLanguage = this.mapLanguageName(this.selectedLanguage);
     }
 
     private setupEditorOptions() {
@@ -239,7 +243,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
         this.editorOptions = {
             theme: 'vs-dark',
-            language: this.mapLanguageName(this.selectedLanguage),
+            language: this.selectedLanguage,
             minimap: { isEnabled: false },
             hasAutomaticLayout: true,
             hasShadows: false,
