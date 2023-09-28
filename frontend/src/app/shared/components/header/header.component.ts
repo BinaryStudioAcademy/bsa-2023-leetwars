@@ -58,6 +58,14 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.notificationService.showNotifications();
     }
 
+    onLogoClick() {
+        if (this.router.url === '/') {
+            window.location.reload();
+        } else {
+            this.router.navigate(['/']);
+        }
+    }
+
     get countNotification() {
         return this.notificationService.countNotification;
     }
