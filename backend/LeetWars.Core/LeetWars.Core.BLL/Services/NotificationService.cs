@@ -9,6 +9,7 @@ using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace LeetWars.Core.BLL.Services
 {
@@ -30,28 +31,18 @@ namespace LeetWars.Core.BLL.Services
 
             await _context.SaveChangesAsync();
 
-            if(newNotification.ReceiverId is null)
+            var receiversIds = newNotification.ReceiverId is null
+                ? await _context.Users.Select(e => e.Id).ToListAsync()
+                : new List<long> { long.Parse(newNotification.ReceiverId) };
+
+            var userNotifications = receiversIds.Select(id => new UserNotification
             {
-                var allIds = _context.Users.Select(e => e.Id);
-                foreach(var id in allIds)
-                {
-                    _context.UserNotifications.Add(new UserNotification
-                    {
-                        IsRead = false,
-                        ReceiverId = id,
-                        NotificationId = notification.Id
-                    });
-                }
-            }
-            else
-            {
-                _context.UserNotifications.Add(new UserNotification
-                {
-                    IsRead = false,
-                    ReceiverId = int.Parse(newNotification.ReceiverId),
-                    NotificationId = notification.Id
-                });
-            }
+                IsRead = false,
+                ReceiverId = id,
+                NotificationId = notification.Id
+            });
+
+            await _context.AddRangeAsync(userNotifications);
             await _context.SaveChangesAsync();
         }
 
@@ -62,12 +53,7 @@ namespace LeetWars.Core.BLL.Services
 
         public async Task<ICollection<NotificationDto>> GetNotificationsOfCurrentUserAsync()
         {
-            var currUserId = _userGetter.CurrentUser?.Id;
-
-            if (currUserId is null)
-            {
-                throw new NotFoundException("User not found");
-            }
+            var currUserId = _userGetter.CurrentUser?.Id ?? throw new NotFoundException("User not found");
 
             var notificationDtos = await _context.UserNotifications
                 .Where(un => un.ReceiverId == currUserId)
@@ -96,7 +82,7 @@ namespace LeetWars.Core.BLL.Services
             return _mapper.Map<List<NotificationDto>>(notificationDtos);
         }
 
-        public async Task UpdateStatusToReadByUserIds(long[] ids)
+        public async Task UpdateStatusToReadByUserIdsAsync(long[] ids)
         {
             await _context.UserNotifications
                 .Where(un => ids.Contains(un.ReceiverId))

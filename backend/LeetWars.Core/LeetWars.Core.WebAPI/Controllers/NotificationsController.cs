@@ -35,9 +35,9 @@ namespace LeetWars.Core.WebAPI.Controllers
         /// <param name="ids">Array of ids of users that have read their messages</param>
         /// <returns>Status of the operation</returns>
         [HttpPut]
-        public async Task<ActionResult> UpdateStatusToRead([FromBody] long[] ids)
+        public async Task<ActionResult> UpdateStatusToReadAsync([FromBody] long[] ids)
         {
-            await _notificationService.UpdateStatusToReadByUserIds(ids);
+            await _notificationService.UpdateStatusToReadByUserIdsAsync(ids);
 
             return Ok();
         }

@@ -7,6 +7,6 @@ namespace LeetWars.Core.BLL.Interfaces
         Task CreateNotification(NotificationDto newNotification);
         void SendNotification(NotificationDto newNotification);
         Task<ICollection<NotificationDto>> GetNotificationsOfCurrentUserAsync();
-        Task UpdateStatusToReadByUserIds(long[] ids);
+        Task UpdateStatusToReadByUserIdsAsync(long[] ids);
     }
 }
