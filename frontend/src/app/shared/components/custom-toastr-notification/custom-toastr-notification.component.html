@@ -1,0 +1,40 @@
+<div
+    *ngIf="title !== codeFightTitle; else codeFightNotification"
+    class="row"
+    [style.display]="state.value === 'inactive' ? 'none' : ''">
+    <div class="col-9">
+        <div *ngIf="title" [class]="options.titleClass" [attr.aria-label]="title">
+            {{ title }}
+        </div>
+        <div
+            *ngIf="message && options.enableHtml"
+            role="alert"
+            [class]="options.messageClass"
+            [innerHTML]="message"></div>
+        <div
+            *ngIf="message && !options.enableHtml"
+            role="alert"
+            [class]="options.messageClass"
+            [attr.aria-label]="message">
+            {{ message }}
+        </div>
+    </div>
+    <div class="col-3 text-right">
+        <a *ngIf="options.closeButton" (click)="remove()" class="btn btn-pink btn-sm"> close </a>
+    </div>
+</div>
+<div *ngIf="options.progressBar">
+    <div class="toast-progress" [style.width]="width + '%'"></div>
+</div>
+
+<ng-template #codeFightNotification>
+    <div class="main-content d-flex gap-2 align-items-center">
+        <img src="assets/images/logo/logo.png" alt="logo" class="logo-img" />
+        <p>{{ message }}</p>
+    </div>
+    <div class="d-flex justify-content-end mt-2">
+        <button class="custom-btn btn-yes" (click)="onCodeFightStart()">Yes</button>
+        <button class="custom-btn btn-no" (click)="onCodeFightRefuse()">No</button>
+    </div>
+    <div class="toast-progress" [style.width]="width + '%'"></div>
+</ng-template>
