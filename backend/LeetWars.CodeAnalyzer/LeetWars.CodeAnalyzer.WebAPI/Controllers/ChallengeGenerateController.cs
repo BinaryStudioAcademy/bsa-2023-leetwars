@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LeetWars.CodeAnalyzer.Controllers
 {
     [ApiController]
+    [Route("[controller]")]
     public class ChallengeGenerateController
     {
         private readonly IChallengeGenerator _challengeGenerator;
@@ -14,7 +15,7 @@ namespace LeetWars.CodeAnalyzer.Controllers
             _challengeGenerator = challengeGenerator;
         }
 
-        [HttpPost("generateChallenge")]
+        [HttpPost]
         public async Task<IActionResult> GenerateChallenge([FromBody] ChallengeGenerateRequestDto challengeGenerateRequestDto)
         {
             var response = await _challengeGenerator.GenerateChallenge(challengeGenerateRequestDto);

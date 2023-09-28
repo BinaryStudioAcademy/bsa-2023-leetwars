@@ -11,6 +11,6 @@ export class CodeAnylizerHttpService extends BaseHttpInternalService {
     public baseUrl: string = environment.codeAnylizerUrl;
 
     public generateChallenge(challengeGenerateRequest: IChallengeGenerateRequest): Observable<IChallengeGenerateResponse> {
-        return this.postRequest<IChallengeGenerateResponse>('/generateChallenge', challengeGenerateRequest);
+        return this.postRequest<IChallengeGenerateResponse>('/challengeGenerate', challengeGenerateRequest);
     }
 }

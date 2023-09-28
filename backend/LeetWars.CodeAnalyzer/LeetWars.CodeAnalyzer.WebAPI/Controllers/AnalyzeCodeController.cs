@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LeetWars.CodeAnalyzer.WebAPI.Controllers
 {
     [ApiController]
+    [Route("[controller]")]
     public class AnalyzeCodeController : ControllerBase
     {
         private readonly IAnalyzeCodeService _analyzeCodeService;
@@ -14,7 +15,7 @@ namespace LeetWars.CodeAnalyzer.WebAPI.Controllers
             _analyzeCodeService = analyzeCodeService;
         }
 
-        [HttpPost("/analyzecode")]
+        [HttpPost]
         public async Task<IActionResult> RunCodeAnalysisAsync(CodeRequestAnalysisDto requestDto)
         {
             var response = await _analyzeCodeService.RunCodeAnalysisAsync(requestDto);

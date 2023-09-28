@@ -13,6 +13,7 @@ builder.Configuration
     .AddEnvironmentVariables()
     .Build();
 
+builder.Services.AddAutoMapper();
 builder.Services.AddControllers()
     .AddNewtonsoftJson(x => x.SerializerSettings.Converters.Add(new StringEnumConverter()));
 
