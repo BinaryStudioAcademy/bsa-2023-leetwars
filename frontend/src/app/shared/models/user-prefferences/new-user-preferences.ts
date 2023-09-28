@@ -1,5 +1,5 @@
 export interface INewUserPreferences {
-    languageId?: number | null;
+    languageId?: number;
     theme?: string;
     isWordWrap?: boolean;
     isMinimap: boolean;
