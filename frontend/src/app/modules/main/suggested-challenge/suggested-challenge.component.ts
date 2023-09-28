@@ -3,6 +3,7 @@ import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { UserService } from '@core/services/user.service';
 import {
     findItemIdByName,
     findSuggestionTypeByName,
@@ -33,6 +34,8 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
 
     suggestionIcons = ICONS;
 
+    preferenceLanguage: string;
+
     private languages: ILanguage[] = [];
 
     suggestionSettings: ISuggestionSettings = {
@@ -43,11 +46,13 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         private challengeService: ChallengeService,
         private languageService: LanguageService,
         private toastrService: ToastrNotificationsService,
+        private userService: UserService,
     ) {
         super();
     }
 
     ngOnInit(): void {
+        this.getPreferences();
         this.getLanguages();
 
         this.suggestionTypesNames = this.suggestionTypes.map((item) => item.name);
@@ -90,6 +95,13 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
                     this.toastrService.showError('Server connection error');
                 },
             });
+    }
+
+    private getPreferences() {
+        this.userService.getUserPrefferences().subscribe((preferences) => {
+            this.preferenceLanguage = preferences.language?.name ?? this.languagesNames[0];
+            this.getChallenge();
+        });
     }
 
     private getLanguages() {

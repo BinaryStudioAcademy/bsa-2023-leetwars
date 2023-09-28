@@ -1,8 +1,10 @@
 using LeetWars.Core.BLL.Interfaces;
+using LeetWars.Core.BLL.Services;
 using LeetWars.Core.Common.DTO;
 using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
+using LeetWars.Core.Common.DTO.UserPrefferences;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -189,5 +191,28 @@ public class UsersController : ControllerBase
         var updatedUser = await _userService.UpdateUserInfoAsync(updateUserInfoDto);
 
         return Ok(updatedUser);
+    }
+
+    /// <summary>
+    /// Get user preferences
+    /// </summary>
+    /// <returns> User preferences</returns>
+    [HttpGet("preferences")]
+    public async Task<ActionResult<UserPreferencesDto>> GetUserPreferences()
+    {
+        var preferences= await _userService.GetUserPreferences();
+        return Ok(preferences);
+    }
+
+    /// <summary>
+    /// Set user preferences
+    /// </summary>
+    /// <param name="newPreferences">User preferences to setting</param>
+    /// <returns>User preferences</returns>
+    [HttpPost("preferences")]
+    public async Task<ActionResult<UserPreferencesDto>> SetUserPreferences(NewUserPreferencesDto newPreferences)
+    {
+        var preferences = await _userService.SetUserPreferences(newPreferences);
+        return Ok(preferences);
     }
 }
