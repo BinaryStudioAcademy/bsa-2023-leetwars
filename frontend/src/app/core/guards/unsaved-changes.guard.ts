@@ -8,39 +8,33 @@ import { HasUnsavedChanges } from '@shared/models/unsaved-changes/has-unsaved-ch
     providedIn: 'root',
 })
 export class UnsavedChangesGuard<T extends HasUnsavedChanges> implements CanDeactivate<T> {
-    constructor(
-        private modalService: NgbModal,
-    ) {}
+    constructor(private modalService: NgbModal) {}
 
-    canDeactivate(component: T): Promise<boolean> {
-        return component.unsavedChanges
-            ? this.showConfirmationModal()
-            : Promise.resolve(true);
+    canDeactivate(component: T) {
+        return component.unsavedChanges ? this.showConfirmationModal() : true;
     }
 
-    private showConfirmationModal(): Promise<boolean> {
+    private showConfirmationModal() {
         const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'delete-modal' });
 
         modalRef.componentInstance.titleText = 'Are you sure you want to leave this page?';
         modalRef.componentInstance.bodyText = 'All unsaved data will be lost.';
 
-        return new Promise<boolean>((resolve) => {
-            modalRef.componentInstance.buttons = [
-                {
-                    text: 'Yes',
-                    handler: () => {
-                        resolve(true);
-                        modalRef.close();
-                    },
+        modalRef.componentInstance.buttons = [
+            {
+                text: 'Yes',
+                handler: () => {
+                    modalRef.close();
                 },
-                {
-                    text: 'Cancel',
-                    handler: () => {
-                        resolve(false);
-                        modalRef.close();
-                    },
+            },
+            {
+                text: 'Cancel',
+                handler: () => {
+                    modalRef.dismiss();
                 },
-            ];
-        });
+            },
+        ];
+
+        return modalRef.closed;
     }
 }
