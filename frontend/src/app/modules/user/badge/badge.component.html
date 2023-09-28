@@ -5,12 +5,12 @@
                 <div class="text-label-1">Badges</div>
                 <div class="text-label-2">{{ badges.length }}</div>
             </div>
-            <fa-icon *ngIf="badges?.length" [icon]="'arrow-right'" size="xl"></fa-icon>
         </div>
 
         <ng-container *ngIf="badges?.length">
-            <div class="carousel-container">
+            <div class="carousel-container position-relative">
                 <owl-carousel-o
+                    #badgesCarousel
                     [options]="customOptions"
                     (translated)="onTranslated($event)"
                     (initialized)="onTranslated($event)">
@@ -20,6 +20,7 @@
                         </div>
                     </ng-template>
                 </owl-carousel-o>
+                <fa-icon class="badge-arrow" [icon]="'arrow-right'" size="xl" (click)="badgesCarousel.next()"></fa-icon>
             </div>
             <div class="text-label-1">Most Recent Badge</div>
             <div>{{ badges[startPosition].name }}</div>

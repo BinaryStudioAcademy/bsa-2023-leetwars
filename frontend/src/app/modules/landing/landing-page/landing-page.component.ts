@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
-import { SpinnerService } from '@core/services/spinner.service';
 
 @Component({
     selector: 'app-landing-page',
@@ -29,7 +28,7 @@ export class LandingPageComponent {
 
     @ViewChild('navDropdownDiv') dropdownNavigation: ElementRef;
 
-    constructor(private spinnerService: SpinnerService, private renderer: Renderer2) {
+    constructor(private renderer: Renderer2) {
         this.windowWidth = window.innerWidth;
     }
 
