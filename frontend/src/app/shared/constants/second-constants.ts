@@ -1,3 +1,3 @@
 export const SecondsConstants = {
-    Delay: 1000,
+    Delay: 350,
 };
