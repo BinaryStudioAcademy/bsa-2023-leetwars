@@ -29,6 +29,8 @@ namespace LeetWars.Core.WebAPI.Extentions
             services.AddTransient<IChallengeService, ChallengeService>();
             services.AddTransient<ITagService, TagService>();
             services.AddTransient<ILanguageService, LanguageService>();
+            services.AddTransient<INotificationService, NotificationServcie>();
+            services.AddScoped<IUserService, UserService>();
             services.AddTransient<ICodeFightService, CodeFightService>();
 
             services.AddScoped<UserStorage>();

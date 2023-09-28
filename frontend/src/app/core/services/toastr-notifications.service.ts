@@ -1,25 +1,37 @@
 import { Injectable } from '@angular/core';
+import { INotificationModel } from '@shared/models/notifications/notifications';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
     providedIn: 'root',
 })
-export class ToastrNotificationsService {
-    constructor(private toastr: ToastrService) {}
+export class ToastrNotificationsService extends ToastrService {
+    codeFightNotification: INotificationModel;
 
     showSuccess(message: string) {
-        this.toastr.success(message, 'Success');
+        super.success(message, 'Success');
     }
 
     showInfo(message: string) {
-        this.toastr.info(message, 'Info');
+        super.info(message, 'Info');
     }
 
     showWarning(message: string) {
-        this.toastr.warning(message, 'Warning');
+        super.warning(message, 'Warning');
     }
 
     showError(message: string) {
-        this.toastr.error(message, 'Error');
+        super.error(message, 'Error');
+    }
+
+    showCodeFightNotification(notification: INotificationModel) {
+        this.codeFightNotification = notification;
+
+        super.show(notification.message, 'CodeFight', {
+            toastClass: 'custom-toast',
+            positionClass: 'toast-bottom-right',
+            progressBar: true,
+            timeOut: notification.showFor,
+        });
     }
 }

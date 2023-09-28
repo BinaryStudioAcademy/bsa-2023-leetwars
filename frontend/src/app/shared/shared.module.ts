@@ -14,11 +14,13 @@ import { TabsetConfig, TabsModule } from 'ngx-bootstrap/tabs';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MarkdownModule } from 'ngx-markdown';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
+import { ToastrModule } from 'ngx-toastr';
 
 import { ArrowUpComponent } from './components/arrow-up/arrow-up.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
+import { CustomToastrNotificationComponent } from './components/custom-toastr-notification/custom-toastr-notification.component';
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -26,6 +28,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { toastrGlobalConfig } from './configurations/toastr-global-config';
 
 @NgModule({
     imports: [
@@ -40,6 +43,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         InfiniteScrollModule,
         ProgressbarModule,
         MarkdownModule.forRoot(),
+        ToastrModule.forRoot(toastrGlobalConfig),
         AngularMarkdownEditorModule.forRoot({ iconlibrary: 'fa' }),
     ],
     declarations: [
@@ -55,6 +59,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         HeaderComponent,
         ArrowUpComponent,
         ScrollToDirective,
+        CustomToastrNotificationComponent,
     ],
     exports: [
         CommonModule,

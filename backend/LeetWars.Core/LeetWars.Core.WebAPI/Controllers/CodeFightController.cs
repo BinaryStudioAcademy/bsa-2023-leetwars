@@ -38,7 +38,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         /// <param name="notification">Notification about ending code fight</param>
         /// <returns>Two users, who participated in this request</returns>
         [HttpPost("codeFightRequestEnded")]
-        public async Task<ActionResult<List<UserDto>>> SendcodeFightRequestEndedAsync([FromBody] NewNotificationDto notification)
+        public async Task<ActionResult<List<UserDto>>> SendcodeFightRequestEndedAsync([FromBody] NotificationDto notification)
         {
             var users = await _codeFightService.SendcodeFightRequestEndedAsync(notification);
 
@@ -51,7 +51,7 @@ namespace LeetWars.Core.WebAPI.Controllers
         /// <param name="notificationDto">Notification about starting code fight</param>
         /// <returns>Two users, who participated in this code fight</returns>
         [HttpPost("codefightstart")]
-        public async Task<ActionResult<List<UserDto>>> SendCodeFightStartAsync([FromBody] NewNotificationDto notificationDto)
+        public async Task<ActionResult<List<UserDto>>> SendCodeFightStartAsync([FromBody] NotificationDto notificationDto)
         {
             var users = await _codeFightService.SendCodeFightStartAsync(notificationDto);
 

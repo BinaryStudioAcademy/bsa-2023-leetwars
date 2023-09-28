@@ -7,8 +7,8 @@ namespace LeetWars.Core.BLL.Interfaces
     public interface ICodeFightService
     {
         Task<List<UserDto>> SendCodeFightRequestStartedAsync(CodeFightRequestDto requestDto);
-        Task<List<UserDto>> SendcodeFightRequestEndedAsync(NewNotificationDto notification);
-        Task<List<UserDto>> SendCodeFightStartAsync(NewNotificationDto notificationDto);
+        Task<List<UserDto>> SendcodeFightRequestEndedAsync(NotificationDto notification);
+        Task<List<UserDto>> SendCodeFightStartAsync(NotificationDto notificationDto);
         Task<List<UserDto>> SendCodeFightEndAsync(CodeFightEndDto codeFightEndDto);
     }
 }
