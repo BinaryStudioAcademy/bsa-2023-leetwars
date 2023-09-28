@@ -33,7 +33,6 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
 import { SolutionSubmitModalComponent } from './components/solution-submit-modal/solution-submit-modal.component';
 import { toastrGlobalConfig } from './configurations/toastr-global-config';
 
-
 @NgModule({
     imports: [
         CommonModule,

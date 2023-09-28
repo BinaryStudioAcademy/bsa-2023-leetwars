@@ -7,7 +7,6 @@ using Newtonsoft.Json.Serialization;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
-using LeetWars.Builder.RunnerDefaults.HelperModels;
 using LeetWars.Core.Common.DTO.CodeAnalysis;
 
 namespace LeetWars.Builder.Services

@@ -3,12 +3,9 @@ using LeetWars.Notifier.WebAPI.Hubs.Interfaces;
 using LeetWars.Notifier.WebAPI.Models;
 using LeetWars.RabbitMQ.Interfaces;
 using Microsoft.AspNetCore.SignalR;
-using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
 using System.Text;
 using LeetWars.Notifier.WebAPI.Helpers;
-using LeetWars.RabbitMQ.Interfaces;
-using LeetWars.Notifier.WebAPI.Models;
 
 namespace LeetWars.Notifier.WebAPI.Services;
 
