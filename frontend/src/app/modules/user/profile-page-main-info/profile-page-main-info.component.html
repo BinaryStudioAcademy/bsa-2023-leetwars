@@ -14,9 +14,14 @@
         </div>
         <button *ngIf="isCurrentUser; else NotCurrentUser" class="edit-profile-btn" (click)="onEditProfile()">Edit Profile</button>
         <ng-template #NotCurrentUser>
-            <button *ngIf="isFriend === false; else Friend" class="edit-profile-btn">Send Friend Request</button>
-            <ng-template #Friend>
-                <button class="edit-profile-btn">Delete Friend</button>
+            <div class="pending-status" *ngIf="isFriendshipStatus(user, 'Pending') else FriendOrNotFriend">
+                <div class="dot-flashing"></div>
+            </div>
+            <ng-template #FriendOrNotFriend>
+                <button *ngIf="isFriend === false; else Friend" class="edit-profile-btn" (click)="addFriend()">Send Friend Request</button>
+                <ng-template #Friend>
+                    <button class="edit-profile-btn" (click)="deleteFriend()">Delete Friend</button>
+                </ng-template>
             </ng-template>
         </ng-template>
     </div>

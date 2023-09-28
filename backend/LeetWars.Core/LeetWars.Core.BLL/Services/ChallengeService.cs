@@ -286,6 +286,7 @@ namespace LeetWars.Core.BLL.Services
                     _context.Update(weeklyChallenge);
                 }
             }
+
             await _context.SaveChangesAsync();
         }
 

@@ -291,6 +291,7 @@ public class UserService : BaseService, IUserService
             default:
                 throw new BadOperationException("Not expected friendship status value");
         }
+
         await _context.SaveChangesAsync();
 
         var userFriendship = friendshipToUpdate.UserFriendships.First(uf => uf.UserId != user.Id);
