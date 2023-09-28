@@ -26,6 +26,8 @@ namespace LeetWars.Core.DAL.Context.SeedSettings
 
         public static readonly int BadgeSeed = 1337;
 
+        public static readonly int Friendship = 0228;
+
         public static readonly ImmutableArray<Tag> Tags = ImmutableArray.CreateRange(new Tag[]
         {
             new Tag("Arrays"){ Id = 1 },
