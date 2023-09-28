@@ -1,5 +1,4 @@
 ﻿using LeetWars.Core.DAL.Enums;
-using System.Text.Json.Serialization;
 
 namespace LeetWars.Core.Common.DTO.Friendship
 {
@@ -7,7 +6,6 @@ namespace LeetWars.Core.Common.DTO.Friendship
     {
         public long UserId { get; set; }
         public long FriendshipId { get; set; }
-        [JsonConverter(typeof(JsonStringEnumConverter))]
         public FriendshipStatus FriendshipStatus { get; set; }
 
         public UpdateFriendshipDto(long userId, long friendshipId, FriendshipStatus friendshipStatus)

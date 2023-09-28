@@ -3,13 +3,11 @@ using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
-using System.Text.Json.Serialization;
 
 namespace LeetWars.Core.Common.DTO.Notifications
 {
     public class NotificationDto : Entity<long>
     {
-        [JsonConverter(typeof(JsonStringEnumConverter))]
         public TypeNotifications TypeNotification { get; set; }
         public BriefUserInfoDto? Sender { get; set; }
         public BriefChallengeInfoDto? Challenge { get; set; }
