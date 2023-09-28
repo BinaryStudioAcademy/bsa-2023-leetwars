@@ -255,7 +255,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private getInitialTestsByLanguage(language: string): string {
         const version = this.challenge.versions?.find((v) => v.language.name === language);
 
-        return version && version.exampleTestCases ? version.exampleTestCases : 'No tests available';
+        return version?.exampleTestCases ?? 'No tests available';
     }
 
     private getInitialSolutionByLanguage(language: string): string {
