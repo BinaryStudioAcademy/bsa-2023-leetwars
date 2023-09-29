@@ -8,9 +8,10 @@ import { UserService } from '@core/services/user.service';
 import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { IFriendshipPreview } from '@shared/models/friendship/friendship-preview';
 import { IUser } from '@shared/models/user/user';
+import { IUserFriendsInfo } from '@shared/models/user/user-friends-info';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
-import { takeUntil } from 'rxjs';
+import { catchError, EMPTY, forkJoin, map, Observable, switchMap, takeUntil, throwError } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
 
@@ -75,7 +76,6 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                 next: (result) => {
                     this.user = result;
                     this.fullUser = result;
-                    this.getUserFriendships();
                 },
                 error: () => { this.toastrNotification.showError('User not found'); },
             });
@@ -104,36 +104,48 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
     }
 
     private getChosenUser() {
-        try {
-            this.route.paramMap.subscribe((params) => {
+        this.route.paramMap.pipe(
+            switchMap((params) => {
                 const userId = Number(params.get('id'));
 
-                this.isCurrentUser = !userId || this.currentUser?.id === userId;
-                const curentUserId = this.isCurrentUser ? this.currentUser.id : userId;
+                this.isCurrentUser = !userId || this.user?.id === userId;
+                const curentUserId = this.isCurrentUser ? this.user.id : userId;
 
                 this.getUserInfo(curentUserId);
                 this.getUserChallenges(curentUserId);
-            });
-        } catch (error) {
-            this.toastrNotification.showError('User not found');
-        }
+                const friendships$ = this.getUserFriendships();
+
+                return forkJoin([friendships$]).pipe(
+                    catchError((error) => {
+                        this.toastrNotification.showError(`Error: ${error}`);
+
+                        return EMPTY;
+                    }),
+                );
+            }),
+        ).subscribe(() => {
+            this.isFriend = this.isFriendMethod(this.user);
+        });
     }
 
-    private getUserFriendships() {
-        this.userService
+    private getUserFriendships(): Observable<void> {
+        return this.userService
             .getUserFriendships(this.currentUser.id)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (userFriendsInfo) => {
+            .pipe(
+                takeUntil(this.unsubscribe$),
+                map((userFriendsInfo: IUserFriendsInfo) => {
                     this.userFriendsIds = userFriendsInfo.friendships.map((f) => f.friendId);
                     this.currentUser.friendships = userFriendsInfo.friendships;
                     this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
-                    this.isFriend = this.isFriendMethod(this.user);
-                },
-                error: () => {
-                    this.toastrNotification.showError('Server connection error');
-                },
-            });
+
+                    return undefined;
+                }),
+                catchError((error) => {
+                    this.toastrNotification.showError(error);
+
+                    return throwError(() => error);
+                }),
+            );
     }
 
     isFriendMethod(user: IUser): boolean {
