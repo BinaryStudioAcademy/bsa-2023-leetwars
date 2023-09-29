@@ -11,7 +11,7 @@ import { INewFriendship } from '@shared/models/friendship/new-friendship';
 import { IUser } from '@shared/models/user/user';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
-import { catchError, EMPTY, map, Observable, switchMap, takeUntil, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, switchMap, takeUntil, tap, throwError } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
 
@@ -35,13 +35,11 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
 
     friendshipId?: number;
 
-    userFriendsIds: number[] = [];
-
-    private user: IUser;
-
     currentUser: IUser;
 
     currentUserFriends: IFriendshipPreview[];
+
+    private user: IUser;
 
     constructor(
         private userService: UserService,
@@ -70,6 +68,10 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
         });
     }
 
+    isFriendMethod(user: IUser): boolean {
+        return user && this.currentUser.friendships.some(friendship => friendship.friendId === user.id);
+    }
+
     private getUserInfo(id: number): Observable<void> {
         return this.userService
             .getFullUser(id)
@@ -78,13 +80,11 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                 map((result) => {
                     this.user = result;
                     this.fullUser = result;
-
-                    return undefined;
                 }),
-                catchError(() => {
+                catchError((error) => {
                     this.toastrNotification.showError('User not found');
 
-                    return EMPTY;
+                    return throwError(() => error);
                 }),
             );
     }
@@ -125,7 +125,7 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                     catchError((error) => {
                         this.toastrNotification.showError(`Error: ${error}`);
 
-                        return EMPTY;
+                        return throwError(() => error);
                     }),
                 );
             }),
@@ -143,26 +143,12 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
             .pipe(
                 takeUntil(this.unsubscribe$),
                 map((friendShips: IFriendshipPreview) => {
-                    if (friendShips === null) {
-                        const emptyFriends: IFriendshipPreview =
-                        {
-                            friendshipStatus: FriendshipStatus.Accepted,
-                            friendshipId: 0,
-                            friendId: -1,
-                        };
-
-                        this.userFriendsIds.push(-1);
-                        this.currentUser.friendships.push(emptyFriends);
+                    if (!friendShips) {
                         this.friendshipId = 0;
-
-                        return undefined;
+                    } else {
+                        this.currentUser.friendships.push(friendShips);
+                        this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
                     }
-
-                    this.userFriendsIds.push(friendShips.friendId);
-                    this.currentUser.friendships.push(friendShips);
-                    this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
-
-                    return undefined;
                 }),
                 catchError((error) => {
                     this.toastrNotification.showError(error);
@@ -172,12 +158,7 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
             );
     }
 
-    isFriendMethod(user: IUser): boolean {
-        return user && this.userFriendsIds.includes(user.id);
-    }
-
     private removeFriendship(friendId: number) {
-        this.userFriendsIds = this.userFriendsIds.filter((id) => id !== friendId);
         this.currentUser.friendships = this.currentUser.friendships.filter((f) => f.friendId !== friendId);
     }
 
@@ -188,7 +169,6 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
             ),
             updateFriendship,
         ];
-        this.userFriendsIds = this.currentUser.friendships.map((f) => f.friendId);
     }
 
     private handleUserDataChange(updateFriendship: IFriendshipPreview) {

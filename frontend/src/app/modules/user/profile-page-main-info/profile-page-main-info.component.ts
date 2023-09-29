@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
@@ -18,7 +18,7 @@ import { takeUntil } from 'rxjs';
     templateUrl: './profile-page-main-info.component.html',
     styleUrls: ['./profile-page-main-info.component.sass'],
 })
-export class ProfilePageMainInfoComponent extends BaseComponent implements OnChanges {
+export class ProfilePageMainInfoComponent extends BaseComponent implements OnChanges, OnInit {
     @Input() user: IUserFull = <IUserFull>{};
 
     @Input() userSolutions: IUserSolutionsGroupedBySkillLevel[] = [];
@@ -54,6 +54,10 @@ export class ProfilePageMainInfoComponent extends BaseComponent implements OnCha
         super();
     }
 
+    ngOnInit() {
+        this.getCurrentUser();
+    }
+
     ngOnChanges({ user }: SimpleChanges) {
         if (user && this.user) {
             this.updateSolutions();
@@ -64,19 +68,7 @@ export class ProfilePageMainInfoComponent extends BaseComponent implements OnCha
         this.router.navigate(['user/profile/edit']);
     }
 
-    private updateSolutions() {
-        this.communityLastWeekSolution = utils.getLastWeekCount(this.user.solutions);
-    }
-
-    private getCurrentUser() {
-        this.authService.getUser().subscribe((user: IUser) => {
-            this.currentUser = user;
-        });
-    }
-
     addFriend() {
-        this.getCurrentUser();
-
         const request: INewFriendship = {
             senderId: this.currentUser?.id as number,
             recipientId: this.user.id,
@@ -96,8 +88,6 @@ export class ProfilePageMainInfoComponent extends BaseComponent implements OnCha
     }
 
     deleteFriend() {
-        this.getCurrentUser();
-
         const request: IUpdateFriendship = {
             userId: this.currentUser?.id as number,
             friendshipId: this.friendshipId as number,
@@ -121,11 +111,21 @@ export class ProfilePageMainInfoComponent extends BaseComponent implements OnCha
         return !this.isCurrentUserMethod(user) && this.getFriendshipStatus(user) === status;
     }
 
+    isCurrentUserMethod(user: IUser): boolean {
+        return user && this.currentUser && user.id === this.currentUser.id;
+    }
+
     private getFriendshipStatus(user: IUser): FriendshipStatus | undefined {
         return this.currentUser?.friendships?.find((f) => f.friendId === user.id)?.friendshipStatus;
     }
 
-    isCurrentUserMethod(user: IUser): boolean {
-        return user && this.currentUser && user.id === this.currentUser.id;
+    private updateSolutions() {
+        this.communityLastWeekSolution = utils.getLastWeekCount(this.user.solutions);
+    }
+
+    private getCurrentUser() {
+        this.authService.getUser().subscribe((user: IUser) => {
+            this.currentUser = user;
+        });
     }
 }

@@ -18,7 +18,7 @@
                 <div class="dot-flashing"></div>
             </div>
             <ng-template #FriendOrNotFriend>
-                <button *ngIf="isFriend === false; else Friend" class="edit-profile-btn" (click)="addFriend()">Send Friend Request</button>
+                <button *ngIf="!isFriend; else Friend" class="edit-profile-btn" (click)="addFriend()">Send Friend Request</button>
                 <ng-template #Friend>
                     <button class="edit-profile-btn" (click)="deleteFriend()">Delete Friend</button>
                 </ng-template>
