@@ -36,7 +36,7 @@ export class ChallengeComponent implements OnInit {
         });
     }
 
-    starChange() {
+    starChange(event: Event) {
         this.isChallengeUpdated = false;
 
         const star: IStar = {
@@ -49,5 +49,6 @@ export class ChallengeComponent implements OnInit {
             this.challenge = challenge;
             this.isChallengeUpdated = true;
         });
+        event.stopPropagation();
     }
 }

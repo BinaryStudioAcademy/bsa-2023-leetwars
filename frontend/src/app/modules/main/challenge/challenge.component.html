@@ -14,7 +14,7 @@
                 class="star-icon"
                 [icon]="challenge.isStarry ? ['fas', 'star'] : ['far', 'star']"
                 [size]="'2xl'"
-                (click)="isChallengeUpdated && starChange()"></fa-icon>
+                (click)="isChallengeUpdated && starChange($event)"></fa-icon>
         </div>
         <div class="info-row d-flex">
             <div class="d-flex align-items-center info-item">
