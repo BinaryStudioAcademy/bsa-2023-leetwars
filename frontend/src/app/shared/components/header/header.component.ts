@@ -81,8 +81,8 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
                 .updateStatusToRead([this.user.id])
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
-                    error: () => {
-                        this.toastrService.showError('Server connection error');
+                    error: (error) => {
+                        this.toastrService.showError(`Error while updating nofication status: ${error.message}`);
                         this.router.navigate(['/']);
                     },
                 });
