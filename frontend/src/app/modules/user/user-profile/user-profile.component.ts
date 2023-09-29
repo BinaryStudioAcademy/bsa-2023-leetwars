@@ -144,7 +144,7 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                 takeUntil(this.unsubscribe$),
                 map((friendShips: IFriendshipPreview) => {
                     if (!friendShips) {
-                        this.friendshipId = 0;
+                        this.friendshipId = -1;
                     } else {
                         this.currentUser.friendships.push(friendShips);
                         this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
