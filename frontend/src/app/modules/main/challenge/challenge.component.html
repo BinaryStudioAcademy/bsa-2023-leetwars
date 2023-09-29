@@ -26,14 +26,13 @@
             </div>
             <div class="d-flex align-items-center info-item">
                 <span class="icon d-flex gap-2 author-block">
-                    <!-- TODO: Add author link -->
                     <span>created</span>
                     <div class="d-flex">
                         <img
                             class="author-avatar"
                             alt="author-avatar"
                             [src]="this.challenge.authorAvatarPath ?? AssetConstants.defaultProfileImagePath" />
-                        <a class="author d-block" href="#">{{ challenge.authorName }}</a>
+                        <a class="author d-block" (click)="onLinkClick(challenge.createdBy)">{{ challenge.authorName }}</a>
                     </div>
                 </span>
             </div>

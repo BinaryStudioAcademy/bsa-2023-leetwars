@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { AssetConstants } from '@shared/constants/asset-constants';
@@ -13,8 +14,6 @@ import { getLanguageIconUrl } from '@shared/utils/language-icons';
     styleUrls: ['./challenge.component.sass'],
 })
 export class ChallengeComponent implements OnInit {
-    constructor(private challengeService: ChallengeService, private authService: AuthService) {}
-
     @Input() challenge: IChallengePreview;
 
     challengePositiveFeedbacksPercent = 0;
@@ -28,6 +27,8 @@ export class ChallengeComponent implements OnInit {
     AssetConstants = AssetConstants;
 
     private user: IUser;
+
+    constructor(private challengeService: ChallengeService, private authService: AuthService, private router: Router) {}
 
     ngOnInit(): void {
         this.authService.getUser().subscribe((user) => {
@@ -49,5 +50,13 @@ export class ChallengeComponent implements OnInit {
             this.challenge = challenge;
             this.isChallengeUpdated = true;
         });
+    }
+
+    onLinkClick(id: number | undefined) {
+        if (id === this.user.id) {
+            this.router.navigate(['/user/profile']);
+        } else {
+            this.router.navigate(['/user/profile', id as number]);
+        }
     }
 }

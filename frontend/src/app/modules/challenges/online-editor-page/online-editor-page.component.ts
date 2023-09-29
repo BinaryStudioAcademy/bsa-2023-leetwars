@@ -2,6 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
+import { CodefightGuard } from '@core/guards/codefight.guard';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
@@ -68,6 +69,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private modalService: NgbModal,
         private codeRunService: CodeRunService,
         private authService: AuthService,
+        private codeFightGuard: CodefightGuard,
         private router: Router,
     ) {
         super();
@@ -150,12 +152,14 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     giveUpCodeFight() {
-        const codeFightEnd: ICodeFightEnd = {
-            isWinner: false,
-            senderId: this.user.id,
-        };
+        this.codeFightGuard.openModal().closed.subscribe(() => {
+            const codeFightEnd: ICodeFightEnd = {
+                isWinner: false,
+                senderId: this.user.id,
+            };
 
-        this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+            this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+        });
     }
 
     subscribeToMessageQueue(): void {
