@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
@@ -31,6 +31,8 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
 
     @Input() isUnread: boolean;
 
+    @Output() linkClicked = new EventEmitter<void>();
+
     private currentUser: IUser;
 
     typeNotification = TypeNotification;
@@ -60,6 +62,11 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
 
     declineFriendship(notification: INotificationModel) {
         this.updateFriendshipStatus(notification, FriendshipStatus.Declined);
+    }
+
+    onLinkClick(event: MouseEvent) {
+        event.preventDefault();
+        this.linkClicked.emit();
     }
 
     private updateFriendship(updateRequest: IUpdateFriendship) {

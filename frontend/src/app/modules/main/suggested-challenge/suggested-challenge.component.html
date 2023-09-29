@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="description-text">
-            {{ challenge.instructions }}
+            <markdown [data]="challenge.instructions"></markdown>
         </div>
         <ul class="tags d-flex" (wheel)="onMouseWheel($event)">
             <li *ngFor="let tag of challenge.tags" class="tag-item">

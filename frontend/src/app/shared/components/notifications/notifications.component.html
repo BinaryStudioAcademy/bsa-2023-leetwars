@@ -2,7 +2,8 @@
     <div *ngIf="this.notification.typeNotification === typeNotification.NewChallenge" class="notification-text">
         <p>
             A new challenge
-            <a routerLink="/challenges/{{ this.notification.challenge.id }}"> {{ this.notification.challenge.title }}</a>
+            <a (click)="onLinkClick($event)" routerLink="/challenges/{{ this.notification.challenge.id }}">
+                {{this.notification.challenge.title }}</a>
         </p>
     </div>
     <div *ngIf="this.notification.typeNotification === typeNotification.LikeChallenge" class="notification-text">
@@ -12,19 +13,23 @@
         class="sender-img" />
         <p>
             User {{ this.notification.sender.userName }} liked your challenge
-            <a routerLink="/challenges/{{ this.notification.challenge.id }}">{{ this.notification.challenge.title }}</a>
+            <a (click)="onLinkClick($event)" routerLink="/challenges/{{ this.notification.challenge.id }}">{{
+                this.notification.challenge.title }}</a>
         </p>
     </div>
     <div *ngIf="this.notification.typeNotification === typeNotification.FriendRequest" class="friend-request-container">
         <p class="notification-text">{{ notification.message }}</p>
-        <div class="friend-request-buttons" *ngIf="this.notification.updateFriendship.friendshipStatus === friendshipStatus.Pending">
+        <div class="friend-request-buttons"
+            *ngIf="this.notification.updateFriendship.friendshipStatus === friendshipStatus.Pending">
             <button (click)="acceptFriendship(notification)" class="friend-request-btn accept-btn">Accept</button>
             <button (click)="declineFriendship(notification)" class="friend-request-btn reject-btn">Decline</button>
         </div>
-        <span class="accepted-friendship" *ngIf="this.notification.updateFriendship.friendshipStatus === friendshipStatus.Accepted">
+        <span class="accepted-friendship"
+            *ngIf="this.notification.updateFriendship.friendshipStatus === friendshipStatus.Accepted">
             Accepted
         </span>
-        <span class="declined-friendship" *ngIf="this.notification.updateFriendship.friendshipStatus === friendshipStatus.Declined">
+        <span class="declined-friendship"
+            *ngIf="this.notification.updateFriendship.friendshipStatus === friendshipStatus.Declined">
             Declined
         </span>
     </div>
