@@ -25,6 +25,7 @@ import { CustomToastrNotificationComponent } from './components/custom-toastr-no
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LinkProfileButtonComponent } from './components/link-profile-button/link-profile-button.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
@@ -66,6 +67,7 @@ import { toastrGlobalConfig } from './configurations/toastr-global-config';
         ArrowUpComponent,
         ScrollToDirective,
         CustomToastrNotificationComponent,
+        LinkProfileButtonComponent,
     ],
     exports: [
         CommonModule,
@@ -91,6 +93,7 @@ import { toastrGlobalConfig } from './configurations/toastr-global-config';
         AngularMarkdownEditorModule,
         InfiniteScrollModule,
         ScrollToDirective,
+        LinkProfileButtonComponent,
     ],
     providers: [TabsetConfig],
 })

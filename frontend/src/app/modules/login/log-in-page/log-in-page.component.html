@@ -5,8 +5,16 @@
     <div class="log-in-part">
         <div class="form-container">
             <H4 class="sign-in-label">Sign in</H4>
-            <button class="third-party github" (click)="signInWithGitHub()">Sign in with GitHub</button>
-            <button class="third-party google" (click)="signInWithGoogle()">Sign in with Google</button>
+            <div class="connect-accounts d-flex flex-column">
+                <app-link-profile-button 
+                    [buttonText]="'Sign in with GitHub'" 
+                    (click)="signInWithGitHub()">
+                </app-link-profile-button>
+                <app-link-profile-button 
+                    [buttonText]="'Sign in with Google'" 
+                    (click)="signInWithGoogle()">
+                </app-link-profile-button>
+            </div>
             <H5 class="or-label">or</H5>
 
             <form class="logInForm" [formGroup]="logInForm">
