@@ -8,7 +8,9 @@ import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
 import { CodeFightService } from '@core/services/code-fight.service';
 import { CodeRunService } from '@core/services/code-run.service';
+import { SpinnerService } from '@core/services/spinner.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { UserService } from '@core/services/user.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SolutionSubmitModalComponent } from '@shared/components/solution-submit-modal/solution-submit-modal.component';
 import { IChallenge } from '@shared/models/challenge/challenge';
@@ -17,8 +19,9 @@ import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { ICodeSubmitResult } from '@shared/models/code-run/code-submit-result';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
+import { INewUserSolution } from '@shared/models/user/new-user-solution';
 import { IUser } from '@shared/models/user/user';
-import { switchMap, take, takeUntil } from 'rxjs';
+import { of, switchMap, take, takeUntil } from 'rxjs';
 
 import { editorOptions, mapLanguageName } from '../challenge-creation/challenge-creation.utils';
 
@@ -61,6 +64,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
+        private userService: UserService,
         private codeFightService: CodeFightService,
         private breakpointObserver: BreakpointObserver,
         private signalRService: CodeDisplayingHubService,
@@ -70,6 +74,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private authService: AuthService,
         private codeFightGuard: CodefightGuard,
         private router: Router,
+        private spinnerService: SpinnerService,
     ) {
         super();
         breakpointObserver
@@ -179,8 +184,10 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
             .pipe(take(1), takeUntil(this.unsubscribe$))
             .subscribe((codeRunResults: ICodeRunResults) => {
                 this.codeRunService.getCodeRunResults(codeRunResults);
+                this.spinnerService.hide();
             });
 
+        this.spinnerService.show();
         this.sendCode();
     }
 
@@ -188,31 +195,54 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.signalRService.codeSubmitResults$
             .pipe(take(1), takeUntil(this.unsubscribe$))
             .subscribe((codeSubmitResults: ICodeSubmitResult) => {
-                const modalRef = this.modalService.open(SolutionSubmitModalComponent, { windowClass: 'submit-modal' });
+                this.openSubmitModal(codeSubmitResults);
 
-                modalRef.componentInstance.codeRunResults = codeSubmitResults.codeRunResult;
-                modalRef.componentInstance.codeAnalysisResults = codeSubmitResults.codeAnalysisResult;
-
-                this.shouldSendCodeFightEnd(codeSubmitResults.codeRunResult);
+                this.spinnerService.hide();
             });
 
+        this.spinnerService.show();
         this.sendCode(true);
     }
 
-    private shouldSendCodeFightEnd(codeRunResults: ICodeRunResults) {
-        if (this.isCodeFight) {
-            const codeFightEnd: ICodeFightEnd = {
-                isWinner: true,
-                senderId: this.user.id,
-            };
+    private openSubmitModal(codeSubmitResults: ICodeSubmitResult) {
+        const modalRef = this.modalService.open(SolutionSubmitModalComponent);
 
-            this.sendCodeFightIfSuccessfullResults(codeRunResults, codeFightEnd);
-        }
+        modalRef.componentInstance.codeRunResults = codeSubmitResults.codeRunResult;
+        modalRef.componentInstance.codeAnalysisResults = codeSubmitResults.codeAnalysisResult;
+
+        modalRef.closed.subscribe(() => {
+            this.submitSolution(codeSubmitResults);
+        });
     }
 
-    private sendCodeFightIfSuccessfullResults(codeRunResults: ICodeRunResults, codeFightEnd: ICodeFightEnd) {
-        if (codeRunResults.buildResults?.isSuccess && codeRunResults.testRunResults?.isSuccess) {
-            this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+    private submitSolution(codeSubmitResults: ICodeSubmitResult) {
+        if (codeSubmitResults.codeRunResult.buildResults?.isSuccess
+            && codeSubmitResults.codeRunResult.testRunResults?.isSuccess
+            && codeSubmitResults.codeRunResult.testRunResults.failedCount === 0) {
+            const userSolution: INewUserSolution = {
+                challengeVersionId: this.challenge.versions.find(v => v.language.name === this.selectedLanguage)?.id!,
+                challengeId: this.challenge.id,
+                code: this.initialSolution!,
+                output: this.initialSolution!,
+                createdBy: this.user.id,
+            };
+
+            this.userService.submitSolution(userSolution).pipe(
+                switchMap(() => {
+                    if (this.isCodeFight) {
+                        const codeFightEnd: ICodeFightEnd = {
+                            isWinner: true,
+                            senderId: this.user.id,
+                        };
+
+                        return this.codeFightService.sendCodeFightEnd(codeFightEnd);
+                    }
+
+                    return of(undefined);
+                }),
+            ).subscribe(() => {
+                this.router.navigate(['/user/profile'], { state: { canLeave: true } });
+            });
         }
     }
 

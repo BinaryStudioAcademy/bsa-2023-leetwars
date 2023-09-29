@@ -21,6 +21,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using LeetWars.Core.Common.DTO.UserPrefferences;
 using System.Net;
+using LeetWars.Core.Common.DTO.UserSolution;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -377,6 +378,26 @@ public class UserService : BaseService, IUserService
         await _context.SaveChangesAsync();
 
         return updatedPreferences;
+    }
+
+    public async Task<UserSolutionDto> SubmitSolutionAsync(NewUserSolutionDto userSolutionDto)
+    {
+        var solution = _mapper.Map<UserSolution>(userSolutionDto);
+
+        solution.SubmittedAt = DateTime.UtcNow;
+
+        await _context.UserSolutions.AddAsync(solution);
+        await _context.SaveChangesAsync();
+
+        var editUser = new EditUserDto
+        {
+            Id = userSolutionDto.CreatedBy,
+            CompletedChallengeId = userSolutionDto.ChallengeId
+        };
+
+        await UpdateUserRankAsync(editUser);
+
+        return _mapper.Map<UserSolutionDto>(solution);
     }
 
     private async Task<UserPreferencesDto> AddUserPreferences(NewUserPreferencesDto newPreferences, long userId)
