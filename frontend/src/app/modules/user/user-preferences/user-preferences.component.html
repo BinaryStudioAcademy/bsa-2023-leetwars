@@ -1,88 +1,81 @@
-<div class="page-wrapper d-flex justify-content-center">
-    <div class="form-wrapper d-flex flex-column flex-grow-1">
-        <form class="user-preferences-form d-flex flex-column">
-            <p>PREFERENCES</p>
-            <div class="form-data">
-                <div class="row mb-2">
-                    <div class="col-md-4 ">
-                        <div class="form-item">
-                            <div class="label-input-group">
-                                <label for="programming-language">Language</label>
-                                <app-dropdown-select [items]="languagesNames" formControlName="language"
-                                    [selectText]="'Choose Language...'"
-                                    [selectedItem]="userPreferenceForm.value.language"
-                                    (selectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
-                            </div>
-                        </div>
-                        <div class="form-item">
-                            <div class="label-input-group">
-                                <label for="editor-theme">Editor Theme</label>
-                                <app-dropdown-select [items]="monacoThemes" [selectText]="'Choose Theme...'"
-                                    [selectedItem]="userPreferenceForm.value?.theme" formControlName=" theme"
-                                    (selectedItemsChanged)="onThemeChanged($event)">
-                                </app-dropdown-select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-item">
-                            <div class="label-input-group ">
-                                <label for="tab-size">Tab Size</label>
-                                <div class="input-wrapper">
-                                    <app-custom-input InputType="number" [Identifier]="'tab-size'" Width="100px"
-                                        [InputValue]="userPreferenceForm.value?.tabSize" formControlName="tabSize"
-                                        (InputValueChange)="onTabSizeChange($event)">
-                                    </app-custom-input>
-                                </div>
-                            </div>
-                            <div class="invalid-feedback d-block">
-                                <div>{{ getErrorMessage('tabSize') }}</div>
-                            </div>
-                        </div>
-
-                        <div class="form-item">
-                            <div class="label-input-group">
-                                <label for="font-size">Font Size</label>
-                                <div class="input-wrapper">
-                                    <app-custom-input InputType="number" [Identifier]="'font-size'" Width="100px"
-                                        [InputValue]="userPreferenceForm.value?.fontSize" formControlName="fontSize"
-                                        (InputValueChange)="onFontSizeChange($event)">
-                                    </app-custom-input>
-                                </div>
-                            </div>
-                            <div class="invalid-feedback d-block error-message">
-                                <div>{{ getErrorMessage('fontSize') }}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class=" col-md-4">
-                        <div class="form-item">
-                            <div class="label-input-group">
-                                <label for="minimap">Minimap</label>
-                                <div class="input-wrapper">
-                                <app-custom-input InputType="checkbox" [Identifier]="'minimap'" Width="20px"
-                                [checked]="userPreferenceForm.value?.minimap" formControlName="minimap"
-                                (InputValueChange)="onCheckedMinimapChange()">
-                            </app-custom-input>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-item">
-                        <div class="label-input-group">
-                            <label for="word-wrap">Word Wrap</label>
-                            <div class="input-wrapper">
-                                <app-custom-input InputType="checkbox" [Identifier]="'word-wrap'" Width="20px"
-                                [checked]="userPreferenceForm.value?.wordWrap" formControlName="wordWrap"
-                                (InputValueChange)="onCheckedWrapChange()">
-                            </app-custom-input>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
+<form class="user-preferences-form d-flex flex-column">
+    <p>PREFERENCES</p>
+    <div class="form-data">
+        <div class="form-section">
+            <div class="form-item">
+                <div class="label-input-group">
+                    <label for="programming-language">Language</label>
+                    <app-dropdown-select [items]="languagesNames" formControlName="language"
+                        [selectText]="'Choose Language...'" [selectedItem]="userPreferenceForm.value.language"
+                        (selectedItemsChanged)="onLanguageChanged($event)"></app-dropdown-select>
                 </div>
             </div>
-        </form>
+            <div class="form-item">
+                <div class="label-input-group">
+                    <label for="editor-theme">Editor Theme</label>
+                    <app-dropdown-select [items]="monacoThemes" [selectText]="'Choose Theme...'"
+                        [selectedItem]="userPreferenceForm.value?.theme" formControlName=" theme"
+                        (selectedItemsChanged)="onThemeChanged($event)">
+                    </app-dropdown-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-item">
+                <div class="label-input-group ">
+                    <label for="tab-size">Tab Size</label>
+                    <div class="input-wrapper">
+                        <app-custom-input InputType="number" [Identifier]="'tab-size'" Width="150px"
+                            [InputValue]="userPreferenceForm.value?.tabSize" formControlName="tabSize"
+                            (InputValueChange)="onTabSizeChange($event)">
+                        </app-custom-input>
+                    </div>
+                </div>
+                <div class="invalid-feedback d-block">
+                    <div>{{ getErrorMessage('tabSize') }}</div>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="label-input-group">
+                    <label for="font-size">Font Size</label>
+                    <div class="input-wrapper">
+                        <app-custom-input InputType="number" [Identifier]="'font-size'" Width="150px"
+                            [InputValue]="userPreferenceForm.value?.fontSize" formControlName="fontSize"
+                            (InputValueChange)="onFontSizeChange($event)">
+                        </app-custom-input>
+                    </div>
+                </div>
+                <div class="invalid-feedback d-block error-message">
+                    <div>{{ getErrorMessage('fontSize') }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class=" form-section">
+            <div class="form-item">
+                <div class="label-input-group">
+                    <label for="minimap">Minimap</label>
+                    <div class="input-wrapper">
+                        <app-custom-input InputType="checkbox" [Identifier]="'minimap'" Width="20px"
+                            [checked]="userPreferenceForm.value?.minimap" formControlName="minimap"
+                            (InputValueChange)="onCheckedMinimapChange()">
+                        </app-custom-input>
+                    </div>
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="label-input-group">
+                    <label for="word-wrap">Word Wrap</label>
+                    <div class="input-wrapper">
+                        <app-custom-input InputType="checkbox" [Identifier]="'word-wrap'" Width="20px"
+                            [checked]="userPreferenceForm.value?.wordWrap" formControlName="wordWrap"
+                            (InputValueChange)="onCheckedWrapChange()">
+                        </app-custom-input>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</form>

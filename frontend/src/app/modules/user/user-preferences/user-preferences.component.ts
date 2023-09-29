@@ -71,14 +71,7 @@ export class UserPreferencesComponent extends BaseComponent implements OnInit {
     private updateUserPreferences() {
         this.userervice
             .setUserPrefferences(this.newPreferences)
-            .subscribe({
-                next: () => {
-                    this.toastrService.showSuccess('User preferences has been updated');
-                },
-                error: () => {
-                    this.toastrService.showError('Something went wrong');
-                },
-            });
+            .subscribe();
     }
 
     private loadData() {
