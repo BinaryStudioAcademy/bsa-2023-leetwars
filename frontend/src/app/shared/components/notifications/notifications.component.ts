@@ -4,6 +4,7 @@ import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { longFadeIn } from '@shared/animations/long-fade-in.animation';
+import { AssetConstants } from '@shared/constants/asset-constants';
 import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { TypeNotification } from '@shared/enums/type-notification';
 import { IUpdateFriendship } from '@shared/models/friendship/update-friendship';
@@ -35,6 +36,8 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
     typeNotification = TypeNotification;
 
     friendshipStatus = FriendshipStatus;
+
+    AssetConstants = AssetConstants;
 
     @Input() notifications: INotificationModel[];
 
