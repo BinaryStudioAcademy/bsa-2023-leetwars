@@ -92,12 +92,17 @@ namespace LeetWars.Notifier.WebAPI.Services
 
         private async Task SendNotificationToAllUsersAsync(NotificationDto notificationDto)
         {
-            await _hubContext.Clients.All.SendNotificationAsync(notificationDto);
+            if(notificationDto.Sender is not null)
+            {
+                await _hubContext.Clients.All.SendNotificationAsync(notificationDto);
+            }
         }
 
         private async Task SendSingleNotificationAsync(NotificationDto notificationDto)
         {
-            if (!string.IsNullOrEmpty(notificationDto.ReceiverId))
+            if (!string.IsNullOrEmpty(notificationDto.ReceiverId) 
+                && notificationDto.Sender is not null
+                && notificationDto.ReceiverId != notificationDto.Sender.Id.ToString())
             {
                 await _hubContext.Clients.Group(notificationDto.ReceiverId).SendNotificationAsync(notificationDto);
             }

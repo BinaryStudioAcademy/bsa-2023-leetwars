@@ -1,6 +1,5 @@
 @import 'color-variables'
 
-
 //Mixins
 @mixin flex-center
     display: flex
@@ -12,9 +11,7 @@
     margin: 8px 0
 
 @mixin green-shadowing
-    box-shadow: $transparent-green 1.95px -1.95px 2.6px
-    &:hover
-        box-shadow: $transparent-green 0px 0px 4px 2px, $transparent-green 0px 0px 16px 0px
+    box-shadow: $transparent-green 0 0 1.95px 1.95px
 
 //General
 :host
@@ -79,7 +76,6 @@ h2
     font-size: 1.6rem
     display: none
 
-
 //Unlimited
 .unlimited-hero
     height: 100vh
@@ -110,7 +106,6 @@ h2
     p
         width: 70%
         margin-top: 24px
-
 
 //Reliable platform
 #reliable-platform
@@ -149,7 +144,6 @@ h2
     p
         color: $very-pale-blue
 
-
 //Fun programming
 #fun-programming
     color: $white
@@ -185,7 +179,6 @@ h2
 .mediaq-img
     display: none
 
-
 //How it works
 #how-it-works
     color: $white
@@ -215,7 +208,6 @@ h2
     margin-left: 240px
     p
         color: $very-pale-blue
-
 
 //Footer
 footer
@@ -261,7 +253,6 @@ footer
         color: white
         font-size: 1rem
 
-
 //Media queries
 @media screen and (max-width: 1030px)
     .how-it-works-container
@@ -278,7 +269,7 @@ footer
         >img
             position: relative
             width: 190px
-            left:  0
+            left: 0
             margin-bottom: 24px
         &:nth-child(2)
             margin-top: 36px
@@ -292,7 +283,6 @@ footer
     .logo-container img
         width: 150px
         height: auto
-
 
 @media screen and (max-width: 1000px)
     #fun-programming
@@ -329,7 +319,6 @@ footer
 @media screen and (min-width: 651px)
     .nav-dropdown-container
         display: none
-
 
 @media screen and (max-width: 450px)
     .green-accent-link

@@ -157,7 +157,7 @@ export class FilteringSectionComponent extends BaseComponent implements OnInit {
 
     private getPreferences() {
         this.userService.getUserPrefferences().subscribe((preferences) => {
-            this.preferenceLanguage = preferences?.language.name ?? '';
+            this.preferenceLanguage = preferences?.language?.name ?? '';
             this.filter.languageId = preferences?.language?.id;
             this.getChalenges();
         });

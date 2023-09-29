@@ -273,24 +273,36 @@ namespace LeetWars.Core.BLL.Services
             await ResetLastWeeklyChallengeAsync();
 
             var levels = Enum.GetValues(typeof(LanguageLevel))
-                                            .Cast<LanguageLevel>()
-                                            .ToArray();
+                             .Cast<LanguageLevel>()
+                             .ToArray();
+
+            var languages = await _context.Languages.ToListAsync();
 
             foreach (var level in levels)
             {
-                var challengesByLevel = _context.Challenges
-                    .Where(x => x.Level != null && x.Level.SkillLevel == level)
-                    .AsQueryable();
-
-                var randomPosition = GetRandomInt(await challengesByLevel.CountAsync());
-                var weeklyChallenge = await challengesByLevel.Skip(randomPosition).FirstOrDefaultAsync();
-                if (weeklyChallenge is not null)
+                foreach (var language in languages)
                 {
-                    weeklyChallenge.IsWeekly = true;
-                    _context.Update(weeklyChallenge);
+                    await SetWeeklyChallengeForLevelAndLanguageAsync(level, language);
                 }
             }
+
             await _context.SaveChangesAsync();
+        }
+
+        private async Task SetWeeklyChallengeForLevelAndLanguageAsync(LanguageLevel level, Language language)
+        {
+            var challengesByLevelAndLanguage = _context.Challenges
+                .Where(x => x.Level != null && x.Level.SkillLevel == level && x.Versions.All(x => x.LanguageId == language.Id))
+                .AsQueryable();
+
+            var randomPosition = GetRandomInt(await challengesByLevelAndLanguage.CountAsync());
+            var weeklyChallenge = await challengesByLevelAndLanguage.Skip(randomPosition).FirstOrDefaultAsync();
+
+            if (weeklyChallenge is not null)
+            {
+                weeklyChallenge.IsWeekly = true;
+                _context.Update(weeklyChallenge);
+            }
         }
 
         public async Task<BriefChallengeInfoDto> GetBriefChallengeInfoByIdAsync(long challengeId)
@@ -448,7 +460,8 @@ namespace LeetWars.Core.BLL.Services
                 SuggestionType.PracticeAndRepeat => challenges.Where(challenge => challenge.Versions.Any(version =>
                     version.Solutions.Any(solution => solution.User != null && solution.User.Uid == userId))),
                 SuggestionType.Weekly => challenges.Where(challenge =>
-                    challenge.Level != null && challenge.Level.SkillLevel == userLevel && challenge.IsWeekly),
+                    challenge.Level != null && challenge.Level.SkillLevel == userLevel && challenge.IsWeekly 
+                        && challenge.Versions.All(x=>x.LanguageId == settings.LanguageId)),
                 _ => challenges
             };
         }

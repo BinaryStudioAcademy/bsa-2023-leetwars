@@ -7,8 +7,10 @@
         </p>
     </div>
     <div *ngIf="this.notification.typeNotification === typeNotification.LikeChallenge" class="notification-text">
-        <img [src]="this.notification.sender.imagePath ? this.notification.sender.imagePath : '/assets/images/default-profile-img.jpg'"
-            alt="User Logo" class="sender-img" />
+        <img
+        [src]="this.notification.sender.imagePath ?? AssetConstants.defaultProfileImagePath"
+        alt="User Logo"
+        class="sender-img" />
         <p>
             User {{ this.notification.sender.userName }} liked your challenge
             <a (click)="onLinkClick($event)" routerLink="/challenges/{{ this.notification.challenge.id }}">{{
