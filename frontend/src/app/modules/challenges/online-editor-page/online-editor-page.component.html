@@ -5,7 +5,7 @@
         <button class="custom-button accent" (click)="sendSubmitRequest()">Submit</button>
     </div>
     <as-split [direction]="splitDirection" [gutterSize]="8">
-        <as-split-area class="min-size" [size]="50">
+        <as-split-area class="min-size" [size]="45">
             <div class="problem-info h-100">
                 <div>
                     <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
@@ -31,8 +31,8 @@
             </div>
         </as-split-area>
 
-        <as-split-area [size]="50" [minSize]="splitRightMinSize">
-            <div class="editor h-50" #editorContainer>
+        <as-split-area [minSize]="splitRightMinSize" [size]="45" class="d-flex flex-column justify-content-between">
+            <div class="editor h-40" #editorContainer>
                 <div class="header">
                     <div class="language-selection">
                         <fa-icon [icon]="'info'" size="sm"></fa-icon>
@@ -52,7 +52,6 @@
                     class="my-code-editor"
                     [initText]="initialSolution!"
                     [language]="selectedLanguage"
-                    [(ngModel)]="initialSolution"
                     (codeChanged)="onCodeChanged($event)"
                     [options]="editorOptions"></app-code-editor>
             </div>
@@ -65,15 +64,13 @@
                         class="fullscreen-button"
                         [icon]="'maximize'"></fa-icon>
                 </div>
-                <div class="editor-test" #editorTestContainer>
-                    <app-code-editor
-                        class="my-code-editor"
-                        [options]="editorOptions"
-                        [language]="selectedLanguage"
-                        [(ngModel)]="testCode"
-                        (codeChanged)="onTestChanged($event)"
-                        [initText]="testCode!"></app-code-editor>
-                </div>
+                <app-code-editor
+                    class="my-code-editor"
+                    [options]="editorOptions"
+                    [language]="selectedLanguage"
+                    [(ngModel)]="testCode"
+                    (codeChanged)="onTestChanged($event)"
+                    [initText]="testCode!"></app-code-editor>
             </div>
         </as-split-area>
     </as-split>
