@@ -16,15 +16,6 @@
                                 <markdown [data]="challenge.instructions"></markdown>
                             </ng-template>
                         </li>
-                        <li [ngbNavItem]="'Submissions'" [class.selectedTab]="isSelected('Submissions')">
-                            <button ngbNavLink (click)="selectTab('Submissions')">Submissions</button>
-                            <ng-template ngbNavContent>Submissions here</ng-template>
-                        </li>
-
-                        <li [ngbNavItem]="'Output'" [class.selectedTab]="isSelected('Output')">
-                            <button ngbNavLink (click)="selectTab('Output')">Output</button>
-                            <ng-template ngbNavContent>Output here</ng-template>
-                        </li>
                     </ul>
                     <div class="content" [ngbNavOutlet]="nav"></div>
                 </div>

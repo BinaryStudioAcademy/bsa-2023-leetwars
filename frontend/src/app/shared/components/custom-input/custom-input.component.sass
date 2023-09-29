@@ -1,33 +1,32 @@
-@import 'src/styles/color-variables'
+@import 'color-variables'
 
 .input-form
-  flex-direction: column
-  margin: 0 auto
-  flex-direction: column
-  color: $white
-  position: relative
+    flex-direction: column
+    margin: 0 auto
+    color: $white
+    position: relative
 
 .input-form-container
-  flex-direction: column
-  margin: auto
+    flex-direction: column
+    margin: auto
 
 .input-form-label
-  font-size: 14px
-  font-weight: 400
-  margin: 0 auto
+    font-size: 14px
+    font-weight: 400
+    margin: 0 auto
 
 .input-formText
-  font-family: Open Sans
-  font-weight: 600
-  font-size: 14px
-  padding: 12px 15px
-  border: 1px solid $white
-  color: $white
-  outline: none
-  border-radius: 7px
-  background: transparent
-  &:focus
-    outline: 2px solid $white
+    font-family: Open Sans
+    font-weight: 600
+    font-size: 14px
+    padding: 12px 15px
+    border: 1px solid $white
+    color: $white
+    outline: none
+    border-radius: 7px
+    background: transparent
+    &:focus
+        outline: 2px solid $white
 
 .hide-password
     position: absolute
@@ -40,18 +39,14 @@
         color: $grey
 
 .forget-password-link
-    color: $cornflower
+    color: $purple
     font-family: Open Sans
     font-size: 14px
-    font-weight: 300
-    line-height: normal
-    text-decoration: underline
     line-height: normal
     float: right
-    margin-top: 5px
+    margin-top: 2px
+    &:hover
+        text-decoration: underline
 
-.forget-password-link:hover
-    color: $vivid-blue
-
-input[type="checkbox"]:focus
+  input[type="checkbox"]:focus
     outline: none

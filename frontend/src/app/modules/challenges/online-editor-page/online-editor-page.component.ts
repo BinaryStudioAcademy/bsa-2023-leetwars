@@ -18,7 +18,7 @@ import { ICodeSubmitResult } from '@shared/models/code-run/code-submit-result';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
-import { take, takeUntil } from 'rxjs';
+import { switchMap, take, takeUntil } from 'rxjs';
 
 import { editorOptions, mapLanguageName } from '../challenge-creation/challenge-creation.utils';
 
@@ -153,14 +153,21 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     giveUpCodeFight() {
-        this.codeFightGuard.openModal().closed.subscribe(() => {
-            const codeFightEnd: ICodeFightEnd = {
-                isWinner: false,
-                senderId: this.user.id,
-            };
+        this.codeFightGuard
+            .openModal()
+            .closed.pipe(
+                switchMap(() => {
+                    const codeFightEnd: ICodeFightEnd = {
+                        isWinner: false,
+                        senderId: this.user.id,
+                    };
 
-            this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
-        });
+                    return this.codeFightService.sendCodeFightEnd(codeFightEnd);
+                }),
+            )
+            .subscribe(() => {
+                this.router.navigate(['/']);
+            });
     }
 
     subscribeToMessageQueue(): void {
@@ -181,7 +188,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.signalRService.codeSubmitResults$
             .pipe(take(1), takeUntil(this.unsubscribe$))
             .subscribe((codeSubmitResults: ICodeSubmitResult) => {
-                const modalRef = this.modalService.open(SolutionSubmitModalComponent);
+                const modalRef = this.modalService.open(SolutionSubmitModalComponent, { windowClass: 'submit-modal' });
 
                 modalRef.componentInstance.codeRunResults = codeSubmitResults.codeRunResult;
                 modalRef.componentInstance.codeAnalysisResults = codeSubmitResults.codeAnalysisResult;
