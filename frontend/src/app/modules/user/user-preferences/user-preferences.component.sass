@@ -1,4 +1,3 @@
-
 @import 'color-variables'
 @import 'screen-sizes-variables'
 
@@ -16,16 +15,22 @@
     margin: 0 auto
 
 .form-data
-    margin: 0 auto
     display: flex
-    flex-direction: row
+    flex-direction: column
     justify-content: space-between
+
+.form-item
+    width: 50%
+    height: 50px
+    @media screen and (max-width: $medium)
+        width: 75%
+    @media screen and (max-width: $small)
+        width: 100%
 
 .user-preferences-form
     background-color: $charcoal-grey
     border-radius: 38px
     padding: 26px 36px 26px 29px
-
 
 .label-input-group
     display: flex
@@ -34,20 +39,16 @@
     height: 50px
 
 .input-wrapper
-    max-width: 100px
+
 
 .label-input-group label
+    width: 30%
     display: flex
-    justify-content: right
-    margin-right: 15px
+    margin-right: 8px
     color: $white
-    min-width: 120px
-    overflow: wrap
-    @media screen and (max-width: $medium)
-        justify-content: left
-
-.form-item
-    height: 50px
+    min-width: 80px
+    @media screen and (max-width: $small)
+        width: 20%
 
 app-dropdown-select
-    width: 200px
+    width: 70%
