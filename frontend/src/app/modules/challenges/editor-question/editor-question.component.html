@@ -99,13 +99,9 @@
         <div class="tab" [class.tab-active]="selectedTab === TabType.Description" (click)="editMarkDown()">
             <span>Description</span>
         </div>
-        <div class="tab d-flex" [class.tab-active]="selectedTab === TabType.Preview" (click)="previewMarkDown()">
+        <div class="tab" [class.tab-active]="selectedTab === TabType.Preview" (click)="previewMarkDown()">
             <fa-icon [icon]="'eye'"></fa-icon>
             <span>Preview</span>
-        </div>
-        <div class="tab d-flex" [class.tab-active]="selectedTab === TabType.Help" (click)="submitQuestion()">
-            <fa-icon [icon]="'circle-question'"></fa-icon>
-            <span>Help</span>
         </div>
     </div>
     <div
@@ -113,7 +109,7 @@
         *ngIf="inputForm.controls.description.touched && inputForm.controls.description.invalid">
         {{ getErrorMessage('description') }}
     </div>
-    <div class="mt-12px">
+    <div class="markdown-wrapper mt-12px">
         <angular-markdown-editor
             [textareaId]="'markdown-editor'"
             [name]="'markdownText'"

@@ -19,6 +19,7 @@ button
 
 a
     cursor: pointer
+    text-decoration: none
 
 ul li
     list-style: none
@@ -36,11 +37,21 @@ ul, p
 .toast-container
     position: fixed
 
-.custom-toast
+.custom-toast,
+.custom-toastsuccess,
+.custom-toasterror
     background-color: $charcoal-grey
     width: 400px !important
-    border: 2px solid $green
     cursor: default
+
+.custom-toast
+    border: 2px solid $green
+
+.custom-toastsuccess
+    box-shadow: $fresh-green 0 0 4px 4px
+
+.custom-toasterror
+    box-shadow: $light-red 0 0 4px 4px
 
 :disabled
     cursor: default

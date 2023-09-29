@@ -61,14 +61,18 @@
         <div class="edit-section d-flex flex-column">
             <p>ACCOUNTS</p>
             <div class="accounts-container">
-                <p class="github-button" *ngIf="isGithubLinked">
+                <app-link-profile-button 
+                    *ngIf="!isGithubLinked"
+                    [buttonText]="'+ Link GitHub Account'" 
+                    (click)="linkGithub()">
                     <fa-icon [icon]="['fab', 'github']"></fa-icon>
-                    GitHub is linked
-                </p>
-                <a class="github-button" *ngIf="!isGithubLinked" (click)="linkGithub()">
+                </app-link-profile-button>
+                <app-link-profile-button 
+                    *ngIf="isGithubLinked"
+                    class="github-button"
+                    [buttonText]="'GitHub is linked'">
                     <fa-icon [icon]="['fab', 'github']"></fa-icon>
-                    Link GitHub Account
-                </a>
+                </app-link-profile-button>
             </div>
         </div>
         <div>

@@ -2,6 +2,7 @@ import {
     Component,
     ElementRef,
     EventEmitter,
+    HostListener,
     Input,
     OnChanges,
     OnInit,
@@ -132,6 +133,13 @@ export class ChallengesTestPageComponent implements OnInit, OnChanges {
                 break;
             default:
                 break;
+        }
+    }
+
+    @HostListener('fullscreenchange')
+    onExitFullScreen() {
+        if (!document.fullscreenElement) {
+            this.isMaximized = false;
         }
     }
 

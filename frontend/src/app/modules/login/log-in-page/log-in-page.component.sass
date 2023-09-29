@@ -6,24 +6,21 @@
     height: 100vh
     margin: 0px
     padding: 0px
-
     display: grid
     grid-template-columns: 55vw 45vw
 
 .logo-part
     grid-column: 1
     background-color: $dark-grey
-    & img
-       cursor: pointer
-
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-
     margin: 0px
     height: 100%
     width: 100%
+    & img
+       cursor: pointer
 
 .log-in-part
     grid-column: 2
@@ -59,26 +56,6 @@
     text-align: start
     margin-bottom: 25px
 
-.third-party
-    color: $white
-    text-align: center
-    font-family: Montserrat
-    font-size: 16px
-
-    font-weight: 600
-    line-height: normal
-
-    background-color: transparent
-
-    border-radius: 7px
-    border: 1px solid $white
-
-    margin-bottom: 15px
-    padding: 13px 0
-
-    &:hover
-        background-color: $transient-grey
-
 .or-label
     color: $white
     text-align: center
@@ -93,23 +70,17 @@
     flex-direction: column
     gap: 1.4vw
 
-
-
 .submit-sign-in
     border-radius: 7px
     background-color: $green
-
     color: $white
     text-align: center
     font-family: Montserrat
     font-size: 16px
-
     font-weight: 600
     line-height: normal
-
     padding: 13px 0
     margin-top: 18px
-
     &:disabled, &:hover
         background-color: $dark-green
 
@@ -119,35 +90,34 @@
     color: $white
     font-family: Open Sans
     font-size: 14px
-
     font-weight: 300
     line-height: normal
     text-align: center
 
+.connect-accounts
+    gap: 15px
+
 .sign-up-link
-    color: $cornflower
+    color: $purple
     font-family: Open Sans
     font-size: 14px
-
-    font-weight: 300
+    font-weight: 400
     line-height: normal
-    text-decoration: underline
-
-.sign-up-link:hover
-    color: $vivid-blue
+    &:hover
+        text-decoration: underline
 
 @media screen and (max-width: $large)
-  .log-in-body
-    grid-template-columns: none
-    grid-template-rows: 35vh 65vh
-    width: 100%
-  .logo-part, .log-in-part
-    grid-column: auto
-  .sign-in-label
-    margin: 16px 0
-  .or-label
-    margin: 0
+    .log-in-body
+        grid-template-columns: none
+        grid-template-rows: 35vh 65vh
+        width: 100%
+    .logo-part, .log-in-part
+        grid-column: auto
+    .sign-in-label
+        margin: 16px 0
+    .or-label
+        margin: 0
 
 @media screen and (max-width: $mobile)
-  .log-in-part > *
-    width: 90%
+    .log-in-part > *
+        width: 90%
