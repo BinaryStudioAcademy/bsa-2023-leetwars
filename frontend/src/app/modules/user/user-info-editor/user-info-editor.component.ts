@@ -79,8 +79,9 @@ export class UserInfoEditorComponent implements OnInit {
             .pipe(switchMap((user: IUser) => (this.userInfoForm.value.avatar ? this.updateUserAvatar(user) : of(user))))
             .subscribe({
                 next: (user) => {
+                    this.userPreferencesComponent.setPreferences();
                     this.authService.setUserInfo(user);
-                    this.toastrNotification.showSuccess('User information has been updated');
+                    this.toastrNotification.showSuccess('Your data have been updated');
                     this.spinnerService.hide();
                 },
                 error: () => {
@@ -88,7 +89,6 @@ export class UserInfoEditorComponent implements OnInit {
                     this.spinnerService.hide();
                 },
             });
-        this.userPreferencesComponent.setPreferences();
     }
 
     onImagePicked(event: Event) {
