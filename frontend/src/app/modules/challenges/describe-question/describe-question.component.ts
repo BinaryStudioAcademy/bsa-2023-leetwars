@@ -45,8 +45,6 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
 
     languages: ILanguage[];
 
-    isOpen = true;
-
     languageDropdownItems: IDropdownItem[] = [];
 
     currentLanguage: IDropdownItem;
