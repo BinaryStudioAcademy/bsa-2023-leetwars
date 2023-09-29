@@ -40,6 +40,9 @@ export class AuthService {
     ) {
         this.userSubject = new BehaviorSubject<IUser | undefined>(this.getUserInfo());
         this.currentUser$ = this.userSubject.asObservable();
+        this.afAuth.authState.subscribe(async (user) => {
+            this.updateLocalStorage(user);
+        });
     }
 
     async initializeAuth(): Promise<void> {
