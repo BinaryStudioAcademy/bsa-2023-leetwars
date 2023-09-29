@@ -11,7 +11,9 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<NotificationDto, Notification>()
                 .ForMember(dest => dest.SenderId, opt => opt.MapFrom(src => src.Sender!.Id))
                 .ForMember(dest => dest.ChallengeId, opt => opt.MapFrom(src => src.Challenge!.Id))
-                .ForMember(dest => dest.FriendshipId, opt => opt.MapFrom(src => src.UpdateFriendship!.FriendshipId));
+                .ForMember(dest => dest.FriendshipId, opt => opt.MapFrom(src => src.UpdateFriendship!.FriendshipId))
+                .ForMember(dest => dest.Challenge, opt => opt.Ignore())
+                .ForMember(dest => dest.Sender, opt => opt.Ignore());
         }
     }
 }
