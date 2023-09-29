@@ -11,7 +11,7 @@ import { INewFriendship } from '@shared/models/friendship/new-friendship';
 import { IUser } from '@shared/models/user/user';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
-import { catchError, EMPTY, forkJoin, map, Observable, switchMap, takeUntil, throwError } from 'rxjs';
+import { catchError, EMPTY, map, Observable, switchMap, takeUntil, tap, throwError } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
 
@@ -70,17 +70,23 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
         });
     }
 
-    private getUserInfo(id: number) {
-        this.userService
+    private getUserInfo(id: number): Observable<void> {
+        return this.userService
             .getFullUser(id)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (result) => {
+            .pipe(
+                takeUntil(this.unsubscribe$),
+                map((result) => {
                     this.user = result;
                     this.fullUser = result;
-                },
-                error: () => { this.toastrNotification.showError('User not found'); },
-            });
+
+                    return undefined;
+                }),
+                catchError(() => {
+                    this.toastrNotification.showError('User not found');
+
+                    return EMPTY;
+                }),
+            );
     }
 
     private getUserChallenges(id: number) {
@@ -113,11 +119,9 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                 this.isCurrentUser = !userId || this.user?.id === userId;
                 const currentUserId = this.isCurrentUser ? this.currentUser.id : userId;
 
-                this.getUserInfo(currentUserId);
-                this.getUserChallenges(currentUserId);
-                const friendships$ = this.getUserFriendships(currentUserId);
-
-                return forkJoin([friendships$]).pipe(
+                return this.getUserInfo(currentUserId).pipe(
+                    switchMap(async () => this.getUserChallenges(currentUserId)),
+                    switchMap(() => this.getUserFriendships(currentUserId)),
                     catchError((error) => {
                         this.toastrNotification.showError(`Error: ${error}`);
 
@@ -125,9 +129,10 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                     }),
                 );
             }),
-        ).subscribe(() => {
-            this.isFriend = this.isFriendMethod(this.user);
-        });
+            tap(() => {
+                this.isFriend = this.isFriendMethod(this.user);
+            }),
+        ).subscribe();
     }
 
     private getUserFriendships(friendId: number): Observable<void> {
@@ -139,17 +144,20 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                 takeUntil(this.unsubscribe$),
                 map((friendShips: IFriendshipPreview) => {
                     if (friendShips === null) {
-                        const emptyFriends: IFriendshipPreview = 
-                        { 
+                        const emptyFriends: IFriendshipPreview =
+                        {
                             friendshipStatus: FriendshipStatus.Accepted,
                             friendshipId: 0,
-                            friendId: -1 
+                            friendId: -1,
                         };
 
                         this.userFriendsIds.push(-1);
                         this.currentUser.friendships.push(emptyFriends);
-                        this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
+                        this.friendshipId = 0;
+
+                        return undefined;
                     }
+
                     this.userFriendsIds.push(friendShips.friendId);
                     this.currentUser.friendships.push(friendShips);
                     this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
