@@ -151,8 +151,8 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
                     this.newNotificationsCollection = notifications.filter((e) => !e.isRead);
                     this.seenNotificationsCollection = notifications.filter((e) => e.isRead);
                 },
-                error: () => {
-                    this.toastrService.showError('Server connection error');
+                error: (error) => {
+                    this.toastrService.showError(`Error while getting notifications: ${error.message}`);
                     this.router.navigate(['/']);
                 },
             });
@@ -172,8 +172,8 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
             .updateStatusToRead([this.user.id])
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                error: () => {
-                    this.toastrService.showError('Server connection error');
+                error: (error) => {
+                    this.toastrService.showError(`Error while getting notifications: ${error.message}`);
                     this.router.navigate(['/']);
                 },
             });

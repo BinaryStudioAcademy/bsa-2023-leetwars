@@ -31,13 +31,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     },
                 });
 
-                return next.handle(clonedRequest).pipe(
-                    catchError((refreshError) => {
-                        console.error('Error refreshing token:', refreshError);
-
-                        return throwError(refreshError);
-                    }),
-                );
+                return next.handle(clonedRequest).pipe(catchError((refreshError) => throwError(refreshError)));
             }),
         );
     }

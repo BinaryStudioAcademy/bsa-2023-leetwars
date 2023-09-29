@@ -57,7 +57,6 @@ export class AuthService {
                 throw new Error('User not authenticated');
             }),
             catchError((error) => {
-                console.error('Error refreshing Firebase token:', error);
                 throw error;
             }),
         );

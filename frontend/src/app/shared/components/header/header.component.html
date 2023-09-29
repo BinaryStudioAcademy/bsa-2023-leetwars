@@ -21,7 +21,8 @@
                         content="{{ countNotification }}"></fa-layers-counter>
                 </fa-layers>
             </div>
-            <div class="notifications-dropdown" *ngIf="this.isNotificationsDropdownDisplayed" [@fadeInOut] (appClickOutside)="hideDropdown()">
+            <div class="notifications-dropdown" *ngIf="this.isNotificationsDropdownDisplayed" [@fadeInOut]
+                (appClickOutside)="hideDropdown()">
                 <div class="dropdown-heading">
                     <span>Your notifications</span>
                     <span class="new-notifications-count">{{countNotification}}</span>
@@ -32,10 +33,11 @@
                     </div>
                     <app-notifications
                         *ngFor="let notification of this.newNotifications.slice().reverse(); trackBy: trackByFn"
-                        [isUnread]="true" [notification]="notification"></app-notifications>
+                        [isUnread]="true" [notification]="notification"
+                        (linkClicked)="hideDropdown()"></app-notifications>
                     <app-notifications
                         *ngFor="let notification of this.seenNotifications.slice().reverse(); trackBy: trackByFn"
-                        [notification]="notification"></app-notifications>
+                        [notification]="notification" (linkClicked)="hideDropdown()"></app-notifications>
                 </div>
             </div>
         </div>
