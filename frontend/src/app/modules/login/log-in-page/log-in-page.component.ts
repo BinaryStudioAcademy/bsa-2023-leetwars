@@ -33,6 +33,9 @@ export class LogInPageComponent {
                 switchMap((result) => {
                     if (!result) {
                         this.logInForm.markAsUntouched();
+                        this.isSignInError = true;
+
+                        this.authHelper.handleAuthError(this.logInForm);
                     }
 
                     return this.authService.login({
