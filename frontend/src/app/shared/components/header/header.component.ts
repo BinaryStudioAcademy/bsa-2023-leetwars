@@ -61,12 +61,8 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
     @HostListener('document:keydown.escape')
     onEscapeKey() {
-        this.hideDropdown();
+        this.showNotifications();
         this.hideUserMenu();
-    }
-
-    hideDropdown() {
-        this.isNotificationsDropdownDisplayed = false;
     }
 
     hideUserMenu() {
@@ -77,13 +73,21 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.showMenu = true;
     }
 
-    showNotifications(event: Event) {
-        event.stopPropagation();
-
-        if (!this.isNotificationsDropdownDisplayed) {
-            this.readNotificationsAndUpdateStatus();
+    showNotifications() {
+        if (this.isNotificationsDropdownDisplayed) {
+            this.readNotifications();
+        } else {
+            this.notificationStorage
+                .updateStatusToRead([this.user.id])
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    error: () => {
+                        this.toastrService.showError('Server connection error');
+                        this.router.navigate(['/']);
+                    },
+                });
         }
-        this.isNotificationsDropdownDisplayed = true;
+        this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
     }
 
     get countNotification() {
@@ -165,18 +169,6 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
         this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
         this.newNotificationsCollection = [];
-    }
-
-    private readNotificationsAndUpdateStatus() {
-        this.notificationStorage
-            .updateStatusToRead([this.user.id])
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                error: (error) => {
-                    this.toastrService.showError(`Error while getting notifications: ${error.message}`);
-                    this.router.navigate(['/']);
-                },
-            });
     }
 
     override ngOnDestroy() {
