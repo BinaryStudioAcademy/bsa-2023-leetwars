@@ -198,6 +198,11 @@ public class UserService : BaseService, IUserService
     {
         var query = _context.Users.OrderByDescending(u => u.TotalScore).AsQueryable();
 
+        if(page.UserName is not null)
+        {
+            query = query.Where(u => u.UserName.ToLower().Contains(page.UserName.ToLower()));
+        }
+
         if (page.HasFriends)
         {
             var currentUser = await GetUserInfoWithFriends(u => u.Uid == _userGetter.CurrentUserId);

@@ -25,6 +25,32 @@
     @media (max-width: $small)
         padding: 15px
 
+.settings
+    display: flex
+    align-items: center
+
+.search-container
+    position: relative
+    width: 400px
+    padding-right: 5px
+
+.search-filter
+    font-family: Open Sans
+    font-weight: 600
+    border: $light-lavender-grey 2px solid
+    border-radius: 7px
+    height: 45px
+    padding: 13px 20px
+    text-align: left
+    background: inherit
+    color: $white
+    &-icon
+        position: absolute
+        top: 10px
+        right: 14px
+        color: $white
+        cursor: pointer
+
 .header
     gap: 16px
     border-bottom: 2px solid $green
@@ -135,6 +161,10 @@
 
 .in-battle
     color: $light-red
+
+.form-check
+    margin-left: auto
+
 
 .form-check-input
     cursor: pointer

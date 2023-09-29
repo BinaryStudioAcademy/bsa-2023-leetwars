@@ -107,6 +107,11 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
         this.router.navigate(['/user/profile', id as number]);
     }
 
+    onSearchTextChange(value: string) {
+        this.page.userName = value.trim();
+        this.resetUsersData();
+    }
+
     startCodeFight(user: IUser) {
         if (this.isCurrentUserAbleToCodeFight()) {
             this.openModal(user);
@@ -156,6 +161,13 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
 
         this.page = { ...this.pageDefault, hasFriends: this.isMyFriendsChecked };
 
+        this.getUsers();
+    }
+
+    private resetUsersData() {
+        this.users = [];
+        this.page.pageNumber = 0;
+        this.isLastPage = false;
         this.getUsers();
     }
 
