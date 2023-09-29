@@ -10,6 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { fadeInOut } from '@shared/animations/fade-in-out.animation';
 import { TypeNotification } from '@shared/enums/type-notification';
 import { INotificationModel } from '@shared/models/notifications/notifications';
+import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
 
@@ -43,9 +44,20 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
     }
 
+    private page: IPageSettings = {
+        pageNumber: 0,
+        pageSize: 10,
+    };
+
+    private isLastPage = false;
+
     private newNotificationsCollection: INotificationModel[] = [];
 
     private seenNotificationsCollection: INotificationModel[] = [];
+
+    private countNotificationsFromStorage: number = 0;
+
+    private countRealTimeNotifications: number = 0;
 
     isNotificationsDropdownDisplayed: boolean = false;
 
@@ -57,6 +69,46 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         await this.notificationHub.start();
         this.listeningNotificationHub();
         this.getNotifications();
+        this.countUnreadNotifications();
+    }
+
+    private getNotifications() {
+        if (this.isLastPage) {
+            return;
+        }
+
+        this.page.pageNumber++;
+
+        this.notificationStorage.getUserNotifications(this.page)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (notifications) => {
+                    if (!notifications.length) {
+                        this.isLastPage = true;
+
+                        return;
+                    }
+                    this.newNotificationsCollection = [...this.newNotificationsCollection, ...notifications.filter(e => !e.isRead)];
+                    this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...notifications.filter(e => e.isRead)];
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                    this.router.navigate(['/']);
+                },
+            });
+    }
+
+    private countUnreadNotifications() {
+        this.notificationStorage.getUnreadNotificationsCount()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (count) => {
+                    this.countNotificationsFromStorage = count;
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
     }
 
     @HostListener('document:keydown.escape')
@@ -90,8 +142,8 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
     }
 
-    get countNotification() {
-        return this.newNotificationsCollection.length;
+    public get countNotification() {
+        return this.countNotificationsFromStorage + this.countRealTimeNotifications;
     }
 
     get newNotifications() {
@@ -129,46 +181,41 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         ];
     }
 
+    onScroll() {
+        if (this.isLastPage) {
+            return;
+        }
+
+        this.getNotifications();
+    }
+
     goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
     }
 
     trackByFn(index: number, item: INotificationModel) {
-        return item.dateSending;
+        return item.id;
     }
 
     private listeningNotificationHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
             if (msg.typeNotification !== TypeNotification.CodeFightRequestStart) {
-                this.newNotificationsCollection = [...this.newNotificationsCollection, msg];
+                this.newNotificationsCollection = [msg, ...this.newNotificationsCollection];
+                this.countRealTimeNotifications++;
             }
         });
     }
 
-    private getNotifications() {
-        this.notificationStorage
-            .getUserNotifications()
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (notifications) => {
-                    this.newNotificationsCollection = notifications.filter((e) => !e.isRead);
-                    this.seenNotificationsCollection = notifications.filter((e) => e.isRead);
-                },
-                error: (error) => {
-                    this.toastrService.showError(`Error while getting notifications: ${error.message}`);
-                    this.router.navigate(['/']);
-                },
-            });
-    }
-
     private readNotifications() {
-        this.newNotificationsCollection.forEach((x) => {
+        this.newNotificationsCollection.forEach(x => {
             x.isRead = true;
         });
 
         this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
         this.newNotificationsCollection = [];
+        this.countRealTimeNotifications = 0;
+        this.countNotificationsFromStorage = 0;
     }
 
     override ngOnDestroy() {

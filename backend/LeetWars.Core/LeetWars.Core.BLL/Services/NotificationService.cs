@@ -2,8 +2,10 @@
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.BLL.Interfaces;
 using LeetWars.Core.Common.DTO.Challenge;
+using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.Notifications;
+using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
@@ -51,11 +53,11 @@ namespace LeetWars.Core.BLL.Services
             _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
         }
 
-        public async Task<ICollection<NotificationDto>> GetNotificationsOfCurrentUserAsync()
+        public async Task<ICollection<NotificationDto>> GetNotificationsOfCurrentUserAsync(PageSettingsDto? page)
         {
             var currUserId = _userGetter.CurrentUser?.Id ?? throw new NotFoundException("User not found");
 
-            var notificationDtos = await _context.UserNotifications
+            var notificationDtos = _context.UserNotifications
                 .Where(un => un.ReceiverId == currUserId 
                     && (un.Notification!.Challenge!.CreatedBy != currUserId
                         || un.Notification.TypeNotification == TypeNotifications.LikeChallenge))
@@ -79,9 +81,19 @@ namespace LeetWars.Core.BLL.Services
                         ? new UpdateFriendshipDto(un.Notification.Sender!.Id, (long)un.Notification.FriendshipId!, un.Notification.Friendship!.Status)
                         : null
                 })
-                .ToListAsync();
+                .OrderBy(un => un.IsRead)
+                .ThenByDescending(un => un.DateSending)
+                .AsQueryable();
 
-            return _mapper.Map<List<NotificationDto>>(notificationDtos);
+
+            if (page is not null && page.PageSize > 0 && page.PageNumber > 0)
+            {
+                notificationDtos = notificationDtos
+                .Skip(page.PageSize * (page.PageNumber - 1))
+                .Take(page.PageSize);
+            }
+
+            return _mapper.Map<List<NotificationDto>>(await notificationDtos.ToListAsync());
         }
 
         public async Task UpdateStatusToReadByUserIdsAsync(long[] ids)
@@ -91,6 +103,15 @@ namespace LeetWars.Core.BLL.Services
                 .ForEachAsync(e => e.IsRead = true);
 
             await _context.SaveChangesAsync();
+        }
+
+        public int GetCountOfUserUnreadNotifications()
+        {
+            var currUserId = _userGetter.CurrentUser?.Id ?? throw new NotFoundException("User not found");
+
+            return _context.UserNotifications
+                .Where(un => un.ReceiverId == currUserId)
+                .Count(un => !un.IsRead);
         }
     }
 }

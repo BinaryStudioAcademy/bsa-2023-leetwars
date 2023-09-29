@@ -16,8 +16,6 @@ import { getLanguageIconUrl } from '@shared/utils/language-icons';
 export class ChallengeComponent implements OnInit {
     @Input() challenge: IChallengePreview;
 
-    challengePositiveFeedbacksPercent = 0;
-
     isChallengeUpdated = true;
 
     getLanguageIconUrl = getLanguageIconUrl;
