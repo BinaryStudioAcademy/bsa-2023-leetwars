@@ -108,13 +108,13 @@ export class NotificationHubService {
             this.updateUsersAfterRequestEnded(codeFight.notification);
         });
 
-        this.hubConnection.on('WinCodeFightAsync', () => {
-            this.toastrService.showSuccess('You have won the code fight!');
+        this.hubConnection.on('WinCodeFightAsync', (notification: INotificationModel) => {
+            this.toastrService.showCodeFightNotification(notification, 'success');
             this.router.navigateByUrl('/leader/board', { state: { canLeave: true } });
         });
 
-        this.hubConnection.on('LoseCodeFightAsync', () => {
-            this.toastrService.showInfo('You have lost the code fight!');
+        this.hubConnection.on('LoseCodeFightAsync', (notification: INotificationModel) => {
+            this.toastrService.showCodeFightNotification(notification, 'error');
             this.router.navigateByUrl('/leader/board', { state: { canLeave: true } });
         });
 

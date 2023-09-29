@@ -48,11 +48,21 @@ export class AuthService {
         this.updateLocalStorage(user);
     }
 
-    isAuthorized() {
-        this.afAuth.authState.subscribe(async (user) => {
-            this.updateLocalStorage(user);
-        });
+    refreshFirebaseToken(): Observable<string> {
+        return this.afAuth.authState.pipe(
+            switchMap((user) => {
+                if (user) {
+                    return from(user.getIdToken(true));
+                }
+                throw new Error('User not authenticated');
+            }),
+            catchError((error) => {
+                throw error;
+            }),
+        );
+    }
 
+    isAuthorized() {
         return this.getUserToken() && this.getUserInfo();
     }
 

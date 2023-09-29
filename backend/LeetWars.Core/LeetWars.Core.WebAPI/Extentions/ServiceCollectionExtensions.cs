@@ -54,11 +54,11 @@ namespace LeetWars.Core.WebAPI.Extentions
 
         public static void AddAutoMapper(this IServiceCollection services)
         {
-            services.AddAutoMapper(Assembly.GetAssembly(typeof(SampleProfile)));
             services.AddAutoMapper(Assembly.GetAssembly(typeof(ChallengeProfile)));
             services.AddAutoMapper(Assembly.GetAssembly(typeof(TagProfile)));
             services.AddAutoMapper(Assembly.GetAssembly(typeof(LanguageProfile)));
             services.AddAutoMapper(Assembly.GetAssembly(typeof(UserProfile)));
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(NotificationProfile)));
         }
 
         public static void AddLeetWarsCoreContext(this IServiceCollection services, IConfiguration configuration)

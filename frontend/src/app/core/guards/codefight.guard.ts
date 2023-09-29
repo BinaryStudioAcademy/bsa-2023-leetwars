@@ -37,7 +37,7 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
         return this.modalRef.closed;
     }
 
-    private openModal() {
+    openModal() {
         this.modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'code-fight-modal' });
 
         this.modalRef.componentInstance.titleText = 'Do you really wish to give up?';
@@ -48,10 +48,6 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
                 class: 'confirm',
                 handler: () => {
                     this.endCodeFight();
-
-                    this.modalRef.closed.subscribe(() => {
-                        this.router.navigate(['/']);
-                    });
                 },
             },
             {
@@ -62,6 +58,8 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
                 },
             },
         ];
+
+        return this.modalRef;
     }
 
     private endCodeFight() {

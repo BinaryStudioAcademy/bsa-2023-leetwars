@@ -58,7 +58,9 @@ namespace LeetWars.Core.BLL.Services
             var currUserId = _userGetter.CurrentUser?.Id ?? throw new NotFoundException("User not found");
 
             var notificationDtos = _context.UserNotifications
-                .Where(un => un.ReceiverId == currUserId)
+                .Where(un => un.ReceiverId == currUserId 
+                    && (un.Notification!.Challenge!.CreatedBy != currUserId
+                        || un.Notification.TypeNotification == TypeNotifications.LikeChallenge))
                 .Include(un => un.Notification)
                     .ThenInclude(n => n!.Sender)
                 .Include(un => un.Notification)

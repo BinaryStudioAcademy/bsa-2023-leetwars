@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
 import { longFadeIn } from '@shared/animations/long-fade-in.animation';
+import { AssetConstants } from '@shared/constants/asset-constants';
 import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { TypeNotification } from '@shared/enums/type-notification';
 import { IUpdateFriendship } from '@shared/models/friendship/update-friendship';
@@ -30,11 +31,15 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
 
     @Input() isUnread: boolean;
 
+    @Output() linkClicked = new EventEmitter<void>();
+
     private currentUser: IUser;
 
     typeNotification = TypeNotification;
 
     friendshipStatus = FriendshipStatus;
+
+    AssetConstants = AssetConstants;
 
     @Input() notifications: INotificationModel[];
 
@@ -57,6 +62,11 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
 
     declineFriendship(notification: INotificationModel) {
         this.updateFriendshipStatus(notification, FriendshipStatus.Declined);
+    }
+
+    onLinkClick(event: MouseEvent) {
+        event.preventDefault();
+        this.linkClicked.emit();
     }
 
     private updateFriendship(updateRequest: IUpdateFriendship) {

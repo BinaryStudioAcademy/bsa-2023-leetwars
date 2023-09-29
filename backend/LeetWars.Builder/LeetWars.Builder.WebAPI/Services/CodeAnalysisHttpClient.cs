@@ -14,7 +14,7 @@ public class CodeAnalysisHttpClient: ICodeAnalysisService
     
     public async Task<CodeResponseAnalysisDto?> RunCodeAnalysisAsync(CodeRequestAnalysisDto codeRequestAnalysisDto)
     {
-        var response = await _httpClient.PostAsJsonAsync("analyzeCodeAsync", codeRequestAnalysisDto);
+        var response = await _httpClient.PostAsJsonAsync("analyzeCode", codeRequestAnalysisDto);
         
         return await response.Content.ReadFromJsonAsync<CodeResponseAnalysisDto>();
     }

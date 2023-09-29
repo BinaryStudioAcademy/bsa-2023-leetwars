@@ -17,9 +17,7 @@
             <div class="notification-bell" (click)="showNotifications()">
                 <fa-layers size="2x">
                     <fa-icon [icon]="['far', 'bell']"></fa-icon>
-                    <fa-layers-counter
-                        *ngIf="countNotification"
-                        [classes]="['change-color']"
+                    <fa-layers-counter *ngIf="countNotification" [classes]="['change-color']"
                         content="{{ countNotification }}"></fa-layers-counter>
                 </fa-layers>
             </div>
@@ -32,15 +30,18 @@
                     <div class="zero-notifications-info" *ngIf="!countNotification">
                         <span>No new notifications so far</span>
                     </div>
-                    <app-notifications *ngFor="let notification of this.newNotifications" [isUnread]="true" [notification]="notification"></app-notifications>
-                    <app-notifications *ngFor="let notification of this.seenNotifications" [notification]="notification"></app-notifications>
+                    <app-notifications
+                        *ngFor="let notification of this.newNotifications; trackBy: trackByFn"
+                        [isUnread]="true" [notification]="notification"
+                        (linkClicked)="showNotifications()"></app-notifications>
+                    <app-notifications
+                        *ngFor="let notification of this.seenNotifications; trackBy: trackByFn"
+                        [notification]="notification" (linkClicked)="showNotifications()"></app-notifications>
                 </div>
             </div>
         </div>
-        <div class="user" (click)="showMenu = !showMenu">
-            <img
-                [src]="user.imagePath ? user.imagePath : '/assets/images/default-profile-img.jpg'"
-                alt="User Logo"
+        <div class="user" (click)="showUserMenu()" (appClickOutside)="hideUserMenu()">
+            <img [src]="user.imagePath ? user.imagePath : '/assets/images/default-profile-img.jpg'" alt="User Logo"
                 class="user-logo" />
             <span class="username">
                 {{ user.firstName && user.lastName ? user.firstName + ' ' + user.lastName : user.userName }}

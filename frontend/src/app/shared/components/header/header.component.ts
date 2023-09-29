@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header.service';
-import { NotificationService } from '@core/services/notification.service';
 import { NotificationStorageService } from '@core/services/notification-storage.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -30,7 +29,6 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         private router: Router,
         private headerService: HeaderService,
         private toastrService: ToastrNotificationsService,
-        private notificationService: NotificationService,
         private notificationStorage: NotificationStorageService,
         private notificationHub: NotificationHubService,
     ) {
@@ -53,8 +51,6 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
     private isLastPage = false;
 
-    public isNotificationsDropdownDisplayed: boolean = false;
-
     private newNotificationsCollection: INotificationModel[] = [];
 
     private seenNotificationsCollection: INotificationModel[] = [];
@@ -63,7 +59,9 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
 
     private countRealTimeNotifications: number = 0;
 
-    public showMenu: boolean = false;
+    isNotificationsDropdownDisplayed: boolean = false;
+
+    showMenu: boolean = false;
 
     user: IUser;
 
@@ -113,30 +111,33 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
             });
     }
 
-    private readNotifications() {
-        this.newNotificationsCollection.forEach(x => {
-            x.isRead = true;
-        });
-        this.notificationStorage.updateStatusToRead([this.user.id])
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: () => {
-                    this.countUnreadNotifications();
-                },
-                error: () => {
-                    this.toastrService.showError('Server connection error');
-                    this.router.navigate(['/']);
-                },
-            });
-
-        this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
-        this.newNotificationsCollection = [];
-        this.countRealTimeNotifications = 0;
+    @HostListener('document:keydown.escape')
+    onEscapeKey() {
+        this.showNotifications();
+        this.hideUserMenu();
     }
 
-    public showNotifications() {
+    hideUserMenu() {
+        this.showMenu = false;
+    }
+
+    showUserMenu() {
+        this.showMenu = true;
+    }
+
+    showNotifications() {
         if (this.isNotificationsDropdownDisplayed) {
             this.readNotifications();
+        } else {
+            this.notificationStorage
+                .updateStatusToRead([this.user.id])
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    error: (error) => {
+                        this.toastrService.showError(`Error while updating nofication status: ${error.message}`);
+                        this.router.navigate(['/']);
+                    },
+                });
         }
         this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
     }
@@ -145,11 +146,11 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         return this.countNotificationsFromStorage + this.countRealTimeNotifications;
     }
 
-    public get newNotifications() {
+    get newNotifications() {
         return this.newNotificationsCollection;
     }
 
-    public get seenNotifications() {
+    get seenNotifications() {
         return this.seenNotificationsCollection;
     }
 
@@ -193,13 +194,28 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.router.navigate(['/user/profile']);
     }
 
+    trackByFn(index: number, item: INotificationModel) {
+        return item.id;
+    }
+
     private listeningNotificationHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
             if (msg.typeNotification !== TypeNotification.CodeFightRequestStart) {
-                this.newNotificationsCollection = [...this.newNotificationsCollection, msg];
+                this.newNotificationsCollection = [msg, ...this.newNotificationsCollection];
                 this.countRealTimeNotifications++;
             }
         });
+    }
+
+    private readNotifications() {
+        this.newNotificationsCollection.forEach(x => {
+            x.isRead = true;
+        });
+
+        this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
+        this.newNotificationsCollection = [];
+        this.countRealTimeNotifications = 0;
+        this.countNotificationsFromStorage = 0;
     }
 
     override ngOnDestroy() {
@@ -209,9 +225,5 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
             this.readNotifications();
             this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
         }
-    }
-
-    trackByFn(index: number, item: INotificationModel) {
-        return item.dateSending;
     }
 }

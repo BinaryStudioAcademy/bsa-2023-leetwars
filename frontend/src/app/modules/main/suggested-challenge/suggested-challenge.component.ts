@@ -52,7 +52,6 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
     }
 
     ngOnInit(): void {
-        this.getPreferences();
         this.getLanguages();
 
         this.suggestionTypesNames = this.suggestionTypes.map((item) => item.name);
@@ -62,7 +61,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
         if (typeof value !== 'string') {
             return;
         }
-        this.suggestionSettings.languageId = findItemIdByName(this.languages, value);
+        this.suggestionSettings.languageId = findItemIdByName(this.languages, value) ?? this.languages[0].id;
         this.getChallenge();
     }
 
@@ -99,7 +98,8 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
 
     private getPreferences() {
         this.userService.getUserPrefferences().subscribe((preferences) => {
-            this.preferenceLanguage = preferences.language?.name ?? this.languagesNames[0];
+            this.preferenceLanguage = preferences?.language?.name;
+            this.suggestionSettings.languageId = preferences?.language?.id ?? this.languages[0].id;
             this.getChallenge();
         });
     }
@@ -112,8 +112,7 @@ export class SuggestedChallengeComponent extends BaseComponent implements OnInit
                 next: (data) => {
                     this.languages = data;
                     this.languagesNames = data.map((i) => i.name);
-                    this.suggestionSettings.languageId = data[0].id;
-                    this.getChallenge();
+                    this.getPreferences();
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
