@@ -32,7 +32,7 @@
         <img src="assets/images/logo/logo.png" alt="logo" class="logo-img" />
         <p>{{ message }}</p>
     </div>
-    <div class="d-flex justify-content-end mt-2">
+    <div class="d-flex justify-content-end mt-2" *ngIf="!toastrService.codeFightType">
         <button class="custom-btn btn-yes" (click)="onCodeFightStart()">Yes</button>
         <button class="custom-btn btn-no" (click)="onCodeFightRefuse()">No</button>
     </div>

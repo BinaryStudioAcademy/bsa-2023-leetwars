@@ -9,6 +9,6 @@
     </ngx-charts-pie-chart>
     <div class="center-text">
         <div>{{ currentNumber }}</div>
-        <p>{{ centerText }}</p>
+        <p *ngIf="centerText">{{ centerText }}</p>
     </div>
 </div>
