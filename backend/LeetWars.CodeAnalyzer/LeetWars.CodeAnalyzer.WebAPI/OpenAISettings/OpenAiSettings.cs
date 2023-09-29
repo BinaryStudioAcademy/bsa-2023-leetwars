@@ -16,8 +16,7 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
             "Give 10 marks for naming convention. Code must follow name conventions depending on the programming language. " +
             "Give 10 marks for documentation and useful comments. Code must not have useless comments, TODO statements, etc. " +
             "Give 10 marks for formatting. Code must not have superfluous spaces or code in one string, etc." +
-            "Your answer must contain only percent of overall quality mark. (Without any text and '%' symbol). " +
-            "Don't provide additional info, only a number." +
+            "Your response should consist solely of the score for the code's overall quality without any additional text" +
             $"Code listing: \n ${codeListing}";
 
         public string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto)
