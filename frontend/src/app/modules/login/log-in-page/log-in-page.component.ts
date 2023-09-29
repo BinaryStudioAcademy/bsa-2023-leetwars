@@ -5,7 +5,7 @@ import { UserService } from '@core/services/user.service';
 import { IUser } from '@shared/models/user/user';
 import { AuthHelper } from '@shared/utils/auth.helper';
 import { getErrorMessage } from '@shared/utils/validation/validation-helper';
-import { switchMap } from 'rxjs';
+import { of, switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-log-in-page',
@@ -35,7 +35,7 @@ export class LogInPageComponent {
                         this.logInForm.markAsUntouched();
                         this.isSignInError = true;
 
-                        this.authHelper.handleAuthError(this.logInForm);
+                        return of();
                     }
 
                     return this.authService.login({
