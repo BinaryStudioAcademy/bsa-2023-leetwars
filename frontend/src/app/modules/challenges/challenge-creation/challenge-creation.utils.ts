@@ -138,7 +138,7 @@ export const editorOptions: EditorOptions = {
     wordWrap: false,
     lineNumbers: true,
     tabSize: 3,
-    fontSize: 19,
+    fontSize: 14,
     hasAutomaticLayout: true,
     hasShadows: false,
 };
