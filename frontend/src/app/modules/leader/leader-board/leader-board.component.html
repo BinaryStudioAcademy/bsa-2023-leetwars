@@ -1,21 +1,17 @@
 <div class="wrapper">
     <div class="board-wrapper">
         <div class="settings mb-3">
-        <div class="search-container">
-            <app-custom-input [Identifier]="'search'" [Width]="'100%'" [Height]="'100%'" [InputPlaceholder]="'User Name'"
-             (InputValueChange)="onSearchTextChange($event)"></app-custom-input>
-             <fa-icon [icon]="'search'" size="lg" class="search-filter-icon"></fa-icon>
+            <div class="search-container">
+                <app-custom-input [Identifier]="'search'" [Width]="'100%'" [Height]="'100%'"
+                    [InputPlaceholder]="'User Name'" (InputValueChange)="onSearchTextChange($event)"></app-custom-input>
+                <fa-icon [icon]="'search'" size="lg" class="search-filter-icon"></fa-icon>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" (change)="toggleMyFriends()" role="switch"
+                    id="flexSwitchCheckChecked" />
+                <label class="form-check-label" for="flexSwitchCheckChecked">My friends</label>
+            </div>
         </div>
-        <div class="form-check form-switch">
-            <input
-                class="form-check-input"
-                type="checkbox"
-                (change)="toggleMyFriends()"
-                role="switch"
-                id="flexSwitchCheckChecked" />
-            <label class="form-check-label" for="flexSwitchCheckChecked">My friends</label>
-        </div>
-    </div>
         <div class="board">
             <div class="header d-flex">
                 <div class="position">Position</div>
@@ -28,10 +24,8 @@
                 <div class="user d-flex" *ngFor="let user of users; let i = index">
                     <div class="position position-item">#{{ i + 1 }}</div>
                     <div class="user-name d-flex gap-1 align-items-center">
-                        <img
-                            class="user-name-avatar"
-                            [src]="this.user?.imagePath ?? AssetConstants.defaultProfileImagePath"
-                            alt="user-avatar" />
+                        <img class="user-name-avatar"
+                            [src]="this.user?.imagePath ?? AssetConstants.defaultProfileImagePath" alt="user-avatar" />
                         <p>
                             <a class="user-link d-block" (click)="onLinkClick(user.id)">
                                 {{ user.userName }}
@@ -40,9 +34,7 @@
                     </div>
                     <div class="total-score">{{ user.totalScore }}</div>
                     <div class="add-friend d-flex">
-                        <button
-                            (click)="addFriend(user)"
-                            class="user-icon-btn user-plus-btn"
+                        <button (click)="addFriend(user)" class="user-icon-btn user-plus-btn"
                             *ngIf="isAddFriendButtonVisible(user)">
                             <fa-icon class="user-icon user-plus-icon" [icon]="['fas', 'user-plus']"></fa-icon>
                         </button>
@@ -54,18 +46,21 @@
                     <div class="start-fight text-start">
                         <div *ngIf="user.id !== this.currentUser.id">
                             <button
-                                [ngClass]="{ 'cursor-none': !isCurrentUserAbleToCodeFight() }"
+                                [ngClass]="{ 'cursor-none': !isCurrentUserAbleToCodeFight(), 'disabled-button': !isFriendshipStatus(user, 'Accepted') }"
                                 *ngIf="user.codeFightStatus === CodeFightStatus.NotInBattle"
-                                (click)="startCodeFight(user)">
-                                <fa-icon [icon]="'user-ninja'"></fa-icon>
+                                (click)="!isFriendshipStatus(user, 'Accepted') ? null : startCodeFight(user)"
+                                class="user-icon-btn">
+                                <fa-icon [icon]="'user-ninja'" class="ninja-icon"></fa-icon>
                                 <span class="start-fight-text">Start Battle</span>
                             </button>
-                            <button *ngIf="user.codeFightStatus === CodeFightStatus.HasRequest" class="has-request">
-                                <fa-icon [icon]="'cross'"></fa-icon>
+                            <button *ngIf="user.codeFightStatus === CodeFightStatus.HasRequest"
+                                class="has-request user-icon-btn">
+                                <fa-icon [icon]="'cross'" class="ninja-icon"></fa-icon>
                                 <span class="start-fight-text">Has request</span>
                             </button>
-                            <button *ngIf="user.codeFightStatus === CodeFightStatus.InBattle" class="in-battle">
-                                <fa-icon [icon]="'rocket'"></fa-icon>
+                            <button *ngIf="user.codeFightStatus === CodeFightStatus.InBattle"
+                                class="in-battle user-icon-btn">
+                                <fa-icon [icon]="'rocket'" class="ninja-icon"></fa-icon>
                                 <span class="start-fight-text">In battle!</span>
                             </button>
                         </div>
