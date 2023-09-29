@@ -48,10 +48,6 @@ export class CodefightGuard implements CanDeactivate<OnlineEditorPageComponent> 
                 class: 'confirm',
                 handler: () => {
                     this.endCodeFight();
-
-                    this.modalRef.closed.subscribe(() => {
-                        this.router.navigate(['/']);
-                    });
                 },
             },
             {
