@@ -36,6 +36,8 @@ export class CustomInputComponent implements ControlValueAccessor, OnInit {
 
     @Input() InputPlaceholder?: string;
 
+    @Input() checked: boolean = false;
+
     @Input() disabled: boolean;
 
     @Output() InputValueChange = new EventEmitter<string>();
@@ -83,6 +85,7 @@ export class CustomInputComponent implements ControlValueAccessor, OnInit {
 
     onInputChange(model: string) {
         this.searchSubject.next(model);
+        this.onChange(model);
     }
 
     togglePasswordVisibility() {

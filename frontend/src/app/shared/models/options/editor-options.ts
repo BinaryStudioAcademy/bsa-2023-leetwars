@@ -6,6 +6,8 @@ export interface EditorOptions {
     };
     hasAutomaticLayout: boolean;
     hasShadows: boolean;
-    wordWrap: string;
-    lineNumbers: string;
+    wordWrap: boolean;
+    lineNumbers: boolean;
+    tabSize: number;
+    fontSize: number;
 }
