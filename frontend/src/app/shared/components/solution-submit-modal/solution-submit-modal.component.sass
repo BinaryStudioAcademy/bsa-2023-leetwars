@@ -1,0 +1,44 @@
+@import 'src/styles/color-variables'
+
+.modal-body
+    min-height: 250px
+    background-color: $vs-dark-theme
+    color: $white
+    border-bottom-left-radius: 5px
+    border-bottom-right-radius: 5px
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+.charts
+    padding-top: 16px
+    text-align: center
+
+.modal-header
+    background-color: $charcoal
+    border-bottom: 1px solid $green
+    color: $white
+
+fa-icon
+    cursor: pointer
+
+.circle
+  width: 100px
+  height: 100px
+  margin-top: 9px
+  position: relative
+  align-items: center
+
+::ng-deep .modal-content
+  border: none
+  background-color: transparent !important
+
+.error
+    background-color: $reddish-orange
+    color: $reddish-pink
+    border-radius: 8px
+    padding: 16px 12px
+
+.error-header
+    color: $vivid-red
+    font-size: 20px

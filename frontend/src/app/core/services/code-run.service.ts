@@ -20,7 +20,7 @@ export class CodeRunService {
     }
 
     private showTestResults(testResults: ITestsOutput) {
-        if (testResults.isSuccess) {
+        if (testResults.isSuccess || testResults.failedCount === 0) {
             this.toastrService.showSuccess(`Tests were successful!\n Tests passed: ${testResults.passedCount}`);
         } else {
             this.toastrService.showError(`Tests failed \n Tests failed: ${testResults.failedCount}

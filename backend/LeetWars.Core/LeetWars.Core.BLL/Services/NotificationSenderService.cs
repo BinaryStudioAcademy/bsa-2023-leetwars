@@ -14,7 +14,7 @@ namespace LeetWars.Core.BLL.Services
             _producerService = producerService;
         }
 
-        public void SendNotificationToRabbitMQ(NewNotificationDto newNotificationDto)
+        public void SendNotificationToRabbitMQ(NotificationDto newNotificationDto)
         {
             _producerService.Send(newNotificationDto, ExchangeType.Direct);
         }

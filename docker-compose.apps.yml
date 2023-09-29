@@ -69,7 +69,7 @@ services:
       context: ./backend
       dockerfile: ./LeetWars.CodeAnalyzer/Dockerfile
       args:
-        - PROJECT_PORT=5080
+        - PROJECT_PORT=5100
     container_name: "leetwars_codeanalyzer"
     restart: on-failure
     ports:

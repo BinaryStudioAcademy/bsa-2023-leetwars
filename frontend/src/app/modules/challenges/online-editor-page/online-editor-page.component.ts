@@ -8,15 +8,19 @@ import { ChallengeService } from '@core/services/challenge.service';
 import { CodeFightService } from '@core/services/code-fight.service';
 import { CodeRunService } from '@core/services/code-run.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
-import { languageNameMap } from '@shared/mappings/language-map';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SolutionSubmitModalComponent } from '@shared/components/solution-submit-modal/solution-submit-modal.component';
 import { IChallenge } from '@shared/models/challenge/challenge';
 import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
+import { ICodeSubmitResult } from '@shared/models/code-run/code-submit-result';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
 import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
-import { Observable, takeUntil } from 'rxjs';
+import { take, takeUntil } from 'rxjs';
+
+import { editorOptions, mapLanguageName } from '../challenge-creation/challenge-creation.utils';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -28,13 +32,13 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     splitDirection: 'horizontal' | 'vertical';
 
-    splitLeftMinSize: number = 20;
-
-    splitRightMinSize: number = 20;
+    splitRightMinSize: number = 30;
 
     challenge: IChallenge;
 
     selectedLanguage: string;
+
+    mappedSelectedLanguage: string;
 
     languages: string[];
 
@@ -54,8 +58,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     private isFullscreen = false;
 
-    private isSampleTests: boolean;
-
     constructor(
         private activatedRoute: ActivatedRoute,
         private challengeService: ChallengeService,
@@ -63,6 +65,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private breakpointObserver: BreakpointObserver,
         private signalRService: CodeDisplayingHubService,
         private toastrService: ToastrNotificationsService,
+        private modalService: NgbModal,
         private codeRunService: CodeRunService,
         private authService: AuthService,
         private router: Router,
@@ -90,8 +93,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     ngOnInit() {
-        this.splitDirection = 'horizontal';
-
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const challengeId = +params.get('id')!;
 
@@ -122,11 +123,14 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
-        const selectedLang = this.mapLanguageName($event as string);
+        const selectedLang = $event as string;
 
         this.selectedLanguage = selectedLang;
+        this.mappedSelectedLanguage = mapLanguageName(selectedLang);
 
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
+
+        this.testCode = this.getInitialTestsByLanguage($event as string);
     }
 
     onCodeChanged(newCode: string) {
@@ -154,29 +158,37 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
     }
 
-    runSampleTests(): void {
-        this.sendCode().subscribe();
-
-        this.isSampleTests = true;
-    }
-
-    submitSolution(): void {
-        this.sendCode().subscribe();
-
-        this.isSampleTests = false;
-    }
-
     subscribeToMessageQueue(): void {
         this.signalRService.start();
-        this.signalRService.listenMessages((codeRunResults: ICodeRunResults) => {
-            this.codeRunService.getCodeRunResults(codeRunResults);
+    }
 
-            this.shouldSendCodeFightEnd(codeRunResults);
-        });
+    runSampleTests() {
+        this.signalRService.codeRunResult$
+            .pipe(take(1), takeUntil(this.unsubscribe$))
+            .subscribe((codeRunResults: ICodeRunResults) => {
+                this.codeRunService.getCodeRunResults(codeRunResults);
+            });
+
+        this.sendCode();
+    }
+
+    sendSubmitRequest() {
+        this.signalRService.codeSubmitResults$
+            .pipe(take(1), takeUntil(this.unsubscribe$))
+            .subscribe((codeSubmitResults: ICodeSubmitResult) => {
+                const modalRef = this.modalService.open(SolutionSubmitModalComponent);
+
+                modalRef.componentInstance.codeRunResults = codeSubmitResults.codeRunResult;
+                modalRef.componentInstance.codeAnalysisResults = codeSubmitResults.codeAnalysisResult;
+
+                this.shouldSendCodeFightEnd(codeSubmitResults.codeRunResult);
+            });
+
+        this.sendCode(true);
     }
 
     private shouldSendCodeFightEnd(codeRunResults: ICodeRunResults) {
-        if (this.isCodeFight && !this.isSampleTests) {
+        if (this.isCodeFight) {
             const codeFightEnd: ICodeFightEnd = {
                 isWinner: true,
                 senderId: this.user.id,
@@ -192,15 +204,15 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         }
     }
 
-    private sendCode(): Observable<void> {
+    private sendCode(isSubmitRequest: boolean = false): void {
         this.solution = {
             userConnectionId: this.user.id.toString(),
-            language: this.selectedLanguage,
+            language: this.mappedSelectedLanguage,
             userCode: this.initialSolution as string,
             tests: this.testCode,
+            isSubmitRequest,
         };
-
-        return this.challengeService.runTests(this.solution);
+        this.challengeService.runTests(this.solution).subscribe();
     }
 
     private loadChallenge(challengeId: number) {
@@ -224,20 +236,19 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.languages = [...new Set(challenge.versions?.map((v) => v.language?.name))];
 
         [this.selectedLanguage] = this.languages;
+        this.mappedSelectedLanguage = mapLanguageName(this.selectedLanguage);
     }
 
     private setupEditorOptions() {
         this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
-        this.editorOptions = {
-            theme: 'vs-dark',
-            language: this.mapLanguageName(this.selectedLanguage),
-            minimap: { isEnabled: false },
-            hasAutomaticLayout: true,
-            hasShadows: false,
-            wordWrap: 'on',
-            lineNumbers: 'on',
-        };
+        this.editorOptions = editorOptions;
+    }
+
+    private getInitialTestsByLanguage(language: string): string {
+        const version = this.challenge.versions?.find((v) => v.language.name === language);
+
+        return version?.exampleTestCases ?? 'No tests available';
     }
 
     private getInitialSolutionByLanguage(language: string): string {
@@ -252,9 +263,5 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return selectedVersion && selectedVersion.exampleTestCases
             ? selectedVersion.exampleTestCases
             : 'No tests available';
-    }
-
-    private mapLanguageName(language?: string): string {
-        return language ? languageNameMap.get(language) || language : 'No language available';
     }
 }

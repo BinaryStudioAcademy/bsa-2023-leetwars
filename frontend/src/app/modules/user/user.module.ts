@@ -7,21 +7,21 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { BadgeComponent } from './badge/badge.component';
-import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ProfilePageMainInfoComponent } from './profile-page-main-info/profile-page-main-info.component';
 import { SolvedProblemComponent } from './solved-problem/solved-problem.component';
 import { UserInfoEditorComponent } from './user-info-editor/user-info-editor.component';
+import { UserPreferencesComponent } from './user-preferences/user-preferences.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
     declarations: [
-        PieChartComponent,
         SubmissionsChartComponent,
         ProfilePageMainInfoComponent,
         SolvedProblemComponent,
         BadgeComponent,
         UserProfileComponent,
         UserInfoEditorComponent,
+        UserPreferencesComponent,
     ],
     imports: [SharedModule, UserRoutingModule, NgxChartsModule, ProgressbarModule, CarouselModule],
 })

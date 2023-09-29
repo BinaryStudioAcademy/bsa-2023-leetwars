@@ -17,16 +17,16 @@ using LeetWars.Core.DAL.Entities.HelperEntities;
 using LeetWars.Core.DAL.Enums;
 using LeetWars.Core.DAL.Extensions;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using LeetWars.Core.Common.DTO.UserPrefferences;
 
 namespace LeetWars.Core.BLL.Services;
 
 public class UserService : BaseService, IUserService
 {
     private readonly IUserGetter _userGetter;
-    private readonly INotificationSenderService _notificationSenderService;
+    private readonly INotificationService _notificationService;
     private readonly IEmailSenderService _emailSenderService;
     private readonly IBlobService _blobService;
     private const int REPUTATION_DIVIDER = 10;
@@ -34,13 +34,13 @@ public class UserService : BaseService, IUserService
     public UserService(LeetWarsCoreContext context,
                        IMapper mapper,
                        IUserGetter userGetter,
-                       INotificationSenderService notificationSenderService,
+                       INotificationService notificationService,
                        IEmailSenderService emailSenderService,
                        IBlobService blobService
                        ) : base(context, mapper)
     {
         _userGetter = userGetter;
-        _notificationSenderService = notificationSenderService;
+        _notificationService = notificationService;
         _emailSenderService = emailSenderService;
         _blobService = blobService;
     }
@@ -78,7 +78,6 @@ public class UserService : BaseService, IUserService
         var newUser = _mapper.Map<NewUserDto, User>(userDto);
 
         newUser.RegisteredAt = DateTime.UtcNow;
-
         var createdUser = _context.Users.Add(newUser).Entity;
         await _context.SaveChangesAsync();
 
@@ -132,12 +131,7 @@ public class UserService : BaseService, IUserService
 
     public async Task<BriefUserInfoDto> GetBriefUserInfoByIdAsync(long id)
     {
-        var user = await GetUserByExpressionAsync(user => user.Id == id);
-
-        if (user is null)
-        {
-            throw new ArgumentNullException("Not Found", new Exception("User was not found"));
-        }
+        var user = await GetUserByExpressionAsync(user => user.Id == id) ?? throw new NotFoundException(nameof(User), id);
 
         return _mapper.Map<User, BriefUserInfoDto>(user);
     }
@@ -156,12 +150,7 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserFullDto> GetFullUserAsync(long id)
     {
-        var user = await GetUserByExpressionAsync(user => user.Id == id);
-
-        if (user is null)
-        {
-            throw new NotFoundException(nameof(User), id);
-        }
+        var user = await GetUserByExpressionAsync(user => user.Id == id) ?? throw new NotFoundException(nameof(User), id);
 
         return _mapper.Map<User, UserFullDto>(user);
     }
@@ -209,6 +198,11 @@ public class UserService : BaseService, IUserService
     {
         var query = _context.Users.OrderByDescending(u => u.TotalScore).AsQueryable();
 
+        if(page.UserName is not null)
+        {
+            query = query.Where(u => u.UserName.ToLower().Contains(page.UserName.ToLower()));
+        }
+
         if (page.HasFriends)
         {
             var currentUser = await GetUserInfoWithFriends(u => u.Uid == _userGetter.CurrentUserId);
@@ -253,7 +247,7 @@ public class UserService : BaseService, IUserService
 
         await _context.SaveChangesAsync();
 
-        var newNotification = new NewNotificationDto
+        var newNotification = new NotificationDto
         {
             DateSending = DateTime.UtcNow,
             ReceiverId = newFriendshipDto.RecipientId.ToString(),
@@ -263,7 +257,8 @@ public class UserService : BaseService, IUserService
             UpdateFriendship = new UpdateFriendshipDto(sender.Id, friendship.Id, friendship.Status)
         };
 
-        _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
+        await _notificationService.CreateNotification(newNotification);
+        _notificationService.SendNotification(newNotification);
 
         return _mapper.Map<UserFriendsInfoDto>(senderUserFriendship.User);
     }
@@ -295,7 +290,7 @@ public class UserService : BaseService, IUserService
 
         var userFriendship = friendshipToUpdate.UserFriendships.First(uf => uf.UserId != user.Id);
 
-        var newNotification = new NewNotificationDto
+        var newNotification = new NotificationDto
         {
             DateSending = DateTime.UtcNow,
             ReceiverId = userFriendship.UserId.ToString(),
@@ -304,7 +299,7 @@ public class UserService : BaseService, IUserService
             UpdateFriendship = new UpdateFriendshipDto(user.Id, friendshipToUpdate.Id, updateFriendshipDto.FriendshipStatus)
         };
 
-        _notificationSenderService.SendNotificationToRabbitMQ(newNotification);
+        _notificationService.SendNotification(newNotification);
 
         return _mapper.Map<UserFriendsInfoDto>(user);
     }
@@ -352,6 +347,50 @@ public class UserService : BaseService, IUserService
 
         var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
+    }
+
+
+    public async Task<UserPreferencesDto> GetUserPreferences()
+    {
+        var currentUser = _userGetter.GetCurrentUserOrThrow();
+
+        var preferences = await _context.UserPreferences
+            .Include(l => l.Language)
+            .FirstOrDefaultAsync(x => x.UserId == currentUser.Id);
+
+        return _mapper.Map<UserPreferencesDto>(preferences);
+    }
+
+    public async Task<UserPreferencesDto> SetUserPreferences(NewUserPreferencesDto newPreferences)
+    {
+        var currentUser = _userGetter.GetCurrentUserOrThrow();
+
+        var currentPreferences = await _context.UserPreferences.FirstOrDefaultAsync(x => x.UserId == currentUser.Id);
+
+        var updatedPreferences = currentPreferences is not null
+            ? UpdateUserPreferences(currentPreferences, newPreferences)
+            : await AddUserPreferences(newPreferences, currentUser.Id);
+
+        await _context.SaveChangesAsync();
+
+        return updatedPreferences;
+    }
+
+    private async Task<UserPreferencesDto> AddUserPreferences(NewUserPreferencesDto newPreferences, long userId)
+    {
+        var preferences = _mapper.Map<UserPreferences>(newPreferences);
+        preferences.UserId = userId;
+        await _context.AddAsync(preferences);
+        return _mapper.Map<UserPreferencesDto>(preferences);
+    }
+
+    private UserPreferencesDto UpdateUserPreferences(UserPreferences currentPreferences, NewUserPreferencesDto newPreferences)
+    {
+        _mapper.Map(newPreferences, currentPreferences);
+
+        _context.Update(currentPreferences);
+
+        return _mapper.Map<UserPreferencesDto>(currentPreferences);
     }
 
     private async Task<User> GetCurrentUserEntityAsync()

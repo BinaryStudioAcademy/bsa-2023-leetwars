@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h4 class="modal-title">Submit result</h4>
+    <fa-icon [icon]="'xmark'" size="lg" (click)="activeModal.dismiss('Cross click')"></fa-icon>
+</div>
+
+<div class="modal-body">
+    <div class="charts d-flex justify-content-around">
+        <div class="tests-chart">
+            <p>Tests result</p>
+            <div class="circle">
+                <app-pie-chart
+                    [currentNumber]="codeRunResults.testRunResults?.passedCount ?? 0"
+                    [totalNumber]="getTotalTestsCount()"
+                    [activeColor]="pieChartActiveColor"
+                    [centerText]="'Passed'">
+                </app-pie-chart>
+            </div>
+        </div>
+
+        <div class="analyze-chart">
+            <p>Code quality</p>
+            <div class="circle">
+                <app-pie-chart
+                    [currentNumber]="codeAnalysisResults.qualityMark"
+                    [totalNumber]="100"
+                    [activeColor]="pieChartActiveColor"
+                    [centerText]="'Score'">
+                </app-pie-chart>
+            </div>
+        </div>
+    </div>
+    <p class="error-header" *ngIf="!codeRunResults.buildResults?.isSuccess">Build Error</p>
+    <div *ngIf="!codeRunResults.buildResults?.isSuccess" class="error">
+        {{ codeRunResults.buildResults?.buildMessage }}
+    </div>
+</div>

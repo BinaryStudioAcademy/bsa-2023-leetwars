@@ -128,15 +128,17 @@ export function getDropdownItems(names: string[]): IDropdownItem[] {
 }
 
 export function mapLanguageName(language: string): string {
-    return languageNameMap.get(language) || language.toLowerCase();
+    return languageNameMap.get(language) || language;
 }
 
 export const editorOptions: EditorOptions = {
     theme: 'vs-dark',
     language: '',
     minimap: { isEnabled: false },
+    wordWrap: false,
+    lineNumbers: true,
+    tabSize: 3,
+    fontSize: 19,
     hasAutomaticLayout: true,
     hasShadows: false,
-    wordWrap: 'on',
-    lineNumbers: 'on',
 };

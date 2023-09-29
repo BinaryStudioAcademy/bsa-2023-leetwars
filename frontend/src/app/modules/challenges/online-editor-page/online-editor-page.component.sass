@@ -13,10 +13,11 @@
     font-size: 11px
     font-weight: 500
     letter-spacing: 0em
+    min-width: 300px
 
 .fullscreen-button
     position: absolute
-    right: 15px
+    right: 25px
     &:hover
         cursor: pointer
 
@@ -28,11 +29,10 @@
 
 .test-wrp
     height: 45%
-    margin-top: 5px
-    overflow: hidden
+    margin-top: 10px
 
-.editor.h-50
-    overflow: hidden
+.editor-test
+    height: 100%
 
 :host ::ng-deep .editor-container
     width: 100%
@@ -49,6 +49,7 @@
     background-color: $charcoal
     border-radius: 5px 5px 0px 0px
     border-bottom: 2px solid $green
+    position: relative
 
 .language-selection
     height: 100%
@@ -102,6 +103,9 @@ button span
     &-icon
         background-image: url("/assets/images/ellipsis.png") !important
 
+:host ::ng-deep .as-split-area
+    overflow: auto !important
+
 .centered-icon
     margin-left: 8px
     display: flex
@@ -145,7 +149,6 @@ button span
         flex-direction: column
         justify-content: center
         text-align: center
-
 
 .custom-button
     font-weight: 600
@@ -219,3 +222,9 @@ button span
         &:focus,
         &:active
             background-color: $maroon
+
+.min-size
+    min-width: 320px
+
+.h-40
+    height: 45%
