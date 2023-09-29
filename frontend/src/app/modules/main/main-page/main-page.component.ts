@@ -71,11 +71,10 @@ export class MainComponent extends ScrollComponent {
                 },
                 error: () => {
                     this.toastrService.showError('Error generating challenge');
-                    
                 },
                 complete: () => {
                     this.spinnerService.hide();
-                }
+                },
             });
     }
 }
