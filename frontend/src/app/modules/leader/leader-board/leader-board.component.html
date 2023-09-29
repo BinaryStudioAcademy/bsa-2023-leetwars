@@ -1,5 +1,11 @@
 <div class="wrapper">
     <div class="board-wrapper">
+        <div class="settings mb-3">
+        <div class="search-container">
+            <app-custom-input [Identifier]="'search'" [Width]="'100%'" [Height]="'100%'" [InputPlaceholder]="'User Name'"
+             (InputValueChange)="onSearchTextChange($event)"></app-custom-input>
+             <fa-icon [icon]="'search'" size="lg" class="search-filter-icon"></fa-icon>
+        </div>
         <div class="form-check form-switch">
             <input
                 class="form-check-input"
@@ -9,6 +15,7 @@
                 id="flexSwitchCheckChecked" />
             <label class="form-check-label" for="flexSwitchCheckChecked">My friends</label>
         </div>
+    </div>
         <div class="board">
             <div class="header d-flex">
                 <div class="position">Position</div>
