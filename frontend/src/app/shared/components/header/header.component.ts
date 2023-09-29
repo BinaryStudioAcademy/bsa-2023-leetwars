@@ -11,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { fadeInOut } from '@shared/animations/fade-in-out.animation';
 import { TypeNotification } from '@shared/enums/type-notification';
 import { INotificationModel } from '@shared/models/notifications/notifications';
+import { IPageSettings } from '@shared/models/page-settings';
 import { IUser } from '@shared/models/user/user';
 import { takeUntil } from 'rxjs';
 
@@ -45,11 +46,22 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
     }
 
+    private page: IPageSettings = {
+        pageNumber: 0,
+        pageSize: 10,
+    };
+
+    private isLastPage = false;
+
     public isNotificationsDropdownDisplayed: boolean = false;
 
     private newNotificationsCollection: INotificationModel[] = [];
 
     private seenNotificationsCollection: INotificationModel[] = [];
+
+    private countNotificationsFromStorage: number = 0;
+
+    private countRealTimeNotifications: number = 0;
 
     public showMenu: boolean = false;
 
@@ -59,15 +71,27 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         await this.notificationHub.start();
         this.listeningNotificationHub();
         this.getNotifications();
+        this.countUnreadNotifications();
     }
 
     private getNotifications() {
-        this.notificationStorage.getUserNotifications()
+        if (this.isLastPage) {
+            return;
+        }
+
+        this.page.pageNumber++;
+
+        this.notificationStorage.getUserNotifications(this.page)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (notifications) => {
-                    this.newNotificationsCollection = notifications.filter(e => !e.isRead);
-                    this.seenNotificationsCollection = notifications.filter(e => e.isRead);
+                    if (!notifications.length) {
+                        this.isLastPage = true;
+
+                        return;
+                    }
+                    this.newNotificationsCollection = [...this.newNotificationsCollection, ...notifications.filter(e => !e.isRead)];
+                    this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...notifications.filter(e => e.isRead)];
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
@@ -76,33 +100,49 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
             });
     }
 
+    private countUnreadNotifications() {
+        this.notificationStorage.getUnreadNotificationsCount()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (count) => {
+                    this.countNotificationsFromStorage = count;
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                },
+            });
+    }
+
     private readNotifications() {
         this.newNotificationsCollection.forEach(x => {
             x.isRead = true;
         });
+        this.notificationStorage.updateStatusToRead([this.user.id])
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: () => {
+                    this.countUnreadNotifications();
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                    this.router.navigate(['/']);
+                },
+            });
 
         this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
         this.newNotificationsCollection = [];
+        this.countRealTimeNotifications = 0;
     }
 
     public showNotifications() {
         if (this.isNotificationsDropdownDisplayed) {
             this.readNotifications();
-        } else {
-            this.notificationStorage.updateStatusToRead([this.user.id])
-                .pipe(takeUntil(this.unsubscribe$))
-                .subscribe({
-                    error: () => {
-                        this.toastrService.showError('Server connection error');
-                        this.router.navigate(['/']);
-                    },
-                });
         }
         this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
     }
 
     public get countNotification() {
-        return this.newNotificationsCollection.length;
+        return this.countNotificationsFromStorage + this.countRealTimeNotifications;
     }
 
     public get newNotifications() {
@@ -140,6 +180,14 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         ];
     }
 
+    onScroll() {
+        if (this.isLastPage) {
+            return;
+        }
+
+        this.getNotifications();
+    }
+
     goToProfile() {
         this.showMenu = false;
         this.router.navigate(['/user/profile']);
@@ -149,6 +197,7 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.notificationHub.listenMessages((msg: INotificationModel) => {
             if (msg.typeNotification !== TypeNotification.CodeFightRequestStart) {
                 this.newNotificationsCollection = [...this.newNotificationsCollection, msg];
+                this.countRealTimeNotifications++;
             }
         });
     }
