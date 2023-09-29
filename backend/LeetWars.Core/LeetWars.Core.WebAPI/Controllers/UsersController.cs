@@ -5,6 +5,7 @@ using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.Common.DTO.UserPrefferences;
+using LeetWars.Core.Common.DTO.UserSolution;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -214,5 +215,18 @@ public class UsersController : ControllerBase
     {
         var preferences = await _userService.SetUserPreferences(newPreferences);
         return Ok(preferences);
+    }
+
+    /// <summary>
+    /// Submit solution
+    /// </summary>
+    /// <param name="userSolution">User solution</param>
+    /// <returns>User solution</returns>
+    [HttpPost("submit")]
+    public async Task<ActionResult<UserSolutionDto>> SubmitSolutionAsync(NewUserSolutionDto userSolution)
+    {
+        var solution = await _userService.SubmitSolutionAsync(userSolution);
+
+        return Ok(solution);
     }
 }

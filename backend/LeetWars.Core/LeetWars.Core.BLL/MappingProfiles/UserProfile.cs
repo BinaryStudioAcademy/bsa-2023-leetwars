@@ -48,7 +48,10 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<Subscription, SubscriptionDto>();
 
             CreateMap<UserLanguageLevel, UserLanguageLevelDto>();
+
             CreateMap<UserSolution, UserSolutionDto>();
+            CreateMap<NewUserSolutionDto, UserSolution>();
+
             CreateMap<Challenge, ChallengeDto>();
             CreateMap<Badge, BadgeDto>()
                 .ForMember(s => s.Icon,

@@ -1,4 +1,4 @@
-@import 'src/styles/color-variables'
+@import 'color-variables'
 
 .modal-body
     min-height: 250px
@@ -23,15 +23,15 @@ fa-icon
     cursor: pointer
 
 .circle
-  width: 100px
-  height: 100px
-  margin-top: 9px
-  position: relative
-  align-items: center
+    width: 100px
+    height: 100px
+    margin-top: 9px
+    position: relative
+    align-items: center
 
 ::ng-deep .modal-content
-  border: none
-  background-color: transparent !important
+    border: none
+    background-color: transparent !important
 
 .error
     background-color: $reddish-orange
@@ -42,3 +42,13 @@ fa-icon
 .error-header
     color: $vivid-red
     font-size: 20px
+
+.apply-button
+    border-radius: 10px
+    padding: 10px 64px
+    color: $white
+    background-color: $green
+    &:hover,
+    &:disabled,
+    &:active
+        background-color: $dark-green

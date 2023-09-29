@@ -1,6 +1,7 @@
 ﻿using LeetWars.CodeAnalyzer.Interfaces;
 using LeetWars.Core.BLL.Exceptions;
 using LeetWars.Core.Common.DTO.CodeAnalysis;
+using System.Globalization;
 
 namespace LeetWars.CodeAnalyzer.Services
 {
@@ -29,12 +30,15 @@ namespace LeetWars.CodeAnalyzer.Services
                 throw new NotFoundException(nameof(CodeRequestAnalysisDto));
             }
 
-            int qualityMark = int.Parse(response);
-
-            return new CodeResponseAnalysisDto
+            if (int.TryParse(response, NumberStyles.Integer, CultureInfo.InvariantCulture, out int qualityMark))
             {
-                QualityMark = qualityMark
-            };
+                return new CodeResponseAnalysisDto
+                {
+                    QualityMark = qualityMark
+                };
+            }
+
+            return new CodeResponseAnalysisDto { QualityMark = 50 };
         }
     }
 }

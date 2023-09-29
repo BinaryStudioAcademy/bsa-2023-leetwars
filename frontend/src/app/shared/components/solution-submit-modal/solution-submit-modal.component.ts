@@ -23,4 +23,8 @@ export class SolutionSubmitModalComponent {
             ? this.codeRunResults.testRunResults.passedCount + this.codeRunResults.testRunResults.failedCount
             : 0;
     }
+
+    apply() {
+        this.activeModal.close();
+    }
 }
