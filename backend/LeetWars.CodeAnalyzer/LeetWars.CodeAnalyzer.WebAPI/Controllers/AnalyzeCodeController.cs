@@ -20,8 +20,6 @@ namespace LeetWars.CodeAnalyzer.WebAPI.Controllers
         {
             var response = await _analyzeCodeService.RunCodeAnalysisAsync(requestDto);
             return Ok(response);
-
-
         }
     }
 }

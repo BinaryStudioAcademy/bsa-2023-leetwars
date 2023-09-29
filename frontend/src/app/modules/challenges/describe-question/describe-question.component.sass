@@ -1,0 +1,127 @@
+@import 'color-variables'
+@import 'screen-sizes-variables'
+
+.content-wrapper 
+    background-color: $deep-dark-grey
+    border-radius: 15px
+
+.header-wrapper
+    border-bottom: 1px solid $white
+  
+:host 
+    font-family: Inter
+    color: $white
+    display: block
+
+.mr-24px 
+    margin-right: 24px
+
+.header
+    color: $green
+    font-size: 26px
+    opacity: 0.65
+    padding: 5px 20px 5px 20px
+
+.tip
+    font-size: 16px
+    color: $light-grey
+
+.categories
+    color: $transient-grey
+    padding: 5px 20px 5px 20px
+    &-list
+      display: flex
+      gap: 10px
+      flex-wrap: wrap
+
+.question-header
+    color: $satured-grey
+
+.language
+    padding: 5px 20px 5px 20px
+
+.category
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 10px
+    background-color: $weak-black
+    height: 80px
+    width: 100px
+    cursor: pointer
+
+    &-active, &:hover
+      background-color: $weak-white
+
+    &-icon
+      height: 24px
+      width: 24px
+    &-text
+      font-size: 12px
+
+.input-wrapper
+    max-width: 100%
+    padding: 5px 20px 10px 20px
+
+.input-column
+    width: 100%
+
+.modal-footer
+    display: block         
+    & button
+      border-radius: 7px
+      border: 1px solid $pale-blue
+      color: $white
+      text-align: center
+      font-family: Montserrat
+      font-size: 16px
+      font-weight: 600
+      line-height: normal
+      padding: 13px 0
+      &:hover
+        border-color: $white
+
+.modal-buttons
+    display: flex
+    padding: 0
+
+.modal-footer .row .modal-buttons button:nth-child(2) 
+    background-color: $reddish-brown
+    width: 50%
+    &:hover, &:active
+        background-color: $dark-reddish-brown
+
+.modal-footer .row .modal-buttons button:nth-child(1) 
+    background-color: $green
+    width: 50%
+    &:hover, &:active
+        background-color: $dark-green
+
+::ng-deep .modal-content
+    background: none
+    border: none
+
+:host ::ng-deep app-dropdown-select
+    label
+      color: $satured-grey
+      font-weight: 400
+
+@media (max-width: $large)
+    .input-wrapper
+      max-width: 100%
+
+@media (max-width: $small-challenge)
+    .header, .tip
+      text-align: center
+    .categories
+      align-items: center
+      &-list
+        justify-content: center
+
+@media (max-width: $small-mobile)
+    .input-wrapper
+      flex-direction: column
+    .input-column
+      width: 100%
+  

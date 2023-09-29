@@ -26,17 +26,12 @@ namespace LeetWars.CodeAnalyzer.Services
 
             var response = await GenerateTextResponse(prompt);
 
-            var challengeResponse = JsonConvert.DeserializeObject<OpenAiChallengeGenerateResponseDto>(response);
-
-            if (challengeResponse == null)
-            {
-                throw new NotFoundException(nameof(challengeResponse));
-            }
+            OpenAiChallengeGenerateResponseDto challengeResponse = JsonConvert.DeserializeObject<OpenAiChallengeGenerateResponseDto>(response) ?? throw new NotFoundException(nameof(challengeResponse));
 
             var challengeGenerateResponseDto = _mapper.Map<OpenAiChallengeGenerateResponseDto, ChallengeGenerateResponseDto>(challengeResponse);
             _mapper.Map(challengeGenerateRequest, challengeGenerateResponseDto);
 
-            return challengeGenerateResponseDto;
+            return challengeGenerateResponseDto ;
         }
 
         private async Task<string> GenerateTextResponse(string prompt)

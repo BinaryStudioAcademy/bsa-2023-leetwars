@@ -88,33 +88,7 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
         this.challenge = getNewChallenge();
         this.challengeVersion = getNewChallengeVersion();
 
-        const data = this.router.getCurrentNavigation()?.extras.state?.['myComplexObject'];
-
-        if (data) {
-            const {
-                category,
-                completeSolution,
-                description,
-                exampleTestCases,
-                initialSolution,
-                level,
-                tags,
-                testCases,
-                title,
-                language,
-            } = data as IChallengeGenerateResponse;
-
-            this.challenge.title = title;
-            this.challenge.instructions = description;
-            this.challenge.category = category;
-            this.challenge.level = level;
-            this.challenge.tags = tags;
-            this.challengeVersion.completeSolution = completeSolution;
-            this.challengeVersion.initialSolution = initialSolution;
-            this.challengeVersion.exampleTestCases = exampleTestCases;
-            this.challengeVersion.testCases = testCases;
-            this.challengeVersion.languageId = language?.id || 0;
-        }
+        this.loadData();
     }
 
     @HostListener('window:beforeunload', ['$event'])
@@ -138,7 +112,7 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
         });
     }
 
-    public onStepClick(step: ChallengeStep) {
+    onStepClick(step: ChallengeStep) {
         this.stepsData = showValidationErrorsForRequiredSteps(this.stepsData, step);
         if (!stepIsAllowed(this.stepsData, step)) {
             return;
@@ -236,6 +210,35 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
 
     getStepChecking(step: ChallengeStep) {
         return getStepChecking(this.stepsData, step);
+    }
+
+    private loadData() {
+        const data = this.router.getCurrentNavigation()?.extras.state?.['generatedChallenge'];
+
+        if (data) {
+            const {
+                category,
+                completeSolution,
+                description,
+                exampleTestCases,
+                initialSolution,
+                level,
+                tags,
+                testCases,
+                title,
+                language,
+            } = data as IChallengeGenerateResponse;
+
+            this.challenge = { ...this.challenge, title, instructions: description, category, level, tags };
+            this.challengeVersion = {
+                ...this.challengeVersion,
+                completeSolution,
+                initialSolution,
+                exampleTestCases,
+                testCases,
+                languageId: language.id,
+            };
+        }
     }
 
     private loadChallenge(challengeId: number) {

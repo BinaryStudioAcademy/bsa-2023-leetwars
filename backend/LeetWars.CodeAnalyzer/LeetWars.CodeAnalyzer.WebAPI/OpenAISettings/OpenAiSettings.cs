@@ -22,7 +22,7 @@ namespace LeetWars.CodeAnalyzer.OpenAISettings
 
         public string GetChallengePrompt(ChallengeGenerateRequestDto challengeGenerateRequestDto)
         {
-            if(challengeGenerateRequestDto.Tags == null) 
+            if (challengeGenerateRequestDto.Tags is null) 
             {
                 throw new ArgumentException(nameof(challengeGenerateRequestDto.Tags), nameof(challengeGenerateRequestDto));
             }

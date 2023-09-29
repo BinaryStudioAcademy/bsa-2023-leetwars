@@ -17,7 +17,7 @@ namespace LeetWars.Core.WebAPI.Controllers
     public class ChallengeController : ControllerBase
     {
         private readonly IChallengeService _challengeService;
-        
+
         public ChallengeController(IChallengeService challengeService)
         {
             _challengeService = challengeService;
@@ -59,7 +59,6 @@ namespace LeetWars.Core.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ChallengeFullDto>> GetByIdAsync(long id)
         {
-
             var challenges = await _challengeService.GetChallengeFullDtoByIdAsync(id);
 
             return Ok(challenges);
@@ -134,6 +133,5 @@ namespace LeetWars.Core.WebAPI.Controllers
 
             return NoContent();
         }
-
     }
 }

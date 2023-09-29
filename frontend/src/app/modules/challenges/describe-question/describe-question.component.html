@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <div class="wrapper">
-    <div>
+    <div class="header-wrapper">
         <h2 class="header">Please enter the data for generating a challenge.</h2>
         <p class="tip"></p>
     </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div class="language d-flex gap-3 mb-2">
+    <div class="language d-flex gap-3">
         <app-challenges-dropdown-select [canOpen]="true" [items]="languageDropdownItems"
             [selectedItem]="currentLanguage"
             (selectedItemChanged)="onLanguageChanged($event)"></app-challenges-dropdown-select>
@@ -52,7 +52,7 @@
                 class="d-block mt-3"></app-dropdown-select>
         </div>
     </div>
-    <div class="input-wrapper mt-12px d-flex flex-column gap-1">
+    <div class="input-wrapper d-flex flex-column gap-1">
         <p class="question-header">Name *</p>
         <app-custom-input [Identifier]="'kata-name'" [Height]="customInputHeight" [Width]="customInputWidth"
             [InputValue]="challenge.title" (InputValueChange)="onNameChange($event)"
@@ -61,7 +61,7 @@
 </div>
     <div class="modal-footer">
         <div class="row">
-            <div class="col">
+            <div class="modal-buttons">
                 <button type="button" class="btn m-2" *ngFor="let but of buttons"
                     (click)="but.handler()">{{but.text}}</button>
             </div>

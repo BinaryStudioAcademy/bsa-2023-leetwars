@@ -21,6 +21,5 @@ namespace LeetWars.CodeAnalyzer.Controllers
             var response = await _challengeGenerator.GenerateChallenge(challengeGenerateRequestDto);
             return new JsonResult(response);
         }
-
     }
 }

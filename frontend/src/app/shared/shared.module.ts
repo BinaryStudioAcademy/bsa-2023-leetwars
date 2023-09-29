@@ -7,7 +7,6 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { ChallengesDropdownSelectComponent } from '@modules/challenges/challenges-dropdown-select/challenges-dropdown-select.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
@@ -20,7 +19,6 @@ import { ArrowUpComponent } from './components/arrow-up/arrow-up.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
-import { DescribeQuestionComponent } from './components/describe-question/describe-question/describe-question.component';
 import { DropdownSelectComponent } from './components/dropdown-select/dropdown-select.component';
 import { GeneralModalComponent } from './components/general-modal/general-modal.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -57,8 +55,6 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         HeaderComponent,
         ArrowUpComponent,
         ScrollToDirective,
-        DescribeQuestionComponent,
-        ChallengesDropdownSelectComponent,
     ],
     exports: [
         CommonModule,
@@ -77,8 +73,6 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
         ProgressBarComponent,
         HeaderComponent,
         ArrowUpComponent,
-        DescribeQuestionComponent,
-        ChallengesDropdownSelectComponent,
         NgbModule,
         TabsModule,
         MarkdownModule,

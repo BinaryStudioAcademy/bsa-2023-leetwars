@@ -35,15 +35,7 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
 
     @Input() allLevels: IChallengeLevel[];
 
-    public languages: ILanguage[];
-
-    public languageDropdownItems: IDropdownItem[] = [];
-
-    public currentLanguage?: IDropdownItem;
-
-    public challengeVersion: INewChallengeVersion;
-
-    public editorOptions = editorOptions;
+    @Input() buttons: IModalButton[] = [];
 
     @Input() checkValidation = false;
 
@@ -51,37 +43,40 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
 
     @Output() challengeGenerateRequestChange = new EventEmitter<IChallengeGenerateRequest>();
 
+    languages: ILanguage[];
+
+    languageDropdownItems: IDropdownItem[] = [];
+
+    currentLanguage?: IDropdownItem;
+
+    challengeVersion: INewChallengeVersion;
+
+    editorOptions = editorOptions;
+
     public updateChallengeGenerateRequest() {
         const selectedLanguageName = this.currentLanguage?.content;
-        const selectedLanguage: ILanguage | undefined = this.languages.find(
-            (lang) => lang.name === selectedLanguageName,
-        );
+        const selectedLanguage = this.languages.find((lang) => lang.name === selectedLanguageName);
         const challengeGenerateRequest: IChallengeGenerateRequest = {
-            title: this.challenge.title,
-            category: this.challenge.category,
-            level: this.challenge.level,
-            tags: this.challenge.tags,
+            ...this.challenge,
             language: selectedLanguage,
         };
 
         this.challengeGenerateRequestChange.emit(challengeGenerateRequest);
     }
 
-    public allTagsNames: string[] = [];
+    allTagsNames: string[] = [];
 
-    public selectedTagsNames: string[] = [];
+    selectedTagsNames: string[] = [];
 
-    public allLevelsNames: string[] = [];
+    allLevelsNames: string[] = [];
 
-    public selectedLevelName = '';
+    selectedLevelName = '';
 
-    @Input() buttons: IModalButton[] = [];
+    customInputHeight = '48px';
 
-    public customInputHeight = '48px';
+    customInputWidth = '100%';
 
-    public customInputWidth = '100%';
-
-    public CategoryType = CategoryType;
+    CategoryType = CategoryType;
 
     constructor(
         private tagService: TagService,
@@ -99,9 +94,9 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
         this.updateChallengeGenerateRequest();
     }
 
-    public onLanguageChanged(selectedItem: IDropdownItem) {
+    onLanguageChanged(selectedItem: IDropdownItem) {
         this.currentLanguage = selectedItem;
-        const language = this.languages.find((l) => l.name === selectedItem.content);
+        const language = this.languages.find((l) => l.name === this.currentLanguage?.content);
 
         if (!language) {
             return;
@@ -111,11 +106,11 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
         this.challengeVersion = this.challenge.versions.find((v) => v.languageId === language.id)!;
     }
 
-    public onCategoryChange(value: CategoryType) {
+    onCategoryChange(value: CategoryType) {
         this.challenge.category = value;
     }
 
-    public onLevelChange(value: string | string[]) {
+    onLevelChange(value: string | string[]) {
         if (typeof value !== 'string') {
             return;
         }
@@ -124,7 +119,7 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
         this.challenge.levelId = this.challenge.level?.id!;
     }
 
-    public onTagsChange(value: string | string[]) {
+    onTagsChange(value: string | string[]) {
         if (typeof value === 'string') {
             return;
         }
@@ -132,7 +127,7 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
         this.challenge.tags = this.allTags.filter((tag) => value.includes(tag.name));
     }
 
-    public onNameChange(value: string) {
+    onNameChange(value: string) {
         this.challenge.title = value;
     }
 

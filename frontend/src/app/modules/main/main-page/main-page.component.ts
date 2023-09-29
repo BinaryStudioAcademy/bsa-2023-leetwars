@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
+import { ScrollComponent } from '@core/base/scroll.component';
 import { CodeAnylizerHttpService } from '@core/services/code-anylizer-http.service';
 import { SpinnerService } from '@core/services/spinner.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
+import { DescribeQuestionComponent } from '@modules/challenges/describe-question/describe-question.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DescribeQuestionComponent } from '@shared/components/describe-question/describe-question/describe-question.component';
 import { IChallengeGenerateRequest } from '@shared/models/challenge-generate/challenge-generate-request';
 import { IChallengeGenerateResponse } from '@shared/models/challenge-generate/challenge-generate-response';
 import { takeUntil } from 'rxjs';
@@ -15,7 +16,7 @@ import { takeUntil } from 'rxjs';
     templateUrl: './main-page.component.html',
     styleUrls: ['./main-page.component.sass'],
 })
-export class MainComponent extends BaseComponent {
+export class MainComponent extends ScrollComponent {
     challengeGenerateRequest: IChallengeGenerateRequest;
 
     constructor(
@@ -62,10 +63,10 @@ export class MainComponent extends BaseComponent {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (response: IChallengeGenerateResponse) => {
-                    this.spinnerService.show();
+                    this.spinnerService.hide();
                     this.router.navigate(['/challenges/create'], {
                         state: {
-                            myComplexObject: response,
+                            generatedChallenge: response,
                         },
                     });
                     this.toastrService.showSuccess('Challenge generated successfully');
