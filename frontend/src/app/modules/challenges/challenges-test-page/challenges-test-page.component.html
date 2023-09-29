@@ -11,10 +11,6 @@
                     [customClass]="getTabClass(tab)">
                 </tab>
             </tabset>
-            <div class="tab-help" ngbTooltip="Help message" placement="right">
-                <fa-icon [icon]="'question-circle'"></fa-icon>
-                <div class="tab-text">Help</div>
-            </div>
         </div>
         <button class="maximize-btn" (click)="toggleMaximize(editorContainer)">
             <fa-icon [icon]="isMaximized ? ['fas', 'compress'] : ['fas', 'maximize']"></fa-icon>
