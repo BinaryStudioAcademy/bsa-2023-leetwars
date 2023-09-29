@@ -8,6 +8,7 @@ export const environment = {
     production: false,
     coreUrl: 'http://localhost:5050',
     notifierUrl: 'http://localhost:5070',
+    codeAnylizerUrl: 'http://localhost:5100',
     ...firebaseSettings,
 };
 

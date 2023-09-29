@@ -26,6 +26,7 @@ import { ConfirmationModalComponent } from '@shared/components/confirmation-moda
 import { ChallengeStep } from '@shared/enums/challenge-step';
 import { IEditChallenge } from '@shared/models/challenge/edit-challenge';
 import { INewChallenge } from '@shared/models/challenge/new-challenge';
+import { IChallengeGenerateResponse } from '@shared/models/challenge-generate/challenge-generate-response';
 import { IChallengeLevel } from '@shared/models/challenge-level/challenge-level';
 import { IEditChallengeVersion } from '@shared/models/challenge-version/edit-challenge-version';
 import { INewChallengeVersion } from '@shared/models/challenge-version/new-challenge-version';
@@ -69,6 +70,8 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
 
     protected readonly ChallengeStep = ChallengeStep;
 
+    generateChallengeResponse: IChallengeGenerateResponse;
+
     constructor(
         private challengeService: ChallengeService,
         private languageService: LanguageService,
@@ -82,6 +85,8 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
         this.steps = this.stepsData.map((s) => s.step);
         this.challenge = getNewChallenge();
         this.challengeVersion = getNewChallengeVersion();
+
+        this.loadData();
     }
 
     @HostListener('window:beforeunload', ['$event'])
@@ -204,6 +209,35 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
         return getStepChecking(this.stepsData, step);
     }
 
+    private loadData() {
+        const data = this.router.getCurrentNavigation()?.extras.state?.['generatedChallenge'];
+
+        if (data) {
+            const {
+                category,
+                completeSolution,
+                description,
+                exampleTestCases,
+                initialSolution,
+                level,
+                tags,
+                testCases,
+                title,
+                language,
+            } = data as IChallengeGenerateResponse;
+
+            this.challenge = { ...this.challenge, title, instructions: description, category, level, tags };
+            this.challengeVersion = {
+                ...this.challengeVersion,
+                completeSolution,
+                initialSolution,
+                exampleTestCases,
+                testCases,
+                languageId: language.id,
+            };
+        }
+    }
+
     private loadChallenge(challengeId: number) {
         this.challengeService
             .getChallengeById(challengeId)
@@ -227,7 +261,7 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
             .subscribe({
                 next: () => {
                     this.toastrService.showSuccess('Challenge was successfully deleted');
-                    this.router.navigate(['/']);
+                    this.router.navigate(['/'], { state: { canLeave: true } });
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
@@ -253,11 +287,16 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
         this.languages = data;
         this.languageDropdownItems = getDropdownItems(data.map((item) => item.name));
 
-        this.challenge.versions = data.map((lang) => ({
-            ...getNewChallengeVersion(),
-            languageId: lang.id,
-        }));
+        this.challenge.versions = data.map((lang) => {
+            if (lang.id === this.challengeVersion.languageId) {
+                return this.challengeVersion;
+            }
 
+            return {
+                ...getNewChallengeVersion(),
+                languageId: lang.id,
+            };
+        });
         this.onLanguageChanged(this.languageDropdownItems[0]);
     }
 

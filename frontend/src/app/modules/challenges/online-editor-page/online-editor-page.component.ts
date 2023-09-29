@@ -20,7 +20,7 @@ import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
 import { take, takeUntil } from 'rxjs';
 
-import { editorOptions } from '../challenge-creation/challenge-creation.utils';
+import { editorOptions, mapLanguageName } from '../challenge-creation/challenge-creation.utils';
 
 @Component({
     selector: 'app-online-editor-page',
@@ -37,6 +37,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     challenge: IChallenge;
 
     selectedLanguage: string;
+
+    mappedSelectedLanguage: string;
 
     languages: string[];
 
@@ -91,8 +93,6 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     ngOnInit() {
-        this.splitDirection = 'horizontal';
-
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const challengeId = +params.get('id')!;
 
@@ -123,7 +123,14 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     onSelectedLanguageChanged($event: string | string[]): void {
+        const selectedLang = $event as string;
+
+        this.selectedLanguage = selectedLang;
+        this.mappedSelectedLanguage = mapLanguageName(selectedLang);
+
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
+
+        this.testCode = this.getInitialTestsByLanguage($event as string);
     }
 
     onCodeChanged(newCode: string) {
@@ -200,7 +207,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private sendCode(isSubmitRequest: boolean = false): void {
         this.solution = {
             userConnectionId: this.user.id.toString(),
-            language: this.selectedLanguage,
+            language: this.mappedSelectedLanguage,
             userCode: this.initialSolution as string,
             tests: this.testCode,
             isSubmitRequest,
@@ -229,12 +236,19 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.languages = [...new Set(challenge.versions?.map((v) => v.language?.name))];
 
         [this.selectedLanguage] = this.languages;
+        this.mappedSelectedLanguage = mapLanguageName(this.selectedLanguage);
     }
 
     private setupEditorOptions() {
         this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
         this.editorOptions = editorOptions;
+    }
+
+    private getInitialTestsByLanguage(language: string): string {
+        const version = this.challenge.versions?.find((v) => v.language.name === language);
+
+        return version?.exampleTestCases ?? 'No tests available';
     }
 
     private getInitialSolutionByLanguage(language: string): string {

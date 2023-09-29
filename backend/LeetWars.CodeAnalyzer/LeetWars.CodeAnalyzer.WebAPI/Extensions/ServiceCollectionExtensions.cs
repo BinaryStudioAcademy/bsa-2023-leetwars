@@ -1,7 +1,9 @@
 ﻿using LeetWars.CodeAnalyzer.Interfaces;
 using LeetWars.CodeAnalyzer.OpenAISettings;
 using LeetWars.CodeAnalyzer.Services;
+using LeetWars.CodeAnalyzer.WebAPI.MappingProfiles;
 using OpenAI_API;
+using System.Reflection;
 
 namespace LeetWars.CodeAnalyzer.Extensions
 {
@@ -14,6 +16,11 @@ namespace LeetWars.CodeAnalyzer.Extensions
             services.AddScoped<IOpenAiSettings, OpenAiSettings>();
             services.AddScoped<ICompletionService, CompletionService>();
             services.AddScoped<IAnalyzeCodeService, AnalyzeCodeService>();
+        }
+
+        public static void AddAutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(ChallengeGeneratorProfile)));
         }
     }
 }
