@@ -113,7 +113,7 @@
         *ngIf="inputForm.controls.description.touched && inputForm.controls.description.invalid">
         {{ getErrorMessage('description') }}
     </div>
-    <div class="mt-12px">
+    <div class="markdown-wrapper mt-12px">
         <angular-markdown-editor
             [textareaId]="'markdown-editor'"
             [name]="'markdownText'"
