@@ -1,5 +1,6 @@
 @import 'color-variables'
 @import 'pending'
+@import 'screen-sizes-variables'
 
 .profile-main-info-wrapper
     height: 100%
@@ -9,6 +10,11 @@
     box-shadow: 0px 6px 12px 0px $ultra-transparent-black, 0px 4px 8px 0px $ultra-transparent-black, 0px 2px 4px 0px $ultra-transparent-black
     border-radius: 8px
     padding: 21px 16px 28px 16px
+    max-width: 300px
+    min-width: 280px
+    @media screen and (max-width: $small)
+        max-width: 100%
+        min-width: 100%
 
 .profile-main-info-header
     padding: 0 0 16px 0 !important
@@ -28,11 +34,15 @@
 
 .user-info
     justify-content: space-between
+    overflow: hidden
 
 .username
     font-weight: 600
     line-height: 160%
     font-size: 15px
+    text-overflow: ellipsis
+    text-wrap: nowrap
+    overflow: hidden
 
 .user-rank
     font-size: 14px
