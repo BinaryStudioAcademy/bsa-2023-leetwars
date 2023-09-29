@@ -146,7 +146,10 @@ namespace LeetWars.Notifier.WebAPI.Services
             if (!string.IsNullOrEmpty(notificationDto.ReceiverId)
             && notificationDto.Sender is not null)
             {
+                notificationDto.Message = "You have won the code fight!";
                 await _hubContext.Clients.Groups(notificationDto.Sender.Id.ToString()).WinCodeFightAsync(notificationDto);
+
+                notificationDto.Message = "You have lost the code fight!";
                 await _hubContext.Clients.Groups(notificationDto.ReceiverId).LoseCodeFightAsync(notificationDto);
             }
         }

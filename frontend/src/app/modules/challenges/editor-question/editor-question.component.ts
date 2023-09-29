@@ -100,10 +100,6 @@ export class EditorQuestionComponent implements OnInit, OnChanges {
         this.bsEditorInstance.showPreview();
     }
 
-    submitQuestion() {
-        this.selectedTab = TabType.Help;
-    }
-
     onNameChange(value: string) {
         this.challenge.title = value;
 

@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using LeetWars.Core.Common.DTO.UserPrefferences;
+using System.Net;
 
 namespace LeetWars.Core.BLL.Services;
 
@@ -200,7 +201,9 @@ public class UserService : BaseService, IUserService
 
         if(page.UserName is not null)
         {
-            query = query.Where(u => u.UserName.ToLower().Contains(page.UserName.ToLower()));
+            string userName = WebUtility.UrlDecode(page.UserName);
+
+            query = query.Where(u => u.UserName.ToLower().Contains(userName.ToLower()));
         }
 
         if (page.HasFriends)
