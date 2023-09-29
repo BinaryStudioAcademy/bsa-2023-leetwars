@@ -90,7 +90,6 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
     }
 
     ngOnInit(): void {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             this.challengeId = +params.get('id')!;
 

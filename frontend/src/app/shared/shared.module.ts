@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ClickOutsideDirective } from '@core/directives/click-outside.directive';
 import { ScrollToDirective } from '@core/directives/scroll-to.directive';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -65,6 +66,7 @@ import { toastrGlobalConfig } from './configurations/toastr-global-config';
         SolutionSubmitModalComponent,
         ArrowUpComponent,
         ScrollToDirective,
+        ClickOutsideDirective,
         CustomToastrNotificationComponent,
     ],
     exports: [
@@ -91,6 +93,7 @@ import { toastrGlobalConfig } from './configurations/toastr-global-config';
         AngularMarkdownEditorModule,
         InfiniteScrollModule,
         ScrollToDirective,
+        ClickOutsideDirective,
     ],
     providers: [TabsetConfig],
 })

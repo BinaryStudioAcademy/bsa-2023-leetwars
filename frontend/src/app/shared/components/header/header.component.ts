@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { NotificationHubService } from '@core/hubs/notifications-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { HeaderService } from '@core/services/header.service';
-import { NotificationService } from '@core/services/notification.service';
 import { NotificationStorageService } from '@core/services/notification-storage.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -29,7 +28,6 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         private router: Router,
         private headerService: HeaderService,
         private toastrService: ToastrNotificationsService,
-        private notificationService: NotificationService,
         private notificationStorage: NotificationStorageService,
         private notificationHub: NotificationHubService,
     ) {
@@ -45,13 +43,13 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         });
     }
 
-    public isNotificationsDropdownDisplayed: boolean = false;
-
     private newNotificationsCollection: INotificationModel[] = [];
 
     private seenNotificationsCollection: INotificationModel[] = [];
 
-    public showMenu: boolean = false;
+    isNotificationsDropdownDisplayed: boolean = false;
+
+    showMenu: boolean = false;
 
     user: IUser;
 
@@ -61,55 +59,42 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.getNotifications();
     }
 
-    private getNotifications() {
-        this.notificationStorage.getUserNotifications()
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (notifications) => {
-                    this.newNotificationsCollection = notifications.filter(e => !e.isRead);
-                    this.seenNotificationsCollection = notifications.filter(e => e.isRead);
-                },
-                error: () => {
-                    this.toastrService.showError('Server connection error');
-                    this.router.navigate(['/']);
-                },
-            });
+    @HostListener('document:keydown.escape')
+    onEscapeKey() {
+        this.hideDropdown();
+        this.hideUserMenu();
     }
 
-    private readNotifications() {
-        this.newNotificationsCollection.forEach(x => {
-            x.isRead = true;
-        });
-
-        this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
-        this.newNotificationsCollection = [];
+    hideDropdown() {
+        this.isNotificationsDropdownDisplayed = false;
     }
 
-    public showNotifications() {
-        if (this.isNotificationsDropdownDisplayed) {
-            this.readNotifications();
-        } else {
-            this.notificationStorage.updateStatusToRead([this.user.id])
-                .pipe(takeUntil(this.unsubscribe$))
-                .subscribe({
-                    error: () => {
-                        this.toastrService.showError('Server connection error');
-                        this.router.navigate(['/']);
-                    },
-                });
+    hideUserMenu() {
+        this.showMenu = false;
+    }
+
+    showUserMenu() {
+        this.showMenu = true;
+    }
+
+    showNotifications(event: Event) {
+        event.stopPropagation();
+
+        if (!this.isNotificationsDropdownDisplayed) {
+            this.readNotificationsAndUpdateStatus();
         }
-        this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
+        this.isNotificationsDropdownDisplayed = true;
     }
 
-    public get countNotification() {
+    get countNotification() {
         return this.newNotificationsCollection.length;
     }
 
-    public get newNotifications() {
+    get newNotifications() {
         return this.newNotificationsCollection;
     }
 
-    public get seenNotifications() {
+    get seenNotifications() {
         return this.seenNotificationsCollection;
     }
 
@@ -145,12 +130,53 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
         this.router.navigate(['/user/profile']);
     }
 
+    trackByFn(index: number, item: INotificationModel) {
+        return item.dateSending;
+    }
+
     private listeningNotificationHub() {
         this.notificationHub.listenMessages((msg: INotificationModel) => {
             if (msg.typeNotification !== TypeNotification.CodeFightRequestStart) {
                 this.newNotificationsCollection = [...this.newNotificationsCollection, msg];
             }
         });
+    }
+
+    private getNotifications() {
+        this.notificationStorage
+            .getUserNotifications()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (notifications) => {
+                    this.newNotificationsCollection = notifications.filter((e) => !e.isRead);
+                    this.seenNotificationsCollection = notifications.filter((e) => e.isRead);
+                },
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                    this.router.navigate(['/']);
+                },
+            });
+    }
+
+    private readNotifications() {
+        this.newNotificationsCollection.forEach((x) => {
+            x.isRead = true;
+        });
+
+        this.seenNotificationsCollection = [...this.seenNotificationsCollection, ...this.newNotificationsCollection];
+        this.newNotificationsCollection = [];
+    }
+
+    private readNotificationsAndUpdateStatus() {
+        this.notificationStorage
+            .updateStatusToRead([this.user.id])
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                error: () => {
+                    this.toastrService.showError('Server connection error');
+                    this.router.navigate(['/']);
+                },
+            });
     }
 
     override ngOnDestroy() {
@@ -160,9 +186,5 @@ export class HeaderComponent extends BaseComponent implements OnInit, OnDestroy 
             this.readNotifications();
             this.isNotificationsDropdownDisplayed = !this.isNotificationsDropdownDisplayed;
         }
-    }
-
-    trackByFn(index: number, item: INotificationModel) {
-        return item.dateSending;
     }
 }

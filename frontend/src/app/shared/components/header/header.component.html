@@ -14,16 +14,14 @@
     </nav>
     <div class="user-menu align-items-center d-flex">
         <div class="notification-dropdown-container">
-            <div class="notification-bell" (click)="showNotifications()">
+            <div class="notification-bell" (click)="showNotifications($event)">
                 <fa-layers size="2x">
                     <fa-icon [icon]="['far', 'bell']"></fa-icon>
-                    <fa-layers-counter
-                        *ngIf="countNotification"
-                        [classes]="['change-color']"
+                    <fa-layers-counter *ngIf="countNotification" [classes]="['change-color']"
                         content="{{ countNotification }}"></fa-layers-counter>
                 </fa-layers>
             </div>
-            <div class="notifications-dropdown" *ngIf="this.isNotificationsDropdownDisplayed" [@fadeInOut]>
+            <div class="notifications-dropdown" *ngIf="this.isNotificationsDropdownDisplayed" [@fadeInOut] (appClickOutside)="hideDropdown()">
                 <div class="dropdown-heading">
                     <span>Your notifications</span>
                     <span class="new-notifications-count">{{countNotification}}</span>
@@ -32,15 +30,17 @@
                     <div class="zero-notifications-info" *ngIf="!countNotification">
                         <span>No new notifications so far</span>
                     </div>
-                    <app-notifications *ngFor="let notification of this.newNotifications.slice().reverse(); trackBy: trackByFn" [isUnread]="true" [notification]="notification"></app-notifications>
-                    <app-notifications *ngFor="let notification of this.seenNotifications.slice().reverse(); trackBy: trackByFn" [notification]="notification"></app-notifications>
+                    <app-notifications
+                        *ngFor="let notification of this.newNotifications.slice().reverse(); trackBy: trackByFn"
+                        [isUnread]="true" [notification]="notification"></app-notifications>
+                    <app-notifications
+                        *ngFor="let notification of this.seenNotifications.slice().reverse(); trackBy: trackByFn"
+                        [notification]="notification"></app-notifications>
                 </div>
             </div>
         </div>
-        <div class="user" (click)="showMenu = !showMenu">
-            <img
-                [src]="user.imagePath ? user.imagePath : '/assets/images/default-profile-img.jpg'"
-                alt="User Logo"
+        <div class="user" (click)="showUserMenu()" (appClickOutside)="hideUserMenu()">
+            <img [src]="user.imagePath ? user.imagePath : '/assets/images/default-profile-img.jpg'" alt="User Logo"
                 class="user-logo" />
             <span class="username">
                 {{ user.firstName && user.lastName ? user.firstName + ' ' + user.lastName : user.userName }}
