@@ -53,9 +53,11 @@ export class AuthService {
 
     refreshFirebaseToken(): Observable<string> {
         return this.afAuth.authState.pipe(
-            switchMap((user) => {
+            switchMap(async (user) => {
                 if (user) {
-                    return from(user.getIdToken(true));
+                    await this.updateLocalStorage(user);
+
+                    return user.getIdToken(true);
                 }
                 throw new Error('User not authenticated');
             }),
