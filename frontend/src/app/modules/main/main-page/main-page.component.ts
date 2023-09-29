@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { BaseComponent } from '@core/base/base.component';
 import { ScrollComponent } from '@core/base/scroll.component';
 import { CodeAnylizerHttpService } from '@core/services/code-anylizer-http.service';
 import { SpinnerService } from '@core/services/spinner.service';
@@ -63,7 +62,6 @@ export class MainComponent extends ScrollComponent {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (response: IChallengeGenerateResponse) => {
-                    this.spinnerService.hide();
                     this.router.navigate(['/challenges/create'], {
                         state: {
                             generatedChallenge: response,
@@ -73,7 +71,11 @@ export class MainComponent extends ScrollComponent {
                 },
                 error: () => {
                     this.toastrService.showError('Error generating challenge');
+                    
                 },
+                complete: () => {
+                    this.spinnerService.hide();
+                }
             });
     }
 }

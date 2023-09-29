@@ -53,17 +53,6 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
 
     editorOptions = editorOptions;
 
-    public updateChallengeGenerateRequest() {
-        const selectedLanguageName = this.currentLanguage?.content;
-        const selectedLanguage = this.languages.find((lang) => lang.name === selectedLanguageName);
-        const challengeGenerateRequest: IChallengeGenerateRequest = {
-            ...this.challenge,
-            language: selectedLanguage,
-        };
-
-        this.challengeGenerateRequestChange.emit(challengeGenerateRequest);
-    }
-
     allTagsNames: string[] = [];
 
     selectedTagsNames: string[] = [];
@@ -85,6 +74,17 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
         private languageService: LanguageService,
     ) {
         super();
+    }
+
+    public updateChallengeGenerateRequest() {
+        const selectedLanguageName = this.currentLanguage?.content;
+        const selectedLanguage = this.languages.find((lang) => lang.name === selectedLanguageName);
+        const challengeGenerateRequest: IChallengeGenerateRequest = {
+            ...this.challenge,
+            language: selectedLanguage,
+        };
+
+        this.challengeGenerateRequestChange.emit(challengeGenerateRequest);
     }
 
     ngOnInit(): void {
