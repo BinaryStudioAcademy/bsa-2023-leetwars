@@ -45,9 +45,11 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
 
     languages: ILanguage[];
 
+    isOpen = true;
+
     languageDropdownItems: IDropdownItem[] = [];
 
-    currentLanguage?: IDropdownItem;
+    currentLanguage: IDropdownItem;
 
     challengeVersion: INewChallengeVersion;
 
@@ -77,8 +79,7 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
     }
 
     public updateChallengeGenerateRequest() {
-        const selectedLanguageName = this.currentLanguage?.content;
-        const selectedLanguage = this.languages.find((lang) => lang.name === selectedLanguageName);
+        const selectedLanguage = this.findLanguageByName(this.currentLanguage?.content);
         const challengeGenerateRequest: IChallengeGenerateRequest = {
             ...this.challenge,
             language: selectedLanguage,
@@ -96,7 +97,7 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
 
     onLanguageChanged(selectedItem: IDropdownItem) {
         this.currentLanguage = selectedItem;
-        const language = this.languages.find((l) => l.name === this.currentLanguage?.content);
+        const language = this.findLanguageByName(this.currentLanguage.content);
 
         if (!language) {
             return;
@@ -104,6 +105,10 @@ export class DescribeQuestionComponent extends BaseComponent implements OnInit {
 
         this.editorOptions.language = mapLanguageName(language.name);
         this.challengeVersion = this.challenge.versions.find((v) => v.languageId === language.id)!;
+    }
+
+    private findLanguageByName(name: string): ILanguage | undefined {
+        return this.languages.find((lang) => lang.name === name);
     }
 
     onCategoryChange(value: CategoryType) {
