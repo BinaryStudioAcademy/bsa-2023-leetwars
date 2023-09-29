@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IFriendshipPreview } from '@shared/models/friendship/friendship-preview';
 import { INewFriendship } from '@shared/models/friendship/new-friendship';
 import { IUpdateFriendship } from '@shared/models/friendship/update-friendship';
 import { IPageSettings } from '@shared/models/page-settings';
@@ -89,6 +90,10 @@ export class UserService {
 
     getUserFriendships(id: number): Observable<IUserFriendsInfo> {
         return this.httpService.getRequest<IUserFriendsInfo>(`${this.baseUrl}/user-friendships?userid=${id}`);
+    }
+
+    getOneUserFriend(newFriendship: INewFriendship): Observable<IFriendshipPreview> {
+        return this.httpService.postRequest<IFriendshipPreview>(`${this.baseUrl}/get-one-friend`, newFriendship);
     }
 
     public getUserPrefferences(): Observable<IUserPreferences> {

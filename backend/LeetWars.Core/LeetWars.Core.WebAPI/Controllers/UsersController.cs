@@ -128,6 +128,19 @@ public class UsersController : ControllerBase
     }
 
     /// <summary>
+    /// Get user friend
+    /// </summary>
+    /// <param name="newFriendshipDto">a convenient form to pass currentUser and another profile user</param>
+    /// <returns>Existing friendship</returns>
+    [HttpPost("get-one-friend")]
+    public async Task<ActionResult<FriendshipPreviewDto>> GetOneFriend([FromBody] NewFriendshipDto newFriendshipDto)
+    {
+        var friend = await _userService.GetOneFriendAsync(newFriendshipDto);
+
+        return Ok(friend);
+    }
+
+    /// <summary>
     /// Create friendship
     /// </summary>
     /// <param name="newFriendshipDto">Friendship to create</param>

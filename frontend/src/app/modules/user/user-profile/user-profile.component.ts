@@ -7,8 +7,8 @@ import { ToastrNotificationsService } from '@core/services/toastr-notifications.
 import { UserService } from '@core/services/user.service';
 import { FriendshipStatus } from '@shared/enums/friendship-status';
 import { IFriendshipPreview } from '@shared/models/friendship/friendship-preview';
+import { INewFriendship } from '@shared/models/friendship/new-friendship';
 import { IUser } from '@shared/models/user/user';
-import { IUserFriendsInfo } from '@shared/models/user/user-friends-info';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
 import { catchError, EMPTY, forkJoin, map, Observable, switchMap, takeUntil, throwError } from 'rxjs';
@@ -40,6 +40,8 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
     private user: IUser;
 
     currentUser: IUser;
+
+    currentUserFriends: IFriendshipPreview[];
 
     constructor(
         private userService: UserService,
@@ -109,11 +111,11 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
                 const userId = Number(params.get('id'));
 
                 this.isCurrentUser = !userId || this.user?.id === userId;
-                const curentUserId = this.isCurrentUser ? this.user.id : userId;
+                const currentUserId = this.isCurrentUser ? this.currentUser.id : userId;
 
-                this.getUserInfo(curentUserId);
-                this.getUserChallenges(curentUserId);
-                const friendships$ = this.getUserFriendships();
+                this.getUserInfo(currentUserId);
+                this.getUserChallenges(currentUserId);
+                const friendships$ = this.getUserFriendships(currentUserId);
 
                 return forkJoin([friendships$]).pipe(
                     catchError((error) => {
@@ -128,14 +130,28 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
         });
     }
 
-    private getUserFriendships(): Observable<void> {
+    private getUserFriendships(friendId: number): Observable<void> {
+        const data: INewFriendship = { senderId: this.currentUser.id, recipientId: friendId };
+
         return this.userService
-            .getUserFriendships(this.currentUser.id)
+            .getOneUserFriend(data)
             .pipe(
                 takeUntil(this.unsubscribe$),
-                map((userFriendsInfo: IUserFriendsInfo) => {
-                    this.userFriendsIds = userFriendsInfo.friendships.map((f) => f.friendId);
-                    this.currentUser.friendships = userFriendsInfo.friendships;
+                map((friendShips: IFriendshipPreview) => {
+                    if (friendShips === null) {
+                        const emptyFriends: IFriendshipPreview = 
+                        { 
+                            friendshipStatus: FriendshipStatus.Accepted,
+                            friendshipId: 0,
+                            friendId: -1 
+                        };
+
+                        this.userFriendsIds.push(-1);
+                        this.currentUser.friendships.push(emptyFriends);
+                        this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
+                    }
+                    this.userFriendsIds.push(friendShips.friendId);
+                    this.currentUser.friendships.push(friendShips);
                     this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
 
                     return undefined;
