@@ -22,7 +22,12 @@ namespace LeetWars.Core.BLL.MappingProfiles
                         .ConvertUsing<ImageNameFormatter, string>(src => src.ImagePath!))
                 .ReverseMap();
 
-            CreateMap<User, BriefUserInfoDto>().ReverseMap();
+            CreateMap<User, BriefUserInfoDto>()
+                .ForMember(dest => dest.ImagePath,
+                    opt => opt
+                        .ConvertUsing<ImageNameFormatter, string>(src => src.ImagePath!))
+                .ReverseMap();
+
             CreateMap<User, UserFriendsInfoDto>().ReverseMap();
 
             CreateMap<Friendship, FriendshipPreviewDto>()

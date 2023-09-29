@@ -7,7 +7,7 @@
     </div>
     <div *ngIf="this.notification.typeNotification === typeNotification.LikeChallenge" class="notification-text">
         <img
-        [src]="this.notification.sender.imagePath ? this.notification.sender.imagePath : '/assets/images/default-profile-img.jpg'"
+        [src]="this.notification.sender.imagePath ?? AssetConstants.defaultProfileImagePath"
         alt="User Logo"
         class="sender-img" />
         <p>

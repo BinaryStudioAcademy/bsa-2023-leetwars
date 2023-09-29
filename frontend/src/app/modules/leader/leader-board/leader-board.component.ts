@@ -103,8 +103,12 @@ export class LeaderBoardComponent extends ScrollComponent implements OnInit {
         this.getUsers();
     }
 
-    public onLinkClick(id: number | undefined) {
-        this.router.navigate(['/user/profile', id as number]);
+    onLinkClick(id: number | undefined) {
+        if (id === this.currentUser.id) {
+            this.router.navigate(['/user/profile']);
+        } else {
+            this.router.navigate(['/user/profile', id as number]);
+        }
     }
 
     onSearchTextChange(value: string) {

@@ -2,6 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
+import { CodefightGuard } from '@core/guards/codefight.guard';
 import { CodeDisplayingHubService } from '@core/hubs/code-displaying-hub.service';
 import { AuthService } from '@core/services/auth.service';
 import { ChallengeService } from '@core/services/challenge.service';
@@ -15,7 +16,6 @@ import { ICodeRunRequest } from '@shared/models/code-run/code-run-request';
 import { ICodeRunResults } from '@shared/models/code-run/code-run-result';
 import { ICodeSubmitResult } from '@shared/models/code-run/code-submit-result';
 import { ICodeFightEnd } from '@shared/models/codefight/code-fight-end';
-import { EditorOptions } from '@shared/models/options/editor-options';
 import { ITestsOutput } from '@shared/models/tests-output/tests-output';
 import { IUser } from '@shared/models/user/user';
 import { take, takeUntil } from 'rxjs';
@@ -46,7 +46,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
 
     testCode?: string;
 
-    editorOptions: EditorOptions;
+    editorOptions = editorOptions;
 
     solution: ICodeRunRequest;
 
@@ -68,6 +68,7 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         private modalService: NgbModal,
         private codeRunService: CodeRunService,
         private authService: AuthService,
+        private codeFightGuard: CodefightGuard,
         private router: Router,
     ) {
         super();
@@ -131,6 +132,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         this.initialSolution = this.getInitialSolutionByLanguage($event as string)!;
 
         this.testCode = this.getInitialTestsByLanguage($event as string);
+
+        this.updateEditorOptionsLanguage();
     }
 
     onCodeChanged(newCode: string) {
@@ -150,12 +153,14 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     }
 
     giveUpCodeFight() {
-        const codeFightEnd: ICodeFightEnd = {
-            isWinner: false,
-            senderId: this.user.id,
-        };
+        this.codeFightGuard.openModal().closed.subscribe(() => {
+            const codeFightEnd: ICodeFightEnd = {
+                isWinner: false,
+                senderId: this.user.id,
+            };
 
-        this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+            this.codeFightService.sendCodeFightEnd(codeFightEnd).subscribe();
+        });
     }
 
     subscribeToMessageQueue(): void {
@@ -242,7 +247,8 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
     private setupEditorOptions() {
         this.initialSolution = this.getInitialSolutionByLanguage(this.selectedLanguage);
         this.testCode = this.getInitialTestByChallengeVersionId(this.challenge.versions[0]?.id);
-        this.editorOptions = editorOptions;
+
+        this.updateEditorOptionsLanguage();
     }
 
     private getInitialTestsByLanguage(language: string): string {
@@ -263,5 +269,9 @@ export class OnlineEditorPageComponent extends BaseComponent implements OnDestro
         return selectedVersion && selectedVersion.exampleTestCases
             ? selectedVersion.exampleTestCases
             : 'No tests available';
+    }
+
+    private updateEditorOptionsLanguage() {
+        this.editorOptions.language = this.mappedSelectedLanguage.toLowerCase();
     }
 }
