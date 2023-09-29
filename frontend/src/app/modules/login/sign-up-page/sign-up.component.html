@@ -4,12 +4,16 @@
     </div>
     <div class="register-page-container">
         <form [formGroup]="registrationForm" class="register-page-form">
-            <button class="btn btn-link link-profile-button" (click)="signUpGitHub()">
-                + Link Your GitHub Account
-            </button>
-            <button class="btn btn-link link-profile-button" (click)="signUpGoogle()">
-                + Link Your Google Account
-            </button>
+            <div class="connect-accounts d-flex flex-column">
+                <app-link-profile-button 
+                    [buttonText]="'+ Link Your GitHub Account'" 
+                    (click)="signUpGitHub()">
+                </app-link-profile-button>
+                <app-link-profile-button 
+                    [buttonText]="'+ Link Your Google Account'" 
+                    (click)="signUpGoogle()">
+                </app-link-profile-button>
+            </div>
             <div class="mb-2 form-group">
                 <app-custom-input
                     [InputType]="'text'"
