@@ -97,7 +97,7 @@ export class UserService {
     getOneUserFriend(newFriendship: INewFriendship): Observable<IFriendshipPreview> {
         return this.httpService.postRequest<IFriendshipPreview>(`${this.baseUrl}/get-one-friend`, newFriendship);
     }
-    
+
     getUserPrefferences(): Observable<IUserPreferences> {
         return this.httpService.getRequest<IUserPreferences>(`${this.baseUrl}/preferences`);
     }
