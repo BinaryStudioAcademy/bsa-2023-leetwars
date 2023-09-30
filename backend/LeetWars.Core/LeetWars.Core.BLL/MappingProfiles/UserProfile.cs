@@ -64,7 +64,6 @@ namespace LeetWars.Core.BLL.MappingProfiles
             CreateMap<UserBadge, BadgeDto>()
                 .IncludeMembers(x => x.Badge);
 
-
             CreateMap<UserPreferences, UserPreferencesDto>().ReverseMap();
 
             CreateMap<NewUserPreferencesDto, UserPreferences>();

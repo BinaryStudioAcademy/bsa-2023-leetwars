@@ -2,10 +2,12 @@
     <div class="content-wrapper d-flex" *ngIf="fullUser">
         <div class="user_profile">
             <app-profile-page-main-info 
-            [user]="fullUser" 
+            [user]="fullUser"
+            [currentUser]="currentUser"
             [userSolutions]="userSolutions" 
             [isCurrentUser]="isCurrentUser" 
-            [isFriend]="isFriend">
+            [isFriend]="isFriend"
+            [friendshipId]="friendshipId">
             </app-profile-page-main-info>
         </div>
         <div class="d-flex flex-column main-info">

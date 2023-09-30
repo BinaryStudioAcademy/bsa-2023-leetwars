@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { AuthService } from '@core/services/auth.service';
+import { EventService } from '@core/services/event.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import { UserService } from '@core/services/user.service';
+import { FriendshipStatus } from '@shared/enums/friendship-status';
+import { IFriendshipPreview } from '@shared/models/friendship/friendship-preview';
+import { INewFriendship } from '@shared/models/friendship/new-friendship';
 import { IUser } from '@shared/models/user/user';
 import { IUserFull } from '@shared/models/user/user-full';
 import { IUserSolutionsGroupedBySkillLevel } from '@shared/models/user/user-solutions-groupedby-skill-level';
-import { firstValueFrom, takeUntil } from 'rxjs';
+import { catchError, map, Observable, switchMap, takeUntil, tap, throwError } from 'rxjs';
 
 import { IBar } from '../solved-problem/solved-problem.component';
 
@@ -29,37 +33,60 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
 
     isFriend: Boolean = false;
 
-    private user: IUser;
+    friendshipId?: number;
 
-    currentUser?: IUser | null;
+    currentUser: IUser;
+
+    currentUserFriends: IFriendshipPreview[];
+
+    private user: IUser;
 
     constructor(
         private userService: UserService,
         private authService: AuthService,
         private toastrNotification: ToastrNotificationsService,
         private route: ActivatedRoute,
+        private eventService: EventService,
     ) {
         super();
         this.authService.getUser().subscribe((user: IUser) => {
             this.user = user;
+            this.currentUser = user;
         });
     }
 
     ngOnInit(): void {
-        this.getCurrentUser();
+        this.getChosenUser();
+
+        this.eventService.userChangedEvent$.pipe(takeUntil(this.unsubscribe$)).subscribe({
+            next: (updateFriendship) => {
+                this.handleUserDataChange(updateFriendship);
+            },
+            error: () => {
+                this.toastrNotification.showError('Server connection error');
+            },
+        });
     }
 
-    private getUserInfo(id: number) {
-        this.userService
+    isFriendMethod(user: IUser): boolean {
+        return user && this.currentUser.friendships.some(friendship => friendship.friendId === user.id);
+    }
+
+    private getUserInfo(id: number): Observable<void> {
+        return this.userService
             .getFullUser(id)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (result) => {
+            .pipe(
+                takeUntil(this.unsubscribe$),
+                map((result) => {
                     this.user = result;
                     this.fullUser = result;
-                },
-                error: () => { this.toastrNotification.showError('User not found'); },
-            });
+                }),
+                catchError((error) => {
+                    this.toastrNotification.showError('User not found');
+
+                    return throwError(() => error);
+                }),
+            );
     }
 
     private getUserChallenges(id: number) {
@@ -84,23 +111,75 @@ export class UserProfileComponent extends BaseComponent implements OnInit {
             });
     }
 
-    private async getCurrentUser() {
-        try {
-            const result = await firstValueFrom(this.userService.getCurrentUser());
+    private getChosenUser() {
+        this.route.paramMap.pipe(
+            switchMap((params) => {
+                const userId = Number(params.get('id'));
 
-            this.currentUser = result;
+                this.isCurrentUser = !userId || this.user?.id === userId;
+                const currentUserId = this.isCurrentUser ? this.currentUser.id : userId;
 
-            this.route.paramMap.subscribe((params) => {
-                const userId = params.get('id') as unknown as number;
+                return this.getUserInfo(currentUserId).pipe(
+                    switchMap(async () => this.getUserChallenges(currentUserId)),
+                    switchMap(() => this.getUserFriendships(currentUserId)),
+                    catchError((error) => {
+                        this.toastrNotification.showError(`Error: ${error}`);
 
-                this.isCurrentUser = !userId || this.currentUser?.id === userId;
-                const curentUserId = this.isCurrentUser ? this.user.id : userId;
+                        return throwError(() => error);
+                    }),
+                );
+            }),
+            tap(() => {
+                this.isFriend = this.isFriendMethod(this.user);
+            }),
+        ).subscribe();
+    }
 
-                this.getUserInfo(curentUserId);
-                this.getUserChallenges(curentUserId);
-            });
-        } catch (error) {
-            this.toastrNotification.showError('User not found');
+    private getUserFriendships(friendId: number): Observable<void> {
+        const data: INewFriendship = { senderId: this.currentUser.id, recipientId: friendId };
+
+        return this.userService
+            .getOneUserFriend(data)
+            .pipe(
+                takeUntil(this.unsubscribe$),
+                map((friendShips: IFriendshipPreview) => {
+                    if (!friendShips) {
+                        this.friendshipId = -1;
+                    } else {
+                        this.currentUser.friendships.push(friendShips);
+                        this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
+                    }
+                }),
+                catchError((error) => {
+                    this.toastrNotification.showError(error);
+
+                    return throwError(() => error);
+                }),
+            );
+    }
+
+    private removeFriendship(friendId: number) {
+        this.currentUser.friendships = this.currentUser.friendships.filter((f) => f.friendId !== friendId);
+    }
+
+    private updateOrAddFriendship(updateFriendship: IFriendshipPreview) {
+        this.currentUser.friendships = [
+            ...this.currentUser.friendships.filter(
+                (friendship) => friendship.friendshipId !== updateFriendship.friendshipId,
+            ),
+            updateFriendship,
+        ];
+    }
+
+    private handleUserDataChange(updateFriendship: IFriendshipPreview) {
+        if (updateFriendship.friendshipStatus === FriendshipStatus.Declined) {
+            this.removeFriendship(updateFriendship.friendId);
+            this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
+            this.isFriend = false;
+        } else {
+            this.updateOrAddFriendship(updateFriendship);
+            this.friendshipId = this.currentUser.friendships.find((f) => f.friendId === this.user.id)?.friendshipId;
+            this.isFriend = true;
         }
     }
 }

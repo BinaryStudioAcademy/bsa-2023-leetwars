@@ -36,6 +36,8 @@ public interface IUserService
 
     public Task<UserFriendsInfoDto> GetUserFriendshipsAsync(long userId);
 
+    public Task<FriendshipPreviewDto> GetOneFriendAsync(NewFriendshipDto newFriendshipDto);
+
     public Task<UserFriendsInfoDto> SendFriendshipRequestAsync(NewFriendshipDto newFriendshipDto);
 
     public Task<UserFriendsInfoDto> UpdateFriendshipRequestAsync(UpdateFriendshipDto updateFriendshipDto);

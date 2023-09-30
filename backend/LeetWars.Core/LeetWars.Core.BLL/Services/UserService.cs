@@ -290,6 +290,7 @@ public class UserService : BaseService, IUserService
             default:
                 throw new BadOperationException("Not expected friendship status value");
         }
+
         await _context.SaveChangesAsync();
 
         var userFriendship = friendshipToUpdate.UserFriendships.First(uf => uf.UserId != user.Id);
@@ -314,6 +315,13 @@ public class UserService : BaseService, IUserService
 
         return _mapper.Map<UserFriendsInfoDto>(user);
     }
+
+    public async Task<FriendshipPreviewDto> GetOneFriendAsync(NewFriendshipDto newFriendshipDto)
+    {
+        var friendship = await GetUserInfoWithOneFriend(newFriendshipDto);
+        return _mapper.Map<FriendshipPreviewDto>(friendship);
+    }
+
     public async Task<UserDto> UpdateUserInfoAsync(UpdateUserInfoDto userInfoDto)
     {
         if (userInfoDto is null)
@@ -352,7 +360,6 @@ public class UserService : BaseService, IUserService
         var newUserAvatar = new UserAvatarDto(_blobService.GetBlob(uniqueFileName));
         return newUserAvatar;
     }
-
 
     public async Task<UserPreferencesDto> GetUserPreferences()
     {
@@ -462,6 +469,19 @@ public class UserService : BaseService, IUserService
             .FirstOrDefaultAsync(expression);
 
         return user;
+    }
+
+    private async Task<Friendship?> GetUserInfoWithOneFriend(NewFriendshipDto newFriendshipDto)
+    {
+        var friends = await _context.Friendships
+            .Include(friendship => friendship.Users)
+            .Include(f => f.UserFriendships)
+            .Where(x => x.Users.Any(user => user.Id == newFriendshipDto.SenderId) 
+                && x.Users.Any(user => user.Id == newFriendshipDto.RecipientId)
+                && newFriendshipDto.RecipientId != newFriendshipDto.SenderId)
+            .FirstOrDefaultAsync();
+
+        return friends;
     }
 
     private static void ThrowIfIsNotMatchingIds(long userId, long currentUserId)
