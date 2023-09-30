@@ -3,6 +3,7 @@ using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Friendship;
 using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.Common.DTO.UserPrefferences;
+using LeetWars.Core.Common.DTO.UserSolution;
 using LeetWars.Core.DAL.Entities;
 using Microsoft.AspNetCore.Http;
 using System.Linq.Expressions;
@@ -48,4 +49,6 @@ public interface IUserService
     public Task<UserPreferencesDto> GetUserPreferences();
 
     public Task<UserPreferencesDto> SetUserPreferences(NewUserPreferencesDto newPreferences);
+
+    public Task<UserSolutionDto> SubmitSolutionAsync(NewUserSolutionDto userSolutionDto);
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BaseComponent } from '@core/base/base.component';
 import { ChallengeService } from '@core/services/challenge.service';
 import { LanguageService } from '@core/services/language.service';
+import { SpinnerService } from '@core/services/spinner.service';
 import { TagService } from '@core/services/tag.service';
 import { ToastrNotificationsService } from '@core/services/toastr-notifications.service';
 import {
@@ -80,6 +81,7 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private modalService: NgbModal,
+        private spinnerService: SpinnerService,
     ) {
         super();
         this.steps = this.stepsData.map((s) => s.step);
@@ -127,6 +129,7 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
     }
 
     onBtnCreateClick() {
+        this.spinnerService.show();
         this.stepsData = showValidationErrorsForAllSteps(this.stepsData);
         if (checkAllStepsIsValid(this.stepsData)) {
             const newChallenge = prepareChallengeDto(this.challenge);
@@ -142,12 +145,14 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
                     },
                     error: (error) => {
                         this.toastrService.showError(error.title);
+                        this.spinnerService.hide();
                     },
                 });
         }
     }
 
     onBtnEditClick() {
+        this.spinnerService.show();
         this.stepsData = showValidationErrorsForAllSteps(this.stepsData);
         if (checkAllStepsIsValid(this.stepsData)) {
             this.challengeService
@@ -161,12 +166,14 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
                     },
                     error: (error) => {
                         this.toastrService.showError(error.title);
+                        this.spinnerService.hide();
                     },
                 });
         }
     }
 
     onBtnDeleteClick() {
+        this.spinnerService.show();
         const modalRef = this.modalService.open(ConfirmationModalComponent, { windowClass: 'delete-modal' });
 
         modalRef.componentInstance.titleText = 'Do you really want to delete challenge?';
@@ -265,6 +272,7 @@ export class ChallengeCreationComponent extends BaseComponent implements HasUnsa
                 },
                 error: () => {
                     this.toastrService.showError('Server connection error');
+                    this.spinnerService.hide();
                 },
             });
     }

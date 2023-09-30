@@ -11,6 +11,7 @@ using LeetWars.Core.Common.DTO.Filters;
 using LeetWars.Core.Common.DTO.Notifications;
 using LeetWars.Core.Common.DTO.SortingModel;
 using LeetWars.Core.Common.DTO.Tag;
+using LeetWars.Core.Common.DTO.User;
 using LeetWars.Core.DAL.Context;
 using LeetWars.Core.DAL.Entities;
 using LeetWars.Core.DAL.Enums;
@@ -234,6 +235,7 @@ namespace LeetWars.Core.BLL.Services
                 TypeNotification = TypeNotifications.NewChallenge,
                 Challenge = briefChallenge,
                 Message = "New challenge!",
+                Sender = _mapper.Map<BriefUserInfoDto>(currentUser)
             };
 
             await _notificationService.CreateNotification(newNotification);

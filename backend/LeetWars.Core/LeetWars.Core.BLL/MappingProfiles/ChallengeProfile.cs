@@ -31,8 +31,6 @@ namespace LeetWars.Core.BLL.MappingProfiles
 
             CreateMap<ChallengeVersion, ChallengeVersionFullDto>();
 
-            CreateMap<UserSolution, UserSolutionDto>();
-
             CreateMap<Test, TestDto>();
 
             CreateMap<ChallengeLevel, ChallengeLevelDto>();

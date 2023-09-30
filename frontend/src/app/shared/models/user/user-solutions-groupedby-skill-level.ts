@@ -6,5 +6,4 @@ export interface IUserSolutionsGroupedBySkillLevel {
     totalCount: number;
     name: LanguageLevel;
     taskCountDtos: ITaskCount[];
-
 }

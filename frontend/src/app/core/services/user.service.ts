@@ -4,9 +4,11 @@ import { IFriendshipPreview } from '@shared/models/friendship/friendship-preview
 import { INewFriendship } from '@shared/models/friendship/new-friendship';
 import { IUpdateFriendship } from '@shared/models/friendship/update-friendship';
 import { IPageSettings } from '@shared/models/page-settings';
+import { IUserSolution } from '@shared/models/profile/user-solution';
 import { IEditUser } from '@shared/models/user/edit-user';
 import { IEditUserInfo } from '@shared/models/user/edit-user-info';
 import { INewUser } from '@shared/models/user/new-user';
+import { INewUserSolution } from '@shared/models/user/new-user-solution';
 import { IUser } from '@shared/models/user/user';
 import { IUserAvatar } from '@shared/models/user/user-avatar';
 import { IUserFriendsInfo } from '@shared/models/user/user-friends-info';
@@ -95,12 +97,16 @@ export class UserService {
     getOneUserFriend(newFriendship: INewFriendship): Observable<IFriendshipPreview> {
         return this.httpService.postRequest<IFriendshipPreview>(`${this.baseUrl}/get-one-friend`, newFriendship);
     }
-
-    public getUserPrefferences(): Observable<IUserPreferences> {
+    
+    getUserPrefferences(): Observable<IUserPreferences> {
         return this.httpService.getRequest<IUserPreferences>(`${this.baseUrl}/preferences`);
     }
 
-    public setUserPrefferences(newPreferences: INewUserPreferences): Observable<IUserPreferences> {
+    setUserPrefferences(newPreferences: INewUserPreferences): Observable<IUserPreferences> {
         return this.httpService.postRequest<IUserPreferences>(`${this.baseUrl}/preferences`, newPreferences);
+    }
+
+    submitSolution(newSolution: INewUserSolution): Observable<IUserSolution> {
+        return this.httpService.postRequest<IUserSolution>(`${this.baseUrl}/submit`, newSolution);
     }
 }
